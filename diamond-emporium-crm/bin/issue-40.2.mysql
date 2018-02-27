@@ -1,0 +1,7 @@
+CREATE TABLE `de_variable` (
+  `name` varchar(128) NOT NULL DEFAULT '',
+  `value` longtext NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `de_variable` VALUES ('shop.webform.last.sid', '5345');

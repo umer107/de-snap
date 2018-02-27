@@ -1,0 +1,23 @@
+ALTER TABLE `de_shape_lookup` 
+ADD COLUMN `sort_weight` SMALLINT NULL AFTER `shape`;
+
+UPDATE `de_shape_lookup` SET `sort_weight` = 1 WHERE `id` = 1;
+UPDATE `de_shape_lookup` SET `sort_weight` = 2 WHERE `id` = 2;
+UPDATE `de_shape_lookup` SET `sort_weight` = 3 WHERE `id` = 3;
+UPDATE `de_shape_lookup` SET `sort_weight` = 4 WHERE `id` = 20;
+UPDATE `de_shape_lookup` SET `sort_weight` = 5 WHERE `id` = 4;
+UPDATE `de_shape_lookup` SET `sort_weight` = 6 WHERE `id` = 5;
+UPDATE `de_shape_lookup` SET `sort_weight` = 7 WHERE `id` = 6;
+UPDATE `de_shape_lookup` SET `sort_weight` = 8 WHERE `id` = 7;
+UPDATE `de_shape_lookup` SET `sort_weight` = 9 WHERE `id` = 8;
+UPDATE `de_shape_lookup` SET `sort_weight` = 10 WHERE `id` = 9;
+UPDATE `de_shape_lookup` SET `sort_weight` = 11 WHERE `id` = 10;
+UPDATE `de_shape_lookup` SET `sort_weight` = 12 WHERE `id` = 11;
+UPDATE `de_shape_lookup` SET `sort_weight` = 13 WHERE `id` = 12;
+UPDATE `de_shape_lookup` SET `sort_weight` = 14 WHERE `id` = 13;
+UPDATE `de_shape_lookup` SET `sort_weight` = 15 WHERE `id` = 14;
+UPDATE `de_shape_lookup` SET `sort_weight` = 16 WHERE `id` = 15;
+UPDATE `de_shape_lookup` SET `sort_weight` = 17 WHERE `id` = 16;
+UPDATE `de_shape_lookup` SET `sort_weight` = 18 WHERE `id` = 17;
+UPDATE `de_shape_lookup` SET `sort_weight` = 19 WHERE `id` = 18;
+UPDATE `de_shape_lookup` SET `sort_weight` = 20 WHERE `id` = 19;

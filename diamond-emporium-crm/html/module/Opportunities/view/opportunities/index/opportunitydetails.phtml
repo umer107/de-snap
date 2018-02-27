@@ -1,0 +1,391 @@
+<?php $viewData = $this->opportunitiesData[0]; ?>
+
+<form name="frm_opportunity" id="frm_opportunity" method="post">
+  <div class="contentArea padLR0">
+  <div class="pageLoader"></div>
+    <div class="fl width100p contentINN">
+      <div class="customerDetails">
+        <label>Customer Details</label>
+        <div class="custonerInfo">
+          <h2><?php echo $viewData['customer_fullname']; ?></h2>
+          <p>Ph: <?php echo $viewData['customer_mobile']; ?></p>
+          <p>E: <a href="mailto:<?php echo $viewData['customer_email']; ?>"><?php echo $viewData['customer_email']; ?></a></p>
+        </div>
+      </div>
+      <div class="customerDetails">
+        <label>Partner Details</label>
+        <?php foreach($this->partnerData as $partnerData){?>
+        <div class="custonerInfo">
+          <h2><?php echo $partnerData['fullname']; ?></h2>
+          <p>Ph: <?php echo $partnerData['mobile']; ?></p>
+          <p>E: <a href="mailto:<?php echo $partnerData['email']; ?>"><?php echo $partnerData['email']; ?></a></p>
+        </div>
+        <?php } ?>
+      </div>
+      <span class="deviderLine" ></span> </div>
+    <div class="customerTabing fl width100p ctb">
+      <ul>
+        <li class="current"><a href="javascript:;">Opportunity Details</a></li>
+        <li><a href="javascript:;">Tasks <span id="tab_task_count"><?php echo ($tasks['total_count']+$closedTasks['total_count']); ?></span></a></li>
+      </ul>
+      <div class="customTabbingInner">
+        <!-- Lead Details -->
+        <div class="customerTabingInfo" style="display:block">
+          <div class="leadSummary">
+            <a class="cmnBtn" id="saveOpportunityButton" href="javascript:;" onclick="updateOpportunity($('#frm_opportunity'));">Edit</a> &nbsp;
+            <?php if ($canDelete) : ?>
+            	<a class="cmnBtn redBtn" href="javascript:;" onclick="deleteOpportunity(<?php echo $viewData['id']; ?>);">Delete</a> &nbsp;
+            <?php endif; ?>
+            <a class="cmnBtn" href="/newquotes/<?php echo $viewData['id']; ?>">Create New Quote</a>
+            <!-- Opportunity Status -->
+            <div class="tableData noOverflow width100p">
+              <div  class="tableHading width100p"> Opportunity Status - <span id="OpportunityStatusLable"><?php echo $viewData['opportunity_status']; ?></span> <a href="javascript:;"  data-popup="opportunityStatus" class="fr cmnBtn marT0 lightBoxClick" id="oppStatusButton"> <?php if($viewData['opportunity_status'] == 'Open'){ echo 'Close Opportunity'; } else { echo 'Open'; } ?></a></div>
+              <div class="fl width100p commonForm">
+                <div class="alphaClmn">
+                  <div class="formRow">
+                    <label class="labelControll">Status</label>
+                    <div class="inputDiv">
+                      <p id="opportunityStatusDiv"><?php echo $viewData['opportunity_status'];?></p>
+                    </div>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Close Date</label>
+                    <div class="inputDiv">
+                      <p id="opportunityCloseDateDiv">
+                        <?php if($viewData['opportunity_close_date'] == ''){ 
+								echo '-'; 
+							  } else {
+							  	if($viewData['opportunity_close_date'] != ''){
+									 $opportunity_close_date = str_replace(" 00:00:00", "",$viewData['opportunity_close_date']);
+									 $opportunity_close_array = explode("-", $opportunity_close_date);
+									 $opportunity_close = $opportunity_close_array[2].'/'.$opportunity_close_array[1].'/'.$opportunity_close_array[0];
+									 echo $opportunity_close; 
+								 }
+							}?>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Reason</label>
+                    <div class="inputDiv">
+                      <p id="opportunityReasonDiv"><?php if($viewData['opportunity_reason'] == ''){ 
+								echo '-';  } else { echo $viewData['opportunity_reason']; } ?></p>
+                    </div>
+					<?php /*?><p class="hiddenUnqValues"><?php if($viewData['opportunity_status'] == 'Open'){ 
+								echo '-';  } else { echo $viewData['opportunity_reason']; } ?></p><?php */?>
+                  </div>
+                </div>
+                <div class="betaClmn">
+                  <div class="formRow">
+                    <label class="labelControll">Lead ID</label>
+                    <div class="inputDiv">
+	                  <p>
+	                  	<?php if($viewData['lead_id'] == '') : ?>
+	                  		-
+	                  	<?php else : ?>
+	                  		<a href="<?php echo $this->serverUrl('/leaddetails/') . $viewData['lead_id']; ?>"><?php echo $viewData['lead_id']; ?></a>
+                  		<?php endif;?>
+	                  </p>
+	                </div>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Order ID</label>
+                    <div class="inputDiv">
+	                  <p>
+	                  	<?php if($viewData['order_id'] == '') : ?>
+	                  		-
+	                  	<?php else : ?>
+	                  		<a href="<?php echo $this->serverUrl('/orderdetails/') . $viewData['order_id']; ?>"><?php echo $viewData['order_id']; ?></a>
+                  		<?php endif;?>
+	                  </p>
+	                </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Opportunity Status End-->
+          <!-- Priority -->
+            <div class="tableData width100p noOverflow">
+              <div  class="tableHading width100p"> Priority </div>
+              <div class="fl width100p commonForm">
+                <div class="alphaClmn width100p">
+                  <div class="formRow specialInstructions">
+                    <label class="labelControll">Special Instructions</label>
+                    <div class="inputDiv displayHide">
+                      <input type="hidden" class="inputTxt" id="opportunityId" name="opportunityId" value="<?php echo $viewData['id']; ?>">
+                      <input type="text" class="inputTxt" placeholder="Enter special instructions here" id="special_instructions" name="special_instructions" value="<?php echo $viewData['special_instructions']; ?>">
+					  
+                    </div>
+					<p class="hiddenUnqValues" id="special_instructions_opp"><?php echo $viewData['special_instructions']; ?></p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Lead Owner</label>
+                    <div class="inputDiv displayHide">
+                      <!--<div class="selectDrop" style="width:150px">
+                      <div class="assignedDrop">
+                        <div class="dropValue"><span>MB</span>Mark Bolten</div>
+                        <ul style="display: none;">
+                          <li><span>MB</span>Mark Bolten</li>
+                          <li><span style="background-color:#E862A2">MB</span>Mark Bolten</li>
+                        </ul>
+                      </div>
+                    </div>-->
+					<select id="record_owner_id" name="record_owner_id" class="dropdown">
+                      <?php 
+					  foreach($this->topLevelUsers as $userId => $userValue){ ?>
+					  	<option value="<?php echo $userId; ?>" <?php if($userId == $viewData['record_owner_id']){?> selected="selected"<?php } ?>><?php echo $userValue; ?></option>
+					 <?php }?> 
+					  </select>
+					  </div>
+					  <p class="hiddenUnqValues" id="record_owner_id_opp"><?php 
+					  foreach($this->topLevelUsers as $userId => $userValue){ 
+					  	if($viewData['record_owner_id'] > 0 && $userId == $viewData['record_owner_id']){
+							echo $userValue;
+						}
+					  }?>
+					  </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Priority End-->
+            <!-- Lead Overview-->
+            <div class="tableData noOverflow width100p">
+              <div  class="tableHading width100p">Overview </div>
+              <div class="fl width100p commonForm">
+                <div class="alphaClmn">
+                  <div class="formRow">
+                    <label class="labelControll">Budget<span class="asterisk">*</span></label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="budget" name="budget" value="<?php echo $viewData['budget']; ?>" maxlength="20" data-numeric="yes" />
+                    </div>
+					<p class="hiddenUnqValues" id="budget_opp"><?php 
+					  echo $viewData['budget']; ?>
+					  </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">What are they looking for?<span class="asterisk">*</span></label>
+                    <div class="inputDiv displayHide">
+                      <textarea id="looking_for" rows="6" name="looking_for"><?php echo $viewData['looking_for']; ?></textarea>
+                    </div>
+					<p class="hiddenUnqValues" id="looking_for_opp"><?php 
+					  echo $viewData['looking_for']; ?>
+					  </p>
+                  </div>
+                </div>
+                <div class="betaClmn">
+                  <div class="formRow">
+                    <label class="labelControll">Rating<span class="asterisk">*</span></label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown" id="rating" name="rating">
+                        <option value="" <?php if($viewData['rating'] == ''){?> selected="selected" <?php } ?>>Select</option>
+                        <option value="Hot" <?php if($viewData['rating'] == 'Hot'){?> selected="selected" <?php } ?>>Hot</option>
+                        <option value="Warm" <?php if($viewData['rating'] == 'Warm'){?> selected="selected" <?php } ?>>Warm</option>
+                        <option value="Cold" <?php if($viewData['rating'] == 'Cold'){?> selected="selected" <?php } ?>>Cold</option>
+                      </select>
+                    </div>
+					<p class="hiddenUnqValues" id="rating_opp"><?php 
+					  echo $viewData['rating']; ?>
+					  </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Est. Close Date<span class="asterisk">*</span></label>
+                    <div class="inputDiv displayHide">
+                      <div class="datePickInput">
+                        <?php /*if($viewData['est_close_date'] != ''){
+							  $est_close_date = str_replace(" 00:00:00", "",$viewData['est_close_date']);
+							  $est_close_array = explode("-", $est_close_date);
+							  $est_close = $est_close_array[2].'/'.$est_close_array[1].'/'.$est_close_array[0];
+							 }*/
+						?>
+                        <input type="text" name="est_close_date" class="datepickerInput" placeholder="DD/MM/YYYY" value="<?php echo $viewData['edit_est_close_date']; ?>">
+                        <span class="datePickCal"></span>
+						</div>
+                    </div>
+					<p class="hiddenUnqValues" id="est_close_date_opp"><?php 
+					  echo $viewData['est_close_date']; ?>
+					  </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Lead Overview End-->
+            <!-- Notes-->
+            <div class="tableData tableNeView marB47" style="overflow:visible;">
+              <div class="tableHading" style="width:100%">Notes <a href="javascript:;" data-popup="relatedNotes" onclick="relatedNotes(<?php echo $viewData['id']; ?>)" class="fr cmnBtn marT0 lightBoxClick">Show related notes</a></div>
+              <div class="addNote">
+                <div class="inputDiv">
+                  <div class="datePickInput">
+                    <input type="text" value="" placeholder="DD/MM/YYYY" class="datepickerInput followUpDate" name="follow_up_date">
+                    <span class="datePickCal"></span></div>
+                </div>
+                <div class="inputDiv">
+                  <select class="dropdown" id="note_type" name="note_type">
+                    <option value="">Note Type</option>
+                    <option value="Intro Sent">Intro Sent</option>
+                    <option value="Appointment Booked">Appointment Booked</option>
+                    <option value="Create Quote">Create Quote</option>
+                    <option value="Follow Up 1">Follow Up 1</option>
+                    <option value="Follow Up 2">Follow Up 2</option>
+                    <option value="In Negotiation">In Negotiation</option>
+                    <option value="Future Opportunity">Future Opportunity</option>
+                    <option value="Waiting on client">Waiting on client</option>
+                    <option value="Confirmed Sale">Confirmed Sale</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="inputDiv noteDescription">
+                  <input type="text" class="inputTxt" id="note_description" name="note_description"/>
+                  <input type="hidden" class="inputTxt" id="noteUpdateId" name="noteUpdateId"/>
+                </div>
+                <input type="button" class="cmnBtn blueBtn" value="Add Note" id="saveNoteButton" onclick="saveNote('opportunity', $('#opportunityId').val());">
+                <input type="button" class="cmnBtn blueBtn" value="Cancel" id="cancelNoteButton" onclick="cancelNote();" style="display:none;">
+              </div>
+			  <div class="cb"></div>
+              <div class="formTable manageMembers" id="jqxNotes"> </div>
+            </div>
+            <!-- Notes End-->
+            <!-- Lead Information-->
+            <div class="tableData noOverflow width100p">
+              <div  class="tableHading width100p"> Opportunity Details </div>
+              <div class="fl width100p commonForm">
+                <div class="alphaClmn">
+				
+				<div class="formRow">
+                    <label class="labelControll">Opportunity Name<span class="asterisk">*</span></label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="opportunity_name" name="opportunity_name" value="<?php echo $viewData['opportunity_name']; ?>" />
+                      <?php /*?><select class="dropdown" id="reference_product" name="reference_product">
+                        <?php foreach($this->listProducts as $key => $data){?>
+                        <option value="<?php echo $key; ?>" <?php if($viewData['reference_product'] == $key){?> selected="selected" <?php } ?>><?php echo $data; ?></option>
+                        <?php } ?>
+                      </select><?php */?>
+                    </div>
+					<p class="hiddenUnqValues" id="reference_product_opp"><?php 
+					  echo $viewData['opportunity_name']; ?>
+					  </p>
+                  </div>
+				
+                  <div class="formRow">
+                    <label class="labelControll">Lead Source<span class="asterisk">*</span></label>
+                    <div class="inputDiv displayHide">
+                      <?php /*TODO: why does this not come from the form? */ ?>
+                      <select class="dropdown width60p" id="lead_source" name="lead_source">
+                        <option value="" <?php if($viewData['lead_source'] == ''){?> selected="selected" <?php } ?>>Select</option>
+                        <option value="Web Form" <?php if($viewData['lead_source'] == 'Web Form'){?> selected="selected" <?php } ?>>Web Form</option>
+                        <option value="Phone" <?php if($viewData['lead_source'] == 'Phone'){?> selected="selected" <?php } ?>>Phone</option>
+                        <option value="Direct Email" <?php if($viewData['lead_source'] == 'Direct Email'){?> selected="selected" <?php } ?>>Direct Email</option>
+                        <option value="Live Chat" <?php if($viewData['lead_source'] == 'Live Chat'){?> selected="selected" <?php } ?>>Live Chat</option>
+                        <option value="Walk In" <?php if($viewData['lead_source'] == 'Walk In'){?> selected="selected" <?php } ?>>Walk In</option>
+                        <option value="Facebook" <?php if($viewData['lead_source'] == 'Facebook'){?> selected="selected" <?php } ?>>Facebook</option>
+                        <option value="Instagram" <?php if($viewData['lead_source'] == 'Instagram'){?> selected="selected" <?php } ?>>Instagram</option>
+                      </select>
+                    </div>
+					<p class="hiddenUnqValues" id="lead_source_opp"><?php 
+					  echo $viewData['lead_source']; ?>
+					  </p>
+                  </div>
+
+                  <div class="formRow">
+                    <label class="labelControll">How Heard</label>
+                    <div class="inputDiv">
+	                  <p><?php echo $viewData['how_heard_title']; ?></p>
+	                </div>
+                  </div>
+
+                  <div class="formRow">
+                    <label class="labelControll">Referred by Customer</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt width60p" id="referred_by_name" name="referred_by_name" readonly="readonly" value="<?php echo $viewData['refered_fullname']; ?>" />
+                      <input type="hidden" name="referred_by_customer" id="referred_by_customer" value="<?php echo $viewData['referred_by_customer']; ?>" />
+                      <a class="cmnBtn blueBtn lightBoxClick" href="javascript:;" data-popup="customerlookup" id="oppcustomerlookup" onclick="customersLookup(<?php echo $recordsPerPage; ?>, 'referred_by_customer', 'referred_by_name');">Lookup</a></div>
+					  <p class="hiddenUnqValues" id="referred_by_name_opp"><?php 
+					  echo $viewData['refered_fullname']; ?>
+					  </p>
+                  </div>
+                </div>
+                <div class="betaClmn">
+                  <div class="formRow">
+                    <label class="labelControll">Product<span class="asterisk">*</span></label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown" id="product" name="product">
+                        <?php foreach($this->listProducts as $key => $data){?>
+                        <option value="<?php echo $key; ?>" <?php if($viewData['product'] == $key){?> selected="selected" <?php } ?>><?php echo $data; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+					<p class="hiddenUnqValues" id="product_opp"><?php 
+					  foreach($this->listProducts as $key => $data){ 
+					  	if($viewData['product'] > 0 && $viewData['product'] == $key){
+							echo $data;
+						}
+					  }?>
+					  </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Preferred method of contact<span class="asterisk">*</span></label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown width60p" id="preferred_contact" name="preferred_contact">
+                        <option value="" <?php if($viewData['preferred_contact'] == ''){?> selected="selected" <?php } ?>>Select</option>
+						<option value="Phone/Email" <?php if($viewData['preferred_contact'] == 'Phone/Email'){?> selected="selected" <?php } ?>>Phone/Email</option>
+                        <option value="Phone" <?php if($viewData['preferred_contact'] == 'Phone'){?> selected="selected" <?php } ?>>Phone</option>
+                        <option value="Email" <?php if($viewData['preferred_contact'] == 'Email'){?> selected="selected" <?php } ?>>Email</option>
+                      </select>
+                    </div>
+					<p class="hiddenUnqValues" id="preferred_contact_opp"><?php 
+					  echo $viewData['preferred_contact']; ?>
+					  </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Reference Product</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="reference_product" name="reference_product" value="<?php echo $viewData['reference_product']; ?>" />
+                      <?php /*?><select class="dropdown" id="reference_product" name="reference_product">
+                        <?php foreach($this->listProducts as $key => $data){?>
+                        <option value="<?php echo $key; ?>" <?php if($viewData['reference_product'] == $key){?> selected="selected" <?php } ?>><?php echo $data; ?></option>
+                        <?php } ?>
+                      </select><?php */?>
+                    </div>
+					<p class="hiddenUnqValues" id="reference_product_opp"><?php 
+					  echo $viewData['reference_product']; ?>
+					  </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Lead Information End-->
+          </div>
+        </div>
+        <!-- Lead Details End-->
+      </div>
+      <div class="customTabbingInner">
+        <!-- TaskInfo -->
+        <?php echo $this->partial('task/index/tasks.phtml', array('tasks' => $tasks, 'closedTasks' => $closedTasks, 'config' => $config, 'entity_type' => 'opportunity', 'entity_id' => $opportunitiesData[0]['id'], 'usersList' => $this->usersList, 'CategoryList' => $this->CategoryList, 'subjectList' => $this->subjectList, 'priorityList' => $this->priorityList)); ?>
+        <!-- TaskInfo End-->
+      </div>
+    </div>
+  </div>
+  <input type="hidden" id="recordsPerPage" value="<?php echo $this->recordsPerPage; ?>" />
+</form>
+<?php echo $this->partial('opportunities/index/opportunitystatus.phtml', array('data' => $viewData)); ?>
+
+<!--BOF Customer lookup list-->
+<?php echo $this->partial('customer/leads/customerlookup.phtml', array('recordsPerPage' => $this->recordsPerPage, 'lookupCustomerId' => 'referred_by_customer', 'lookupCustomerName' => 'referred_by_name')); ?>
+<!--EOF Customer lookup list-->
+<!--BOF Related Notes lightbox  -->
+<div class="lightBox" id="relatedNotes">
+  <div class="lightBoxMid" style="width:600px">
+    <div class="lightBoxTitle">Related Notes <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p">
+		<div class="formTable manageMembers" id="jqxRelatedNotes"> </div>
+    </div>
+  </div>
+</div>
+<!--EOF Related Notes lightbox  -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		//$('#frm_opportunity #saveNoteButton').hide();
+		//$('#frm_opportunity #cancelNoteButton').hide();
+		getNotes(<?php echo $this->recordsPerPage; ?>, 'opportunity', $('#opportunity_statusId').val(), 1);
+	});
+</script>

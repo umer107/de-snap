@@ -1,0 +1,54 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Quan Lee
+ * Date: 12/7/16
+ * Time: 10:53 AM
+ */
+
+?>
+
+<div class="contentArea hide">
+    <?php
+    $title = 'Dashboard';
+    $this->headTitle($title);
+    ?>
+    <div class="mainLoginForm color-darkGray robotomedium">
+    	<div class="loginInner">
+        	<h1><?php echo $this->escapeHtml($title); ?></h1>
+        	<div class="loginFormFields">
+        		<a href="/logout" class="cmnBtn" style="margin-top:0">Logout</a>
+        	</div>
+    	</div>
+    </div>
+</div>
+
+<?php
+    echo $this->partial('dashboard/dashboard/headerTabs.phtml');
+    echo $this->partial('dashboard/dashboard/leaves.phtml');
+    echo $this->partial('dashboard/dashboard/newLeave.phtml');
+    echo $this->partial('dashboard/dashboard/leads.phtml');
+    echo $this->partial('dashboard/dashboard/dashboard.phtml');
+    echo $this->partial('dashboard/dashboard/leadDetail.phtml');
+
+?>
+<div class="newLead full robotoregular transition-ease-05 maxHeightShow maxHeightHide">
+        <div class="innerContainer bg-white full">
+        <h2 class="fs-24 color-green robotolight"> Enter basic contact info </h2>
+            <?php
+                $form = $this->form;
+                $form->setAttribute('action', $this->url('dashboard', array('action' => 'index')));
+                echo $this->partial('dashboard/dashboard/_form.phtml', array(
+                    'form' =>$form,
+                ));
+            ?>
+        </div>
+</div>
+
+<div class="mainLoader" style="display: none">
+        <img src="/images/loading.gif">
+</div>
+
+<div class="showMessage">
+    <div> All rooms are booked </div>
+</div>

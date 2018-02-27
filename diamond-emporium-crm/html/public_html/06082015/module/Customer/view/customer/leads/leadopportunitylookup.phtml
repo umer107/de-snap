@@ -1,0 +1,24 @@
+<div class="lightBox" id="customerlookup">
+    <div class="lightBoxMid" style="width:970px">
+      <div class="lightBoxTitle">Customer Lookup <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+      <div class="lightBoxContent fl width100p lookupPopup padB105">
+        <div class="mainSearch">
+            <input name="lookupsrc" id="lookupsrc" type="text" class="searchInput" placeholder="Search..">
+            <input type="button" class="inputGo" value="Go!" id="leadOppLookupSearch" onclick="customersLookup(<?php echo $this->recordsPerPage; ?>, $('#lookupsrc').val());"><span id="searchResultsHintjqxCustomers" style="color:red;"></span>
+        </div>
+        <div class="tableData tableDataView" style="overflow:visible">
+          <div class="tableHading"> Customer List </div>
+          	<div class="formTable manageMembers" id='jqxCustomers' style="width:100%">           
+			</div>
+        </div>
+      </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	customersLookup(<?php echo $this->recordsPerPage; ?>);
+});
+</script>
+<script type="text/javascript">
+	searchByEnterKey('lookupsrc', 'leadOppLookupSearch');
+</script>

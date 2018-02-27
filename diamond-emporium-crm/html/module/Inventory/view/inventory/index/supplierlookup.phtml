@@ -1,0 +1,25 @@
+<div class="lightBox" id="supplierlookup">
+  <div class="lightBoxMid" style="width:970px">
+    <div class="lightBoxTitle">Supplier Lookup <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p lookupPopup padB105">
+      <div class="mainSearch">
+        <input name="lookupsrc" id="lookupsrc" type="text" class="searchInput" placeholder="Search..">
+        <input type="button" class="inputGo" value="Go!" onclick="suppliersLookup(<?php echo $this->recordsPerPage; ?>, '<?php echo $this->lookupSupplierId; ?>', '<?php echo $this->lookupSupplierName; ?>', $('#lookupsrc').val());" id="supplierLookupSearch">
+      </div>
+      <a href="javascript: newSupplier();" data-popup="newSuppliers" class="cmnBtn fr marT0 lightBoxClick">New Supplier</a>
+	  <div class="tableData tableNeView" style="overflow:visible">
+        <div class="tableHading"> Supplier List </div>
+        <div class="formTable manageMembers" id="jqxSuppliersLookup" style="width:100%"> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {		
+	searchByEnterKey('lookupsrc', 'supplierLookupSearch');
+});
+</script>
+
+<!--BOF new suppliers Lightbox-->
+<?php echo $this->partial('suppliers/index/newsupplierslightbox.phtml'); ?>
+<!--EOF new suppliers Lightbox-->

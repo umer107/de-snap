@@ -1,0 +1,53 @@
+<!--BOF Compose Email Form -->
+<?php
+$composeEmailForm->prepare();
+echo $this->form()->openTag($composeEmailForm);
+echo $this->formElement($this->composeEmailForm->get('id'));
+echo $this->formElement($this->composeEmailForm->get('is_quote'));
+echo $this->formElement($this->composeEmailForm->get('cust_id'));
+?>
+
+<div class="formRow">
+	<label class="labelControll"><?php echo $invoice['customer_name']; ?>&nbsp;&lt;<?php echo $invoice['email']; ?>&gt;</label>
+</div>
+<div class="formRow">
+	<!--<label class="labelControll"><?php //echo $this->composeEmailForm->get('subject')->getLabel(); ?>*</label>-->
+	<div class="inputDiv padL0"><?php echo $this->formElement($this->composeEmailForm->get('subject')); ?></div>
+</div>
+<div class="writeCommentBlock marB10">
+	<?php echo $this->formElement($this->composeEmailForm->get('message')); ?>
+	<div class="commentBottom">
+	  <div class="attachfile">
+		<?php echo $this->composeEmailForm->get('email_attachments')->getLabel(); ?>
+		<?php echo $this->formElement($this->composeEmailForm->get('email_attachments')); ?>
+		<?php echo $this->formElement($this->composeEmailForm->get('email_attachment_list')); ?>
+	  </div>
+	</div>
+</div>
+<div class="uploadedImages uploadImgNames" id="order_image_preview">
+<?php if(count($attachments) > 0){
+	foreach($attachments as $key => $data){ ?>
+		<div class="upImg" id="order_galleryImg<?php echo $key; ?>"><img src="/order_attachment/<?php echo $data['attachment']; ?>" height="98px" width="98px"/><a class="closeImg" onclick="unlinkGalleryImage('order_attachment/<?php echo $data['attachment']; ?>','order_galleryImg<?php echo $key; ?>', 'frm_order', 'order_attachment', <?php echo $data['id']; ?>)" style="cursor:pointer">X</a></div>
+<?php	}
+} ?>
+</div>
+<div class="formRow">
+	<label class="labelControll"><?php echo $this->composeEmailForm->get('attachment_check')->getLabel(); ?>*</label>
+	<div class="inputDiv datePickInput width150"><label class="labelCheck"><?php echo $this->formElement($this->composeEmailForm->get('attachment_check')); ?><i></i></label></div>
+</div>
+<div class="formRow">
+	<label class="labelControll"><?php echo $this->composeEmailForm->get('copy_email')->getLabel(); ?>*</label>
+	<div class="inputDiv datePickInput width150"><label class="labelCheck"><?php echo $this->formElement($this->composeEmailForm->get('copy_email')); ?><i></i></label></div>
+</div>
+<?php if($is_quote == 0){ ?>
+<div class="formRow">
+	<label class="labelControll"><?php echo $this->composeEmailForm->get('include_pdf')->getLabel(); ?>*</label>
+	<div class="inputDiv datePickInput width150"><label class="labelCheck"><?php echo $this->formElement($this->composeEmailForm->get('include_pdf')); ?><i></i></label></div>
+</div>
+<?php } ?>
+<div class="formButtons tc fl width100p">
+	<?php echo $this->formElement($this->composeEmailForm->get('send_email')); ?> <?php echo $this->formElement($this->composeEmailForm->get('email_cancel')); ?>
+</div>
+
+<?php echo $this->form()->closeTag(); ?>
+<!--EOF Compose Email Form -->

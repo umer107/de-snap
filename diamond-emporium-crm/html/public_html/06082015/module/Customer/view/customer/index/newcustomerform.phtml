@@ -1,0 +1,66 @@
+<div class="lightBox" id="new_customer_form">
+  <div class="lightBoxMid" style="width:970px">
+    <div class="lightBoxTitle">New Customer <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p commonForm">
+      <?php
+		$form->prepare();
+		echo $this->form()->openTag($form);
+		echo $this->formElement($this->form->get('partner_id'));
+	  ?>
+      <div class="alphaClmn">
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('title')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('title')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('first_name')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('first_name')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('last_name')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('last_name')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('mobile')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('mobile')); ?>
+            <!--<div class="notAvail"><span class="checkInfo"></span>NA</div>-->
+          </div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('email')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('email')); ?>
+            <!--<div class="notAvail"><span class="checkInfo checked"></span>NA</div>-->
+          </div>
+        </div>
+      </div>
+      <div class="betaClmn">
+      	<div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('address1')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('address1')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('postcode')->getLabel(); ?></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('postcode')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('country_id')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('country_id')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('state_id')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('state_id')); ?></div>
+        </div>
+		<?php if(!$disableLookup){ ?>
+        <div class="formRow">
+          <label class="labelControll">Partner</label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('partner_name')); ?><a href="javascript:;" class="cmnBtn blueBtn lightBoxClick" data-popup="customerlookup" onclick="customersLookup(<?php echo $recordsPerPage; ?>, 'partner_id', 'partner_name');">Lookup</a></div>
+        </div>
+		<?php } ?>
+      </div>
+      <div class="formButtons tc fl width100p"><?php echo $this->formElement($this->form->get('save')); ?> <?php echo $this->formElement($this->form->get('cancel')); ?></div>
+      <?php echo $this->form()->closeTag(); ?> </div>
+  </div>
+</div>
+<script type="text/javascript">
+	$('#customer_mobile').mask('9999 999 999');
+</script>

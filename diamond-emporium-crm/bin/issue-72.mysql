@@ -1,0 +1,6 @@
+ALTER TABLE `de_leads` 
+ADD COLUMN `lead_status` VARCHAR(255) NULL AFTER `priority`,
+ADD COLUMN `lead_reason` VARCHAR(255) NULL AFTER `lead_status`,
+ADD COLUMN `lead_close_date` DATETIME NULL AFTER `lead_reason`;
+
+UPDATE `de_leads` SET `lead_status` = 'Open';

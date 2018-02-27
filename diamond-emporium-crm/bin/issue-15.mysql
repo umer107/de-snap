@@ -1,0 +1,8 @@
+ALTER TABLE `de_inventory_ear_rings` 
+DROP COLUMN `band_thickness`,
+DROP COLUMN `band_width`,
+DROP COLUMN `metal_weight`,
+DROP COLUMN `profile`;
+
+ALTER TABLE `de_inventory_ear_rings` 
+ADD COLUMN `dimensions` VARCHAR(20) NULL AFTER `metal_type`;

@@ -1,0 +1,31 @@
+<div class="contentArea" id="oppGridContentArea">
+  <h2 class="cmnHeader">Opportunities</h2>
+  <a href="javascript:;" class="popupLink lightBoxClick" data-popup="leadsList">New Opportunity</a>
+  <!--BOF Grid View Header Block-->
+	<?php echo $this->partial('customer/index/gridviewheader.phtml', array('gridViewOptions' => $this->gridViewOptions, 'recordsPerPage' => $this->recordsPerPage, 'prefixId' => 'opp_')); ?>
+  <!--EOF Grid View Header Block-->
+  <div class="tableData tableNeView" style="overflow:visible">
+    <div class="tableHading" style="width:100%" id="bindAfterThis"> Opportunity List </div>
+    <div class="formTable manageMembers" id="jqxOpportunities">
+    </div>
+  </div>
+</div>
+<!--BOF Grid View Block-->
+<?php echo $this->partial('customer/index/gridview.phtml', array('formType' => 'opportunities', 'recordsPerPage' => $this->recordsPerPage, 'columnList' => $this->columnList, 'hiddenUserId' => $this->loginUserId, 'prefixId' => 'opp_')); ?>
+<!--EOF Grid View Block-->
+
+<!--BOF new lead Form-->
+<?php echo $this->partial('opportunities/index/newopportunitiesform.phtml', array('form' => $this->form, 'identity' => $this->identity, 'recordsPerPage' => $this->recordsPerPage)); ?>
+<!--EOF new lead Form-->
+
+<!--BOF Customer Mobile lookup list-->
+<?php echo $this->partial('opportunities/index/customermobilelookup.phtml', array('recordsPerPage' => $this->recordsPerPage)); ?>
+<!--EOF Customer Mobile lookup list-->
+
+<!--BOF Customer lookup list-->
+<?php echo $this->partial('opportunities/index/customerlookup.phtml', array('recordsPerPage' => $this->recordsPerPage, 'lookupCustomerId' => 'referred_by_customer', 'lookupCustomerName' => 'referred_by_name')); ?>
+<!--EOF Customer lookup list-->
+
+<!--BOF Edit Note Block-->
+<?php echo $this->partial('opportunities/index/editnotes.phtml', array()); ?>
+<!--EOF Edit Note Block-->

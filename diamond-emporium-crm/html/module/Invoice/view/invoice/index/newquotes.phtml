@@ -1,0 +1,177 @@
+<div class="contentArea creatNewQuoteMain">
+  <div class="creatNewQuote">
+	<h2 class="cmnHeader">Create A New Quote / Invoice</h2>
+	<ul class="newQuoteSteps">
+	  <li class="filled quoteStep01"><span class="numDisplay">1</span><br />
+		Assign Quote / Invoice</li>
+	  <li class="quoteStep02"><span class="numDisplay">2</span><br />
+		Add Items</li>
+	  <li class="quoteStep03"><span class="numDisplay">3</span><br />
+		Summary</li>
+	</ul>
+	<form name="frm_inv_opp" id="frm_inv_opp" method="post" action="">
+	<!-- Step 01 -->
+	<div id="quoteStep1" style="display:block">
+	  <p class="assignTxt">Please assign a Customer and the relating Opportunity to create a quote / invoice</p>
+	  <div class="cb"></div>
+	  <div class="selectOpp commonForm">
+		  <div class="formRow">
+			<label class="labelControll">Select Opportunity</label>
+			<div class="inputDiv">
+			  <input type="hidden" name="opp_id" id="opp_id" value="<?php echo $this->oppDataArray['id']; ?>"/>
+			  <input type="text" name="opp_name" id="opp_name" class="inputTxt width75p" readonly="readonly" value="<?php echo $this->oppDataArray['name']; ?>"/>
+			  <a class="cmnBtn blueBtn lightBoxClick" data-popup="opportunitylookup" href="javascript:;">Lookup</a></div>
+		  </div>
+          <div class="formRow">
+            <label class="labelControll">Invoice Date</label>
+            <div class="inputDiv">
+              <div class="inputCulmn">
+                <div class="datePickInput"><input type="text" name="xero_date" id="xero_date" class="datepickerInput editViewField" readonly="readonly" placeholder="DD/MM/YYYY" value=""><span class="datePickCal"></span>
+                  <p class="inputVal"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Due Date</label>
+            <div class="inputDiv">
+              <div class="inputCulmn">
+                <div class="datePickInput"><input type="text" name="xero_date_due" id="xero_date_due" class="datepickerInput editViewField" readonly="readonly" placeholder="DD/MM/YYYY" value=""><span class="datePickCal"></span>
+                  <p class="inputVal"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+		  <div class="formRow newQuotElm">
+			<label class="labelControll">&nbsp;</label>
+			<div class="inputDiv ">
+			  <!--<button value="Cancel" class="cmnBtn cancelBtn marL0" onclick="$('#frm_inv_opp')[0].reset();" type="button">Cancel</button>-->
+			  <a class="cmnBtn"  href="/invoicequotes/<?php echo $tab; ?>">Cancel</a>
+			  <button value="Save" class="cmnBtn blueBtn" id="step01Move" type="button">Next</button>
+			</div>
+		  </div>
+	  </div>
+	</div>
+	<!-- Step 01 End --> 
+	<!-- Step 02 -->
+	<div id="quoteStep2" style="display:none">
+	  <p class="assignTxt">Build Your Quote / Invoice</p>
+	  <div class="cb"></div>
+	  <div class="buildYourQuote">
+		  <a href="javascript:;" class="cmnBtn addItem lightBoxClick" data-popup="createQuote">Add Item</a>
+		  <div class="tableDataNew itemInfoDisplay" style="overflow:visible;">
+			<table class="tableNew" width="100%"  border="0" cellpadding="0" cellspacing="0" style="display:none" id="showInvoiceItem">
+			  <thead>
+				  <tr align="left">
+					<th width="5" height="48">&nbsp;</th>
+					<th align="left" width="100">Item</th>
+					<th>Description</th>
+					<th width="50">Qty</th>
+					<th width="100">Unit Price</th>
+					<th width="100">Disc%</th>
+					<th width="144">Account</th>
+					<th width="144">Salesperson</th>
+					<th width="77">Total</th>
+					<th width="67"></th>
+				  </tr>
+			  </thead>
+			  <tbody id="invoice_items_body"></tbody>
+			</table>
+		  </div>
+		  <div class="btnDisplay padL0 marT0">
+			<button value="Cancel" class="cmnBtn cancelBtn marL0 marT0" id="backtoStep01"  type="button">Back</button>
+			<button value="Save" class="cmnBtn blueBtn marT0" id="step02Move" type="button">Next</button>
+		  </div>
+	  </div>
+	</div>
+	<!-- Step 02 End -->
+	
+	<!-- Step 03 -->
+	<div id="quoteStep3" style="display:none">
+	  <p class="assignTxt">Your Quote Summary</p>
+	  <div class="cb"></div>
+		<div class="tableDataNew">
+		  <table class="tableNew quoteSummaryTable" width="100%"  border="0" cellpadding="0" cellspacing="0">
+		  	<thead>
+				<tr align="left">
+				  <th width="5" height="48">&nbsp;</th>
+				  <th align="left" width="100">Item</th>
+				  <th>Description</th>
+				  <th width="100">Qty</th>
+				  <th width="100">Unit Price</th>
+				  <th width="100">Disc%</th>
+				  <th width="144">Account</th>
+				  <th width="144">Salesperson</th>
+				  <th width="128">Amount AUD</th>
+				</tr>
+			</thead>
+			<tbody id="quote_summary_body"></tbody>
+		  </table>
+		</div>
+		<div class="totalVal">
+		  <div><span>Sub Total</span><span id="sub_total">$4,000</span></div>
+		  <!--<div><span>GST</span><span>$400</span></div>-->
+		  <span class="devider"></span>
+		  <div><span>Total</span><span id="total">$4,400</span></div>
+		</div>
+		<div class="cb"></div>
+		<div class="btnDisplay">
+		  <button value="Cancel" class="cmnBtn cancelBtn marL0" id="backtoStep02"  type="button">Back</button>
+          <button value="Save" type="submit" class="cmnBtn blueBtn">Confirm</button>
+		</div>
+	</div>
+	<!-- Step 03 End --> 
+	</form>
+  </div>
+</div>
+
+<!--BOF Inventory list-->
+<?php echo $this->partial('invoice/index/itemslookup.phtml'); ?>
+<!--EOF Inventory list-->
+
+<!--BOF Opportunity lookup list-->
+<?php echo $this->partial('invoice/index/opportunitylookup.phtml', array('identity' => $identity, 'recordsPerPage' => $recordsPerPage)); ?>
+<!--EOF Opportunity lookup list-->
+
+<script type="text/javascript">
+
+	var xeroAccounts = eval('<?php echo $xeroAccounts ?>');
+	var xeroSalesPersons = eval('<?php echo $xeroSalesPersons ?>');
+	
+	$(document).ready(function(e) {
+		$('#step01Move').on('click', function(){
+			if($('#opp_id').val().length == 0 || $('#opp_name').val().length == 0 ){
+				alert('Please select an opportunity');
+			}else{
+				$('#quoteStep1').hide();
+				$('#quoteStep2').show();
+				$('.quoteStep02').addClass('filled');
+			}
+		});
+		$('#step02Move').on('click', function(){
+			if($.trim($('#invoice_items_body').html()) == ''){
+				alert('Please add items');
+			}else{
+				$('#quoteStep2').hide();
+				$('#quoteStep3').show();
+				$('.quoteStep03').addClass('filled');
+				
+				getQuotesSummary();
+			}
+		});
+		
+		$('#backtoStep01').on('click', function(){
+			$('#quoteStep1').show();
+			$('#quoteStep2').hide();
+			$('.quoteStep02').removeClass('filled');
+		});
+		$('#backtoStep02').on('click', function(){
+			$('#quoteStep2').show();
+			$('#quoteStep3').hide();
+			$('.quoteStep03').removeClass('filled');
+		});
+		<?php if($this->oppDataArray['id'] > 0){?>
+			$('#step01Move').click();
+		<?php } ?>
+    });
+</script>

@@ -1,0 +1,647 @@
+<div class="contentArea padLR0">
+  <?php echo $this->partial('customer/index/cust_info_header.phtml', array('customerData' => $customerData, 'partnerData' => $partnerData)); ?>
+  <div class="customerTabing fl width100p ctb">
+    <ul>
+      <li class="current"><a href="javascript:;">Customer Details</a></li>
+      <li><a href="javascript:;">Tasks <span id="tab_task_count"><?php echo ($tasks['total_count']+$closedTasks['total_count']); ?></span></a></li>
+      <li><a href="javascript:;">Emails <span id="email_tab">0</span></a></li>
+      <li><a href="javascript:;">Opportunities <span id="oppCustomerCountGlobal">0</span></a></li>
+      <li><a href="javascript:;">Invoices & Quotes <span id="invoiceQuotes">0</span></a></li>
+      <li><a href="javascript:;">Orders <span id="ordersCount">0</span></a></li>
+	  <li><a href="javascript:;">Jobs <span id="jobsCount">0</span></a></li>
+    </ul>
+    <div class="customTabbingInner">
+      <!-- Customer Details -->
+      <div class="customerTabingInfo" style="display:block;">
+        <div class="customerDetailsInfo">
+          <!-- Customer form stars -->
+          <div class="alphaCulmn <?php if($this->customerData['gender'] == 'M') { echo 'malePartner'; } elseif($this->customerData['gender'] == 'F') { echo 'femalePartner'; } ?> editCustomerForm">
+		  	<input type="hidden" name="profile_photo_selected" id="profile_photo_selected" value="" />
+            <?php
+			$form->prepare();
+			echo $this->form()->openTag($form);
+			echo $this->formElement($this->form->get('id'));
+			?>
+            <a href="javascript:;" class="cmnBtn edtiBtn editInfo">Edit</a> <a href="javascript:;" class="cmnBtn saveInfo" style="display:none" onclick="saveCustomer($('#frm_customer'));">Save</a>
+            <?php if ($canDelete) : ?>
+            	<a href="javascript:;" class="cmnBtn deleteBtn" onclick="if(confirm('Are you sure you want to delete this user?')) deleteCustomer($('#customer_id').val());">Delete Customer</a>
+           	<?php endif; ?>
+            <a href="javascript: newLead(<?php echo $this->customerData['id'] ?>);" class="popupLink lightBoxClick" data-popup="leadsList">New Lead From Customer</a>
+            <div class="cusomerViewBlock fl width100p" >
+              <h2 class="blockHeading">Profile</h2>
+              <div class="cstmrBlockInn ctmrProfileBlock fl width100p">			 
+                <div class="cstmrPhoto">
+					<img src="<?php echo empty($this->customerData['profile_photo']) ? '/images/no-profile-photo.jpg' : '/profile_photo/'.$this->customerData['profile_photo']; ?>" /> 					<!--<input type="file" id="profile_photo_uploader" style="display:none;" />-->
+					<label class="uploadCustomerPhoto">Upload Photo<input type="file" name="profile_photo_file" onchange="uploadProfilePhoto($(this).closest('form'), $(this).siblings('input[name=profile_photo]'), 'profile_photo');" /></label>
+					<input type="hidden" name="profile_photo" value="<?php echo $this->customerData['profile_photo']; ?>" />	
+				</div>		
+                <div class="cstmrDetails">
+                  <h2>
+				  	<span class="inputVal fullname"><?php echo $this->customerData['fullname']; ?></span>
+					<span class="editViewField">First Name</span>
+					<input id="first_name" class="inputTxt editViewField marB10" type="text" value="<?php echo $this->customerData['first_name']; ?>" name="first_name" />
+					<span class="editViewField">Last Name</span>
+					<input id="last_name" class="inputTxt editViewField" type="text" value="<?php echo $this->customerData['last_name']; ?>" name="last_name" />
+				  </h2>
+                  <div class="phEm">
+					<p>
+						<span>Phone: </span>
+						<span class="inputVal"><?php echo $this->customerData['mobile'] ?></span>
+						<input id="mobile" class="inputTxt editViewField marB10" type="text" value="<?php echo $this->customerData['mobile']; ?>" name="mobile" />
+					</p>
+					<p>
+						<span>Email: </span>
+						<span class="inputVal"><?php echo $this->customerData['email'] ?></span>
+						<input id="email" class="inputTxt editViewField" type="text" value="<?php echo $this->customerData['email']; ?>" name="email" />
+					</p>
+                  </div>
+                  <h2>Star Rating</h2>
+                  <div class="phEm">
+                    <div> <span>Individual Spend: </span>
+                      <ul class="star-rating" id="individual_rating">
+					  <?php 
+					  	$customerIndWidth = '';
+					  	if($this->customerData['individualrating'] > 0){
+					  	$customerIndWidth = ' style="width:'.(20*$this->customerData['individualrating']).'%"';
+					  }?>
+                        <li class="star_rating60"<?php echo $customerIndWidth; ?>></li>
+                        <li><a class="one-star"></a></li>
+                        <li><a class="two-stars"></a></li>
+                        <li><a class="three-stars"></a></li>
+                        <li><a class="four-stars"></a></li>
+                        <li><a class="five-stars"></a></li>
+						<input type="hidden" name="individualrating" id="cusindividualrating" value="<?php echo $this->customerData['individualrating']; ?>" />
+                      </ul>
+                    </div>
+                    <div> <span>Referral Value: </span>
+                      <ul class="star-rating" id="referral_rating">
+					  <?php $customerRefWidth = '';
+					  if($this->customerData['referralrating'] > 0){
+					  	$customerRefWidth = ' style="width:'.(20*$this->customerData['referralrating']).'%"';
+					  }?>
+                        <li class="star_rating60"<?php echo $customerRefWidth; ?>></li>
+                        <li><a class="one-star"></a></li>
+                        <li><a class="two-stars"></a></li>
+                        <li><a class="three-stars"></a></li>
+                        <li><a class="four-stars"></a></li>
+                        <li><a class="five-stars"></a></li>
+						<input type="hidden" name="referralrating" id="cusreferralrating" value="<?php echo $this->customerData['referralrating']; ?>" />
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cusomerViewBlock fl width100p">
+              <h2 class="blockHeading">Customer Profile</h2>
+              <div class="cstmrBlockInn ctmrInfoeBlock fl width100p">
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('engagement_ring_size_left')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn"><?php echo $this->formElement($this->form->get('engagement_ring_size_left')); ?>
+                      <p class="inputVal"><?php echo $this->customerData['engagement_ring_size_left_text']; ?></p>
+                    </div>
+                    <div class="inputCulmn"><?php echo $this->formElement($this->form->get('engagement_ring_size_right')); ?>
+                      <p class="inputVal"><?php echo $this->customerData['engagement_ring_size_right_text']; ?></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('dress_ring_finger')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn"><?php echo $this->formElement($this->form->get('dress_ring_finger')); ?>
+                      <p class="inputVal"><?php echo $this->customerData['dress_ring_finger_text']; ?></p>
+                    </div>
+                    <div class="inputCulmn"> <?php echo $this->formElement($this->form->get('dress_ring_size')); ?>
+                      <p class="inputVal"><?php echo $this->customerData['dress_ring_size_text']; ?></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('wedding_anniversary_date')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn">
+                      <div class="datePickInput"> <?php echo $this->formElement($this->form->get('wedding_anniversary_date')); ?> <span class="datePickCal"></span>
+                        <p class="inputVal"><?php echo $this->customerData['wedding_anniversary_date']; ?></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('engagement_anniversary_date')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn">
+                      <div class="datePickInput"> <?php echo $this->formElement($this->form->get('engagement_anniversary_date')); ?> <span class="datePickCal"></span>
+                        <p class="inputVal"><?php echo $this->customerData['engagement_anniversary_date']; ?></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('date_of_birth')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn">
+                      <div class="datePickInput"> <?php echo $this->formElement($this->form->get('date_of_birth')); ?> <span class="datePickCal"></span>
+                        <p class="inputVal"><?php echo $this->customerData['date_of_birth']; ?></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('title')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->form->get('title')); ?>
+                    <p class="inputVal"><?php echo $this->customerData['title']; ?></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('gender')->getLabel(); ?></label>
+                  <div class="inputDiv noDk"><?php echo $this->formElement($this->form->get('gender')); ?>
+                    <p class="inputVal"><?php echo $this->customerData['gender']; ?></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('profession')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->form->get('profession')); ?>
+                    <p class="inputVal"><?php echo $this->customerData['profession_text']; ?></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('ethnicity')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->form->get('ethnicity')); ?>
+                    <p class="inputVal"><?php echo $this->customerData['ethnicity_text']; ?></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cusomerViewBlock fl width100p">
+              <h2 class="blockHeading">Address</h2>
+              <div class="cstmrBlockInn ctmrInfoeBlock fl width100p">
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('address1')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->form->get('address1')); ?>
+                    <p class="inputVal"><?php echo $this->customerData['address1'] ?></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('address2')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->form->get('address2')); ?>
+                    <p class="inputVal"><?php echo $this->customerData['address2'] ?></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('state_id')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn"><?php echo $this->formElement($this->form->get('state_id')); ?>
+                      <p class="inputVal"><?php echo $this->customerData['state_code'] ?></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('postcode')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn"><?php echo $this->formElement($this->form->get('postcode')); ?>
+                      <p class="inputVal"><?php echo $this->customerData['postcode'] ?></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('country_id')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->form->get('country_id')); ?>
+                    <p class="inputVal"><?php echo $this->customerData['country_id'] ?></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cusomerViewBlock fl width100p">
+              <h2 class="blockHeading">Social Media</h2>
+              <div class="cstmrBlockInn ctmrInfoeBlock fl width100p">
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('facebook')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->form->get('facebook')); ?>
+                    <p class="inputVal"><a href="<?php echo $this->customerData['facebook'] ?>" target="_blank"><?php echo $this->customerData['facebook'] ?></a></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('instagram')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->form->get('instagram')); ?>
+                    <p class="inputVal"><a href="<?php echo $this->customerData['instagram'] ?>" target="_blank"><?php echo $this->customerData['instagram'] ?></a></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('twitter')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->form->get('twitter')); ?>
+                    <p class="inputVal"><a href="<?php echo $this->customerData['twitter'] ?>" target="_blank"><?php echo $this->customerData['twitter'] ?></a></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->form->get('linkedin')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->form->get('linkedin')); ?>
+                    <p class="inputVal"><a href="<?php echo $this->customerData['linkedin'] ?>" target="_blank"><?php echo $this->customerData['linkedin'] ?></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php echo $this->form()->closeTag(); ?> </div>
+          <!-- Customer form ends -->
+          <!-- Partner form stars -->
+          <div class="betaCulmn <?php if($this->partnerData['gender'] == 'M') { echo 'malePartner'; } elseif($this->partnerData['gender'] == 'F') { echo 'femalePartner'; } ?> editCustomerForm <?php echo empty($this->customerData['partner_id'])? 'partnerUnAvailable' : 'partnerAvailable'; ?>">
+            <?php
+			$this->partnerForm->prepare();
+			echo $this->form()->openTag($this->partnerForm);
+			echo $this->formElement($this->partnerForm->get('id'));
+			echo $this->formElement($this->partnerForm->get('customer_id'));
+			?>
+            <div class="assignPartner" style="display:<?php echo empty($this->customerData['partner_id'])? 'block' : 'none'; ?>">Assign Partner &nbsp; <a data-popup="partnerlookup" class="cmnBtn blueBtn lightBoxClick" href="javascript: partnersLookup(<?php echo $this->recordsPerPage; ?>, <?php echo $this->customerData['id']; ?>);">Lookup</a></div>
+            <div class="assignPartnerEditBtns" style="display:<?php echo empty($this->customerData['partner_id'])? 'none' : 'block'; ?>"> <a href="javascript:;" class="cmnBtn edtiBtn editInfo">Edit</a> <a href="javascript:;" class="cmnBtn saveInfo" style="display:none" onclick="savePartner($('#frm_partner'));">Save</a> <a href="javascript:;" class="cmnBtn deleteBtn unAssignPartner" onclick="if(confirm('Are you sure to unassign the partner?')) unassinPartner($('#customer_id').val(), $('#partner_id').val(), $('#frm_partner'));">Un-assign Partner</a> <a href="javascript: newLead(<?php echo $this->customerData['partner_id'] ?>);" class="popupLink lightBoxClick" data-popup="leadsList">New Lead From Parner</a></div>
+            <div class="cusomerViewBlock fl width100p <?php echo empty($this->customerData['partner_id'])? 'disabledMode' : ''; ?>">
+              <div class="openLayer"></div>
+              <h2 class="blockHeading">Profile</h2>
+              <div class="cstmrBlockInn ctmrProfileBlock fl width100p">
+                <div class="cstmrPhoto">
+                  <?php //if(!empty($this->customerData['partner_id'])){ ?>
+                  <img src="<?php echo empty($this->partnerData['profile_photo']) ? '/images/no-profile-photo.jpg' : '/profile_photo/'.$this->partnerData['profile_photo']; ?>" />
+				  <label class="uploadCustomerPhoto">Upload Photo<input type="file" name="profile_photo_file" onchange="uploadProfilePhoto($(this).closest('form'), $(this).siblings('input[name=profile_photo]'), 'profile_photo');" /></label>
+					<input type="hidden" name="profile_photo" value="<?php echo $this->partnerData['profile_photo']; ?>" />	
+                  <?php //} ?>
+                </div>
+                <div class="cstmrDetails">
+                  <?php /*?><h2 id="partnerFullName"><?php echo $this->partnerData['fullname']; ?></h2><?php */?>
+				  <h2 style="max-width: 100%;">
+				  	<span class="inputVal fullname" id="partnerFullName"><?php echo $this->partnerData['fullname']; ?></span>
+					<span class="editViewField">First Name</span>
+					<input id="partner_first_name" class="inputTxt editViewField marB10" type="text" value="<?php echo $this->partnerData['first_name']; ?>" name="first_name" />
+					<span class="editViewField">Last Name</span>
+					<input id="partner_last_name" class="inputTxt editViewField" type="text" value="<?php echo $this->partnerData['last_name']; ?>" name="last_name" />
+				  </h2>
+                  <?php /*?><div class="phEm">
+                    <p><span>Phone:</span> <span id="mobile_text"><?php echo $this->partnerData['mobile']; ?></span></p>
+                    <p><span>Email:</span> <span id="email_text"><?php echo $this->partnerData['email']; ?></span></p>
+                  </div><?php */?>
+				  <div class="phEm">
+					<p>
+						<span>Phone: </span>
+						<span class="inputVal" id="mobile_text"><?php echo $this->partnerData['mobile'] ?></span>
+						<input id="partner_mobile" class="inputTxt editViewField marB10" type="text" value="<?php echo $this->partnerData['mobile']; ?>" name="mobile" />
+					</p>
+					<p>
+						<span>Email: </span>
+						<span class="inputVal" id="email_text"><?php echo $this->partnerData['email'] ?></span>
+						<input id="partner_email" class="inputTxt editViewField" type="text" value="<?php echo $this->partnerData['email']; ?>" name="email" />
+					</p>
+                  </div>
+                  <h2>Star Rating</h2>
+                  <div class="phEm">
+                    <div> <span>Individual Spend: </span>
+                      <ul class="star-rating" id="individual_rating">
+					  <?php 
+					  	$partnerIndWidth = '';
+					  	if($this->partnerData['individualrating'] > 0){
+					  	$partnerIndWidth = ' style="width:'.(20*$this->partnerData['individualrating']).'%"';
+					  }?>
+                        <li class="star_rating60"<?php echo $partnerIndWidth; ?>></li>
+                        <li><a class="one-star"></a></li>
+                        <li><a class="two-stars"></a></li>
+                        <li><a class="three-stars"></a></li>
+                        <li><a class="four-stars"></a></li>
+                        <li><a class="five-stars"></a></li>
+						<input type="hidden" name="individualrating" id="partindividualrating" value="<?php echo $this->partnerData['individualrating']; ?>" />
+                      </ul>
+                    </div>
+                    <div> <span>Referral Value: </span>
+                      <ul class="star-rating" id="referral_rating">
+					  <?php $partnerRefWidth = '';
+					  if($this->partnerData['referralrating'] > 0){
+					  	$partnerRefWidth = ' style="width:'.(20*$this->partnerData['referralrating']).'%"';
+					  }?>
+                        <li class="star_rating60"<?php echo $partnerRefWidth; ?>></li>
+                        <li><a class="one-star"></a></li>
+                        <li><a class="two-stars"></a></li>
+                        <li><a class="three-stars"></a></li>
+                        <li><a class="four-stars"></a></li>
+                        <li><a class="five-stars"></a></li>
+						<input type="hidden" name="referralrating" id="partreferralrating" value="<?php echo $this->partnerData['referralrating']; ?>" />
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cusomerViewBlock fl width100p <?php echo empty($this->customerData['partner_id'])? 'disabledMode' : ''; ?>">
+              <div class="openLayer"></div>
+              <h2 class="blockHeading">Customer Profile</h2>
+              <div class="cstmrBlockInn ctmrInfoeBlock fl width100p">
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('engagement_ring_size_left')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn"><?php echo $this->formElement($this->partnerForm->get('engagement_ring_size_left')); ?>
+                      <p class="inputVal" id="engagement_ring_size_left_text"><?php echo $this->partnerData['engagement_ring_size_left_text']; ?></p>
+                    </div>
+                    <div class="inputCulmn"> <?php echo $this->formElement($this->partnerForm->get('engagement_ring_size_right')); ?>
+                      <p class="inputVal" id="engagement_ring_size_right_text"><?php echo $this->partnerData['engagement_ring_size_right_text']; ?></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('dress_ring_finger')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn"><?php echo $this->formElement($this->partnerForm->get('dress_ring_finger')); ?>
+                      <p class="inputVal" id="dress_ring_finger_text"><?php echo $this->partnerData['dress_ring_finger_text']; ?></p>
+                    </div>
+                    <div class="inputCulmn"> <?php echo $this->formElement($this->partnerForm->get('dress_ring_size')); ?>
+                      <p class="inputVal" id="dress_ring_size_text"><?php echo $this->partnerData['dress_ring_size_text']; ?></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('wedding_anniversary_date')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn">
+                      <div class="datePickInput"> <?php echo $this->formElement($this->partnerForm->get('wedding_anniversary_date')); ?> <span class="datePickCal"></span>
+                        <p class="inputVal" id="wedding_anniversary_date_text"><?php echo $this->partnerData['wedding_anniversary_date']; ?></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('engagement_anniversary_date')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn">
+                      <div class="datePickInput"> <?php echo $this->formElement($this->partnerForm->get('engagement_anniversary_date')); ?> <span class="datePickCal"></span>
+                        <p class="inputVal" id="engagement_anniversary_date_text"><?php echo $this->partnerData['engagement_anniversary_date']; ?></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('date_of_birth')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn">
+                      <div class="datePickInput"> <?php echo $this->formElement($this->partnerForm->get('date_of_birth')); ?> <span class="datePickCal"></span>
+                        <p class="inputVal" id="date_of_birth_text"><?php echo $this->partnerData['date_of_birth']; ?></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('title')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->partnerForm->get('title')); ?>
+                    <p class="inputVal"><?php echo $this->partnerData['title']; ?></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('gender')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->partnerForm->get('gender')); ?>
+                    <p class="inputVal"><?php echo $this->partnerData['gender']; ?></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('profession')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->partnerForm->get('profession')); ?>
+                    <p class="inputVal" id="profession_text"><?php echo $this->partnerData['profession_text']; ?></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('ethnicity')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->partnerForm->get('ethnicity')); ?>
+                    <p class="inputVal" id="ethnicity_text"><?php echo $this->partnerData['ethnicity_text']; ?></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cusomerViewBlock fl width100p <?php echo empty($this->customerData['partner_id'])? 'disabledMode' : ''; ?>">
+              <div class="openLayer"></div>
+              <h2 class="blockHeading">Address</h2>
+              <div class="cstmrBlockInn ctmrInfoeBlock fl width100p">
+                <div class="formRow">
+                  <label class="labelControll">Same as Partner</label>
+                  <div class="inputDiv">
+                    <label class="labelCheck">
+                    <input type="checkbox" onclick="sameAddress();">
+                    <i></i> </label>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('address1')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->partnerForm->get('address1')); ?>
+                    <p class="inputVal" id="address1_text"><?php echo $this->partnerData['address1'] ?></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('state_id')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn"><?php echo $this->formElement($this->partnerForm->get('state_id')); ?>
+                      <p class="inputVal" id="state_code_text"><?php echo $this->partnerData['state_code'] ?></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('postcode')->getLabel(); ?></label>
+                  <div class="inputDiv">
+                    <div class="inputCulmn"><?php echo $this->formElement($this->partnerForm->get('postcode')); ?>
+                      <p class="inputVal" id="postcode_text"><?php echo $this->partnerData['postcode'] ?></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('country_id')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->partnerForm->get('country_id')); ?>
+                    <p class="inputVal" id="country_id_text"><?php echo $this->partnerData['country_id'] ?></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cusomerViewBlock fl width100p <?php echo empty($this->customerData['partner_id'])? 'disabledMode' : ''; ?>">
+              <div class="openLayer"></div>
+              <h2 class="blockHeading">Social Media</h2>
+              <div class="cstmrBlockInn ctmrInfoeBlock fl width100p">
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('facebook')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->partnerForm->get('facebook')); ?>
+				<p class="inputVal" id="facebook_text"><a href="<?php echo $this->partnerData['facebook'] ?>" target="_blank"><?php echo $this->partnerData['facebook'] ?></a></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('instagram')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->partnerForm->get('instagram')); ?>
+			<p class="inputVal" id="instagram_text"><a href="<?php echo $this->partnerData['instagram'] ?>" target="_blank"><?php echo $this->partnerData['instagram'] ?></a></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('twitter')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->partnerForm->get('twitter')); ?>
+			<p class="inputVal" id="twitter_text"><a href="<?php echo $this->partnerData['twitter'] ?>" target="_blank"><?php echo $this->partnerData['twitter'] ?></a></p>
+                  </div>
+                </div>
+                <div class="formRow">
+                  <label class="labelControll"><?php echo $this->partnerForm->get('linkedin')->getLabel(); ?></label>
+                  <div class="inputDiv"><?php echo $this->formElement($this->partnerForm->get('linkedin')); ?>
+			<p class="inputVal" id="linkedin_text"><a href="<?php echo $this->partnerData['linkedin'] ?>" target="_blank"><?php echo $this->partnerData['linkedin'] ?></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php echo $this->form()->closeTag(); ?> </div>
+          <!-- Partner form ends -->
+        </div>
+      </div>
+      <!-- Customer Details End-->
+      <!-- TaskInfo -->
+       <?php echo $this->partial('task/index/tasks.phtml', array('tasks' => $tasks, 'closedTasks' => $closedTasks, 'config' => $config, 'entity_type' => 'customer', 'entity_id' => $customerData['id'], 'usersList' => $this->usersList, 'CategoryList' => $this->CategoryList, 'subjectList' => $this->subjectList, 'priorityList' => $this->priorityList)); ?>
+      <!-- TaskInfo End-->
+      <!-- Emails -->
+      <div class="customerTabingInfo">
+        <div class="pad20">
+			<h2 class="cmnHeader">Invoice Emails</h2>
+			<div class="cmnSort">
+				<div class="mainSearch marL0"><input name="email_searchInput" id="email_searchInput" type="text" class="searchInput" placeholder="Search.." /><input type="button" class="inputGo" value="Go!" onclick="getInvoiceEmails(<?php echo $recordsPerPage; ?>, <?php echo $this->customerData['id']; ?>, $('#email_searchInput').val(), 'jqxEmails');" /></div>
+			</div>
+			<div class="tableData tableNeView" style="overflow:visible">
+				<div class="tableHading" style="width:100%"> Email List </div>
+				<div class="formTable manageMembers" id="jqxEmails"> </div>
+			</div>
+		</div>
+      </div>
+      <!-- Emails End-->
+      <!-- Opertunities-->
+      <div class="customerTabingInfo">
+        <div class="opportunitiesBlock fl width100p">
+          <!--BOF Grid View Header Block-->
+          <?php echo $this->partial('customer/index/gridviewheader.phtml', array('gridViewOptions' => $this->gridViewOptions, 'recordsPerPage' => $this->recordsPerPage, 'prefixId' => 'opp_')); ?>
+          <!--EOF Grid View Header Block-->
+		  <form name="frm_filter_fpportunity" id="frm_filter_fpportunity" action="" method="post">
+		  	<input type="hidden" name="oppCustomerId" value="<?php echo $this->customerData['id']; ?>" />
+		  </form>
+
+          <div class="tableData tableNeView" style="overflow:visible">
+            <div class="tableHading" style="width:100%" id="bindAfterThis"> Opportunity List </div>
+            <div class="formTable manageMembers" id="jqxOpportunities"> </div>
+          </div>
+        </div>
+      </div>
+      <!-- Opertunities End-->
+      <!-- Invoices -->
+      <div class="customerTabingInfo">
+        <div class="pad20">
+			<h2 class="cmnHeader">Invoices & Quotes</h2>
+			<!--<a href="javascript:;" class="popupLink lightBoxClick" data-popup="createInvoice">Create Invoice</a> -->
+			<div class="cmnSort">
+				<div class="mainSearch marL0"><input name="invoice_searchInput" id="invoice_searchInput" type="text" class="searchInput" placeholder="Search.." /><input type="button" class="inputGo" value="Go!" onclick="getInvoices('invoice-grid', <?php echo $recordsPerPage; ?>, <?php echo $this->customerData['id']; ?>);" /></div>
+			</div>
+			<div class="tableData tableNeView" style="overflow:visible">
+				<div class="tableHading" style="width:100%"> Invoice List </div>
+				<div class="formTable manageMembers" id="invoice-grid"> </div>
+			</div>
+		</div>
+      </div>
+      <!-- Invoices End-->
+      <!-- Orders -->
+      <div class="customerTabingInfo">
+        <div class="pad20">
+			<h2 class="cmnHeader">Orders</h2>
+			<a href="javascript:;" class="popupLink lightBoxClick" data-popup="createOrder">Create Order</a> 
+			<div class="cmnSort">
+			<div class="mainSearch marL0"><input name="lookupsrc" id="lookupsrc" type="text" class="searchInput" placeholder="Search.." /><input type="button" class="inputGo" value="Go!" onclick="getOrders(<?php echo $recordsPerPage; ?>, $('#lookupsrc').val());" /></div>
+			</div>
+			<?php echo $this->partial('order/index/orderlist.phtml', array('recordsPerPage' => $recordsPerPage, 'cust_id' => $customerData['id'])); ?>
+		</div>
+      </div>
+      <!-- Orders End-->
+	  <!-- Jobs -->
+      <div class="customerTabingInfo">
+        <div class="pad20">
+			<h2 class="cmnHeader">Jobs</h2>
+			<div class="tableData tableNeView" style="overflow:visible">
+				<div class="tableHading" style="width:100%" id="bindJobListAfterThis"> Job List </div>
+				<div class="formTable manageMembers" id="jqxJobpackets" style="width:100%"></div>
+			</div>
+		</div>
+      </div>
+      <!-- Jobs End-->
+    </div>
+  </div>
+</div>
+
+<div class="lightBox" id="createOrder">
+ 	<div class="lightBoxMid" style="width:600px">
+		<div class="lightBoxTitle">Create Order<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+		<!--BOF Add New order Form -->
+		<?php echo $this->partial('order/index/neworder.phtml', array('newOrderForm' => $newOrderForm, 'cust_id' => $customerData['id'], 'recordsPerPage' => $recordsPerPage, 'config' => $config)); ?>
+		<!--EOF Add New order Form -->
+    </div>
+</div>
+
+<!-- Consine Item Light Box -->
+<div class="lightBox" id="consignItem">
+	<div class="lightBoxMid" style="width:890px">
+		<div class="lightBoxTitle">Consign Item	  -  Job <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+		<div class="lightBoxContent fl width100p" id="consign_form_content">
+		</div>
+	</div>
+</div>
+<!--EOF Add Consign Form -->
+
+
+<!--BOF compose email form-->
+<div class="lightBox" id="composeEmail">
+ 	<div class="lightBoxMid" style="width:600px">
+		<div class="lightBoxTitle">Compose Email<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+			<div id="composeemailpopup"></div>
+		</div>
+	</div>
+</div>
+<!--EOF compose email form-->
+
+<!--BOF Partner lookup list-->
+<?php echo $this->partial('customer/index/partnerlookup.phtml', array('recordsPerPage' => $this->recordsPerPage, 'customer_id' => $this->customerData['id'], 'identity' => $this->identity, 'recordsPerPage' => $this->recordsPerPage, 'form' => $newCustomerForm)); ?>
+<!--EOF Partner lookup list-->
+
+<!--BOF Grid View Block-->
+<?php echo $this->partial('customer/index/gridview.phtml', array('formType' => 'opportunities', 'recordsPerPage' => $this->recordsPerPage, 'columnList' => $this->columnList, 'hiddenUserId' => $this->loginUserId, 'prefixId' => 'opp_')); ?>
+<!--EOF Grid View Block-->
+
+<!--BOF Customer Mobile lookup list-->
+<?php echo $this->partial('opportunities/index/customermobilelookup.phtml', array('recordsPerPage' => $this->recordsPerPage)); ?>
+<!--EOF Customer Mobile lookup list-->
+
+<!--BOF Edit Note Block-->
+<?php echo $this->partial('opportunities/index/editnotes.phtml', array()); ?>
+<!--EOF Edit Note Block-->
+
+<!--BOF Opportunity lookup list-->
+<?php echo $this->partial('invoice/index/opportunitylookup.phtml', array('identity' => $identity, 'recordsPerPage' => $recordsPerPage, 'cust_id' => $customerData['id'])); ?>
+<!--EOF Opportunity lookup list-->
+
+<!--BOF Opportunity lookup list-->
+<?php echo $this->partial('order/index/invoicelookup.phtml'); ?>
+<!--EOF Opportunity lookup list-->
+
+<!--BOF new lead lightbox-->
+<?php echo $this->partial('customer/leads/newleadlightbox.phtml'); ?>
+<!--EOF new lead lightbox-->
+
+<!--BOF Customer lookup list-->
+<?php /* TODO: Not sure this should even be here, probably should be part of the news leads lightbox */ ?>
+<?php echo $this->partial('customer/leads/customerlookup.phtml', array('recordsPerPage' => $this->recordsPerPage, 'lookupCustomerId' => 'customer_id', 'lookupCustomerName' => 'customer_name', 'identity' => $identity, 'newCustomerForm' => $newCustomerForm)); ?>
+<!--EOF Customer lookup list-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+	getCount('opportunities', <?php echo $this->customerData['id']; ?>);
+
+	$('#mobile').mask('9999 999 999', {placeholder:''});
+	$('#mobile').attr('maxlength','12');
+	$('#mobile').bind('paste', function () { $(this).val(''); });
+	
+	$('#partner_mobile').mask('9999 999 999', {placeholder:''});
+	$('#partner_mobile').attr('maxlength','12');
+	$('#partner_mobile').bind('paste', function () { $(this).val(''); });
+	
+	$('#frm_opportunity #mobile').val('<?php echo $this->customerData['mobile']; ?>');
+	$('#frm_opportunity #user_id').val('<?php echo $this->customerData['id']; ?>');
+		
+	getInvoices('invoice-grid', <?php echo $recordsPerPage; ?>, <?php echo $this->customerData['id']; ?>);
+	getJobPackets(<?php echo $recordsPerPage; ?>, '', '', <?php echo $this->customerData['id']; ?>);
+		
+	getInvoiceEmails(<?php echo $recordsPerPage; ?>, <?php echo $this->customerData['id']; ?>, '', 'jqxEmails');
+});
+</script>

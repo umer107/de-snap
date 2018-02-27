@@ -1,0 +1,150 @@
+<div class="topBar fl robotomedium color-darkGray">
+	<h2  class="fl">Diamond Emporium Back Office System</h2>
+	<div class="rightInfo">
+	<!--	<div class="mainSearch">
+			<form>
+				<input type="text" placeholder="search.." class="searchInput" />
+				<input type="button" value="Go!" class="inputGo" />
+			</form>
+		</div>-->
+		<?php $identity = $this->authService->getIdentity(); ?>
+
+		<div class="user-dp-div user-dp-Dropdown d-i-b double-pad-right triple-gap-right relative hide">
+
+			<div class="menuAvailable pull-left user-list wd-140">
+				<div class="pull-left relative">
+					<a href="javascript:;" id="displayUserPicture" class="displayPicture border-green one-half-gap-right"><img src="" /></a>
+					<a href="/alerts">
+						<span id="userAlerts">
+							<span id="userAlertsCount">?</span>
+						</span>
+					</a>
+				</div>
+				<div class="pull-left name-details">
+					<span id = "ProfileName" class="fs-13">Alan Hashem</span>
+					<span id="statusDropDown" class="fs-14 color-green robotoregular">Available</span>
+				</div>
+			</div> <!-- Available menu div -->
+
+			<div class="menuLunch pull-left hide user-list wd-140">
+				<div class="pull-left relative">
+					<a href="javascript:;" class="displayPicture one-half-gap-right"><img src="<?php echo $this->serverUrl('/images/lunch.svg'); ?>" /></a>
+				</div>
+				<div class="pull-left name-details">
+					<span class="fs-14 color-orange robotomedium gap-top">Lunch</span>
+				</div>
+			</div> <!-- Lunch menu div -->
+
+			<div class="menuWorkshop pull-left hide user-list wd-140">
+				<div class="pull-left relative">
+					<a href="javascript:;" class="displayPicture one-half-gap-right"><img src="<?php echo $this->serverUrl('/images/workshop.svg'); ?>" /></a>
+				</div>
+				<div class="pull-left name-details">
+					<span class="fs-14 color-orange robotomedium gap-top">Workshop</span>
+				</div>
+			</div> <!-- Lunch menu div -->
+
+			<div class="menuSupplier pull-left hide user-list wd-140">
+				<div class="pull-left relative">
+					<a href="javascript:;" class="displayPicture one-half-gap-right"><img src="<?php echo $this->serverUrl('/images/supplier.svg'); ?>" /></a>
+				</div>
+				<div class="pull-left name-details">
+					<span class="fs-14 color-orange robotomedium gap-top">Supplier</span>
+				</div>
+			</div> <!-- Lunch menu div -->
+
+			<div class="menuOther pull-left hide user-list wd-140">
+				<div class="pull-left relative">
+					<a href="javascript:;" class="displayPicture one-half-gap-right"><img src="<?php echo $this->serverUrl('/images/other.svg'); ?>" /></a>
+				</div>
+				<div class="pull-left name-details">
+					<span class="fs-14 color-orange robotomedium gap-top">Other</span>
+				</div>
+			</div> <!-- Lunch menu div -->
+
+
+			<div class="userDropdown absolute bg-white " style="display: none;">
+
+				<div class="full" data-value = "Available" value="menuAvailable"><span><img src="<?php echo $this->serverUrl('/images/available.svg'); ?>" /></span><p>Available</p>
+				</div>
+				<div class="full" value="menuLunch">
+					<span><img src="<?php echo $this->serverUrl('/images/lunch.svg'); ?>" /></span>
+					<p>
+						Lunch 
+						<img class="" data-value="15" value='<?php echo $this->serverUrl('/images/lunch15.svg'); ?>' src="<?php echo $this->serverUrl('/images/15mint.svg'); ?>" />
+						<img class="" data-value="30" value='<?php echo $this->serverUrl('/images/lunch30.svg'); ?>' src="<?php echo $this->serverUrl('/images/30mint.svg'); ?>" />
+						<img class="" data-value="45" value='<?php echo $this->serverUrl('/images/lunch45.svg'); ?>' src="<?php echo $this->serverUrl('/images/45mint.svg'); ?>" />
+						<img class="" data-value="60" value='<?php echo $this->serverUrl('/images/lunch60.svg'); ?>' src="<?php echo $this->serverUrl('/images/60mint.svg'); ?>" />
+					</p>
+				</div>
+				<div class="full" value="menuWorkshop"><span><img src="<?php echo $this->serverUrl('/images/workshop.svg'); ?>" /></span><p>Workshop</p>
+				</div>
+				<div class="full" value="menuSupplier"><span><img src="<?php echo $this->serverUrl('/images/supplier.svg'); ?>" /></span><p>Supplier</p>
+				</div>
+				<div class="full" value="menuOther"><span><img src="<?php echo $this->serverUrl('/images/other.svg'); ?>" /></span><p>Other</p>
+				</div>
+
+			</div>
+
+		</div><!-- user-dp-div End -->
+
+		<div class="user-dp-div d-i-b userAbsence relative one-half-gap-right">
+
+				<div class="pull-left relative">
+					<a href="javascript:;" class="displayPicture border-orange one-half-gap-right"><img src="<?php echo $this->serverUrl('/images/teamLogo.png'); ?>" /></a>
+				</div>
+				<div class="pull-left name-details">
+					<span class="fs-13">Team</span>
+					<span class="fs-14 color-orange robotoregular noOfAbsence">0 absence</span>
+				</div>
+
+				<div class="absebceDropdown absolute bg-white" style="display: none;">
+
+				<div class="full" value="menuAvailable">
+					<span>
+						<img src="<?php echo $this->serverUrl('/images/customerPhoto.jpg'); ?>" />
+
+					</span>
+					<div>
+						<p class="fs-13 robotomedium">Bec O’brien</p>
+						<p class="fs-14 color-orange">Lunch</p>
+					</div>
+					<label class="lunchImage lunchAt45"></label>
+				</div>
+				<div class="full" value="menuWorkshop">
+					<span>
+						<img src="<?php echo $this->serverUrl('/images/customerPhoto.jpg'); ?>" />
+					</span>
+					<div>
+						<p class="fs-13 robotomedium">Aaron Langforf</p>
+						<p class="fs-14 color-gray2">Annual Leave</p>
+					</div>
+					<label class="annualLeave d-i-b">
+						<span class="fs-11 robotobold">12</span>
+						<span class="fs-8 robotolight">Days</span>
+					</label>
+				</div>
+				<div class="full" value="menuSupplier">
+					<span>
+						<img src="<?php echo $this->serverUrl('/images/customerPhoto.jpg'); ?>" />
+					</span>
+					<div>
+						<p class="fs-13 robotomedium">Shelley Bedarov</p>
+						<p class="fs-14 color-blue">Booked In</p>
+					</div>
+					<label class="lunchImage lunchAt15"></label>
+				</div>
+
+			</div>
+
+		</div><!-- user-dp-div End -->
+
+		
+
+		<span class="userNameDisplay hide">You are signed in as 
+			<strong><?php echo $identity['first_name'].' '.$identity['last_name']; ?></strong>
+		</span> 
+		<a href="<?php echo $this->serverUrl('/logout'); ?>" class="logoutLink">logout</a>
+	</div>
+</div>
+

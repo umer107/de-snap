@@ -1,0 +1,61 @@
+<div class="contentArea padLR0">
+  <?php echo $this->partial('customer/index/cust_info_header.phtml', array('customerData' => $order, 'partnerData' => $partnerData)); ?>
+  <div class="customerTabingInfo relative" style="display:block; margin-top:-1px">
+		<?php echo $this->partial('order/index/orderinfo.phtml'); ?>
+			<div class="opportunitiesBlock fl width100p orderblock" style="padding-left:330px">
+	
+			<div class="customerTabingInfo bdrNone" style="display:block">
+				<div class="fl width100p orderblock">
+					<a href="javascript:;" class="popupLink lightBoxClick" data-popup="createJob">New Job</a>
+					<div class="tableData tableNeView marB30 collectionInfo" style="width:2757px">
+						<div class="tableHading" style="2757px" id="bindJobListAfterThis">Job List for Order #<?php echo $order_id; ?></div>
+						<div class="formTable manageMembers" id="jqxJobpackets" style="width:100%"></div>
+					</div>
+				</div>
+			</div>
+			<script type="text/javascript">
+			$(document).ready(function(){
+				getJobPackets(<?php echo $recordsPerPage; ?>, '', <?php echo (isset($order['id']) && !empty($order['id'])) ? $order['id'] : ''; ?>, '');
+			});
+			</script>
+				
+			</div>
+		</div>
+</div>
+
+<!--BOF Job form-->
+<div class="lightBox" id="createJob">
+ 	<div class="lightBoxMid" style="width:760px">
+		<div class="lightBoxTitle">Create A Job Packet<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+		<div class="lightBoxContent fl width100p commonForm">
+			<?php echo $this->partial('order/index/jobform.phtml'); ?>
+		</div>	
+    </div>	
+ </div>
+<!--EOF Job form-->
+<div class="lightBox" id="editOrder">
+ 	<div class="lightBoxMid" style="width:600px">
+		<div class="lightBoxTitle">Edit Order<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+		<!--BOF Add New Order Form -->
+		<?php //echo $this->partial('order/index/neworder.phtml'); ?>
+		<!--EOF Add New Order Form -->
+    </div>
+</div>
+<!--BOF Opportunity lookup list-->
+<?php echo $this->partial('invoice/index/opportunitylookup.phtml', array('identity' => $identity, 'recordsPerPage' => $recordsPerPage, 'cust_id' => $order['cust_id'])); ?>
+<!--EOF Opportunity lookup list-->
+
+<!--BOF Opportunity lookup list-->
+<?php echo $this->partial('order/index/invoicelookup.phtml'); ?>
+<!--EOF Opportunity lookup list-->
+
+<!-- Consine Item Light Box -->
+<div class="lightBox" id="consignItem">
+	<div class="lightBoxMid" style="width:890px">
+		<div class="lightBoxTitle">Consign Item	  -  Job <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+		<div class="lightBoxContent fl width100p" id="consign_form_content">
+		</div>
+	</div>
+</div>
+<!--EOF Add Consign Form -->
+

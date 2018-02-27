@@ -1,0 +1,406 @@
+AWSTATS DATA FILE 7.4 (build 20140726)
+# If you remove this file, all statistics for date 201505 will be lost/reset.
+# Last config file used to build this data file was /home/diamond/tmp/awstats/awstats.diamond.openseed.com.au.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 28
+POS_GENERAL 2019                
+POS_TIME 2691                
+POS_VISITOR 8143                
+POS_DAY 8773                
+POS_DOMAIN 3366                
+POS_LOGIN 3646                
+POS_ROBOT 3801                
+POS_WORMS 3933                
+POS_EMAILSENDER 4064                
+POS_EMAILRECEIVER 4207                
+POS_SESSION 9320                
+POS_SIDER 9526                
+POS_FILETYPES 4342                
+POS_DOWNLOADS 4641                
+POS_OS 4871                
+POS_BROWSER 4991                
+POS_SCREENSIZE 5287                
+POS_UNKNOWNREFERER 5361                
+POS_UNKNOWNREFERERBROWSER 5448                
+POS_ORIGIN 5530                
+POS_SEREFERRALS 5670                
+POS_PAGEREFS 5814                
+POS_SEARCHWORDS 5962                
+POS_KEYWORDS 6114                
+POS_MISC 2355                
+POS_ERRORS 6173                
+POS_CLUSTER 3502                
+POS_SIDER_404 6296                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20150603201758 1 0 11048072055923
+FirstTime 20150501185828
+LastTime 20150529223103
+LastUpdate 20150603220806 1 0 0 0 0
+TotalVisits 57                  
+TotalUnique 13                  
+MonthHostsKnown 0                   
+MonthHostsUnknown 13                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 0 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 50 147 1672935 6 8 120
+1 0 0 0 0 0 0
+2 0 0 0 0 0 0
+3 0 0 0 0 0 0
+4 0 0 0 0 0 0
+5 0 0 0 0 0 0
+6 0 0 0 0 0 0
+7 0 0 0 0 0 0
+8 0 0 0 0 0 0
+9 0 0 0 0 0 0
+10 37 184 2128294 3 6 60
+11 42 101 717259 1 2 20
+12 32 118 1204226 2 5 1790
+13 24 26 87695 1 1 1062
+14 104 277 2463885 4 7 2154
+15 496 1156 8895092 34 56 14882
+16 411 817 6198747 20 35 12486
+17 284 573 3598508 12 29 1105
+18 142 358 3751402 8 14 2062
+19 275 993 10075124 24 30 17486
+20 211 1207 14994355 18 54 44284
+21 247 881 8379483 13 24 1990
+22 131 274 2983380 7 12 140
+23 36 39 112511 1 1 885
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 25 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 4
+in 2107 6242 58814927
+au 404 854 7757666
+us 9 9 30735
+ca 2 46 594032
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 25 first Hits must be first (order not required for others)
+BEGIN_ROBOT 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 12
+css 752 6733122 0 0
+png 418 1452104 0 0
+pdf 3 157679 0 0
+woff 16 402464 0 0
+woff2 24 419804 0 0
+swf 39 497913 0 0
+psd 1 651418 0 0
+html 97 121759 0 0
+jpg 130 3372704 0 0
+js 3244 49136807 0 0
+Unknown 2346 3693436 0 0
+gif 81 558150 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 4
+/invoice/5088288842_1432291949.pdf 1 1 129559
+/invoice/7657947098_1432291713.pdf 1 0 15727
+/invoice/9517320657_1432293164.pdf 1 0 12393
+/invoice/8011019305_1432704037.psd 1 0 651418
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 4
+macosx 605 348
+win8.1 45 1
+linux 250 57
+win7 6252 2116
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 11
+chrome43.0.2357.81 1398 437
+chrome42.0.2311.90 2 2
+firefox20.0 180 122
+firefox25.0 46 2
+firefox37.0 577 217
+netscape5.0 8 8
+chrome42.0.2311.135 962 508
+firefox6.0 1 1
+firefox38.0 1770 163
+chrome42.0.2311.152 1102 391
+chrome43.0.2357.65 1106 671
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 121 123
+From1 0 0
+From2 0 0
+From3 0 0
+From4 2401 7029
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 25 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 0
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 25 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 4
+302 106 2060
+206 2 7302
+500 2 592
+404 83 90572
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referrer
+BEGIN_SIDER_404 18
+/opportunitydetails/ 2 http://diamond.openseed.com.au/opportunitydetails/63
+/robots.txt 2 -
+/inventory_images//home/diamond/public_html/public/inventory_images========%3E/home/diamond/public_html/public/inventory_images/4072395623_1432290687.jpg4072395623_1432290687.jpg 4 -
+/inventory 2 -
+/Inventory 1 -
+/Orders 2 -
+/inventory_images/5088288842_1432291949.pdf 2 -
+/inventory_images/%3Cpre%3EArray(%20%20%20%20%5Bitem_image%5D%20=%3E%20Array%20%20%20%20%20%20%20%20(%20%20%20%20%20%20%20%20%20%20%20%20%5Bname%5D%20=%3E%2021744_10152753329532217_5226650605972962654_n.jpg%20%20%20%20%20%20%20%20%20%20%20%20%5Btype%5D%20= 1 http://diamond.openseed.com.au/inventory
+/inventory_images//tmp/phpPftImO%3C===========%3E/home/diamond/public_htmlinventory_images/4126681829_1432290151.jpg 10 -
+/invoice/Invalid%20file%20type. 1 http://diamond.openseed.com.au/diamonddetails/11
+/customerdetails/ 12 http://diamond.openseed.com.au/uploadify.swf
+/suppliers 1 http://diamond.openseed.com.au/dashboard
+/img/uploadify-cancel.png 3 http://diamond.openseed.com.au/css/uploadify.css
+/22052015_M1_backup.zip 1 -
+/inventory_images/0 18 http://diamond.openseed.com.au/diamonddetails/9
+/inventory_images//home/diamond/public_htmlinventory_images========%3E/home/diamond/public_htmlinventory_images/747271522_1432290466.jpg0 1 http://diamond.openseed.com.au/diamonddetails/9
+/leaddetails/ 3 http://diamond.openseed.com.au/uploadify.swf
+/inventory_images//tmp/phpLTF0Sp%3C===========%3E/home/diamond/public_htmlinventory_images/3353228017_1432290100.jpg 17 -
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 25 first Hits must be first (order not required for others)
+BEGIN_VISITOR 13
+202.62.72.163 1501 5102 51280632 20150529223103
+175.101.6.98 603 1098 7350427 20150522181550
+220.245.123.254 132 182 1253791 20150511161656
+203.174.189.190 110 204 2184921 20150527170518
+203.174.133.142 59 105 758941 20150511191739
+220.101.11.230 55 204 2208827 20150508131311
+49.181.200.61 38 97 710584 20150523112310
+23.101.172.224 8 8 29624 20150508173124
+110.175.78.225 8 60 638949 20150527004749
+49.207.2.43 3 43 183868 20150522124721
+49.181.201.13 2 2 1653 20150527100722
+204.187.14.74 2 46 594032 20150526201637
+66.249.84.201 1 1 1111 20150525185143
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 20
+20150501 2 2 1866 1
+20150505 141 311 1600658 2
+20150507 32 112 1562687 1
+20150508 293 710 5766989 6
+20150511 211 298 2023250 4
+20150512 14 62 1001436 4
+20150513 39 85 1036666 2
+20150514 3 3 2334 1
+20150515 3 3 2373 1
+20150518 12 56 23914 2
+20150519 13 57 944606 1
+20150520 28 74 1011015 3
+20150521 5 5 3735 1
+20150522 1131 3531 34261792 3
+20150523 62 122 789474 2
+20150525 26 70 952893 3
+20150526 48 196 2577239 3
+20150527 409 1368 13135855 9
+20150528 34 35 62700 4
+20150529 16 51 501414 4
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 7
+1h+ 8
+5mn-15mn 9
+0s-30s 17
+2mn-5mn 5
+15mn-30mn 6
+30s-2mn 4
+30mn-1h 8
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 25 first Pages must be first (order not required for others)
+BEGIN_SIDER 92
+/ajaxrecordscount 500 33894 0 13
+/ajaxgetdiamonds 313 334918 1 7
+/ajaxgetsuppliers 189 110612 0 5
+/editgridview 118 16527 0 0
+/ajaxgetweddingrings 115 92728 0 3
+/inventory 105 691232 2 0
+/ajaxgetopportunities 94 190103 0 4
+/ 92 116304 37 8
+/dashboard 81 118009 5 0
+/ajaxcustomerslist 80 86800 0 5
+/uploadfile 69 5470 0 0
+/suppliers 65 197378 2 0
+/inventory-weddingring 53 337014 2 0
+/ajaxgetleads 49 18774 0 2
+/diamonddetails/9 39 192824 0 0
+/uploadify.swf 39 497913 0 0
+/checkviewexist 39 819 0 0
+/customers 37 160142 2 1
+/savemygridview 37 3312 0 0
+/opportunities 34 190086 2 0
+/leads 25 135741 0 0
+/gettaskhistorydetails 24 3741 0 1
+/consignform 22 55216 0 2
+/gettaskdetails 20 3802 0 0
+/savediamond 14 297 0 0
+/ajaxgetnotes/lead/52 2 44 0 0
+/css/fonts/opensans-regular-webfont.woff 8 198016 0 0
+/tasks 5 50628 0 0
+/supplierdetails/8 1 3422 0 0
+/inventory_images/ 4 4885 0 0
+/saveweddingring 5 110 0 0
+/ajaxcustomerslookup 12 22255 0 0
+/inventory-chains 1 5266 0 0
+/customerdetails/35 1 13829 0 0
+/getconsigndetails 4 1019 0 0
+/deletesupplier/12 1 21 0 0
+/supplierdetails/11 1 3375 0 0
+/checkduplicate/49 4 84 0 0
+/opportunitydetails/66 4 35322 0 0
+/diamonddetails/6 1 4901 0 0
+/notes 5 397 0 0
+/convertleadform 3 6659 0 0
+/saveconsign 10 210 0 0
+/weddingringdetails/30 5 27192 0 0
+/leaddetails/21 1 9428 0 0
+/customerdetails/48 1 14264 0 0
+/diamonddetails/7 2 9398 0 0
+/deletediamond 3 63 0 0
+/ajaxgetnotes/lead/20 4 662 0 0
+/websitelinks 5 11357 0 0
+/supplierdetails/9 10 34407 0 0
+/validateowner 13 273 0 0
+/ajaxgetchains 2 2204 0 0
+/cpanel 4 36008 3 1
+/customerdetails/49 8 112791 1 0
+/diamonddetails/12 9 42770 0 0
+/leaddetails/52 1 9142 0 0
+/customerdetails/46 1 14508 0 0
+/css/fonts/opensans-bold-webfont.woff2 12 213620 0 0
+/customerdetails/31 1 13952 0 0
+/updateindividual 11 253 0 0
+/customerdetails/45 1 13991 0 0
+/getadditionallist 3 417 0 0
+/ajaxgetnotes/lead/21 2 44 0 0
+/supplierdetails/12 3 10218 0 0
+/attachfile 1 21 0 0
+/ajaxgetnotes/opportunity/63 2 44 0 0
+/saveattachments 2 46 0 0
+/createtask 5 663 0 1
+/supplierdetails/10 2 6811 0 0
+/ajaxsupplierslookup 9 5905 0 1
+/supplierdetails/13 2 6703 0 0
+/opportunitydetails/63 1 8695 0 0
+/invoice/ 1 570 0 0
+/diamonddetails/2 2 9802 0 0
+/weddingringdetails/29 1 5149 0 0
+/savecomment 4 92 0 0
+/diamonddetails/10 4 19082 0 0
+/weddingringdetails/28 1 5618 0 0
+/changetaskstatus 2 42 0 0
+/convertlead 2 123 0 0
+/weddingringdetails/27 1 5621 0 0
+/ajaxgetnotes/opportunity/66 4 832 0 0
+/ajaxpartnerslookup/49 3 6522 0 0
+/ajaxgetnotes/opportunity/65 8 2491 0 0
+/deleteweddingring 1 21 0 0
+/css/fonts/opensans-regular-webfont.woff2 12 206184 0 1
+/css/fonts/opensans-bold-webfont.woff 8 204448 0 2
+/deletesupplier/13 1 21 0 0
+/diamonddetails/11 6 28958 0 0
+/leaddetails/20 4 37406 0 0
+/opportunitydetails/65 6 52445 0 0
+END_SIDER

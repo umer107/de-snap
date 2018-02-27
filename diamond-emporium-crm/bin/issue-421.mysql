@@ -1,0 +1,2 @@
+ALTER TABLE `de_invoice_item` 
+ADD COLUMN `salesperson` VARCHAR(128) NULL AFTER `account_code`;

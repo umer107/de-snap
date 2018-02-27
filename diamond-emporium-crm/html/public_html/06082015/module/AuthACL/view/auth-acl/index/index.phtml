@@ -1,0 +1,33 @@
+<div class="contentArea">
+	<?php
+	// module/Album/view/album/album/add.phtml:
+	
+	$title = 'Login';
+	$this->headTitle($title);
+	?>
+	<div class="mainLoginForm">
+		<div class="loginInner">
+			<h1><?php echo $this->escapeHtml($title); ?></h1>
+			<div class="loginFormFields">
+			<?php if(isset($this->message) && !empty($this->message)) { ?>
+			<div style="margin-top:30px;"><?php echo $this->message; ?></div>
+			<?php } ?>
+			
+			<?php
+			//$form->setAttribute('action', $this->url('album', array('action' => 'add')));
+			$form->prepare();
+			
+			echo $this->form()->openTag($form);
+			 
+			echo $this->formRow($form->get('email'));
+			echo $this->formRow($form->get('password'));
+			echo $this->formSubmit($form->get('submit'));
+			
+			//echo $this->formCollection($form);
+			
+			echo $this->form()->closeTag();
+			?>
+			</div>
+		</div>
+	</div>
+</div>

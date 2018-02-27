@@ -1,0 +1,115 @@
+			  <form name="frm_filter_fiamond" id="frm_filter_fiamond" action="" method="post">
+              <div class="commonForm addCollectionSearch">
+                	<div class="culmn">
+						<div class="formRow">
+							<label class="labelControll">Type</label>
+							<div class="inputDiv"><div class="selectDrop">
+								<select name="filter_type" id="filter_type" class="dropdown">
+								<?php foreach($typeOptions as $value => $text){ ?>
+									<option value="<?php echo $value; ?>"<?php if ($value == 1) echo ' selected' ?>><?php echo $text; ?></option>							
+								<?php } ?>
+								</select>
+							</div></div>
+						</div>                    
+						<div class="formRow">
+							<label class="labelControll">Shape</label>
+							<div class="inputDiv"><div class="selectDrop">
+								<select name="filter_shape" id="filter_shape" class="dropdown">
+								<?php foreach($shapeOptions as $value => $text){ ?>
+									<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+								<?php } ?>
+								</select>
+							</div></div>
+						</div>                    
+						<div class="formRow">
+							<label class="labelControll">Cut</label>
+							<div class="inputDiv"><div class="selectDrop">
+								<select name="filter_cut" id="filter_cut" class="dropdown">
+								<?php foreach($cutOptions as $value => $text){ ?>
+									<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+								<?php } ?>
+								</select>
+							</div></div>
+						</div>
+                    </div>
+					<div class="culmn">
+						<div class="formRow">
+							<label class="labelControll">Carat</label>
+							<!--<div class="inputDiv"><div class="selectDrop" style="width:49%"><input type="text" class="inputTxt" id="filter_carat" name="filter_carat" data-numeric="yes" /></div></div>-->
+							<div class="inputDiv">
+								<div class="selectDrop" style="width:49%">
+									<input type="text" class="inputTxt" id="filter_carat_from" name="filter_carat_from" data-numeric="yes" placeholder="from" maxlength="6" />
+								</div>
+								<div class="selectDrop fr" style="width:49%">
+									<input type="text" class="inputTxt" id="filter_carat_to" name="filter_carat_to" data-numeric="yes" placeholder="to" maxlength="6" />
+								</div>
+							</div>
+						</div>                    
+						<div class="formRow">
+							<label class="labelControll">Clarity</label>
+							<?php /*?><div class="inputDiv"><div class="selectDrop">
+								<select name="filter_clarity" id="filter_clarity" class="dropdown">
+								<?php foreach($clarityOptions as $value => $text){ ?>
+									<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+								<?php } ?>
+								</select>
+							</div></div><?php */?>
+							
+							<div class="inputDiv">
+								<div class="selectDrop" style="width:49%">
+									<select name="filter_clarity_from" id="filter_clarity_from" class="dropdown">
+									<?php foreach($clarityOptions as $value => $text){ ?>
+										<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+									<?php } ?>
+									</select>
+								</div>
+								<div class="selectDrop fr" style="width:49%">
+									<select name="filter_clarity_to" id="filter_clarity_to" class="dropdown">
+									<?php foreach($clarityOptions as $value => $text){ ?>
+										<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+									<?php } ?>
+									</select>
+								</div>
+							</div>
+						</div>
+                    </div>                    
+                    <div class="culmn">
+						<div class="formRow">
+							<label class="labelControll width50">Colour</label>
+							<div class="inputDiv">
+								<div class="selectDrop" style="width:49%">
+									<?php /*?><select name="filter_color" id="filter_color" class="dropdown">
+									<?php foreach($colorOptions as $value => $text){ ?>
+										<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+									<?php } ?>
+									</select><?php */?>
+									<?php $white_type_options = array('0' => 'Select', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J', 'K' => 'K', 'L' => 'L', 'M' => 'M', 'N' => 'N', 'O' => 'O', 'P' => 'P', 'Q' => 'Q', 'R' => 'R', 'S' => 'S', 'T' => 'T', 'U' => 'U', 'V' => 'V', 'W' => 'W', 'X' => 'X', 'Y' => 'Y', 'Z' => 'Z'); ?>
+									<select name="filter_color_from" id="filter_color_from" class="dropdown">
+									<?php foreach($white_type_options as $value => $text){ ?>
+										<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+									<?php } ?>
+									</select>
+								</div>
+								<div class="selectDrop fr" style="width:49%">
+									<select name="filter_color_to" id="filter_color_to" class="dropdown">
+									<?php foreach($white_type_options as $value => $text){ ?>
+										<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+									<?php } ?>
+									</select>
+								</div>
+							</div>
+						</div>                    
+						<div class="formRow">
+							<label class="labelControll width114">Inventory Status</label>
+							<div class="inputDiv"><div class="selectDrop" >
+							<select name="filter_inventory_status" id="filter_inventory_status" class="dropdown">
+							<!--<option value="0">Select Statues</option>-->
+							<?php foreach($inventoryStatusOptions as $value => $text){ ?>
+								<option value="<?php echo $value; ?>"<?php if ($value == 3) echo ' selected' ?>><?php echo $text; ?></option>							
+							<?php } ?>
+							</select>
+							</div></div>
+						</div>
+                    </div>
+              </div>
+			  </form>

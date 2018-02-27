@@ -1,0 +1,12 @@
+<div class="lightBox" id="newSuppliers">
+	<?php if (!empty($this->lookupSupplierId)) : ?>
+		<input id="lookupSupplierId" type="hidden"value="<?php echo $this->lookupSupplierId; ?>">
+		<input id="lookupSupplierName" type="hidden"value="<?php echo $this->lookupSupplierName; ?>">
+	<?php endif; ?>
+	<div class="lightBoxMid" style="width:763px">
+    	<div class="lightBoxTitle">New Supplier <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    	<div class="lightBoxContent fl width100p commonForm newSuplierForm rowSpace" id="newSuppliersForm">
+			<div style="padding:10px; text-align:center">Loading...</div>
+		</div>
+	</div>
+</div>

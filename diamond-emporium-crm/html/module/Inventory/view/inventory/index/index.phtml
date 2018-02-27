@@ -1,0 +1,58 @@
+<div class="contentArea padLR0">
+      <div class="fl width100p contentINN">
+        <h2 class="cmnHeader">DE Collection</h2>
+      </div>
+      <div class="customerTabing fl width100p ctb">
+        <?php echo $this->partial('inventory/index/tab.phtml', array('current' => 'diamond')); ?>
+        <div class="customTabbingInner">
+          <div class="customerTabingInfo" style="display:block">
+            <div class="QuoteMain">
+              <a class="popupLink lightBoxClick" data-popup="addItem" href="javascript:;">Add Item</a>
+			  <!--BOF Grid View Header Block-->
+			  <?php echo $this->partial('customer/index/gridviewheader.phtml', array('gridViewOptions' => $this->gridViewOptions, 'recordsPerPage' => $this->recordsPerPage, 'prefixId' => 'diamond_'));  echo '<div class="pageLoader"></div>';?>
+			  <!--EOF Grid View Header Block-->
+              <div class="cb"></div>
+			  <!--BOF Add Diamond Filter Form -->
+			  <?php echo $this->partial('inventory/index/diamondfilter.phtml'); ?>
+			  <!--EOF Add Diamond Filter Form -->
+              <div class="cb"></div>
+              <div class="tableData tableNeView marB30 collectionInfo" style="width:2757px">
+                <div class="tableHading" style="2757px" id="bindAfterThis">DE Diamond Collection</div>
+				<div class="formTable manageMembers" id="jqxDianonds" style="width:100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--BOF Add Diamond Form -->
+<?php echo $this->partial('inventory/index/diamondform.phtml'); ?>
+<!--EOF Add Diamond Form -->
+
+<!--BOF Add Consign Form -->
+<?php //echo $this->partial('inventory/index/consign.phtml'); ?>
+<!-- Consine Item Light Box -->
+<div class="lightBox" id="consignItem">
+	<div class="lightBoxMid" style="width:890px">
+		<div class="lightBoxTitle">Consign Item	  -  Diamond <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+		<div class="lightBoxContent fl width100p" id="consign_form_content">
+		</div>
+	</div>
+</div>
+<!--EOF Add Consign Form -->
+
+<!--BOF Supplier lookup list-->
+<?php echo $this->partial('inventory/index/supplierlookup.phtml', array('recordsPerPage' => $this->recordsPerPage, 'lookupSupplierId' => 'supplier_id', 'lookupSupplierName' => 'supplier_name')); ?>
+<!--EOF Supplier lookup list-->
+
+<!--BOF Grid View Block-->
+<?php echo $this->partial('customer/index/gridview.phtml', array('formType' => 'diamond', 'recordsPerPage' => $this->recordsPerPage, 'columnList' => $this->columnList, 'hiddenUserId' => $this->loginUserId, 'prefixId' => 'diamond_')); ?>
+<!--EOF Grid View Block-->
+<script type="text/javascript">
+$(document).ready(function(){
+	splitDiamondMeasure();
+	sourceCurrencyInit();
+	rapnetFeedInit();
+});
+</script>

@@ -1,0 +1,82 @@
+<?php
+$newJobForm->prepare();
+echo $this->form()->openTag($newJobForm);
+echo $this->formElement($this->newJobForm->get('order_id')->setValue($order['id']));
+?>
+<div class="lightBox" id="createJob">
+ 	<div class="lightBoxMid" style="width:760px">
+    <div class="lightBoxTitle">Create A Job Packet<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p commonForm">
+    	<div class="formRow">
+			<label class="labelControll"><?php echo $this->newJobForm->get('owner_id')->getLabel(); ?>*</label>
+			<div class="inputDiv width150"><?php echo $this->formElement($this->newJobForm->get('owner_id')); ?></div>
+			<div class="inputDiv"></div>
+		</div>
+       
+       <div class="formRow padT10">
+            <label class="labelControll"><?php echo $this->newJobForm->get('milestones')->getLabel(); ?>*</label>
+       </div>
+       <div class="formRow selectMilestone">
+			<div class="inputDiv" id="milestonesDiv">
+				<?php echo $this->formElement($this->newJobForm->get('milestones')); ?>
+				<!--<a href="javascript:;" class="active">CAD</a>
+				<a href="javascript:;">Prototype</a>
+				<a href="javascript:;">Cast Man.</a>
+				<a href="javascript:;">Workshop</a>
+				<a href="javascript:;">DEGW</a>-->
+				<span id="milestonesSpan">
+				</span>
+			</div>       
+       </div>
+       
+       	<div class="formRow">
+			<label class="labelControll"><?php echo $this->newJobForm->get('exp_delivery_date')->getLabel(); ?></label>
+			<div class="inputDiv datePickInput width150"><?php echo $this->formElement($this->newJobForm->get('exp_delivery_date')); ?><span class="datePickCal"></span></div>
+			<div class="inputDiv"></div>
+		</div>
+       
+            
+		<div class="formRow padT10">
+			<label class="labelControll"> Select Invoice Items Relating to Job</label>
+		</div>
+		<div class="tableDataNew">
+		  <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableNew">
+			<tbody><tr align="left">
+			  <th width="5" height="48">&nbsp;</th>
+			  <th align="left" width="36"></th>
+			  <th>Item</th>
+			  <th>Description</th>
+			  <th width="128">Amount</th>
+			</tr>
+			<?php foreach($invoice_items as $invoice_item){ ?>
+			<tr>
+			  <td></td>
+			  <td><label class="labelCheck mar0"><input type="checkbox" name="items[]" value="<?php echo $invoice_item['item_id']; ?>" /><i></i></label></td>
+			  <td><?php echo ucfirst($invoice_item['item_type']); ?></td>
+			  <td><?php echo $invoice_item['description']; ?></td>
+			  <td><?php echo $invoice_item['amount']; ?></td>
+			</tr>
+			<?php } ?>
+		  </tbody></table>
+		</div>           
+        
+        <div class="formButtons tc fl width100p"><?php echo $this->formElement($this->newJobForm->get('job_save')); ?> <?php echo $this->formElement($this->newJobForm->get('cancel')); ?></div>
+    </div>
+    	
+    </div>	
+ </div>
+<?php echo $this->form()->closeTag(); ?>
+
+<!-- Consine Item Light Box End--> 
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#exp_delivery_date').datepicker({
+		dateFormat: '<?php echo $config["jsDateFormat"]; ?>',
+		minDate: new Date(),
+		changeYear: true,
+		beforeShow: function() {
+			$(this).after($(this).datepicker("widget"));
+		}
+	});
+});
+</script>

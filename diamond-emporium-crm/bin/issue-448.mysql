@@ -1,0 +1,1 @@
+UPDATE `de_variable` SET `value` = '36' WHERE `name` = 'shop.webform.default.lead.owner';

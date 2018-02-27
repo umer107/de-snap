@@ -1,0 +1,93 @@
+<div class="lightBoxContent fl width100p commonForm rowSpace">
+	<?php
+	$newOrderForm->prepare();
+	echo $this->form()->openTag($newOrderForm);
+	echo $this->formElement($this->newOrderForm->get('id'));
+	echo $this->formElement($this->newOrderForm->get('cust_id'));
+	echo $this->formElement($this->newOrderForm->get('opp_id'));
+	?>	
+	
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->newOrderForm->get('exp_delivery_date')->getLabel(); ?>*</label>
+		<div class="inputDiv datePickInput width150"><?php echo $this->formElement($this->newOrderForm->get('exp_delivery_date')); ?><span class="datePickCal"></span></div>
+	</div>
+	<div class="writeCommentBlock marB10">
+		<?php echo $this->formElement($this->newOrderForm->get('comment')); ?>
+		<div class="commentBottom">
+		  <div class="attachfile">
+			<?php echo $this->newOrderForm->get('order_file')->getLabel(); ?>
+			<?php echo $this->formElement($this->newOrderForm->get('order_file')); ?>
+			<?php echo $this->formElement($this->newOrderForm->get('multipleimagesHidden')); ?>
+		  </div>
+		</div>
+	  </div>
+	<div class="uploadedImages" id="order_image_preview">
+	<?php if(count($orderFullAttachments) > 0){
+		foreach($orderFullAttachments as $key => $data){ ?>
+			<div class="upImg" id="order_galleryImg<?php echo $key; ?>"><img src="/order_attachment/<?php echo $data['attachment']; ?>"/><a class="closeImg" onclick="unlinkGalleryImage('order_attachment/<?php echo $data['attachment']; ?>','order_galleryImg<?php echo $key; ?>', 'frm_order', 'order_attachment', <?php echo $data['id']; ?>)" style="cursor:pointer">X</a></div>
+	<?php	}
+	} ?>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->newOrderForm->get('special_request')->getLabel(); ?></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->newOrderForm->get('special_request')); ?></div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->newOrderForm->get('opp_name')->getLabel(); ?>*</label>
+		<div class="inputDiv"><?php echo $this->formElement($this->newOrderForm->get('opp_name')); ?><a data-popup="opportunitylookup" class="cmnBtn blueBtn lightBoxClick" href="javascript:;" id="orderOpportunityLookup">Lookup</a></div>
+	</div>	
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->newOrderForm->get('invoice_number')->getLabel(); ?>*</label>
+		<div class="inputDiv"><?php echo $this->formElement($this->newOrderForm->get('invoice_number')); ?><a class="cmnBtn blueBtn" href="javascript:;" onclick="openInvoiceLookup();" id="orderInvoiceQuoteLookup">Lookup</a><a id="invoicelookupAnchor" class="lightBoxClick" data-popup="invoicelookup" href="javascript:;" style=" position:fixed; left:-999999px; opacity:0"></a>
+		<a href="javascript:;" class="detachInvoice" onclick="$('#invoice_number').val('');">Detach Invoice</a>  
+		</div>
+	</div>
+	<div class="formButtons tc fl width100p"><?php echo $this->formElement($this->newOrderForm->get('order_save')); ?> <?php echo $this->formElement($this->newOrderForm->get('cancel')); ?></div>	
+	<?php echo $this->form()->closeTag(); ?>
+</div>
+<!-- Consine Item Light Box End--> 
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('#frm_order input[name="exp_delivery_date"]').datepicker({
+		dateFormat: '<?php echo $config["jsDateFormat"]; ?>',
+		minDate: new Date(),
+		changeYear: true,
+		beforeShow: function() {
+			$(this).after($(this).datepicker("widget"));
+		}
+	});
+	
+	/*$('#frm_order #order_file').live('change', function(){ 
+		$("#frm_order").ajaxForm({
+			success: function(response){
+				var existingJsonValue = $('#frm_order #order_attachment').val();
+				if(existingJsonValue == ''){
+					$('#frm_order #order_attachment').val(response);
+					//Parsing response JSON Data to Javascript Array
+					response = JSON.parse(response);
+				} else {
+					//Parsing existingJsonValue JSON Data to Javascript Array
+					existingJsonValue = JSON.parse(existingJsonValue);
+					//Parsing response JSON Data to Javascript Array
+					response = JSON.parse(response);
+					//Merging Two Javascript Array's
+					existingJsonValue = existingJsonValue.concat(response);
+					//Converting Javascript arrat to JSON Object
+					existingJsonValue = JSON.stringify(existingJsonValue);
+					$('#frm_order #order_attachment').val(existingJsonValue);
+				}
+				$.each(response, function( index, value ) {
+				  var imgHtml = '<div class="upImg" id="order_galleryImg'+index+'"><img src="/order_attachment/'+value+'"/><a class="closeImg" onclick="unlinkGalleryImage(\'/order_attachment/'+value+'\',\'order_galleryImg'+index+'\', \'frm_order\', \'order_attachment\')" style="cursor:pointer">X</a></div>';
+				  $('#order_image_preview').append(imgHtml);
+				});
+			}
+		}).submit();
+	});*/
+	
+	<?php
+	if($invoice)
+		echo '$("#btnCreateOrder").click();';
+	?>
+});
+</script>

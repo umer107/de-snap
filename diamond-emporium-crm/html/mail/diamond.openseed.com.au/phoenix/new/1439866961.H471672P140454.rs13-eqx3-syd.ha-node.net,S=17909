@@ -1,0 +1,406 @@
+Return-path: <pheonix@diamondemporium.com.au>
+Envelope-to: phoenix@diamond.openseed.com.au
+Delivery-date: Tue, 18 Aug 2015 13:02:41 +1000
+Received: from mail-by2on0079.outbound.protection.outlook.com ([207.46.100.79]:14112 helo=na01-by2-obe.outbound.protection.outlook.com)
+	by rs13-eqx3-syd.ha-node.net with esmtps (TLSv1.2:AES256-SHA256:256)
+	(Exim 4.85)
+	(envelope-from <pheonix@diamondemporium.com.au>)
+	id 1ZRXAe-000aUr-PE
+	for phoenix@diamond.openseed.com.au; Tue, 18 Aug 2015 13:02:41 +1000
+Content-Type: multipart/mixed;
+	boundary="_573d603f-0061-4266-97cf-d9fe763553b9_"
+Subject: RE: Ring Valuation and clean - Vickers
+To: "Brown, Alana" <Alana.Brown@originenergy.com.au>
+From: Jessica Zarola <jessica@diamondemporium.com.au>
+Sender:
+	<MicrosoftExchange329e71ec88ae4615bbc36ab6ce41109e@DiamondEmporium.onmicrosoft.com>
+Message-ID: <d02aeb0b-738b-4bed-95bf-49876b9d9153@journal.report.generator>
+Date: Tue, 18 Aug 2015 03:02:37 +0000
+X-MS-Journal-Report:
+X-MS-Exchange-Parent-Message-Id: <BY1PR0301MB08534008F74B46D6A79D3F3C9B780@BY1PR0301MB0853.namprd03.prod.outlook.com>
+Auto-Submitted: auto-generated
+X-MS-Exchange-Generated-Message-Source: Journal Agent
+X-Microsoft-Exchange-Diagnostics: 1;BY1PR0301MB0856;25:l5/HdB0yv6c+5TNZ4GEG8IBkP4MdqIYFf/EuyBpWJZBpV7hSUIDCL03/cECxZaeEzuEbzS0rFsQSnDilN9cEa302bUuco5XpNUPn5EuA8CHRK21BCUSVa/Nhtswt4i1ojlORkSBlP+r6UTuWIUs1Zv08CM70Sp/8nj1I2VLgnzbqqqFAIAAO2JhpWhK35BHz/YBk1T+FgelbjV1gFGDKcVX19GtNaHaL46BMPLUPQZg3jD/Ny/gbUNVEUXfECv2QBEB+odX4xX4hxq6tl8GWrw==;4:0+vrqXU6rI23ud3AQZVlKXnSYEarvcUT5gRZOgqAwwRhHi+YHwWNC9lhhBdwOnT3wYt20g1Up/9g6TrAi86LZb89l6HQfBlKqDiCNPVmdA2urBR2x4YCijO5iD4wZj74dYdwLabQ3B/uvthjZgg8xuILMHR0a/gGmQgZtgFKTA0462zh8SBsxiCEcpgWD+sHRu2tidBLa7cicalnL5g1lmeQ4EwQuiCA5WjBMXQ0S8kma64h7dnBpb9QmDO2wZF4m/p5u1tGBH86+Hf+7oI7r7L4mchYeikFvL2eKGHQyoefMjJd/WVc6QC6tFQuzRgn
+X-Microsoft-Antispam-PRVS: <BY1PR0301MB08568C0889D9B95FB8222C9792780@BY1PR0301MB0856.namprd03.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test: BCL:0;PCL:0;RULEID:(601004)(8121501046)(5005006)(3002001);SRVR:BY1PR0301MB0856;BCL:0;PCL:0;RULEID:;SRVR:BY1PR0301MB0856;
+X-Forefront-PRVS: 067270ECAF
+X-Forefront-Antispam-Report: SFV:NSPM;SFS:(10009020)(6009001)(199003)(189002)(11286001)(92566002)(3110400002)(77156002)(4001450100002)(64706001)(101416001)(50986999)(31696002)(62966003)(54356999)(4001540100001)(87976001)(450100001)(68736005)(4610100001)(5001830100001)(84326002)(105586002)(106356001)(19580405001)(19580395003)(77806003)(512954002)(189998001)(97736004)(33646002)(5001860100001)(5000100001)(102106001)(564344004)(74482002)(5001960100002)(31686004)(110136002)(46102003)(107886002)(5001840100002);DIR:OUT;SFP:1101;SCL:1;SRVR:BY1PR0301MB0856;H:;FPR:;SPF:None;PTR:InfoNoRecords;A:1;MX:1;LANG:en;
+Received-SPF: None (protection.outlook.com: diamondemporium.com.au does not
+ designate permitted sender hosts)
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=pheonix@diamondemporium.com.au; 
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1;BY1PR0301MB0856;23:izSlqIk8xUfSCXv8ib40IlpTXcvQK0TgFEqqYzE?=
+ =?us-ascii?Q?HRxHiIm7x4k3fCxxx/WOxL1PP1FTu6x4PHO8Ro+pcV4+87zMgncDPF+MH7dL?=
+ =?us-ascii?Q?7zY+lYka+fIpPY7gC3cdl6OVQUa686joLXZr/TbF7NsiHWn46dHWpIVFxDoU?=
+ =?us-ascii?Q?4Z6OAFzycb9RgIrJKs6Zc0ODz1sPikqINb0x8YI06QWcY/2mqKh0K1ZKNzmi?=
+ =?us-ascii?Q?JJqDIehuxMjvujISJ+ozVt/XKzAP/h8+Q5Q7CzZ+WbhUUgPg2x27zlpktfjN?=
+ =?us-ascii?Q?R/u6bD5DajVPM/N1uVvEBvqDJdEORmxdMZQCKbquBr+Cc87e2OS9ULBQGutk?=
+ =?us-ascii?Q?5eX6lRdA2AinRJ+qfxi6sKdENeKNlolDl078Y0z70+UX/5JU67YFqJn8rGbc?=
+ =?us-ascii?Q?5jLxiEVeZ9keYq+pd1HP3ltZHLL4xO+pykFk+UcFxCDSg0RTwEyTJpsW6jT6?=
+ =?us-ascii?Q?lJ6QlO3GU97vofn4eWxZSdvA1yfg+mR7k+8w//op43epRkQe57H5Y27hlZPi?=
+ =?us-ascii?Q?3QJ5S0WGWHtMzgPuWoqBxXkvNPHxEEBpaKGGF3w6t4KJkOld1pUyQXmbYoXs?=
+ =?us-ascii?Q?E/b2zpHa6V4uLIzvUrBviHc6MpNybQD4QIVkfgJV4N0h/py15bBmjXfiOd+V?=
+ =?us-ascii?Q?emmiaQ0EAazpAaa8K1fBZjxlfJFx/HBGn758xretSOBxDkf1mIYkE4NH7Vv+?=
+ =?us-ascii?Q?OxWsC2lAT/or0U97ob946dNr97jM6QRjSkvnWJPtBvKDPTFohRD3IM7kxvot?=
+ =?us-ascii?Q?aOOI9Ja8R7t3e3V2hokU0lu8lPATDYQ55eF1LJvN+FLLyA6TPLdoUOOq4BqJ?=
+ =?us-ascii?Q?dIFh3ETaOOb5yQNXS8fdYnVW3/q8DDbDJzZZUuc16b9sRMxvHjpb2t3mgs95?=
+ =?us-ascii?Q?erc39z0jdagM7RKBNLIZgdUXiGDkz58aM9zTOw6eVnR1iT2hebqJZZDwS7KZ?=
+ =?us-ascii?Q?pXpdDQm/EUOzpaJFD5zxDMNbF6cRBZVZzHApqPE7kIswbBpGEuVRdY49dUee?=
+ =?us-ascii?Q?q/Ja1zC7xaMgkXL5m6Kqmj5RO99mN1amoFU46L0rw0xYU9m7lhVLSWHRlVsN?=
+ =?us-ascii?Q?gxdyVhBNafhNPuD7em0QjhOy7EAc4yrXd8VsCcbk/H4g41VZvsCSx33TnQGY?=
+ =?us-ascii?Q?K0CGazZ+9qGRWpAG+4n0CFF1SnTuUMqJN?=
+X-Microsoft-Exchange-Diagnostics: 1;BY1PR0301MB0856;5:6O+5ZuIeRupJHIBI3RBnYLxIKZpv1zDfwLlNlPP3waVC80rXkHUFShfLizoNRWrI8cR95p/nN/AT4jGmPHQyj///ugfcE5L9KSfgvGkjlf6M3FUsTkWbu6Mh3lFqRKopqhmQ58RDUudnM96VJcj0Pg==;24:8vIUIsbOEp545QpWpi+IKFc3KHBWDHy6DmQOICUYhWeApCV4ECRiB1QYDfxkiolw6CFWVpmSDPvWOiMPI9SsMjemzqrL4NQxjtaolI9e3xc=
+SpamDiagnosticOutput: 1:23
+SpamDiagnosticMetadata: NSPM
+Keywords:
+MIME-Version: 1.0
+X-OriginatorOrg: DiamondEmporium.onmicrosoft.com
+
+--_573d603f-0061-4266-97cf-d9fe763553b9_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Sender: jessica@diamondemporium.com.au
+Subject: RE: Ring Valuation and clean - Vickers
+Message-Id: <BY1PR0301MB08534008F74B46D6A79D3F3C9B780@BY1PR0301MB0853.namprd03.prod.outlook.com>
+To: Alana.Brown@originenergy.com.au
+
+--_573d603f-0061-4266-97cf-d9fe763553b9_
+Content-Type: message/rfc822
+
+Received: from BY1PR0301MB0853.namprd03.prod.outlook.com (10.160.193.147) by
+ BY1PR0301MB0856.namprd03.prod.outlook.com (10.160.193.15) with Microsoft SMTP
+ Server (TLS) id 15.1.231.21; Tue, 18 Aug 2015 03:02:34 +0000
+Received: from BY1PR0301MB0853.namprd03.prod.outlook.com ([10.160.193.147]) by
+ BY1PR0301MB0853.namprd03.prod.outlook.com ([10.160.193.147]) with mapi id
+ 15.01.0231.024; Tue, 18 Aug 2015 03:02:34 +0000
+From: Jessica Zarola <jessica@diamondemporium.com.au>
+To: "Brown, Alana" <Alana.Brown@originenergy.com.au>
+Subject: RE: Ring Valuation and clean - Vickers
+Thread-Topic: Ring Valuation and clean - Vickers
+Thread-Index: AQHQ2Hgc2dRAILBiZkySzqPFnYBO654PSI6AgAAFVpCAABIikIAACZVwgAALAKCAAAV4EIABkD3ggAAJT3A=
+Date: Tue, 18 Aug 2015 03:02:34 +0000
+Message-ID: <BY1PR0301MB08534008F74B46D6A79D3F3C9B780@BY1PR0301MB0853.namprd03.prod.outlook.com>
+References: <B09AEB65-FBDE-49B3-BC64-C58AD02592B7@originenergy.com.au>
+ <BLUPR03MB1347618F4D3333F2943D8120977A0@BLUPR03MB1347.namprd03.prod.outlook.com>
+ <BY1PR0301MB0853B8640029447BE3CE2BC29B790@BY1PR0301MB0853.namprd03.prod.outlook.com>
+ <HKXPR02MB0438E71B038EE4AE42A4E733B2790@HKXPR02MB0438.apcprd02.prod.outlook.com>
+ <BY1PR0301MB08534D864320B671F750BD5C9B790@BY1PR0301MB0853.namprd03.prod.outlook.com>
+ <HKXPR02MB0438E0A71AE302BAAC1E0A2AB2790@HKXPR02MB0438.apcprd02.prod.outlook.com>
+ <BY1PR0301MB085307B456AF33C6D3E31C3A9B790@BY1PR0301MB0853.namprd03.prod.outlook.com>
+ <HK2PR02MB0436BAFE7BCA111EA9CC2BD6B2780@HK2PR02MB0436.apcprd02.prod.outlook.com>
+In-Reply-To: <HK2PR02MB0436BAFE7BCA111EA9CC2BD6B2780@HK2PR02MB0436.apcprd02.prod.outlook.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: BY1PR0301MB0853.namprd03.prod.outlook.com
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-Network-Message-Id: 041c707f-e5c0-4ff9-d577-08d2a7797753
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=jessica@diamondemporium.com.au; 
+x-ms-exchange-organization-processed-by-mbtsubmission:
+x-ms-exchange-organization-originalsize: 22353
+x-ms-exchange-organization-originalarrivaltime: 18 Aug 2015 03:02:34.2212
+ (UTC)
+x-ms-exchange-organization-messagesource: StoreDriver
+x-ms-exchange-organization-fromentityheader: Hosted
+x-ms-exchange-organization-messagedirectionality: Originating
+x-ms-exchange-organization-id: 0b36ddba-7b6e-4ec0-b39b-09a1ed883f64
+X-MS-Exchange-Organization-BCC:
+x-ms-exchange-organization-originalclientipaddress: 203.174.133.70
+x-originating-ip: [203.174.133.70]
+x-ms-exchange-organization-originalserveripaddress: 25.163.219.169
+x-ms-exchange-organization-submissionrecipientcount: 1
+x-ms-exchange-organization-orderedprecisionlatencyinprogress: LSRV=BY1PR0301MB0853.namprd03.prod.outlook.com:TOTAL-SUB=0.546|SA=0.078|MTSS-PEN=0.471(MTSSD-PEN=0.471(MTSSDC=0.226|MTSSDSDM=0.002(MTSSDSDM-Mailbox
+ Submission Filter Agent=0.001 )|MTSCAT=0.001));2015-08-18T03:02:34.768Z
+x-ms-exchange-forest-arrivalhubserver: BY1PR0301MB0856.namprd03.prod.outlook.com
+x-ms-exchange-organization-cross-premises-headers-processed: BY1PR0301MB0856.namprd03.prod.outlook.com
+x-ms-exchange-organization-exchange-diagnostics-stage-securedatacontainer: 0
+x-microsoft-exchange-diagnostics: 1;BY1PR0301MB0856;5:qFiVnPrqPRGwNlCCxQedHhtPJ2+j+9vZjQLMXTQqIPQ2+SH6j/iRewOYEPcPd2izatDWy/Ni5fKRP79K87pPv5tIwwYzTFN61svdIIE4yMcf5Rvtv0RsnbVR/AvH1BGb/cy2WEriIICqDDxeteE0pA==;24:c1n+X+4D/ObdUh1Rz3P/QzSkhxiQCS/rsdE6l61gMhHmkoGgCStBvw4ITyN7H683+nD3V+1YgUXS1CHUPmnY9J9Jozc6RuHJqmlUq3AZ4Z4=;20:r0Dz0EWFFm7Hmni457uZP0a2GoAZT7K/Q6lY8tfmT1PZgL1QRX9/4hDQEb84GTK7/IgU31bH1kkZGn9+d/VuBZ8Owjp0XncKeM/FR5gFupVwgnMFc140lnkHi3NGCUIluvD8jNCTcHcPndyHrJJdy3SWSyTTjxwpHGrFsmuEtPk=
+x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BY1PR0301MB0856;
+x-ms-exchange-organization-hygienepolicy: Premium
+x-ms-exchange-organization-messagelatency: SRV=BY1PR0301MB0853.namprd03.prod.outlook.com:TOTAL-SUB=0.606|SA=0.078|MTSS-PEN=0.529(MTSSD-PEN=0.528(MTSSDC=0.226|MTSSDSDM=0.002(MTSSDSDM-Mailbox
+ Submission Filter Agent=0.001
+ )|MTSCAT=0.001|SDSSO-PEN=0.057(MTSSDM-PEN=0.056)))
+x-ms-exchange-organization-messagefingerprint: EC97D82D.2FF25B52.F2D55F67.42E469B1.2047E
+x-ms-exchange-organization-avstamp-service: 1.0
+x-ms-exchange-organization-recipient-limit-verified: True
+x-ms-exchange-organization-totalrecipientcount: 1
+x-ms-exchange-organization-transport-properties: DeliveryPriority=Normal
+x-ms-exchange-organization-prioritization: 1
+x-ms-exchange-organization-antispam-contentfilter-scancontext: CategorizerOnResolved;CategorizerOnRouted;
+x-ms-exchange-organization-asdirectionalitytype: 2
+x-microsoft-antispam-prvs: <BY1PR0301MB085693A0A7110AC7AFD5BC999B780@BY1PR0301MB0856.namprd03.prod.outlook.com>
+x-ms-exchange-organization-helordns: BY1PR0301MB0853.namprd03.prod.outlook.com;
+x-exchange-antispam-report-test: UriScan:;
+x-exchange-antispam-report-cfa-test: BCL:0;PCL:0;RULEID:(601004)(8121501046)(5005006)(3002001);SRVR:BY1PR0301MB0856;BCL:0;PCL:0;RULEID:;SRVR:BY1PR0301MB0856;
+x-ms-exchange-organization-client-country: AU
+x-forefront-prvs: 067270ECAF
+x-forefront-antispam-report: SFV:NSPM;SFS:(10009020)(6009001)(43784003)(13464003)(199003)(84964002)(189002)(57704003)(46034005)(51164003)(377454003)(81156007)(92566002)(77156002)(40100003)(5003600100002)(2656002)(64706001)(86362001)(101416001)(50986999)(2950100001)(5890100001)(62966003)(54356999)(4001540100001)(450100001)(2900100001)(76176999)(93886004)(87936001)(77096005)(68736005)(102836002)(66066001)(5001830100001)(105586002)(106116001)(106356001)(10400500002)(19580405001)(19580395003)(189998001)(99286002)(97736004)(76576001)(5001860100001)(33656002)(74482002)(74316001)(5001960100002)(5002640100001)(110136002)(46102003)(122556002)(15974865002)(107886002);DIR:OUT;SFP:1101;SCL:1;SRVR:BY1PR0301MB0856;H:BY1PR0301MB0853.namprd03.prod.outlook.com;FPR:;SPF:None;PTR:InfoNoRecords;A:1;MX:1;LANG:en;
+received-spf: None (protection.outlook.com: diamondemporium.com.au does not
+ designate permitted sender hosts)
+x-ms-exchange-organization-antispam-scancontext: DIR:Originating;SFV:NSPM;SKIP:0;
+x-ms-exchange-organization-antispam-outboundippartition: 1101
+x-ms-exchange-organization-antispam-postcontentfilter-scancontext: CategorizerOnResolved;CategorizerOnRouted;
+x-ms-exchange-forest-indexagent: 1 4684
+x-ms-exchange-forest-emailmessagehash: 0C87134A
+x-ms-exchange-forest-language: en
+spamdiagnosticoutput: 1:23
+spamdiagnosticmetadata: NSPM
+x-ms-exchange-organization-cross-session-cache: 00SL=1;EMSL=1;SCL=0;BL=0;RL=1;PID=0;PL=0;EXPID=SpamDiagnosticsExperimentId0;SAUTHOP=1;EIPC0=54,80,110,70,71,84,82,51,83,50,52,112,115,111,92,91,90,114,113,81,53;MIPC0=
+x-ms-exchange-organization-processed-by-gcc-journaling: Journal Agent
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hey Alana,
+
+No worries at all :) I can organise that for you.
+
+Warm regards,
+Jess=20
+
+
+
+Jessica Zarola=A0=20
+T1:
+T2:
+=A0E:
+W:
+1300 899 432
+(612) 9261 2272=A0=20
+jessica@diamondemporium.com.au
+www.diamondemporium.com.au
+
+
+
+Level 2, Suite 201,
+185 Elizabeth Street
+Sydney NSW 2000
+AUSTRALIA
+=A0=A0=A0
+
+
+Please consider the environment before printing this email
+
+
+-----Original Message-----
+From: Brown, Alana [mailto:Alana.Brown@originenergy.com.au]=20
+Sent: Tuesday, 18 August 2015 12:30 PM
+To: Jessica Zarola <jessica@diamondemporium.com.au>
+Subject: RE: Ring Valuation and clean - Vickers
+
+Thanks Jessica,
+
+I just gave them a call and they have asked for you to send through all the=
+ details to them.
+
+Let me know how you go.
+
+Thanks so much
+
+Alana Brown
+PA to Kim Josling - Group Head Assurance PA to Louise Campbell - Group Mana=
+ger Risk .............................
+Origin
+t 02 9503 5771
+
+
+-----Original Message-----
+From: Jessica Zarola [mailto:jessica@diamondemporium.com.au]=20
+Sent: Monday, 17 August 2015 12:38 PM
+To: Brown, Alana
+Subject: RE: Ring Valuation and clean - Vickers
+
+Hi Alana,
+
+Yes that's fine :) just give them a call and let them know you want to add =
+onto your existing policy and quote the prices and then they will then come=
+ to us and I can supply them with images and other specifics like the diamo=
+nd sizes etc :)
+
+
+
+Jessica Zarola=A0=20
+T1:
+T2:
+=A0E:
+W:
+1300 899 432
+(612) 9261 2272=A0=20
+jessica@diamondemporium.com.au
+www.diamondemporium.com.au
+
+
+
+Level 2, Suite 201,
+185 Elizabeth Street
+Sydney NSW 2000
+AUSTRALIA
+=A0=A0=A0
+
+
+Please consider the environment before printing this email
+
+
+-----Original Message-----
+From: Brown, Alana [mailto:Alana.Brown@originenergy.com.au]=20
+Sent: Monday, 17 August 2015 12:17 PM
+To: Jessica Zarola <jessica@diamondemporium.com.au>
+Subject: RE: Ring Valuation and clean - Vickers
+
+Thanks so much Jessica,
+
+What information do I need to provide? I'm assuming that I don't need to pr=
+ovide a valuation, just the cost of the rings?
+
+Cheers
+
+Alana Brown
+PA to Kim Josling - Group Head Assurance PA to Louise Campbell - Group Mana=
+ger Risk .............................
+Origin
+t 02 9503 5771
+
+
+-----Original Message-----
+From: Jessica Zarola [mailto:jessica@diamondemporium.com.au]=20
+Sent: Monday, 17 August 2015 11:40 AM
+To: Brown, Alana
+Subject: RE: Ring Valuation and clean - Vickers
+
+Hi Alana,
+
+Perfect! All you will need to do is give them a call with the details of yo=
+ur new rings and they will be able to add them on to your existing policy.
+
+Friday at 11am is great!
+
+Warm regards,
+Jess=20
+
+
+Jessica Zarola=A0=20
+T1:
+T2:
+=A0E:
+W:
+1300 899 432
+(612) 9261 2272=A0=20
+jessica@diamondemporium.com.au
+www.diamondemporium.com.au
+
+
+
+Level 2, Suite 201,
+185 Elizabeth Street
+Sydney NSW 2000
+AUSTRALIA
+=A0=A0=A0
+
+
+Please consider the environment before printing this email
+
+
+-----Original Message-----
+From: Brown, Alana [mailto:Alana.Brown@originenergy.com.au]=20
+Sent: Monday, 17 August 2015 11:06 AM
+To: Jessica Zarola <jessica@diamondemporium.com.au>
+Subject: RE: Ring Valuation and clean - Vickers
+
+Thanks Jessica,
+
+Actually, we will be insuring the wedding rings through Q Report as we have=
+ already insured my engagement ring through them (see attached).
+
+On Friday, would it be ok if I came in around 11am?
+
+Thanks again,
+
+Alana Brown
+PA to Kim Josling - Group Head Assurance PA to Louise Campbell - Group Mana=
+ger Risk .............................
+Origin
+t 02 9503 5771
+
+-----Original Message-----
+From: Jessica Zarola [mailto:jessica@diamondemporium.com.au]
+Sent: Monday, 17 August 2015 10:18 AM
+To: Brown, Alana
+Subject: RE: Ring Valuation and clean - Vickers
+
+Hi Alana,
+
+I would be more than happy to supply you with a valuation for your rings if=
+ you would like one?
+
+Will you be insuring them via your home and contents insurer?
+
+Alternatively we recommend Q Report who are an insurance company who deal s=
+olely in the protection of jewellery.
+
+If you would like some more information regarding their service you can fin=
+d out more at www.qreport.com.au
+
+You are also welcome to bring in your rings on Friday for a clean in our of=
+fice Ultrasonic machine, what time is convenient for you?
+
+Warm regards,
+Jessica=20
+
+
+Jessica Zarola
+T1:
+T2:
+=A0E:
+W:
+1300 899 432
+(612) 9261 2272
+jessica@diamondemporium.com.au
+www.diamondemporium.com.au
+
+
+
+Level 2, Suite 201,
+185 Elizabeth Street
+Sydney NSW 2000
+AUSTRALIA
+=A0=A0=A0
+
+
+Please consider the environment before printing this email
+
+
+-----Original Message-----
+From: Brown, Alana [mailto:Alana.Brown@originenergy.com.au]
+Sent: Monday, 17 August 2015 9:06 AM
+To: Info@DE <info@diamondemporium.com.au>
+Subject: Ring Valuation and clean - Vickers
+
+Good morning,
+
+We bought our wedding rings (and my engagement ring) through Diamond Empori=
+um, and before we go on our honeymoon next Monday I thought I should add th=
+em to our insurance.
+
+Would there be any chance of getting the rings valued? Not sure if you need=
+ to see them again to do it?
+
+Also, as the wedding is this Sunday, would I possibly be able to bring in m=
+y engagement ring and the wedding rings for a quick clean on Friday?
+
+Thanks do much, look forward to hearing from you,
+
+Alana Brown and Wayne Vickers
+0424 937 556
+Note: This email, including any attachments, is confidential. If you have r=
+eceived this email in error, please advise the sender and delete it and all=
+ copies of it from your system. If you are not the intended recipient of th=
+is email, you must not use, print, distribute, copy or disclose its content=
+ to anyone
+
+--_573d603f-0061-4266-97cf-d9fe763553b9_--

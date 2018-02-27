@@ -1,0 +1,147 @@
+<div class="lightBox" id="createQuote">
+  <div class="lightBoxMid" style="width:970px">
+    <div class="lightBoxTitle">DE Collective <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p">
+      <div class="quoteAddItems">
+        <ul class="invoicetabing">
+          <li class="active"><a href="javascript:;" >Diamonds</a></li>
+          <li><a href="javascript:;" >Wedd. Rings</a></li>
+          <li><a href="javascript:;">Eng. Rings</a></li>
+          <li><a href="javascript:;">Earing</a></li>
+          <li><a href="javascript:;">Pendants</a></li>
+          <li><a href="javascript:;">Chains</a></li>
+          <li><a href="javascript:;">Miscellaneous</a></li>
+        </ul>
+		
+        <div class="invoiceTabingInner">
+        	<div class="invoiceTabingContent"  style="display:block">
+				<div class="tableData tableNeView marT0">
+					<!--BOF Add Diamond Filter Form -->
+					<?php echo $this->partial('customer/index/gridviewheaderlight.phtml', array('prefixId' => 'diamond_')); ?>
+	              	<div class="cb"></div>
+				  	<?php echo $this->partial('inventory/index/diamondfilter.phtml');?>
+				  	<!--EOF Add Diamond Filter Form -->
+	              	<div class="cb"></div>
+	              	<div class="tableData tableNeView marB30 collectionInfo" style="width:2757px">
+	               		<div class="tableHading" style="2757px" id="bindAfterThis">DE Diamond Collection</div>
+						<div class="formTable manageMembers" id="jqxDianonds" style="width:100%"></div>
+	              	</div>
+	              	<input type="hidden" name="grid_type" id="diamond_grid_type" value="diamond" />
+					<input type="hidden" id="pageSizeGrabing" value="<?php echo $recordsPerPage; ?>" />
+					<input type="hidden" id="diamond_columnList" value="" />
+					<input type="hidden" id="diamond_cellClick" value="diamond_cellclick" />
+				</div>
+            </div>
+            <div class="invoiceTabingContent" >
+				<div class="tableData tableNeView marT0">
+					<!--BOF Grid View Header Block-->
+					<?php echo $this->partial('customer/index/gridviewheaderlight.phtml', array('prefixId' => 'weddingring_')); ?>
+					<!--EOF Grid View Header Block-->
+					<div class="cb"></div>
+              		<div class="tableData tableNeView marB30 collectionInfo" style="width:2757px">
+                		<div class="tableHading" style="2757px" id="bindAfterThis">DE Wedding Ring Collection</div>
+						<div class="formTable manageMembers" id="jqxWeddingring" style="width:100%"></div>
+              		</div>
+	              	<input type="hidden" name="grid_type" id="weddingring_grid_type" value="weddingring" />
+					<input type="hidden" id="pageSizeGrabing" value="<?php echo $recordsPerPage; ?>" />
+					<input type="hidden" id="weddingring_columnList" value="" />
+					<input type="hidden" id="weddingring_cellClick" value="weddingring_cellclick" />
+				</div>	
+            </div>
+            <div class="invoiceTabingContent" >
+            	<div class="tableData tableNeView marT0">
+					<!--BOF Grid View Header Block-->
+					<?php echo $this->partial('customer/index/gridviewheaderlight.phtml', array('prefixId' => 'engagementring_')); ?>
+					<!--EOF Grid View Header Block-->
+					<div class="cb"></div>
+              		<div class="tableData tableNeView marB30 collectionInfo" style="width:2757px">
+		                <div class="tableHading" style="2757px" id="bindAfterThis">DE Engagement Ring Collection</div>
+						<div class="formTable manageMembers" id="jqxEngagementring" style="width:100%"></div>
+              		</div>
+	              	<input type="hidden" name="grid_type" id="engagementring_grid_type" value="engagementring" />
+					<input type="hidden" id="pageSizeGrabing" value="<?php echo $recordsPerPage; ?>" />
+					<input type="hidden" id="engagementring_columnList" value="" />
+					<input type="hidden" id="engagementring_cellClick" value="engagementring_cellclick" />
+				</div>	
+            </div>
+            <div class="invoiceTabingContent" >
+            	<div class="tableData tableNeView marT0">
+					<!--BOF Grid View Header Block-->
+					<?php echo $this->partial('customer/index/gridviewheaderlight.phtml', array('prefixId' => 'earring_')); ?>
+					<!--EOF Grid View Header Block-->
+					<div class="cb"></div>
+					<div class="tableData tableNeView marB30 collectionInfo" style="width:2757px">
+                		<div class="tableHading" style="2757px" id="bindAfterThis">DE Ear Ring Collection</div>
+						<div class="formTable manageMembers" id="jqxEarring" style="width:100%"></div>
+              		</div>
+	              	<input type="hidden" name="grid_type" id="earring_grid_type" value="earring" />
+					<input type="hidden" id="pageSizeGrabing" value="<?php echo $recordsPerPage; ?>" />
+					<input type="hidden" id="earring_columnList" value="" />
+					<input type="hidden" id="earring_cellClick" value="earring_cellclick" />
+				</div>	
+            </div>
+            <div class="invoiceTabingContent" >
+            	<div class="tableData tableNeView marT0">
+					<!--BOF Grid View Header Block-->
+					<?php echo $this->partial('customer/index/gridviewheaderlight.phtml', array('prefixId' => 'pendant_')); ?>
+					<!--EOF Grid View Header Block-->
+		            <div class="cb"></div>
+		            <div class="tableData tableNeView marB30 collectionInfo" style="width:2757px">
+		            	<div class="tableHading" style="2757px" id="bindAfterThis">DE Pendant Collection</div>
+						<div class="formTable manageMembers" id="jqxPendant" style="width:100%"></div>
+		            </div>
+	              	<input type="hidden" name="grid_type" id="pendant_grid_type" value="pendant" />
+					<input type="hidden" id="pageSizeGrabing" value="<?php echo $recordsPerPage; ?>" />
+					<input type="hidden" id="pendant_columnList" value="" />
+					<input type="hidden" id="pendant_cellClick" value="pendant_cellclick" />
+				</div>	
+            </div>
+            <div class="invoiceTabingContent" >
+            	<div class="tableData tableNeView marT0">
+					<!--BOF Grid View Header Block-->
+					<?php echo $this->partial('customer/index/gridviewheaderlight.phtml', array('prefixId' => 'chain_')); ?>
+					<!--EOF Grid View Header Block-->
+              		<div class="cb"></div>
+              		<div class="tableData tableNeView marB30 collectionInfo" style="width:2757px">
+                		<div class="tableHading" style="2757px" id="bindAfterThis">DE Chain Collection</div>
+						<div class="formTable manageMembers" id="jqxChain" style="width:100%"></div>
+              		</div>
+	              	<input type="hidden" name="grid_type" id="chain_grid_type" value="chain" />
+					<input type="hidden" id="pageSizeGrabing" value="<?php echo $recordsPerPage; ?>" />
+					<input type="hidden" id="chain_columnList" value="" />
+					<input type="hidden" id="chain_cellClick" value="chain_cellclick" />
+				</div>	
+            </div>
+            <div class="invoiceTabingContent" >
+            	<div class="tableData tableNeView marT0">
+					<!--BOF Grid View Header Block-->
+					<?php echo $this->partial('customer/index/gridviewheaderlight.phtml', array('prefixId' => 'miscellaneous_')); ?>
+					<!--EOF Grid View Header Block-->
+					<div class="cb"></div>
+              		<div class="tableData tableNeView marB30 collectionInfo" style="width:2757px">
+                		<div class="tableHading" style="2757px" id="bindAfterThis">DE Miscellaneous Collection</div>
+						<div class="formTable manageMembers" id="jqxMiscellaneous" style="width:100%"></div>
+              		</div>
+	              	<input type="hidden" name="grid_type" id="miscellaneous_grid_type" value="miscellaneous" />
+					<input type="hidden" id="pageSizeGrabing" value="<?php echo $recordsPerPage; ?>" />
+					<input type="hidden" id="miscellaneous_columnList" value="" />
+					<input type="hidden" id="miscellaneous_cellClick" value="miscellaneous_cellclick" />
+				</div>	
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	/* TODO: these should only load as the tabs are exposed */
+	getDiamondLookup();
+	getWeddRingLookup();
+	getEngRingLookup();
+	getEarringLookup();
+	getPendantLookup();
+	getChainLookup();
+	getMiscellaneousLookup();
+});
+</script>

@@ -1,0 +1,68 @@
+<div class="contentArea">
+	<?php $this->headTitle('Reset Password');	?>
+	<div class="mainLoginForm">
+		<div class="loginInner">
+			<h1><?php echo $this->escapeHtml('Reset Password'); ?></h1>
+			<div class="loginFormFields">
+				<form name="frm_forgotpass" id="frm_resetpass" action="" method="post">
+					<input type="hidden" name="reset_pass_code" id="reset_pass_code" value="<?php echo $reset_pass_code; ?>" />
+					<label>
+						<span>New Password</span>
+						<input type="password" name="password" id="password" value="" maxlength="8" />
+					</label>
+					<label>
+						<span>Confirm New Password</span>
+						<input type="password" name="confirm_password" id="confirm_password" value="" maxlength="8" />
+					</label>
+					<a style="margin-top:0" class="cmnBtn" href="javascript:;" onclick="resetPassword($('#frm_resetpass'));">Submit</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+function validateResetPassword(){
+	$('.errorText').remove();
+	var errors = 0;
+	
+	if($.trim($('#password').val()) == ''){
+		$( '<p class="errorText">Please enter New Password</p>' ).insertAfter( '#password' );
+		errors++;
+	}else if($.trim($('#password').val()).length < 4){
+		$( '<p class="errorText">New Password should not be less than 4 characters long.</p>' ).insertAfter( '#password' );
+		errors++;
+	}
+	
+	if($.trim($('#confirm_password').val()) == ''){
+		$( '<p class="errorText">Please enter Confirm New Password</p>' ).insertAfter( '#confirm_password' );
+		errors++;
+	}else if($('#password').val() != $('#confirm_password').val()){
+		$( '<p class="errorText">New Password and Confirm New Password does not match</p>' ).insertAfter( '#confirm_password' );
+		errors++;
+	}
+	
+	return errors;
+}
+
+function resetPassword(form){
+	var errors = validateResetPassword();
+	if(errors == 0){
+		$.ajax({
+			url: '/storeresetpass',
+			type: 'POST',
+			async: false,
+			data: form.serialize(),
+			success: function(response){
+				if(response == 1){
+					$('<p class="errorText">Password has been reset successfully.</p>').insertAfter('#frm_resetpass');
+					window.location.href = '/';
+				}else{
+					$('<p class="errorText">Please try again.</p>').insertAfter('#frm_resetpass');
+				}
+			}
+		});
+	}
+}
+</script>

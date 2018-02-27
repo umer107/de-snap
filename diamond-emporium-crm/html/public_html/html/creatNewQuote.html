@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>::::</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" >
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700,600' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="../public/css/normalize.css" />
+<link rel="stylesheet" href="../public/css/animate.css" />
+<link rel="stylesheet" href="../public/css/style.css" />
+</head>
+<body>
+<section class="fl width100p mainWrapper">
+  <div class="topBar fl">
+    <h2  class="fl">Daimond Emporium Back Office System</h2>
+    <div class="rightInfo">
+      <div class="mainSearch">
+        <form>
+          <input type="text" placeholder="Search.." class="searchInput" />
+          <input type="button" value="Go!" class="inputGo" />
+        </form>
+      </div>
+      <span class="userNameDisplay">You are signed in as <strong>John Steven</strong></span> <a href="javascript:;" class="logoutLink">Logout</a></div>
+  </div>
+  <aside class="leftCol">
+    <h1 class="dimondLogo"><a href="index.html"><img src="../public/images/logo.jpg" /></a></h1>
+    <nav class="mainMenu">
+      <ul>
+        <li><a href="javascript:;" class="dashboardLink">Dashboard</a></li>
+        <li><a href="index.html" class="customersLinke">Customers</a></li>
+        <li><a href="lead.html" class="leadsLink">Leads <span>24</span></a></li>
+        <li><a href="javascript:;" class="opportunitiesLink">Opportunities <span>42</span></a></li>
+        <li><a href="javascript:;" class="ordersLink">Orders <span>1</span></a></li>
+        <li><a href="javascript:;" class="inventoryLink">Inventory</a></li>
+        <li><a href="javascript:;"class="suppliersLink">Suppliers</a></li>
+        <li class="current notMainLink"><a href="quoteInvoices.html">Quotes & Invoices</a></li>
+        <li class="notMainLink"><a href="javascript:;">Tasks</a></li>
+        <li class="notMainLink"><a href="javascript:;">Meetings</a></li>
+        <li class="notMainLink"><a href="javascript:;">Emails</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <section class="rightCol">
+    <div class="contentArea creatNewQuoteMain">
+      <div class="creatNewQuote">
+        <h2 class="cmnHeader">Create A New Quote</h2>
+        <ul class="newQuoteSteps">
+          <li class="filled quoteStep01"><span class="numDisplay">1</span><br />
+            Assign Quote</li>
+          <li class="quoteStep02"><span class="numDisplay">2</span><br />
+            Add Items</li>
+          <li class="quoteStep03"><span class="numDisplay">3</span><br />
+            Summary</li>
+        </ul>
+        <!-- Step 01 -->
+        <div id="quoteStep1" style="display:block">
+          <p class="assignTxt">Please assign a Customer and the relating Opportunity to create a quote</p>
+          <div class="cb"></div>
+          <div class="selectOpp commonForm">
+            <form>
+              <div class="formRow">
+                <label class="labelControll">Select Opportunity</label>
+                <div class="inputDiv">
+                  <input type="text" value=""  class="inputTxt width75p" >
+                  <a class="cmnBtn blueBtn " href="javascript:;">Lookup</a></div>
+              </div>
+              <div class="formRow newQuotElm">
+                <label class="labelControll">&nbsp;</label>
+                <div class="inputDiv">
+                  <button value="Cancel" class="cmnBtn cancelBtn marL0" onclick="location.href='quoteInvoices.html'"  type="button">Cancel</button>
+                  <button value="Save" class="cmnBtn blueBtn" id="step01Move" type="button">Next</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Step 01 End --> 
+        <!-- Step 02 -->
+        <div id="quoteStep2" style="display:none">
+          <p class="assignTxt">Build Your Quote</p>
+          <div class="cb"></div>
+          <div class="buildYourQuote">
+            <form>
+              <a href="javascript:;" class="cmnBtn addItem lightBoxClick" data-popup="addItem">Add Item</a>
+              <div class="tableDataNew itemInfoDisplay">
+                <table class="tableNew" width="100%"  border="0" cellpadding="0" cellspacing="0">
+                  <tr align="left">
+                    <th width="5" height="48">&nbsp;</th>
+                    <th align="left" width="100">Item</th>
+                    <th>Description</th>
+                    <th width="50">Qty</th>
+                    <th width="100">Unit Price</th>
+                    <th width="125">Disc%</th>
+                    <th width="144">Account</th>
+                    <th width="77">Total</th>
+                    <th width="67"></th>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td><input type="text" class="cmnInput" value="Diamond" /></td>
+                    <td><textarea class="cmntextarea">CVVs1 Shape</textarea></td>
+                    <td><input type="text" class="cmnInput" value="1" /></td>
+                    <td><input type="text" class="cmnInput" value="$3,293" /></td>
+                    <td><input type="text" class="cmnInput" /></td>
+                    <td><input type="text" class="cmnInput" /></td>
+                    <td>$3,293</td>
+                    <td><a href="javascript:;" class="deleteItem">Delete</a></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td><input type="text" class="cmnInput" value="Diamond" /></td>
+                    <td><input type="text" class="cmnInput" /></td>
+                    <td><input type="text" class="cmnInput" value="1" /></td>
+                    <td><input type="text" class="cmnInput" value="$3,293" /></td>
+                    <td><input type="text"  class="cmnInput" /></td>
+                    <td><input type="text" class="cmnInput" /></td>
+                    <td>$3,293</td>
+                    <td><a href="javascript:;" class="deleteItem">Delete</a></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="btnDisplay">
+                <button value="Cancel" class="cmnBtn cancelBtn marL0" id="backtoStep01"  type="button">Back</button>
+                <button value="Save" class="cmnBtn blueBtn" id="step02Move" type="button">Next</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Step 02 End --> 
+        <!-- Step 03 -->
+        <div id="quoteStep3" style="display:none">
+          <p class="assignTxt">Your Quote Summary</p>
+          <div class="cb"></div>
+          <form>
+            <div class="tableDataNew">
+              <table class="tableNew" width="100%"  border="0" cellpadding="0" cellspacing="0">
+                <tr align="left">
+                  <th width="5" height="48">&nbsp;</th>
+                  <th align="left" width="100">Item</th>
+                  <th>Description</th>
+                  <th width="100">Qty</th>
+                  <th width="100">Unit Price</th>
+                  <th width="125">Disc%</th>
+                  <th width="144">Account</th>
+                  <th width="128">Amount AUD</th>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Diamond</td>
+                  <td>CVVs1 Shape</td>
+                  <td><strong>1</strong></td>
+                  <td>$3,293</td>
+                  <td>3%</td>
+                  <td>Existing Account</td>
+                  <td>$3,293</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Diamond</td>
+                  <td>CVVs1 Shape</td>
+                  <td><strong>1</strong></td>
+                  <td>$3,293</td>
+                  <td>3%</td>
+                  <td>Existing Account</td>
+                  <td>$3,293</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Diamond</td>
+                  <td>CVVs1 Shape</td>
+                  <td><strong>1</strong></td>
+                  <td>$3,293</td>
+                  <td>3%</td>
+                  <td>Existing Account</td>
+                  <td>$3,293</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Diamond</td>
+                  <td>CVVs1 Shape</td>
+                  <td><strong>1</strong></td>
+                  <td>$3,293</td>
+                  <td>3%</td>
+                  <td>Existing Account</td>
+                  <td>$3,293</td>
+                </tr>
+              </table>
+            </div>
+            <div class="totalVal">
+              <div><span>Sub Total</span><span>$4,000</span></div>
+              <div><span>GST</span><span>$400</span></div>
+              <span class="devider"></span>
+              <div><span>Total</span><span>$4,400</span></div>
+            </div>
+            <div class="cb"></div>
+            <div class="btnDisplay">
+              <button value="Cancel" class="cmnBtn cancelBtn marL0" id="backtoStep02"  type="button">Back</button>
+              <button value="Save" class="cmnBtn blueBtn" type="button">Confirm</button>
+            </div>
+          </form>
+        </div>
+        <!-- Step 03 End --> 
+        
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- Add tem Light Box -->
+<div class="lightBox" id="addItem">
+  <div class="lightBoxMid" style="width:970px">
+    <div class="lightBoxTitle">DE Collective <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p">
+      <div class="quoteAddItems">
+        <ul>
+          <li><a href="javascript:;">Diamonds</a></li>
+          <li><a href="javascript:;">Clrd Diamonds</a></li>
+          <li><a href="javascript:;">Rings</a></li>
+          <li><a href="javascript:;">Earing</a></li>
+          <li><a href="javascript:;">Pendants</a></li>
+          <li><a href="javascript:;">Chains</a></li>
+          <li><a href="javascript:;">Miscellaneous</a></li>
+          <li><a href="javascript:;">Jobs Packet</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add tem Light Box End--> 
+
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+<script>
+if (typeof jQuery == 'undefined') {
+    document.write(unescape("%3Cscript src='../public/js/jquery-1.11.0.min' type='text/javascript'%3E%3C/script%3E"));
+}
+</script> 
+<script src="../public/js/dropkick.js"></script> 
+<script src="../public/js/common.js"></script> 
+<script>
+	$(document).ready(function(e) {
+		$('#step01Move').on('click', function(){
+			$('#quoteStep1').hide();
+			$('#quoteStep2').show();
+			$('.quoteStep02').addClass('filled');
+		});
+		$('#step02Move').on('click', function(){
+			$('#quoteStep2').hide();
+			$('#quoteStep3').show();
+			$('.quoteStep03').addClass('filled');
+		});       
+		$('#backtoStep01').on('click', function(){
+			$('#quoteStep1').show();
+			$('#quoteStep2').hide();
+		});
+		$('#backtoStep02').on('click', function(){
+			$('#quoteStep2').show();
+			$('#quoteStep3').hide();
+		});  
+    });
+</script>
+</body>
+</html>

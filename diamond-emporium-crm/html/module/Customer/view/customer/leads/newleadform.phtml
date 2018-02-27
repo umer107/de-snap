@@ -1,0 +1,123 @@
+ <?php
+	$form->prepare ();
+	echo $this->form ()->openTag ( $form );
+	echo $this->formElement ( $this->form->get ( 'referred_by_customer' ) );
+	?>
+<div class="alphaClmn">
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('lead_owner')->getLabel(); ?><span
+			class="asterisk">*</span></label>
+		<div class="inputDiv">
+			<div class="selectDrop width150">
+				<div class="assignedDrop">
+					<div class="dropValue">Unassigned</div>
+					<!--<div style="display:none;"><?php //echo $this->formElement($this->form->get('lead_owner')); ?></div>-->
+					<input type="hidden" name="lead_owner" id="lead_owner" />
+					<ul>
+						<?php foreach($ownerOptions as $userId => $userText){ ?>
+						<li	onclick="$(this).closest('form').find('input[name=lead_owner]').val(<?php echo $userId; ?>);"><?php echo $userText; ?></li>
+						<?php } ?>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('title')->getLabel(); ?><span
+			class="asterisk">*</span></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('title')); ?></div>
+	</div>
+    <div class="formRow">
+        <label class="labelControll"><?php echo $this->form->get('gender')->getLabel(); ?><span class="asterisk">*</span></label>
+        <div class="inputDiv"><?php echo $this->formElement($this->form->get('gender')); ?></div>
+    </div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('first_name')->getLabel(); ?><span
+			class="asterisk">*</span></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('first_name')); ?></div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('last_name')->getLabel(); ?><span
+			class="asterisk">*</span></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('last_name')); ?></div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('mobile')->getLabel(); ?></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('mobile')); ?>
+            <div class="notAvail" id="notAvailMobile">
+				<!--<label class="notAvail padL0">
+					<input type="checkbox" value="1" name="mobile_check" onclick="matchedCustomer('mobile', $('#mobile').val());" />
+					<span class="checkInfo checked"></span>
+				</label>-->
+			</div>
+		</div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('email')->getLabel(); ?><span
+			class="asterisk">*</span></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('email')); ?>
+            <div class="notAvail" id="notAvailEmail">
+				<!--<label class="notAvail padL0">
+					<input type="checkbox" value="1" name="email_check" onclick="matchedCustomer('email', $('#email').val());" />
+					<span class="checkInfo checked"></span>
+				</label>-->
+			</div>
+		</div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('product')->getLabel(); ?><span
+			class="asterisk">*</span></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('product')); ?></div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('budget')->getLabel(); ?><span
+			class="asterisk">*</span></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('budget')); ?></div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('looking_for')->getLabel(); ?></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('looking_for')); ?></div>
+	</div>
+</div>
+<div class="betaClmn">
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('how_heard')->getLabel(); ?></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('how_heard')); ?></div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('referred_by_name')->getLabel(); ?></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('referred_by_name')); ?><a
+				href="javascript:;" class="cmnBtn blueBtn lightBoxClick"
+				data-popup="customerlookup"
+				onclick="customersLookup(<?php echo $recordsPerPage; ?>, 'referred_by_customer', 'referred_by_name');">Lookup</a>
+		</div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('postcode')->getLabel(); ?></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('postcode')); ?></div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('state')->getLabel(); ?><span
+			class="asterisk">*</span></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('state')); ?></div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('lead_source')->getLabel(); ?><span
+			class="asterisk">*</span></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('lead_source')); ?></div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('reference_product')->getLabel(); ?></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('reference_product')); ?></div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('preferred_contact')->getLabel(); ?></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('preferred_contact')); ?></div>
+	</div>
+	<div class="formRow">
+		<label class="labelControll"><?php echo $this->form->get('priority')->getLabel(); ?></label>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('priority')); ?></div>
+	</div>
+</div>
+<div class="formButtons tc fl width100p"><?php echo $this->formElement($this->form->get('save')); ?> <?php echo $this->formElement($this->form->get('cancel')); ?></div>
+<?php echo $this->form()->closeTag(); ?>

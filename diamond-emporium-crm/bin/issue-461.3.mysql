@@ -1,0 +1,9 @@
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `de_leaves`
+--
+ALTER TABLE `de_leaves`
+  MODIFY `Leave_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;

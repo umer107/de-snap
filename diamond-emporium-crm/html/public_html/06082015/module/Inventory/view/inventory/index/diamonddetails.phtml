@@ -1,0 +1,484 @@
+<form name="frm_diamond" id="frm_diamond" method="post" enctype="multipart/form-data" action="/uploadfile">
+  <div class="contentArea padLR0">
+    <div class="pageLoader"></div>
+    <div class="fl width100p contentINN">
+      <div class="customerDetails">
+        <label>Supplier Details</label>
+        <div class="custonerInfo">
+          <h2><?php echo $viewData['company_name']; ?></h2>
+          <p>Ph: <?php echo $viewData['supplier_phone']; ?></p>
+          <p>E: <a href="mailto:<?php echo $viewData['supplier_email']; ?>"><?php echo $viewData['supplier_email']; ?></a></p>
+        </div>
+      </div>
+      <span class="deviderLine"></span> </div>
+    <div class="customerTabing fl width100p ctb">
+      <ul>
+        <li class="current"><a href="javascript:;">Diamond Details</a></li>
+      </ul>
+      <div class="customTabbingInner">
+        <!-- Lead Details -->
+        <div class="customerTabingInfo" style="display:block">
+          <div class="leadSummary QuoteMain"> <a class="cmnBtn" id="saveDiamondButton" href="javascript:;" onclick="updateDiamond($('#frm_diamond'));">Edit</a> &nbsp; <a class="cmnBtn redBtn" href="javascript:;" onclick="deleteDiamond(<?php echo $viewData['id']; ?>);">Delete</a> &nbsp;
+            <!-- Lead Information-->
+            <div class="tableData noOverflow width100p">
+				<input id="DiamondId" type="hidden" value="<?php echo $viewData['id']; ?>" name="DiamondId">
+				<input id="supplier_id" type="hidden" value="<?php echo $viewData['supplier_id']; ?>" name="supplier_id">
+				<input id="image" type="hidden" value="<?php echo $viewData['image']; ?>" name="image">
+				<input id="invoice" type="hidden" value="<?php echo $viewData['invoice']; ?>" name="invoice">
+              <div  class="tableHading width100p"> Diamond Details <?php echo '- #'.$viewData['stock_code']; ?></div>
+              <div class="fl width100p commonForm rowSpace suplierInfo editViewForm">
+                <div class="alphaClmn">
+                  <div class="formRow">
+                    <label class="labelControll">Diamond Type</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown" id="diamond_type" name="diamond_type">
+                        <?php foreach($this->fetchDiamonTypesOptions as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['diamond_type'] == $title){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="diamond_type_diamond">
+                      <?php 
+					  echo $viewData['diamond_type']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Cert. No.</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="cert_no" name="cert_no" value="<?php echo $viewData['cert_no']; ?>" maxlength="64"/>
+                    </div>
+                    <p class="hiddenUnqValues" id="cert_no_diamond">
+                      <?php 
+					  echo $viewData['cert_no']; ?>
+                    </p>
+                  </div>
+				  <div class="formRow">
+                    <label class="labelControll">Cert. Url</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="cert_url" name="cert_url" value="<?php echo $viewData['cert_url']; ?>"/>
+                    </div>
+                    <p class="hiddenUnqValues" id="cert_url_diamond">
+                      <?php 
+					  echo $viewData['cert_url']; ?>
+                    </p>
+                  </div>
+				  <div class="formRow">
+                    <label class="labelControll">Video Url</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="video_url" name="video_url" value="<?php echo $viewData['video_url']; ?>"/>
+                    </div>
+                    <p class="hiddenUnqValues" id="video_url_diamond">
+                      <?php 
+					  echo $viewData['video_url']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Color</label>
+                    <div class="inputDiv displayHide" id="color_type">
+                      <select class="dropdown" id="color" name="color">
+                        <?php foreach($this->fetchColorOptions as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['color'] == $title){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+					<div class="inputDiv displayHide" id="white_type">
+                      <select class="dropdown" id="white_type" name="white_type">
+					  	<?php $white_type_options = array('0' => 'Select', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J', 'K' => 'K', 'L' => 'L', 'M' => 'M', 'N' => 'N', 'O' => 'O', 'P' => 'P', 'Q' => 'Q', 'R' => 'R', 'S' => 'S', 'T' => 'T', 'U' => 'U', 'V' => 'V', 'W' => 'W', 'X' => 'X', 'Y' => 'Y', 'Z' => 'Z'); ?>
+                        <?php foreach($white_type_options as $key => $value){?>
+                        <option value="<?php echo $key; ?>" <?php if($viewData['white_type'] == $key){?> selected="selected" <?php } ?>><?php echo $value; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="color_type_text" style="display:<?php echo $viewData['diamond_type'] == 'White' ? 'none' : 'block'; ?>">
+                      <?php echo $viewData['color']; ?>
+                    </p>
+					<p class="hiddenUnqValues" id="white_type_text" style="display:<?php echo $viewData['diamond_type'] == 'Coloured' ? 'none' : 'block'; ?>">
+                      <?php echo $viewData['white_type']; ?>
+                    </p>
+                  </div>
+				  <div class="formRow">
+                    <label class="labelControll">Shape</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown" id="shape" name="shape">
+                        <?php foreach($this->fetchShapeOptions as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['shape'] == $title){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="shape_diamond">
+                      <?php 
+					  echo $viewData['shape']; ?>
+                    </p>
+                  </div>
+				  <div class="formRow">
+                    <label class="labelControll">Polish</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown" id="polish" name="polish">
+                        <?php foreach($this->fetchPolishOptions as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['polish'] == $title){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="polish_diamond">
+                      <?php 
+					  echo $viewData['polish']; ?>
+                    </p>
+                  </div>
+				  <div class="formRow">
+                    <label class="labelControll">Symmetry</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown" id="symmetry" name="symmetry">
+                        <?php foreach($this->fetchSymmetryOptions as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['symmetry'] == $title){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="symmetry_diamond">
+                      <?php 
+					  echo $viewData['symmetry']; ?>
+                    </p>
+                  </div>
+                  
+                  <div class="formRow">
+                    <label class="labelControll">Cut</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="cut" name="cut" value="<?php echo $viewData['cut']; ?>"/>
+                    </div>
+                    <p class="hiddenUnqValues" id="cut_diamond">
+                      <?php 
+					  echo $viewData['cut']; ?>
+                    </p>
+                  </div>
+				  
+				  <div class="formRow">
+                    <label class="labelControll">Carat</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="carat" name="carat" value="<?php echo $viewData['carat']; ?>"/>
+                    </div>
+                    <p class="hiddenUnqValues" id="carat_diamond">
+                      <?php 
+					  echo $viewData['carat']; ?>
+                    </p>
+                  </div>
+				  
+				  <div class="formRow">
+                    <label class="labelControll">Clarity</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown" id="clarity" name="clarity">
+                        <?php foreach($this->fetchClarityOptions as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['clarity'] == $title){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="symmetry_diamond">
+                      <?php 
+					  echo $viewData['clarity']; ?>
+                    </p>
+                  </div>
+                  
+                  <div class="formRow">
+                    <label class="labelControll">Intensity</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown" id="intensity" name="intensity">
+                        <?php foreach($this->fetchIntensityOptions as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['intensity'] == $title){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="intensity_diamond">
+                      <?php 
+					  echo $viewData['intensity']; ?>
+                    </p>
+                  </div>
+				  
+				  <div class="formRow">
+                    <label class="labelControll">Overtone</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown" id="overtone" name="overtone">
+                        <?php foreach($this->fetchOvertoneOptions as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['overtone'] == $title){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="overtone_diamond">
+                      <?php 
+					  echo $viewData['overtone']; ?>
+                    </p>
+                  </div>
+                  
+                </div>
+                <div class="betaClmn">
+                  <div class="formRow">
+                    <label class="labelControll">Lab</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown" id="lab" name="lab">
+                        <?php foreach($this->fetchLabOptions as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['lab'] == $title){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="lab_diamond">
+                      <?php 
+					  echo $viewData['lab']; ?>
+                    </p>
+                  </div>
+				  
+				  
+				  <div class="formRow">
+                    <label class="labelControll">Depth</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt pureNumaric" id="depth" name="depth" maxlength="3" value="<?php echo $viewData['depth']; ?>"/>
+                    </div>
+                    <p class="hiddenUnqValues" id="depth_diamond">
+                      <?php 
+					  echo $viewData['depth']; ?>
+                    </p>
+                  </div>
+				  <div class="formRow">
+                    <label class="labelControll">Table</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt pureNumaric" id="table" name="table" maxlength="3" value="<?php echo $viewData['diamond_table']; ?>"/>
+                    </div>
+                    <p class="hiddenUnqValues" id="table_diamond">
+                      <?php 
+					  echo $viewData['diamond_table']; ?>
+                    </p>
+                  </div>
+				  <div class="formRow">
+                    <label class="labelControll">Flurosence</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="flurosence" name="flurosence" value="<?php echo $viewData['flurosence']; ?>"/>
+                    </div>
+                    <p class="hiddenUnqValues" id="flurosence_diamond">
+                      <?php 
+					  echo $viewData['flurosence']; ?>
+                    </p>
+                  </div>
+				   <div class="formRow">
+                    <label class="labelControll">Measurements</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="measurement" name="measurement" value="<?php echo $viewData['measurement']; ?>"/>
+                    </div>
+                    <p class="hiddenUnqValues" id="measurement_diamond">
+                      <?php 
+					  echo $viewData['measurement']; ?>
+                    </p>
+                  </div>
+				  
+				  
+				  
+                  <div class="formRow">
+                    <label class="labelControll">Description</label>
+                    <div class="inputDiv displayHide">
+                      <textarea id="description" name="description" rows="6"><?php echo $viewData['description']; ?></textarea>
+                    </div>
+                    <p class="hiddenUnqValues" id="description_diamond">
+                      <?php 
+					  echo $viewData['description']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Upload Image</label>
+                    <div class="inputDiv displayHide">
+                      <div class="inputfile"><span class="cmnBtn blueBtn marL0">Upload</span>
+                        <input type="file" name="item_image" id="item_image" />
+                      </div>
+                      <div class="uploadedImgDisplay" id="preview"></div>
+                    </div>
+					<p class="hiddenUnqValues" id="image_diamond">
+					<?php if($viewData['image'] != ''){ ?>
+                      <img src="/inventory_images/<?php echo $viewData['image']; ?>" style="max-width:100%; max-height:90%">
+					  <?php } ?>
+                    </p>
+                  </div>
+                </div>
+                
+				<div class="headSettings">
+          <!--<h2 class="cmnHeader">Head Settings</h2>-->
+          <div class="alphaClmn">
+            <div class="formRow">
+              <label class="labelControll">Attach Invoice</label>
+              <div class="inputDiv displayHide">
+                <div class="inputfile"><span class="cmnBtn blueBtn marL0">Upload</span>
+                  <input type="file" id="item_invoice" name="item_invoice">
+                </div>
+				<div class="uploadedInvoiceDisplay" id="invoicePreview"></div>
+              </div>
+			  <p class="hiddenUnqValues" id="invoice_diamond">
+				<a href="/invoice/<?php echo $viewData['invoice']; ?>" id="invoice_link" target="_blank" <?php if(empty($viewData['invoice'])) echo 'style="display:none;"' ?>>Invoice</a>
+              </p>
+            </div>
+            <div class="formRow">
+              <label class="labelControll">Supplier Name</label>
+              <div class="inputDiv displayHide"><input type="text" value="<?php echo $viewData['supplier_name']; ?>" class="inputTxt width60p" id="supplier_name" name="supplier_name" readonly="readonly"><a onclick="suppliersLookup(<?php echo $this->recordsPerPage; ?>, 'supplier_id', 'supplier_name');" data-popup="supplierlookup" class="cmnBtn blueBtn lightBoxClick" href="javascript:;">Lookup</a></div>
+			  <p class="hiddenUnqValues" id="supplier_name_diamond">
+                      <?php 
+					  echo $viewData['supplier_name']; ?>
+                    </p>
+            </div>
+          </div>
+          <div class="betaClmn">
+            <div class="formRow">
+              <label class="labelControll">Price</label>
+              <div class="inputDiv displayHide"><input type="text" value="<?php echo $viewData['price']; ?>" class="inputTxt pureNumaric" id="price" name="price"></div>
+			   <p class="hiddenUnqValues" id="price_diamond">
+                      <?php echo $viewData['price']; ?>
+                    </p>
+            </div>
+          </div>
+        </div>
+              </div>
+            </div>
+            <div class="tableData noOverflow width100p">
+              <div  class="tableHading width100p"> Consignment <a href="javascript:;" data-popup="consignItem" class="cmnBtn fr marT0 lightBoxClick" onclick="openConsignForm(<?php echo $viewData['id']; ?>, 'diamond', 'edit');">Consign</a></div>
+              <div class="fl width100p suplierInfo">
+                <div class="commonForm rowSpace addItemForm consignPopup consignPopupView">
+                  <div class="headSettings padT0">
+                    <h2 class="cmnHeader ">Inventory Status</h2>
+                    <div class="alphaClmn">
+                      <div class="formRow">
+                        <label class="labelControll">Inventory Status</label>
+                        <p class="inputDiv" id="inventory_status_name_weddring"><?php echo $this->ConsignData['inventory_status_name']; ?></p>
+                      </div>
+                      <div class="formRow">
+                        <label class="labelControll">Status Reason</label>
+                        <div class="inputDiv" id="inventory_status_reason_weddring"><?php echo $this->ConsignData['inventory_status_reason']; ?></div>
+                      </div>
+                    </div>
+                    <div class="betaClmn">
+                      <div class="formRow">
+                        <label class="labelControll">Inventory Type</label>
+                        <div class="inputDiv" id="inventory_type_weddring"><?php echo $this->ConsignData['inventory_type']; ?></div>
+                      </div>
+                      <div class="formRow">
+                        <label class="labelControll">Consignee Owner</label>
+                        <div class="inputDiv" id="owner_name_weddring"><?php echo $this->ConsignData['owner_name']; ?></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="headSettings">
+                    <h2 class="cmnHeader">Inventory Reservation</h2>
+                    <div class="alphaClmn">
+                      <div class="formRow">
+                        <label class="labelControll">Reserve Time</label>
+                        <div class="inputDiv" id="reserve_time_weddring"><?php echo $this->ConsignData['reserve_time']; ?></div>
+                      </div>
+                    </div>
+                    <div class="betaClmn">
+                      <div class="formRow">
+                        <label class="labelControll">Reserve Notes</label>
+                        <div class="inputDiv" id="reserve_notes_weddring"><?php echo $this->ConsignData['reserve_notes']; ?></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="headSettings">
+                    <h2 class="cmnHeader">Item Location</h2>
+                    <div class="alphaClmn">
+                      <div class="formRow">
+                        <label class="labelControll">Tracking Status</label>
+                        <div class="inputDiv" id="inventory_tracking_status_weddring"><?php echo $this->ConsignData['inventory_tracking_status']; ?></div>
+                      </div>
+                      <div class="formRow">
+                        <label class="labelControll">Tracking Reason</label>
+                        <div class="inputDiv" id="inventory_tracking_reason_weddring"><?php echo $this->ConsignData['inventory_tracking_reason']; ?></div>
+                      </div>
+                    </div>
+                    <div class="betaClmn">
+                      <div class="formRow">
+                        <label class="labelControll">Tracking ID</label>
+                        <div class="inputDiv" id="tracking_id_weddring"><?php echo $this->ConsignData['tracking_id']; ?></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!--BOF Supplier lookup list-->
+<?php echo $this->partial('inventory/index/supplierlookup.phtml', array('recordsPerPage' => $this->recordsPerPage, 'lookupSupplierId' => 'supplier_id', 'lookupSupplierName' => 'supplier_name')); ?>
+<!--EOF Supplier lookup list-->
+<!--BOF Add Consign Form -->
+<div class="lightBox" id="consignItem">
+	<div class="lightBoxMid" style="width:890px">
+		<div class="lightBoxTitle">Consign Item	  -  Diamond <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+		<div class="lightBoxContent fl width100p" id="consign_form_content">
+		</div>
+	</div>
+</div>
+<!--EOF Add Consign Form -->
+<script type="text/javascript">
+searchByEnterKey('lookupsrc', 'supplierLookupSearch');
+$(document).ready(function() {
+	<?php if($viewData['diamond_type'] != "Coloured"){?>
+			$("#intensity, #overtone").val(0);
+			$("#intensity, #overtone").attr("disabled", "disabled");
+			$("#intensity, #overtone").dropkick('refresh');
+			$("#intensity_diamond, #overtone_diamond").text('');
+	<?php } ?>
+	<?php if($viewData['image'] != ''){ ?>
+	$('#preview').html('<img src="/inventory_images/<?php echo $viewData['image']; ?>">');
+	<?php } ?>	
+	$('#item_image').live('change', function(){ 
+		$("#preview").html('');
+		//$("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+		$("#frm_diamond").ajaxForm({
+			//target: '#preview',
+			success: function(response){
+				if(response == 1){
+					$('#preview').html('Invalid file format');
+				}else if(response == 2){
+					$('#preview').html('Unable to upload file');
+				}else{
+					$('#image').val(response);
+					$('#item_image').val('');
+					$('#preview').html('<img src="/inventory_images/'+response+'" height="98px" width="234px">');
+				}
+			}
+		}).submit();
+	});
+	$('#item_invoice').live('change', function(){ 
+		//$("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+		$("#frm_diamond").ajaxForm({
+			success: function(response){
+				if(response){					
+					if(response == 1){
+						$('#invoicePreview').html('Invalid file format');
+					}else if(response == 2){
+						$('#invoicePreview').html('Unable to upload file');
+					}else{
+						$('#invoicePreview').html(response);
+						$('#invoice').val(response);
+						$('#invoice_link').attr('href', '/invoice/'+response);
+						$('#invoice_link').show();
+						$('#item_invoice').val('');
+					}
+				}
+			}
+		}).submit();
+	});
+	$('#diamond_type').dropkick({
+  		change: function () {
+			var diamondTypeSelection = $("#diamond_type option[value="+$('#diamond_type option:selected').val()+"]").text();
+			if(diamondTypeSelection == "Coloured"){
+				$("#intensity, #overtone").removeAttr("disabled");
+				$("#intensity, #overtone").dropkick('refresh');
+				
+				$("#color_type").show();
+				$("#white_type").hide();
+			} else {
+				$('#intensity, #overtone').val(0);
+				$("#intensity, #overtone").attr("disabled", "disabled");
+				$("#intensity, #overtone").dropkick('refresh');
+				
+				$("#color_type").hide();
+				$("#white_type").show();
+			}
+		}
+	});
+});
+</script>

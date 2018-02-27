@@ -1,0 +1,17 @@
+CREATE TABLE `de_flurosence_lookup` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `flurosence` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `de_flurosence_lookup` values (1, 'None');
+INSERT INTO `de_flurosence_lookup` values (2, 'Very Slight');
+INSERT INTO `de_flurosence_lookup` values (3, 'Faint');
+INSERT INTO `de_flurosence_lookup` values (4, 'Medium');
+INSERT INTO `de_flurosence_lookup` values (5, 'Strong');
+INSERT INTO `de_flurosence_lookup` values (6, 'Very Strong');
+
+UPDATE `de_inventory_diamonds` SET `flurosence` = NULL; 
+
+ALTER TABLE `de_inventory_diamonds` 
+CHANGE COLUMN `flurosence` `flurosence` INT(11) NULL DEFAULT NULL ;

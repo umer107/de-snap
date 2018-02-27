@@ -1,0 +1,276 @@
+<?php $viewData = $this->suppliersData[0]; 
+$servicesList = $this->servicesString;
+$serviceIds = array();
+$serviceNames = array();
+foreach($servicesList as $servicesData){
+	$serviceIds[] = $servicesData['service_id'];
+	$serviceNames[] = $servicesData['service_name'];
+}
+?>
+  <div class="contentArea padLR0">
+    <div class="pageLoader"></div>
+    <div class="fl width100p contentINN">
+      <div class="customerDetails">
+        <label>Supplier Details</label>
+        <div class="custonerInfo">
+          <h2 id="company_name_heading"><?php echo $viewData['company_name']; ?></h2>
+          <p id="company_phone_heading">Ph: <?php echo $viewData['phone']; ?></p>
+          <p id="company_email_heading">E: <a href="mailto:<?php echo $viewData['email']; ?>"><?php echo $viewData['email']; ?></a></p>
+        </div>
+      </div>
+      <span class="deviderLine" ></span> </div>
+    <div class="customerTabing fl width100p ctb">
+      <ul>
+        <li class="current"><a href="javascript:;">Supplier Details</a></li>
+        <li><a href="javascript:;">Emails <span id="email_tab"><?php echo $emailCount; ?></span></a></li>
+        <!--<li><a href="javascript:;">Meetings </a></li>-->
+      </ul>
+      <div class="customTabbingInner">
+        <!-- Lead Details -->
+        <div class="customerTabingInfo" style="display:block">
+          <div class="leadSummary">
+          	<a class="cmnBtn" id="saveSupplierButton" href="javascript:;" onclick="updateSupplier($('#frm_supplier'));">Edit</a> &nbsp;
+          	<?php if ($canDelete) : ?>
+          		<a class="cmnBtn redBtn" href="javascript:;" onclick="deleteSupplier(<?php echo $viewData['id']; ?>);">Delete</a> &nbsp;
+          	<?php endif; ?>
+            <!-- Lead Information-->
+			<form name="frm_supplier" id="frm_supplier" method="post" enctype="multipart/form-data">
+            <div class="tableData noOverflow width100p">
+              <div  class="tableHading width100p"> Supplier Details </div>
+              <div class="fl width100p commonForm suplierInfo">
+                <div class="alphaClmn">
+                  <div class="formRow">
+                    <label class="labelControll">Company Name<span class="asterisk">*</span></label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt textboxGlobalMaxLength" id="company_name" name="company_name" value="<?php echo $viewData['company_name']; ?>" />
+                    </div>
+                    <p class="hiddenUnqValues" id="company_name_sup">
+                      <?php 
+					  echo $viewData['company_name']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">First Name<span class="asterisk">*</span></label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt textboxGlobalMaxLength" id="first_name" name="first_name" value="<?php echo $viewData['first_name']; ?>" />
+                    </div>
+                    <p class="hiddenUnqValues" id="first_name_sup">
+                      <?php 
+					  echo $viewData['first_name']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Last Name<span class="asterisk">*</span></label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt textboxGlobalMaxLength" id="last_name" name="last_name" value="<?php echo $viewData['last_name']; ?>" />
+                    </div>
+                    <p class="hiddenUnqValues" id="last_name_sup">
+                      <?php 
+					  echo $viewData['last_name']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Address1</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" id="address1" name="address1" class="inputTxt editViewField" value="<?php echo $viewData['address1']; ?>" />
+                    </div>
+                    <p class="hiddenUnqValues" id="address1_sup">
+                      <?php 
+					  echo $viewData['address1']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Address2</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" id="address2" name="address2" class="inputTxt editViewField" value="<?php echo $viewData['address2']; ?>" />
+                    </div>
+                    <p class="hiddenUnqValues" id="address2_sup">
+                      <?php 
+					  echo $viewData['address2']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Postcode</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" id="postcode" name="postcode" class="inputTxt editViewField" value="<?php echo $viewData['postcode']; ?>" />
+                    </div>
+                    <p class="hiddenUnqValues" id="postcode_sup">
+                      <?php 
+					  echo $viewData['postcode']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">State</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown " id="state_id" name="state_id">
+                        <?php foreach($this->statesLookup as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['state_id'] == $id){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="state_id_sup">
+                      <?php 
+					  echo $this->statesLookup[$viewData['state_id']]; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Country</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown " id="country_id" name="country_id">
+                        <?php foreach($this->countryLookup as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['country_id'] == $id){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="country_id_sup">
+                      <?php 
+					  echo $this->countryLookup[$viewData['country_id']]; ?>
+                    </p>
+                  </div>
+				  <div class="formRow">
+                    <label class="labelControll">Email</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="email" name="email" value="<?php echo $viewData['email']; ?>" />
+                    </div>
+                    <p class="hiddenUnqValues" id="email_sup">
+                      <?php 
+					  echo $viewData['email']; ?>
+                    </p>
+                  </div>
+                </div>
+                <div class="betaClmn">
+                  <div class="formRow">
+                    <label class="labelControll">Mobile</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="mobile" name="mobile" value="<?php echo $viewData['mobile']; ?>" />
+                    </div>
+                    <p class="hiddenUnqValues" id="mobile_sup">
+                      <?php 
+					  echo $viewData['mobile']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Phone<span class="asterisk">*</span></label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt pureNumaric" maxlength="20" id="phone" name="phone" value="<?php echo $viewData['phone']; ?>" />
+                    </div>
+                    <p class="hiddenUnqValues" id="phone_sup">
+                      <?php 
+					  echo $viewData['phone']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Website</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt isUrlValid" id="website" name="website" value="<?php echo $viewData['website']; ?>" />
+                    </div>
+                    <p class="hiddenUnqValues" id="website_sup">
+                    	<a href="<?php echo $viewData['website']; ?>" target="_blank"><?php echo $viewData['website']; ?></a>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Supplier Type</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown " id="supplier_type" name="supplier_type">
+                        <?php foreach($this->supplierTypesLookup as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['supplier_type'] == $id){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="supplier_type_sup">
+                      <?php 
+					  echo $this->supplierTypesLookup[$viewData['supplier_type']]; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Rap. ID (Optional)</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt textboxGlobalMaxLength" id="rap_id" name="rap_id" value="<?php echo $viewData['rap_id']; ?>" />
+                    </div>
+                    <p class="hiddenUnqValues " id="rap_id_sup">
+                      <?php 
+					  echo $viewData['rap_id']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Comments</label>
+                    <div class="inputDiv displayHide">
+                      <textarea class="inputTxt textboxGlobalMaxLength" id="comment" name="comment"><?php echo $viewData['comment']; ?></textarea>
+                    </div>
+                    <p class="hiddenUnqValues " id="comment_sup">
+                      <?php 
+					  echo $viewData['comment']; ?>
+                    </p>
+                  </div>
+                </div>
+                
+                
+                <div class="cb"></div>
+		        <div class="serviceOfferd">
+                <h3>Services Offered</h3>
+                <div class="formRow selectService displayHide">
+                    <?php foreach($this->serviceTypesLookup as $id => $title){ ?>
+                    <label class="labelCheck">
+                    <input type="checkbox" name="service[]" class="dropdown inputTxt chkVals" value="<?php echo $id; ?>" <?php if(in_array($id, $serviceIds)){ ?> checked="checked" <?php } ?> id="<?php echo $title; ?>"><i></i><?php echo $title; ?></label>
+                    <?php } ?>
+                </div>
+                
+                <p class="hiddenUnqValues showServices" id="service_sup">
+                    <?php if(count($serviceNames) > 0){
+					  	echo implode(", ",$serviceNames);
+					  }else{
+					 	echo 'No services are added'; 
+					  }
+					 ?>
+                  </p>
+                  <input type="hidden" name="supplierId" value="<?php echo $viewData['id']; ?>" />
+                
+                </div>
+                
+                
+                
+                
+              </div>
+            </div>
+			</form>
+            <!-- Lead Information End-->
+          </div>
+        </div>
+        <!-- Lead Details End-->
+        <!-- Emails -->
+        <div class="customerTabingInfo">
+          <div class="pad20">
+		  	<h2 class="cmnHeader">Milestone Emails</h2>
+			<div class="cmnSort">
+				<div class="mainSearch marL0"><input name="email_searchInput" id="email_searchInput" type="text" class="searchInput" placeholder="Search.." /><input type="button" class="inputGo" value="Go!" onclick="getMilestoneEmails(<?php echo $recordsPerPage; ?>, <?php echo $viewData['id']; ?>, $('#email_searchInput').val(), 'jqxEmails');" /></div>
+			</div>
+			<div class="tableData tableNeView" style="overflow:visible">
+				<div class="tableHading" style="width:100%"> Email List </div>
+				<div class="formTable manageMembers" id="jqxEmails"> </div>
+			</div>
+		  </div>
+        </div>
+        <!-- Emails End-->
+        <!-- Meetings -->
+        <!--<div class="customerTabingInfo">
+          <div class="pad20"> Meetings Coming Soon.... </div>
+        </div>-->
+        <!-- Meetings End-->
+      </div>
+    </div>
+  </div>
+
+<script>
+	$(document).ready(function(e) {
+        if(jQuery('.selectService').length>0){		
+			jQuery('.selectService').each(function(index, element) {
+				var userInputDiv = jQuery(this).children('label');
+				for( var i = 0; i < userInputDiv.length; i+=5 ) {
+					userInputDiv.slice(i, i+5).wrapAll('<div class="column"></div>');
+				}    
+        	});
+		}
+		
+		getMilestoneEmails(<?php echo $recordsPerPage; ?>, <?php echo $viewData['id']; ?>, '', 'jqxEmails');
+    });
+</script>

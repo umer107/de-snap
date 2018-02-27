@@ -1,0 +1,20 @@
+<div class="fl width100p contentINN">
+    <div class="customerDetails">
+		<div class="pageLoader"></div>
+		<label>Customer Details</label>
+		<div class="custonerInfo">
+			<h2 id="top_fullname"><?php echo $this->customerData['fullname'] ?></h2>
+			<p id="top_mobile">Ph: <?php echo $this->customerData['mobile'] ?></p>
+			<p id="top_email">E: <a href="mailto:<?php echo $this->customerData['email'] ?>"><?php echo $this->customerData['email'] ?></a></p>
+		</div>
+    </div>
+	<div class="customerDetails" id="partner_info" <?php if(empty($this->customerData['partner_id'])) echo 'style="display:none;"'; ?>>
+		<label>Partner Details</label>
+		<div class="custonerInfo">
+			<h2 id="top_partner_fullname"><?php echo $this->partnerData['fullname'] ?></h2>
+			<p id="top_partner_mobile">Ph: <?php echo $this->partnerData['mobile'] ?></p>
+			<p id="top_partner_email">E: <a href="mailto:<?php echo $this->partnerData['email'] ?>"><?php echo $this->partnerData['email'] ?></a></p>
+		</div>
+	</div>
+    <span class="deviderLine"></span>
+</div>

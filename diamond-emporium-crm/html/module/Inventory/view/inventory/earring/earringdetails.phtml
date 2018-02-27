@@ -1,0 +1,392 @@
+<?php
+	$additionaData = $this->addtionalData;
+	$countAdditionalData = count($additionaData);
+?>
+<form name="frm_earring" id="frm_earring" method="post" enctype="multipart/form-data" action="/uploadfile">
+  <div class="contentArea padLR0">
+    <div class="pageLoader"></div>
+    <div class="fl width100p contentINN">
+      <div class="customerDetails">
+        <label>Supplier Details</label>
+        <div class="custonerInfo">
+          <h2><?php echo $viewData['company_name']; ?></h2>
+          <p>Ph: <?php echo $viewData['supplier_phone']; ?></p>
+          <p>E: <a href="mailto:<?php echo $viewData['supplier_email']; ?>"><?php echo $viewData['supplier_email']; ?></a></p>
+        </div>
+      </div>
+      <span class="deviderLine" ></span> </div>
+    <div class="customerTabing fl width100p ctb">
+      <ul>
+        <li class="current"><a href="javascript:;">Ear Ring Details</a></li>
+      </ul>
+      <div class="customTabbingInner">
+        <!-- Lead Details -->
+        <div class="customerTabingInfo" style="display:block">
+          <div class="leadSummary QuoteMain">
+          <a class="cmnBtn" id="saveEarRingButton" href="javascript:;" onclick="updateEarring($('#frm_earring'));">Edit</a> &nbsp;
+          <?php if ($canDelete) : ?>
+	          <a class="cmnBtn redBtn" href="javascript:;" onclick="deleteEarRing(<?php echo $viewData['id']; ?>);">Delete</a> &nbsp;
+          <?php endif; ?>
+            <!-- Lead Information-->
+            <div class="tableData noOverflow width100p">
+				<input id="earRingId" type="hidden" value="<?php echo $viewData['id']; ?>" name="earRingId">
+				<input id="supplier_id" type="hidden" value="<?php echo $viewData['supplier_id']; ?>" name="supplier_id">
+				<input id="image" type="hidden" value="<?php echo $viewData['image']; ?>" name="image">
+				<input id="invoice" type="hidden" value="<?php echo $viewData['invoice']; ?>" name="invoice">
+              <div  class="tableHading width100p"> Ear Ring Details <?php echo '- #'.$viewData['stock_code']; ?></div>
+              <div class="fl width100p commonForm rowSpace suplierInfo editViewForm">
+                <div class="alphaClmn">
+                  <div class="formRow">
+                    <label class="labelControll">Style</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown" id="ring_style" name="ring_style">
+                        <?php foreach($this->ringTypesLookup as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['ring_style_lookupid'] == $id){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="ring_style_earring">
+                      <?php 
+					  echo $viewData['ring_style']; ?>
+                    </p>
+                  </div>
+				  <?php //if($viewData['ring_style'] == "Other"){?>
+				  <div class="formRow" id="other_ring_style_div" <?php //if($viewData['ring_style'] != "Other"){?> style="display:none"<?php //} ?>>
+                    <label class="labelControll"></label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" name="other_ring_style" id="other_ring_style" value="<?php echo $viewData['other_ring_style']; ?>" class="inputTxt" maxlength="64"/>
+                    </div>
+                    <p class="hiddenUnqValues" id="other_ring_style_earring">
+                      <?php echo $viewData['other_ring_style']; ?>
+                    </p>
+                  </div>
+				  <?php //} ?>
+                  <div class="formRow">
+                    <label class="labelControll">CAD Stock Code</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="cad_code" name="cad_code" value="<?php echo $viewData['cad_code']; ?>" />
+                    </div>
+                    <p class="hiddenUnqValues" id="cad_code_earring">
+                      <?php 
+					  echo $viewData['cad_code']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Metal Type</label>
+                    <div class="inputDiv displayHide">
+                      <select class="dropdown" id="metal_type" name="metal_type">
+                        <?php foreach($this->metalTypesLookup as $id => $title){?>
+                        <option value="<?php echo $id; ?>" <?php if($viewData['metal_type_lookupid'] == $id){?> selected="selected" <?php } ?>><?php echo $title; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                    <p class="hiddenUnqValues" id="metal_type_earring">
+                      <?php 
+					  echo $viewData['metal_type']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Dimensions</label>
+                    <div class="inputDiv displayHide">
+                      <input type="text" class="inputTxt" id="dimensions" name="dimensions" value="<?php echo $viewData['dimensions']; ?>" maxlength="20"/>
+                    </div>
+                    <p class="hiddenUnqValues" id="dimensions_earring">
+                      <?php 
+					  echo $viewData['dimensions']; ?>
+                    </p>
+                  </div>
+                </div>
+                <div class="betaClmn">
+                  <div class="formRow">
+                    <label class="labelControll">Description</label>
+                    <div class="inputDiv displayHide">
+                      <textarea id="description" name="description" style="height:100px"><?php echo $viewData['description']; ?></textarea>
+                    </div>
+                    <p class="hiddenUnqValues" id="description_earring">
+                      <?php 
+					  echo $viewData['description']; ?>
+                    </p>
+                  </div>
+                  <div class="formRow">
+                    <label class="labelControll">Upload Image</label>
+                    <div class="inputDiv displayHide">
+                      <div class="inputfile"><span class="cmnBtn blueBtn marL0">Upload</span>
+                        <input type="file" name="item_image" id="item_image" />
+                      </div>
+                      <div class="uploadedImgDisplay" id="preview"></div>
+                    </div>
+					<p class="hiddenUnqValues" id="image_earring">
+					<?php if($viewData['image'] != ''){ ?>
+                      <img src="/inventory_images/<?php echo $viewData['image']; ?>"  style="max-width:100%; max-height:200px" >
+					  <?php } ?>
+                    </p>
+                  </div>
+                </div>
+                <div class="headSettings addDetails">
+                  <h2 class="cmnHeader">Additional details (Optional)</h2>
+                  <div class="additionalDetailsTable">
+                  <table width="100%" cellpadding="0" cellspacing="0" id="additionalTbl" class="addFieldsTable">
+                    <tbody id="tbodyAdditional">
+                      <tr align="left" id="tableHeadingsId">
+                        <th>Setting Style</th>
+                        <th>Stone Shape</th>
+                        <th>Gem Type</th>
+                        <th>Qty</th>
+                        <th>Size (mm)</th>
+                        <th>Total Carat</th>
+                      
+                      </tr>
+                    <input type="hidden" value="<?php echo $countAdditionalData; ?>" id="hiddenRowCount">
+                    <?php if($countAdditionalData > 0){
+					$i=1;
+  	foreach($additionaData as $addData){
+  ?>
+                    <tr id="tr<?php echo $i; ?>" class="displayHide">
+                      <td><div class="selectDrop width100p">
+                          <select class="dropdown" name="style[]" id="style<?php echo $i; ?>">
+                            <?php foreach($this->additionalLookup['setting_style_options'] as $settings){?>
+                            <option value="<?php echo $settings['id']; ?>"<?php if($addData['setting_style_id'] == $settings['id']){?> selected="selected"<?php }?>><?php echo $settings['setting_style']; ?></option>
+                            <?php } ?>
+                          </select>
+                        </div></td>
+                      <td><div class="selectDrop width100p">
+                          <select class="dropdown" name="shape[]" id="shape<?php echo $i; ?>">
+                            <?php foreach($this->additionalLookup['shape_options'] as $shape){?>
+                            <option value="<?php echo $shape['id']; ?>"<?php if($addData['stone_shape_id'] == $shape['id']){?> selected="selected"<?php }?>><?php echo $shape['shape']; ?></option>
+                            <?php } ?>
+                          </select>
+                        </div></td>
+                      <td><div class="selectDrop width100p">
+                          <select class="dropdown" name="gemtype[]" id="gemtype<?php echo $i; ?>">
+                            <?php foreach($this->additionalLookup['gem_type_options'] as $gems){?>
+                            <option value="<?php echo $gems['id']; ?>"<?php if($addData['gem_type_id'] == $gems['id']){?> selected="selected"<?php }?>><?php echo $gems['gem_type']; ?></option>
+                            <?php } ?>
+                          </select>
+                        </div></td>
+                      <td><input type="text" value="<?php echo $addData['qty']; ?>" class="inputTxt pureNumaric" name="quantity[]" id="quantity<?php echo $i; ?>"></td>
+                      <td><input type="text" value="<?php echo $addData['size']; ?>" class="inputTxt" name="size[]" id="size<?php echo $i; ?>" data-numeric="yes"></td>
+                      <td><input type="text" value="<?php echo $addData['total_carat']; ?>" class="inputTxt" name="totalcarat[]" id="totalcarat<?php echo $i; ?>" data-numeric="yes"></td>
+                      <td><?php if ($canDelete) : ?><a href="javascript:;" onclick="deleteAddtionalAjax(<?php echo $addData['id']; ?>, 'earring', 'tr<?php echo $i; ?>')" title="Remove">Remove</a><?php endif; ?></td>
+                    </tr>
+                    <tr class="hiddenUnqValues hideTableStaticData">
+                      <td><?php echo $addData['setting_style']; ?></td>
+                      <td><?php echo $addData['shape']; ?></td>
+                      <td><?php echo $addData['gem_type']; ?></td>
+                      <td><?php echo $addData['qty']; ?></td>
+                      <td><?php echo $addData['size']; ?></td>
+                      <td><?php echo $addData['total_carat']; ?></td>
+                    </tr>
+                    <?php $i++; }
+  } else { ?>
+                    <tr id="tr1" class="displayHide">
+                      <td><div class="selectDrop width100p">
+                          <select class="dropdown" name="style[]" id="style1">
+                            <?php foreach($this->additionalLookup['setting_style_options'] as $settings){?>
+                            <option value="<?php echo $settings['id']; ?>"><?php echo $settings['setting_style']; ?></option>
+                            <?php } ?>
+                          </select>
+                        </div></td>
+                      <td><div class="selectDrop width100p">
+                          <select class="dropdown" name="shape[]" id="shape1">
+                            <?php foreach($this->additionalLookup['shape_options'] as $shape){?>
+                            <option value="<?php echo $shape['id']; ?>"><?php echo $shape['shape']; ?></option>
+                            <?php } ?>
+                          </select>
+                        </div></td>
+                      <td><div class="selectDrop width100p">
+                          <select class="dropdown" name="gemtype[]" id="gemtype1">
+                            <?php foreach($this->additionalLookup['gem_type_options'] as $gems){?>
+                            <option value="<?php echo $gems['id']; ?>"><?php echo $gems['gem_type']; ?></option>
+                            <?php } ?>
+                          </select>
+                        </div></td>
+                      <td><input type="text" value="" class="inputTxt pureNumaric" name="quantity[]" id="quantity1"></td>
+                      <td><input type="text" value="" class="inputTxt" name="size[]" id="size1" data-numeric="yes"></td>
+                      <td><input type="text" value="" class="inputTxt" name="totalcarat[]" id="totalcarat1" data-numeric="yes"></td>
+                 
+                    </tr>
+                    <?php } ?>
+                    </tbody>
+                    
+                  </table>
+                  <?php 
+	$setting_style_options = json_encode($this->additionalLookup['setting_style_options']);
+	$shape_options = json_encode($this->additionalLookup['shape_options']);
+	$gem_type_options = json_encode($this->additionalLookup['gem_type_options']);
+?>
+                  <div class="displayHide"><a href="javascript:;" onclick='addAdditionalRow(<?php echo $setting_style_options; ?>, <?php echo $shape_options; ?>, <?php echo $gem_type_options; ?>, 1);' title="Add row">Add row</a></div>
+                </div></div>
+				<div class="headSettings">
+          <h2 class="cmnHeader">Supplier & Invoices</h2>
+          <div class="alphaClmn">
+            <div class="formRow">
+              <label class="labelControll">Attach Invoice</label>
+              <div class="inputDiv displayHide">
+                <div class="inputfile"><span class="cmnBtn blueBtn marL0">Upload</span>
+                  <input type="file" id="item_invoice" name="item_invoice">
+                </div>
+				<div class="uploadedInvoiceDisplay" id="invoicePreview"></div>
+              </div>
+			  <p class="hiddenUnqValues" id="invoice_diamond">
+				<a href="/invoice/<?php echo $viewData['invoice']; ?>" id="invoice_link" target="_blank" <?php if(empty($viewData['invoice'])) echo 'style="display:none;"' ?>>Invoice</a>
+              </p>
+            </div>
+            <div class="formRow">
+              <label class="labelControll">Supplier Name</label>
+              <div class="inputDiv displayHide"><input type="text" value="<?php echo $viewData['supplier_name']; ?>" class="inputTxt width60p" id="supplier_name" name="supplier_name" readonly="readonly"><a onclick="suppliersLookup(<?php echo $this->recordsPerPage; ?>, 'supplier_id', 'supplier_name');" data-popup="supplierlookup" class="cmnBtn blueBtn lightBoxClick" href="javascript:;">Lookup</a></div>
+			  <p class="hiddenUnqValues" id="supplier_name_earring">
+                      <?php 
+					  echo $viewData['supplier_name']; ?>
+                    </p>
+            </div>
+          </div>
+          <div class="betaClmn">
+            <div class="formRow">
+              <label class="labelControll">Price</label>
+              <div class="inputDiv displayHide"><input type="text" value="<?php echo $viewData['price']; ?>" class="inputTxt" id="price" name="price" data-numeric="yes"></div>
+			   <p class="hiddenUnqValues" id="price_earring">
+                      <?php if($viewData['price'] > 0){ echo '$'.$viewData['price']; }?>
+                    </p>
+            </div>
+          </div>
+        </div>
+              </div>
+            </div>
+            <div class="tableData noOverflow width100p">
+              <div  class="tableHading width100p"> Consignment <a href="javascript:;" data-popup="consignItem" class="cmnBtn fr marT0 lightBoxClick" onclick="openConsignForm(<?php echo $viewData['id']; ?>, 'earring', 'edit');">Consign</a></div>
+              <div class="fl width100p  suplierInfo">
+                <div class="commonForm rowSpace addItemForm consignPopup consignPopupView">
+                  <div class="headSettings padT0">
+                    <h2 class="cmnHeader">Inventory Status</h2>
+                    <div class="alphaClmn">
+                      <div class="formRow">
+                        <label class="labelControll">Inventory Status</label>
+                        <p class="inputDiv" id="inventory_status_name_weddring"><?php echo $this->ConsignData['inventory_status_name']; ?></p>
+                      </div>
+                      <div class="formRow">
+                        <label class="labelControll">Status Reason</label>
+                        <div class="inputDiv" id="inventory_status_reason_weddring"><?php echo $this->ConsignData['inventory_status_reason']; ?></div>
+                      </div>
+                    </div>
+                    <div class="betaClmn">
+                      <div class="formRow">
+                        <label class="labelControll">Inventory Type</label>
+                        <div class="inputDiv" id="inventory_type_weddring"><?php echo $this->ConsignData['inventory_type']; ?></div>
+                      </div>
+                      <div class="formRow">
+                        <label class="labelControll">Consignee Owner</label>
+                        <div class="inputDiv" id="owner_name_weddring"><?php echo $this->ConsignData['owner_name']; ?></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="headSettings">
+                    <h2 class="cmnHeader">Inventory Reservation</h2>
+                    <div class="alphaClmn">
+                      <div class="formRow">
+                        <label class="labelControll">Reserve Time</label>
+                        <div class="inputDiv" id="reserve_time_weddring"><?php echo $this->ConsignData['reserve_time']; ?></div>
+                      </div>
+                    </div>
+                    <div class="betaClmn">
+                      <div class="formRow">
+                        <label class="labelControll">Reserve Notes</label>
+                        <div class="inputDiv" id="reserve_notes_weddring"><?php echo $this->ConsignData['reserve_notes']; ?></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="headSettings">
+                    <h2 class="cmnHeader">Item Location</h2>
+                    <div class="alphaClmn">
+                      <div class="formRow">
+                        <label class="labelControll">Tracking Status</label>
+                        <div class="inputDiv" id="inventory_tracking_status_weddring"><?php echo $this->ConsignData['inventory_tracking_status']; ?></div>
+                      </div>
+                      <div class="formRow">
+                        <label class="labelControll">Tracking Reason</label>
+                        <div class="inputDiv" id="inventory_tracking_reason_weddring"><?php echo $this->ConsignData['inventory_tracking_reason']; ?></div>
+                      </div>
+                    </div>
+                    <div class="betaClmn">
+                      <div class="formRow">
+                        <label class="labelControll">Tracking ID</label>
+                        <div class="inputDiv" id="tracking_id_weddring"><?php echo $this->ConsignData['tracking_id']; ?></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!--BOF Supplier lookup list-->
+<?php echo $this->partial('inventory/index/supplierlookup.phtml', array('recordsPerPage' => $this->recordsPerPage, 'lookupSupplierId' => 'supplier_id', 'lookupSupplierName' => 'supplier_name')); ?>
+<!--EOF Supplier lookup list-->
+<!--BOF Add Consign Form -->
+<div class="lightBox" id="consignItem">
+	<div class="lightBoxMid" style="width:890px">
+		<div class="lightBoxTitle">Consign Item	  -  Ear Ring <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+		<div class="lightBoxContent fl width100p" id="consign_form_content">
+		</div>
+	</div>
+</div>
+<!--EOF Add Consign Form -->
+<script type="text/javascript">
+searchByEnterKey('lookupsrc', 'supplierLookupSearch');
+$(document).ready(function() {
+	<?php if($viewData['image'] != ''){ ?>
+	$('#preview').html('<img src="/inventory_images/<?php echo $viewData['image']; ?>" >');
+	<?php } ?>
+	$('#item_image').live('change', function(){ 
+		$("#preview").html('');
+		//$("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+		$("#frm_earring").ajaxForm({
+			//target: '#preview',
+			success: function(response){
+				$('#image').val(response);
+				$('#item_image').val('');
+				$('#preview').html('<img src="/inventory_images/'+response+'" >');
+			}
+		}).submit();
+	});
+	$('#item_invoice').live('change', function(){ 
+		//$("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+		$("#frm_earring").ajaxForm({
+			success: function(response){
+				if(response){
+					$('#invoicePreview').html(response);
+					$('#invoice').val(response);
+					$('#invoice_link').attr('href', '/invoice/'+response);
+					$('#invoice_link').show();
+					$('#item_invoice').val('');
+				}
+			}
+		}).submit();
+	});
+	
+	var SelectedValue = $("#ring_style option[value="+$('#ring_style option:selected').val()+"]").text();
+	if(SelectedValue == "Other"){
+		$('#other_ring_style_div').show();
+	} else {
+		$('#other_ring_style').val('');
+		$('#other_ring_style_div').hide();
+	}
+	$('#ring_style').dropkick({
+		change: function () {
+			var SelectedValue = $("#ring_style option[value="+$('#ring_style option:selected').val()+"]").text();
+			if(SelectedValue == "Other"){
+				$('#other_ring_style').val('');
+				$('#other_ring_style_div').show();
+			} else {
+				$('#other_ring_style').val('');
+				$('#other_ring_style_earring').text('');
+				$('#other_ring_style_div').hide();
+			}
+		}
+	});
+	
+});
+</script>

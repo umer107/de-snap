@@ -1,0 +1,142 @@
+<div class="contentArea padLR0">
+      <div class="fl width100p contentINN">
+        <h2 class="cmnHeader">DE Collection</h2>
+      </div>
+      <div class="customerTabing fl width100p ctb">
+        <?php echo $this->partial('inventory/index/tab.phtml', array('current' => 'diamond')); ?>
+        <div class="customTabbingInner">
+          <div class="customerTabingInfo" style="display:block">
+            <div class="QuoteMain"> <a class="popupLink lightBoxClick" data-popup="addItem" href="javascript:;">Add Item</a>
+			<!--BOF Grid View Header Block-->
+			<?php echo $this->partial('customer/index/gridviewheader.phtml', array('gridViewOptions' => $this->gridViewOptions, 'recordsPerPage' => $this->recordsPerPage, 'prefixId' => 'diamond_')); ?>
+			<!--EOF Grid View Header Block-->
+              <div class="cb"></div>
+			  <form name="frm_filter_fiamond" id="frm_filter_fiamond" action="" method="post">
+              <div class="commonForm addCollectionSearch">
+
+                	<div class="culmn">
+                    <div class="formRow">
+          				<label class="labelControll">Shape</label>
+          				<div class="inputDiv"><div class="selectDrop">
+							<select name="filter_shape" id="filter_shape" class="dropdown">
+							<!--<option value="0">Select Shape</option>-->
+							<?php foreach($shapeOptions as $value => $text){ ?>
+								<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+							<?php } ?>
+							</select>
+						</div></div>
+        			</div>
+                    
+                    <div class="formRow">
+          				<label class="labelControll">Cut</label>
+          				<div class="inputDiv"><div class="selectDrop">
+							<select name="filter_cut" id="filter_cut" class="dropdown">
+							<!--<option value="0">Select Shape</option>-->
+							<?php foreach($cutOptions as $value => $text){ ?>
+								<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+							<?php } ?>
+							</select>
+						</div></div>
+        			</div>
+                    </div>
+					<div class="culmn">
+                    <div class="formRow">
+          				<label class="labelControll">Carat</label>
+          				<!--<div class="inputDiv"><div class="selectDrop" style="width:49%"><input type="text" class="inputTxt" id="filter_carat" name="filter_carat" data-numeric="yes" /></div></div>-->
+						<div class="inputDiv"><div class="selectDrop" style="width:49%"><input type="text" class="inputTxt" id="filter_carat_from" name="filter_carat_from" data-numeric="yes" placeholder="from" maxlength="6" /></div><div class="selectDrop fr" style="width:49%"><input type="text" class="inputTxt" id="filter_carat_to" name="filter_carat_to" data-numeric="yes" placeholder="to" maxlength="6" /></div></div>
+        			</div>
+                    
+                    <div class="formRow">
+          				<label class="labelControll">Clarity</label>
+          				<div class="inputDiv"><div class="selectDrop">
+							<select name="filter_clarity" id="filter_clarity" class="dropdown">
+							<!--<option value="0">Select Shape</option>-->
+							<?php foreach($clarityOptions as $value => $text){ ?>
+								<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+							<?php } ?>
+							</select>
+						</div></div>
+        			</div>
+                    </div>
+                    
+                    <div class="culmn">
+                    <div class="formRow">
+          				<label class="labelControll width50">Colour</label>
+          				<div class="inputDiv"><div class="selectDrop" >
+						<select name="filter_color" id="filter_color" class="dropdown">
+						<!--<option value="0">Select Color</option>-->
+						<?php foreach($colorOptions as $value => $text){ ?>
+							<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+						<?php } ?>
+						</select>
+						</div></div>
+        			</div>
+                    
+                    <div class="formRow">
+          				<label class="labelControll width114">Inventory Status</label>
+          				<div class="inputDiv"><div class="selectDrop" >
+						<select name="filter_inventory_status" id="filter_inventory_status" class="dropdown">
+						<!--<option value="0">Select Statues</option>-->
+						<?php foreach($inventoryStatusOptions as $value => $text){ ?>
+							<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+						<?php } ?>
+						</select>
+						</div></div>
+        			</div>
+                    </div>
+              </div>
+			  </form>
+              <div class="cb"></div>
+              <div class="tableData tableNeView marB30 collectionInfo" style="width:2757px">
+                <div class="tableHading" style="2757px" id="bindAfterThis">DE Diamond Collection</div>
+				<div class="formTable manageMembers" id="jqxDianonds" style="width:100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--BOF Add Diamond Form -->
+<?php echo $this->partial('inventory/index/diamondform.phtml'); ?>
+<!--EOF Add Diamond Form -->
+
+<!--BOF Add Consign Form -->
+<?php //echo $this->partial('inventory/index/consign.phtml'); ?>
+<!-- Consine Item Light Box -->
+<div class="lightBox" id="consignItem">
+	<div class="lightBoxMid" style="width:890px">
+		<div class="lightBoxTitle">Consign Item	  -  Diamond <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+		<div class="lightBoxContent fl width100p" id="consign_form_content">
+		</div>
+	</div>
+</div>
+<!--EOF Add Consign Form -->
+
+<!--BOF Supplier lookup list-->
+<?php echo $this->partial('inventory/index/supplierlookup.phtml', array('recordsPerPage' => $this->recordsPerPage, 'lookupSupplierId' => 'supplier_id', 'lookupSupplierName' => 'supplier_name')); ?>
+<!--EOF Supplier lookup list-->
+
+<!--BOF Grid View Block-->
+<?php echo $this->partial('customer/index/gridview.phtml', array('formType' => 'diamond', 'recordsPerPage' => $this->recordsPerPage, 'columnList' => $this->columnList, 'hiddenUserId' => $this->loginUserId, 'prefixId' => 'diamond_')); ?>
+<!--EOF Grid View Block-->
+<script type="text/javascript">
+	/*$('#filter_shape').dropkick({
+  		change: filterDiamondData
+	});
+	$('#filter_color').dropkick({
+  		change: filterDiamondData
+	});
+	$('#filter_cut').dropkick({
+  		change: filterDiamondData
+	});
+	$('#filter_clarity').dropkick({
+  		change: filterDiamondData
+	});
+	$('#filter_inventory_status').dropkick({
+  		change: filterDiamondData
+	});
+	//$('#filter_carat').on('blur', filterDiamondData);
+	$('#filter_carat_from').on('blur', filterDiamondData);
+	$('#filter_carat_to').on('blur', filterDiamondData);*/
+</script>

@@ -1,0 +1,195 @@
+<section class="rightCol">
+    <div class="contentArea padLR0">
+	  <div class="pageLoader"></div>
+      <div class="fl width100p contentINN">
+        <div class="customerDetails">
+          <label>Lead Details</label>
+          <div class="custonerInfo">
+            <h2><?php echo $leadData['first_name'].' '.$leadData['last_name']; ?></h2>
+            <?php if(!empty($leadData['mobile'])){ ?><p>Ph: <?php echo $leadData['mobile']; ?></p><?php } ?>
+            <p>E: <a href="mailto:<?php echo $leadData['email']; ?>"><?php echo $leadData['email']; ?></a></p>
+          </div>
+        </div>
+        <div class="customerDetails">
+         <!-- <label>Partner Details</label>
+          <div class="custonerInfo">
+            <h2>James Smith</h2>
+            <p>Ph: 0422 777 445</p>
+            <p>E: <a href="mailto:james.smith@hotmail.com">James.smith@hotmail.com</a></p>
+          </div>-->
+        </div>
+        <span class="deviderLine" ></span> </div>
+      <div class="customerTabing fl width100p ctb">
+        <ul>
+          <li class="current"><a href="javascript:;">Lead Summary</a></li>
+          <li><a href="javascript:;">Tasks <span id="tab_task_count"><?php echo ($tasks['total_count']+$closedTasks['total_count']); ?></span></a></li>
+          <li><a href="javascript:;">Emails <span>42</span></a></li>
+          <li><a href="javascript:;">Meetings </a></li>
+        </ul>
+        <div class="customTabbingInner"> 
+        <!-- Lead Details -->
+          
+          <?php echo $this->partial('customer/leads/leadsummary.phtml', array('form' => $this->form, 'identity' => $this->identity, 'leadData' => $leadData, 'recordsPerPage' => $this->recordsPerPage)); ?>
+          <!-- Lead Details End--> 
+          <!-- TaskInfo -->
+
+          <?php echo $this->partial('task/index/tasks.phtml', array('tasks' => $tasks, 'closedTasks' => $closedTasks, 'config' => $config, 'entity_type' => 'lead', 'entity_id' => $leadData['lead_id'], 'usersList' => $this->usersList, 'CategoryList' => $this->CategoryList, 'subjectList' => $this->subjectList, 'priorityList' => $this->priorityList)); ?>
+
+          <!-- TaskInfo End--> 
+          
+          <!-- Emails -->
+          <div class="customerTabingInfo">
+            <div class="pad20"> Emails Commin Soon.... </div>
+          </div>
+          <!-- Emails End--> 
+          <!-- Meetings -->
+          <div class="customerTabingInfo">
+            <div class="pad20"> Commin Soon.... </div>
+          </div>
+          <!-- Meetings End--> 
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="lightBox" id="leadsList">
+    <div class="lightBoxMid" style="width:970px">
+      <div class="lightBoxTitle">New Lead Details <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+      <div class="lightBoxContent fl width100p commonForm">
+        <div class="alphaClmn">
+          <div class="formRow">
+            <label class="labelControll">Lead Owner</label>
+            <div class="inputDiv">
+              <select class="dropdown">
+                <option>select</option>
+              </select>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Title</label>
+            <div class="inputDiv">
+              <select class="width60p dropdown">
+                <option>select</option>
+              </select>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">First Name<span class="asterisk">*</span></label>
+            <div class="inputDiv">
+              <input type="text" class="inputTxt"  />
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Last Name<span class="asterisk">*</span></label>
+            <div class="inputDiv">
+              <input type="text" class="inputTxt" />
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Mobile<span class="asterisk">*</span></label>
+            <div class="inputDiv">
+              <input type="text" class="inputTxt width60p" />
+              <div class="notAvail"><span class="checkInfo"></span>NA</div>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Email<span class="asterisk">*</span></label>
+            <div class="inputDiv">
+              <input type="text" class="inputTxt width60p" />
+              <div class="notAvail"><span class="checkInfo checked"></span>NA</div>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Product<span class="asterisk">*</span></label>
+            <div class="inputDiv">
+              <select class="width60p dropdown">
+                <option>select</option>
+              </select>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">What are they looking for?</label>
+            <div class="inputDiv">
+              <textarea></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="betaClmn">
+          <div class="formRow">
+            <label class="labelControll">Budget<span class="asterisk">*</span></label>
+            <div class="inputDiv">
+              <input type="text" class="inputTxt" />
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Lead Source<span class="asterisk">*</span></label>
+            <div class="inputDiv">
+              <input type="text" class="inputTxt width60p" />
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Reference Product</label>
+            <div class="inputDiv">
+              <input type="text" class="inputTxt width60p" />
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Referred by Customer</label>
+            <div class="inputDiv">
+              <input type="text" class="inputTxt width60p"  />
+              <a href="javascript:;" class="cmnBtn blueBtn lightBoxClick" data-popup="leadlookup">Lookup</a></div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">State<span class="asterisk">*</span></label>
+            <div class="inputDiv">
+              <select class="width60p dropdown">
+                <option>select</option>
+              </select>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Lead Type<span class="asterisk">*</span></label>
+            <div class="inputDiv">
+              <select class="dropdown">
+                <option>Appointment/Enquiry</option>
+              </select>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll"><?php echo $this->form->get('preferred_contact')->getLabel(); ?></label>
+            <div class="inputDiv">
+              <?php echo $this->formElement($this->form->get('preferred_contact')); ?>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll"><?php echo $this->form->get('priority')->getLabel(); ?></label>
+            <div class="inputDiv">
+              <?php echo $this->formElement($this->form->get('priority')); ?>
+            </div>
+          </div>
+        </div>
+        <div class="formButtons tc fl width100p">
+          <input type="submit" value="Save" class="cmnBtn">
+          <input type="button" value="Cancel" class="cmnBtn cancelBtn" >
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="lightBox" id="convertToOpportunity">
+    <div class="lightBoxMid" style="width:540px">
+      <div class="lightBoxTitle">Convert To Opportunity <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+      
+      <div class="lightBoxContent fl width100p  CTO" id="suggested_customer" >
+        <div style="padding:10px; text-align:center">Loading...</div>
+      </div>
+      
+    </div>
+  </div>
+  
+<!--BOF Customer lookup list-->
+<?php echo $this->partial('customer/leads/customerlookup.phtml', array('recordsPerPage' => $this->recordsPerPage, 'lookupCustomerId' => 'customer_id', 'lookupCustomerName' => 'customer_name', 'identity' => $identity, 'newCustomerForm' => $newCustomerForm)); ?>
+<!--EOF Customer lookup list-->
+  
+
+  

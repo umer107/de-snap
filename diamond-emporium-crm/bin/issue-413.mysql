@@ -1,0 +1,2 @@
+ALTER TABLE `de_leads` 
+ADD COLUMN `gender` CHAR(1) NULL AFTER `title`;

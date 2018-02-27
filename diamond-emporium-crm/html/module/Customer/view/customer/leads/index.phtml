@@ -1,0 +1,65 @@
+<div class="contentArea">
+<div class="pageLoader"></div>
+
+  <h2 class="cmnHeader">Leads</h2>
+  <a href="javascript: newLead();" class="popupLink lightBoxClick" data-popup="leadsList">New Lead</a>
+  <!--BOF Grid View Header Block-->
+	<?php echo $this->partial('customer/index/gridviewheader.phtml', array('gridViewOptions' => $this->gridViewOptions, 'recordsPerPage' => $this->recordsPerPage, 'prefixId' => 'lead_')); ?>
+  <!--EOF Grid View Header Block-->
+
+  <div class="cb"></div>
+    <form name="frm_filter_flead" id="frm_filter_flead" action="" method="post">
+    <div class="commonForm addLeadSearch">
+    	<div class="culmn">
+		    <div class="formRow">
+				<label class="labelControll">Status</label>
+				<div class="inputDiv">
+					<div class="selectDrop">
+						<select name="filter_status" id="filter_status" class="dropdown">
+							<?php foreach($statusOptions as $value => $text) : ?>
+								<option value="<?php echo $value; ?>"<?php if ($value == 'Open') echo " selected"; ?>><?php echo $text; ?></option>							
+							<?php endforeach; ?>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+    
+    	<div class="culmn">
+        <div class="formRow">
+          <label class="labelControll">Owner</label>
+          <div class="inputDiv">
+            <div class="selectDrop">
+              <select name="filter_owner" id="filter_owner" class="dropdown">
+                <?php foreach($ownerOptions as $value => $text) : ?>
+                  <option value="<?php echo $value; ?>"<?php if ($value == $loginUserId) echo " selected"; ?>><?php echo $text; ?></option>							
+                <?php endforeach; ?>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="tableData tableNeView" style="overflow:visible">
+    <div class="tableHading" style="width:100%" id="bindAfterThis"> Leads List </div>
+    <div class="formTable manageMembers" id="jqxWidget">
+    </div>
+  </div>
+</div>
+<!--BOF Grid View Block-->
+<?php echo $this->partial('customer/index/gridview.phtml', array('formType' => 'leads', 'recordsPerPage' => $this->recordsPerPage, 'columnList' => $this->columnList, 'hiddenUserId' => $this->loginUserId, 'prefixId' => 'lead_')); ?>
+<!--EOF Grid View Block-->
+
+<!--BOF new lead lightbox-->
+<?php echo $this->partial('customer/leads/newleadlightbox.phtml'); ?>
+<!--EOF new lead lightbox-->
+
+<!--BOF Customer lookup list-->
+<?php echo $this->partial('customer/leads/customerlookup.phtml', array('recordsPerPage' => $this->recordsPerPage, 'lookupCustomerId' => 'referred_by_customer', 'lookupCustomerName' => 'referred_by_name')); ?>
+<!--EOF Customer lookup list-->
+
+<!--BOF Edit Note Block-->
+<?php echo $this->partial('opportunities/index/editnotes.phtml', array()); ?>
+<!--EOF Edit Note Block-->

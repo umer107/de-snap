@@ -1,0 +1,69 @@
+<?php /*?><div class="lightBox" id="editnoteslookup">
+  <div class="lightBoxMid" style="width:400px">
+    <div class="lightBoxTitle">Update Note <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+	
+    <div class="lightBoxContent fl width100p lookupPopup">
+	<form name="update_notefrm" id="update_notefrm" method="post">
+	  <div class="formRow">
+          <label class="labelControll"><span class="asterisk"></span></label>
+          <div class="inputDiv"><input type="text" value="" class="inputTxt" id="note_description" name="note_description" maxlength="50">
+		  <!--<input type="hidden" value="" class="inputTxt" id="recordsPerPage" name="recordsPerPage">
+		  <input type="hidden" value="" class="inputTxt" id="keyword" name="keyword">
+		  <input type="hidden" value="" class="inputTxt" id="customerId" name="customerId">-->
+		  <input type="hidden" value="" class="inputTxt" id="gridType" name="gridType">
+		  <input type="hidden" value="" class="inputTxt" id="noteUpdateId" name="noteUpdateId">
+        </div>
+      <div class="formButtons tc fl width100p">
+        <button value="Save" onclick="updateNoteData($('#update_notefrm'));" class="cmnBtn" id="saveOpp" name="save" type="button">Save</button>
+        <button value="Cancel" onclick="cancelButtonProperty('update_notefrm', 'editnoteslookup');" class="cmnBtn cancelBtn" id="cancel" name="cancel" type="button">Cancel</button>
+      </div>
+	  </form>
+    </div>
+	
+  </div>
+</div><?php */?>
+<div class="lightBox" id="editnoteslookup">
+  <div class="lightBoxMid" style="width:970px">
+    <div class="lightBoxTitle">Notes<a href="javascript:;" class="closePopup" title="Close" onclick="clearValues();">X</a></div>
+    <div class="lightBoxContent fl width100p lookupPopup padB105">
+      <div class="tableData tableNeView" style="overflow:visible">
+        <div class="tableHading" style="width:100%"> Notes List </div>
+		<form id="resumeForm">
+		<div class="addNote" id="update_notefrm">
+                <div class="inputDiv">
+                  <div class="datePickInput">
+                    <input type="text" value="" placeholder="DD/MM/YYYY" class="datepickerInput followUpDate" name="follow_up_date">
+                    <span class="datePickCal"></span></div>
+                </div>
+                <div class="inputDiv">
+                  <select class="dropdown" id="note_type" name="note_type">
+                    <option value="">Note Type</option>
+                    <option value="Note type 1">Note type 1</option>
+                    <option value="Note type 2">Note type 2</option>
+                    <option value="Note type 3">Note type 3</option>
+                    <option value="Note type 4">Note type 4</option>
+                    <option value="Note type 5">Note type 5</option>
+                  </select>
+                </div>
+                <div class="inputDiv noteDescription">
+                  <input type="text" class="inputTxt" id="note_description" name="note_description"/>
+				  <input type="hidden" value="" class="inputTxt" id="gridType" name="gridType">
+                  <input type="hidden" class="inputTxt" id="noteUpdateId" name="noteUpdateId"/>
+				  <input type="hidden" class="inputTxt" id="gridTypeId" name="gridTypeId"/>
+                </div>
+                <input type="button" class="cmnBtn blueBtn" value="Add Note" id="saveNoteButton" onclick="saveNote($('#gridType').val(), $('#gridTypeId').val());">
+                <input type="button" class="cmnBtn blueBtn" value="Cancel" id="cancelNoteButton" onclick="cancelNote();" style="display:none;">
+              </div>
+		</form>
+			  <div class="cb"></div>
+        <div class="formTable manageMembers" id="jqxNotes"> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	//$('#NoteActionId').click(function(){
+	//alert('TEST');
+	<?php /*?>getNotes(<?php echo $this->recordsPerPage; ?>, $('#update_notefrm #gridType').val(), $('#update_notefrm #gridTypeId').val(), 1);<?php */?>
+	//});
+</script>

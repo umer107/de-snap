@@ -1,0 +1,2 @@
+ALTER TABLE `de_invoice` 
+ADD COLUMN `xero_date` DATETIME NULL AFTER `xero_payment_made`;

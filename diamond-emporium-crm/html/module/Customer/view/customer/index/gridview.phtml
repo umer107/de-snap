@@ -1,0 +1,45 @@
+<div class="lightBox" id="<?php echo $prefixId; ?>myGridView">
+  <div class="lightBoxMid" style="width:600px">
+    <div class="lightBoxTitle"><span id="<?php echo $prefixId; ?>gridViewHeading">New View Details</span> <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p commonForm">
+      <form name="<?php echo $prefixId; ?>frm_mygridview" method="post" id="<?php echo $prefixId; ?>frm_mygridview">
+        <div class="formRow width70p">
+          <label class="labelControll">View Title</label>
+          <div class="inputDiv">
+            <input type="text" value="" class="inputTxt" id="<?php echo $prefixId; ?>view_title" name="view_title" maxlength="32">
+          </div>
+          <input type="hidden" name="grid_type" id="<?php echo $prefixId; ?>grid_type" value="<?php echo $formType; ?>" />
+          <input type="hidden" name="hiddenSelectGridView" id="<?php echo $prefixId; ?>hiddenSelectGridView" value="" />
+          <input type="hidden" name="hiddenRecordsPerPage" id="<?php echo $prefixId; ?>hiddenRecordsPerPage" value="<?php echo $recordsPerPage; ?>" />
+		  <input type="hidden" id="pageSizeGrabing" value="<?php echo $recordsPerPage; ?>" />
+		  <input type="hidden" name="hiddenUserId" id="<?php echo $prefixId; ?>hiddenUserId" value="<?php echo $hiddenUserId; ?>" />
+		  <input type="hidden" name="hiddenGenerateNewGridView" id="<?php echo $prefixId; ?>hiddenGenerateNewGridView" value="0" />
+        </div>
+        <?php foreach($columnList as $columnKey => $columnText){?>
+        <div class="newGridView">
+        <div class="formRow">
+          <label class="labelControll"><?php echo $columnText; ?></label>
+          <div class="inputDiv">
+            <label class="labelCheck mar0">
+            <input type="checkbox" value="<?php echo $columnKey; ?>" id="<?php echo $prefixId.$columnKey; ?>" name="coulmn_names[]">
+            <i></i></label>
+          </div>
+        </div></div>
+        <?php 
+				$lastColumn = $prefixId.$columnKey;
+			}?>
+		<div class="formRow">
+          <label class="labelControll"></label>
+          <div class="inputDiv">
+            <label class="labelCheck mar0" id="last_<?php echo $lastColumn; ?>">
+            <i></i></label>
+          </div>
+        </div>
+        <div class="formButtons newGrigbtns fl width100p">
+          <button value="Save" onclick="saveGridView('<?php echo $lastColumn; ?>', '<?php echo $prefixId; ?>');" class="cmnBtn cancelBtn" id="save" name="save" type="button">Save</button>
+          <button value="Cancel" class="cmnBtn" id="cancel" name="cancel" type="button" onclick="$('#<?php echo $prefixId; ?>myGridView .closePopup').click();">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

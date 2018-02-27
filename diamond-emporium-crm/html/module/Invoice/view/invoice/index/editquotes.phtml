@@ -1,0 +1,230 @@
+<div class="contentArea creatNewQuoteMain">
+  <div class="creatNewQuote">
+	<h2 class="cmnHeader">Create A New Quote / Invoice</h2>
+	<ul class="newQuoteSteps">
+	  <li class="filled quoteStep01"><span class="numDisplay">1</span><br />
+		Assign Quote / Invoice</li>
+	  <li class="quoteStep02"><span class="numDisplay">2</span><br />
+		Add Items</li>
+	  <li class="quoteStep03"><span class="numDisplay">3</span><br />
+		Summary</li>
+	</ul>
+	<form name="frm_inv_opp" id="frm_inv_opp" method="post" action="">
+	<input type="hidden" name="id" id="id" value="<?php echo $this->invoice['id']; ?>"/>
+	<input type="hidden" name="invoice_id" id="invoice_id" value="<?php echo $this->invoice['invoice_id']; ?>"/>
+	<input type="hidden" name="invoice_number" id="invoice_number" value="<?php echo $this->invoice['invoice_number']; ?>"/>
+	<!-- Step 01 -->
+	<div id="quoteStep1" style="display:block">
+	  <p class="assignTxt">Please assign a Customer and the relating Opportunity to create a quote / invoice</p>
+	  <div class="cb"></div>
+	  <div class="selectOpp commonForm">
+		  <div class="formRow">
+			<label class="labelControll">Select Opportunity</label>
+			<div class="inputDiv">
+			  <input type="hidden" name="opp_id" id="opp_id" value="<?php echo $this->oppDataArray['id']; ?>"/>
+			  <input type="text" name="opp_name" id="opp_name" class="inputTxt width75p" readonly="readonly" value="<?php echo $this->oppDataArray['name']; ?>"/>
+			  <a class="cmnBtn blueBtn lightBoxClick" data-popup="opportunitylookup" href="javascript:;">Lookup</a></div>
+		  </div>
+          <div class="formRow">
+            <label class="labelControll">Invoice Date</label>
+            <div class="inputDiv">
+              <div class="inputCulmn">
+                <div class="datePickInput"><input type="text" name="xero_date" id="xero_date" class="datepickerInput editViewField" readonly="readonly" placeholder="DD/MM/YYYY" value="<?php echo $this->invoice['xero_date']; ?>"><span class="datePickCal"></span>
+                  <p class="inputVal"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Due Date</label>
+            <div class="inputDiv">
+              <div class="inputCulmn">
+                <div class="datePickInput"><input type="text" name="xero_date_due" id="xero_date_due" class="datepickerInput editViewField" readonly="readonly" placeholder="DD/MM/YYYY" value="<?php echo $this->invoice['xero_date_due']; ?>"><span class="datePickCal"></span>
+                  <p class="inputVal"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+		  <div class="formRow newQuotElm">
+			<label class="labelControll">&nbsp;</label>
+			<div class="inputDiv ">
+			  <!--<button value="Cancel" class="cmnBtn cancelBtn marL0" onclick="$('#frm_inv_opp')[0].reset();" type="button">Cancel</button>-->
+			  <a class="cmnBtn"  href="/invoicequotes/<?php echo $tab; ?>">Cancel</a>
+			  <button value="Save" class="cmnBtn blueBtn" id="step01Move" type="button">Next</button>
+			</div>
+		  </div>
+	  </div>
+	</div>
+	<!-- Step 01 End --> 
+	<!-- Step 02 -->
+	<div id="quoteStep2" style="display:<?php echo count($invoiceItems) > 0 ? 'block' : 'none'; ?>">
+	  <p class="assignTxt">Build Your Quote / Invoice</p>
+	  <div class="cb"></div>
+	  <div class="buildYourQuote">
+		  <a href="javascript:;" class="cmnBtn addItem lightBoxClick" data-popup="createQuote">Add Item</a>
+		  <div class="tableDataNew itemInfoDisplay" style="overflow:visible;">
+			<table class="tableNew" width="100%"  border="0" cellpadding="0" cellspacing="0" style="display:<?php echo count($invoiceItems) > 0 ? 'block' : 'none'; ?>" id="showInvoiceItem">
+			  <thead>
+				  <tr align="left">
+					<th width="5" height="48">&nbsp;</th>
+					<th align="left" width="100">Item</th>
+					<th>Description</th>
+					<th width="50">Qty</th>
+					<th width="100">Unit Price</th>
+					<th width="125">Disc%</th>
+					<th width="144">Account</th>
+					<th width="144">Salesperson</th>
+					<th width="77">Total</th>
+					<th width="67"></th>
+				  </tr>
+			  </thead>
+			  <tbody id="invoice_items_body">
+			  <?php foreach($invoiceItems as $item){ ?>
+				<tr id="item_tr_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>">
+					<td>
+						<input type="hidden" name="item_type_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" id="item_type_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" value="<?php echo $item['item_type']; ?>">
+						<input type="hidden" name="item_id_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" id="item_id_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" value="<?php echo $item['item_id']; ?>">
+					</td>
+					<td><?php echo ucfirst($item['item_type']); ?></td>
+					<td>
+						<textarea name="item_desc_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" id="item_desc_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" class="cmntextarea textareaGlobalMaxLength"><?php echo $item['description']; ?></textarea>
+					</td>
+					<td>
+						<input type="text" onkeyup="validateInteger(this);" onblur="itemTotal(<?php echo $item['item_id']; ?>, '<?php echo $item['item_type']; ?>');" name="qty_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" id="qty_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" class="cmnInput" value="<?php echo $item['quantity']; ?>" maxlength="2" />
+					</td>
+					<td><input type="text" data-numeric="yes" onkeyup="validateFloat(this);" onblur="itemTotal('<?php echo $item['item_id']; ?>', '<?php echo $item['item_type']; ?>');" class="cmnInput" name="unit_price_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" id="unit_price_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" value="<?php echo $item['unit_price']; ?>" /></td>
+					<td>
+						<input type="text" data-numeric="yes" onkeyup="validateFloat(this);" onblur="itemTotal(<?php echo $item['item_id']; ?>, '<?php echo $item['item_type']; ?>');" class="cmnInput" name="discount_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" id="discount_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" value="<?php echo $item['discount']; ?>" />
+					</td>
+					<td>
+						<?php $xeroAccountsDecoded = json_decode($xeroAccounts); ?>
+						<?php if (is_array($xeroAccountsDecoded) && count($xeroAccountsDecoded) > 0) :?>
+						<select name="acc_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" id="acc_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" class="width100p dropdown">
+							<?php foreach($xeroAccountsDecoded as $value){ ?>
+							<option value="<?php echo $value->Code; ?>" <?php echo $value->Code == $item['account_code'] ? 'selected="selected"' : ''; ?>><?php echo $value->Name; ?></option>
+							<?php } ?>
+						</select>
+						<?php endif ?>
+					</td>
+					<td>
+						<?php $xeroSalesPersonsDecoded = json_decode($xeroSalesPersons); ?>
+						<?php if (is_array($xeroSalesPersonsDecoded) && count($xeroSalesPersonsDecoded) > 0) :?>
+						<select name="sps_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" id="sps_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>" class="width100p dropdown">
+							<?php foreach($xeroSalesPersonsDecoded as $value){ ?>
+							<option value="<?php echo $value->Name; ?>" <?php echo $value->Name == $item['salesperson'] ? 'selected="selected"' : ''; ?>><?php echo $value->Name; ?></option>
+							<?php } ?>
+						</select>
+						<?php endif ?>
+					</td>
+					<td id="total_price_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>">$<?php echo $item['amount']; ?></td>
+					<td>
+						<a href="javascript:;" onclick="$('#item_tr_<?php echo $item['item_type']; ?>_<?php echo $item['item_id']; ?>').remove();" class="cmnBtn redBtn">Delete</a>
+					</td>
+				</tr>
+			  <?php } ?>
+			  </tbody>
+			</table>
+		  </div>
+		  <div class="btnDisplay padL0 marT0">
+			<button value="Cancel" class="cmnBtn cancelBtn marL0 marT0" id="backtoStep01"  type="button">Back</button>
+			<button value="Save" class="cmnBtn blueBtn marT0" id="step02Move" type="button">Next</button>
+		  </div>
+	  </div>
+	</div>
+	<!-- Step 02 End -->
+	
+	<!-- Step 03 -->
+	<div id="quoteStep3" style="display:none">
+	  <p class="assignTxt">Your Quote Summary</p>
+	  <div class="cb"></div>
+		<div class="tableDataNew">
+		  <table class="tableNew quoteSummaryTable" width="100%"  border="0" cellpadding="0" cellspacing="0">
+		  	<thead>
+				<tr align="left">
+				  <th width="5" height="48">&nbsp;</th>
+				  <th align="left" width="100">Item</th>
+				  <th>Description</th>
+				  <th width="100">Qty</th>
+				  <th width="100">Unit Price</th>
+				  <th width="125">Disc%</th>
+				  <th width="144">Account</th>
+				  <th width="144">Salesperson</th>
+				  <th width="128">Amount AUD</th>
+				</tr>
+			</thead>
+			<tbody id="quote_summary_body"></tbody>
+		  </table>
+		</div>
+		<div class="totalVal">
+		  <div><span>Sub Total</span><span id="sub_total">$4,000</span></div>
+		  <!--<div><span>GST</span><span>$400</span></div>-->
+		  <span class="devider"></span>
+		  <div><span>Total</span><span id="total">$4,400</span></div>
+		</div>
+		<div class="cb"></div>
+		<div class="btnDisplay">
+		  <button value="Cancel" class="cmnBtn cancelBtn marL0" id="backtoStep02"  type="button">Back</button>
+          <button value="Save" type="submit" class="cmnBtn blueBtn">Confirm</button>
+		</div>
+	</div>
+	<!-- Step 03 End --> 
+	</form>
+  </div>
+</div>
+
+<!--BOF Customer lookup list-->
+<?php echo $this->partial('invoice/index/itemslookup.phtml'); ?>
+<!--EOF Customer lookup list-->
+
+<!--BOF Opportunity lookup list-->
+<?php echo $this->partial('invoice/index/opportunitylookup.phtml', array('identity' => $identity, 'recordsPerPage' => $recordsPerPage)); ?>
+<!--EOF Opportunity lookup list-->
+
+<script type="text/javascript">
+
+	var xeroAccounts = eval('<?php echo $xeroAccounts ?>');
+	var xeroSalesPersons = eval('<?php echo $xeroSalesPersons ?>');
+	
+	$(document).ready(function(e) {
+		$('#step01Move').on('click', function(){
+			if($('#opp_id').val().length == 0 || $('#opp_name').val().length == 0 ){
+				alert('Please select an opportunity');
+			}else{
+				$('#quoteStep1').hide();
+				$('#quoteStep2').show();
+				$('.quoteStep02').addClass('filled');
+			}
+		});
+		$('#step02Move').on('click', function(){
+			if($.trim($('#invoice_items_body').html()) == ''){
+				alert('Please add items');
+			}else{
+				$('#quoteStep1').hide();
+				$('#quoteStep2').hide();
+				$('#quoteStep3').show();
+				
+				$('.quoteStep02').addClass('filled');
+				$('.quoteStep03').addClass('filled');
+				
+				getQuotesSummary();
+			}
+		});
+		
+		$('#backtoStep01').on('click', function(){
+			$('#quoteStep1').show();
+			$('#quoteStep2').hide();
+			$('.quoteStep02').removeClass('filled');
+		});
+		$('#backtoStep02').on('click', function(){
+			$('#quoteStep2').show();
+			$('#quoteStep3').hide();
+			$('.quoteStep03').removeClass('filled');
+		});
+		<?php if($this->oppDataArray['id'] > 0){?>
+			$('#step01Move').click();
+		<?php } ?>
+		<?php if(count($invoiceItems) > 0){ ?>
+			$('#step02Move').click();
+		<?php } ?>
+    });
+</script>

@@ -1,0 +1,27 @@
+<html>
+	<head></head>
+	<body>
+		<table border="1">
+			<tr colspan="3">
+				<?php foreach($data['Rows'] as $key => $value): ?>
+					<th><?php echo ucfirst($key); ?></th>
+				<?php endforeach; ?>
+			</tr>
+			<tr colspan="3">
+				<?php foreach($data['Rows'] as $key => $value): ?>
+					<td>
+						<?php foreach($value as $val): ?>
+							<table>
+								<tr>
+									<td>
+										<a target="_blank" href="<?php echo $val['website_link']; ?>"><?php echo ucfirst($val['website_title']); ?></a>
+									</td>
+								</tr>
+							</table>
+						<?php endforeach; ?>
+					</td>
+				<?php endforeach; ?>
+			</tr>
+		</table>
+	</body>
+</html>

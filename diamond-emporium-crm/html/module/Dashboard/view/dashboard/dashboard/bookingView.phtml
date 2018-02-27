@@ -1,0 +1,91 @@
+<div class="bookNowDiv full hide relative">
+	<!-- Heading View -->
+	<div class="full bookNowMain">
+		<h2 class="fs-24 color-green robotolight double-pad-bottom double-pad-top full"> 
+			<span class="pull-left">Booking</span> 
+			<label class="pull-left pad-left color-red bookingError fs-12 transition-ease-02 gap-top two-pad-top robotomedium opacity0">Please! select a booking date</label>
+			<div class="bookingViewIcon d-i-b hide opacity0">
+					<img class="wd-24 d-i-b double-gap-left relative top-4" src="<?php echo $this->serverUrl('/images/ic_calendar.svg'); ?>" />
+					<a href="javascript:;" class="color-blue fs-14 robotoregular relative bottom-2">calendar view</a> 
+			</div>
+		</h2>
+
+		<!-- ========================================================= -->
+
+		<!-- Day Selection View -->
+		<div class="full">
+			<div class="selectDay fs-14 full">
+				<span class="pull-left four-pad-top one-half-pad-right">Select a day</span>
+				<div class="pull-left daySelection lh-26 align-center timeToggles  triple-gap-bottom">
+					<a href="javascript:;" value="Monday">MON</a>
+					<a href="javascript:;" value="Tuesday">TUE</a>
+					<a href="javascript:;" value="Wednesday">WED</a>
+					<a href="javascript:;" value="Thursday">THU</a>
+					<a href="javascript:;" value="Friday">FRI</a>
+					<a href="javascript:;" value="Saturday">SAT</a>
+				</div>
+				<div class="pull-left selectWeek opacity0 transition-ease-02  triple-gap-bottom">
+					<span class="pull-left four-pad-top one-half-pad-right triple-pad-left gap-left selectweek">Select a week</span>
+					<div class="pull-left weekSelection lh-26 align-center timeToggles">
+						<a href="javascript:;" value="one">THIS WEEK</a>
+						<a href="javascript:;" value="two">NEXT WEEK</a>
+						<a href="javascript:;" value="three">2 WEEK</a>
+					</div>
+				</div>
+				<div class="pull-left selectTime opacity0 transition-ease-02  triple-gap-bottom">
+					<span class="pull-left four-pad-top one-half-pad-right triple-pad-left gap-left">Time</span>
+					<div class="pull-left timeSelection lh-26 align-center timeToggles gap-right">
+						<a href="javascript:;" value="AM">AM</a>
+						<a href="javascript:;" value="PM">PM</a>
+					</div>
+					<div class="pull-left durationSelection lh-26 align-center timeToggles triple-gap-left">
+						<a href="javascript:;" value="30">30</a>
+						<a href="javascript:;" value="60">60</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ========================================================= -->
+
+		<!-- Suggested Date -->
+		<div class="full half-gap-bottom questionView relative hide">
+			<div class="fs-14 full triple-pad-bottom">
+				<span class="pull-left four-pad-top one-half-pad-right">Suggested date:</span>
+				<div class="pull-left suggestedDate lh-28 pad-left pad-right"></div>
+				<span class="full color-lightGray fs-10 lh-12 half-pad-top changeDateText">Click on calendar below to change time or date</span>
+			</div>
+			<div class="absolute fs-10 AM-heading left-0">
+				<span>8 AM</span>
+				<span>9 AM</span>
+				<span>10 AM</span>
+				<span>11 AM</span>
+			</div>
+			<div class="absolute fs-10 PM-heading left-0 hide">
+				<span>12 PM</span>
+				<span>1 PM</span>
+				<span>2 PM</span>
+				<span>3 PM</span>
+				<span>4 PM</span>
+			</div>
+			<div id='calendar2' class="calendar2 amHeight"></div>	
+		</div>
+
+		<!-- ========================================================= -->
+
+	    <a href="javascript:;" class="btn-green fs-14 button bg-white btn-saveBooking open lh-34 align-center robotomedium pull-left gap-bottom">Book</a>
+	    <a href="javascript:;" class="fs-14 cancelBooking bg-white robotomedium color-darkGray lh-34 triple-gap-left pad-left">Cancel</a>
+
+	    <!-- ========================================================= -->
+	    
+	    <div class="next-options pull-right triple-pad-right disablebtns">
+	        <a href="javascript:;" class="color-green fs-14 button bg-white btn-disableSave lh-34 align-center robotomedium">Save</a>
+	        <label class="fs-10"><span class="color-lightGray">or press</span> <span class="color-darkGray robotomedium disableEnter">ENTER</span></label>
+	    </div>
+
+	</div>
+    
+    <div class="coverAreaBooking hide"></div>
+
+</div>
+

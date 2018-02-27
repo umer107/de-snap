@@ -1,0 +1,580 @@
+/* Starting Wasif Munir Css for Dashboard -------------------------- */
+/* ----------------------------------------------------------------- */
+/* ---------------------- Start New Lead Css ----------------------- */
+/* ----------------------------------------------------------------- */
+
+*{ transition: background .2s ease, color .1s ease;}
+.newLead { }
+.newLead .innerContainer { margin-top: 40px; padding: 24px 25px 24px 60px; }
+.formfields input { border: white; border-bottom: 1px solid #DFDFDF; width: 281px; line-height: 28px; position: relative; margin-top: 21px; margin-right: 36px;}
+.formfields span { letter-spacing: 1px; z-index: 1; color:#A5A5A5; font-size:10px; position:absolute; top: 9px; left: 0;min-width: 100px;}
+.selectedAgent span {left: 56px}
+.formfields input.Zip{width: 120px}
+.formfields input#cityValue{ width: 128px; margin-right: 26px;}
+.formfields ul.dropdown.City{ width: 128px; margin-right: 26px;}
+.formfields ul.dropdown.City li a.selected-text span{ width: 110px;}
+.formfields ul.dropdown.City .dropdownOptions{ width: 166px; overflow: auto; max-height: 286px; }
+.formfields label { position: absolute; width: 100%; font-size: 10px; color: red; left: 0; bottom: -18px; }
+.displayPicture { width: 44px; height: 44px; display: inline-block;  padding: 3px;border-radius: 50%; }
+.formfields .userDp{ width: 44px; height: 44px; border-radius: 50%; overflow: hidden;}
+.formfields .userDp img{ border-radius: 50%; width: 100%; height: 100%;}
+.formfields .userName{}
+.formfields ul.dropdown { margin-right: 34px; margin-top: 20px; }
+.formfields .dropdown li a.selected-text span{ position: relative; top: 0; font-size: 14px; color: #5d5d5d; }
+.displayPicture img { border-radius: 50%;height: 100%;width: 100%;}
+.displayPicture svg { font-family: robotoregular; }
+.user-dp-div { height: 46px; vertical-align: middle; cursor: pointer;}
+.name-details { padding-top: 6px; }
+.name-details span{ display: block; line-height: 16px; }
+.add-address img{width: 20px;}
+.next-options label{color:#A5A5A5;}
+.button{border: 1px solid #DFDFDF; height: 34px; display: inline-block; border-radius: 18px; line-height: 34px; text-align: center;}
+.btn-green{ color: #27AD09;}
+.btn-blue{ color: #0E79BB;}
+.button.btn-green:hover{color: white; background:#27AD09;}
+.button.btn-blue:hover{color: white; background:#0E79BB;}
+a.btn-nextDetails, a.btn-saveDetails{  width: 102px;  margin-right: 5px; }
+a.btn-disableSave{  width: 102px;  margin-right: 5px; color: #a5a5a5; }
+a.btn-saveDetails input{background: none; border: none; line-height: 31px; text-align: center; cursor: pointer; width: 100px;}
+.btn-bookNow, .btn-saveBooking{  width: 162px; margin-right: 5px; }
+a.btn-cancel{ color: #5D5D5D; padding-left: 50px; }
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { background-color: rgb(255, 255, 255) !important; background-image: none; color: #5d5d5d; }
+.other-explain a{}
+.dropdown li a.submitOther{width: 120px; overflow: hidden; border: 1px solid #DFDFDF; color: #27AD09; margin: 0 auto; margin-top: 21px; margin-bottom: 0;}
+.showMessage { position: fixed; width: 100%; text-align: center; left: 0; top: -65px; right: 0; z-index: 100; background: #29629a; color: white; padding: 22px; font-size: 15px; transition: all .5s ease;}
+.showMessage.top0{top:0;}
+.showMessage div{  }
+.bookNowMain{}
+.coverAreaBooking{ position: absolute; left: 0; right: 0; top: 0; height: 100%; z-index: 1; }
+/*-----------------------------------------*/
+
+/*Dropdown Css Start*/
+
+.wd-280{width:280px;} 
+.dropdown{  height: 30px; line-height: 30px; }
+.dropdown li a{color:#5D5D5D; text-align:left; font-size:14px; display:block; border: 1px solid white; border-bottom: 1px solid #DFDFDF; overflow: auto;}
+.content-list:nth-child(odd) .dropdown li a.selected-text{background:#f5f5f5;}
+.content-list:nth-child(odd) .calendar-div .dropdown li a.selected-text{background:#ffffff;}
+.dropdown li a.selected-text span{ padding-right: 10px; width: 258px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; float: left; }
+#loadHere .dropdown li a.selected-text span{ width: 102px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: inline-block;}
+#loadHere .dropdown li a.selected-text span.inherit{ overflow: inherit; }
+.dropdown li ul{z-index:11}
+.dropdown li ul li { line-height: 29px; height: 29px; text-align: left; cursor: pointer;}
+/* For budget dropdown*/
+.dropdown.referral li ul li { margin: 9px 0;}
+.dropdown li ul li:last-child {border-bottom:0 none;}
+.dropdown li ul li a{ color: #A5A5A5; padding-left:22px; font-size:11px; border:0 none; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding-right: 10px;}
+.dropdown li ul li a span{ display: inline-block; margin-right: 6px; top: 5px; position: relative; }
+.dropdown li ul li:hover{background-color: #4778A8;}
+.dropdown li ul li:hover a{color: #ffffff;}
+.dropdownOptions{top:30px; width: 321px; border: 1px solid #DFDFDF; left: -20px; padding: 5px 0;}
+.selected-text i { background: url(/images/arrow-down.png); display: inline-block; width: 14px; height: 8px; margin-top: 11px; background-repeat: no-repeat;}
+.maxHeightShow{max-height: 2000px; overflow: initial;}
+.maxHeightHide{max-height: 0px; overflow: hidden;}
+.dropdown li a.selected-text.Leadselected-text span{width: auto; color: #29629a;}
+.Leadselected-text i{ background: none; position: relative; margin-top: 9px; font-weight: bold; font-size: 13px; color: #29629a;}
+.Leadselected-text i.icon-close{ border: 1px solid #e2e2e2; border-radius: 50%; width: 22px; height: 22px; line-height: 22px; text-align: center; margin-top: 3px; font-size: 12px;}
+
+/*Dropdown Css End*/
+
+/*------------------------------------------------*/
+
+/* user dp Dropdown Start */
+
+.userDropdown{ width: 233px; height: 202px; border: 1px solid #DFDFDF; top: 60px; left: -28px; cursor: pointer}
+.userDropdown div{ height: 40px; line-height: 40px; vertical-align: middle; cursor: pointer;}
+.userDropdown div:hover{ background: #4778A8;}
+.userDropdown div:hover p{color:#ffffff; font-family: robotobold; }
+.userDropdown div span{ display: inline-block; padding: 0 12px 0 11px; vertical-align: middle;}
+.userDropdown div span img{ width: 27px; border-radius: 50%; position: relative; display: block; top: -1px}
+.userDropdown div p{ font-size: 13px; color: #5D5D5D; display: inline-block; /*vertical-align: middle;*/}
+.userDropdown div p img{ width: 26px; display: inline-block; margin-right: 4px;  position: relative; top: 7px; left: 7px;}
+
+/* user dp Dropdown End */
+
+/*------------------------------------------------*/
+
+/* absebce Dropdown Start */
+
+.absebceDropdown{ max-height: 425px; overflow: auto; width: 233px; border: 1px solid #DFDFDF; top: 54px; right: -51px; cursor: pointer}
+.absebceDropdown > div{ height: 60px; line-height: 60px; vertical-align: middle; cursor: pointer;}
+/*
+.absebceDropdown > div:hover{ background: #4778A8;}
+.absebceDropdown > div:hover p{color:#ffffff; font-family: robotobold; }
+.absebceDropdown > div:hover label.lunchAt15{background: url(/images/ab-lunch15Hover.svg); }
+.absebceDropdown > div:hover label.lunchAt30{background: url(/images/ab-lunch30Hover.svg); }
+.absebceDropdown > div:hover label.lunchAt45{background: url(/images/ab-lunch45Hover.svg); }
+.absebceDropdown > div:hover label.lunchAt60{background: url(/images/ab-lunch60Hover.svg); }
+*/
+.absebceDropdown > div > span{ background:white; width: 44px; border-radius: 50%; float: left; height: 44px; border: 1px solid; padding: 3px; margin: 8px 13px 0 10px;}
+.absebceDropdown > div > span img{ width: 38px; border-radius: 50%; height: 100%; }
+.absebceDropdown > div > div{ display: inline-block; padding-top: 13px;}
+.absebceDropdown > div p{ width: 95px; font-size: 13px; display: block; vertical-align: middle; line-height: 17px;}
+.absebceDropdown > div > label.lunchImage{ width: 36px; height: 36px; display: inline-block; float: right; margin: 13px 13px 0 0;}
+.absebceDropdown > div label.lunch{ background: url(/images/lunch.svg); }
+.absebceDropdown > div label.lunchAt15{ background: url(/images/ab-lunch15.svg); }
+.absebceDropdown > div label.lunchAt30{ background: url(/images/ab-lunch30.svg); }
+.absebceDropdown > div label.lunchAt45{ background: url(/images/ab-lunch45.svg); }
+.absebceDropdown > div label.lunchAt60{ background: url(/images/ab-lunch60.svg); }
+.absebceDropdown > div label.other{ background: url(/images/other.svg); }
+.absebceDropdown > div label.supplier{ background: url(/images/supplier.svg); }
+.absebceDropdown > div label.workshop{ background: url(/images/workshop.svg); }
+.absebceDropdown > div label.available{ background: url(/images/available.svg); }
+.absebceDropdown > div > label.annualLeave { background: url(/images/ic_days.svg); width: 38px; height: 32px; float: right; margin: 13px 13px 0 0; padding-top: 12px; text-align: center;}
+/*.absebceDropdown > div:hover label.annualLeave{color: white; background: url(/images/ic_daysHover.svg); }*/
+.absebceDropdown > div label.annualLeave > span { display: block; line-height: 9px;}
+.absebceDropdown > div > img{ width:36px; margin:13px 13px 0 0; float: right; }
+.absebceDropdown > div p img{ width: 26px; display: inline-block; margin-right: 4px;  position: relative; top: 7px; left: 7px;}
+
+/* absebce Dropdown End */
+
+/*------------------------------------------------*/
+
+/*Assign To Dropdown Start*/
+
+.wd-324{width:324px;}
+ul.assignToDiv.dropdown li ul li{ height: 64px; line-height: 64px; }
+ul.assignToDiv.dropdown li ul li:hover img{border: 2px solid #4778A8;}
+ul.assignToDiv.dropdown li ul li a img{ width: 49px; height: 49px; border-radius: 50%; border: 2px solid #fff; padding: 1px; float: left; margin: 7px 8px 0 0; }
+ul.assignToDiv .dropdownOptions{ padding:15px 0;}
+.dropdownheightSet{ max-height: 400px; overflow: auto;}
+ul.assignToDiv.dropdown li ul li a span{top: 0; display: block; }
+ul.assignToDiv.dropdown li ul li:first-child a{ font-family: robotobold; color: #5dbc29; }
+ul.assignToDiv.dropdown li ul li:first-child a img{ border-color: #5dbc29; }
+ul.assignToDiv.dropdown li ul li a span div { padding-top: 11px; }
+ul.assignToDiv.dropdown li ul li a label{ display: block; line-height: 14px; cursor: pointer; }
+ul.assignToDiv.dropdown li ul li a label:first-child{ opacity: 0; }
+ul.assignToDiv.dropdown li ul li:first-child a label { opacity: 1;}
+ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5; font-size:10px; font-family: robotoregular; }
+
+/*Assign To Dropdown End*/
+
+/*------------------------------------------------*/
+
+/* Additional Details Start */
+
+.additional-details input { border:1px solid white; border-bottom: 1px solid #DFDFDF; width: 281px; line-height: 28px; position: relative; margin-bottom: 34px; margin-right: 34px;}
+.additional-details input.instructions { width: 601px; }
+.additional-details input.requirements { width: 1538px; }
+.additional-details ul.dropdown { margin-right: 34px;margin-bottom: 36px;}
+.additional-details span.text-top{ letter-spacing: 1px; color: #A5A5A5; font-size: 10px; position: absolute; top: -9px; left :1px; z-index: 1 }
+.additional-details label.error{ position: absolute; width: 100%; font-size: 10px; color: red; left: 0; bottom: 14px; }
+.instructions::placeholder { color: #E0353D; }
+.instructions:-ms-input-placeholder { color: #E0353D; } 
+.instructions::-ms-input-placeholder { color: #E0353D; }
+/* Additional Details End */
+
+/*-----------------------------------------------*/
+
+/* Assign other agent Start*/
+
+.otherSelection .dropdown li ul li{ display: block; }
+.otherSelection{ padding: 0 80px; }
+.otherSelection p{ color: #5d5d5d; text-align: center; }
+.otherSelection div span img { border: 2px solid #5dbc29; padding: 1px; width: 49px; height: 49px; border-radius: 50%; }
+.otherSelection div div label { display: block;}
+.assignToAgent .dropdown li ul li a img {width: 54px; height: 54px; border-radius: 50%;}
+.assignToAgent .dropdown li ul li a label {}
+.assignToAgent .dropdown li ul li a label.inLine {}
+.wd-160 {width: 160px;}
+.Additionaldrodown {}
+.Additionaldrodown a{ padding-bottom: 3px;}
+.Additionaldrodown a span{ background: url(/images/arrow-down.png); display: inline-block; width: 14px; height: 8px; margin-top: 11px; background-repeat: no-repeat; float: right; position: absolute; top: -4px; right: 5px;}
+.AdditionaldrodownList{ padding: 8px 0; z-index:1; top: 22px; width: 183px; border: 1px solid #DFDFDF; left: -12px; font-size: 11px; color: #a5a5a5; background: white;}
+.AdditionaldrodownList p{ color: #a5a5a5; height: 28px; line-height: 28px; text-align: left !important; padding-left: 18px; cursor: pointer;}
+.AdditionaldrodownList p:hover{ background-color: #4778A8; color:white; }
+.btn-cancel {  }
+.btn-skip{ width: 102px; text-align: center; line-height: 34px; cursor: pointer; color: #0e79bb; margin-left: 14px; } 
+.Additionaldrodown input{margin: 15px 0 0 0; width: 100%;}
+/* Assign other agent End*/
+
+/* ----------------------------------------------------------------- */
+
+
+/* Booking Div Start*/
+	
+.daySelection, .weekSelection, .timeSelection, .durationSelection, .timeSelection_Cl1, .durationSelection_Cl1{ border: 1px solid #dfdfdf; border-radius: 18px; overflow: hidden;}
+.timeToggles a{color: #7499bd; float: left; border-right: 1px solid #dfdfdf;}
+.timeToggles a:last-child{ border-right: 0 none}
+.daySelection a{ width: 84px;}
+.weekSelection a{ width: 168px;}
+.durationSelection a, .timeSelection a, .timeSelection_Cl1 a, .durationSelection_Cl1 a{ width: 48px;}
+.daySelection a:hover, .daySelection a.active, .weekSelection a:hover, .weekSelection a.active, .durationSelection a:hover, .durationSelection a.active, .timeSelection a:hover, .timeSelection a.active, .timeSelection_Cl1 a:hover, .timeSelection_Cl1 a.active, .durationSelection_Cl1 a:hover, .durationSelection_Cl1 a.active{ background-color: #7499bd; color: #fff; }
+.bookingDiv{width: 1425px; float: left;}
+.suggestedDate{ border: 1px solid #27ad09; height: 30px; min-width: 256px;}
+.changeDateText{padding-left: 138px }
+
+/*Calendar View*/
+.fc th, .fc td, .fc hr, .fc thead, .fc tbody, .fc-row { border-color: transparent !important; background: transparent !important;}
+.fc tbody .fc-row .fc-content-skeleton tbody tr:last-child td { padding-bottom: 0em;}
+#calendar{width: 1088px; height: auto;   position: relative; float: left;}
+#calendar .fc-center h2{font-size: 24px;}	
+#calendar table > thead th{ font-size: 14px; color: #0e79bb; line-height: 44px; }	
+#calendar table tbody{background: #fafafa !important;}
+#calendar table tbody tbody{ min-height: 104px; padding-top: 14px;display: inline-block;width: 100%;border-bottom: 3px solid white !important; float: left; }
+#calendar table tbody tr{  width: 100%; }
+#calendar table table tbody td { width: 180px;  vertical-align: top; box-sizing: border-box; }
+#calendar table table thead td{position: absolute; line-height: 18px; width: 27px; text-align: right; top: 16px;}
+#calendar table table thead tr{ position: relative; }
+#calendar table table thead td:first-child{  left: 15px; }
+#calendar table table thead td:nth-child(2){  left: 195px; }
+#calendar table table thead td:nth-child(3){  left: 375px; }
+#calendar table table thead td:nth-child(4){  left: 555px; }
+#calendar table table thead td:nth-child(5){  left: 735px; }
+#calendar table table thead td:nth-child(6){  left: 915px; }
+#calendar table table thead td a{ font-size: 24px; color: #0e79bb; }
+#calendar table table tbody tr:first-child{ padding-top: 22px }
+#calendar table table tbody td a{ padding-left: 69px; background: none !important; border: none; cursor: pointer; padding-top: 4px; padding-bottom: 3px; }
+#calendar table table tbody td.fc-event-container:hover a, #calendar table table tbody td.fc-event-container a.active{background: #0e79bb !important;}
+#calendar table table tbody td a.active div.fc-content{color: white;}
+#calendar table table tbody td.fc-event-container:hover .fc-content{color: white}
+#calendar table table tbody td.fc-event-container:hover a::before, #calendar table table tbody td.fc-event-container a.active::before {background-color: #ffffff !important;}
+#calendar table table tbody td a div.fc-content{ color: #5d5d5d; font-size: 12px; }
+#calendar .fc-other-month a{opacity: 0}
+#calendar .fc-today-button{display: none}
+.fc-toolbar.fc-header-toolbar { position: relative;}
+#calendar .fc-button-group{ position: absolute; width: 242px; left: 0; right: 0; margin: 0 auto; bottom: 3px;}
+#calendar .fc button .fc-icon {top: -.0em; }
+#calendar .fc-prev-button, #calendar .fc-next-button{display: inline-block; background: transparent; border: none; box-shadow: none; color: #0e79bb}
+#calendar .fc-prev-button .fc-icon, #calendar .fc-next-button .fc-icon { font-size: 1.5em; top: 0}
+#calendar .fc-prev-button{ float: left; }
+#calendar .fc-center{color: #0e79bb; font-size: 24px;}
+#calendar .fc-next-button{ float: right; }
+#calendar table table tbody td a::before{ content: ''; display: inline-block; width: 13px; height: 13px; -moz-border-radius: 7.5px; -webkit-border-radius: 7.5px; border-radius: 7.5px;  position: absolute; left: 48px;}
+.calendarRed::before{background-color: #e24252;}
+.calendarGreen::before{background-color: #7be24b;}
+.calendarGrey::before, .appointment::before, .leave::before{background-color: #a0a0a0}
+.calendarOrange::before{background-color: #ff9e5c}
+.bookingDiv{transition: height 1.3s ease; width: 1395px;}
+.saveBooking { float: right; width: 285px; padding-top: 268px;}
+.saveBooking h2{}
+.saveBooking span { color: #A5A5A5; font-size: 10px; position: absolute; top: 9px;}
+.saveBooking input { border: white; border-bottom: 1px solid #DFDFDF; width: 281px; line-height: 28px; position: relative; margin-top: 21px; margin-right: 36px;}
+.saveBooking span { color: #A5A5A5; font-size: 10px; position: absolute; top: 9px;}
+.btnSaveBooking{width: 162px; border-radius: 18px; color: #27ad09; border: 1px solid #dfdfdf;}
+.btnSaveBooking:hover{background-color: #27AD09; color: white}
+.btnCancelBooking{width: 76px;}
+#calendar .fc-icon-left-single-arrow:after{ background-image: url(/images/ic_leftArrow.png); width: 13px; height: 12px; display: inline-block; background-repeat: no-repeat; }
+#calendar .fc-icon-right-single-arrow:after{ background-image: url(/images/ic_rightArrow.png); width: 13px; height: 12px; display: inline-block; background-repeat: no-repeat; }
+.saveBooking .dropdown li a.selected-text span{ position: relative; top: 0; font-size: 12px; color: #5D5D5D; }
+.saveBooking .dropdownOptions{ width: 280px; left: 0; }
+/*Calendar 2*/
+
+#calendar2{ width: 1088px; height: auto; position: relative; padding-left: 40px;display: inline-block; }	
+#calendar2 .fc-row { width: 140px; float: left; margin-right: 43px !important;}
+#calendar2 .fc-row .fc-event{ cursor:pointer; font-size: 14px; color: #5d5d5d !important;border-radius: 1px; width: 102px; line-height: 26px; margin: 0 auto 20px auto !important; text-align: center;}
+#calendar2 .fc-row .fc-event.two{background-color: #d9ead3 !important;   border:1px solid #d9ead3; }
+#calendar2 .fc-row .fc-event.two:hover, #calendar2 .fc-row .fc-event.two.active{background-color: #ffffff !important;   border:1px solid #27ad09; }
+#calendar2 .fc-row .fc-event.zero{background-color: #f4cccd !important;   border:1px solid #f4cccd;}
+#calendar2 .fc-row .fc-event.zero:hover, #calendar2 .fc-row .fc-event.zero.active{background-color: #ffffff !important;   border:1px solid #e24252;}
+#calendar2 .fc-row .fc-event.one{background-color: #eab78a !important;  border:1px solid #eab78a;}
+#calendar2 .fc-row .fc-event.one:hover, #calendar2 .fc-row .fc-event.one.active{background-color: #ffffff !important;  border:1px solid #ff9e5c;}
+#calendar2 .fc-row .fc-event.three, #calendar2 .fc-row .fc-event.onLeave{background-color: #fff !important;  border:1px solid #dfdfdf;}
+#calendar2 .fc-row .fc-event.three:hover, #calendar2 .fc-row .fc-event.onLeave:hover,#calendar2 .fc-row .fc-event.three.active, #calendar2 .fc-row .fc-event.onLeave.active{border:1px solid #a0a0a0;}
+#calendar2 .fc-toolbar .fc-left, #calendar2 .fc-toolbar .fc-center,#calendar2 .fc-toolbar .fc-clear{display: none}
+#calendar2 .fc-toolbar .fc-right { position: absolute; left: -105px; width: 100%; right: 0; float: none; top: 107px;}
+#calendar2 .fc-button-group button{ display: inline-block; border: 0 none; background: 0 none; text-shadow: none; box-shadow: none; height: 48px; }
+#calendar2 .fc-button-group button .fc-icon{ height: 100%;}
+#calendar2 .fc-button-group{width: 100%;}
+#calendar2 .fc-button-group button.fc-prev-button{}
+#calendar2 .fc-button-group button.fc-next-button{left: 100%; position: relative; z-index: 12;}
+#calendar2 .fc-icon-left-single-arrow:after { background-image: url(/images/ic_leftArrow2.svg); width: 12px; display: inline-block; height: 100%; background-repeat: no-repeat;}
+#calendar2 .fc-icon-right-single-arrow:after { background-image: url(/images/ic_rightArrow2.svg); width: 12px; display: inline-block; height: 100%; background-repeat: no-repeat;}
+#calendar2 .fc-view-container .fc-view > table >  thead{display: none; }
+#calendar2 .dayTitleHeader { display: block; color: #7499bd; font-size: 14px; }
+#calendar2 .fc-day-number { display: block; width: 100%; text-align: center; font-size: 10px; color: #a5a5a5; padding-bottom: 24px; }
+#calendar2 .fc-toolbar.fc-header-toolbar{    margin-bottom: 0; }
+#calendar2 .loading img{ max-width: 360px; }
+.AM-heading{ width: 50px; top: 138px; }
+.AM-heading span{ color: #b2b2b2; display: block; padding-bottom: 19px; line-height: 28px; }
+.PM-heading{ width: 50px; top: 138px; }
+.PM-heading span{ color: #b2b2b2; display: block; padding-bottom: 19px; line-height: 28px; }
+#calendar2 .fc-view-container{ position: relative; z-index: 10; }
+.Confirmation{ float: right; width: 285px; padding-top: 90px;}
+.Confirmation a{ background: #0e79bb; color: white; font-size: 14px; font-weight: bold; margin-bottom: 10px; display: block; height: 36px; line-height: 36px; text-align: center;}
+.Confirmation a:hover{}
+.Confirmation div{background-color: #f6f6f6; width: 100%; height: 676px;}
+.amHeight{ min-height: 266px; }
+.pmHeight{ min-height: 308px; }
+/* Booking Div End*/
+
+.loading{ background: #f1f2f1; }
+.leads-height{ height: 640px; line-height: 640px; }
+.loading img{ max-width: 500px; position: absolute; top: 50%; transform: translateY(-50%); text-align: center; margin: 0 auto; left: 0; right: 0; }
+.fullHeight{ height: 100%; line-height: 100% }
+.leadsLoadingHeight{ height: 100%; line-height: 100% }
+.leavesLoading{ z-index: 120; left: 0; top: 0; bottom: 0; right: 0; }
+
+/* Ending Wasif Munir Css for Dashboard ---------------------------- */
+
+/* ----------------------------------------------------------------- */
+/* ------------------------ End New Lead Css ----------------------- */
+/* ----------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------- */
+/* -------------------- Start Main Dashoard Css -------------------- */
+/* ----------------------------------------------------------------- */
+
+/* Start Dashboard Header */
+.dashboard-header{ padding-top: 28px; padding-bottom: 28px; }
+.dashboard-header .newactions{ left: 0;}
+.dashboard-header a.tabs{ margin: 0 9px; display: inline-block; width: 149px; height: 50px; text-align: center; font-family: robotomedium; font-size:14px; border:1px solid #dfdfdf; background: white; line-height: 50px; border-radius: 28px; }
+.dashboard-header .middleTabs{ display: inline-block; text-align: center; width: 100%; }
+.dashboard-header a.tabs i{ font-size: 29px; line-height: 50px; vertical-align: middle; padding-right: 5px; }
+.dashboard-header a.tabs span{}
+.dashboard-header .dateSelected{ top: 45px;}
+.dashboard-header a.blue{ color: #29629a; }
+.dashboard-header a.blue.active, .dashboard-header a.blue:hover{ color: #ffffff; background-color:#29629a; }
+.dashboard-header a.green{ color: #27ad09; }
+.dashboard-header a.green.active, .dashboard-header a.green:hover{ color: #ffffff; background-color:#27ad09; }
+/* End Dashboard Header */
+
+/* ----------------------------------------------------------------- */
+/* --------------------- End Main Dashoard Css --------------------- */
+/* ----------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------- */
+/* ------------------- Start Leave Container Css ------------------- */
+/* ----------------------------------------------------------------- */
+
+/* Start leaves Container */
+
+.leavesContainer{ }
+.leavesFilter{background: #ffffff; line-height:74px; padding: 0 30px; }
+.leavesHeader{}
+.leavesHeader span{ display: inline-block; width: 23px; height: 23px; vertical-align: middle; margin-right: 10px;}
+.Consultation span{ background:#7499bd; }
+.Rosteres span{ background:#f9962d; }
+.annualLeaveTab span{ background:#c6c6c6; }
+.sickDay span{ background:#27ad09; }
+.other span{ background:#d9ead3; }
+.sellerAgents div a{ border:1px solid #dfdfdf; width: 96px; height: 26px; line-height: 26px; margin-right: 18px; color: #7499bd; display: inline-block; border-radius:16px; text-align: center; }
+.sellerAgents div a:hover{/*background-color: #7499bd; color: #ffffff;*/}
+.content-heading{}
+.content-heading span{ background: #4778a8; color: white; width: 14.28%; float: left; line-height: 38px; height: 38px; border: 2px solid #f6f6f6; text-align: center;  }
+.leavesDetail{ background: #ffffff; color: #5d5d5d; width: 14.28%; float: left;  border: 2px solid #f6f6f6; height: 136px; position: relative; }
+.leaveTime{ color: #29629a }
+.leaveTime i{ font-weight: bold; }
+.leavedropdown{ width: 120px; background: white; border: 1px solid #dfdfdf; top: 74px; z-index: 121}
+.leavedropdown span{ display: block; height: 30px; line-height: 30px; padding-left: 10px; font-size: 14px; cursor: pointer; }
+.leavedropdown span:hover{ background:#4778a8; color: white; }
+.monthDropdown{ right: 103px; }
+.yearDropdown{ right: 23px; }
+.leaveContent .dateArea{ font-size: 16px; font-family: robotomedium; padding: 10px 0 0 10px; display: inline-block; line-height: 1; }
+.leavesDetail .details{ margin: 0 7px 7PX 7px; padding: 3px 0 3px 5px; line-height: 15px; border-width: 1px; border-style: solid; border-left-width: 11px;}
+.leavesDetail .details.orange{ border-color: #f9962d; }
+.leavesDetail .details.lightgreen{ border-color: #d9ead3; }
+.leavesDetail .details.darkgreen{ border-color: #27ad09; }
+.leavesDetail .details.blue{ border-color: #7499bd; }
+.leavesDetail .details.gray{ border-color: #c6c6c6; col }
+.leavesDetail .details span{display: block;}
+.leavesDetail .details span:first-child{ font-family: robotomedium; font-size: 13px; }
+.leavesDetail .details span:last-child{ font-family: robotoregular; font-size: 14px; }
+.absenseTooltip{ position: relative;top: -3px; z-index: 120; font-size: 13px; font-family: robotomedium; color:#7499bd; text-align: center; cursor: pointer; line-height: 1  }
+.tooltipContainer{ border-radius: 2px; position: absolute; z-index: 120; background: white; width: 224px; box-shadow: 1px 1px 19px #a5a5a5; padding: 6px 0 1px 0; top: 143px; left: 1px;}
+.tooltipContainer img{ position: absolute; top: -22px; width: 224px; left: 0px; max-width: 224px; }
+.tooltipHeight{ max-height: 257px; overflow: auto; }
+.leaveNext-options label{color:#A5A5A5;}
+a.btn-saveDetailsLeave{ width: 102px;  margin-right: 5px; }
+.btn-cancelLeave{ color: #5D5D5D; padding-left: 50px; }
+#ui-datepicker-div{}
+.calendarLeave{ left: -24px; top: 45px; }
+
+/*Assign To New Leave Dropdown Start*/
+
+ul.assignToDivLeave.dropdown li ul li{ height: 64px; line-height: 64px; }
+ul.assignToDivLeave.dropdown li ul li:hover img{border: 2px solid #4778A8;}
+ul.assignToDivLeave.dropdown li ul li a img{ width: 49px; height: 49px; border-radius: 50%; border: 2px solid #fff; padding: 1px; float: left; margin: 7px 8px 0 0; }
+ul.assignToDivLeave .dropdownOptions{ padding:15px 0;}
+ul.assignToDivLeave.dropdown li ul li a span{ top: 0; display: block; }
+ul.assignToDivLeave.dropdown li ul li:first-child a{/* font-family: robotobold; color: #5dbc29; */}
+ul.assignToDivLeave.dropdown li ul li:first-child a img{ /*border-color: #5dbc29;*/ }
+ul.assignToDivLeave.dropdown li ul li a span div { padding-top: 12px; }
+ul.assignToDivLeave.dropdown li ul li a label{ display: block; line-height: 14px; cursor: pointer; }
+ul.assignToDivLeave.dropdown li ul li a label:first-child{ opacity: 0; }
+ul.assignToDivLeave.dropdown li ul li:first-child a label { opacity: 1;}
+ul.assignToDivLeave.dropdown li ul li:first-child a label:first-child { color:#a5a5a5; font-size:10px; font-family: robotoregular; opacity: 0 }
+
+/*Assign To New Leave Dropdown End*/
+
+.newLeaveContainer .innerContainer{ margin-top: 40px; padding: 50px 25px 50px 60px; }
+.newLeaveContainer .innerContainer span.text-top{ color: #A5A5A5; font-size: 10px; position: absolute; top: -3px; left: 0px; } 
+.newLeaveContainer .innerContainer label.showError { position: absolute; width: 100%; font-size: 10px; color: red; left: 0; bottom: -18px; }
+.newLeaveContainer .innerContainer input{ border: white; border-bottom: 1px solid #DFDFDF; width: 281px; line-height: 28px; position: relative; margin-top: 11px; margin-right: 36px; }
+.newLeaveContainer .innerContainer ul.dropdown { margin-right: 36px; margin-top: 10px; }
+
+
+
+/* End leaves Container */
+
+/* ----------------------------------------------------------------- */
+/*--------------------- End Leave Container Css -------------------- */
+/* ----------------------------------------------------------------- */
+
+/*Close lead*/
+
+.closeLeadPopup .dropdown{width: 161px; }
+.closeLeadPopup input{ margin-top: 8px; border: white; border-bottom: 1px solid #DFDFDF; width: 100%; line-height: 28px; position: relative; margin-right: 36px; }
+.closeLeadPopup .dropdownOptions{ top: 32px; width: 100%; left: 0px; }
+.btn-saveCloseLead{ width: 102px;  float: right; }
+a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
+.closeLeadError{ height: 20px; position: absolute; font-size: 11px; font-family: robotomedium; left: 0; right: 0; margin: 0 auto; top: 30px; z-index: 1; }
+.CloseleadListCalendar{ border-radius: 14px; background: white; padding: 0; width: 438px; min-height: 300px;  border: 1px solid #DFDFDF; left: -81px; position: relative; }
+.leadUserName{ padding: 0 30px;cursor: pointer;}
+.referralImage{}
+/* ----------------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------- */
+/* ------------------- Start Lead Container Css -------------------- */
+/* ----------------------------------------------------------------- */
+
+/* Start leaves Container */
+/* dropdown small */
+
+.dd-small{}
+.dd-small li{}
+.dd-small li a { border-bottom: 0 none;}
+.dd-small ul { left: 0;}
+.dd-small ul li{}
+.dd-small ul li a{}
+.dd-small .dropdownOptions{border-radius:14px; overflow: hidden; left: -36px; padding: 8px 0;}
+.dd-small.dropdown li ul li { line-height: 42px; height: 42px;}
+.dd-small.dropdown li ul li a{ color: #7499bd; font-size: 14px; padding-left: 10px;}
+.dd-small.dropdown li ul.Status li a{ padding-left: 20px;}
+.dd-small.dropdown li ul li a:hover{ color: #fff; } 
+.dd-small.dropdown li ul li a span{ width: 20px; height: 20px; border-radius: 50%; }
+.dd-small.dropdown li ul li a span.opened{ border:1px solid #e2e2e2; background:#ffffff; }
+.dd-small.dropdown li ul li a span.dealClosed{ border:1px solid #d9ead3; background:#d9ead3; }
+.dd-small.dropdown li ul li a span.Closed{ border:1px solid #f4cccd; background:#f4cccd; }
+.dd-small.dropdown li ul li a span.google{ background: url(/images/ic-google.png) no-repeat; }
+.dd-small.dropdown li ul li a span.wordOfMouth{ background: url(/images/ic_wordMouth.png) no-repeat no-repeat; }
+.dd-small.dropdown li ul li a span.previousClient{ background: url(/images/ic_pClient.png) no-repeat; }
+.dd-small.dropdown li ul li a span.walkIn{ background: url(/images/ic_walkIn.png) no-repeat; }
+.dd-small.dropdown li ul li a span.facebook{ background: url(/images/ic_facebook.png) no-repeat; }
+.dd-small.dropdown li ul li a span.other{ background: url(/images/ic_other.png) no-repeat; }
+.border-count-green { border-bottom: 4px solid #D9EAD3; line-height: 20px; width: 22px; margin: 0 3px; }
+.border-count-red { border-bottom: 4px solid #F4CCCD; line-height: 20px; width: 22px; margin: 0 3px; }
+.border-count-blue { border-bottom: 4px solid #29629a; line-height: 20px; width: 44px; margin: 0 3px; }
+.border-count-white { border-bottom: 4px solid #FFFFFF; line-height: 20px; width: 21px; margin: 0 3px; }
+.calendar .dropdownOptions{ border-radius:14px; /* overflow: hidden;*/ padding: 0; width: 438px; min-height: 300px; left: -317px; }
+.calendar li a { border-bottom: 0 none; }
+.leadsMainContainer{  padding: 30px 15px 30px 30px; }
+.loadLeadsHere{ height: auto; height: 646px; overflow: auto; }
+.insidescroll{ }
+.loadLeadsHere .one-fourth{width: 400px; }
+.norecord{ font-size: 18px; text-align: left; padding-left: 30px; } 
+.closeLeadClick{ background: white; cursor: pointer; font-size: 11px; color: #acacac; border: 1px solid #acacac; width: 41px; height: 18px; line-height: 16px; left: 4px; top: 4px; border-radius: 5px; }
+.closeLeadClick:hover, .closeLeadClick.active{ color: #ffffff; border: 1px solid #0e79bb; background: #0e79bb; }
+.closeLeadPopup{ background: white; border: 1px solid #e7e7e7; width: 323px; height: 214px; z-index: 1; top: 23px; left: -7px; padding : 10px 80px 20px 80px} 
+.closeLeadPopup .dropdown li a.selected-text span{ width: auto; }
+.closeLeadPopup i.closeCalendarIcon{ color: #0e79bb; right: -11px; top: 8px; background: white; border: 3px solid white; }
+.newLeaveContainer i.closeCalendarIcon{ color: #0e79bb; right: 33px;top: 8px; background: white; border: 3px solid white; }
+
+/* buttons */
+
+.btn { background-color: white; border: 1px solid #dfdfdf; border-radius: 30px; color: #7499bd; display: inline-block; line-height: 24px; margin: 0 6px; text-align: center; width: 94px; }
+.btn:hover { background-color: #29629a; color: #fff; }
+.btn.btn-success { background-color: white; color: #27AD09; }
+.btn.btn-success:hover { background-color: #27AD09; color: #fff }
+.subTopText{ position: relative; font-size: 10px; top: -3px;}
+.btn.btn-large { font-size: 14px; line-height: 50px; width: 150px; }
+.lead-list li { color: #5d5d5d; font-size: 14px; margin-top: 11px; }
+.lead-list li:first-child { margin-top: 1px; }
+.lead-list li img { float: right; position: absolute; right: 10px; top: 9px; }
+.agentImg-container{ text-align: center; width: 100%; height: 76px; }
+.activelead label{ font-family: robotomedium }
+.ProfileImg{ border-radius: 50%; width: 74px; height: 74px; }
+.activelead img { border: 2px solid #27ad09; height: 76px; padding: 1px; width: 76px; }
+.activelead label { color: #27ad09 !important;}
+.lead-list .bg-green1 { background-color: #D9EAD3; }
+.lead-list .bg-red1 { background-color: #F4CCCD; }
+.lead-list .bg-skip { background-color: transparent;  border: 1px dashed #a7a7a7; color: #C6C6C6; font-family: robotomedium; }
+.lead-list .bg-nextline { background-color: transparent;  border: 1px dashed #27AD09; color: #27AD09 !important;  font-family: robotomedium; }
+.wd-142{ width: 142px }
+.calendarContainer{ padding: 23px 25px 0px 25px } 
+.multiCalendar { float: left; width: 282px; min-height: 250px; }
+.calendarOptions{ float: left; padding-top: 24px; padding-left: 30px; text-align: left;}
+.calendarOptions span{ display: block; line-height: 41px; color: #7499bd; cursor: pointer; }
+.calendarOptions span:hover{ color: #29629a; font-family: robotomedium; }
+.multiCalendar .ui-datepicker{top: 0 !important; position: relative !important; }
+.multiCalendar .ui-widget-content.ui-datepicker{ width: 280px; box-shadow: none; }
+.multiCalendar .ui-datepicker td .ui-state-default,.calendarLeave .ui-datepicker td .ui-state-default{ overflow: hidden; font-size: 14px; font-family: robotomedium; height: 20px; line-height: 20px; width: 20px; vertical-align: middle; display: inline-table; border-radius: 50%; margin: 0 8px 16px 8px; color: #7499bd; padding-top: 1px;}
+.multiCalendar .ui-datepicker th,.calendarLeave .ui-datepicker th  { font-size: 10px; color: #c2c2c2; }
+.multiCalendar .ui-datepicker td:not(.ui-state-disabled), .calendarLeave .ui-datepicker td:not(.ui-state-disabled) { font-weight:100; border-top: 1px solid #e2e2e2; padding-top: 3px; }
+.multiCalendar .ui-datepicker td  .ui-state-hover,.multiCalendar .ui-datepicker td .ui-state-active{}
+.multiCalendar .ui-datepicker td .ui-state-highlight, .calendarLeave .ui-datepicker td .ui-state-highlight{    font-weight: 100;}
+.multiCalendar .ui-datepicker .ui-datepicker-calendar .ui-state-highlight a, .calendarLeave .ui-datepicker .ui-datepicker-calendar .ui-state-highlight a{background-color:#29629a; color:#fff}
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight{ border: 0 none; background: transparent;  color: #363636;}
+.ui-datepicker td .ui-state-hover, .ui-datepicker td .ui-state-active { background-color: transparent; color: #7499bd;}
+.multiCalendar .ui-widget-header{display: none;}
+.multiCalendar .ui-datepicker table{ margin: 0;}
+.ui-datepicker-prev, .ui-datepicker-next{ cursor: pointer; }
+.calendarLeave .ui-widget-content.ui-datepicker{padding: 15px 25px 5px 25px; width: 330px;}
+.calendarLeaveMonth span, .calendarLeaveMonth i{ color:#29629a; }
+.calendarLeaveYear span, .calendarLeaveYear i{ color:#29629a; }
+.calendarLeave .ui-datepicker .ui-datepicker-next, .calendarLeave .ui-datepicker .ui-datepicker-prev { border-radius: 50%;}
+.calendarDiv{ color: #7499bd }
+.calendarDiv i{ font-weight: bold; }
+.calendarDropdown{ width: 120px; background: white; border: 1px solid #dfdfdf; top: 32px; z-index: 1000;}
+.calendarDropdown span{ display: block; height: 28px; line-height: 28px; padding-left: 10px; font-size: 14px; cursor: pointer; }
+.calendarDropdown span:hover{ background:#4778a8; color: white; }
+.rings a.btn.active, .rings a.btn:hover{ background: #29629a; color: white; }
+.submitDates, .submitDatesCloseLead { border: 1px solid #7499bd; color: #7499bd; line-height: 36px; height: 36px; float: left;; width: 40px; text-align: center; border-radius: 50%; cursor: pointer; margin-left: 113px; position: relative;}
+.submitDates:hover, .submitDatesCloseLead:hover{background-color:#29629a; color:#fff}
+.mainLoader{position: fixed; width: 100%; z-index: 100; background: #f1f2f1; height: 100%; left: 0; right: 0; top: 0; bottom: 0;}
+.mainLoader img{ max-width: 500px; position: absolute; top: 50%; transform: translateY(-50%); text-align: center; margin: 0 auto; left: 0; right: 0;}
+
+/* End leaves Container */
+
+/* ----------------------------------------------------------------- */
+/*--------------------- End Lead Container Css --------------------- */
+/* ----------------------------------------------------------------- */
+
+@media screen and (max-width:1369px){
+.additional-details input.requirements {
+    width: 909px;
+}
+.selectweek.triple-pad-left{padding-left: 0}
+ 
+.selectweek.gap-left{margin-left: 0}
+.next-options, .leaveNext-options{padding-top: 40px}
+
+}
+
+
+.leadDeailInnerContainer{
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    color: #5d5d5d;
+    padding: 10px 60px 10px 60px;
+}
+.leadDeailInnerContainer p{
+    float: left;
+    width: 100%;
+    line-height: 36px;
+    padding-left: 20px;
+}
+.leadDeailInnerContainer div{border:1px solid #efefef}
+.leadDeailInnerContainer p:nth-child(odd){background: #efefef;}
+.leadDeailInnerContainer p label{}
+.leadDeailInnerContainer p label:first-child{ float: left; width: 200px;}
+.leadDeailInnerContainer p label:last-child{}
+.editDetails{    width: 100px;
+    height: 36px;
+    text-align: center;
+    font-family: robotomedium;
+    font-size: 14px;
+    border: 1px solid #dfdfdf;
+    background: white;
+    line-height: 36px;
+    border-radius: 28px;
+    color: #29629a;}
+
+.editDetails:hover{background: #29629a; color:white}
+.editDetails.disabled{background: #afafaf;color:white}
+.editDetails.disabled:hover{background: #afafaf;color: white;}

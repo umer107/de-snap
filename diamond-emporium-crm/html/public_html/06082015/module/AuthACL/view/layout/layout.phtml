@@ -1,0 +1,29 @@
+<?php echo $this->doctype(); ?>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Diamond Emporium</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" >
+<?php echo $this->render ('layout/linkcss.phtml');?>
+<?php echo '<script type="text/javascript">var jsDateFormat = "'.$config['jsDateFormat'].'"</script>'; ?>
+<?php echo $this->render ('layout/scripts.phtml');?>
+</head>
+
+<body>
+<section class="fl width100p mainWrapper <?php if(isset($this->authService) && $this->authService->hasIdentity()){}else{?> noleftpannel <?php } ?>">
+	<?php
+	if(isset($this->authService) && $this->authService->hasIdentity()){
+		echo $this->render("layout/header.phtml");
+		echo $this->render("layout/leftpanel.phtml");
+	}else{
+		echo $this->render("layout/guest-header.phtml");
+	}
+	?>
+	<section class="rightCol">
+		<?php echo $this->content; ?>
+	</section>	 
+</section>
+ 
+</body>
+
+</html>

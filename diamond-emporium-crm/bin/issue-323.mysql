@@ -1,0 +1,7 @@
+ALTER TABLE `de_suppliers` 
+CHANGE COLUMN `address` `comment` TEXT NULL DEFAULT NULL AFTER `rap_id`,
+ADD COLUMN `address1` TEXT NULL AFTER `last_name`,
+ADD COLUMN `address2` TEXT NULL AFTER `address1`,
+ADD COLUMN `postcode` VARCHAR(16) NULL AFTER `address2`,
+ADD COLUMN `state_id` INT(11) NULL AFTER `postcode`,
+ADD COLUMN `country_id` INT(11) NULL AFTER `state_id`;

@@ -1,0 +1,204 @@
+<!-- Add tem Light Box -->
+<div class="lightBox" id="addItem">
+  <div class="lightBoxMid" style="width:970px">
+    <div class="lightBoxTitle">Add Wedding Ring<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p">
+      <?php
+		$inventoryForm->prepare();
+		echo $this->form()->openTag($inventoryForm);
+		echo $this->formElement($this->inventoryForm->get('supplier_id'));
+		echo $this->formElement($this->inventoryForm->get('image'));
+		echo $this->formElement($this->inventoryForm->get('invoice'));
+	?>
+      <div class="commonForm rowSpace addItemForm">
+        <div class="alphaClmn">
+          <div class="formRow">
+            <label class="labelControll"><?php echo $this->inventoryForm->get('ring_type')->getLabel(); ?></label>
+            <div class="inputDiv">
+              <div class="selectDrop width100p"><?php echo $this->formElement($this->inventoryForm->get('ring_type')); ?></div>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll"><?php echo $this->inventoryForm->get('cad_code')->getLabel(); ?></label>
+            <div class="inputDiv"><?php echo $this->formElement($this->inventoryForm->get('cad_code')); ?></div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll"><?php echo $this->inventoryForm->get('metal_type')->getLabel(); ?></label>
+            <div class="inputDiv">
+              <div class="selectDrop width100p"><?php echo $this->formElement($this->inventoryForm->get('metal_type')); ?></div>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll"><?php echo $this->inventoryForm->get('profile')->getLabel(); ?></label>
+            <div class="inputDiv">
+              <div class="selectDrop width100p"><?php echo $this->formElement($this->inventoryForm->get('profile')); ?></div>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll"><?php echo $this->inventoryForm->get('band_width')->getLabel(); ?></label>
+            <div class="inputDiv"><?php echo $this->formElement($this->inventoryForm->get('band_width')); ?></div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll"><?php echo $this->inventoryForm->get('band_thickness')->getLabel(); ?></label>
+            <div class="inputDiv"><?php echo $this->formElement($this->inventoryForm->get('band_thickness')); ?></div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll"><?php echo $this->inventoryForm->get('finish')->getLabel(); ?></label>
+            <div class="inputDiv">
+              <div class="selectDrop width100p"><?php echo $this->formElement($this->inventoryForm->get('finish')); ?></div>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll"><?php echo $this->inventoryForm->get('fit_options')->getLabel(); ?></label>
+            <div class="inputDiv">
+              <div class="selectDrop width100p"><?php echo $this->formElement($this->inventoryForm->get('fit_options')); ?></div>
+            </div>
+          </div>
+        </div>
+        <div class="betaClmn">
+          <div class="formRow">
+            <label class="labelControll"><?php echo $this->inventoryForm->get('metal_thickness')->getLabel(); ?></label>
+            <div class="inputDiv"><?php echo $this->formElement($this->inventoryForm->get('metal_thickness')); ?></div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll"><?php echo $this->inventoryForm->get('description')->getLabel(); ?></label>
+            <div class="inputDiv"><?php echo $this->formElement($this->inventoryForm->get('description')); ?></div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Upload Image</label>
+            <div class="inputDiv">
+              <div class="inputfile"><span class="cmnBtn blueBtn marL0">Upload</span>
+                <input type="file" name="item_image" id="item_image" />
+              </div>
+              <div class="uploadedImgDisplay" id="preview"></div>
+            </div>
+          </div>
+        </div>
+        <div class="headSettings addDetails">
+          <h2 class="cmnHeader">Additional details (Optional)</h2>
+          <div class="additionalDetailsTable">
+          <table width="100%" cellpadding="0" cellspacing="0" id="additionalTbl" class="addFieldsTable">
+<tbody id="tbodyAdditional">
+  <tr align="left">
+    <th>Setting Style</th>
+    <th>Stone Shape</th>
+    <th>Gem Type</th>
+    <th>Qty</th>
+    <th>Size (mm)</th>
+    <th>Total Carat</th>
+
+  </tr>
+  <input type="hidden" value="1" id="hiddenRowCount">
+  <tr id="tr1">
+    <td ><div class="selectDrop width100p">
+        <select class="dropdown" name="style[]" id="style1">
+          <?php foreach($this->additionalLookup['setting_style_options'] as $settings){?>
+		  <option value="<?php echo $settings['id']; ?>"><?php echo $settings['setting_style']; ?></option>
+		  <?php } ?>
+        </select>
+      </div></td>
+    <td><div class="selectDrop width100p">
+        <select class="dropdown" name="shape[]" id="shape1">
+		<?php foreach($this->additionalLookup['shape_options'] as $shape){?>
+          <option value="<?php echo $shape['id']; ?>"><?php echo $shape['shape']; ?></option>
+		  <?php } ?>
+        </select>
+      </div></td>
+    <td><div class="selectDrop width100p">
+        <select class="dropdown" name="gemtype[]" id="gemtype1">
+          <?php foreach($this->additionalLookup['gem_type_options'] as $gems){?>
+          <option value="<?php echo $gems['id']; ?>"><?php echo $gems['gem_type']; ?></option>
+		  <?php } ?>
+        </select>
+      </div></td>
+    <td><input type="text" value="" class="inputTxt pureNumaric" name="quantity[]" id="quantity1"></td>
+    <td><input type="text" value="" class="inputTxt" name="size[]" id="size1" data-numeric="yes"></td>
+    <td><input type="text" value="" class="inputTxt" name="totalcarat[]" id="totalcarat1" data-numeric="yes"></td>
+
+  </tr>
+  </tbody>
+</table>
+<?php 
+	$setting_style_options = json_encode($this->additionalLookup['setting_style_options']);
+	$shape_options = json_encode($this->additionalLookup['shape_options']);
+	$gem_type_options = json_encode($this->additionalLookup['gem_type_options']);
+?>
+		  <div><a href="javascript:;" onclick='addAdditionalRow(<?php echo $setting_style_options; ?>, <?php echo $shape_options; ?>, <?php echo $gem_type_options; ?>);' title="Add row">Add row</a></div>
+        </div>
+        </div>
+        <div class="headSettings">
+          <!--<h2 class="cmnHeader">Head Settings</h2>-->
+          <div class="alphaClmn">
+            <div class="formRow">
+              <label class="labelControll">Attach Invoice</label>
+              <div class="inputDiv">
+                <div class="inputfile"><span class="cmnBtn blueBtn marL0">Upload</span>
+                  <input type="file" name="item_invoice" id="item_invoice" />
+                </div>
+				<div class="uploadedInvoiceDisplay" id="invoicePreview"></div>
+              </div>
+            </div>
+            <div class="formRow">
+              <label class="labelControll"><?php echo $this->inventoryForm->get('supplier_name')->getLabel(); ?></label>
+              <div class="inputDiv"><?php echo $this->formElement($this->inventoryForm->get('supplier_name')); ?><a href="javascript:;" class="cmnBtn blueBtn lightBoxClick" data-popup="supplierlookup" onclick="suppliersLookup(20, 'supplier_id', 'supplier_name');">Lookup</a></div>
+            </div>
+          </div>
+          <div class="betaClmn">
+            <div class="formRow">
+              <label class="labelControll"><?php echo $this->inventoryForm->get('price')->getLabel(); ?></label>
+              <div class="inputDiv"><?php echo $this->formElement($this->inventoryForm->get('price')); ?></div>
+            </div>
+          </div>
+        </div>
+        <div class="formButtons tc fl width100p marB30"> <?php echo $this->formElement($this->inventoryForm->get('save')); ?> <?php echo $this->formElement($this->inventoryForm->get('cancel')); ?> </div>
+      </div>
+      <?php echo $this->form()->closeTag(); ?> </div>
+  </div>
+</div>
+<!-- Add tem Light Box End-->
+<!--BOF Supplier lookup list-->
+<div class="lightBox" id="supplierlookup">
+  <div class="lightBoxMid" style="width:970px">
+    <div class="lightBoxTitle">Supplier Lookup <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p lookupPopup padB105">
+      <div class="mainSearch">
+        <input name="lookupsrc" id="lookupsrc" type="text" class="searchInput" placeholder="Search..">
+        <input type="button" class="inputGo" value="Go!" onclick="suppliersLookup(20, 'supplier_id', 'supplier_name', $('#lookupsrc').val());" id="supplierLookupSearch">
+        <!--<span id="searchResultsHintjqxCustomers" style="color:red;"></span>-->
+      </div>
+      <div class="tableData tableNeView" style="overflow:visible">
+        <div class="tableHading"> Supplier List </div>
+        <div class="formTable manageMembers" id="jqxSuppliersLookup" style="width:100%"> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+
+searchByEnterKey('lookupsrc', 'supplierLookupSearch');
+<!--EOF Supplier lookup list-->
+$(document).ready(function() {		
+	$('#item_image').live('change', function(){ 
+		$("#preview").html('');
+		//$("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+		$("#frm_weddingring").ajaxForm({
+			//target: '#preview',
+			success: function(response){
+				$('#image').val(response);
+				$('#item_image').val('');
+				$('#preview').html('<img src="/inventory_images/'+response+'" height="98px" width="234px">');
+			}
+		}).submit();
+	});
+	$('#item_invoice').live('change', function(){ 
+		//$("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+		$("#frm_weddingring").ajaxForm({
+			success: function(response){
+				$('#invoice').val(response);
+				$('#invoicePreview').html(response);
+				$('#item_invoice').val('');
+			}
+		}).submit();
+	});
+});
+</script>

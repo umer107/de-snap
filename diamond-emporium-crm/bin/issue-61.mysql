@@ -1,0 +1,13 @@
+UPDATE `de_inventory_chain_consign` SET `owner_id` = 23 WHERE `owner_id` NOT IN (SELECT `user_id` FROM `de_users`);
+
+UPDATE `de_inventory_diamonds_consign` SET `owner_id` = 23 WHERE `owner_id` NOT IN (SELECT `user_id` FROM `de_users`);
+
+UPDATE `de_inventory_earrings_consign` SET `owner_id` = 23 WHERE `owner_id` NOT IN (SELECT `user_id` FROM `de_users`);
+
+UPDATE `de_inventory_engagementrings_consign` SET `owner_id` = 23 WHERE `owner_id` NOT IN (SELECT `user_id` FROM `de_users`);
+
+UPDATE `de_inventory_miscellaneous_consign` SET `owner_id` = 23 WHERE `owner_id` NOT IN (SELECT `user_id` FROM `de_users`);
+
+UPDATE `de_inventory_pendants_consign` SET `owner_id` = 23 WHERE `owner_id` NOT IN (SELECT `user_id` FROM `de_users`);
+
+UPDATE `de_inventory_weddingrings_consign` SET `owner_id` = 23 WHERE `owner_id` NOT IN (SELECT `user_id` FROM `de_users`);

@@ -1,0 +1,13 @@
+ALTER TABLE `de_alerts` 
+ADD COLUMN `cleared_by` INT(11) NULL DEFAULT NULL AFTER `cleared_date`;
+
+UPDATE `de_alerts` SET `cleared_by` = `user_id` WHERE `cleared_date` IS NOT NULL;
+
+ALTER TABLE `de_alerts` 
+CHANGE COLUMN `user_id` `target_id` INT(11) NOT NULL,
+ADD COLUMN `target_type` VARCHAR(16) NULL DEFAULT NULL AFTER `alert_id`;
+
+UPDATE `de_alerts` SET `target_type` = 'user' WHERE `target_type` IS NULL;
+
+ALTER TABLE `de_alerts` 
+CHANGE COLUMN `target_type` `target_type` VARCHAR(16) NOT NULL ;

@@ -1,0 +1,9 @@
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `de_leaves`
+--
+ALTER TABLE `de_leaves`
+  ADD PRIMARY KEY (`Leave_id`);

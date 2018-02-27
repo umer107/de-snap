@@ -1,0 +1,70 @@
+<?php
+$userForm->prepare();
+echo $this->form()->openTag($userForm);
+echo $this->formElement($this->userForm->get('user_id'));
+?>
+
+	  <div class="alphaClmn">
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('first_name')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('first_name')); ?></div>
+		</div>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('last_name')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('last_name')); ?></div>
+		</div>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('mobile_number')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('mobile_number')); ?></div>
+		</div>                
+	  </div>
+	  <div class="betaClmn">
+	  	<?php if(empty($email)){ ?>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('email')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('email')); ?></div>
+		</div>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('role_id')->getLabel(); ?></label>
+		  <div class="inputDiv"><div class="selectDrop width100p"><?php echo $this->formElement($this->userForm->get('role_id')); ?></div></div>
+		</div>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('password')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('password')); ?></div>
+		</div>
+		<?php }else{ ?>
+		<div class="formRow">
+		  <label class="labelControll">Email</label>
+		  <div class="inputDiv"><?php echo $email; ?></div>
+		</div>
+		<?php } ?>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('color')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('color')); ?></div>
+		</div>
+	  </div>
+  
+  <div class="formButtons tc fl width100p">
+			<?php echo $this->formElement($this->userForm->get('save')); ?>
+			<?php echo $this->formElement($this->userForm->get('cancel')); ?>
+		</div>
+
+
+<?php echo $this->form()->closeTag(); ?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#color').colpick({
+		layout:'hex',
+		submit:0,
+		colorScheme:'dark',
+		onChange:function(hsb,hex,rgb,el,bySetColor) {
+			$(el).css('border-color','#'+hex);
+			// Fill the text box just if the color was set using the picker, and not the colpickSetColor function.
+			if(!bySetColor) $(el).val(hex);
+		}
+	}).keyup(function(){
+		$(this).colpickSetColor(this.value);
+	});
+	$('#color').attr('style', 'border-right: 20px solid #<?php echo empty($color) ? "000000" : $color; ?>');
+});
+</script>

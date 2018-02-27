@@ -1,0 +1,626 @@
+AWSTATS DATA FILE 7.4 (build 20140726)
+# If you remove this file, all statistics for date 201510 will be lost/reset.
+# Last config file used to build this data file was /home/diamond/tmp/awstats/awstats.diamond.openseed.com.au.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 28
+POS_GENERAL 2019                
+POS_TIME 2691                
+POS_VISITOR 7579                
+POS_DAY 8919                
+POS_DOMAIN 3477                
+POS_LOGIN 3789                
+POS_ROBOT 3944                
+POS_WORMS 4132                
+POS_EMAILSENDER 4263                
+POS_EMAILRECEIVER 4406                
+POS_SESSION 9628                
+POS_SIDER 9837                
+POS_FILETYPES 4541                
+POS_DOWNLOADS 4810                
+POS_OS 4904                
+POS_BROWSER 5115                
+POS_SCREENSIZE 5493                
+POS_UNKNOWNREFERER 5567                
+POS_UNKNOWNREFERERBROWSER 5715                
+POS_ORIGIN 5858                
+POS_SEREFERRALS 5999                
+POS_PAGEREFS 6143                
+POS_SEARCHWORDS 6291                
+POS_KEYWORDS 6443                
+POS_MISC 2355                
+POS_ERRORS 6502                
+POS_CLUSTER 3645                
+POS_SIDER_404 6637                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20151102205957 1 0 11638247562898
+FirstTime 20151001113315
+LastTime 20151030165142
+LastUpdate 20151102231152 1 0 0 0 0
+TotalVisits 110                 
+TotalUnique 27                  
+MonthHostsKnown 0                   
+MonthHostsUnknown 32                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 2 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 383 643 3459891 17 21 7888
+1 319 943 8202762 11 20 1506
+2 10 10 31923 0 0 0
+3 0 0 0 0 0 0
+4 2 2 1212 0 0 0
+5 86 97 148050 7 8 0
+6 255 403 1571286 5 6 0
+7 0 0 0 1 1 0
+8 104 107 262160 3 5 3366
+9 63 143 978398 9 11 0
+10 328 639 3222553 19 24 0
+11 808 1054 7279350 25 33 1810507
+12 977 1169 12231203 25 29 16830
+13 968 1410 7564183 47 51 22440
+14 1350 2031 35764360 52 58 30294
+15 310 570 4119655 28 34 25847
+16 547 1238 10822865 22 37 39715
+17 379 965 7648011 41 68 165232
+18 259 1392 11023015 31 51 8977
+19 263 1125 13659056 25 47 5610
+20 93 410 2971178 12 71 657236
+21 514 1108 8821918 30 39 7854
+22 422 934 7684415 24 35 10098
+23 152 391 3341092 7 15 4488
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 25 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 6
+au 6052 9175 92956093
+in 2512 7462 55962115
+es 20 86 1138215
+gb 7 59 632561
+zz 1 1 13648
+us 0 1 9038
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 25 first Hits must be first (order not required for others)
+BEGIN_ROBOT 1
+google[_+\s]web[_+\s]preview 53 657236 20151027202322 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 10
+css 1255 8626135 0 0
+png 853 2598211 0 0
+pdf 1 193732 0 0
+swf 183 2336361 0 0
+php 33 135873 0 0
+html 217 253382 0 0
+js 5561 59025977 0 0
+jpg 355 58290664 0 0
+Unknown 8159 15040275 0 0
+gif 167 4211060 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 1
+/invoice/1060189106_1444798187.pdf 1 2 193732
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 10
+linuxandroid 3 2
+winxp 56 3
+ios_iphone 6 0
+winnt 1663 1057
+linux 86 20
+win7 11913 5992
+macosx 2760 1435
+win8.1 213 62
+Unknown 5 5
+ios_ipad 81 16
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 17
+safari8.0.8 211 29
+firefox40.0 734 365
+firefox42.0 2223 486
+android 1 0
+chrome46.0.2490.71 5397 3013
+chrome46.0.2490.80 1321 536
+iphone 6 0
+chrome46.0.2490.76 2 2
+msie11.0 58 5
+safari9.0 681 314
+chrome45.0.2454.101 4463 2735
+mozilla 6 0
+chrome42.0.2311.135 1082 818
+msie7.0 14 0
+firefox41.0 581 284
+Unknown 5 5
+firefox11.0 1 0
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 2
+Google_favicon 20151027202319
+Shockwave_Flash 20151013223205
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 2
+Google_favicon 20151027202319
+Shockwave_Flash 20151013223205
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 292 320
+From1 0 0
+From2 0 0
+From3 0 0
+From4 8300 16466
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 25 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 0
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 25 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 5
+403 2 2278
+302 300 0
+206 10 1976569
+500 5 0
+404 161 180642
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referrer
+BEGIN_SIDER_404 9
+/opportunitydetails/ 8 http://diamond.openseed.com.au/opportunitydetails/18
+/milestone_attachments/1 9 http://diamond.openseed.com.au/jobdetails/11
+/customerdetails/ 9 http://diamond.openseed.com.au/uploadify.swf
+/img/uploadify-cancel.png 28 http://diamond.openseed.com.au/css/uploadify.css
+/order_attachment/1 57 http://diamond.openseed.com.au/jobdetails/15
+/editinvoicequotes/ 2 http://diamond.openseed.com.au/jobdetails/21
+/browserconfig.xml 2 -
+/leaddetails/ 45 http://diamond.openseed.com.au/leaddetails/27
+/customerdetails/www.facebook.com/people/Seda-Hashem/100010266001828 1 http://diamond.openseed.com.au/customerdetails/15
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 25 first Hits must be first (order not required for others)
+BEGIN_VISITOR 32
+203.174.133.70 2401 3060 38716526 20151030162455
+202.62.72.163 2054 6416 49084390 20151028220646
+58.108.187.200 1335 2181 21775618 20151029190252
+124.246.10.7 700 1030 5727792 20151014143540
+60.225.50.142 509 1129 10202819 20151029193124
+203.174.133.142 461 670 6601443 20151022144203
+49.206.148.106 258 332 572140 20151023062103
+110.175.78.225 246 488 6831328 20151024220539
+49.181.203.158 203 207 366728 20151001121047
+175.101.6.98 112 542 5151483 20151030165142
+49.195.167.244 99 101 243199 20151014083925
+49.206.138.197 85 169 1139370 20151020061820
+60.241.161.140 46 46 135026 20151027223619
+121.209.170.167 35 154 1809129 20151019130953
+83.42.144.92 20 86 1138215 20151029212627
+49.195.27.191 8 73 317710 20151006142052
+185.61.49.2 6 58 619256 20151021011848
+120.150.210.86 2 2 0 20151008082958
+49.195.26.17 2 27 188987 20151008180550
+49.195.170.125 2 2 2424 20151019183414
+49.206.137.190 2 2 1212 20151011040141
+49.206.137.16 1 1 13520 20151030025535
+49.180.155.177 1 1 0 20151008114940
+192.168.80.177 1 1 13648 20151028205607
+49.195.27.204 1 1 0 20151027131550
+49.195.24.17 0 1 9038 
+49.195.171.234 0 1 9038 
+49.195.23.11 0 1 9038 
+66.249.93.225 0 1 9038 
+188.29.165.61 1 1 13305 20151027230202
+49.195.144.172 0 1 9038 
+49.180.155.222 1 1 1212 20151026201642
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 25
+20151001 563 1039 5136285 4
+20151002 3 58 92093 1
+20151005 1 1 0 1
+20151006 81 151 2680430 3
+20151007 2 16 199627 2
+20151008 292 692 3502492 7
+20151009 706 1447 8347592 6
+20151010 17 18 57493 1
+20151011 2 2 1212 1
+20151012 44 119 846153 2
+20151013 571 1955 14288227 5
+20151014 790 899 13813244 5
+20151015 93 99 3372823 3
+20151019 171 616 5120249 7
+20151020 1150 2029 24093887 10
+20151021 1260 2031 22010554 12
+20151022 690 1079 3862032 5
+20151023 262 336 581114 3
+20151024 570 701 11387937 2
+20151025 14 15 54406 1
+20151026 457 655 3364639 5
+20151027 157 727 6913899 8
+20151028 221 790 7689484 7
+20151029 342 1081 12190964 5
+20151030 133 228 1201700 4
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 7
+1h+ 26
+5mn-15mn 16
+30s-2mn 4
+2mn-5mn 6
+0s-30s 38
+15mn-30mn 7
+30mn-1h 13
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 25 first Pages must be first (order not required for others)
+BEGIN_SIDER 282
+/ajaxrecordscount 1787 335413 0 11
+/ajaxgetopportunities 951 1470442 0 5
+/ajaxorderlist 315 81565 0 3
+/ajaxjoblist 268 75193 0 4
+/ajax-invoice 238 85248 0 0
+/ 216 251577 85 28
+/opportunities 213 1246089 0 0
+/customers 193 861725 5 1
+/gettaskhistorydetails 189 47915 0 5
+/ajaxcustomerslist 185 162255 0 7
+/uploadify.swf 183 2336361 0 5
+/dashboard 167 284874 6 1
+/ajaxgetdiamonds 166 138178 0 0
+/orders 152 584979 0 1
+/ajaxgetinvoiceemail 147 12930 0 3
+/gettaskdetails 138 37452 0 0
+/leads 127 697516 1 0
+/ajaxgetleads 121 36290 0 3
+/ajaxgetweddingrings 99 37536 0 3
+/inventory 97 866383 2 1
+/ajax-quote 94 45299 0 0
+/ajaxgetengagementrings 86 27652 0 1
+/ajaxgetpendants 84 3360 0 1
+/ajaxgetearrings 82 3280 0 0
+/ajaxgetchain 78 3120 0 1
+/customerdetails/38 2 35832 0 0
+/changejobstatus 3 63 0 0
+/opportunitydetails/6 1 9546 0 0
+/deleteopportunity/22 1 21 0 0
+/jobdetails/23 1 6645 0 0
+/inventory_images/ 1 1805 0 0
+/upoadprofilephoto 4 178 0 0
+/ajaxcustomerslookup 24 47335 0 0
+/ajaxgetnotes/opportunity/25 2 44 0 0
+/opportunitydetails/18 8 66632 0 0
+/workshopfinalstep 2 42 0 0
+/unassignpartner 29 609 0 0
+/ajaxgetnotes/lead/29 2 44 0 0
+/editinvoicequotes/18 2 9866 0 0
+/ajaxgetnotes/lead/24 1 22 0 0
+/newquotes 18 86681 0 0
+/jobdetails/14 2 18594 0 0
+/notes 7 623 0 0
+/checkviewexist 25 525 0 0
+/editinvoicequotes/10 2 15070 0 0
+/customerdetails/28 4 71699 0 0
+/ajaxgetnotes/opportunity/13 7 1508 0 1
+/newquotes/22 4 16116 0 0
+/ajaxgetnotes/opportunity/24 1 22 0 0
+/updateopportunitystatus 3 63 0 0
+/newinvoice 17 94797 0 0
+/ajaxpartnerslookup/16 13 25832 0 0
+/customerdetails/6 1 18172 0 0
+/leaddetails/26 1 9631 0 0
+/ajaxgetmiscellaneous 75 19125 0 0
+/cpanel 8 23019 0 1
+/ajaxinvoicelookup 5 779 0 0
+/ajaxgetnotes/lead/35 1 22 0 0
+/customerdetails/21 2 35260 0 0
+/customerdetails/29 5 89556 0 0
+/inventory-weddingring 32 250282 0 0
+/inventoryjobs 5 19940 0 0
+/checkduplicate/19 2 42 0 0
+/diamonddetails/8 3 18909 0 0
+/ajaxpartnerslookup/37 20 55590 0 0
+/deleteopportunity/19 1 21 0 0
+/ajaxgetnotes/opportunity/4 4 972 0 0
+/emailinvoice 2 42 0 0
+/opportunitydetails/9 2 18618 0 0
+/customerdetails/18 4 70821 0 0
+/leaddetails/31 3 29256 0 0
+/opportunitydetails/12 1 9445 0 0
+/customerdetails/7 1 18221 0 0
+/deleteopportunity/15 1 21 0 0
+/orderdetails/12 4 18911 0 0
+/jobdetails/20 1 6682 0 0
+/ajaxgetnotes/opportunity/16 3 66 0 0
+/newquotes/8 2 8142 0 0
+/checkduplicate/16 18 378 0 1
+/convertlead 11 645 0 0
+/createjobpacket 10 220 0 0
+/ajaxpartnerslookup/29 6 17028 0 0
+/invoicequotes/inv 28 64986 0 0
+/opportunitydetails/20 7 66261 0 0
+/checkduplicate/15 8 168 0 0
+/leaddetails/36 2 19888 0 0
+/checkduplicate/28 2 42 0 0
+/addmilestone 20 434 0 0
+/jobdetails/18 15 148938 0 0
+/ajaxgetnotes/opportunity/20 7 154 0 0
+/ajaxgetnotes/opportunity/21 5 110 0 1
+/ajaxuserlist 1 361 0 1
+/ajaxpartnerslookup/25 4 11478 0 1
+/updatejobform 10 12172 0 0
+/leaddetails/9 1 10197 0 0
+/jobdetails/15 14 127106 0 0
+/checkduplicate/7 4 84 0 0
+/tasks 41 263045 0 0
+/checkduplicate/9 4 84 0 0
+/ajaxgetnotes/lead/9 1 22 0 0
+/newquotes/15 1 6484 0 0
+/startjob 13 273 0 0
+/customerdetails/4 2 35941 0 0
+/editinvoicequotes/12 1 8382 0 0
+/consignform 18 51363 0 0
+/ajaxgetmilestoneemail 12 30093 0 0
+/inventory-chain 11 70999 0 0
+/ajaxgetnotes/opportunity/9 2 44 0 0
+/weddingringdetails/4 4 26145 0 0
+/ajaxgetnotes/opportunity/19 5 110 0 0
+/ajaxgetnotes/lead/34 6 132 0 0
+/orderdetails/7 9 39790 0 0
+/jobdetails/22 2 13707 0 0
+/validateowner 9 189 0 0
+/deletegridview 3 63 0 0
+/customerdetails/15 19 337930 0 0
+/ajaxgetnotes/lead/36 2 44 0 0
+/deleteopportunity/18 1 21 0 0
+/customerdetails/25 6 106925 0 0
+/customerdetails/22 18 269685 0 0
+/supplierdetails/5 2 7877 0 0
+/customerdetails/10 1 17428 0 0
+/opportunitydetails/27 1 9486 0 0
+/savediamond 4 84 0 0
+/checkduplicate/18 6 126 0 0
+/editinvoicequotes/22 1 7587 0 0
+/deleteorder 2 42 0 0
+/ajaxpartnerslookup/28 5 11925 0 0
+/createorder 9 194 0 0
+/ajaxpartnerslookup/32 17 32888 0 0
+/saveattachments 49 1171 0 0
+/jobdetails/10 3 29475 0 0
+/opportunitydetails/22 18 175313 0 0
+/deleteopportunity/4 1 21 0 0
+/opportunitydetails/13 4 38178 0 0
+/deletecustomer 4 84 0 0
+/checkduplicate/29 2 42 0 0
+/composemilestoneemail 10 4756 0 0
+/orderdetails/11 1 4482 0 0
+/leaddetails/30 17 154947 1 0
+/customerdetails/39 1 17888 0 0
+/savesuppliertask 5 241 0 0
+/ajaxgetnotes/opportunity/14 1 22 0 0
+/savecomment 53 1219 0 0
+/editinvoicequotes/13 3 23100 0 0
+/uploadmultiplefile 18 767 0 0
+/deleteopportunity/14 1 21 0 0
+/engagementringdetails/1 1 6971 0 0
+/leaddetails/27 9 86631 0 0
+/opportunitydetails/19 5 47280 0 0
+/diamonddetails/5 4 25241 0 0
+/savecustomer 25 525 0 2
+/newquotes/25 1 6441 0 0
+/ajaxgetnotes/opportunity/15 4 88 0 0
+/jobdetails/19 1 8357 0 0
+/editorderform 13 24958 0 0
+/caststep1 2 42 0 0
+/ajaxgetnotes/lead/33 4 88 0 0
+/ajaxgetsuppliers 62 24928 0 2
+/ajaxgetnotes/opportunity/27 1 22 0 0
+/unlinkfile 5 105 0 0
+/editinvoicequotes/16 7 44158 0 0
+/opportunitydetails/4 4 39122 0 0
+/invoicequotes 70 158423 0 0
+/customerdetails/36 1 17782 0 0
+/leaddetails/24 1 9591 0 0
+/getconsigndetails 3 686 0 0
+/emailmilestone 4 155 0 0
+/orderdetails/8 37 189116 0 0
+/suppliers 57 237226 0 1
+/leaddetails/33 4 39679 0 0
+/uploadfile 10 350 0 0
+/diamonddetails/3 1 6396 0 0
+/convertleadform 39 95774 0 0
+/saveconsign 7 147 0 0
+/leaddetails/28 1 9619 0 0
+/deleteopportunity/17 1 21 0 0
+/diamonddetails/7 1 6269 0 0
+/jobdetails/12 5 40339 0 0
+/customerdetails/23 2 35272 0 0
+/customerdetails/19 1 17524 0 0
+/orderdetails/10 26 114209 0 0
+/printjob 7 17670 0 0
+/orderdetails/6 19 84343 0 0
+/ajaxgetnotes/opportunity/18 6 132 0 0
+/inventory-miscellaneous 9 48013 0 0
+/customerdetails/32 7 124576 0 0
+/checkduplicate/13 2 42 0 0
+/orderdetails/14 4 17735 0 0
+/jobdetails/21 4 26877 0 0
+/startjobrequest 6 126 0 1
+/customerdetails/31 2 35808 0 0
+/editgridview 59 11540 0 1
+/updateindividual 46 1058 0 0
+/editinvoicequotes/19 1 4922 0 0
+/opportunitydetails/14 1 9443 0 0
+/customerdetails/26 9 160510 0 0
+/deleteopportunity/20 1 21 0 0
+/attachfile 27 527 0 0
+/editinvoicequotes/8 2 12743 0 0
+/jobdetails/11 11 107899 0 0
+/opportunitydetails/8 1 9245 0 0
+/ajaxgetnotes/opportunity/8 1 191 0 0
+/customerdetails/20 4 70694 1 0
+/ajaxgetnotes/lead/32 3 204 0 0
+/supplierdetails/4 10 40121 0 0
+/customerdetails/5 1 17594 0 0
+/changetaskstatus 1 21 0 0
+/editinvoicequotes/7 2 10462 0 0
+/jobdetails/16 2 17262 0 0
+/ajaxgetnotes/opportunity/11 2 181 0 0
+/ajaxgetnotes/lead/27 9 198 0 0
+/opportunitydetails/16 3 27884 0 0
+/savemygridview 24 2849 0 0
+/editinvoicequotes/15 2 13575 0 0
+/checkduplicate/17 10 210 0 0
+/customerdetails/16 24 432237 0 0
+/opportunitydetails/25 2 18822 0 0
+/checkduplicate 61 1281 0 1
+/orderdetails/5 3 13246 0 0
+/ajaxpartnerslookup/26 8 18387 0 0
+/editinvoicequotes/17 5 31961 0 0
+/customerdetails/9 1 18064 0 0
+/ajaxgetnotes/opportunity/26 4 88 0 0
+/customerdetails/35 2 35856 0 0
+/getsubjects 1 67 0 0
+/deleteopportunity/9 1 21 0 0
+/editinvoicequotes/24 1 7555 0 0
+/caststep2 2 42 0 0
+/ajaxpartnerslookup/17 12 25058 0 0
+/viewinvoiceemail/8 1 0 0 0
+/ajaxgetnotes/lead/25 8 176 0 0
+/ajaxgetnotes/lead/26 1 22 0 0
+/ajaxpartnerslookup/22 32 79829 0 0
+/opportunitydetails/26 4 37710 0 0
+/websitelinks 3 9576 0 0
+/deletemilestone 15 315 0 0
+/leaddetails/25 8 78548 0 0
+/ajaxgetnotes/lead/30 16 352 0 0
+/orderdetails/9 8 35780 0 0
+/leaddetails/32 2 19526 0 0
+/customerdetails/24 4 52939 0 0
+/orderdetails/13 3 14102 0 0
+/inventory-engagementring 20 166729 0 0
+/customerdetails/13 1 17363 0 0
+/opportunitydetails/5 1 9422 0 0
+/workshopstep1 4 84 0 0
+/customerdetails/37 12 214887 0 0
+/customerdetails/40 1 18007 0 0
+/leaddetails/35 1 10034 0 0
+/savecaddesign 4 84 0 0
+/ajaxgetnotes/lead/31 3 66 0 0
+/miscellaneousdetails/1 1 3992 0 0
+/customerdetails/17 15 267912 0 0
+/composeinvoiceemail 3 2964 0 0
+/createtask 24 3737 0 0
+/orders/24 1 4238 0 0
+/workshopqualitycontrol 2 42 0 0
+/info.php 33 135873 8 8
+/ajaxgetnotes/opportunity/17 4 88 0 0
+/jobdetails/17 2 16938 0 0
+/opportunitydetails/17 7 64865 0 0
+/createcustomer 23 506 0 0
+/checkduplicate/6 2 42 0 0
+/leaddetails/34 6 59528 0 0
+/opportunitydetails/24 1 9503 0 0
+/checkduplicate/20 6 126 0 0
+/ajaxpartnerslookup/38 1 2787 0 0
+/users 1 2502 0 0
+/inventory-earring 16 125522 0 0
+/deleteopportunity/16 1 21 0 0
+/ajaxgetnotes/opportunity/5 1 224 0 0
+/opportunitydetails/11 1 9220 0 0
+/opportunitydetails/21 6 57318 1 0
+/savepartner 38 798 0 3
+/leaddetails/29 2 19207 0 0
+/opportunitydetails/15 4 37340 0 0
+/ajaxgetnotes/opportunity/22 21 3486 0 1
+/ajaxgetnotes/opportunity/12 1 22 0 0
+/jobdetails/24 1 7328 0 0
+/emails 1 2076 0 0
+/inventory-pendant 18 145363 0 0
+END_SIDER

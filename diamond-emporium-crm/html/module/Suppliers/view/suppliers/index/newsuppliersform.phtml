@@ -1,0 +1,108 @@
+      <?php
+		$form->prepare();
+		echo $this->form()->openTag($form);
+	  ?>
+      <div class="alphaClmn">
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('company_name')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"> <?php echo $this->formElement($this->form->get('company_name')); ?> </div>
+		  </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('first_name')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"> <?php echo $this->formElement($this->form->get('first_name')); ?> </div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('last_name')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"> <?php echo $this->formElement($this->form->get('last_name')); ?> </div>
+        </div>
+
+      	<div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('address1')->getLabel(); ?></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('address1')); ?></div>
+        </div>
+      	<div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('address2')->getLabel(); ?></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('address2')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('postcode')->getLabel(); ?></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('postcode')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('country_id')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('country_id')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('state_id')->getLabel(); ?></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('state_id')); ?></div>
+        </div>	
+		</div>
+		 <div class="betaClmn">
+         <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('email')->getLabel(); ?></label>
+          <div class="inputDiv"> <?php echo $this->formElement($this->form->get('email')); ?> </div>
+        </div>
+		<div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('mobile')->getLabel(); ?></label>
+          <div class="inputDiv"> <?php echo $this->formElement($this->form->get('mobile')); ?> </div>
+        </div>
+		<div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('phone')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"> <?php echo $this->formElement($this->form->get('phone')); ?> </div>
+        </div>
+		<div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('website')->getLabel(); ?></label>
+          <div class="inputDiv"> <?php echo $this->formElement($this->form->get('website')); ?> </div>
+        </div>
+		<div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('supplier_type')->getLabel(); ?></label>
+          <div class="inputDiv"> <?php echo $this->formElement($this->form->get('supplier_type')); ?> </div>
+          
+        </div>
+		<div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('rap_id')->getLabel(); ?></label>
+          <div class="inputDiv"> <?php echo $this->formElement($this->form->get('rap_id')); ?> </div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('comment')->getLabel(); ?></label>
+          <div class="inputDiv"> <?php echo $this->formElement($this->form->get('comment')); ?> </div>
+        </div>
+		</div>
+        
+        <div class="cb"></div>
+        <div class="serviceOfferd">
+		<h3><?php echo $this->form->get('service')->getLabel(); ?></h3>
+        <div class="formRow selectService">
+          <?php echo $this->formElement($this->form->get('service')); ?>
+        </div>
+        <div id="selectServiceError"></div>
+
+        
+        </div>
+        
+        
+        
+      <div class="formButtons tc fl width100p"><?php echo $this->formElement($this->form->get('save')); ?> <?php echo $this->formElement($this->form->get('cancel')); ?></div>
+      <?php echo $this->form()->closeTag(); ?>
+
+<script type="text/javascript">
+	$('#mobile').mask('9999 999 999', {placeholder:''});
+	$('#mobile').attr('maxlength','12');
+	$('#mobile').bind('paste', function () { $(this).val(''); });
+
+	$(document).ready(function(){
+		$('.selectService > label').each(function(){
+		$(this).addClass('labelCheck');	
+		$(this).find('input[type="checkbox"]').after('<i></i>');
+		
+		});
+		if(jQuery('.selectService').length>0){		
+			jQuery('.selectService').each(function(index, element) {
+				var userInputDiv = jQuery(this).children('label');
+				for( var i = 0; i < userInputDiv.length; i+=5 ) {
+					userInputDiv.slice(i, i+5).wrapAll('<div class="column"></div>');
+				}    
+        	});
+		} 
+	});
+</script>

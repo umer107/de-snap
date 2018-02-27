@@ -1,0 +1,133 @@
+<div class="cmnSort">
+  <div class="selectDrop">
+    <select class="dropdown" id="<?php echo $prefixId; ?>selectGridView" name="selectGridView">
+      <option value="">Select View</option>
+      <?php foreach($gridViewOptions as $key => $data){ ?>
+      <option value="<?php echo $data['id']; ?>"><?php echo $data['view_title']; ?></option>
+      <?php } ?>
+    </select>
+  </div>
+  <a href="javascript:;" onclick="editMyGridView('<?php echo $prefixId; ?>');" id="<?php echo $prefixId; ?>editMyGridView" data-popup="<?php echo $prefixId; ?>myGridView" class="lightBoxClick">Edit</a> | <a href="javascript:;" onclick="deleteMyGridView('<?php echo $prefixId; ?>');">Delete</a> | <a href="javascript:;" onclick="$('#<?php echo $prefixId; ?>frm_mygridview')[0].reset(); $('#<?php echo $prefixId; ?>hiddenGenerateNewGridView').val(1); $('#<?php echo $prefixId; ?>frm_mygridview .errorText').remove();" class="lightBoxClick" data-popup="<?php echo $prefixId; ?>myGridView" id="<?php echo $prefixId; ?>addMyGridView">Create New View</a>
+  <div class="mainSearch marR10">
+    <input type="text" class="searchInput" placeholder="search.." id="<?php echo $prefixId; ?>searchInput">
+    <input type="button" class="inputGo" value="Go!" id="globalGridSearch" onclick="searchGridsData('<?php echo $prefixId; ?>');">
+  </div>
+  <?php /*?><a href="javascript:;" onclick="searchInputClear('<?php echo $prefixId; ?>');">Clear</a><?php */?><span id="searchResultsHint" style="color:red;"></span></div>
+<script type="text/javascript">
+	searchByEnterKey('<?php echo $prefixId; ?>searchInput', 'globalGridSearch');
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var customer_id = $('#customer_id').val();
+	var keyword = $('#<?php echo $prefixId; ?>searchInput').val();
+	$('#<?php echo $prefixId; ?>editMyGridView').removeClass('lightBoxClick');
+	$('#<?php echo $prefixId; ?>editMyGridView').removeAttr('data-popup');
+	<?php if($prefixId == 'opp_'){ ?>
+		getOpportunities($('#pageSizeGrabing').val(), keyword, customer_id);
+	<?php } else if($prefixId == 'cus_'){ ?>
+		customersList($('#pageSizeGrabing').val());
+	<?php } else if($prefixId == 'lead_'){ ?>
+		getLeads($('#pageSizeGrabing').val());
+	<?php } else if($prefixId == 'sup_'){ ?>
+		getSuppliers($('#pageSizeGrabing').val());
+	<?php } else if($prefixId == 'diamond_'){ ?>
+		getDiamonds($('#pageSizeGrabing').val());
+	<?php } else if($prefixId == 'weddingring_'){ ?>
+		getWeddingrings($('#pageSizeGrabing').val());
+	<?php } else if($prefixId == 'engagementring_'){ ?>
+		getEngagementrings($('#pageSizeGrabing').val());
+	<?php } else if($prefixId == 'earring_'){ ?>
+		getEarrings($('#pageSizeGrabing').val());
+	<?php } else if($prefixId == 'pendant_'){ ?>
+		getPendants($('#pageSizeGrabing').val());
+	<?php } else if($prefixId == 'miscellaneous_'){ ?>
+		getMiscellaneous($('#pageSizeGrabing').val());
+	<?php } else if($prefixId == 'chain_'){ ?>
+		getChain($('#pageSizeGrabing').val());
+	<?php } ?>
+	
+$('#<?php echo $prefixId; ?>selectGridView').dropkick({
+  	change: function () {
+  		var value = this.value;
+		var keyword = $('#<?php echo $prefixId; ?>searchInput').val();
+  		$('#<?php echo $prefixId; ?>hiddenSelectGridView').val(value);
+		if(value != ''){
+			$('#<?php echo $prefixId; ?>editMyGridView').addClass('lightBoxClick');
+			$("#<?php echo $prefixId; ?>editMyGridView").attr("data-popup","<?php echo $prefixId; ?>myGridView");
+			<?php /*?>$('#<?php echo $prefixId; ?>addMyGridView').removeClass('lightBoxClick');
+			$("#<?php echo $prefixId; ?>addMyGridView").removeAttr("data-popup");<?php */?>
+			var url = '/editgridview';
+			var data = 'id='+value;
+			$.post(url, data, function(response){
+				var setting = JSON.parse(response);
+				var columnList = setting.columns_list;
+				<?php if($prefixId == 'opp_'){ ?>
+					getOpportunitiesFromGridView($('#pageSizeGrabing').val(), columnList, keyword, customer_id);
+					$("#jqxOpportunities").jqxGrid('autoresizecolumns');
+				<?php } else if($prefixId == 'cus_'){ ?>
+					customersListFromGridView($('#pageSizeGrabing').val(), columnList, keyword);
+					$("#jqxCustomers").jqxGrid('autoresizecolumns');
+				<?php } else if($prefixId == 'lead_'){ ?>
+					getLeadsFromGridView($('#pageSizeGrabing').val(), columnList, keyword);
+					$("#jqxWidget").jqxGrid('autoresizecolumns');
+				<?php } else if($prefixId == 'sup_'){ ?>
+					getSuppliersFromGridView($('#pageSizeGrabing').val(), columnList, keyword);
+					$("#jqxSuppliers").jqxGrid('autoresizecolumns');
+				<?php } else if($prefixId == 'diamond_'){ ?>
+					getDiamondFromGridView($('#pageSizeGrabing').val(), columnList, keyword, $('#frm_filter_fiamond').serialize());
+					$("#jqxDianonds").jqxGrid('autoresizecolumns');
+				<?php } else if($prefixId == 'weddingring_'){ ?>
+					getWeddingringsFromGridView($('#pageSizeGrabing').val(), columnList, keyword);
+					$("#jqxWeddingring").jqxGrid('autoresizecolumns');
+				<?php } else if($prefixId == 'engagementring_'){ ?>
+					getEngagementringsFromGridView($('#pageSizeGrabing').val(), columnList, keyword);
+					$("#jqxEngagementring").jqxGrid('autoresizecolumns');
+				<?php } else if($prefixId == 'earring_'){ ?>
+					getEarringsFromGridView($('#pageSizeGrabing').val(), columnList, keyword);
+					$("#jqxEarring").jqxGrid('autoresizecolumns');
+				<?php } else if($prefixId == 'pendant_'){ ?>
+					getPendantsFromGridView($('#pageSizeGrabing').val(), columnList, keyword);
+					$("#jqxPendant").jqxGrid('autoresizecolumns');
+				<?php } else if($prefixId == 'miscellaneous_'){ ?>
+					getMiscellaneousFromGridView($('#pageSizeGrabing').val(), columnList, keyword);
+					$("#jqxMiscellaneous").jqxGrid('autoresizecolumns');
+				<?php } else if($prefixId == 'chain_'){ ?>
+					getChainFromGridView($('#pageSizeGrabing').val(), columnList, keyword);
+					$("#jqxChain").jqxGrid('autoresizecolumns');
+				<?php } ?>
+		});
+	   } else {
+			$('#<?php echo $prefixId; ?>editMyGridView').removeClass('lightBoxClick');
+			$('#<?php echo $prefixId; ?>editMyGridView').removeAttr('data-popup');
+			<?php /*?>$('#<?php echo $prefixId; ?>addMyGridView').addClass('lightBoxClick');
+			$("#<?php echo $prefixId; ?>addMyGridView").attr("data-popup","<?php echo $prefixId; ?>myGridView");<?php */?>
+			$('#<?php echo $prefixId; ?>gridViewHeading').html('New View Details');
+			<?php if($prefixId == 'opp_'){ ?>
+				getOpportunities($('#pageSizeGrabing').val(), keyword, customer_id);
+			<?php } else if($prefixId == 'cus_'){ ?>
+				customersList($('#pageSizeGrabing').val(), keyword);
+			<?php } else if($prefixId == 'lead_'){ ?>
+				getLeads($('#pageSizeGrabing').val(), keyword);
+			<?php } else if($prefixId == 'sup_'){ ?>
+				getSuppliers($('#pageSizeGrabing').val(), keyword);
+			<?php } else if($prefixId == 'diamond_'){ ?>
+				getDiamonds($('#pageSizeGrabing').val(), keyword);
+			<?php } else if($prefixId == 'weddingring_'){ ?>
+				getWeddingrings($('#pageSizeGrabing').val(), keyword);
+			<?php } else if($prefixId == 'engagementring_'){ ?>
+				getEngagementrings($('#pageSizeGrabing').val(), keyword);
+			<?php } else if($prefixId == 'earring_'){ ?>
+				getEarrings($('#pageSizeGrabing').val(), keyword);
+			<?php } else if($prefixId == 'pendant_'){ ?>
+				getPendants($('#pageSizeGrabing').val(), keyword);
+			<?php } else if($prefixId == 'miscellaneous_'){ ?>
+				getMiscellaneous($('#pageSizeGrabing').val(), keyword);
+			<?php } else if($prefixId == 'chain_'){ ?>
+				getChain($('#pageSizeGrabing').val(), keyword);
+			<?php } ?>
+	   }
+  }
+});
+
+});
+</script>

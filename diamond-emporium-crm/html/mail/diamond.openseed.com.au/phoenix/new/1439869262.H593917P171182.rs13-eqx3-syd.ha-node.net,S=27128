@@ -1,0 +1,432 @@
+Return-path: <pheonix@diamondemporium.com.au>
+Envelope-to: phoenix@diamond.openseed.com.au
+Delivery-date: Tue, 18 Aug 2015 13:41:02 +1000
+Received: from mail-by2on0059.outbound.protection.outlook.com ([207.46.100.59]:37952 helo=na01-by2-obe.outbound.protection.outlook.com)
+	by rs13-eqx3-syd.ha-node.net with esmtps (TLSv1.2:AES256-SHA256:256)
+	(Exim 4.85)
+	(envelope-from <pheonix@diamondemporium.com.au>)
+	id 1ZRXll-000iWY-LH
+	for phoenix@diamond.openseed.com.au; Tue, 18 Aug 2015 13:41:02 +1000
+Content-Type: multipart/mixed;
+	boundary="_db896017-59f9-4bf0-be00-3d6f9f0f0ba5_"
+Subject: Shred for less
+To: <info@diamondemporium.com.au>
+From: Metropolitan Shredding Service <noreply@metroshred.com.au>
+MIME-Version: 1.0
+Sender:
+	<MicrosoftExchange329e71ec88ae4615bbc36ab6ce41109e@DiamondEmporium.onmicrosoft.com>
+Message-ID: <82d5605e-3797-40be-8c0d-076b8eb1d2b2@journal.report.generator>
+Date: Tue, 18 Aug 2015 03:40:57 +0000
+X-MS-Journal-Report:
+X-MS-Exchange-Parent-Message-Id:
+	<71919457355d2a9442876e.1439869252@plus.enewslettersonline.com>
+Auto-Submitted: auto-generated
+X-MS-Exchange-Generated-Message-Source: Journal Agent
+X-Microsoft-Exchange-Diagnostics:
+	1;BLUPR03MB1379;25:B9sv6Axi0QaklNzh8/4DUQgrVqNAFl42n+ZiJ+Ol7KUhKz/E8SfUaIL3tO81k0Yr+tMgPifqQXSCXF+ytzDTV1Qm5p4DYIUPWZqeye9079ShSH9Q5q4g1FXmk+k9h2drhT/AI2HnH7HPx/F1wJD/+b8jP7nSWUUQabHTyh81QtNclKRFxbOfMnYE7lAN/+OgF1+Z/Q2mzsKWaOc7vrphbXGmxczp6kXms+4taeS0jzzCaxLoKkUxNX+VAG8Pp0TI;4:vEDSUbCOBPudulCIcyjWxms6tWIJe/qsWCkjRpjylZH/MrsMW2DjhAmycTV0ZccA0vPWDxpMo4PeACA6BrM+9C4gw2phLGiI54Nwx32QaPLcTc2lODT6Zb8hFENiNf1rKvXZfiPbJanKQxZvboc5QaGaPXIApxcDLPBfGqBwHLSHDoTEYi5yatoG8KW7U2ERZBqTFLyAcFsVWpzYOd9fvrLCD6f7o500w+L3p3RBk6gruqOzI37gAFWCKZSOMwrKCSsG9FBPfTLZxmFmIaaIPZEs8tWMqKRhodWYDxav5Ab7YD3/1CbH3ZCvWhCr08w4
+X-Microsoft-Antispam-PRVS:
+	<BLUPR03MB1379801BBAF0A77CDBE401A192780@BLUPR03MB1379.namprd03.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test:
+	BCL:0;PCL:0;RULEID:(601004)(8121501046)(5005006)(3002001);SRVR:BLUPR03MB1379;BCL:0;PCL:0;RULEID:;SRVR:BLUPR03MB1379;
+X-Forefront-PRVS: 067270ECAF
+X-Forefront-Antispam-Report:
+	SFV:NSPM;SFS:(10009020)(6009001)(189002)(199003)(105586002)(5001830100001)(19580395003)(19580405001)(97736004)(4610100001)(106356001)(33646002)(5001860100001)(564344004)(74482002)(5001960100002)(46102003)(110136002)(107886002)(229853001)(2351001)(31686004)(5000100001)(102106001)(64706001)(4001450100002)(92566002)(11286001)(77806003)(512954002)(77156002)(4001540100001)(5001920100001)(189998001)(87976001)(450100001)(3110400002)(84326002)(31696002)(68736005)(101416001)(50986999)(54356999)(62966003)(10773002)(42882004)(5001840100002);DIR:OUT;SFP:1101;SCL:1;SRVR:BLUPR03MB1379;H:;FPR:;SPF:None;PTR:InfoNoRecords;MX:1;A:1;LANG:en;
+Received-SPF: None (protection.outlook.com: diamondemporium.com.au does not
+ designate permitted sender hosts)
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=pheonix@diamondemporium.com.au; 
+X-Microsoft-Exchange-Diagnostics:
+	=?us-ascii?Q?1;BLUPR03MB1379;23:A4bnBT9vmYXuZS1cVQXM0bSa6c4SoBzWbUsMrFiPt?=
+ =?us-ascii?Q?aEVuuVGWOUwZzqfKaPXgfVqETER0I83RCseKbN47vazy8oKP15Cz34CIdZyR?=
+ =?us-ascii?Q?ozT8ChrTstDYy6MA6U95Qph54hMNtFRALA5eSwTS5TGYNjAkcmRw8L6DqAOM?=
+ =?us-ascii?Q?x69hGYLUTPwerVkGJpd/EhW70O8HjVHtoTY9UyAw8QUEQgKxb28qbv5cPsvy?=
+ =?us-ascii?Q?efO0RBXgMrlAyapQS0IxYiW88eGf9YXhC6sf5S3zXcVTlOMUWg38YVSNHzxV?=
+ =?us-ascii?Q?yNjulBLuS/y07o+vU2zXL7QgxuP9yT3VX/1FJXUSiItMCVptrxa66t9Am9DQ?=
+ =?us-ascii?Q?ZqwoJM9cH1aGWuXPjVjKnf3Cy8lQ+EvJuxOxw2hZWxGvekMyBzLxV8JPN/o2?=
+ =?us-ascii?Q?kKWkGsnYPzk2Mjo4yB71TF2GW89NZXmE54auzYuUvEAvnYOao1vU8FBMW0HU?=
+ =?us-ascii?Q?4FHn1ST0jVoAJreUVBoDwmI4UpBhwPfddKoKU7JooegZdR9YhXEs6CT2WBCn?=
+ =?us-ascii?Q?PnALNTVLS5d44/OWQ2uiLaB5ZXEm1ykH0BUhFO8sgAAKAT2+agoM8RlwoSfi?=
+ =?us-ascii?Q?QHnx+tr/FtIUTSE6YY2oBm2fcQ1HPA5mMZepA6oyhO5GTaUlu+BhKWVWKfJG?=
+ =?us-ascii?Q?tVR6vcEywfjwTXr3R44lmfrl28v4ZdSJbtVDDrubH9gsc7Thj+TC2DhMbkuP?=
+ =?us-ascii?Q?gEcrbFWghe/iMb0iP4ZmCTWEuilWJY4PrcchKaLjCVdOxrwc6nApzGSSe4LY?=
+ =?us-ascii?Q?D4vr9L2hXLkoT8ckS5NJA0N/wVBKhpfcmpIwmbCrsMJgyFFwIddueIdT6/Md?=
+ =?us-ascii?Q?ysVqNry1eLTQhLJj6S4AICBxfFcPcs/ru3pRpdGMiuWVw4X/THF4ma1DqcE3?=
+ =?us-ascii?Q?uo3ErYdmIEyNG0PdQrxjYo26ZhDE4iymRskDebpiFh1N962rJo5u6neZYM5/?=
+ =?us-ascii?Q?wzMXPleFoaFocgiPiHgMhUcZuYZG2B6BmCqo45YD739F6bFTqciOfxSWTVOj?=
+ =?us-ascii?Q?7d7U8fREbLGwLKK1oaAcLiA/rbHmLhTblzNc8YPqqEwTPOYtlsunLNr3vi2S?=
+ =?us-ascii?Q?RMDmOsSie+cR9Ut7usfMmW8nRgi5W3GZLgyiA3lroKmefPIl7S67svk4xCqS?=
+ =?us-ascii?Q?FEvoAc27eK9ophsDQdI5Pv+u8q+0rAOYw9ZLYH1oDXzw+aVlGC0jUwlKgJqT?=
+ =?us-ascii?Q?+NlE8xrBZyMtXWsJu7jT3t5ZRignR+Pgj0UXRWC/8gypf1njbBt6h7XmXlZW?=
+ =?us-ascii?Q?X/hS2XhGxtyg0x0bN4=3D?=
+X-Microsoft-Exchange-Diagnostics:
+	1;BLUPR03MB1379;5:C0p3XWCn3eipIzr0f3pLg1Te9aS9yJUIMfAMshOvOHfEUpv+Y2+LUtQyDEyNK971GUe/KvQV1BlscAGSXogCGgdguhkXOKWWGnMLgdER+TWS2hSBSr6xe0ptALMKM8vq7X248vV7f0lFQAKO1E2A2w==;24:gq0u5E3sBVRMpeEAK2n17RSLOFQU0Y1YOK3FAnRO6Qjgt3+FOeZ19xpPnGPKqjq6lrj83Dm7II0d7s/ekq5/pexUwvyBHUw9jz/VanA8ST4=
+SpamDiagnosticOutput: 1:23
+SpamDiagnosticMetadata: NSPM
+X-OriginatorOrg: DiamondEmporium.onmicrosoft.com
+
+--_db896017-59f9-4bf0-be00-3d6f9f0f0ba5_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Sender: noreply@metroshred.com.au
+Subject: Shred for less
+Message-Id: <71919457355d2a9442876e.1439869252@plus.enewslettersonline.com>
+Recipient: info@diamondemporium.com.au
+
+--_db896017-59f9-4bf0-be00-3d6f9f0f0ba5_
+Content-Type: message/rfc822
+
+Received: from CH1PR03CA008.namprd03.prod.outlook.com (10.255.156.153) by
+ BLUPR03MB1379.namprd03.prod.outlook.com (10.163.81.13) with Microsoft SMTP
+ Server (TLS) id 15.1.231.21; Tue, 18 Aug 2015 03:40:55 +0000
+Received: from BL2FFO11FD038.protection.gbl (10.255.156.132) by
+ CH1PR03CA008.outlook.office365.com (10.255.156.153) with Microsoft SMTP
+ Server (TLS) id 15.1.231.21 via Frontend Transport; Tue, 18 Aug 2015 03:40:54
+ +0000
+Authentication-Results: spf=pass (sender IP is 203.145.63.47)
+ smtp.mailfrom=mbounces.com; diamondemporium.com.au; dkim=none (message not
+ signed) header.d=none;diamondemporium.com.au; dmarc=none action=none
+ header.from=metroshred.com.au;
+Received-SPF: Pass (protection.outlook.com: domain of mbounces.com designates
+ 203.145.63.47 as permitted sender) receiver=protection.outlook.com;
+ client-ip=203.145.63.47; helo=mail63-47.bne1.au.emdbms.com;
+Received: from mail63-47.bne1.au.emdbms.com (203.145.63.47) by
+ BL2FFO11FD038.mail.protection.outlook.com (10.173.161.134) with Microsoft
+ SMTP Server id 15.1.243.9 via Frontend Transport; Tue, 18 Aug 2015 03:40:54
+ +0000
+Received: from backend2.bne1.au.emdbms.com (192.168.2.157) by mail63-47.bne1.au.emdbms.com id hqakkc154j0u for <info@diamondemporium.com.au>; Tue, 18 Aug 2015 13:40:52 +1000 (envelope-from <7f9c30a.a47353.1600471.1@mbounces.com>)
+Received: from 203.219.108.214 (ACD:47353.5129.448300)
+	by plus.enewslettersonline.com (5.8.78) with HTTP 
+	for <info@diamondemporium.com.au>; Tue, 18 Aug 2015 13:40:52 +1000
+X-Send-Timestamp: 1439869252.1600471.47353
+List-Unsubscribe: <http://plus.enewslettersonline.com/forms/u/7f9c30a/47353/1600471oc.html>, <mailto:7f9c30a.a47353.1600471oc.1@mbounces.com>
+Message-ID: <71919457355d2a9442876e.1439869252@plus.enewslettersonline.com>
+Date: Tue, 18 Aug 2015 13:40:52 +1000
+From: Metropolitan Shredding Service <noreply@metroshred.com.au>
+To: <info@diamondemporium.com.au>
+Subject: Shred for less
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="_ae11d47e-616a-4c2a-a65e-f273caedeaeb_"
+Return-Path: 7f9c30a.a47353.1600471.1@mbounces.com
+X-MS-Exchange-Organization-OriginalArrivalTime: 18 Aug 2015 03:40:54.0086
+ (UTC)
+X-MS-Exchange-Organization-Network-Message-Id: 03c5e702-93b9-482a-0656-08d2a77ed219
+X-MS-Exchange-Organization-OriginalClientIPAddress: 203.145.63.47
+X-MS-Exchange-Organization-OriginalServerIPAddress: 10.173.161.134
+X-EOPAttributedMessage: 0
+X-MS-Exchange-Organization-TargetResourceForest: namprd03.prod.outlook.com
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-Exchange-Organization-Id: 0b36ddba-7b6e-4ec0-b39b-09a1ed883f64
+X-MS-Exchange-Organization-FFO-ServiceTag: NA01B
+X-MS-Exchange-Organization-Exchange-Diagnostics-Stage-SecureDataContainer: 0
+X-MS-Exchange-Organization-NewsLetterListMatch: 1
+X-MS-Exchange-Organization-DKIMBHOverride: Matched
+X-MS-Exchange-Organization-MxPointsToUs: true
+X-MS-Exchange-Organization-ReceivedHeaderBulk1OnConnect: 1
+X-MS-Exchange-Organization-ReceivedHeaderBulk1: 1
+X-MS-Exchange-Organization-OriginalEnvelopeRecipients: info@diamondemporium.com.au
+X-MS-Exchange-Organization-MxRecordAlignment: 0
+X-Microsoft-Exchange-Diagnostics: 1;BL2FFO11FD038;1:HJr/QStfPF8+9JWNN84u9clz3HkVTaSiyuzBIl6HeGHQkU12FbnLNtUfUQUi0/C/K1cyw312WgMh40EPvNPiMdianoqK9IabVc1QChkwc5UTsqqdTLTWEixLfGDgYnxX6N+jUv8/F8VbmOUk5j2zBWEvHWW7qQKPsHgjW+gngU6uYaR6dUz96uEpz+6r0eP/VmhpqF2c/07j0nBuoAvM0xtdzqHd5Vmm5rnTXd6keKgBd9NCPm5/shqk0LDl5VNCg/3nmuKu0sLant/cfSbupuomQg12owFsyLz2KL0fQqN8RBV2nCiTwc1cct2owEU8CIfHwjRzPlNIhvo1RZOAL97sCp5hiKoIfGXHpy9FWu70W5NuuGeTXsxtpRNQLE39dMbvR2lovmwmGPkNEK3+vA==
+X-Forefront-Antispam-Report:
+	CIP:203.145.63.47;CTRY:AU;IPV:NLI;EFV:NLI;SFV:NSPM;SFS:(1060300003)(2980300002)(438002)(3050300001)(1880300002)(189002)(199003)(512934002)(5001830100001)(15188155005)(19580395003)(19580405001)(110446001)(19617315012)(19627405001)(33646002)(5001860100001)(5001970100001)(74482002)(46102003)(19625215002)(110136002)(146001)(106466001)(107886002)(229853001)(2351001)(18926405002)(64706001)(95246002)(92566002)(19622755009)(16799955002)(16796002)(19300405004)(4290100001)(77156002)(4001540100001)(5001920100001)(450100001)(18206015028)(84326002)(15975445007)(87836001)(47976999)(100306002)(19618635001)(50986999)(54356999)(16601075003)(19630485002)(62966003)(7099028)(10773002)(42882004)(562404015);DIR:INB;SFP:;SCL:1;SRVR:BLUPR03MB1379;H:mail63-47.bne1.au.emdbms.com;FPR:;SPF:Pass;PTR:mail63-47.bne1.au.emdbms.com;MX:1;A:0;LANG:en;
+X-MS-Exchange-Organization-Scanned-By-IP-Filter: true
+X-MS-Exchange-Organization-Originating-Country: AU
+X-MS-Exchange-Organization-Cross-Premises-Headers-Processed: BL2FFO11FD038.protection.gbl
+X-MS-Exchange-Organization-OrderedPrecisionLatencyInProgress: LSRV=CH1PR03CA008.namprd03.prod.outlook.com:TOTAL-FE=0.140|SMR=0.099(SMRPI=0.059(SMRPI-FrontendProxyAgent=0.059));2015-08-18T03:40:54.981Z
+X-MS-Exchange-Organization-ProcessedByConnectionValidationAgent: namprd03.prod.outlook.com
+X-MS-Exchange-Organization-MessageLatency: SRV=BL2FFO11FD038.protection.gbl:TOTAL-FE=0.982|SMR=0.983(SMRRC=0.057(SMRRC-TenantAttributionAndInboundConnectorAgent=0.030|SMRRC-Protocol
+ Filter Agent=0.001 |SMRRC-IP Filter Agent=0.007|SMRRC-Envelope Filter
+ Agent=0.017)|SMREH=0.472(SMREH-Protocol Filter Agent=0.472 ))
+X-MS-Exchange-Organization-MessageLatency:
+	SRV=CH1PR03CA008.namprd03.prod.outlook.com:TOTAL-FE=0.266|SMR=0.099(SMRPI=0.059(SMRPI-FrontendProxyAgent=0.059))|SMS=0.126
+X-MS-Exchange-Forest-ArrivalHubServer: BLUPR03MB1379.namprd03.prod.outlook.com
+X-MS-Exchange-Organization-AuthSource: BL2FFO11FD038.protection.gbl
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-FromEntityHeader: Internet
+X-Microsoft-Exchange-Diagnostics:
+	1;BLUPR03MB1379;2:AZCBzqOmC3Zr8babNH1AwQkOAC03NLxCp1xqkiukaBEjtbTHOBibo6+OJCi8nWFR83fib95Ex/3FWY9gibF6hyuQU4NAGOLtUbJFgUPIwwpdKey7Z9SHqAdUZCHhPJAT/3z9MIAHQo1VbzIazQ7p2evRM2h48WZqrJKhr0LsWxM=;3:Jnip1FPWuwwlkUsSNDM/IDrv57o1jDcpy5t8th7mNR03oq/u9KyMfQfh4or6+bTW+/IwPaDUPUjuxUyTz8lK9AV9W7MkcVMNNBL12J/6vpz+cQ9Tk1KNbqOyDLZhxIT6bBbxB9EilP9mRaW3216BNZG7CJgKyvaYeB9B7deiMyyFbo3GzkWLk+H7Rwgaej5a085X63P0jdmq1fMPi40PLGZE5jSEleSy5BJDzyClKwG+eATCU2kniOLryBX09rugY2GsqHciP+uIrlvtojO6z2Gy68JU8lHs3+r7fMYrDxJWuNBP5nP+QJNgxpkWrWRnestsc8x2r9TcNY3tI2NvzSz7b73523enxYAm8WkiY4w=;25:mfYH/wx7i7MzHTFoVHJ8aTy/krJw8Pkk+0n1lTUGb3uLrIOpXTlHS/QYY0O/1/DbMKNKDujChumqbKvYDD/e7R9jSpBJrJLaQx9EaAp8y3wxpk5ui10EmbwbkqKH/DxUZuIqHIYBiCrhmRZpzx1By36JPbzdfsgPi4l3NjdDHau+shsVOEAWvaEm1MB4eAxtsZpILCXxOuAXiqmVjWU+d4ZQxDZQ5hAgK6Eyt9mvPKOKZRiBnM1KZBhqjO+iA3+3
+X-Microsoft-Antispam:
+	UriScan:;BCL:2;PCL:0;RULEID:(421252001)(42145001)(42134001)(42139001)(52001)(71701002);SRVR:BLUPR03MB1379;
+X-MS-Exchange-Organization-OriginalSize: 14021
+X-MS-Exchange-Organization-HygienePolicy: Premium
+X-MS-Exchange-Organization-MessageFingerprint:
+	FC2A492F.DBDCC28.69F385A4.597C1D28.2007E
+X-MS-Exchange-Organization-AVStamp-Service: 1.0
+X-MS-Exchange-Organization-Recipient-Limit-Verified: True
+X-MS-Exchange-Organization-TotalRecipientCount: 1
+X-MS-Exchange-Organization-Transport-Properties: DeliveryPriority=Normal
+X-MS-Exchange-Organization-Prioritization: 1
+X-MS-Exchange-Organization-Antispam-ContentFilter-ScanContext:
+	CategorizerOnResolved;CategorizerOnRouted;
+X-MS-Exchange-Organization-ASDirectionalityType: 1
+X-MS-Exchange-Organization-HeloRdns:
+	mail63-47.bne1.au.emdbms.com;mail63-47.bne1.au.emdbms.com
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test:
+	BCL:2;PCL:0;RULEID:(601004)(1201001)(8121501046)(3002001);SRVR:BLUPR03MB1379;BCL:2;PCL:0;RULEID:;SRVR:BLUPR03MB1379;
+X-Microsoft-Exchange-Diagnostics:
+	1;BLUPR03MB1379;4:9LGE0NEDqLjqWSR6TaQb8bcK6gVVEolnmXuJXoGtDqE5JO/FtCod9YuxpsxnPbAKi6C0WssPtWOhGlWAYiw2Ze5uTUc6A2bJOCICoTs7K0nnktDgBoCvKMM6CLtPg37SFV9PO/88EZsdYaR2Nvsak8cjFwDtDgRUfe8TiKXghXdvOWFDtB43I0dBSb056qeLfNrMeE0hBJhWNYfm/WD8Pq0B1ztm7gm8kWE7qZ8Nphgyu/pipYa7hMpNElOh7Wb/3QRV3fOMxpxq18s0qARBSiRkKI8Ifq31Xar4FyFGkRCcKPgMN/8bMo/NhCfpO0TM
+X-MS-Exchange-Organization-SCL: 1
+X-MS-Exchange-Organization-Antispam-ScanContext: DIR:Incoming;SFV:NSPM;SKIP:0;
+X-Microsoft-Exchange-Diagnostics:
+	=?us-ascii?Q?1;BLUPR03MB1379;23:ZhiycUL2QWY+f8DQdzDMaNGmwvSfrIkqOwhstNtAK?=
+ =?us-ascii?Q?hn+OZ3lC+nKYUAC4263vuGcEI3fD7OLCU+fwaAB6DtMZZ4HDkc2loujCN8vx?=
+ =?us-ascii?Q?1DCtP5W23GLUNDFS5jKWi/YM/gNHeQ0UPZ9Uw5fhd2vIQGpZw2RgOA2bzbSm?=
+ =?us-ascii?Q?gUCGfKvjYV5/MLpZRCw0p5C3V+awho9rsm/yKVVpKIricaZOr2Bqv5hQ6qMP?=
+ =?us-ascii?Q?8XDDamoHBI3I+XN2juA5ufMIFzYbUWXi7zvEik6NnbWEa8KrM+W4TC5FCozD?=
+ =?us-ascii?Q?SSZNiMMpntXf6BSgd6jkNAN7cIhVrHq4EFXllOL/v2ulmINnIDpPsQZEG3TJ?=
+ =?us-ascii?Q?BbXJ+jWRl+WAS5w/g6kpW1IEnYGoOIcvAq17CE+rL+Rs1He3eYBv2OmfS54d?=
+ =?us-ascii?Q?8iWDs6/Oi23fxcuK8be77LYsSF3jwui/6g+qGwOmN81fWSJ7DebFwSSpO7AD?=
+ =?us-ascii?Q?sJsGtn24GJYBNwVNEFnhzACahm1GX25j+PxXHjRE1iFlVRHwpO846QJRNZ4k?=
+ =?us-ascii?Q?+Lnn2h9A4pcEZiFIoz6TrIlaQmeYjQ9V6BPAat7ITdLVfdu/t4JviVermCQU?=
+ =?us-ascii?Q?Z1kkJvxdOziUwIeSu0E8zZq6l3xlWTaQykn4Nu+JsKru4AnyxbJr/iMW2lSf?=
+ =?us-ascii?Q?K22Un8uLNenQ/vGetbn2iP/4O7BpU61aWiSdZbW10xBbxzqPc0Abd0qqWAMH?=
+ =?us-ascii?Q?nNLLGjwo9LsBcT+GUT+Nr/a/Zi9YmOd/77SuEUUBOZL2y6haP+XrEn2Otz25?=
+ =?us-ascii?Q?aaKOcDpSXvyaDSw/85lW7/TWfwSR8B6dwx3C06Va8wgvbXvoa6j17YCOLo5G?=
+ =?us-ascii?Q?j2KcP6h3ctfE18r9bGpw/hbFZrpRZKxOr94+97VcYW5SXaFwYcS/qcgS9qqp?=
+ =?us-ascii?Q?lGymXWK9bKF7YkbEXPBpDLSZfKak4R/W0bZpKN7gPPH8I3lThyoQ6bp1Szye?=
+ =?us-ascii?Q?7sYoXBkhKo8a436X+irMhSFpq/Ip4/lcAiDX6U+JuzFz0hpENPJ6GkR6CFNG?=
+ =?us-ascii?Q?MaqJLohiSUdwX3ylizA41/d0+udYuD/xkG1clYrF6y6k9xZz2uLijcVcClni?=
+ =?us-ascii?Q?oXHuKWCWg9/zEy3vTbdgOlmk1LQ4xATXcGDSLSZuD9nryuITFCgxsg6XM1pg?=
+ =?us-ascii?Q?k6ob+PzJUuTQeq2/gPbpLKla1uySLHPVV46dEtJd0pjLmufCdvKWFzQfOXz3?=
+ =?us-ascii?Q?ztlsTCjZUmtlSTw9UApLDlDmVXMSL3gWk5CBUGONiiMCahHURKg69Q24HuXq?=
+ =?us-ascii?Q?aPkwWMMgaZHCdNXe3yn+Y9rFT5WQ9kNTswB0I08bv0dEYnL9gsTjJ8OdiVe7?=
+ =?us-ascii?Q?zUwDwy7Caf1NP/EWnvk9E9g1SuZUMNI0v9skHRHPwBI6pomEsVMNWWpFdsys?=
+ =?us-ascii?Q?hhwESwbYuMgd/lf2C2I2WhAyj+JQsHYf659VermBZ23zP93HfUMrzNjaQldd?=
+ =?us-ascii?Q?EtcRCyxvS/daZKyD/pZP4u9yWJuYpr+H4AIZBwxlzzaNAvLQYSN1ipHlnOHG?=
+ =?us-ascii?Q?PWRMh2hR7uBwX46oY+aFxDkI22duNFRDF8=3D?=
+X-MS-Exchange-Organization-Antispam-PostContentFilter-ScanContext:
+	CategorizerOnResolved;CategorizerOnRouted;
+X-MS-Exchange-Forest-IndexAgent-0:
+	AQ0CZW4AAfoAAAAPAAADH4sIAAAAAAAEAE1O0U7DMAx0abqQbvkHf8
+ CEikBU4g3xhDTGQ4V4zjKXRmTJlKad9on8FekqENbJOt3ZZ39nQghZ
+ vrR49gNq5ZyPOBo6YexMj3RQxq5RW6O/sKNAN+JSsnx+2mzwvcHt28
+ cj3t5VFT7UNVb1vfgfeAzUUsApNHoMpMmMlFR/8NF4p+x8occ2SfhK
+ MfijtyYqh00XaL837hMbCqPRtP59EZU9qXOPg+uHXa+D2aW3ZAnFFe
+ Q5sAVwBkVCAbyABQPJZitLIrCsyAHyDPgENnEQf4upJ87hegmrOWcF
+ UkDJQSRrnln+AAnWwDg0AQAAAQ7OAVJldHJpZXZlck9wZXJhdG9yLD
+ EwLDA7UmV0cmlldmVyT3BlcmF0b3IsMTEsMTtQb3N0RG9jUGFyc2Vy
+ T3BlcmF0b3IsMTAsMDtQb3N0RG9jUGFyc2VyT3BlcmF0b3IsMTEsMD
+ tQb3N0V29yZEJyZWFrZXJEaWFnbm9zdGljT3BlcmF0b3IsMTAsMDtQ
+ b3N0V29yZEJyZWFrZXJEaWFnbm9zdGljT3BlcmF0b3IsMTEsMDtUcm
+ Fuc3BvcnRXcml0ZXJQcm9kdWNlciwyMCwz
+X-MS-Exchange-Forest-IndexAgent: 1 471
+X-MS-Exchange-Forest-EmailMessageHash: 25FEDED2
+X-MS-Exchange-Forest-Language: en
+X-Microsoft-Exchange-Diagnostics:
+	1;BLUPR03MB1379;5:NCgY1QTi1eASdA05gZF+ccYNNWNT8pEj7MIJO4BQzjIlfq/XPKo+fxvPp3M57yGkeN76y8q9iPgdIomAbwQcA6T9N3mRKAH0nGQrE/WaMmlPiZwFdgxnB4qdkXqeGhwgpmLDZFMfgXG2BDUafgW62w==;24:8QOAbSz8vAG0lC7Rms3pD+FJNKs4y17izLrngeMGiDqJMRq4AioNF7iuxWJ/l18Ct6fwVbcLczkYXle4YNG4vhfgkkQKxQ8We91m7Khkhe8=;20:yaoAOXupr5Lv15o9Y7EsQxBZjTPT93tnbt4njcRRCLgeuLvNYeqjXN/R9j9Ad75rpk3s6JRqzj+EKdZXIaZATJU54H+9F68gbtO5E+TGVZt5jSihz/eZY4hKCTkyxE4Ra1zm7ffGrBhJKXMnbp+yNZDIzRAvt7m/Ho59RSDx79s=
+SpamDiagnosticOutput: 1:5
+SpamDiagnosticMetadata: 00000000%2D0000%2D0000%2D0000%2D000000000000
+SpamDiagnosticMetadata: 2
+X-MS-Exchange-Organization-Cross-Session-Cache:
+	=?us-ascii?Q?00SL=3D1;EMSL=3D1;SCL=3D0;BL=3D2;RL=3D1;PID=3D0;PL=3D0;EXPID?=
+ =?us-ascii?Q?=3DSpamDiagnosticsExperimentId0;EIPC0=3D2005,2006,2007,2008,?=
+ =?us-ascii?Q?2009,2010,2011,2012,2013,2014,3000,2016,2015,2000,2001,2003,?=
+ =?us-ascii?Q?1001,2002,2004,1000,1003,1002,2017,5011,5001,5010,5024,5037,?=
+ =?us-ascii?Q?5027,5038,5025,5026,5029,5021,5030,5028,5020,5022,5040,5031,?=
+ =?us-ascii?Q?5039,5034,5033,5032,5035,5023,5036,5002,5003,5005,54,80,110,?=
+ =?us-ascii?Q?70,71,84,82,51,83,50,52,112,115,111,92,91,90,114,113,81,53;M?=
+ =?us-ascii?Q?IPC0=3D5011,5022,52;EIPC1=3D2005,2006,2007,2008,2009,2010,20?=
+ =?us-ascii?Q?11,2012,2013,2014,3000,2016,2015,2000,2001,2003,1001,2002,20?=
+ =?us-ascii?Q?04,1000,1003,1002,2017,5011,5001,5010,5024,5037,5027,5038,50?=
+ =?us-ascii?Q?25,5026,5029,5021,5030,5028,5020,5022,5040,5031,5039,5034,50?=
+ =?us-ascii?Q?33,5032,5035,5023,5036,5002,5003,5005;MIPC1=3D5011,5022;REP?=
+ =?us-ascii?Q?=3D01,1,0\;01,2,82\;01,3,30\;01,4,128\;01,5,179\;01,6,5\;01,?=
+ =?us-ascii?Q?7,1\;01,8,9\;01,9,43589\;01,10,15666\;01,11,182\;01,12,9\;02?=
+ =?us-ascii?Q?,1,17\;02,2,149\;02,3,59388\;02,4,20885\;02,5,182\;02,6,2911?=
+ =?us-ascii?Q?\;02,7,4392;SAUTHOP=3D1;A=3D01;MX=3D00;PTR=3D00mail63-47.bne?=
+ =?us-ascii?Q?1.au.emdbms.com;SPF=3D0117f9c30a.a47353.1600471.1@mbounces.c?=
+ =?us-ascii?Q?om;DKIM=3D;DMARC=3D02noreply@metroshred.com.au\;?=
+X-MS-Exchange-Organization-Processed-By-Gcc-Journaling: Journal Agent
+
+--_ae11d47e-616a-4c2a-a65e-f273caedeaeb_
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+
+Metropolitan Shredding Service
+http://www.metroshred.com.au
+
+-----
+
+Metropolitan Shredding Service
+
+Shred for less: $59 per bin (GST incl)
+
+Talk to us today, http://www.nationalshred.com.au/contact_us.php 
+
+or call us on 1800 757 000
+
+You are receiving this email because you signed up for National Document
+Shredding Service alerts. If you prefer not to receive promotional email
+from National Document Shredding Service, you can always unsubscribe,
+http://plus.enewslettersonline.com/forms/u/7f9c30a/47353/1600471.html. 
+
+---------------------------------------------------------------------------
+This email was sent by Metropolitan Shredding Services, Metropolitan
+Shredding Service, Unit 5/33 Phillips Rd, Kogarah, NSW 2217, Australia to
+info@diamondemporium.com.au
+ 
+If you wish to unsubscribe please click here, Unsubscribe:
+http://plus.enewslettersonline.com/forms/u/7f9c30a/47353/1600471.html
+---------------------------------------------------------------------------
+--_ae11d47e-616a-4c2a-a65e-f273caedeaeb_
+Content-Type: text/html; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html><body><style type="text/css">/* Based on The MailChimp Reset INLINE: Yes. */  
+		/* Client-specific Styles */
+		#outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
+		body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;} 
+		/* Prevent Webkit and Windows Mobile platforms from changing default font sizes.*/ 
+		.ExternalClass {width:100%;} /* Force Hotmail to display emails at full width */  
+		.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+		/* Forces Hotmail to display normal line spacing.  More on that: http://www.emailonacid.com/forum/viewthread/43/ */ 
+		#backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
+		/* End reset */
+
+		/* Some sensible defaults for images
+		Bring inline: Yes. */
+		img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;} 
+		a img {border:none;} 
+		.image_fix {display:block;}
+
+		/* Outlook 07, 10 Padding issue fix
+		Bring inline: No.*/
+		table td {border-collapse: collapse;}
+
+		/* Remove spacing around Outlook 07, 10 tables
+		Bring inline: Yes */
+		table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+
+		/* Hide from Desktop */
+		.mobile-only {max-height: 0px; font-size: 0; display: none;}
+		/***************************************************
+		****************************************************
+		MOBILE TARGETING
+		****************************************************
+		***************************************************/
+		}
+</style>
+<!-- Wrapper/Container Table -->
+<style type="text/css">/* Based on The MailChimp Reset INLINE: Yes. */  
+	/* Client-specific Styles */
+	#outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
+	body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;} 
+	/* Prevent Webkit and Windows Mobile platforms from changing default font sizes.*/ 
+	.ExternalClass {width:100%;} /* Force Hotmail to display emails at full width */  
+	.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+	/* Forces Hotmail to display normal line spacing.  More on that: http://www.emailonacid.com/forum/viewthread/43/ */ 
+	#backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
+	/* End reset */
+
+	/* Some sensible defaults for images
+	Bring inline: Yes. */
+	img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;} 
+	a img {border:none;} 
+	.image_fix {display:block;}
+
+	/* Outlook 07, 10 Padding issue fix
+	Bring inline: No.*/
+	table td {border-collapse: collapse;}
+
+	/* Remove spacing around Outlook 07, 10 tables
+	Bring inline: Yes */
+	table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+
+	/* Hide from Desktop */
+	.mobile-only {max-height: 0px; font-size: 0; display: none;}
+	/***************************************************
+	****************************************************
+	MOBILE TARGETING
+	****************************************************
+	***************************************************/
+	}
+</style>
+<table border="0" cellpadding="0" cellspacing="0" id="backgroundTable" style="border-width:0px; line-height:100% !important; margin:0; padding:0" width="100%">
+	<tbody>
+		<tr>
+			<td valign="top"><img alt="Image" border="0" height="20" src="http://plus.enewslettersonline.com/download/files/47353/1754203/spacer.gif" style="display:block" width="1"></td>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" style="background-color:rgb(255, 255, 255); border-width:0px">
+				<tbody>
+					<tr>
+						<td align="center" height="15" style="color:#959595; font-family:arial,helvetica,sans-serif; font-size:12px; line-height:20px" width="600">If you cannot view this email, <a
+href="http://plus.enewslettersonline.com/ch/47353/1t891/1777857/5ff49phvt.html"  style="color: #959595">click here</a>.</td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><img alt="Image" border="0" height="20" src="http://plus.enewslettersonline.com/download/files/47353/1754203/spacer.gif" style="display:block" width="1"></td>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table align="center" border="0" cellpadding="0" cellspacing="0" id="Table_01" style="border-width:0px" width="600">
+				<tbody>
+					<tr>
+						<td width="600">
+						<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" style="background-color:rgb(255, 255, 255); border-width:0px">
+							<tbody>
+								<tr>
+									<td width="600"><a href="http://plus.enewslettersonline.com/ch/47353/1t891/1833543/5ff49hq4q.html" ><img border="0" height="430" src="http://plus.enewslettersonline.com/download/files/47353/1976746/NDS_Amended%20image_V2.jpg"
+width="600"></a></td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td height="50" width="600">
+						<table align="center" bgcolor="#ffee00" border="0" cellpadding="0" cellspacing="0" style="background-color:rgb(255, 238, 0); border-width:0px">
+							<tbody>
+								<tr>
+									<td align="center" height="50" style="color:#FFFFFF; font-family:arial,helvetica,sans-serif; font-size:30px; font-weight:bold; line-height:35px" width="600"><a href="http://plus.enewslettersonline.com/ch/47353/1t891/1833543/5ff49hq4q-1.html" 
+style="color: #FFFFFF; text-decoration: none;">CALL US NOW: 1300 677 074</a></td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td height="85" width="600"><img alt="" border="0" height="85" src="http://plus.enewslettersonline.com/download/files/47353/1816856/mss-protect.gif" style="display:block" width="600"></td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><img alt="Image" border="0" height="20" src="http://plus.enewslettersonline.com/download/files/47353/1754203/spacer.gif" style="display:block" width="1"></td>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" style="background-color:rgb(255, 255, 255); border-width:0px">
+				<tbody>
+					<tr>
+						<td align="center" height="15" style="color:#777777; font-family:arial,helvetica,sans-serif; font-size:12px; line-height:20px" width="600">If you prefer not to receive promotional emails from Metropolitan Shredding Service, you can always <a
+href="http://plus.enewslettersonline.com/ch/47353/1t891/1777863/5ff492y5b.html"  style="color: #777777; text-decoration:underline;">unsubscribe</a>.</td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><img alt="Image" border="0" height="20" src="http://plus.enewslettersonline.com/download/files/47353/1754203/spacer.gif" style="display:block" width="1"></td>
+		</tr>
+	</tbody>
+</table>
+<!-- End of wrapper table --><br clear="all" />
+<div class="email_footer">
+<br>
+</div>
+<img width="100" height="1" src="http://plus.enewslettersonline.com/download/images/47353/1600471/7f9c30a/bg.gif" alt="" />
+</body>
+</html>
+--_ae11d47e-616a-4c2a-a65e-f273caedeaeb_--
+
+--_db896017-59f9-4bf0-be00-3d6f9f0f0ba5_--

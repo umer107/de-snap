@@ -1,0 +1,6 @@
+ALTER TABLE `de_customers` 
+CHANGE COLUMN `googleplus` `linkedin` TINYTEXT NULL DEFAULT NULL;
+
+UPDATE `de_customers`
+SET `linkedin` = NULL
+WHERE `linkedin` IS NOT NULL;

@@ -1,0 +1,404 @@
+AWSTATS DATA FILE 7.4 (build 20140726)
+# If you remove this file, all statistics for date 201502 will be lost/reset.
+# Last config file used to build this data file was /home/diamond/tmp/awstats/awstats.diamond.openseed.com.au.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 28
+POS_GENERAL 2019                
+POS_TIME 2691                
+POS_VISITOR 6977                
+POS_DAY 7670                
+POS_DOMAIN 3433                
+POS_LOGIN 3705                
+POS_ROBOT 3860                
+POS_WORMS 3992                
+POS_EMAILSENDER 4123                
+POS_EMAILRECEIVER 4266                
+POS_SESSION 8119                
+POS_SIDER 8325                
+POS_FILETYPES 4401                
+POS_DOWNLOADS 4687                
+POS_OS 4735                
+POS_BROWSER 4860                
+POS_SCREENSIZE 5088                
+POS_UNKNOWNREFERER 5162                
+POS_UNKNOWNREFERERBROWSER 5249                
+POS_ORIGIN 5331                
+POS_SEREFERRALS 5471                
+POS_PAGEREFS 5615                
+POS_SEARCHWORDS 5763                
+POS_KEYWORDS 5915                
+POS_MISC 2355                
+POS_ERRORS 5974                
+POS_CLUSTER 3561                
+POS_SIDER_404 6090                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20150311114655 1 0 10201781776384
+FirstTime 20150202100605
+LastTime 20150225114619
+LastUpdate 20150311230657 1 0 0 0 0
+TotalVisits 56                  
+TotalUnique 14                  
+MonthHostsKnown 0                   
+MonthHostsUnknown 14                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 0 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 39 119 1581947 9 11 1884
+1 67 195 2020210 4 9 6186
+2 8 45 863647 0 0 0
+3 0 0 0 0 0 0
+4 0 0 0 0 0 0
+5 0 0 0 0 0 0
+6 0 0 0 0 0 0
+7 31 32 65933 3 3 2658
+8 52 115 974480 9 9 7036
+9 136 408 4752516 15 15 12302
+10 43 129 1907024 4 7 2746
+11 63 111 1064231 7 9 1005
+12 104 191 1732638 8 9 4520
+13 469 663 4148977 24 28 21833
+14 77 77 146475 8 9 11228
+15 327 653 4495539 23 36 12325
+16 553 1125 11302045 38 60 26476
+17 282 571 5279165 21 26 15987
+18 516 733 18637822 44 54 33794
+19 35 101 1461498 6 8 2763
+20 216 344 3796145 21 25 14991
+21 231 723 6924463 9 21 4495
+22 61 108 1597235 4 8 916
+23 76 234 2041708 5 9 768223
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 25 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 3
+in 1934 4086 51455221
+au 1409 2503 21879315
+ch 43 88 1459162
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 25 first Hits must be first (order not required for others)
+BEGIN_ROBOT 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 11
+css 532 5213175 0 0
+eot 2 42911 0 0
+png 400 1317087 0 0
+woff2 107 1659796 0 0
+woff 62 1447152 0 0
+swf 208 2591701 0 0
+html 86 79124 0 0
+jpg 134 21820072 0 0
+js 2139 35110742 0 0
+Unknown 2921 4924020 0 0
+gif 86 587918 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 4
+macosx 1591 819
+win8.1 50 10
+macosx8 212 121
+win7 4824 2436
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 8
+chrome40.0.2214.115 199 62
+chrome40.0.2214.94 3388 2020
+msie11.0 37 3
+mozilla 233 9
+chrome40.0.2214.111 629 343
+chrome40.0.2214.93 622 241
+firefox36.0 50 10
+firefox35.0 1519 698
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 133 133
+From1 0 0
+From2 0 0
+From3 0 0
+From4 3253 6544
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 25 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 0
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 25 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 3
+302 73 1460
+206 8 782009
+404 190 167899
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referrer
+BEGIN_SIDER_404 12
+/opportunitydetails/ 10 http://diamond.openseed.com.au/opportunitydetails/2
+/opportunities 1 -
+/ 51 http://diamond.openseed.com.au/uploadify.swf
+/customerdetails/ 82 http://diamond.openseed.com.au/customerdetails/41
+/img/uploadify-cancel.png 4 http://diamond.openseed.com.au/css/uploadify.css
+/dashboard 2 -
+/leads 2 -
+/js/tasks.js 4 http://diamond.openseed.com.au/leaddetails/20
+/leaddetails/ 30 http://diamond.openseed.com.au/leaddetails/20
+/leaddetails/24 1 -
+/leaddetails/20 1 http://diamond.openseed.com.au/leads
+/customers 2 http://diamond.openseed.com.au/leaddetails/20
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 25 first Hits must be first (order not required for others)
+BEGIN_VISITOR 14
+202.62.72.163 1079 2336 38145490 20150219221603
+124.246.10.7 524 752 3263870 20150225114619
+203.174.133.142 519 744 5444074 20150218131204
+183.82.47.155 490 1188 9583301 20150210214422
+175.101.6.98 365 562 3726430 20150224164533
+121.44.130.161 187 522 5726063 20150205093100
+203.174.189.190 56 149 1914863 20150224112431
+110.175.78.225 51 131 1570361 20150222203023
+49.180.152.178 29 76 2057733 20150203200553
+46.19.137.149 28 73 1432316 20150202225232
+120.150.145.170 22 64 940208 20150202100649
+118.211.196.21 20 64 961210 20150225101003
+46.19.137.151 15 15 26846 20150203171015
+101.187.218.229 1 1 933 20150210092441
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 15
+20150202 399 1214 12074112 8
+20150203 57 186 3578552 4
+20150204 937 1717 13035672 9
+20150205 189 494 5363318 2
+20150206 910 1442 26072639 11
+20150209 162 285 2412990 3
+20150210 172 228 1525489 5
+20150211 278 438 3561590 3
+20150213 3 37 886323 1
+20150218 29 74 976821 1
+20150219 169 302 1546866 3
+20150222 1 35 848159 1
+20150223 1 16 341794 1
+20150224 42 128 1577517 2
+20150225 37 81 991856 2
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 7
+1h+ 7
+5mn-15mn 6
+15mn-30mn 7
+30s-2mn 9
+2mn-5mn 5
+0s-30s 16
+30mn-1h 6
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 25 first Pages must be first (order not required for others)
+BEGIN_SIDER 110
+/ajaxrecordscount 628 36584 0 5
+/ajaxgetopportunities 297 354107 0 9
+/ajaxcustomerslist 296 317807 0 4
+/gettaskhistorydetails 225 40035 0 5
+/gettaskdetails 213 34527 2 0
+/uploadify.swf 208 2591701 0 4
+/ajaxgetleads 206 82676 0 3
+/customers 143 611677 2 0
+/leads 107 562466 3 1
+/ 86 79124 36 9
+/opportunities 66 342887 1 0
+/dashboard 62 82019 2 0
+/updateindividual 55 1265 0 0
+/css/fonts/opensans-regular-webfont.woff2 54 824736 2 1
+/css/fonts/opensans-bold-webfont.woff2 53 835060 0 1
+/ajaxcustomerslookup 48 79005 0 2
+/css/fonts/opensans-regular-webfont.woff 36 841568 0 0
+/leaddetails/20 36 317561 1 0
+/ajaxgetnotes/opportunity/2 32 704 0 2
+/deletetask 30 2037 0 0
+/tasks 27 163805 1 0
+/ajaxgetnotes/lead/20 26 2275 0 3
+/css/fonts/opensans-bold-webfont.woff 26 605584 0 0
+/createtask 25 2991 0 0
+/customerdetails/43 22 285609 0 0
+/checkduplicate/44 10 210 0 0
+/checkduplicate/45 4 84 0 0
+/opportunitydetails/4 1 7784 0 0
+/ajaxgetnotes/opportunity/57 6 132 0 0
+/ajaxgetnotes/lead/45 5 576 0 0
+/unassignpartner 1 21 0 0
+/leaddetails/47 4 35506 0 0
+/opportunitydetails/2 16 134829 0 0
+/ajaxgetnotes/lead/25 11 2369 0 0
+/notes 15 891 0 1
+/customerdetails/41 6 109222 1 0
+/convertleadform 13 28182 0 0
+/customerdetails/48 5 69129 0 0
+/leaddetails/21 5 45405 0 0
+/checkviewexist 2 42 0 0
+/leaddetails/46 4 37422 0 0
+/ajaxgetnotes/lead/26 6 132 0 0
+/customerdetails/28 4 52508 0 0
+/checkduplicate/42 8 168 0 0
+/customerdetails/23 4 46045 0 0
+/updateopportunitystatus 2 42 0 1
+/ajaxgetnotes/opportunity/55 4 88 0 0
+/ajaxgetnotes/opportunity/62 10 836 0 0
+/opportunitydetails/3 9 72023 0 0
+/customerdetails/47 5 68290 1 0
+/ajaxgetnotes/lead/47 8 724 0 0
+/ajaxgetnotes/lead/46 8 176 0 0
+/customerdetails/42 13 161466 0 0
+/leaddetails/25 4 37237 0 0
+/ajaxgetnotes/opportunity/3 15 2702 0 0
+/leaddetails/26 3 26389 0 0
+/deletecomment 1 21 0 0
+/cpanel 3 26810 2 1
+/customerdetails/24 1 12504 0 0
+/css/fonts/opensans-regular-webfont.eot 1 21105 0 0
+/checkduplicate/1 1 21 0 0
+/checkduplicate/41 4 84 0 0
+/customerdetails/13 1 13634 0 0
+/ajaxpartnerslookup/46 5 9550 0 0
+/opportunitydetails/5 2 16440 0 0
+/customerdetails/21 1 11081 0 0
+/leaddetails/49 1 9145 0 0
+/ajaxgetnotes/lead/48 2 44 0 0
+/customerdetails/46 6 86397 0 0
+/leaddetails/40 1 8367 0 0
+/ajaxpartnerslookup/13 1 2171 0 1
+/leaddetails/45 1 8445 0 0
+/editgridview 2 328 0 0
+/customerdetails/45 3 41222 0 0
+/ajaxgetnotes/opportunity/59 2 44 0 0
+/opportunitydetails/14 1 7909 0 0
+/leaddetails/50 1 9138 0 0
+/ajaxgetnotes/lead/21 10 220 0 0
+/customerdetails/26 1 13514 0 0
+/ajaxgetnotes/opportunity/4 1 217 0 0
+/attachfile 4 84 0 0
+/opportunitydetails/51 2 16519 1 0
+/opportunitydetails/57 3 23934 0 0
+/css/fonts/opensans-bold-webfont.eot 1 21806 0 0
+/saveattachments 4 91 0 0
+/ajaxgetnotes/opportunity/63 6 132 0 0
+/opportunitydetails/59 1 8501 0 0
+/opportunitydetails/62 6 52103 0 0
+/deletecustomer 1 21 0 0
+/opportunitydetails/63 3 26098 0 0
+/ajaxgetnotes/opportunity/51 2 354 0 0
+/ajaxgetnotes/lead/40 2 44 0 0
+/leaddetails/48 1 9110 0 0
+/customerdetails/20 3 38613 0 0
+/opportunitydetails/55 2 15537 0 0
+/ajaxgetnotes/lead/50 2 44 0 0
+/customerdetails/39 4 57150 1 0
+/ajaxgetnotes/opportunity/14 2 44 0 1
+/ajaxgetnotes/lead/49 2 44 0 0
+/savecomment 12 276 0 0
+/createcustomer 4 88 0 0
+/changetaskstatus 11 231 0 1
+/convertlead 7 423 0 0
+/customerdetails/34 3 39723 0 0
+/customerdetails/44 2 26375 0 0
+/customerdetails/1 5 69382 0 0
+/savecustomer 4 84 0 0
+/savemygridview 2 296 0 0
+/ajaxgetnotes/opportunity/5 2 494 0 1
+/checkduplicate 12 252 0 0
+END_SIDER

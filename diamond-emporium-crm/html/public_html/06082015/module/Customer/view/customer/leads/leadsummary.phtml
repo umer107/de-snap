@@ -1,0 +1,196 @@
+<div class="customerTabingInfo" style="display:block">
+	<?php
+	$form->prepare();
+	echo $this->form()->openTag($form);
+	echo $this->formElement($this->form->get('lead_id'));
+	echo $this->formElement($this->form->get('referred_by_customer'));
+	?>
+	<div class="leadSummary"> <a class="cmnBtn" href="javascript: updateLead($('#frm_lead'));" id="leadActionButtonUnq">Edit</a> &nbsp; <a class="cmnBtn redBtn" href="javascript: if(confirm('Are you sure you want to delete lead')) deleteLead(<?php echo $leadData['lead_id']; ?>);">Delete</a> &nbsp; <a href="javascript: convertLead(<?php echo $leadData['lead_id']; ?>);" data-popup="convertToOpportunity" class="cmnBtn lookupBtn lightBoxClick">Convert</a>
+	  <!-- Priority -->
+	  <div class="tableData width100p noOverflow">
+		<div  class="tableHading width100p"> Priority </div>
+		<div class="fl width100p commonForm">
+		  <div class="alphaClmn width100p">
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('priority')->getLabel(); ?></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('priority')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="priority_lead"><?php echo $leadData['priority']; ?></p>
+			</div>
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('lead_owner')->getLabel(); ?></label>
+			  <div class="inputDiv displayHide"><?php echo $this->formElement($this->form->get('lead_owner')); ?></div>
+			  <p class="hiddenUnqValues" id="lead_owner_lead"><?php echo $leadData['owner_first_name'].' '.$leadData['owner_last_name']; ?></p>
+			</div>
+		  </div>
+		</div>
+	  </div>	  
+	  <!-- Priority End-->
+	  
+	  <!-- Lead Overview-->	  
+	  <div class="tableData noOverflow width100p">
+		<div  class="tableHading width100p"> Lead Overview </div>
+		<div class="fl width100p commonForm">
+		  <div class="alphaClmn">
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('title')->getLabel(); ?><span class="asterisk">*</span></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('title')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="title_lead"><?php echo $leadData['title']; ?></p>
+			</div>
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('first_name')->getLabel(); ?><span class="asterisk">*</span></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('first_name')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="first_name_lead"><?php echo $leadData['first_name']; ?></p>
+			</div>
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('last_name')->getLabel(); ?><span class="asterisk">*</span></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('last_name')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="last_name_lead"><?php echo $leadData['last_name']; ?></p>
+			</div>
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('mobile')->getLabel(); ?><span class="asterisk">*</span></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('mobile')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="mobile_lead"><?php echo $leadData['mobile']; ?></p>
+			</div>
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('email')->getLabel(); ?><span class="asterisk">*</span></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('email')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="email_lead"><?php echo $leadData['email']; ?></p>
+			</div>
+		  </div>
+		  <div class="betaClmn">
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('product')->getLabel(); ?><span class="asterisk">*</span></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('product')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="product_lead"><?php echo $leadData['product_title']; ?></p>
+			</div>
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('looking_for')->getLabel(); ?></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('looking_for')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="looking_for_lead"><?php echo $leadData['looking_for']; ?></p>
+			</div>
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('budget')->getLabel(); ?><span class="asterisk">*</span></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('budget')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="budget_lead"><?php echo $leadData['budget']; ?></p>
+			</div>
+		  </div>
+		</div>
+	  </div>	  
+	  <!-- Lead Overview End-->
+	  
+	  <!-- Notes-->	  
+	  <div class="tableData tableNeView marB47" style="overflow:visible;">
+              <div class="tableHading" style="width:100%"> Notes </div>
+              <div class="addNote">
+                <div class="inputDiv">
+                  <div class="datePickInput">
+                    <input type="text" value="" placeholder="DD/MM/YYYY" class="datepickerInput followUpDate" name="follow_up_date">
+                    <span class="datePickCal"></span></div>
+                </div>
+                <div class="inputDiv">
+                  <select class="dropdown" id="note_type" name="note_type">
+                    <option value="">Note Type</option>
+                    <option value="Note type 1">Note type 1</option>
+                    <option value="Note type 2">Note type 2</option>
+                    <option value="Note type 3">Note type 3</option>
+                    <option value="Note type 4">Note type 4</option>
+                    <option value="Note type 5">Note type 5</option>
+                  </select>
+                </div>
+                <div class="inputDiv noteDescription">
+                  <input type="text" class="inputTxt" id="note_description" name="note_description"/>
+                  <input type="hidden" class="inputTxt" id="noteUpdateId" name="noteUpdateId"/>
+                </div>
+                <input type="button" class="cmnBtn blueBtn" value="Add Note" id="saveNoteButton" onclick="saveNote('lead', <?php echo $leadData['lead_id']; ?>);">
+                <input type="button" class="cmnBtn blueBtn" value="Cancel" id="cancelNoteButton" onclick="cancelNote();" style="display:none;">
+              </div>
+			  <div class="cb"></div>
+              <div class="formTable manageMembers" id="jqxNotes"> </div>
+            </div>
+	  <!-- Notes End-->
+	  
+	  <!-- Lead Information-->
+		<div class="tableData noOverflow width100p">
+		<div  class="tableHading width100p"> Lead Information </div>
+		<div class="fl width100p commonForm">
+		  <div class="alphaClmn">
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('lead_source')->getLabel(); ?><span class="asterisk">*</span></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('lead_source')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="lead_source_lead"><?php echo $leadData['lead_source']; ?></p>
+			</div>
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('referred_by_name')->getLabel(); ?></label>
+			  <div class="inputDiv displayHide"><?php echo $this->formElement($this->form->get('referred_by_name')); ?><a class="cmnBtn blueBtn lightBoxClick" href="javascript:;" data-popup="customerlookup" onclick="customersLookup(<?php echo $recordsPerPage; ?>, 'referred_by_customer', 'referred_by_name');">Lookup</a></div>
+			<p class="hiddenUnqValues" id="referred_by_name_lead"><?php echo $leadData['referred_by_name']; ?></p>
+			</div>
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('state')->getLabel(); ?><span class="asterisk">*</span></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('state')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="state_lead"><?php echo $leadData['name']; ?></p>
+			</div>
+			
+			
+		  </div>
+		  <div class="betaClmn">
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('lead_type')->getLabel(); ?><span class="asterisk">*</span></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('lead_type')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="lead_type_lead"><?php echo $leadData['lead_type_title']; ?></p>
+			</div>
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('preferred_contact')->getLabel(); ?></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('preferred_contact')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="preferred_contact_lead"><?php echo $leadData['preferred_contact']; ?></p>
+			</div>
+			<div class="formRow">
+			  <label class="labelControll"><?php echo $this->form->get('reference_product')->getLabel(); ?></label>
+			  <div class="inputDiv displayHide">
+				<?php echo $this->formElement($this->form->get('reference_product')); ?>
+			  </div>
+			  <p class="hiddenUnqValues" id="reference_product_lead"><?php echo $leadData['reference_product']; ?></p>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <!-- Lead Information-->
+	  <input type="hidden" id="recordsPerPage" value="<?php echo $this->recordsPerPage; ?>" />
+	  <input type="hidden" id="leadIdUnqIdenty" value="<?php echo $leadData['lead_id']; ?>" />
+	</div>
+	<?php echo $this->form()->closeTag(); ?>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	//$('#frm_lead #saveNoteButton').hide();
+	//$('#frm_lead #cancelNoteButton').hide();
+	getNotes(<?php echo $this->recordsPerPage; ?>, 'lead', <?php echo $leadData['lead_id']; ?>, 1);
+});
+	$('#frm_lead #mobile').mask('9999 999 999');
+</script>
+</div>

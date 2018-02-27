@@ -1,0 +1,314 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>::::</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" >
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700,600' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="../public/css/normalize.css" />
+<link rel="stylesheet" href="../public/css/animate.css" />
+<link rel="stylesheet" href="../public/css/style.css" />
+</head>
+<body>
+<section class="fl width100p mainWrapper">
+  <div class="topBar fl">
+    <h2  class="fl">Daimond Emporium Back Office System</h2>
+    <div class="rightInfo">
+      <div class="mainSearch">
+        <form>
+          <input type="text" placeholder="Search.." class="searchInput" />
+          <input type="button" value="Go!" class="inputGo" />
+        </form>
+      </div>
+      <span class="userNameDisplay">You are signed in as <strong>John Steven</strong></span> <a href="javascript:;" class="logoutLink">Logout</a></div>
+  </div>
+  <aside class="leftCol">
+    <h1 class="dimondLogo"><a href="index.html"><img src="../public/images/logo.jpg" /></a></h1>
+    <nav class="mainMenu">
+      <ul>
+        <li><a href="javascript:;" class="dashboardLink">Dashboard</a></li>
+        <li><a href="index.html" class="customersLinke">Customers</a></li>
+        <li><a href="lead.html" class="leadsLink">Leads <span>24</span></a></li>
+        <li><a href="javascript:;" class="opportunitiesLink">Opportunities <span>42</span></a></li>
+        <li><a href="javascript:;" class="ordersLink">Orders <span>1</span></a></li>
+        <li><a href="javascript:;" class="inventoryLink">Inventory</a></li>
+        <li><a href="javascript:;"class="suppliersLink">Suppliers</a></li>
+        <li class="current notMainLink"><a href="quoteInvoices.html">Quotes & Invoices</a></li>
+        <li class="notMainLink"><a href="javascript:;">Tasks</a></li>
+        <li class="notMainLink"><a href="javascript:;">Meetings</a></li>
+        <li class="notMainLink"><a href="javascript:;">Emails</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <section class="rightCol">
+    <div class="contentArea padLR0">
+      <div class="fl width100p contentINN">
+        <h2 class="cmnHeader">Quotes & Invoices</h2>
+      </div>
+      <div class="customerTabing fl width100p ctb">
+        <ul>
+          <li class="current"><a href="javascript:;">Quotes</a></li>
+          <li ><a href="javascript:;">Invoices <span>84</span></a></li>
+        </ul>
+        <div class="customTabbingInner">
+          <div class="customerTabingInfo" style="display:block">
+            <div class="QuoteMain"> <a class="popupLink" href="creatNewQuote.html">Create New Quote</a>
+              <div class="cb"></div>
+              <div class="mainSearch marR10 marT15">
+                <input type="text" id="cus_searchInput" placeholder="search.." class="searchInput">
+                <input type="button" onclick="searchGridsData('cus_');" id="globalGridSearch" value="Go!" class="inputGo">
+              </div>
+              <div class="cb"></div>
+              <div class="tableData" style="width:100%">
+                <div class="tableHading" style="100%">Quote</div>
+                <table border="0" cellpadding="8" cellspacing="0" width="100%" class="customerInfoTable">
+                  <tr>
+                    <th width="5"></th>
+                    <th height="48" width="100">Created</th>
+                    <th >Customer</th>
+                    <th>Email</th>
+                    <th>Date <br />
+                      Due</th>
+                    <th>Send <br />
+                      Email</th>
+                    <th width="100">Options</th>
+                  </tr>
+                  <tr >
+                    <td></td>
+                    <td height="48">12/12/14</td>
+                    <td>Steve Smith</td>
+                    <td><a href="javascript:;" class="defaultLink">michaelelnakeeb@gmail.com</a></td>
+                    <td>12/12/12</td>
+                    <td><a class="cmnBtn vm marT0" href="javascript:;">Send</a> &nbsp; <span class="emailSentIcon"></span> &nbsp; 12/12/14 </td>
+                    <td><div class="editDrop marB0 vm quoteOptions"> <span class="editTaskBtn"></span>
+                        <ul style="display: none;" class="showWithAimat">
+                          <li><a href="javascript:;">Delete</a></li>
+                          <li><a href="javascript:;">Duplicate</a></li>
+                          <li><a href="javascript:;">Copy Items to Invoice</a></li>
+                          <li><a href="javascript:;">Create Order</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td height="48">12/12/14</td>
+                    <td>Steve Smith</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td height="48">12/12/14</td>
+                    <td>Steve Smith</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td height="48">12/12/14</td>
+                    <td>Steve Smith</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td height="48">12/12/14</td>
+                    <td>Steve Smith</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td height="48">12/12/14</td>
+                    <td>Steve Smith</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="customerTabingInfo">
+          	<div class="QuoteMain"> <a class="popupLink lightBoxClick" href="javascript:;"  data-popup="addItem">New Invoice</a>
+              <div class="cb"></div>
+              <div class="mainSearch marR10 marT15">
+                <input type="text" id="cus_searchInput" placeholder="search.." class="searchInput">
+                <input type="button" onclick="searchGridsData('cus_');" id="globalGridSearch" value="Go!" class="inputGo">
+              </div>
+              <div class="cb"></div>
+              <div class="tableData" style="width:100%">
+                <div class="tableHading" style="100%">Invoices</div>
+                <table border="0" cellpadding="8" cellspacing="0" width="100%" class="customerInfoTable">
+                  <tr>
+                    <th width="5"></th>
+                    <th height="48" width="100">Created</th>
+                    <th >Customer</th>
+                    <th>Email</th>
+                    <th>Payment<br /> Mode</th>
+                    <th>Date <br />
+                      Due</th>
+                    <th>Send <br />
+                      Email</th>
+                    <th width="100">Options</th>
+                  </tr>
+                  <tr >
+                    <td></td>
+                    <td height="48">12/12/14</td>
+                    <td>Steve Smith</td>
+                    <td><a class="defaultLink"  href="javascript:;"  >michaelelnakeeb@gmail.com</a></td>
+                    <td>40%</td>
+                    <td>12/12/12</td>
+                    <td><a class="cmnBtn vm marT0 lightBoxClick" data-popup="sendEmail" href="javascript:;">Send</a> &nbsp; <span class="emailSentIcon"></span> &nbsp; 12/12/14 </td>
+                    <td><div class="editDrop marB0 vm quoteOptions"> <span class="editTaskBtn"></span>
+                        <ul style="display: none;" class="showWithAimat">
+                          <li><a href="javascript:;">Delete</a></li>
+                          <li><a href="javascript:;">Duplicate</a></li>
+                          <li><a href="javascript:;">Copy Items to Invoice</a></li>
+                          <li><a href="javascript:;">Create Order</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr >
+                    <td></td>
+                    <td height="48">12/12/14</td>
+                    <td>Steve Smith</td>
+                    <td><a href="javascript:;" class="defaultLink">michaelelnakeeb@gmail.com</a></td>
+                    <td>40%</td>
+                    <td>12/12/12</td>
+                    <td><a class="cmnBtn vm marT0 lightBoxClick" data-popup="sendEmail" href="javascript:;">Send</a> &nbsp; <span class="emailSentIcon"></span> &nbsp; 12/12/14 </td>
+                    <td><div class="editDrop marB0 vm quoteOptions"> <span class="editTaskBtn"></span>
+                        <ul style="display: none;" class="showWithAimat">
+                          <li><a href="javascript:;">Delete</a></li>
+                          <li><a href="javascript:;">Duplicate</a></li>
+                          <li><a href="javascript:;">Copy Items to Invoice</a></li>
+                          <li><a href="javascript:;">Create Order</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td height="48">12/12/14</td>
+                    <td>Steve Smith</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td height="48">12/12/14</td>
+                    <td>Steve Smith</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td height="48">12/12/14</td>
+                    <td>Steve Smith</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td height="48">12/12/14</td>
+                    <td>Steve Smith</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+<!-- Email Light Box -->
+<div class="lightBox" id="sendEmail">
+  <div class="lightBoxMid" style="width:890px">
+    <div class="lightBoxTitle">Email <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p">
+      <div class="emailForm commonForm ">
+      <form>
+      		<div class="formRow">
+            	<label class="labelControll">To</label>
+                <div class="inputDiv">jason@gmail.com</div>
+            </div>
+            <div class="formRow">
+            	<label class="labelControll">Subject</label>
+                <div class="inputDiv"><input type="text"  class="inputTxt" value=""></div>
+            </div>
+            <div class="formRow">
+            	<label class="labelControll">&nbsp;</label>
+                <div class="inputDiv"><img src="images/editer.jpg" /></div>
+            </div>
+            
+            <div class="formRow">
+            <label class="labelControll">&nbsp;</label>
+            <div class="inputDiv">
+              <button type="button"  class="cmnBtn blueBtn" value="Save">Send</button>
+              <button type="button"  class="cmnBtn" value="Cancel">Cancel</button>
+          </div>
+          </div>
+      </form>      
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Email Light Box End--> 
+
+
+<!-- Add tem Light Box -->
+<div class="lightBox" id="addItem">
+  <div class="lightBoxMid" style="width:970px">
+    <div class="lightBoxTitle">DE Collective <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p">
+      <div class="quoteAddItems">
+        <ul>
+          <li><a href="javascript:;">Diamonds</a></li>
+          <li><a href="javascript:;">Clrd Diamonds</a></li>
+          <li><a href="javascript:;">Rings</a></li>
+          <li><a href="javascript:;">Earing</a></li>
+          <li><a href="javascript:;">Pendants</a></li>
+          <li><a href="javascript:;">Chains</a></li>
+          <li><a href="javascript:;">Miscellaneous</a></li>
+          <li><a href="javascript:;">Jobs Packet</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add tem Light Box End--> 
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+<script>
+if (typeof jQuery == 'undefined') {
+    document.write(unescape("%3Cscript src='../public/js/jquery-1.11.0.min' type='text/javascript'%3E%3C/script%3E"));
+}
+</script> 
+<script src="../public/js/dropkick.js"></script> 
+<script src="../public/js/common.js"></script>
+</body>
+</html>

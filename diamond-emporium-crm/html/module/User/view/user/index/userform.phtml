@@ -1,0 +1,101 @@
+<?php
+$userForm->prepare();
+echo $this->form()->openTag($userForm);
+echo $this->formElement($this->userForm->get('user_id'));
+echo $this->formElement($this->userForm->get('image'));
+?>
+
+	  <div class="alphaClmn">
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('first_name')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('first_name')); ?></div>
+		</div>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('last_name')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('last_name')); ?></div>
+		</div>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('mobile_number')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('mobile_number')); ?></div>
+		</div>   
+              
+               <div class="formRow">
+              <label class="labelControll">Upload Image</label>
+              <div class="inputDiv">
+                <div class="inputfile"><span class="cmnBtn blueBtn marL0">Upload</span><input type="file" name="item_image" id="item_image" /></div>
+                <div class="uploadedImgDisplay" id="preview"></div>
+              </div>
+            </div>
+	  </div>
+	  <div class="betaClmn">
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('email')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('email')); ?></div>
+		</div>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('role_id')->getLabel(); ?></label>
+		  <div class="inputDiv"><div class="selectDrop width100p"><?php echo $this->formElement($this->userForm->get('role_id')); ?></div></div>
+		</div>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('password')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('password')); ?></div>
+		</div>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('color')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('color')); ?></div>
+		</div>
+              <div class="formRow">
+		  <label class="labelControll"><?php echo $this->userForm->get('user_budget')->getLabel(); ?></label>
+		  <div class="inputDiv"><?php echo $this->formElement($this->userForm->get('user_budget')); ?></div>
+		</div>
+	  </div>
+  
+  <div class="formButtons tc fl width100p">
+			<?php echo $this->formElement($this->userForm->get('save')); ?>
+			<?php echo $this->formElement($this->userForm->get('cancel')); ?>
+		</div>
+
+
+<?php echo $this->form()->closeTag(); ?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#color').colpick({
+		layout:'hex',
+		submit:0,
+		colorScheme:'dark',
+		onChange:function(hsb,hex,rgb,el,bySetColor) {
+			$(el).css('border-color','#'+hex);
+			// Fill the text box just if the color was set using the picker, and not the colpickSetColor function.
+			if(!bySetColor) $(el).val(hex);
+		}
+	}).keyup(function(){
+		$(this).colpickSetColor(this.value);
+	});
+	$('#color').attr('style', 'border-right: 20px solid #<?php echo empty($color) ? "000000" : $color; ?>');
+        
+        
+        //Image Javascript
+      
+        $('#item_image').live('change', function(){ 
+		$("#preview").html('');
+		
+		$("#frm_user").ajaxForm({
+			
+			success: function(response){
+                            
+				if(response == 1){
+					$('#preview').html('Invalid file format');
+				}else if(response == 2){
+					$('#preview').html('Unable to upload file');
+				}else{
+					$('#image').val(response);
+					$('#item_image').val('');
+					$('#preview').html('<img src="/profile_image/'+response+'" height="98px" width="234px">');
+				}
+			}
+		}).submit();
+	});
+        
+        
+});
+</script>

@@ -1,0 +1,232 @@
+<div class="leadsContainer full">
+	<div class="full robotoregular">
+
+		<div class="full bg-white triple-pad-left triple-pad-right double-pad-top double-pad-bottom fs-14 robotomedium">
+
+		    <div class="pull-left triple-pad-left">
+		        <label class="pull-left half-gap-right lh-28 color-darkGray two-pad-right">Rings</label>
+		        <div class="d-i-b rings">
+			        <a href="javascript:;" class="btn" value="$2-5K">$2K - $5K</a>
+			        <a href="javascript:;" class="btn" value="$5-10K">$5K - $10K</a>
+			        <a href="javascript:;" class="btn" value="$10-20k">$10K - $20K</a>
+			        <a href="javascript:;" class="btn" value="$20K+">$20K+</a>
+			        <a href="javascript:;" class="btn active" value="all">Show all</a>
+				</div>
+		        <label class="gap-right lh-28 triple-gap-left color-gray50 hide">Accessories</label>
+		        <a href="javascript:;" class="btn hide">Show all</a>
+		    </div>
+
+		    <!-- ========================================================= -->
+		    <div class="pull-right">
+		        <label class="pull-left double-gap-right lh-28 color-darkGray one-half-pad-right ">Filter by:</label>
+
+		        <ul class="dropdown dd-small bg-white d-i-b pull-left relative wd-60 triple-gap-right statusOfAgents">
+		            <li>
+		                <a href="javascript:;" class="selected-text Leadselected-text d-b users agentStatus" value="All"><span class="d-i-b">Status </span><i class="icon-downarrow fs-13 bold pull-right d-i-b "></i></a>
+		            </li>
+		            <li>
+		                <ul class="dropdownOptions bg-white absolute wd-142 Status" style="display:none;">
+		                    <li><a href="javascript:;" value="Open"><span class="opened"></span>Open</a></li>
+		                    <li style="display: none;"><a href="javascript:;" value="Deal closed"><span class="dealClosed"></span>Deal closed</a></li>
+		                    <li><a href="javascript:;" value="Closed"><span class="Closed"></span>Deal closed</a></li>
+		                </ul>
+		            </li>
+		        </ul>
+
+				<!-- ========================================================= -->
+
+		        <ul class="dropdown dd-small bg-white d-i-b pull-left relative wd-60 triple-gap-right agentReferral">
+		            <li>
+		                <a href="javascript:;" class="selected-text Leadselected-text d-b users Referral" value="All"><span class="d-i-b">Referral </span><i class="icon-downarrow fs-13 bold pull-right d-i-b "></i></a>
+		            </li>
+		            <li>
+		                <ul class="dropdownOptions bg-white absolute wd-142" style="display:none;">
+		                    <li><a href="javascript:;" value="Google"><span class="google"></span>Google</a></li>
+		                    <li><a href="javascript:;" value="Word of mouth"><span class="wordOfMouth"></span>Word of mouth</a></li>
+		                    <li><a href="javascript:;" value="Previous Client"><span class="previousClient"></span>Previous Client</a></li>
+		                    <li><a href="javascript:;" value="Walk in"><span class="walkIn"></span>Walk in</a></li>
+		                    <li><a href="javascript:;" value="Facebook"><span class="facebook"></span>Facebook</a></li>
+		                    <li><a href="javascript:;" value="Other"><span class="other"></span>Other</a></li>
+		                </ul>
+		            </li>
+		        </ul>
+
+		        <!-- ========================================================= -->
+
+		        <ul class="dropdown calendar bg-white d-i-b pull-left relative wd-100 triple-pad-right ">
+		            <li>
+		                <a href="javascript:;" class="selected-text Leadselected-text d-b users LeadsCalendar" value="All"><span class="d-i-b">This month </span><i class="icon-downarrow fs-13 bold pull-right d-i-b "></i></a>
+		            </li>
+		            <li>
+		            	<ul class="dropdownOptions bg-white absolute" style="display:none;">
+			            	<div class="calendarContainer full leadListCalendar">
+			            		<input type="text" id="altField" value="" class="hide">
+			            		<div class="pull-left calendarDiv">
+			            			<div class="pull-left relative lh-14 pad-left">
+			            				<span class="calendarLeaveMonth pointer robotomedium fs-14 one-half-pad-right">
+							            	<span month="1">January</span>
+							            	<i class="icon-downarrow fs-13 relative top-1 half-pad-left bold"></i> 
+							            </span>
+							            <div class="monthCalendarDropdown absolute calendarDropdown" hidden="hidden">
+							                <span value="January" month="1">January</span>
+							                <span value="February" month="2">February</span>
+							                <span value="March" month="3">March</span>
+							                <span value="April" month="4">April</span>
+							                <span value="May" month="5">May</span>
+							                <span value="June" month="6">June</span>
+							                <span value="July" month="7">July</span>
+							                <span value="August" month="8">August</span>
+							                <span value="September" month="9">September</span>
+							                <span value="October" month="10">October</span>
+							                <span value="November" month="11">November</span>
+							                <span value="December" month="12">December</span>
+							            </div>
+			            			</div>
+						            
+						            <div class="pull-left relative lh-14 one-half-pad-left">
+						            	<span class="calendarLeaveYear pointer robotomedium fs-14">
+							            	<span year=""></span>
+							            	<i class="icon-downarrow fs-13 relative top-1 half-pad-left bold"></i>
+							            </span>
+							            <div class="yearCalendarDropdown absolute calendarDropdown" hidden="hidden">
+
+							            </div>
+						            </div>
+						            
+						        </div> <!-- Calendar Update Changes Dropdown -->
+			            		<div class="multiCalendar pad-top" id=multiCalendar>
+			            			
+			            		</div>
+			            		<div class="calendarOptions calenderfilterOptions">
+			            			<span value="Today">Today</span>
+			            			<span value="Yesterday">Yesterday</span>
+			            			<span value="This week">This week</span>
+			            			<span value="This month">This month</span>
+			            			<span value="This year">This year</span>
+			            		</div>
+			            		<div class="full double-pad-bottom">
+			            			<label class="pull-left pad-left lh-38 opacity0 calendarfields transition-ease-02 color-red fs-12">Please select a date</label>
+			            			<span class="submitDates">OK</span>
+			            		</div>
+			            	</div>
+			            </ul>
+		            </li>
+		        </ul>
+
+		    </div>
+		</div>
+
+		<!-- ========================================================= -->
+
+		<div class="full align-center relative leadsMainContainer">
+			<div class="loadLeadsHere full double-pad-top" hidden="">
+			</div>
+			<div class="loading leads-height">
+				<img src="/images/loading.gif">
+			</div>
+		</div>
+
+	</div>
+
+	<!-- ========================================================= -->
+	
+	<?php 
+	foreach ($data as $URL) {
+	    ?>
+	    <tr>
+	        <td><?php 
+	        //echo $URL['first_name'];
+	        ?></td>
+	        
+	    <tr>
+	<?php } ?>
+</div>
+
+
+<div id="closeLead" class="hide" >
+	<span>Close Lead</span>
+	<div class="relative d-i-b v-a-t">
+
+        <ul class="dropdown bg-white d-i-b pull-left relative full">
+            <li>   
+                <a href="javascript:;" class="selected-text d-b closeStatus" value="All">
+                    <span class="d-i-b">Status</span>
+                    <i class="icon-dropdown fs-7 pull-right d-i-b "></i>
+                </a>
+            </li>
+            <li>
+                <ul class="dropdownOptions bg-white absolute full-width" style="display: none;">
+                    <li class="openOption"> <a href="javascript:;" value="Open"> Open </a> </li>
+                    <li class="closeOption"> <a href="javascript:;" value="Closed Lost"> Closed Lost </a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="relative full closeLeadDateField">
+    	<i class="icon-calendarClose fs-24 closeCalendarIcon absolute z-index1"></i>
+        <input type="text" name="closeLeadDate" placeholder="Close date" class="closeLeadDate" value="">
+        <div class="calendarClose absolute transition-ease-05 maxHeightShow maxHeightHide">
+           <!-- Start --> 
+           <div class="calendarContainer full CloseleadListCalendar">
+        		<input type="text" id="altField" value="" class="hide" />
+        		<div class="pull-left calendarDiv">
+        			<div class="pull-left relative lh-14 pad-left">
+
+        				<span class="calendarLeaveMonth pointer robotomedium fs-14 one-half-pad-right">
+			            	<span month="1">January</span>
+			            	<i class="icon-downarrow fs-13 relative top-1 half-pad-left bold"></i> 
+			            </span>
+
+			            <div class="monthCalendarDropdown absolute calendarDropdown align-left" hidden="hidden">
+			                <span value="January" month="1">January</span>
+			                <span value="February" month="2">February</span>
+			                <span value="March" month="3">March</span>
+			                <span value="April" month="4" >April</span>
+			                <span value="May" month="5" >May</span>
+			                <span value="June" month="6" >June</span>
+			                <span value="July" month="7" >July</span>
+			                <span value="August" month="8" >August</span>
+			                <span value="September" month="9" >September</span>
+			                <span value="October" month="10" >October</span>
+			                <span value="November" month="11" >November</span>
+			                <span value="December" month="12" >December</span>
+			            </div>
+        			</div>
+		            
+		            <div class="pull-left relative lh-14 one-half-pad-left">
+
+		            	<span class="calendarLeaveYear pointer robotomedium fs-14">
+			            	<span year=""></span>
+			            	<i class="icon-downarrow fs-13 relative top-1 half-pad-left bold"></i>
+			            </span>
+
+			            <div class="yearCalendarDropdown absolute calendarDropdown align-left" hidden="hidden">
+
+						</div>
+		            
+		        	</div> <!-- Calendar Update Changes Dropdown -->
+	        		<div class="multiCalendar pad-top closeLeadCalendar">
+	        			
+	        		</div>
+	        		<div class="calendarOptions closeLeadOptions">
+	        			<span value="Today">Today</span>
+	        			<span value="Yesterday">Yesterday</span>
+	        			<span value="This week">This week</span>
+	        			<span value="This month">This month</span>
+	        			<span value="This year">This year</span>
+	        		</div>
+
+	        	</div>
+        	</div>
+			<!-- End -->
+	    </div>
+
+	    <div class="next-options full double-pad-top">
+	    	<a href="javascript:;" class="fs-14 btn-cancelCloseLead bg-white robotomedium ">Cancel</a>
+	    	<a href="javascript:;" class="btn-green fs-14 button bg-white btn-saveCloseLead lh-34 align-center robotomedium">Save</a>
+	    </div>
+
+	</div>
+</div>

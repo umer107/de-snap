@@ -1,0 +1,19 @@
+<div class="contentArea">
+    <?php	
+	$messagescnt = sizeof($flashMessages[0]);
+	//print_r($flashMessages); exit;
+	 if(empty($flashMessages)){ ?>
+	<p align="center" class="enquirySussess">Lead inserted successfully.</p>
+	<?php } else {	
+	
+	$flashMessages = $flashMessages[0]; ?>
+	<ul class="enquiryErrorMsgUL">
+	 <?php  for($msgIndex=0; $msgIndex<$messagescnt; $msgIndex++){
+	    echo "<li>".$flashMessages[$msgIndex]."</li>"; 
+	  }
+	  }
+	?>
+	
+	</ul>
+	
+</div> 

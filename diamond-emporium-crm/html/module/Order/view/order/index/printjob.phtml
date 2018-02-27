@@ -1,0 +1,594 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>PrintJob Workshop</title>
+
+<style>
+
+*{margin:0}
+
+.printPage{padding:40px}
+
+  /* ... the rest of the rules ... */
+
+@media print {
+
+  body, page[size="A4"] {
+
+    margin: 0;
+
+    box-shadow: 0;
+
+  }
+
+  page[size="A4"] {
+
+  width: 100mm;
+
+  height: 150mm;
+
+  display: block;
+
+  margin: 0 auto;
+
+
+
+}
+
+}
+
+  
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+
+	<tr>
+
+    	<td class="printPage">
+
+		<page size="A4">
+
+        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+              <tr>
+
+                <td align="left" style="font-family:'Arial', sans-serif; font-size:16px; color:#333">
+
+                	<h2 style="font-size:25px; font-weight:700; margin:0">DIAMOND EMPORIUM</h2>
+
+                    <p>L2/SUITE 201. 185 ELIZABETH STREET <br/>SYDNEY NSW 2000</p>
+
+                </td>
+
+                <td align="right" valign="top" style="font-family:'Arial', sans-serif; font-size:16px; color:#333"><p>PH: (612) 9261 2272<br /> EM: info@diamondemporium.com.au</p> </td>
+
+              </tr>
+
+              <tr><td height="20" colspan="2"></td></tr>
+
+              <tr>
+
+              	<td align="center" colspan="2" style="border-top: #d0d0d0 solid 1px;border-bottom: #d0d0d0 solid 1px"><img src="http://<?php echo $_SERVER['HTTP_HOST'].'/milestone_attachments/'.$workshop->image;?>" width="100%"  style="max-width:100%; vertical-align:top; display:inline-block" /></td>
+
+              </tr>
+
+              <tr><td height="20" colspan="2"></td></tr>
+
+              <tr><td colspan="2" style="padding:15px;background-color:#f4f4f4;border-top:#d0d0d0 solid 1px;border-bottom: #d0d0d0 solid 1px" bgcolor="#f4f4f4" >
+
+                       <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+
+
+
+                          <tr>
+
+                            <th width="200" style="font-family:'Arial', sans-serif; font-size:16px; color:#333; font-weight:700" align="left">ORDER:</th>
+
+                            <td width="100"></td>
+
+                            <td style="font-family:'Arial', sans-serif; font-size:16px; color:#333">#<?php echo $order_id; ?></td>
+
+                          </tr>
+
+                          <tr>
+
+                            <th style="font-family:'Arial', sans-serif; font-size:16px; color:#333; font-weight:700" align="left">JOB:</th>
+
+                            <td width="100"></td>
+
+                            <td style="font-family:'Arial', sans-serif; font-size:16px; color:#333">#<?php echo $job_id; ?></td>
+
+                          </tr>
+
+							<tr>
+
+                            <th style="font-family:'Arial', sans-serif; font-size:16px; color:#333; font-weight:700" align="left">CUSTOMER NAME:</th>
+
+                            <td width="100"></td>
+
+                            <td style="font-family:'Arial', sans-serif; font-size:16px; color:#333"><?php echo $order->fullname; ?></td>
+
+                          </tr>
+
+                          <!--<tr>
+
+                            <th style="font-family:'Arial', sans-serif; font-size:16px; color:#333; font-weight:700" align="left">Sales Person:</th>
+
+                            <td width="100"></td>
+
+                            <td style="font-family:'Arial', sans-serif; font-size:16px; color:#333">Rebecca Obrien</td>
+
+                          </tr>-->
+
+                          <tr><td colspan="3" height="30"></td></tr>
+
+                          <tr><td colspan="3" style="font-family:'Arial', sans-serif; font-size:16px; color:#333"><strong>SPECIAL REQUEST: </strong><?php echo $order->special_request; ?></td></tr>
+
+<tr><td colspan="3" height="30"></td></tr>
+
+<tr><th colspan="3" style="font-family:'Arial', sans-serif; font-size:16px; color:#333; font-weight:700" align="left">ORDER DESCRIPTION</th></tr>
+
+<tr><td colspan="3" height="10"></td></tr>
+
+<tr><td colspan="3" style="font-family:'Arial', sans-serif; font-size:16px; color:#333; "><?php echo $order->comment; ?></td></tr>
+
+                        </table>
+
+              </td></tr>
+
+            </table>
+
+			</page>
+
+			<div style="page-break-before: always;"></div>
+
+			<page size="A4">          
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+            	<tr><td height="20" colspan="2"></td></tr>
+
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+            	<tr>
+
+                	<td bgcolor="#3f3f3f">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="10">
+
+                          <tr>
+
+                            <td align="left" style="font-family:'Arial', sans-serif; font-size:20px; color:#FFF; font-weight:700; padding-left:15px">MILISTONE 1</td>
+
+                            <td></td>
+
+                            <td align="right" bgcolor="#000" width="150" style="font-family:'Arial', sans-serif; font-size:20px; color:#FFF; font-weight:700; padding-left:15px;white-space:nowrap">ORDER: #<?php echo $order_id; ?></td>
+
+                            <td align="right" bgcolor="#000" width="128" style="font-family:'Arial', sans-serif; font-size:20px; color:#FFF; font-weight:700; padding-right:15px; white-space:nowrap">JOB: #<?php echo $job_id; ?></td>
+
+                          </tr>
+
+                        </table>
+
+                    </td>
+
+                </tr>
+
+				<?php foreach($suppliersToWorkshop as $value){ ?>
+
+				<?php $task = unserialize($value['tasks']); ?>
+
+                <tr>
+
+                	<td style="border-bottom:#ccc solid 3px">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                              <tr>
+
+                                <td valign="top">
+
+                                	<table width="100%" border="0" cellspacing="0" cellpadding="10">
+
+									  <?php foreach($task as $taskKey => $taskValue){ ?>
+
+									  	  <?php $cost += $taskValue['cost']; ?>
+
+										  <?php foreach($taskValue['taskinfo'] as $taskinfo){ ?>
+
+										  <tr>
+
+											<td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;"><?php echo $taskinfo; ?></td>
+
+										  </tr>  
+
+										  <?php } ?>
+
+									   <?php } ?>
+
+                                    </table>
+
+								</td>
+
+                                <td width="100">&nbsp;</td>
+
+                                <td  width="148" valign="top">
+
+                                <table width="100%" border="0" cellspacing="0" cellpadding="10">
+
+                                  <tr>
+
+                                    <td  bgcolor="#000" style="font-family:'Arial', sans-serif; font-size:20px; color:#FFF; font-weight:700; padding-right:15px;padding-left:15px; white-space:nowrap">
+
+									<?php
+
+									foreach($task as $taskKey => $taskValue){
+
+										echo $jobTypes[$taskKey];
+
+										break;
+
+									}
+
+									?>
+
+									</td>
+
+                                  </tr>
+
+                                  <tr><td height="74"></td></tr>
+
+                                  <tr>
+
+                                    <td  style="font-family:'Arial', sans-serif; font-size:30px; color:#333; font-weight:700; padding-right:15px;padding-left:15px; white-space:nowrap">$<?php echo $cost; ?></td>
+
+                                  </tr>
+
+                                </table>
+
+                                
+
+                                </td>
+
+                              </tr>
+
+                         </table>
+
+					</td>
+
+                </tr>
+
+				<?php } ?>
+
+                <tr>
+
+                	<td style="border-bottom:#ccc solid 3px">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                              <tr>
+
+                               <td align="right" style="font-family:'Arial', sans-serif; font-size:20px; color:#565656; font-weight:700; padding:15px 0 15px 15px">SIGN OFF_____</td>
+
+                               <td width="249" style="font-family:'Arial', sans-serif; font-size:20px; color:#565656; font-weight:700; padding:15px 0">DATA DELIVERED______</td>
+
+                               <td width="156" style="font-family:'Arial', sans-serif; font-size:20px; color:#565656; font-weight:700; padding:15px 15px 15px 0">INITIAL________</td>
+
+                              </tr>
+
+                         </table>
+
+					</td>
+
+                </tr>
+
+				
+
+            </table>
+
+			</page>
+
+            <!--<div style="page-break-before: always;"></div>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+            	<tr>
+
+                	<td bgcolor="#3f3f3f">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="10">
+
+                          <tr>
+
+                            <td align="left" style="font-family:'Arial', sans-serif; font-size:20px; color:#FFF; font-weight:700; padding-left:15px">MILISTONE 1</td>
+
+                            <td></td>
+
+                            <td align="right" bgcolor="#000" width="150" style="font-family:'Arial', sans-serif; font-size:20px; color:#FFF; font-weight:700; padding-left:15px;white-space:nowrap">ORDER: #94832</td>
+
+                            <td align="right" bgcolor="#000" width="128" style="font-family:'Arial', sans-serif; font-size:20px; color:#FFF; font-weight:700; padding-right:15px; white-space:nowrap">JOB: #23323</td>
+
+                          </tr>
+
+                        </table>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                	<td style="border-bottom:#ccc solid 3px">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                              <tr>
+
+                                <td>
+
+                                	<table width="100%" border="0" cellspacing="0" cellpadding="10">
+
+                                      <tr>
+
+                                        <td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;">LOREN IPSUM DOLOR SIT AMET, CONSECETUR ADIPISCING ELIT</td>
+
+                                      </tr>
+
+                                      <tr>
+
+                                        <td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;">LOREN IPSUM DOLOR SIT AMET, CONSECETUR ADIPISCING ELIT</td>
+
+                                      </tr>
+
+                                      <tr>
+
+                                        <td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;">LOREN IPSUM DOLOR SIT AMET, CONSECETUR ADIPISCING ELIT</td>
+
+                                      </tr>
+
+                                      <tr>
+
+                                        <td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;">LOREN IPSUM DOLOR SIT AMET, CONSECETUR ADIPISCING ELIT</td>
+
+                                      </tr>
+
+                                    </table>
+
+								</td>
+
+                                <td width="100">&nbsp;</td>
+
+                                <td  width="148" valign="top">
+
+                                <table width="100%" border="0" cellspacing="0" cellpadding="10">
+
+                                  <tr>
+
+                                    <td  bgcolor="#000" style="font-family:'Arial', sans-serif; font-size:20px; color:#FFF; font-weight:700; padding-right:15px;padding-left:15px; white-space:nowrap">ENGRAVE</td>
+
+                                  </tr>
+
+                                  <tr><td height="74"></td></tr>
+
+                                  <tr>
+
+                                    <td  style="font-family:'Arial', sans-serif; font-size:30px; color:#333; font-weight:700; padding-right:15px;padding-left:15px; white-space:nowrap">$______</td>
+
+                                  </tr>
+
+                                </table>
+
+                                
+
+                                </td>
+
+                              </tr>
+
+                         </table>
+
+					</td>
+
+                </tr>
+
+                <tr>
+
+                	<td style="border-bottom:#ccc solid 3px">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                              <tr>
+
+                                <td>
+
+                                	<table width="100%" border="0" cellspacing="0" cellpadding="10">
+
+                                      <tr>
+
+                                        <td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;">LOREN IPSUM DOLOR SIT AMET, CONSECETUR ADIPISCING ELIT</td>
+
+                                      </tr>
+
+                                      <tr>
+
+                                        <td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;">LOREN IPSUM DOLOR SIT AMET, CONSECETUR ADIPISCING ELIT</td>
+
+                                      </tr>
+
+                                      <tr>
+
+                                        <td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;">LOREN IPSUM DOLOR SIT AMET, CONSECETUR ADIPISCING ELIT</td>
+
+                                      </tr>
+
+                                      <tr>
+
+                                        <td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;">LOREN IPSUM DOLOR SIT AMET, CONSECETUR ADIPISCING ELIT</td>
+
+                                      </tr>
+
+                                    </table>
+
+								</td>
+
+                                <td width="100">&nbsp;</td>
+
+                                <td  width="148" valign="top">
+
+                                <table width="100%" border="0" cellspacing="0" cellpadding="10">
+
+                                  <tr>
+
+                                    <td  bgcolor="#000" style="font-family:'Arial', sans-serif; font-size:20px; color:#FFF; font-weight:700; padding-right:15px;padding-left:15px; white-space:nowrap">ENGRAVE</td>
+
+                                  </tr>
+
+                                  <tr><td height="74"></td></tr>
+
+                                  <tr>
+
+                                    <td  style="font-family:'Arial', sans-serif; font-size:30px; color:#333; font-weight:700; padding-right:15px;padding-left:15px; white-space:nowrap">$______</td>
+
+                                  </tr>
+
+                                </table>
+
+                                
+
+                                </td>
+
+                              </tr>
+
+                         </table>
+
+					</td>
+
+                </tr>
+
+                <tr>
+
+                	<td style="border-bottom:#ccc solid 3px">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                              <tr>
+
+                                <td>
+
+                                	<table width="100%" border="0" cellspacing="0" cellpadding="10">
+
+                                      <tr>
+
+                                        <td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;">LOREN IPSUM DOLOR SIT AMET, CONSECETUR ADIPISCING ELIT</td>
+
+                                      </tr>
+
+                                      <tr>
+
+                                        <td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;">LOREN IPSUM DOLOR SIT AMET, CONSECETUR ADIPISCING ELIT</td>
+
+                                      </tr>
+
+                                      <tr>
+
+                                        <td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;">LOREN IPSUM DOLOR SIT AMET, CONSECETUR ADIPISCING ELIT</td>
+
+                                      </tr>
+
+                                      <tr>
+
+                                        <td valign="top" width="30"> <div style="border:#000 solid 2px; width:30px; height:30px" ></div></td><td  style="font-family:'Arial', sans-serif; font-size:16px; color:#333;">LOREN IPSUM DOLOR SIT AMET, CONSECETUR ADIPISCING ELIT</td>
+
+                                      </tr>
+
+                                    </table>
+
+								</td>
+
+                                <td width="100">&nbsp;</td>
+
+                                <td  width="148" valign="top">
+
+                                <table width="100%" border="0" cellspacing="0" cellpadding="10">
+
+                                  <tr>
+
+                                    <td  bgcolor="#000" style="font-family:'Arial', sans-serif; font-size:20px; color:#FFF; font-weight:700; padding-right:15px;padding-left:15px; white-space:nowrap">ENGRAVE</td>
+
+                                  </tr>
+
+                                  <tr><td height="74"></td></tr>
+
+                                  <tr>
+
+                                    <td  style="font-family:'Arial', sans-serif; font-size:30px; color:#333; font-weight:700; padding-right:15px;padding-left:15px; white-space:nowrap">$______</td>
+
+                                  </tr>
+
+                                </table>
+
+                                
+
+                                </td>
+
+                              </tr>
+
+                         </table>
+
+					</td>
+
+                </tr>
+
+                
+
+                <tr>
+
+                	<td style="border-bottom:#ccc solid 3px">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                              <tr>
+
+                               <td align="right" style="font-family:'Arial', sans-serif; font-size:20px; color:#565656; font-weight:700; padding:15px 0 15px 15px">SIGN OFF_____</td>
+
+                               <td width="249" style="font-family:'Arial', sans-serif; font-size:20px; color:#565656; font-weight:700; padding:15px 0">DATA DELIVERED______</td>
+
+                               <td width="156" style="font-family:'Arial', sans-serif; font-size:20px; color:#565656; font-weight:700; padding:15px 15px 15px 0">INITIAL________</td>
+
+                              </tr>
+
+                         </table>
+
+					</td>
+
+                </tr>
+
+            </table>-->
+
+            
+
+        </td>
+
+    </tr>
+
+</table>
+
+</body>
+
+</html>
+

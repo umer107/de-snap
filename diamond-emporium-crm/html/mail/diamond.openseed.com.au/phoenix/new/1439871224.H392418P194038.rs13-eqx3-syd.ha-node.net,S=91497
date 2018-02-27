@@ -1,0 +1,1718 @@
+Return-path: <pheonix@diamondemporium.com.au>
+Envelope-to: phoenix@diamond.openseed.com.au
+Delivery-date: Tue, 18 Aug 2015 14:13:44 +1000
+Received: from mail-bl2on0075.outbound.protection.outlook.com ([65.55.169.75]:5216 helo=na01-bl2-obe.outbound.protection.outlook.com)
+	by rs13-eqx3-syd.ha-node.net with esmtps (TLSv1.2:AES256-SHA256:256)
+	(Exim 4.85)
+	(envelope-from <pheonix@diamondemporium.com.au>)
+	id 1ZRYHO-000oSy-PA
+	for phoenix@diamond.openseed.com.au; Tue, 18 Aug 2015 14:13:44 +1000
+Received: from BN3PR0301MB0881.namprd03.prod.outlook.com (10.160.155.143) by
+ BN3PR0301MB1284.namprd03.prod.outlook.com (10.161.210.148) with Microsoft
+ SMTP Server (TLS) id 15.1.231.21; Tue, 18 Aug 2015 04:13:37 +0000
+Content-Type: multipart/mixed;
+	boundary="_737fc23a-5caf-4023-8312-5b8b8943f3ef_"
+Subject: Re: Diamond Emporium
+To: Rebecca O'Brien <bec@diamondemporium.com.au>
+From: Dara Eam <daralammeam@gmail.com>
+MIME-Version: 1.0
+Sender:
+	<MicrosoftExchange329e71ec88ae4615bbc36ab6ce41109e@DiamondEmporium.onmicrosoft.com>
+Message-ID: <f8c1d9cc-a8a5-494d-834a-1d8f076efa44@journal.report.generator>
+Date: Tue, 18 Aug 2015 04:13:35 +0000
+X-MS-Journal-Report:
+X-MS-Exchange-Parent-Message-Id: <CAMEQbQbkhir6h7t-z3jG=4wctLr7mbPjsnJaaJ+YwERG-d21XA@mail.gmail.com>
+Auto-Submitted: auto-generated
+X-MS-Exchange-Generated-Message-Source: Journal Agent
+X-Microsoft-Exchange-Diagnostics: 1;BN3PR0301MB0881;25:6BIp5p2Xfn0MVYXpdJj+Y1o/iiKjMFZiDbu3d1Seb3TH9spbXW9HcE0LUv7pOkeurs1ZMgHY/26hh11SIeUtxxfUESM3OvdMUJG3CyYEwAK22zxYdY68y3ddRhotUHWiqXYid8sRjZrDoWOvHU0fMUn8ap7gG06PVf1YEH9zXi1KSZCJk7j8eDwzHYWWWMbsiz3ELhtJjJAGACZ07vbaUsdoVtwvAWcI4fLYCgwnNsiHp3rpPHm0UAIbQBwxN10TkOJijQxKsauQXgBAHo6rag==;4:tNWxNBG/bzP3gfe60N279Brn0ZNw3rf+6WI0xTk4g0R1E6VJ92QMYFkSN0a8zWadb4gmPqpvUE+Nn84Mz/C8TpXd2WnF8Zu/0Gi7UR7zioFDctDrxEisRXPa83BVKJYsQixHixqaux2KbxmjeO3Oz4U9MMInpKpVoRY+56sRnGrg823LgfOoM7oEp6W6YlHf/NJ4aREImDX9AbU10DGVWNk6Aw0OzfQd0mGdsk6lNzkesI3sOee9mTf/JbrfvJlBU4vWGpq2NnTNu/3EnG0jZFM+XRAFEwBiHOwvw5WqCKvO+6tECGr52mPt1j/lDcwq
+X-Microsoft-Antispam-PRVS: <BN3PR0301MB0881D2FFD303755C7134F65492780@BN3PR0301MB0881.namprd03.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test: BCL:0;PCL:0;RULEID:(601004)(8121501046)(5005006)(3002001);SRVR:BN3PR0301MB0881;BCL:0;PCL:0;RULEID:;SRVR:BN3PR0301MB0881;
+X-Forefront-PRVS: 067270ECAF
+X-Forefront-Antispam-Report: SFV:NSPM;SFS:(10009020)(6009001)(189002)(199003)(106356001)(5001960100002)(31696002)(5001860100001)(19580395003)(564344004)(50986999)(107886002)(87572001)(110136002)(97736004)(84326002)(102106001)(46102003)(105586002)(19580405001)(73392002)(76482005)(82202001)(512954002)(81442002)(5001830100001)(4001540100001)(68736005)(11286001)(3110400002)(54356999)(77806003)(189998001)(31686004)(101416001)(4610100001)(77156002)(5000100001)(87976001)(4001450100002)(64706001)(62966003)(33646002)(221733001)(450100001)(92566002)(42882004)(5001840100002);DIR:OUT;SFP:1101;SCL:1;SRVR:BN3PR0301MB0881;H:;FPR:;SPF:None;PTR:InfoNoRecords;MX:1;A:1;LANG:;
+Received-SPF: None (protection.outlook.com: diamondemporium.com.au does not
+ designate permitted sender hosts)
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=pheonix@diamondemporium.com.au; 
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1;BN3PR0301MB0881;23:NTmsVrWa0sxMxBV1vTSwCfyo5su/ljP12yAqet6?=
+ =?us-ascii?Q?sRx4bcor9uyCM+OhsscdUizJzoISysOTXWc8APyR95BFROpDUaflbEOALgK4?=
+ =?us-ascii?Q?x0ewfmmd+ve8+gQnT3GPCljbUzFkNE0GqqBBzd6CQtzk7LKyxHY3Fd3/ujBW?=
+ =?us-ascii?Q?AgjcUPgm3Z66XMHZJqC3C2NMOIdsOW01zzkSVqTFEA6Bg6jIkhaSNxWUXKsT?=
+ =?us-ascii?Q?IWxEiEVPv+Da9dOyqpQjsVW+rYgr8YRcLtYu4CQ8CqwHR2FkiMllMDxsbsfg?=
+ =?us-ascii?Q?o3QwAgN6YIHpvbHVgByq23aKS4h4wBUsmvLcD/hRFxMQVRH+xrmRxj2PjQSS?=
+ =?us-ascii?Q?rmsf5cABXLqv7rC4+JGyh50UuREMc27I057or/wHgyUUZCH/BEIQs9oKv59y?=
+ =?us-ascii?Q?9DscajsEbxG/BdNbCWhMGoQh0Hg6Voi8GDvlv/oPkVPXcI/Qm42Va650NtkX?=
+ =?us-ascii?Q?szfB7yOxJVwwEt2oQQxN0o3LmcLHERZqDycRjfzg3CUBruz7hkNtaqHOJlK7?=
+ =?us-ascii?Q?5NfoAf0BC+nFjlDnKWbrkgmNAf6uLhAnAeHQGq43wqEWlfCgaig7U5KmBTyB?=
+ =?us-ascii?Q?xCll1Z/nq2gOTmD/BTq2LweE6PsLWrdnig0Md/nZb87bsDs+2IqjKAcIjd66?=
+ =?us-ascii?Q?YpRPCDJUdaYxZi2L96FQZtKrtNUqbKzP7WOV/pqRc0ng37CbIE6EAnnHpLAZ?=
+ =?us-ascii?Q?eiOdse7706ZVxuiQvf2s98WrrLiUl6+ILyR9eiSHv1b04d96DZCKRZwEJpHd?=
+ =?us-ascii?Q?hLLRJTtzVtoNMDwMV/3vTDoS65e/APKEsPCNokodf8PZXmNtRb1tQoLDXHvk?=
+ =?us-ascii?Q?8tmzCby04LTCMn4/WipGZts7XWM3R5opFaW1oj6bHaXf0jPnfG8QR0hJ3kie?=
+ =?us-ascii?Q?FLKikRS8Exip2cLk35bQouJPobhxP0AwPTjCgk+8BqFnoSHNVCxAYhhOPz8j?=
+ =?us-ascii?Q?BPwtp1MfCAYNnk5FvDCq+8QQ2m6T3cMMtzYufOuno1iRxtriNBOqpNaUAwad?=
+ =?us-ascii?Q?ZwN6Fs0vcIoz7fYvlw9MmH/hOic7ODwwj5tE7kNvD9+Sv2bQfd2hhmE04FPN?=
+ =?us-ascii?Q?5dY7dSUDh+lSG1Munxq0HDqfsF1shb2qjDw2cSVbwWNUYRD2fzlrnOwGDsOn?=
+ =?us-ascii?Q?z/lnruZL2U8Bvl5TQpfrdJGAMll49lV/DBUgD6VtAzUoEJqLkiGybGiIGfMF?=
+ =?us-ascii?Q?ZqMPljbikdc0g5SCYQkTM9vo3w79zRqHuWqwOMM+cZUq2hHowlyzDCoQPM8k?=
+ =?us-ascii?Q?eWyLA+XGmsOUCOAsjKRDBXTHA2c7aqiqJTTuEryio?=
+X-Microsoft-Exchange-Diagnostics: 1;BN3PR0301MB0881;5:EoC5KKoyO/BNQxjcf/Vl6C95faiamXTYGIKyfCnvzgs82WOLNjp0ETZS9M2MfhBEt/Stk2HBufGPpL/u9pHMARXCv++RW9ltEaOzuxZ/9fF3gO9bY4tkrNnNfAblMAjebxO90WShUpypenmuKJXp5w==;24:9Y7aP2I7bDBnbMHF4xIqLjxCsAUCBt1zP5ydWma5tqLWi8sc4z4iHRXrRs47msbp3T5TmHdzQ8P8w2tiUzqU7/8Mex/NdWeMZvitcrW4EF8=
+SpamDiagnosticOutput: 1:23
+SpamDiagnosticMetadata: NSPM
+X-Microsoft-Exchange-Diagnostics:
+	1;BN3PR0301MB1284;2:Djr4xbzhL7MMtFlwJGzMukpveeggloVN7xdbIRtHkicFqL1/L8mXtu8gHqZhYT5COHrTznK+x042lkNCimtdijteRr1DdluCtiHPwOR2N3ErW0td5oeu2zfv1hMhg2ojlgkU0plpZ/2XeAwOI61O/VQoF8VULO5TR3rO19HKM4M=;3:fWk4xhaVsnqcqiqWHhqI5qVogrbYTTrR4QX9uABsfW/pbn0l4UASCaUd7SVreza22I/6DpnV1eBIxPL+059T6fJ6eVF8OaQgaz7B4EjGkXiu4S40tXvYlxwj5mq6ChSa8ttK25Hodoo5gzJGfUzKOA==;25:9B2NETgm+oAeKcgN+iDSIL8r+6ilRhjeRhC1VlEBsjt6Xz1eZ0kELqBckqGfHNu3NmbEIEBVxXaEUV9Mt2v0amiryAzObOOQqEfIgOTMNsdbFp0TkI+A5L0v7XjGM75OzcMbmsYxZ+/cTZPI8OQOrMJYXvTaFznNLANsx3WaxkgR7p9yxXi/qMZe/dgfJe6GSk+Do/lK82yxFH43AeAxp1M7nCkWOVvn5p3Z09/wZ308pY4FL7B1Hdl/fBOO3eg1GPSYW+LfN2TSWXhsrGq+Dg==;23:fwbAc++PSlxpcWq99JIM5JCUocl7jBK+EUXkduh2aWpbd5DWG8Sd6uyYxBlExN4fTiEZhNZhjCDFCJLa1nts6xpz6U3vX1soIhyAidzTFaPTYdY/EXOyuOCgZkWlOP37uWphlm2k/ZHe2ULGaAfCX38RiLX70VAWpfr/ZUJDwupz8v03sMl2A5ulY9qr6/Un
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BN3PR0301MB1284;
+X-OriginatorOrg: DiamondEmporium.onmicrosoft.com
+
+--_737fc23a-5caf-4023-8312-5b8b8943f3ef_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Sender: daralammeam@gmail.com
+Subject: Re: Diamond Emporium
+Message-Id: <CAMEQbQbkhir6h7t-z3jG=4wctLr7mbPjsnJaaJ+YwERG-d21XA@mail.gmail.com>
+Recipient: bec@diamondemporium.com.au
+
+--_737fc23a-5caf-4023-8312-5b8b8943f3ef_
+Content-Type: message/rfc822
+
+Received: from BN3PR0301CA0032.namprd03.prod.outlook.com (10.160.180.170) by
+ BN3PR0301MB0881.namprd03.prod.outlook.com (10.160.155.143) with Microsoft
+ SMTP Server (TLS) id 15.1.231.21; Tue, 18 Aug 2015 04:13:32 +0000
+Received: from BL2FFO11FD017.protection.gbl (2a01:111:f400:7c09::108) by
+ BN3PR0301CA0032.outlook.office365.com (2a01:111:e400:4000::42) with Microsoft
+ SMTP Server (TLS) id 15.1.231.21 via Frontend Transport; Tue, 18 Aug 2015
+ 04:13:32 +0000
+Authentication-Results: spf=pass (sender IP is 209.85.160.170)
+ smtp.mailfrom=gmail.com; diamondemporium.com.au; dkim=pass (signature was
+ verified) header.d=gmail.com;diamondemporium.com.au; dmarc=pass action=none
+ header.from=gmail.com;
+Received-SPF: Pass (protection.outlook.com: domain of gmail.com designates
+ 209.85.160.170 as permitted sender) receiver=protection.outlook.com;
+ client-ip=209.85.160.170; helo=mail-yk0-f170.google.com;
+Received: from mail-yk0-f170.google.com (209.85.160.170) by
+ BL2FFO11FD017.mail.protection.outlook.com (10.173.161.35) with Microsoft SMTP
+ Server (TLS) id 15.1.243.9 via Frontend Transport; Tue, 18 Aug 2015 04:13:31
+ +0000
+Received: by ykfw73 with SMTP id w73so93498704ykf.3
+        for <bec@diamondemporium.com.au>; Mon, 17 Aug 2015 21:13:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        bh=ZYe6OHii9VVWA67YooVeJ1LoNHDENabx/IDP1SV0JoA=;
+        b=NCXCMOIykD5bIIL1RPyukvT5+AuI/wUDaeyfVji+5oL/peaFkddDB615i6EGA0CCrS
+         F4ofQKXR3climE4FP3Mw6st3iB7MtCFTYDvzLMFLxodMe+TR+HRuM5542b6IGykeWLJf
+         xqCxdn+CamzMlcm/2CYlLe273NmKMpkhgodp9Aq0ZicE0IK/zj5DW6P/GTKgSwFM7sIx
+         pmK8nlVymn+gEVoZMzUwZ6BJZdthWvUAZ6fhBJre1/gvynVwye4Hz7k9immxwd73vjCX
+         eDKbPzIvCtNLhpG1sELboTLF6ydiQgUtmFilQoA8tDJUijCtfb2DI2MvqOAzcJfvxy3H
+         CT0Q==
+MIME-Version: 1.0
+X-Received: by 10.129.145.132 with SMTP id i126mr5054669ywg.133.1439871210802;
+ Mon, 17 Aug 2015 21:13:30 -0700 (PDT)
+Received: by 10.129.129.68 with HTTP; Mon, 17 Aug 2015 21:13:30 -0700 (PDT)
+In-Reply-To: <DM2PR0301MB08938BD7A5B751740CBE703F9B780@DM2PR0301MB0893.namprd03.prod.outlook.com>
+References: <DM2PR0301MB0893ED376DF84036A0FD24BC9B780@DM2PR0301MB0893.namprd03.prod.outlook.com>
+	<CAMEQbQaShfCjtqBPW0jSxb8hb-iD7Lwp+-X-Sq+-S9czfrN37Q@mail.gmail.com>
+	<DM2PR0301MB08939791F7AC0BCA171327369B780@DM2PR0301MB0893.namprd03.prod.outlook.com>
+	<CAMEQbQYpk3BnuQtD0meQGDkBkWnWTkjH74S18w2GybD_6fjYOg@mail.gmail.com>
+	<DM2PR0301MB0893B78E4839AF2F0DC148D69B780@DM2PR0301MB0893.namprd03.prod.outlook.com>
+	<CAMEQbQYiLhYFFr2u3yaOepXEk2vqL5Owb-bMaZH8+d++d4RHzw@mail.gmail.com>
+	<DM2PR0301MB08938BD7A5B751740CBE703F9B780@DM2PR0301MB0893.namprd03.prod.outlook.com>
+Date: Tue, 18 Aug 2015 14:13:30 +1000
+Message-ID: <CAMEQbQbkhir6h7t-z3jG=4wctLr7mbPjsnJaaJ+YwERG-d21XA@mail.gmail.com>
+Subject: Re: Diamond Emporium
+From: Dara Eam <daralammeam@gmail.com>
+To: Rebecca O'Brien <bec@diamondemporium.com.au>
+Content-Type: multipart/related;
+	boundary="_ffb64871-d5f0-4cbf-92b9-ea18e060711b_"
+Return-Path: daralammeam@gmail.com
+X-MS-Exchange-Organization-OriginalArrivalTime: 18 Aug 2015 04:13:31.4995
+ (UTC)
+X-MS-Exchange-Organization-Network-Message-Id: bf7e07fd-04ae-4d71-04f8-08d2a7836093
+X-MS-Exchange-Organization-OriginalClientIPAddress: 209.85.160.170
+X-MS-Exchange-Organization-OriginalServerIPAddress: 10.173.161.35
+X-EOPAttributedMessage: 0
+X-MS-Exchange-Organization-TargetResourceForest: namprd03.prod.outlook.com
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-Exchange-Organization-Id: 0b36ddba-7b6e-4ec0-b39b-09a1ed883f64
+X-MS-Exchange-Organization-FFO-ServiceTag: NA01B
+X-MS-Exchange-Organization-Exchange-Diagnostics-Stage-SecureDataContainer: 0
+X-MS-Exchange-Organization-DKIMBHOverride: Matched
+X-MS-Exchange-Organization-MxPointsToUs: true
+X-MS-Exchange-Organization-ReceivedHeaderBulk1OnConnect: 1
+X-MS-Exchange-Organization-ReceivedHeaderBulk1: 1
+X-MS-Exchange-Organization-OriginalEnvelopeRecipients: bec@diamondemporium.com.au
+X-MS-Exchange-Organization-MxRecordAlignment: 0
+X-Microsoft-Exchange-Diagnostics: 1;BL2FFO11FD017;1:YqxJmwA0jij3Qc8H+zSgEL6wQ1ASsVuWKwGhZYCD0FNjNdJYUHzpx7DnKGvp5g/X+BC9qZF7W+jlDzG4m+8PWarhdVAAcVN5EZGSiQvpLxq9KIkrxPHFxqf2ZNHOAh+lT0jfmLORaqQcw+JAVZ281TbEWamEwlry8Qcwgq332rmxmGXKJmabWcT3v66yP1bjspbeJuePg+XQ8rvxBw8hO4XgvHvdjYMLn5bjeHQHssnHKXUFlziiXIgUH9gYbmKBl/g3If+eyt/geaPzT7MRVNkgVtDcCF5BOgOkH5zMzNE+n2K0/aXlXOlPNeYCZ4JM234PbM9di7LCrY6pAPi//s3YXd6K2zZv2362/oYUHVdHNiLUhb/rv0KI9W7DVZPa
+X-Forefront-Antispam-Report: CIP:209.85.160.170;CTRY:US;IPV:NLI;EFV:NLI;SFV:NSPM;SFS:(2980300002)(438002)(3050300001)(189002)(199003)(377454003)(24454002)(93886004)(5001860100001)(19580395003)(16796002)(50986999)(107886002)(5001970100001)(87572001)(63696999)(76176999)(110136002)(59536001)(106466001)(6806004)(22756005)(84326002)(17760045003)(73972006)(46102003)(5890100001)(19580405001)(98316002)(73392002)(76482005)(82202001)(81442002)(5001830100001)(956001)(4001540100001)(54356999)(575784001)(86362001)(189998001)(42186005)(2950100001)(19627595001)(77156002)(15975445007)(83322999)(55446002)(19617315012)(61266001)(15974865002)(64706001)(62966003)(18206015028)(87836001)(221733001)(450100001)(92566002)(562774006);DIR:INB;SFP:;SCL:1;SRVR:BN3PR0301MB0881;H:mail-yk0-f170.google.com;FPR:;SPF:Pass;PTR:mail-yk0-f170.google.com;MX:1;A:1;LANG:en;
+X-MS-Exchange-Organization-Scanned-By-IP-Filter: true
+X-MS-Exchange-Organization-Originating-Country: US
+X-MS-Exchange-Organization-Cross-Premises-Headers-Processed: BL2FFO11FD017.protection.gbl
+X-MS-Exchange-Organization-OrderedPrecisionLatencyInProgress: LSRV=BN3PR0301CA0032.namprd03.prod.outlook.com:TOTAL-FE=0.156|SMR=0.075(SMRPI=0.066(SMRPI-FrontendProxyAgent=0.066));2015-08-18T04:13:32.645Z
+X-MS-Exchange-Organization-ProcessedByConnectionValidationAgent: namprd03.prod.outlook.com
+X-MS-Exchange-Organization-MessageLatency: SRV=BL2FFO11FD017.protection.gbl:TOTAL-FE=0.989|SMR=0.593(SMRRC=0.055(SMRRC-TenantAttributionAndInboundConnectorAgent=0.025|SMRRC-Protocol
+ Filter Agent=0.001 |SMRRC-IP Filter Agent=0.008|SMRRC-Envelope Filter
+ Agent=0.019)|SMREH=0.535(SMREH-Protocol Filter Agent=0.534 ))|SMS=0.397
+X-MS-Exchange-Organization-MessageLatency: SRV=BN3PR0301CA0032.namprd03.prod.outlook.com:TOTAL-FE=0.156|SMR=0.075(SMRPI=0.066(SMRPI-FrontendProxyAgent=0.066))
+X-MS-Exchange-Forest-ArrivalHubServer: BN3PR0301MB0881.namprd03.prod.outlook.com
+X-MS-Exchange-Organization-AuthSource: BL2FFO11FD017.protection.gbl
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-FromEntityHeader: Internet
+X-Microsoft-Exchange-Diagnostics: 1;BN3PR0301MB0881;2:HOQP4jAjfpsDi/zlftZ7zG3KZd6SbtqLt/Ic/4yLLok3qjZrj8BMId8RZ6S5zhkz+56fQ88jAlkoOr9uBm3d3f/HBTXMEmwXe37/oomhtYQYmrtadPePlUPC5i2MP1T1VfTtFueNOWlYkYrPXb1YOXVvunMqQ0CS/ZbsbZ1Rfv0=;3:QBukJlhukSkTuRDK+gTa1UnXPEbXGP3sKV683OV0Rb1u/hiHyqxUeZ+KV/jtWPvTICR7tvt7FkuXHIqjBARkay5ZGl3Sc1HihMWaNxMAFp6WC6MQfRElACGA7P2NUFHaTa4DP3D9+vHkYXv6VZalAWgKTiMKGz3xUISYEhLUpIeu8SScCPBkRnDzVsi69PRvDvkv5oxEOyU0CJMg6/GK3zIL99DVpWz5vIceH6up1P2u+fMhzIF/gzWZ729pIls2FjTm+8/TB0jDac6zYRTi0w==;25:4uld6yC2AYdniOlQAIFAZ/6hsmL5h/Q+B9Nr6TmIePWPiBSYcfgizOm2mZBg7ONGkhBQq1YZrykNsCr0IzQZZK4mcyEOfQI0duaFig0ZPFIykRdJI8GZXGaQ9Ch47yBz9XqvFS/TQ3b2VYc++1P/iZ04SER5ujxEUQ6kwQC0sLKRn7bohXJNbdTs4yhA548UdFGWQcZ5FWtLSxUNPHdXj11XUKDNEC0SUW/panxb8sQklDHTijGq/yyoat0xUtf6HTFTmFXdh6Wqb8ql0tU4tA==
+X-DkimResult-Test: Passed
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:(3001015)(71701002);SRVR:BN3PR0301MB0881;
+X-MS-Exchange-Organization-OriginalSize: 74849
+X-MS-Exchange-Organization-HygienePolicy: Premium
+X-MS-Exchange-Organization-MessageFingerprint: DEBD75A5.9C124F11.13FD1D5E.4A86DDD9.202A4
+X-MS-Exchange-Organization-AttachmentDetails: 0:HQ45RVO/+NUUUU2XRJpN1iFttLfHl23/JgEZ8YtzOQc=:U:Jpeg:image007.jpg::#:False;1:b7zC0864XEXx0M+SbFKSfKM2/RGXmToN+7U24rH3C04=:U:Jpeg:image003.jpg::#:False;2:FrWTGHKvqZDgt3pRyd6SA3aI9mvvT5mP1x3Hs+e56hk=:U:Jpeg:image004.jpg::#:False;3:HQ45RVO/+NUUUU2XRJpN1iFttLfHl23/JgEZ8YtzOQc=:U:Jpeg:image006.jpg::#:False;4:dm6nVM8o2PqyTDfUkiqoNyFyltfqHsoh4UwPsa6cfV0=:U:Jpeg:image005.jpg::#:False
+X-MS-Exchange-Organization-AVStamp-Service: 1.0
+X-MS-Exchange-Organization-Recipient-Limit-Verified: True
+X-MS-Exchange-Organization-TotalRecipientCount: 1
+X-MS-Exchange-Organization-Transport-Properties: DeliveryPriority=Normal
+X-MS-Exchange-Organization-Prioritization: 1
+X-MS-Exchange-Organization-Antispam-ContentFilter-ScanContext: CategorizerOnResolved;CategorizerOnRouted;
+X-MS-Exchange-Organization-ASDirectionalityType: 1
+X-MS-Exchange-Organization-HeloRdns: mail-yk0-f170.google.com;mail-yk0-f170.google.com
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test: BCL:0;PCL:0;RULEID:(601004)(8121501046)(3002001);SRVR:BN3PR0301MB0881;BCL:0;PCL:0;RULEID:;SRVR:BN3PR0301MB0881;
+X-Microsoft-Exchange-Diagnostics: 1;BN3PR0301MB0881;4:U2SfYEwEsIvLq6q1feWQ7l9OmcQsKqSkv8XLxfS5vt3YNuuC/gfdjTlMvGZ3J7Ig7DYIeYd5Dy1fP5FEiErPYbi5QB7kNQjz5oFycaf8vMoBNENw7D9YnGWF4HMqUuAboWWCbthapgZK+UOFcVNRoia+GTDQ0iyF9VO7BfLYyXWB8kBs141ku8ERDZiXMTZiTedHvXgr710C9Ye477TiwSCF/kfs/flYS3bCba52t6eUB8YbrAb/36eVyJw5fXlqLPZykxNt7iI4HUOpF5MQ/vMZdEn5q9RRU14OP/DJ0Mob0UhUWYEgO3HOJNDGfLBe
+X-MS-Exchange-Organization-SCL: 1
+X-MS-Exchange-Organization-Antispam-ScanContext: DIR:Incoming;SFV:NSPM;SKIP:0;
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1;BN3PR0301MB0881;23:UkbkH20e8DLEiK7xClqzR7xS4aGYD9Z0Y7hCgDV?=
+ =?us-ascii?Q?PSn8e9tEhggYCgBRIPlnDYA0VfLp5Q0wcjTkF59JoZoxmKq9A1+Srs2ztCn6?=
+ =?us-ascii?Q?d/xykk6cTDkD5XWzwocoVUwas68ZGPl220Af7Kux1nV9ZGO/sqiiAT5QWA2u?=
+ =?us-ascii?Q?HSNRF9/d2RUmGUdbPnEQ1L0LmE8qREhoiWAueWepFdBZ7jRspxLNWJzx5QUE?=
+ =?us-ascii?Q?UZjTwYhZCxMNuxSfHiciGofBPWKzLDfn5UcQIFHzcRM/LNuIkP3XvNo4sj/i?=
+ =?us-ascii?Q?rih+EZTdMAM0KfzLAq2Yd3fWnkMIOApciw7alECPszCwEGKMDt133fVptGpK?=
+ =?us-ascii?Q?ham+UiX6aFgHYk3XTJGGX928/YP+bSW0YmBwxyM8mN3xp0yc/EKTnNsKq6SI?=
+ =?us-ascii?Q?GKpMYhWWDHRuFYGWsbmlTXGqnq02m4G4EKRioy4TPsc0DzKb0zG9zNUTfJS4?=
+ =?us-ascii?Q?/+upkMJDjp1H1fiOGebLuF4ejXtWhbF0v+jToBTvV9iYc8BmZANF0KhdTWtt?=
+ =?us-ascii?Q?ZAE8qpKjP9jtA0MdotjLfzqa8XDbi57F3EFhZUMouHHjoKmK4vXf1nZ7HCK1?=
+ =?us-ascii?Q?e2uue+JkmuOhhdhQ3DueNthVJaRyqPWEasTxpGt/OrD7eOogwcSdEm8uQj0b?=
+ =?us-ascii?Q?u+Ei2zDc1yj+TpabUmwjsTO7XL/z+TGXnhofGftKoIn4r+BkAyHYmirdatdD?=
+ =?us-ascii?Q?ukTURcwB1SEz8lH9XbOSbw44LMI621lRf194DyfAF8PTiAPk97AdARSMlKMG?=
+ =?us-ascii?Q?OxXMwTPMYsk19PmPfBOwsJoZNudp+gQ5ZuPIsyTZuJf+K7Wyz+CoYzDcFXst?=
+ =?us-ascii?Q?7urNMjisXEy17y5yCNR780btkDSBIgbiZPFWtu50tx+HpMXo6IiixHrUZHiZ?=
+ =?us-ascii?Q?2vFREFnEF2EBslqhBNyTnO0/G5AfZ2oFYaEbAP3dGCom//lkhmYtLIbEmNOp?=
+ =?us-ascii?Q?yHj8uHh3Of2p52IHcsra0aIX3fnZabAFPl+3vc9UHywBKDT3h9+7Z6kwRvOH?=
+ =?us-ascii?Q?eN4O0gUBPNONBhCqsHDgy5QcbmT3sjnXb2D64i48y5kmh618wrG1vQq5XWBW?=
+ =?us-ascii?Q?WJvm6XRfjG4PwoLC8Vx0oNWyhfWAg/1Ax1vaY28TZWoBrYcohj8Jr4EKGlVK?=
+ =?us-ascii?Q?gQzU32oie3XeiQDLGEL6CEmSdFEeu4FHd1llKjCb1KnH1PHxLDVbKTHtWVpQ?=
+ =?us-ascii?Q?b8jNnapKsxO0XwuocOegaVint3XPQ9yMR19ZMe6gDjgzUT/1lfP5K922kty/?=
+ =?us-ascii?Q?/G3MU9gTPqlGJPlTVhK4YIvkt0JOASBS0RLa+LZZdrDc2d4tUNzuUmP9dOO1?=
+ =?us-ascii?Q?W3W2CH4GrgfB9/1gLI6p1Sm03lo267lm3KL4LFvYrergYuON3EKQuz/D47ut?=
+ =?us-ascii?Q?WGc338IN8xIQx6nPq2llgLqXwZFew09yKz9F8LFZ8lYMGouduSf+VFDVe6q7?=
+ =?us-ascii?Q?YHptHYu9WSLTF6a2PAYzR7qMF10LuYzCoOURtYUiTFdZFCqWLwcevCe+Rfuu?=
+ =?us-ascii?Q?jp2uhEhxVoPwkDduKfX87LhqDE/1B44D9vPw=3D?=
+X-MS-Exchange-Organization-Antispam-PostContentFilter-ScanContext: CategorizerOnResolved;CategorizerOnRouted;
+X-MS-Exchange-Forest-IndexAgent-0: AQ0CZW4AASkFAAAPAAADH4sIAAAAAAAEAO1Wy27bRhQdvvSgw6abdt
+ HVzSotIAii7CS2UDRxWhd1kDRB7CIoii5G5EhiTHIMztCKsupvdN0/
+ 65f0zIwkx2i9qIEUKBKDpsk7d+7rnDP0H58n8bcLIRp1h/SC12eKXo
+ qpyDI+TOKnUp4V9ZxmslnyJictSQlhLCvZUi3eaFoKcQbPx0JpasQc
+ XmqQxN/xhifx85rSfTps5y0Wx6P0HnFN6d4kTQebJPT87uOmEDV9jd
+ dHecErWeeiOpdN0VbDTFZD3n5Dy0ZqMUniY1oWZUmiVm0jKCv5UhHH
+ U8VzQVyhgFlRi9w8nkulimkpkvhJEr/iTYWMtro+fky9GT3/87ffbX
+ K8n6YIfzrG7Qi/ryYwpbujEe0fHNDe7jiJv7yfjr+ig/H9lMbjBzBc
+ X28SL5fL4T+vIe5TcSFKGg/opC20MHPBwNL9e3RUFm/5VOgFnehGCJ
+ 3EJ6u8Fiv68eQV3EajJD786eT05eHT48MkflEKrjAEWasiFw3AExjM
+ RdHIuhK1pqkAaoLOm6LWBjG9KBSJihdlEn/fyGpCBiQ64hX9YqxaTn
+ IYSl5VgleP5sZmiv4VZSDehE5boXK+GmwATfcHDtTxZPSAXjzD/OTk
+ X+GKyO30tci02YZ6nBcdrd2wLJtmRbIWVHJkRAv1fACUK1FN0fJCLu
+ kYYJ8ZyKey1bTgF67XDTtUWcwXulzZvbUZkyRelthYmenYVaw1sp0v
+ HoJgyohAb9kzAOH0wkTmsxkKtcGlpKrNFnbJplKAq55rE+A6yo/2bk
+ j5n4UauJoAH6fx8F5VIXOuF1DdC9GYqlClcMpQmjeovpF5i2Jlbdm/
+ Vg2YonmmrXRlnQlb+jo9VNQUF0INjTcYcSEwd/EmA0E3qrfukFehFr
+ CdFyKzkrPuVo4mrhEj5nMHXODlGSkp6+FV+Q2s9j6K8D2IMH0/Ivyh
+ 2MTDiA6x9NokRsuzoqlcU1zfvSTnlNe5kdJsQ9sBHd+tIM3z89WlZk
+ p8WgZUCrOzlNkZFXCt6cl1Etqd7B3cUEJowEx5YMW01VJWSiXscUBp
+ psHSwzWHXaFYgIwyAa6va8aexrSbC1XM64cfaf1f0Dqd7L2nb8vplX
+ 92Bpdnv8JnpXag288CPh6WIpuz8tpTfneye9NT/pKi9jx95zNmKWf/
+ v7FUxQE8ByCqeCvomTlagRKv8Ulb8pUy+8TlrkYYt3y4xRObcdJrfA
+ XMEV5UfA49yNl2x8ej+hpOM7/Deh3W7bK4y3q4fBbgNWBhyKKQdXHH
+ Usg6sPse+wSXdYDd94KIscjsxcZ+4LEvWHibfYq9Pgsj1vOYDzc4R6
+ zjAiKIS9FjsccCGzzBElL4ZjXyWOh5yIs/UcAYYnbNFdrnjr2vV80d
+ Ya8mvfoaRV7HYwyJovVee2dhn8Wu68ALXZw+28FrD12wcIfdcs8oLz
+ KddvAQ2EZ2PPYZu2XbgbGDrpHgNi7WRXZU1WUMRt909PeZRNsltL+d
+ SbTJi3HBiMvNHw+wu3FFtobIZMSgzNx6Fi80skEKFYY9tnMDmAK7HR
+ s9z7fj8m32nq02cHljdsszaPgWsp5LGqzbBJS+v0bTVAu7LaYfWdps
+ V53dju6SWoHt/QMkgNXCGr7YZn93/qEJGFhcQkcGN8DQMsThZWcb3A
+ BxG7m7leQWpsBy0qVzUnXUsiruf+B4uUNyqwjHdgeWs98MBaeOd47c
+ yGHhgnjG2QjKvTqfri3GHgL9juWJI8z/A6C/AEbOS6GXEQAAAQLwAj
+ w/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9InV0Zi0xNiI/Pg0K
+ PFRhc2tTZXQ+DQogIDxWZXJzaW9uPjE1LjAuMC4wPC9WZXJzaW9uPg
+ 0KICA8VGFza3M+DQogICAgPFRhc2sgU3RhcnRJbmRleD0iNDM3Ij4N
+ CiAgICAgIDxUYXNrU3RyaW5nPlBsZWFzZSBjb25zaWRlciB0aGUgZW
+ 52aXJvbm1lbnQgYmVmb3JlIHByaW50aW5nIHRoaXMgZW1haWw8L1Rh
+ c2tTdHJpbmc+DQogICAgICA8QXNzaWduZWVzPg0KICAgICAgICA8RW
+ 1haWxVc2VyIElkPSJiZWNAZGlhbW9uZGVtcG9yaXVtLmNvbS5hdSI+
+ UmViZWNjYSBPJ0JyaWVuPC9FbWFpbFVzZXI+DQogICAgICA8L0Fzc2
+ lnbmVlcz4NCiAgICA8L1Rhc2s+DQogIDwvVGFza3M+DQo8L1Rhc2tT
+ ZXQ+AQrWAjw/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9InV0Zi
+ 0xNiI/Pg0KPEVtYWlsU2V0Pg0KICA8VmVyc2lvbj4xNS4wLjAuMDwv
+ VmVyc2lvbj4NCiAgPEVtYWlscz4NCiAgICA8RW1haWwgU3RhcnRJbm
+ RleD0iMTM1Ij4NCiAgICAgIDxFbWFpbFN0cmluZz5iZWNAZGlhbW9u
+ ZGVtcG9yaXVtLmNvbS5hdTwvRW1haWxTdHJpbmc+DQogICAgPC9FbW
+ FpbD4NCiAgICA8RW1haWwgU3RhcnRJbmRleD0iNTIwIiBQb3NpdGlv
+ bj0iT3RoZXIiPg0KICAgICAgPEVtYWlsU3RyaW5nPmRhcmFsYW1tZW
+ FtQGdtYWlsLmNvbTwvRW1haWxTdHJpbmc+DQogICAgPC9FbWFpbD4N
+ CiAgPC9FbWFpbHM+DQo8L0VtYWlsU2V0PgEL3AE8P3htbCB2ZXJzaW
+ 9uPSIxLjAiIGVuY29kaW5nPSJ1dGYtMTYiPz4NCjxVcmxTZXQ+DQog
+ IDxWZXJzaW9uPjE1LjAuMC4wPC9WZXJzaW9uPg0KICA8VXJscz4NCi
+ AgICA8VXJsIFN0YXJ0SW5kZXg9IjMzNyIgVHlwZT0iVXJsIj4NCiAg
+ ICAgIDxVcmxTdHJpbmc+d3d3LmRpYW1vbmRlbXBvcml1bS5jb20uYX
+ U8L1VybFN0cmluZz4NCiAgICA8L1VybD4NCiAgPC9VcmxzPg0KPC9V
+ cmxTZXQ+AQyDBDw/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9In
+ V0Zi0xNiI/Pg0KPENvbnRhY3RTZXQ+DQogIDxWZXJzaW9uPjE1LjAu
+ MC4wPC9WZXJzaW9uPg0KICA8Q29udGFjdHM+DQogICAgPENvbnRhY3
+ QgU3RhcnRJbmRleD0iMTE4Ij4NCiAgICAgIDxQZXJzb24gU3RhcnRJ
+ bmRleD0iMTE4Ij4NCiAgICAgICAgPFBlcnNvblN0cmluZz5SZWJlY2
+ NhIE8nQnJpZW48L1BlcnNvblN0cmluZz4NCiAgICAgIDwvUGVyc29u
+ Pg0KICAgICAgPEVtYWlscz4NCiAgICAgICAgPEVtYWlsIFN0YXJ0SW
+ 5kZXg9IjEzNSI+DQogICAgICAgICAgPEVtYWlsU3RyaW5nPmJlY0Bk
+ aWFtb25kZW1wb3JpdW0uY29tLmF1PC9FbWFpbFN0cmluZz4NCiAgIC
+ AgICAgPC9FbWFpbD4NCiAgICAgIDwvRW1haWxzPg0KICAgICAgPENv
+ bnRhY3RTdHJpbmc+UmViZWNjYSBPJ0JyaWVuICZsdDtiZWNAZGlhbW
+ 9uZGVtcG9yaXVtLmNvbS5hdTwvQ29udGFjdFN0cmluZz4NCiAgICA8
+ L0NvbnRhY3Q+DQogIDwvQ29udGFjdHM+DQo8L0NvbnRhY3RTZXQ+AQ
+ 7PAVJldHJpZXZlck9wZXJhdG9yLDEwLDA7UmV0cmlldmVyT3BlcmF0
+ b3IsMTEsNjtQb3N0RG9jUGFyc2VyT3BlcmF0b3IsMTAsMjtQb3N0RG
+ 9jUGFyc2VyT3BlcmF0b3IsMTEsMDtQb3N0V29yZEJyZWFrZXJEaWFn
+ bm9zdGljT3BlcmF0b3IsMTAsNDtQb3N0V29yZEJyZWFrZXJEaWFnbm
+ 9zdGljT3BlcmF0b3IsMTEsMDtUcmFuc3BvcnRXcml0ZXJQcm9kdWNl ciwyMCwzMQ==
+X-MS-Exchange-Forest-IndexAgent: 1 3004
+X-MS-Exchange-Forest-EmailMessageHash: 80F72B14,2F6E83DF,E7DF8796,00375A72,2F6E83DF,9DF81868
+X-MS-Exchange-Forest-Language: en
+X-Microsoft-Exchange-Diagnostics: 1;BN3PR0301MB0881;5:fdc5SjKlpEAHkuMyZWRPpQN9v6sE8lPvCNremHsNHP8Z7JzKKzjVHjK2DtHrXJFKjiPknnx1eRdgrGY/z6u64UgSOuu1y+GUt9upPxXQJ/YanVq373Nt0i7U6lBN3zyi0vrLED8e01yJNAaSwx3J9A==;24:IqMK5GWZOBXTTe1hjzwDDsUdWZjMFnNlEDqUWUWtwsPYmSyF88Q5onXnshzFPMBFMm862kFejNqFBNbLYwkQ3h5nROuwuEiZJE+6jx7UDAY=;20:QdZ38yWjEJyV4YSuk8VZZ12NUxfKF8T8my+xDCLt7b7enxA29oaj8qkBOd1bUNYi+vF3vvpcg2dcQlU1N+KOg/1HQgP61pjEWezvCoZbKZasmuht56IEHExyW0F2L0FR9bTlk1aQYQKYkjugInZt5ifz6YQmrnK/UuBqcHQgV5w=
+SpamDiagnosticOutput: 1:23
+SpamDiagnosticMetadata: NSPM
+X-MS-Exchange-Organization-Cross-Session-Cache: =?us-ascii?Q?00SL=3D1;EMSL=3D1;SCL=3D0;BL=3D0;RL=3D1;PID=3D0;PL=3D0;EXPID?=
+ =?us-ascii?Q?=3DSpamDiagnosticsExperimentId0;EIPC0=3D2005,2006,2007,2008,?=
+ =?us-ascii?Q?2009,2010,2011,2012,2013,2014,3000,2016,2015,2000,2001,2003,?=
+ =?us-ascii?Q?1001,2002,2004,1000,1003,1002,2017,5021,5001,5020,5024,5027,?=
+ =?us-ascii?Q?5038,5025,5026,5029,5030,5028,5022,5040,5031,5039,5034,5033,?=
+ =?us-ascii?Q?5032,5037,5036,5035,5023,5002,5011,5010,5003,5005,54,80,110,?=
+ =?us-ascii?Q?70,71,84,82,51,83,50,52,112,115,111,92,91,90,114,113,81,53;M?=
+ =?us-ascii?Q?IPC0=3D5011;EIPC1=3D2005,2006,2007,2008,2009,2010,2011,2012,?=
+ =?us-ascii?Q?2013,2014,3000,2016,2015,2000,2001,2003,1001,2002,2004,1000,?=
+ =?us-ascii?Q?1003,1002,2017,5021,5001,5020,5024,5027,5038,5025,5026,5029,?=
+ =?us-ascii?Q?5030,5028,5022,5040,5031,5039,5034,5033,5032,5037,5036,5035,?=
+ =?us-ascii?Q?5023,5002,5011,5010,5003,5005;MIPC1=3D5011;REP=3D01,1,15\;01?=
+ =?us-ascii?Q?,2,64\;01,3,34673\;01,4,5995\;01,5,182\;01,6,85\;01,7,466\;0?=
+ =?us-ascii?Q?1,8,756\;01,9,567537\;01,10,100418\;01,11,182\;01,12,756\;02?=
+ =?us-ascii?Q?,1,9\;02,2,45\;02,3,3584462\;02,4,687663\;02,5,182\;02,6,411?=
+ =?us-ascii?Q?89\;02,7,173740;SAUTHOP=3D1;A=3D00;MX=3D00;PTR=3D00mail-yk0-?=
+ =?us-ascii?Q?f170.google.com;SPF=3D011daralammeam@gmail.com;DKIM=3D002012?=
+ =?us-ascii?Q?0113.=5Fdomainkey.gmail.com\;az1yc2E7IHA9TUlJQklqQU5CZ2txaGt?=
+ =?us-ascii?Q?pRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUExS2Q4Ny9VZUpqZW5wYWJ?=
+ =?us-ascii?Q?nYkZ3aCtlQkNzU1RycW13SVlZdnl3bGJoYnFvbzJEeW1uZEZrYmpPVklQSWx?=
+ =?us-ascii?Q?kTnMvbTQwS0YreXpNbjFza3lveGNUVUdDUXM4ZzNGZ0QyQXAzWkI1RGVrQW8?=
+ =?us-ascii?Q?1d01tazR3aW1ETytVOFF6STNTRDA3eTIrMDd3bE5Xd0l0OHN2bnhnZHhHa1Z?=
+ =?us-ascii?Q?iYmh6WThpK1JROURwU1ZwUGJGN3lrUXh0S1hrdi9haFczS2pWaWlBSCtnaHZ?=
+ =?us-ascii?Q?2SWhreDR4WVNJYzlvU3dWbUFsNU9jdE1FZVdVd2c4SXN0anF6OEJaZVRXYmY?=
+ =?us-ascii?Q?0MWZiTmh0ZTdZK1lxWk93cTFTZDBEYnZZQUQ5Tk9aSzl2bGZ1YWMwNTk4SFk?=
+ =?us-ascii?Q?rdnRTQmN6VWlLRVJIdjF5UmJjYVF0WkZoNXd0aVJyTjA0QkxVVEQyMU15Y0J?=
+ =?us-ascii?Q?YNWpZY2hIalBZL3dJREFRQUI=3D;DMARC=3D00daralammeam@gmail.com\?=
+ =?us-ascii?Q?;dj1ETUFSQzE7IHA9bm9uZTsgcnVhPW1haWx0bzptYWlsYXV0aC1yZXBvcnR?=
+ =?us-ascii?Q?zQGdvb2dsZS5jb20=3D?=
+X-MS-Exchange-Organization-Processed-By-Gcc-Journaling: Journal Agent
+
+--_ffb64871-d5f0-4cbf-92b9-ea18e060711b_
+Content-Type: multipart/alternative;
+	boundary="_5be85adc-5a80-4669-ad90-25fe34d2a94d_"
+
+--_5be85adc-5a80-4669-ad90-25fe34d2a94d_
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Cheers! thanks Rebecca.
+
+Looking forward to seeing you next week.
+
+Best regards,
+Dara
+
+On 18 August 2015 at 14:11, Rebecca O'Brien <bec@diamondemporium.com.au>
+wrote:
+
+> I will ensure claws are made as refined as possible J
+>
+>
+>
+> Warm Regards
+>
+>
+>
+>
+>
+>
+> *Bec O=E2=80=99Brien *
+>
+> *T1:*
+> *T2:*
+> * E:*
+> *W:*
+>
+> 1300 899 432
+> (612) 9261 2272
+> bec@diamondemporium.com.au
+> www.diamondemporium.com.au
+>
+>
+>
+>
+> Level 2, Suite 201,
+> 185 Elizabeth Street
+> Sydney NSW 2000
+> AUSTRALIA
+> [image: cid:image004.jpg@01D07C19.7B4DB060]
+> <https://www.facebook.com/diamondemporium> [image:
+> cid:image005.jpg@01D07C19.7B4DB060] <https://twitter.com/diamondemporium>=
+ [image:
+> cid:image006.jpg@01D07C19.7B4DB060]
+> <https://instagram.com/diamondemporium/>
+>
+>
+>
+>
+>
+> *Please consider the environment before printing this email*
+>
+>
+>
+> *From:* Dara Eam [mailto:daralammeam@gmail.com]
+> *Sent:* Tuesday, August 18, 2015 2:07 PM
+>
+> *To:* Rebecca O'Brien <bec@diamondemporium.com.au>
+> *Subject:* Re: Diamond Emporium
+>
+>
+>
+> Sorry one last thing, remember how I asked about having the claws slightl=
+y
+> thinner to allow more light through?
+>
+> Is that possible, without affecting too much with the strength?
+>
+>
+>
+>
+>
+> On 18 August 2015 at 14:04, Rebecca O'Brien <bec@diamondemporium.com.au>
+> wrote:
+>
+> Yes, that is a 2.5mm width.
+>
+>
+>
+> Perfect, we will start production J
+>
+>
+>
+> I will contact you once the diamond arrives.
+>
+>
+>
+> I am very excited to see the finished piece as I am sure you are too!
+>
+>
+>
+> Talk soon.
+>
+>
+>
+> Warm Regards,
+>
+> Bec
+>
+>
+>
+>
+>
+>
+> *Bec O=E2=80=99Brien *
+>
+> *T1:*
+> *T2:*
+> * E:*
+> *W:*
+>
+> 1300 899 432
+> (612) 9261 2272
+> bec@diamondemporium.com.au
+> www.diamondemporium.com.au
+>
+>
+>
+>
+> Level 2, Suite 201,
+> 185 Elizabeth Street
+> Sydney NSW 2000
+> AUSTRALIA
+> [image: cid:image004.jpg@01D07C19.7B4DB060]
+> <https://www.facebook.com/diamondemporium>[image:
+> cid:image005.jpg@01D07C19.7B4DB060] <https://twitter.com/diamondemporium>=
+ [image:
+> cid:image006.jpg@01D07C19.7B4DB060]
+> <https://instagram.com/diamondemporium/>
+>
+>
+>
+>
+>
+> *Please consider the environment before printing this email*
+>
+>
+>
+> *From:* Dara Eam [mailto:daralammeam@gmail.com]
+> *Sent:* Tuesday, August 18, 2015 2:01 PM
+>
+>
+> *To:* Rebecca O'Brien <bec@diamondemporium.com.au>
+> *Subject:* Re: Diamond Emporium
+>
+>
+>
+> Hi Rebecca,
+>
+>
+>
+> And just confirming that's a 2.5mm band?
+>
+>
+>
+> If that is, I'm happy with the look, let's lock it in J
+>
+>
+>
+> On 18 August 2015 at 13:49, Rebecca O'Brien <bec@diamondemporium.com.au>
+> wrote:
+>
+> Hi Dara,
+>
+>
+>
+> Yes that is close to a 1ct.
+>
+>
+>
+> Are you happy to proceed with this ring design?
+>
+>
+>
+> Warm Regards,
+>
+> Bec
+>
+>
+>
+>
+>
+>
+> *Bec O=E2=80=99Brien *
+>
+> *T1:*
+> *T2:*
+> * E:*
+> *W:*
+>
+> 1300 899 432
+> (612) 9261 2272
+> bec@diamondemporium.com.au
+> www.diamondemporium.com.au
+>
+>
+>
+>
+> Level 2, Suite 201,
+> 185 Elizabeth Street
+> Sydney NSW 2000
+> AUSTRALIA
+> [image: cid:image004.jpg@01D07C19.7B4DB060]
+> <https://www.facebook.com/diamondemporium>[image:
+> cid:image005.jpg@01D07C19.7B4DB060] <https://twitter.com/diamondemporium>=
+ [image:
+> cid:image006.jpg@01D07C19.7B4DB060]
+> <https://instagram.com/diamondemporium/>
+>
+>
+>
+>
+>
+> *Please consider the environment before printing this email*
+>
+>
+>
+> *From:* Dara Eam [mailto:daralammeam@gmail.com]
+> *Sent:* Tuesday, August 18, 2015 1:47 PM
+> *To:* Rebecca O'Brien <bec@diamondemporium.com.au>
+> *Subject:* Re: Diamond Emporium
+>
+>
+>
+> Thanks Rebecca,
+>
+>
+>
+> Is that shown with roughly a 1ct diamond?
+>
+>
+>
+> On 18 August 2015 at 13:34, Rebecca O'Brien <bec@diamondemporium.com.au>
+> wrote:
+>
+> Hi Dara,
+>
+>
+>
+> I am having the ring made to a finger size M.
+>
+>
+>
+> We can always have the ring resized.
+>
+>
+>
+> Please find attached images of the ring.
+>
+>
+>
+> Warm Regards,
+>
+> Bec
+>
+>
+>
+>
+>
+>
+> *Bec O=E2=80=99Brien *
+>
+> *T1:*
+> *T2:*
+> * E:*
+> *W:*
+>
+> 1300 899 432
+> (612) 9261 2272
+> bec@diamondemporium.com.au
+> www.diamondemporium.com.au
+>
+>
+>
+>
+> Level 2, Suite 201,
+> 185 Elizabeth Street
+> Sydney NSW 2000
+> AUSTRALIA
+> [image: cid:image004.jpg@01D07C19.7B4DB060]
+> <https://www.facebook.com/diamondemporium>[image:
+> cid:image005.jpg@01D07C19.7B4DB060] <https://twitter.com/diamondemporium>=
+ [image:
+> cid:image006.jpg@01D07C19.7B4DB060]
+> <https://instagram.com/diamondemporium/>
+>
+>
+>
+>
+>
+> *Please consider the environment before printing this email*
+>
+>
+>
+>
+>
+>
+>
+>
+>
+
+--_5be85adc-5a80-4669-ad90-25fe34d2a94d_
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Cheers! thanks Rebecca.<div><br></div><div>Looking forward=
+ to seeing you next week.</div><div><br></div><div>Best regards,</div><div>=
+Dara</div></div><div class=3D"gmail_extra"><br><div class=3D"gmail_quote">O=
+n 18 August 2015 at 14:11, Rebecca O&#39;Brien <span dir=3D"ltr">&lt;<a hre=
+f=3D"mailto:bec@diamondemporium.com.au" target=3D"_blank">bec@diamondempori=
+um.com.au</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=
+=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+
+
+
+
+
+<div lang=3D"EN-US" link=3D"blue" vlink=3D"purple">
+<div>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">I will ensure claws are made as refin=
+ed as possible
+</span><span style=3D"font-size:11.0pt;font-family:Wingdings;color:#1f497d"=
+>J</span><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,sa=
+ns-serif;color:#1f497d"><u></u><u></u></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d"><u></u>=C2=A0<u></u></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">Warm Regards
+<u></u><u></u></span></p><span class=3D"">
+<p class=3D"MsoNormal" style=3D"text-indent:.5in"><span style=3D"font-size:=
+11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:#1f497d"><u></u>=C2=
+=A0<u></u></span></p>
+<p class=3D"MsoNormal"><u></u><span>
+</span></p><table cellpadding=3D"0" cellspacing=3D"0" align=3D"left">
+<tbody>
+<tr>
+<td width=3D"51" height=3D"22"></td>
+</tr>
+<tr>
+<td></td>
+<td><img width=3D"214" height=3D"267" src=3D"cid:image007.jpg@01D0D9BF.BD27=
+3A70"></td>
+</tr>
+</tbody>
+</table>
+</span><u></u><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quo=
+t;,sans-serif;color:#1f497d"><u></u>=C2=A0<u></u></span><p></p>
+<br clear=3D"ALL">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"267" style=
+=3D"width:160.0pt;margin-left:2.5in">
+<tbody>
+<tr>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%;background:white"><b><span=
+ style=3D"font-size:11.0pt;line-height:105%;font-family:&quot;Arial&quot;,s=
+ans-serif;color:#1e3d5b">Bec O=E2=80=99Brien
+</span></b><span style=3D"font-size:10.0pt;line-height:105%;font-family:&qu=
+ot;Calibri&quot;,sans-serif;color:#999999"><br>
+<br>
+</span><b><span style=3D"font-size:11.0pt;line-height:105%;font-family:&quo=
+t;Arial&quot;,sans-serif;color:#1e3d5b"><u></u><u></u></span></b></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"250" style=
+=3D"width:150.0pt">
+<tbody>
+<tr>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%"><b><span style=3D"font-si=
+ze:10.0pt;line-height:105%;font-family:&quot;Arial&quot;,sans-serif;color:#=
+1e3d5b">T1:</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;c=
+olor:#1e3d5b"><br>
+</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;font-family:=
+&quot;Arial&quot;,sans-serif;color:#1e3d5b">T2:</span></b><b><span style=3D=
+"font-size:10.0pt;line-height:105%;color:#1e3d5b"><br>
+</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;font-family:=
+&quot;Arial&quot;,sans-serif;color:#1e3d5b">=C2=A0E:</span></b><b><span sty=
+le=3D"font-size:10.0pt;line-height:105%;color:#1e3d5b"><br>
+</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;font-family:=
+&quot;Arial&quot;,sans-serif;color:#1e3d5b">W:</span></b><span style=3D"col=
+or:#1f497d"><u></u><u></u></span></p>
+</td>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%"><span style=3D"font-size:=
+10.0pt;line-height:105%;font-family:&quot;Arial&quot;,sans-serif;color:#999=
+999">1300 899 432</span><span style=3D"font-size:10.0pt;line-height:105%;co=
+lor:#999999"><br>
+</span><span style=3D"font-size:10.0pt;line-height:105%;font-family:&quot;A=
+rial&quot;,sans-serif;color:#999999">(612) 9261 2272=C2=A0
+</span><span style=3D"font-size:10.0pt;line-height:105%;color:#999999"><br>
+</span><span style=3D"font-size:11.0pt;line-height:105%;font-family:&quot;C=
+alibri&quot;,sans-serif;color:#1f497d"><a href=3D"mailto:bec@diamondemporiu=
+m.com.au" target=3D"_blank"><span style=3D"font-size:10.0pt;line-height:105=
+%;font-family:&quot;Arial&quot;,sans-serif">bec@diamondemporium.com.au</spa=
+n></a></span><span style=3D"font-size:10.0pt;line-height:105%;color:#999999=
+"><br>
+</span><span style=3D"font-size:11.0pt;line-height:105%;font-family:&quot;C=
+alibri&quot;,sans-serif;color:#1f497d"><a href=3D"http://www.diamondemporiu=
+m.com.au/" target=3D"_blank"><span style=3D"font-size:10.0pt;line-height:10=
+5%;font-family:&quot;Arial&quot;,sans-serif">www.diamondemporium.com.au</sp=
+an></a></span><span style=3D"color:#1f497d"><u></u><u></u></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%"><span lang=3D"EN-AU" styl=
+e=3D"font-size:11.0pt;line-height:105%;font-family:&quot;Calibri&quot;,sans=
+-serif;color:#1f497d"><u></u>=C2=A0<u></u></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal" style=3D"margin-left:2.5in"><span style=3D"font-size=
+:10.0pt;font-family:&quot;Arial&quot;,sans-serif;color:#999999"><br>
+Level 2, Suite 201,<br>
+185 Elizabeth Street<br>
+Sydney NSW 2000<br>
+AUSTRALIA<br>
+</span><a href=3D"https://www.facebook.com/diamondemporium" target=3D"_blan=
+k"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-ser=
+if;color:#2f5496;text-decoration:none"><img border=3D"0" width=3D"22" heigh=
+t=3D"20" src=3D"cid:image003.jpg@01D0D9BF.BCD4D4B0" alt=3D"cid:image004.jpg=
+@01D07C19.7B4DB060"></span></a><span style=3D"font-size:11.0pt;font-family:=
+&quot;Calibri&quot;,sans-serif;color:#1f497d">
+</span><a href=3D"https://twitter.com/diamondemporium" target=3D"_blank"><s=
+pan style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;co=
+lor:#2f5496;text-decoration:none"><img border=3D"0" width=3D"21" height=3D"=
+20" src=3D"cid:image004.jpg@01D0D9BF.BCD4D4B0" alt=3D"cid:image005.jpg@01D0=
+7C19.7B4DB060"></span></a><span lang=3D"EN-AU" style=3D"font-size:11.0pt;fo=
+nt-family:&quot;Calibri&quot;,sans-serif;color:#2f5496">=C2=A0</span><a hre=
+f=3D"https://instagram.com/diamondemporium/" target=3D"_blank"><span style=
+=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:#2f54=
+96;text-decoration:none"><img border=3D"0" width=3D"20" height=3D"20" src=
+=3D"cid:image005.jpg@01D0D9BF.BCD4D4B0" alt=3D"cid:image006.jpg@01D07C19.7B=
+4DB060"></span></a><span lang=3D"EN-AU" style=3D"font-size:11.0pt;font-fami=
+ly:&quot;Calibri&quot;,sans-serif;color:#2f5496">=C2=A0</span><span lang=3D=
+"EN-AU" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif;=
+color:#999999"><u></u><u></u></span></p>
+<p class=3D"MsoNormal" style=3D"margin-left:2.5in"><span lang=3D"EN-AU" sty=
+le=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif;color:#9999=
+99"><u></u>=C2=A0<u></u></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d"><u></u>=C2=A0<u></u></span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,sans-serif;color:#009900">Please consider the environment befo=
+re printing this email<u></u><u></u></span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d"><u></u>=C2=A0<u></u></span></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:11.0pt;font-family:&quot=
+;Calibri&quot;,sans-serif">From:</span></b><span style=3D"font-size:11.0pt;=
+font-family:&quot;Calibri&quot;,sans-serif"> Dara Eam [mailto:<a href=3D"ma=
+ilto:daralammeam@gmail.com" target=3D"_blank">daralammeam@gmail.com</a>]
+<br>
+<b>Sent:</b> Tuesday, August 18, 2015 2:07 PM</span></p><div><div class=3D"=
+h5"><br>
+<b>To:</b> Rebecca O&#39;Brien &lt;<a href=3D"mailto:bec@diamondemporium.co=
+m.au" target=3D"_blank">bec@diamondemporium.com.au</a>&gt;<br>
+<b>Subject:</b> Re: Diamond Emporium<u></u><u></u></div></div><p></p><div><=
+div class=3D"h5">
+<p class=3D"MsoNormal"><u></u>=C2=A0<u></u></p>
+<div>
+<p class=3D"MsoNormal">Sorry one last thing, remember how I asked about hav=
+ing the claws slightly thinner to allow more light through?<u></u><u></u></=
+p>
+<div>
+<p class=3D"MsoNormal">Is that possible, without affecting too much with th=
+e strength?<u></u><u></u></p>
+</div>
+<div>
+<p class=3D"MsoNormal"><u></u>=C2=A0<u></u></p>
+</div>
+</div>
+<div>
+<p class=3D"MsoNormal"><u></u>=C2=A0<u></u></p>
+<div>
+<p class=3D"MsoNormal">On 18 August 2015 at 14:04, Rebecca O&#39;Brien &lt;=
+<a href=3D"mailto:bec@diamondemporium.com.au" target=3D"_blank">bec@diamond=
+emporium.com.au</a>&gt; wrote:<u></u><u></u></p>
+<blockquote style=3D"border:none;border-left:solid #cccccc 1.0pt;padding:0i=
+n 0in 0in 6.0pt;margin-left:4.8pt;margin-right:0in">
+<div>
+<div>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">Yes, that is a 2.5mm width.</span><u>=
+</u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">Perfect, we will start production
+</span><span style=3D"font-size:11.0pt;font-family:Wingdings;color:#1f497d"=
+>J</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">I will contact you once the diamond a=
+rrives.</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">I am very excited to see the finished=
+ piece as I am sure you are too!</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">Talk soon.</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">Warm Regards,</span><u></u><u></u></p=
+>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">Bec
+</span><u></u><u></u></p>
+<p class=3D"MsoNormal" style=3D"text-indent:.5in">
+<span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;=
+color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"left">
+<tbody>
+<tr style=3D"height:36.6pt">
+<td width=3D"51" style=3D"width:30.6pt;padding:0in 0in 0in 0in;height:36.6p=
+t"></td>
+</tr>
+<tr>
+<td style=3D"padding:0in 0in 0in 0in"></td>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal">
+<img border=3D"0" width=3D"214" height=3D"267" src=3D"cid:image006.jpg@01D0=
+D9BF.BCD4D4B0"><u></u><u></u></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><br clear=3D"all">
+<u></u><u></u></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"267" style=
+=3D"width:160.0pt;margin-left:2.5in">
+<tbody>
+<tr>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-bottom:12.0pt;line-height:105%;backg=
+round:white">
+<b><span style=3D"font-size:11.0pt;line-height:105%;font-family:&quot;Arial=
+&quot;,sans-serif;color:#1e3d5b">Bec O=E2=80=99Brien
+</span></b><u></u><u></u></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"250" style=
+=3D"width:150.0pt">
+<tbody>
+<tr>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%">
+<b><span style=3D"font-size:10.0pt;line-height:105%;font-family:&quot;Arial=
+&quot;,sans-serif;color:#1e3d5b">T1:</span></b><b><span style=3D"font-size:=
+10.0pt;line-height:105%;color:#1e3d5b"><br>
+</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;font-family:=
+&quot;Arial&quot;,sans-serif;color:#1e3d5b">T2:</span></b><b><span style=3D=
+"font-size:10.0pt;line-height:105%;color:#1e3d5b"><br>
+</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;font-family:=
+&quot;Arial&quot;,sans-serif;color:#1e3d5b">=C2=A0E:</span></b><b><span sty=
+le=3D"font-size:10.0pt;line-height:105%;color:#1e3d5b"><br>
+</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;font-family:=
+&quot;Arial&quot;,sans-serif;color:#1e3d5b">W:</span></b><u></u><u></u></p>
+</td>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%">
+<span style=3D"font-size:10.0pt;line-height:105%;font-family:&quot;Arial&qu=
+ot;,sans-serif;color:#999999">1300 899 432</span><span style=3D"font-size:1=
+0.0pt;line-height:105%;color:#999999"><br>
+</span><span style=3D"font-size:10.0pt;line-height:105%;font-family:&quot;A=
+rial&quot;,sans-serif;color:#999999">(612) 9261 2272=C2=A0
+</span><span style=3D"font-size:10.0pt;line-height:105%;color:#999999"><br>
+</span><span style=3D"font-size:11.0pt;line-height:105%;font-family:&quot;C=
+alibri&quot;,sans-serif;color:#1f497d"><a href=3D"mailto:bec@diamondemporiu=
+m.com.au" target=3D"_blank"><span style=3D"font-size:10.0pt;line-height:105=
+%;font-family:&quot;Arial&quot;,sans-serif">bec@diamondemporium.com.au</spa=
+n></a></span><span style=3D"font-size:10.0pt;line-height:105%;color:#999999=
+"><br>
+</span><span style=3D"font-size:11.0pt;line-height:105%;font-family:&quot;C=
+alibri&quot;,sans-serif;color:#1f497d"><a href=3D"http://www.diamondemporiu=
+m.com.au/" target=3D"_blank"><span style=3D"font-size:10.0pt;line-height:10=
+5%;font-family:&quot;Arial&quot;,sans-serif">www.diamondemporium.com.au</sp=
+an></a></span><u></u><u></u></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%">
+<span lang=3D"EN-AU" style=3D"font-size:11.0pt;line-height:105%;font-family=
+:&quot;Calibri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u><=
+/p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal" style=3D"margin-left:2.5in">
+<span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif;co=
+lor:#999999"><br>
+Level 2, Suite 201,<br>
+185 Elizabeth Street<br>
+Sydney NSW 2000<br>
+AUSTRALIA<br>
+</span><a href=3D"https://www.facebook.com/diamondemporium" target=3D"_blan=
+k"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-ser=
+if;color:#2f5496;text-decoration:none"><img border=3D"0" width=3D"22" heigh=
+t=3D"20" src=3D"cid:image003.jpg@01D0D9BF.BCD4D4B0" alt=3D"cid:image004.jpg=
+@01D07C19.7B4DB060"></span></a><a href=3D"https://twitter.com/diamondempori=
+um" target=3D"_blank"><span style=3D"font-size:11.0pt;font-family:&quot;Cal=
+ibri&quot;,sans-serif;color:#2f5496;text-decoration:none"><img border=3D"0"=
+ width=3D"21" height=3D"20" src=3D"cid:image004.jpg@01D0D9BF.BCD4D4B0" alt=
+=3D"cid:image005.jpg@01D07C19.7B4DB060"></span></a><span lang=3D"EN-AU" sty=
+le=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:#2f=
+5496">=C2=A0</span><a href=3D"https://instagram.com/diamondemporium/" targe=
+t=3D"_blank"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot=
+;,sans-serif;color:#2f5496;text-decoration:none"><img border=3D"0" width=3D=
+"20" height=3D"20" src=3D"cid:image005.jpg@01D0D9BF.BCD4D4B0" alt=3D"cid:im=
+age006.jpg@01D07C19.7B4DB060"></span></a><span lang=3D"EN-AU" style=3D"font=
+-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:#2f5496">=C2=
+=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal" style=3D"margin-left:2.5in">
+<span lang=3D"EN-AU" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,sans-serif;color:#999999">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,sans-serif;color:#009900">Please consider the environment befo=
+re printing this email</span></b><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:11.0pt;font-family:&quot=
+;Calibri&quot;,sans-serif">From:</span></b><span style=3D"font-size:11.0pt;=
+font-family:&quot;Calibri&quot;,sans-serif"> Dara Eam [mailto:<a href=3D"ma=
+ilto:daralammeam@gmail.com" target=3D"_blank">daralammeam@gmail.com</a>]
+<br>
+<b>Sent:</b> Tuesday, August 18, 2015 2:01 PM</span><u></u><u></u></p>
+<div>
+<div>
+<p class=3D"MsoNormal"><br>
+<b>To:</b> Rebecca O&#39;Brien &lt;<a href=3D"mailto:bec@diamondemporium.co=
+m.au" target=3D"_blank">bec@diamondemporium.com.au</a>&gt;<br>
+<b>Subject:</b> Re: Diamond Emporium<u></u><u></u></p>
+</div>
+</div>
+<div>
+<div>
+<p class=3D"MsoNormal">=C2=A0<u></u><u></u></p>
+<div>
+<p class=3D"MsoNormal">Hi Rebecca,<u></u><u></u></p>
+<div>
+<p class=3D"MsoNormal">=C2=A0<u></u><u></u></p>
+</div>
+<div>
+<p class=3D"MsoNormal">And just confirming that&#39;s a 2.5mm band?<u></u><=
+u></u></p>
+</div>
+<div>
+<p class=3D"MsoNormal">=C2=A0<u></u><u></u></p>
+</div>
+<div>
+<p class=3D"MsoNormal">If that is, I&#39;m happy with the look, let&#39;s l=
+ock it in=C2=A0<span style=3D"font-size:10.0pt;font-family:Wingdings;color:=
+black">J</span><u></u><u></u></p>
+</div>
+</div>
+<div>
+<p class=3D"MsoNormal">=C2=A0<u></u><u></u></p>
+<div>
+<p class=3D"MsoNormal">On 18 August 2015 at 13:49, Rebecca O&#39;Brien &lt;=
+<a href=3D"mailto:bec@diamondemporium.com.au" target=3D"_blank">bec@diamond=
+emporium.com.au</a>&gt; wrote:<u></u><u></u></p>
+<blockquote style=3D"border:none;border-left:solid #cccccc 1.0pt;padding:0i=
+n 0in 0in 6.0pt;margin-left:4.8pt;margin-top:5.0pt;margin-right:0in;margin-=
+bottom:5.0pt">
+<div>
+<div>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">Hi Dara,</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">Yes that is close to a 1ct.
+</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">Are you happy to proceed with this ri=
+ng design?</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">Warm Regards,</span><u></u><u></u></p=
+>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">Bec
+</span><u></u><u></u></p>
+<p class=3D"MsoNormal" style=3D"text-indent:.5in">
+<span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;=
+color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"left">
+<tbody>
+<tr style=3D"height:26.4pt">
+<td width=3D"51" style=3D"width:30.6pt;padding:0in 0in 0in 0in;height:26.4p=
+t"></td>
+</tr>
+<tr>
+<td style=3D"padding:0in 0in 0in 0in"></td>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal">
+<img border=3D"0" width=3D"214" height=3D"267" src=3D"cid:image006.jpg@01D0=
+D9BF.BCD4D4B0"><u></u><u></u></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><br clear=3D"all">
+<u></u><u></u></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"267" style=
+=3D"width:160.0pt;margin-left:2.5in">
+<tbody>
+<tr>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-bottom:12.0pt;line-height:105%;backg=
+round:white">
+<b><span style=3D"font-size:11.0pt;line-height:105%;font-family:&quot;Arial=
+&quot;,sans-serif;color:#1e3d5b">Bec O=E2=80=99Brien
+</span></b><u></u><u></u></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"250" style=
+=3D"width:150.0pt">
+<tbody>
+<tr>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%">
+<b><span style=3D"font-size:10.0pt;line-height:105%;font-family:&quot;Arial=
+&quot;,sans-serif;color:#1e3d5b">T1:</span></b><b><span style=3D"font-size:=
+10.0pt;line-height:105%;color:#1e3d5b"><br>
+</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;font-family:=
+&quot;Arial&quot;,sans-serif;color:#1e3d5b">T2:</span></b><b><span style=3D=
+"font-size:10.0pt;line-height:105%;color:#1e3d5b"><br>
+</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;font-family:=
+&quot;Arial&quot;,sans-serif;color:#1e3d5b">=C2=A0E:</span></b><b><span sty=
+le=3D"font-size:10.0pt;line-height:105%;color:#1e3d5b"><br>
+</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;font-family:=
+&quot;Arial&quot;,sans-serif;color:#1e3d5b">W:</span></b><u></u><u></u></p>
+</td>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%">
+<span style=3D"font-size:10.0pt;line-height:105%;font-family:&quot;Arial&qu=
+ot;,sans-serif;color:#999999">1300 899 432</span><span style=3D"font-size:1=
+0.0pt;line-height:105%;color:#999999"><br>
+</span><span style=3D"font-size:10.0pt;line-height:105%;font-family:&quot;A=
+rial&quot;,sans-serif;color:#999999">(612) 9261 2272=C2=A0
+</span><span style=3D"font-size:10.0pt;line-height:105%;color:#999999"><br>
+</span><span style=3D"font-size:11.0pt;line-height:105%;font-family:&quot;C=
+alibri&quot;,sans-serif;color:#1f497d"><a href=3D"mailto:bec@diamondemporiu=
+m.com.au" target=3D"_blank"><span style=3D"font-size:10.0pt;line-height:105=
+%;font-family:&quot;Arial&quot;,sans-serif">bec@diamondemporium.com.au</spa=
+n></a></span><span style=3D"font-size:10.0pt;line-height:105%;color:#999999=
+"><br>
+</span><span style=3D"font-size:11.0pt;line-height:105%;font-family:&quot;C=
+alibri&quot;,sans-serif;color:#1f497d"><a href=3D"http://www.diamondemporiu=
+m.com.au/" target=3D"_blank"><span style=3D"font-size:10.0pt;line-height:10=
+5%;font-family:&quot;Arial&quot;,sans-serif">www.diamondemporium.com.au</sp=
+an></a></span><u></u><u></u></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%">
+<span lang=3D"EN-AU" style=3D"font-size:11.0pt;line-height:105%;font-family=
+:&quot;Calibri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u><=
+/p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal" style=3D"margin-left:2.5in">
+<span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif;co=
+lor:#999999"><br>
+Level 2, Suite 201,<br>
+185 Elizabeth Street<br>
+Sydney NSW 2000<br>
+AUSTRALIA<br>
+</span><a href=3D"https://www.facebook.com/diamondemporium" target=3D"_blan=
+k"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-ser=
+if;color:#2f5496;text-decoration:none"><img border=3D"0" width=3D"22" heigh=
+t=3D"20" src=3D"cid:image003.jpg@01D0D9BF.BCD4D4B0" alt=3D"cid:image004.jpg=
+@01D07C19.7B4DB060"></span></a><a href=3D"https://twitter.com/diamondempori=
+um" target=3D"_blank"><span style=3D"font-size:11.0pt;font-family:&quot;Cal=
+ibri&quot;,sans-serif;color:#2f5496;text-decoration:none"><img border=3D"0"=
+ width=3D"21" height=3D"20" src=3D"cid:image004.jpg@01D0D9BF.BCD4D4B0" alt=
+=3D"cid:image005.jpg@01D07C19.7B4DB060"></span></a><span lang=3D"EN-AU" sty=
+le=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:#2f=
+5496">=C2=A0</span><a href=3D"https://instagram.com/diamondemporium/" targe=
+t=3D"_blank"><span style=3D"font-size:11.0pt;font-family:&quot;Calibri&quot=
+;,sans-serif;color:#2f5496;text-decoration:none"><img border=3D"0" width=3D=
+"20" height=3D"20" src=3D"cid:image005.jpg@01D0D9BF.BCD4D4B0" alt=3D"cid:im=
+age006.jpg@01D07C19.7B4DB060"></span></a><span lang=3D"EN-AU" style=3D"font=
+-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:#2f5496">=C2=
+=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal" style=3D"margin-left:2.5in">
+<span lang=3D"EN-AU" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,sans-serif;color:#999999">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,sans-serif;color:#009900">Please consider the environment befo=
+re printing this email</span></b><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt;font-family:&quot;Ca=
+libri&quot;,sans-serif;color:#1f497d">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:11.0pt;font-family:&quot=
+;Calibri&quot;,sans-serif">From:</span></b><span style=3D"font-size:11.0pt;=
+font-family:&quot;Calibri&quot;,sans-serif"> Dara Eam [mailto:<a href=3D"ma=
+ilto:daralammeam@gmail.com" target=3D"_blank">daralammeam@gmail.com</a>]
+<br>
+<b>Sent:</b> Tuesday, August 18, 2015 1:47 PM<br>
+<b>To:</b> Rebecca O&#39;Brien &lt;<a href=3D"mailto:bec@diamondemporium.co=
+m.au" target=3D"_blank">bec@diamondemporium.com.au</a>&gt;<br>
+<b>Subject:</b> Re: Diamond Emporium</span><u></u><u></u></p>
+<div>
+<div>
+<p class=3D"MsoNormal">=C2=A0<u></u><u></u></p>
+<div>
+<p class=3D"MsoNormal">Thanks Rebecca,<u></u><u></u></p>
+<div>
+<p class=3D"MsoNormal">=C2=A0<u></u><u></u></p>
+</div>
+<div>
+<p class=3D"MsoNormal">Is that shown with roughly a 1ct diamond?<u></u><u><=
+/u></p>
+</div>
+</div>
+<div>
+<p class=3D"MsoNormal">=C2=A0<u></u><u></u></p>
+<div>
+<p class=3D"MsoNormal">On 18 August 2015 at 13:34, Rebecca O&#39;Brien &lt;=
+<a href=3D"mailto:bec@diamondemporium.com.au" target=3D"_blank">bec@diamond=
+emporium.com.au</a>&gt; wrote:<u></u><u></u></p>
+<blockquote style=3D"border:none;border-left:solid #cccccc 1.0pt;padding:0i=
+n 0in 0in 6.0pt;margin-left:4.8pt;margin-top:5.0pt;margin-right:0in;margin-=
+bottom:5.0pt">
+<div>
+<div>
+<p class=3D"MsoNormal"><span style=3D"color:#1f4e79">Hi Dara,</span><u></u>=
+<u></u></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1f4e79">=C2=A0</span><u></u><u=
+></u></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1f4e79">I am having the ring m=
+ade to a finger size M.
+</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1f4e79">=C2=A0</span><u></u><u=
+></u></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1f4e79">We can always have the=
+ ring resized.</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1f4e79">=C2=A0</span><u></u><u=
+></u></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1f4e79">Please find attached i=
+mages of the ring.</span><u></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1f4e79">=C2=A0</span><u></u><u=
+></u></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1f4e79">Warm Regards,</span><u=
+></u><u></u></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1f4e79">Bec
+</span><u></u><u></u></p>
+<p class=3D"MsoNormal" style=3D"text-indent:.5in">
+=C2=A0<u></u><u></u></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"left">
+<tbody>
+<tr style=3D"height:31.2pt">
+<td width=3D"51" style=3D"width:30.6pt;padding:0in 0in 0in 0in;height:31.2p=
+t"></td>
+</tr>
+<tr>
+<td style=3D"padding:0in 0in 0in 0in"></td>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal">
+<img border=3D"0" width=3D"214" height=3D"267" src=3D"cid:image006.jpg@01D0=
+D9BF.BCD4D4B0"><u></u><u></u></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal">=C2=A0<u></u><u></u></p>
+<p class=3D"MsoNormal"><br clear=3D"all">
+<u></u><u></u></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"267" style=
+=3D"width:160.0pt;margin-left:2.5in">
+<tbody>
+<tr>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-bottom:12.0pt;line-height:105%;backg=
+round:white">
+<b><span style=3D"font-family:&quot;Arial&quot;,sans-serif;color:#1e3d5b">B=
+ec O=E2=80=99Brien </span>
+</b><u></u><u></u></p>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"250" style=
+=3D"width:150.0pt">
+<tbody>
+<tr>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%">
+<b><span style=3D"font-size:10.0pt;line-height:105%;font-family:&quot;Arial=
+&quot;,sans-serif;color:#1e3d5b">T1:</span></b><b><span style=3D"font-size:=
+10.0pt;line-height:105%;color:#1e3d5b"><br>
+</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;font-family:=
+&quot;Arial&quot;,sans-serif;color:#1e3d5b">T2:</span></b><b><span style=3D=
+"font-size:10.0pt;line-height:105%;color:#1e3d5b"><br>
+</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;font-family:=
+&quot;Arial&quot;,sans-serif;color:#1e3d5b">=C2=A0E:</span></b><b><span sty=
+le=3D"font-size:10.0pt;line-height:105%;color:#1e3d5b"><br>
+</span></b><b><span style=3D"font-size:10.0pt;line-height:105%;font-family:=
+&quot;Arial&quot;,sans-serif;color:#1e3d5b">W:</span></b><u></u><u></u></p>
+</td>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%">
+<span style=3D"font-size:10.0pt;line-height:105%;font-family:&quot;Arial&qu=
+ot;,sans-serif;color:#999999">1300 899 432</span><span style=3D"font-size:1=
+0.0pt;line-height:105%;color:#999999"><br>
+</span><span style=3D"font-size:10.0pt;line-height:105%;font-family:&quot;A=
+rial&quot;,sans-serif;color:#999999">(612) 9261 2272=C2=A0
+</span><span style=3D"font-size:10.0pt;line-height:105%;color:#999999"><br>
+</span><a href=3D"mailto:bec@diamondemporium.com.au" target=3D"_blank"><spa=
+n style=3D"font-size:10.0pt;line-height:105%;font-family:&quot;Arial&quot;,=
+sans-serif">bec@diamondemporium.com.au</span></a><span style=3D"font-size:1=
+0.0pt;line-height:105%;color:#999999"><br>
+</span><a href=3D"http://www.diamondemporium.com.au/" target=3D"_blank"><sp=
+an style=3D"font-size:10.0pt;line-height:105%;font-family:&quot;Arial&quot;=
+,sans-serif">www.diamondemporium.com.au</span></a><u></u><u></u></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style=3D"padding:0in 0in 0in 0in">
+<p class=3D"MsoNormal" style=3D"line-height:105%">
+<span lang=3D"EN-AU">=C2=A0</span><u></u><u></u></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal" style=3D"margin-left:2.5in">
+<span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif;co=
+lor:#999999"><br>
+Level 2, Suite 201,<br>
+185 Elizabeth Street<br>
+Sydney NSW 2000<br>
+AUSTRALIA<br>
+</span><a href=3D"https://www.facebook.com/diamondemporium" target=3D"_blan=
+k"><span style=3D"color:#2f5496;text-decoration:none"><img border=3D"0" wid=
+th=3D"22" height=3D"20" src=3D"cid:image003.jpg@01D0D9BF.BCD4D4B0" alt=3D"c=
+id:image004.jpg@01D07C19.7B4DB060"></span></a><a href=3D"https://twitter.co=
+m/diamondemporium" target=3D"_blank"><span style=3D"color:#2f5496;text-deco=
+ration:none"><img border=3D"0" width=3D"21" height=3D"20" src=3D"cid:image0=
+04.jpg@01D0D9BF.BCD4D4B0" alt=3D"cid:image005.jpg@01D07C19.7B4DB060"></span=
+></a><span lang=3D"EN-AU" style=3D"color:#2f5496">=C2=A0</span><a href=3D"h=
+ttps://instagram.com/diamondemporium/" target=3D"_blank"><span style=3D"col=
+or:#2f5496;text-decoration:none"><img border=3D"0" width=3D"20" height=3D"2=
+0" src=3D"cid:image005.jpg@01D0D9BF.BCD4D4B0" alt=3D"cid:image006.jpg@01D07=
+C19.7B4DB060"></span></a><span lang=3D"EN-AU" style=3D"color:#2f5496">=C2=
+=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal" style=3D"margin-left:2.5in">
+<span lang=3D"EN-AU" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot=
+;,sans-serif;color:#999999">=C2=A0</span><u></u><u></u></p>
+<p class=3D"MsoNormal">=C2=A0<u></u><u></u></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,sans-serif;color:#009900">Please consider the environment befo=
+re printing this email</span></b><u></u><u></u></p>
+<p class=3D"MsoNormal">=C2=A0<u></u><u></u></p>
+</div>
+</div>
+</blockquote>
+</div>
+<p class=3D"MsoNormal">=C2=A0<u></u><u></u></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+<p class=3D"MsoNormal">=C2=A0<u></u><u></u></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+<p class=3D"MsoNormal"><u></u>=C2=A0<u></u></p>
+</div>
+</div></div></div>
+</div>
+
+</blockquote></div><br></div>
+
+--_5be85adc-5a80-4669-ad90-25fe34d2a94d_--
+
+--_ffb64871-d5f0-4cbf-92b9-ea18e060711b_
+Content-Type: image/jpeg; name="image007.jpg"
+Content-Disposition: inline; filename="image007.jpg"
+Content-Transfer-Encoding: base64
+Content-ID: <image007.jpg@01D0D9BF.BD273A70>
+X-Attachment-Id: d3d2934ab5dcb54b_0.6
+
+/9j/4AAQSkZJRgABAQEAeAB4AAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMg
+IyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCAELANYDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2aiii
+gAooooAKKKKACiiigApDxS1UvdQhsPL84OTISFCrnNNJvRCbS3Ft7+G4jkkXciISCzjANUbq/E88
+UlrdxLHC2Zd3ce3rVV5NOll3SR3hTOfKKnZn6VSuJvMniMcFzsickDZjj2reNNXMZTdjpoL63uY2
+eGQOF6gdfyp1pdpeQ+ZGGABIIYYINYIkspUV5I7yO4HWREIb9K1dPvbIqIIJCHH8MnDE+vNRKFlo
+i4zu9TQopKWsjQKKKKACiiigAooooAKKKKACiiigCKf7g+tFE/3B9aKAJaKKKACiiigAooooAKKK
+KACsrVP+Qppf/XVv5Vq1k6r/AMhXSv8Arq38quG5M9ibVtWh0uEFhvkb7qDvVKC61m5tzOIoI0I3
+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
+KKAIp/uD60UT/cH1ooA//9k=
+--_ffb64871-d5f0-4cbf-92b9-ea18e060711b_
+Content-Type: image/jpeg; name="image003.jpg"
+Content-Disposition: inline; filename="image003.jpg"
+Content-Transfer-Encoding: base64
+Content-ID: <image003.jpg@01D0D9BF.BCD4D4B0>
+X-Attachment-Id: d3d2934ab5dcb54b_0.2
+
+/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMg
+IyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCAAUABYDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDI1Ri+
+rXrMSzG4kyTyfvGtDwvoKeINTeCafyIYYjNIwGTgEDA/Os7Uv+Qref8AXxJ/6Ea7P4cajGovbP7H
+CXjgeYzn7zDI+Q8dK9WpJxp3RxxSctTldSaxsr/OgXtzJAYxmVso2c8jgDjgUUzWdTi1a8W4hsoL
+JQgXyofu9+eg9f0orSK01E3roWbi4Md7dqEQ4uJeSP8AbNafh/WJrG5uHiihJeAodynpke9FFYz+
+EqO5z97KZY0BVRg/wiiiito7EPc//9k=
+--_ffb64871-d5f0-4cbf-92b9-ea18e060711b_
+Content-Type: image/jpeg; name="image004.jpg"
+Content-Disposition: inline; filename="image004.jpg"
+Content-Transfer-Encoding: base64
+Content-ID: <image004.jpg@01D0D9BF.BCD4D4B0>
+X-Attachment-Id: d3d2934ab5dcb54b_0.3
+
+/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMg
+IyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCAAUABUDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDudEW3
+vJoYHjTHl5OFHpVqbTJ1mkEVmrRhjtPy8iuf8JXSJr0AkYDehRc+uOB+lb1/F4l+2T/ZJUNuWJj5
+UHHpyK9GreNSya26niUJxnQ5nFt3toYOqzJmMeWispYEbQPSisa6lcSsJc+YGO/d1z3zRXYo2Vjz
+ZVeZ3IkT5UYMwOAcg9DWmniHVkj8sahNjGMnaT+eM0UVTjGXxK5hGpOHwuxj3WRtYsWZiSST16UU
+UUCP/9k=
+--_ffb64871-d5f0-4cbf-92b9-ea18e060711b_
+Content-Type: image/jpeg; name="image006.jpg"
+Content-Disposition: inline; filename="image006.jpg"
+Content-Transfer-Encoding: base64
+Content-ID: <image006.jpg@01D0D9BF.BCD4D4B0>
+X-Attachment-Id: d3d2934ab5dcb54b_0.5
+
+/9j/4AAQSkZJRgABAQEAeAB4AAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMg
+IyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCAELANYDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2aiii
+gAooooAKKKKACiiigApDxS1UvdQhsPL84OTISFCrnNNJvRCbS3Ft7+G4jkkXciISCzjANUbq/E88
+UlrdxLHC2Zd3ce3rVV5NOll3SR3hTOfKKnZn6VSuJvMniMcFzsickDZjj2reNNXMZTdjpoL63uY2
+eGQOF6gdfyp1pdpeQ+ZGGABIIYYINYIkspUV5I7yO4HWREIb9K1dPvbIqIIJCHH8MnDE+vNRKFlo
+i4zu9TQopKWsjQKKKKACiiigAooooAKKKKACiiigCKf7g+tFE/3B9aKAJaKKKACiiigAooooAKKK
+KACsrVP+Qppf/XVv5Vq1k6r/AMhXSv8Arq38quG5M9ibVtWh0uEFhvkb7qDvVKC61m5tzOIoI0I3
+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
+KKAIp/uD60UT/cH1ooA//9k=
+--_ffb64871-d5f0-4cbf-92b9-ea18e060711b_
+Content-Type: image/jpeg; name="image005.jpg"
+Content-Disposition: inline; filename="image005.jpg"
+Content-Transfer-Encoding: base64
+Content-ID: <image005.jpg@01D0D9BF.BCD4D4B0>
+X-Attachment-Id: d3d2934ab5dcb54b_0.4
+
+/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMg
+IyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCAAUABQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDMurWe
+WyN3qSubuQrIZZWPKkHJz6c1iPZyauGttGfzLxTuMZUoxUdSM9RXd67Y3WqeB4reyJ89UilVc43b
+cHFc94I0vU5fEcFxdWUkMduxZ3cYycEYH1zUJRte5pKUubb+thlrqHifw3bJYpPc24xvKbsjJ649
+uKK3fF4/4nCcf8sV/maKSY7Fu51mfTbyWyhjhaK3bYhcEnA6Z5o/4Sq8UcQ2/wD3y3+NFFQUamm2
+Ft4isxfahEDMSUGwkAAdKKKK0WxDep//2Q==
+--_ffb64871-d5f0-4cbf-92b9-ea18e060711b_--
+
+--_737fc23a-5caf-4023-8312-5b8b8943f3ef_--

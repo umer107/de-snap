@@ -1,0 +1,1 @@
+update de_customers set mobile = concat('0', mobile) where length(mobile) = 9 and substr(mobile,1,1) = '4';

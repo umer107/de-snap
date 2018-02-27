@@ -1,0 +1,5 @@
+INSERT INTO `de_roles` VALUES (5, 'manager'); 
+INSERT INTO `de_roles` VALUES (6, 'sales');
+INSERT INTO `de_roles` VALUES (7, 'production');
+INSERT INTO `de_roles` VALUES (8, 'accounts');
+INSERT INTO `de_roles` VALUES (9, 'service');

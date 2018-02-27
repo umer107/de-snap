@@ -1,0 +1,44 @@
+<div class="contentArea padLR0">
+  <div class="fl width100p contentINN">
+	<h2 class="cmnHeader">Emails</h2>
+  </div>
+  <div class="customerTabing fl width100p ctb">
+	<ul>
+	  <li class="current"><a href="javascript:;">Invoice Emails</a></li>
+	  <li ><a href="javascript:;">Milestone Emails</a></li>
+	</ul>
+	<div class="customTabbingInner">	
+	  <div class="customerTabingInfo" style="display:block;">
+        <div class="pad20">
+			<h2 class="cmnHeader">Invoice Emails</h2>
+			<div class="cmnSort">
+				<div class="mainSearch marL0"><input name="email_searchInput" id="email_searchInput" type="text" class="searchInput" placeholder="Search.." /><input type="button" class="inputGo" value="Go!" onclick="getInvoiceEmails(<?php echo $recordsPerPage; ?>, <?php echo $this->customerData['id']; ?>, $('#email_searchInput').val(), 'jqxInvoiceEmails');" /></div>
+			</div>
+			<div class="tableData tableNeView" style="overflow:visible">
+				<div class="tableHading" style="width:100%"> Email List </div>
+				<div class="formTable manageMembers" id="jqxInvoiceEmails"> </div>
+			</div>
+		</div>
+      </div>
+	  <div class="customerTabingInfo">
+          <div class="pad20">
+		  	<h2 class="cmnHeader">Milestone Emails</h2>
+			<div class="cmnSort">
+				<div class="mainSearch marL0"><input name="email_searchInput" id="email_searchInput" type="text" class="searchInput" placeholder="Search.." /><input type="button" class="inputGo" value="Go!" onclick="getMilestoneEmails(<?php echo $recordsPerPage; ?>, <?php echo $viewData['id']; ?>, $('#email_searchInput').val());" /></div>
+			</div>
+			<div class="tableData tableNeView" style="overflow:visible">
+				<div class="tableHading" style="width:100%"> Email List </div>
+				<div class="formTable manageMembers" id="jqxMilestoneEmails"> </div>
+			</div>
+		  </div>
+        </div>	  
+	</div>
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	getInvoiceEmails(<?php echo $config['recordsPerPage']; ?>, '', '', 'jqxInvoiceEmails');
+	getMilestoneEmails(<?php echo $config['recordsPerPage']; ?>, '', '', 'jqxMilestoneEmails');
+})
+</script>

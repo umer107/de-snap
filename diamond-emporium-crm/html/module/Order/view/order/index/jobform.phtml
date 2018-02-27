@@ -1,0 +1,90 @@
+<?php
+$newJobForm->prepare();
+echo $this->form()->openTag($newJobForm);
+echo $this->formElement($this->newJobForm->get('id'));
+echo $this->formElement($this->newJobForm->get('order_id'));
+$owner_id = $this->newJobForm->get('owner_id')->getValue();
+?>
+<div class="formRow">
+	<label class="labelControll"><?php echo $this->newJobForm->get('owner_id')->getLabel(); ?>*</label>
+	<div class="inputDiv width150">
+		<?php /*?><?php echo $this->formElement($this->newJobForm->get('owner_id')); ?><?php */?>
+		<div class="selectDrop width150" id="jobOwner">
+			<div class="assignedDrop">
+				<div class="dropValue"><?php echo empty($owner_id) ? 'Unassigned' : $ownerOptions[$owner_id]; ?></div>
+				<input type="hidden" name="owner_id" value="<?php echo $owner_id; ?>" />
+				<ul>
+					<?php foreach($ownerOptions as $userId => $userText){?>
+					<li onclick="$(this).closest('form').find('input[name=owner_id]').val(<?php echo $userId; ?>);"><?php echo $userText; ?></li>
+				<?php } ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="inputDiv"></div>
+</div>
+<?php
+if(!isset($jobDetails)){ ?>
+<div class="formRow padT10">
+	<label class="labelControll"><?php echo $this->newJobForm->get('milestones')->getLabel(); ?>*</label>
+</div>
+<div class="formRow selectMilestone">
+	<div class="inputDiv" id="milestonesDiv">
+		<?php echo $this->formElement($this->newJobForm->get('milestones')); ?>
+		<span id="milestonesSpan"></span>
+	</div>       
+</div>
+<?php } ?>
+<div class="formRow">
+	<label class="labelControll"><?php echo $this->newJobForm->get('exp_delivery_date')->getLabel(); ?></label>
+	<div class="inputDiv datePickInput width150"><?php echo $this->formElement($this->newJobForm->get('exp_delivery_date')); ?><span class="datePickCal"></span></div>
+	<div class="inputDiv"></div>
+</div>       
+	
+<div class="formRow padT10">
+	<label class="labelControll"> Select Invoice Items Relating to Job</label>
+</div>
+<div class="tableDataNew">
+  <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tableNew">
+	<tbody><tr align="left">
+	  <th width="5" height="48">&nbsp;</th>
+	  <th align="left" width="36"></th>
+	  <th>Item</th>
+	  <th>Description</th>
+	  <th width="128">Amount</th>
+	</tr>
+	<?php foreach($invoice_items as $invoice_item){ ?>
+	<?php
+	$checked = false;
+	if(isset($jobDetails) && !empty($jobDetails['items'])){
+		$checked = in_array($invoice_item['item_id'], explode(',', $jobDetails['items'])) ? true : false;
+	}
+	?>
+	<tr>
+	  <td></td>
+	  <td><label class="labelCheck mar0"><input type="checkbox" name="items[]" value="<?php echo $invoice_item['item_id']; ?>" <?php if($checked) echo 'checked="checked"'; ?> /><i></i></label></td>
+	  <td><?php echo ucfirst($invoice_item['item_type']); ?></td>
+	  <td><?php echo $invoice_item['description']; ?></td>
+	  <td><?php echo $invoice_item['amount']; ?></td>
+	</tr>
+	<?php } ?>
+  </tbody></table>
+</div>           
+
+<div class="formButtons tc fl width100p"><?php echo $this->formElement($this->newJobForm->get('job_save')); ?> <?php echo $this->formElement($this->newJobForm->get('cancel')); ?></div>
+<?php echo $this->form()->closeTag(); ?>
+
+
+<!-- Consine Item Light Box End--> 
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#frm_job_packet').find('input[name=exp_delivery_date]').datepicker({
+		dateFormat: '<?php echo $config["jsDateFormat"]; ?>',
+		minDate: new Date(),
+		changeYear: true,
+		beforeShow: function() {
+			$(this).after($(this).datepicker("widget"));
+		}
+	});
+});
+</script>

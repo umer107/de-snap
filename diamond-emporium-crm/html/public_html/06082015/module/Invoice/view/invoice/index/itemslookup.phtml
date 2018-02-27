@@ -1,0 +1,65 @@
+<div class="lightBox" id="createQuote">
+  <div class="lightBoxMid" style="width:970px">
+    <div class="lightBoxTitle">DE Collective <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p">
+      <div class="quoteAddItems">
+        <ul class="invoicetabing">
+          <li class="active"><a href="javascript:;" >Diamonds</a></li>
+          <li><a href="javascript:;" >Wedd. Rings</a></li>
+          <li><a href="javascript:;">Eng. Rings</a></li>
+          <li><a href="javascript:;">Earing</a></li>
+          <li><a href="javascript:;">Pendants</a></li>
+          <li><a href="javascript:;">Chains</a></li>
+          <li><a href="javascript:;">Miscellaneous</a></li>
+        </ul>
+		
+        <div class="invoiceTabingInner">
+        	<div class="invoiceTabingContent"  style="display:block">
+				<div class="tableData tableNeView marT0">
+	            	<div id="item_lookup_1"></div>
+				</div>
+            </div>
+            <div class="invoiceTabingContent" >
+				<div class="tableData tableNeView marT0">
+					<div id="item_lookup_2"></div>
+				</div>	
+            </div>
+            <div class="invoiceTabingContent" >
+            	<div class="tableData tableNeView marT0">
+					<div id="item_lookup_3"></div>
+				</div>	
+            </div>
+            <div class="invoiceTabingContent" >
+            	<div class="tableData tableNeView marT0">
+					<div id="item_lookup_4"></div>
+				</div>	
+            </div>
+            <div class="invoiceTabingContent" >
+            	<div class="tableData tableNeView marT0">
+					<div id="item_lookup_5"></div>
+				</div>	
+            </div>
+            <div class="invoiceTabingContent" >
+            	<div class="tableData tableNeView marT0">
+					<div id="item_lookup_6"></div>
+				</div>	
+            </div>
+            <div class="invoiceTabingContent" >
+            	<div class="tableData tableNeView marT0">
+					<div id="item_lookup_7"></div>
+				</div>	
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+getDiamondLookup('item_lookup_1', <?php echo $recordsPerPage; ?>);
+getWeddRingLookup('item_lookup_2', <?php echo $recordsPerPage; ?>);
+getEngRingLookup('item_lookup_3', <?php echo $recordsPerPage; ?>);
+getEarringLookup('item_lookup_4', <?php echo $recordsPerPage; ?>);
+getPendantLookup('item_lookup_5', <?php echo $recordsPerPage; ?>);
+getChainLookup('item_lookup_6', <?php echo $recordsPerPage; ?>);
+getMiscellaneousLookup('item_lookup_7', <?php echo $recordsPerPage; ?>);
+</script>

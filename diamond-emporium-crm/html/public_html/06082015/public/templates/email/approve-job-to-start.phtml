@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Diamond Emporium :: Conver Lead</title>
+</head>
+<body style="margin:0; padding:0">
+<table align="center" width="600" style="max-width:100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="47" colspan="3" bgcolor="#515252">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="47" bgcolor="#515252">&nbsp;</td>
+    <td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="53" colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="42">&nbsp;</td>
+          <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td align="center" ><img src="" style="max-width:424px"  /></td>
+              </tr>
+              <tr>
+                <td height="37" style="border-bottom:#cdcccb solid 1px">&nbsp;</td>
+              </tr>
+              <tr>
+                <td style="font-family:'Helvetica', Arial, sans-serif; font-size:24px; color:#7cccbf; padding-top:5px"> Hi <?php echo $this->msgholdename; ?>, </td>
+              </tr>
+              <tr>
+                <td height="25" >&nbsp;</td>
+              </tr>
+              <tr>
+                <td style="font-family:'Helvetica', Arial, sans-serif; font-size:13px; color:#414042; line-height:20px">
+				<p style="font-family:'Helvetica', Arial, sans-serif; font-size:13px; color:#414042; line-height:20px">Job Information</p>
+                    <p style="font-family:'Helvetica', Arial, sans-serif; font-size:13px; color:#414042; line-height:20px">Job Id : <?php echo $this->data['display_job_id']; ?></p>
+					<p style="font-family:'Helvetica', Arial, sans-serif; font-size:13px; color:#414042; line-height:20px">Milestones required : <?php echo $this->data['milestones']; ?></p>
+					 <p style="font-family:'Helvetica', Arial, sans-serif; font-size:13px; color:#414042; line-height:20px">Expected Delivery Date: <?php echo date('d/m/Y', strtotime($this->data['exp_delivery_date'])); ?></p>
+					   <p style="font-family:'Helvetica', Arial, sans-serif; font-size:13px; color:#414042; line-height:20px">Invoice Number : <?php echo empty($this->data['invoice_number']) ? 'N/A' : $this->data['invoice_number']; ?></p>
+					    <p style="font-family:'Helvetica', Arial, sans-serif; font-size:13px; color:#414042; line-height:20px">Opportunity : <?php echo $this->data['opportunity_name']; ?></p>
+				</td>
+              </tr>
+			  <tr>
+                <td style="font-family:'Helvetica', Arial, sans-serif; font-size:13px; color:#414042; line-height:20px">
+                    <p style="font-family:'Helvetica', Arial, sans-serif; font-size:13px; color:#414042; line-height:20px">Customer : <?php echo $this->data['customer_name']; ?></p>
+					<p style="font-family:'Helvetica', Arial, sans-serif; font-size:13px; color:#414042; line-height:20px">Record Owner : <?php echo $this->data['owner_name']; ?></p>
+				</td>
+              </tr>
+			  <tr>
+			  	<td style="font-family:'Helvetica', Arial, sans-serif; font-size:13px; color:#414042; line-height:20px">
+					<p style="font-family:'Helvetica', Arial, sans-serif; font-size:13px; color:#414042; line-height:20px">Please <a href="http://<?php echo $_SERVER['HTTP_HOST'].'/approvejob/'.$this->data['job_id'].'/'.$this->data['approval_code']; ?>">CLICK HERE</a> to start the job.</p>
+				</td>
+			  </tr>
+              <tr>
+                <td height="45">&nbsp;</td>
+              </tr>
+              <tr>
+                <td  style="font-family:'Helvetica', Arial, sans-serif; font-size:12px; color:#817070; line-height:18px"> Sincerly,<br />
+                  The Diamond Emporium Team<br />
+                  info@diamondemporium.com.au<br />
+                  <a href="https://www.diamondemporium.com.au/">https://www.diamondemporium.com.au/</a> </td>
+              </tr>
+              <tr>
+                <td height="25">&nbsp;</td>
+              </tr>
+            </table></td>
+          <td width="42">&nbsp;</td>
+        </tr>
+        
+        <tr>
+          <td colspan="3" align="center" height="20">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="3" align="center" style="font-family:'Helvetica', Arial, sans-serif; font-size:12px; color:#414042;">Copyright &copy; 2014 Diamond Emporium, All rights reserved.<br />PO Box A2034, Sydney South, NSW 1235, Australia</td>
+        </tr>
+        <tr>
+          <td colspan="3" align="center" height="30">&nbsp;</td>
+        </tr>
+      </table></td>
+    <td width="47" bgcolor="#515252">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="47" colspan="3" bgcolor="#515252">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

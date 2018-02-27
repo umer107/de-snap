@@ -1,0 +1,10 @@
+ALTER TABLE `de_opportunities` 
+ADD COLUMN `lead_id` INT(11) NULL AFTER `id`;
+
+
+-- We have to set any existing rows with a dummy value as we want this column to be not null
+
+UPDATE `de_opportunities` SET `lead_id` = -1;
+
+ALTER TABLE `de_opportunities` 
+CHANGE COLUMN `lead_id` `lead_id` INT(11) NOT NULL ;

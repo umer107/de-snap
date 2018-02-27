@@ -1,0 +1,3 @@
+DROP TABLE `de_lead_types`;
+
+ALTER TABLE `de_leads` DROP COLUMN `lead_type`;

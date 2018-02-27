@@ -1,0 +1,19 @@
+<div class="contentArea" id="oppGridContentArea">
+  <h2 class="cmnHeader">Suppliers</h2>
+  <a href="javascript:;" class="popupLink lightBoxClick" data-popup="leadsList">New Supplier</a>
+  <!--BOF Grid View Header Block-->
+	<?php echo $this->partial('customer/index/gridviewheader.phtml', array('gridViewOptions' => $this->gridViewOptions, 'recordsPerPage' => $this->recordsPerPage, 'prefixId' => 'sup_')); ?>
+  <!--EOF Grid View Header Block-->
+  <div class="tableData tableNeView" style="overflow:visible">
+    <div class="tableHading" style="width:100%" id="bindAfterThis"> Supplier List </div>
+    <div class="formTable manageMembers" id="jqxSuppliers">
+    </div>
+  </div>
+</div>
+<!--BOF Grid View Block-->
+<?php echo $this->partial('customer/index/gridview.phtml', array('formType' => 'suppliers', 'recordsPerPage' => $this->recordsPerPage, 'columnList' => $this->columnList, 'hiddenUserId' => $this->loginUserId, 'prefixId' => 'sup_')); ?>
+<!--EOF Grid View Block-->
+
+<!--BOF new lead Form-->
+<?php echo $this->partial('suppliers/index/newsuppliersform.phtml', array('form' => $this->form, 'identity' => $this->identity, 'recordsPerPage' => $this->recordsPerPage)); ?>
+<!--EOF new lead Form-->

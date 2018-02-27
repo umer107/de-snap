@@ -1,0 +1,64 @@
+<div class="orderInforPop">
+	<h2 class="cmnHeader">Order #<?php echo $order_id; ?></h2>
+	<a href="javascript:;" class="cmnBtn edtiBtn popupLink lightBoxClick" data-popup="editOrder" onclick="editOrderForm(<?php echo $order['id']; ?>);">Edit</a>
+	<?php if ($canDelete) : ?>
+		<a class="cmnBtn deleteBtn" href="javascript:;" onclick="deleteOrder(<?php echo $order['id']; ?>);">Delete</a>
+	<?php endif; ?>
+	<div class="infoDisplay">
+		<div class="row">
+			<div class="culmn01">Date Created:</div>
+			<div class="culmn02"><?php echo $order['created_date']; ?></div>
+		</div>
+		<!--<div class="row">
+			<div class="culmn01">Special Requests</div>
+			<div class="culmn02">Conceal from Sandra</div>
+		</div>-->
+		<?php if(!empty($order['invoice_number'])){ ?>
+		<div class="row">
+			<div class="culmn01">Invoice No. </div>
+			<div class="culmn02"><a href="/editinvoicequotes/<?php echo $order['inv_id']; ?>">#<?php echo $order['invoice_number']; ?></a></div>
+		</div>
+		<?php } ?>
+		<div class="row">
+			<div class="culmn01">Expected Delivery Date. </div>
+			<div class="culmn02"><?php echo $order['exp_delivery_date']; ?></div>
+		</div>
+		<?php if(!empty($order['special_request'])){ ?>
+		<div class="row">
+			<div class="culmn01">Special Request</div>
+			<div class="culmn02 width100p"><p><?php echo $order['special_request']; ?></p></div>
+		</div>
+		<?php } ?>
+		<?php if(!empty($order['comment'])){ ?>
+		<div class="row">
+			<div class="culmn01">Description</div>
+			<div class="culmn02 width100p"><p><?php echo $order['comment']; ?></p></div>
+		</div>
+		<?php } ?>
+		<!--<div class="row">
+			<div class="culmn01 width100p">Milestone Requirements</div>
+			<div class="culmn02 width100p"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod nulla eget quam vestibulum gravida. </p></div>
+		</div>-->
+		
+		<?php /*?><?php foreach($invoice_items as $item){ ?>
+		<div class="row">
+			<div class="culmn01">Item Name: </div>
+			<div class="culmn02 width100p"><p><?php echo $config['inventory_items'][$item['item_type']]; ?></p></div>
+		</div>
+		<div class="row">
+			<div class="culmn01">Description</div>
+			<div class="culmn02 width100p"><p><?php echo $item['description']; ?></p></div>
+		</div>
+		<?php } ?><?php */?>
+		
+		<div class="row" <?php echo empty($order['orderAttachments']) ? 'style="display:none;"' : '';?>>
+			<div class="culmn01">Attachments</div>
+			<div class="culmn02 width100p attachImg">
+			<?php foreach($order['orderAttachments'] as $value){ ?>
+				<img src="/order_attachment/<?php echo $value; ?>" style="max-width:inherit; margin-right:0; width:100%;" />
+			<?php } ?>
+			</div>
+		</div>
+
+	</div>
+</div>

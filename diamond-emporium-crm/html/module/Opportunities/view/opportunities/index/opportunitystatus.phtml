@@ -1,0 +1,80 @@
+<form name="opportunity_status" id="opportunity_status" method="post">
+<div class="lightBox" id="opportunityStatus">
+  <div class="lightBoxMid" style="width:600px">
+    <div class="lightBoxTitle"><span id="oppStatusHeading"><?php if($this->data['opportunity_status'] == "Closed"){?>Open<?php } else { ?>Close<?php } ?> Opportunity</span> <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+	
+    <div class="lightBoxContent fl width100p commonForm">
+      <div class="formRow">
+        <label class="labelControll">Status<span class="asterisk">*</span></label>
+        <div class="inputDiv">
+			<input type="hidden" name="opportunity_statusId" id="opportunity_statusId" value="<?php echo $this->data['id']?>" />
+          <select class="dropdown" name="opportunity_status" id="opportunity_status">
+            <option value="" <?php if($this->data['opportunity_status'] == ""){?> selected="selected" <?php } ?>>Select</option>
+			<option value="Open" <?php if($this->data['opportunity_status'] == "Open"){?> selected="selected" <?php } ?>>Open</option>
+			<option value="Closed Won" <?php if($this->data['opportunity_status'] == "Closed Won"){?> selected="selected" <?php } ?>>Closed Won</option>
+			<option value="Closed Lost" <?php if($this->data['opportunity_status'] == "Closed Lost"){?> selected="selected" <?php } ?>>Closed Lost</option>
+          </select>
+        </div>
+      </div>
+      <div class="formRow">
+        <label class="labelControll">Close Date</label>
+        <div class="inputDiv">
+		<?php 
+			if($this->data['opportunity_close_date'] == '' || $this->data['opportunity_close_date'] == '0000-00-00 00:00:00') {
+				$opportunity_close = date("d/m/Y");
+			} else {
+			  $opportunity_close_date = str_replace(" 00:00:00", "",$this->data['opportunity_close_date']);
+			  $opportunity_close_array = explode("-", $opportunity_close_date);
+			  $opportunity_close = $opportunity_close_array[2].'/'.$opportunity_close_array[1].'/'.$opportunity_close_array[0];
+			}
+		?>
+          <div class="datePickInput">
+                <input type="text" class="datepickerInput oppCloseDate" placeholder="DD/MM/YYYY" name="opportunity_close_date" value="<?php echo $opportunity_close; ?>"/>
+                <span class="datePickCal"></span></div>
+        </div>
+      </div>
+      <div class="formRow" id="opportunityStatusReason">
+        <label class="labelControll">Reason<span class="asterisk">*</span></label>
+        <div class="inputDiv">
+          <select class=" dropdown" name="opportunity_reason" id="opportunity_reason">
+             <option value="" <?php if($this->data['opportunity_reason'] == ""){?> selected="selected" <?php } ?>>Select</option>
+			 <option value="Not responding" <?php if($this->data['opportunity_reason'] == "Not responding"){?> selected="selected" <?php } ?>>Not responding</option>
+			 <option value="Price" <?php if($this->data['opportunity_reason'] == "Price"){?> selected="selected" <?php } ?>>Price</option>
+			 <option value="Competitor" <?php if($this->data['opportunity_reason'] == "Competitor"){?> selected="selected" <?php } ?>>Competitor</option>
+			 <option value="Other" <?php if($this->data['opportunity_reason'] == "Other"){?> selected="selected" <?php } ?>>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="formButtons tc fl width100p">
+        <input type="button" value="Save" class="cmnBtn" onclick="updateOpportunityStatus($('#opportunity_status'));">
+        <input type="button" value="Cancel" class="cmnBtn cancelBtn" onclick="cancelButtonProperty('opportunity_status', 'opportunityStatus');">
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<script type="text/javascript">
+	$(document).ready(function(){
+		if($('#opportunity_status option:selected').val() == 'Open'){
+			//$('#opportunity_status .oppCloseDate').attr("disabled","disabled");
+			//$('#opportunity_status #opportunity_reason').attr("disabled","disabled");
+			//$('#opportunity_status #opportunity_reason').dropkick('refresh');
+		}
+	});
+	$('#opportunity_status #opportunity_status').dropkick({
+  	change: function () {
+  		var value = this.value;
+		if(value == 'Open'){
+			//$('#opportunity_status .oppCloseDate').val('');
+			//$('#opportunity_status #opportunity_reason').val('');
+			//$('#opportunity_status .oppCloseDate').attr("disabled","disabled");
+			//$('#opportunity_status #opportunity_reason').attr("disabled","disabled");
+			//$('#opportunity_status #opportunity_reason').dropkick('refresh');
+	   } else if(value == 'Closed'){
+	   		//$('#opportunity_status .oppCloseDate').removeAttr("disabled");
+			//$('#opportunity_status #opportunity_reason').removeAttr("disabled");
+			//$('#opportunity_status #opportunity_reason').dropkick('refresh');
+	   }
+  }
+});
+</script>

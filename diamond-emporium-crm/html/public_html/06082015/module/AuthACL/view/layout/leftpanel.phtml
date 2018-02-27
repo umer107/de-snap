@@ -1,0 +1,26 @@
+<span class="expandLeftPannel"><span></span><span></span><span></span></span>
+<aside class="leftCol">
+
+  <h1 class="dimondLogo"><a href="javascript:;"><img src="<?php echo $this->serverUrl('/images/logo.jpg'); ?>" /></a></h1>
+  <nav class="mainMenu">
+    <ul>
+      <li <?php if(in_array($this->matchedRouteName, array('index/dashboard'))) echo 'class="current"'; ?>><a href="<?php echo $this->serverUrl('/dashboard'); ?>" class="dashboardLink">Dashboard</a></li>
+      <li <?php if(in_array($this->matchedRouteName, array('index/index', 'index/customerdetails'))) echo 'class="current"'; ?>><a href="<?php echo $this->serverUrl('/customers'); ?>" class="customersLinke">Customers <span id="customersCountGlobal">0</span></a></li>
+      <li <?php if(in_array($this->matchedRouteName, array('lead/leads', 'lead/leaddetails'))) echo 'class="current"'; ?>><a href="<?php echo $this->serverUrl('/leads'); ?>" class="leadsLink">Leads <span id="leadsCountGlobal">0</span></a></li>
+      <li <?php if(in_array($this->matchedRouteName, array('opportunities/index', 'opportunities/opportunitydetails'))) echo 'class="current"'; ?>><a href="<?php echo $this->serverUrl('/opportunities'); ?>" class="opportunitiesLink">Opportunities <span id="opportunitiesCountGlobal">0</span></a></li>
+      <li <?php if(in_array($this->matchedRouteName, array('order/index', 'order/orderdetails', 'order/jobdetails'))) echo 'class="current"'; ?>><a href="<?php echo $this->serverUrl('/orders'); ?>" class="ordersLink">Orders <span id="leftPanelOrderCountGlobal">0</span></a></li>
+      <li <?php if(in_array($this->matchedRouteName, array('inventory/index', 'inventory/diamonddetails', 'inventory/inventory-weddingring', 'inventory/weddingringdetails', 'inventory/inventory-engagementring', 'inventory/engagementringdetails', 'inventory/inventory-earring', 'inventory/earringdetails', 'inventory/inventory-pendant', 'inventory/pendantdetails', 'inventory/inventory-miscellaneous', 'inventory/miscellaneousdetails', 'inventory/inventory-chain', 'inventory/chaindetails'))) echo 'class="current"'; ?>><a href="<?php echo $this->serverUrl('/inventory'); ?>" class="inventoryLink<?php if(in_array($this->matchedRouteName, array('inventory/index'))) echo ' current'; ?>">Inventory<span id="inventoryTotalGlobal">0</span></a></li>
+      <li <?php if(in_array($this->matchedRouteName, array('suppliers/index', 'suppliers/supplierdetails'))) echo 'class="current"'; ?>><a href="<?php echo $this->serverUrl('/suppliers'); ?>" class="suppliersLink">Suppliers <span id="suppplierCountGlobal">0</span></a></li>
+      <li class="notMainLink <?php if(in_array($this->matchedRouteName, array('invoice/index', 'invoice/newquotes'))) echo 'current'; ?>"><a href="<?php echo $this->serverUrl('/invoicequotes'); ?>" class="<?php if(in_array($this->matchedRouteName, array('invoice/index', 'invoice/newquotes'))) echo ' current'; ?>">Quotes & Invoice  <span id="leftPanelQuotesnInviocesCountGlobal">0</span></a></li>
+      <li class="notMainLink<?php if(in_array($this->matchedRouteName, array('tasks/tasks'))) echo ' current'; ?>"><a href="<?php echo $this->serverUrl('/tasks'); ?>">Tasks</a></li>
+      <!--<li class="notMainLink"><a href="javascript:;">Meetings</a></li>-->
+      <li class="notMainLink <?php if(in_array($this->matchedRouteName, array('user/email'))) echo 'current'; ?>"><a href="javascript:;">Emails</a></li>
+	  <li class="notMainLink <?php if(in_array($this->matchedRouteName, array('user/index'))) echo 'current'; ?>"><a href="<?php echo $this->serverUrl('/users'); ?>">User Management <span id="leftPanelUserCountGlobal">0</span></a></li>
+    </ul>
+  </nav>
+</aside>
+<script type="text/javascript">
+$(document).ready(function(){
+	var allDataCount = getCount('gridType');
+});
+</script>

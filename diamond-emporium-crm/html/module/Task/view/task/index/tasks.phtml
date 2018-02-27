@@ -1,0 +1,341 @@
+<!-- TaskInfo -->
+<div class="<?php echo ($allTasks) ? 'tasksMainBlock'  : 'customerTabingInfo'; ?> tasksView"> 
+<?php if($allTasks) echo '<div class="pageLoader"></div>'; ?>   
+  <div class="tasksBlock  width100p">
+    
+    <div class="alphaCulmn"><div class="taskCulmnInn">
+	<?php if(!empty($entity_id)){ ?>
+	<a href="javascript:;" class="popupLink creatTaskBtn">Create Task</a>
+	<input type="text" name="task_title" class="inputTxt createTaskInput" style="display:none" />
+	<input type="hidden" name="entity_type" value="<?php echo $entity_type; ?>" />
+    <input type="hidden" name="entity_id" value="<?php echo $entity_id; ?>" />
+	<?php } ?>
+      <div class="tableData">
+        <div  class="tableHading"> Tasks </div>
+        <div class="tasksList fl width100p">
+          <?php foreach($tasks['data'] as $task){ 
+		  if(!empty($task['task_id'])){
+		  ?>
+          <div class="listView" id="task_<?php echo $task['task_id']; ?>">
+		  	<input type="hidden" name="<?php echo $task['task_id']; ?>_due_date" id="<?php echo $task['task_id']; ?>_due_date" value="<?php echo empty($task['due_date']) || !strtotime($task['due_date']) ? $task['due_date'] : date('d/m/Y', strtotime($task['due_date']))?>" />
+		  	<input type="hidden" name="<?php echo $task['task_id']; ?>_repeat" id="<?php echo $task['task_id']; ?>_repeat" value="<?php echo $task['due_date_repeat_status']; ?>" />
+		  	<input type="hidden" name="<?php echo $task['task_id']; ?>_endon_date" id="<?php echo $task['task_id']; ?>_endon_date" value="<?php echo empty($task['due_date_end_on']) || $task['due_date_end_on'] == '0000-00-00' ? '' : date('d/m/Y', strtotime($task['due_date_end_on'])); ?>" />
+            <div class="firstCol">
+              <label class="labelCheck">
+              <input type="checkbox" onchange="changeTaskStatus(<?php echo $task['task_id']; ?>, this);" />
+              <i></i></label>
+            </div>
+            <div class="secondCol">
+              <h3 class="taskHead" id="<?php echo 'taskHead'.$task['task_id']; ?>" onclick="fetchTaskInfo(<?php echo $task['task_id']; ?>);"><?php echo $task['task_title']; ?><br />
+                <span><?php echo $task['task_created_by_fullname']; ?></span> </h3>
+            </div>
+            <div class="thirdCol">
+			<?php
+			if(strtotime($task['due_date'])){
+				$classOverdue = $task['is_overdue'] ? 'overDue' : '';
+				echo '<span class="datePosted newDatePosted '.$classOverdue.'">'.date($config['phpDateFormat'], strtotime($task['due_date'])).'</span>';
+			}elseif(!empty($task['due_date'])){
+				echo '<span class="datePosted newDatePosted">'.$task['due_date'].'</span>';
+			}
+			
+			if($task['color'] != NULL){
+				$colorCode = 'style="background-color:#'.$task['color'].'"';
+			} else {
+				$colorCode = '';
+			}
+			?>
+			<?php /*?><?php echo empty($task['due_date']) || !strtotime($task['due_date']) ? '' : '<span class="datePosted newDatePosted">'.date($config['phpDateFormat'], strtotime($task['due_date'])).'</span>'; ?><?php */?>
+			
+			<?php echo empty($task['task_owner_shortname']) ? '' : '<span class="assignTo" '.$colorCode.'>'.strtoupper($task['task_owner_shortname']).'</span>'; ?>
+			</div>
+          </div>
+          <?php } } ?>
+          <!--<a class="viewMore" id="opened_view_more" href="javascript:;">View More..</a>-->
+          <div class="completedTasks">
+            <div class="toggleListView"><i></i><span class="showNhide">Show</span> Completed Tasks (<span id="closed_task_count"><?php echo $closedTasks['total_count']; ?></span>)</div>
+            <div class="toggleInfo">
+			<?php foreach($closedTasks['data'] as $task){
+			if(!empty($task['task_id'])){
+			 ?>
+              <div class="listView" id="task_<?php echo $task['task_id']; ?>">
+                <div class="firstCol">
+                  <label class="labelCheck">
+                  <input type="checkbox" onchange="changeTaskStatus(<?php echo $task['task_id']; ?>, this);" checked="checked" />
+                  <i></i></label>
+                </div>
+                <div class="secondCol">
+                  <h3 class="taskHead" id="<?php echo 'taskHead'.$task['task_id']; ?>" onclick="fetchTaskInfo(<?php echo $task['task_id']; ?>);"><?php echo $task['task_title']; ?><br />
+                    <span><?php echo $task['task_created_by_fullname']; ?></span> </h3>
+                </div>
+				<?php 
+					if($task['color'] != NULL){
+						$colorCode = 'style="background-color:#'.$task['color'].'"';
+					} else {
+						$colorCode = '';
+					}
+				?>
+                <!--<div class="thirdCol"><span class="datePosted">12.12.14</span> <span class="assignTo">MB</span></div>-->
+				 <div class="thirdCol"><?php echo strtotime($task['due_date']) ? '<span class="datePosted newDatePosted">'.date($config['phpDateFormat'], strtotime($task['due_date'])).'</span>' : $task['due_date']; ?> <?php echo empty($task['task_owner_shortname']) ? '' : '<span '.$colorCode.'>'.strtoupper($task['task_owner_shortname']).'</span>'; ?></div>
+              </div>
+			<?php }
+			} ?>
+            <!--<a class="viewMore" id="closed_view_more" href="javascript:;">View More..</a>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="betaCulmn  taskDisrpition" >
+      <div class="taskCulmnInn">
+      <div id="tasksRightGrid" style="display:none">
+        <div class="editDrop"> <span class="editTaskBtn"></span>
+          <ul>
+            <!--<li>Edit</li>-->
+            <li onclick="deleteTask($('#currentTaskId').val(), '<?php echo $entity_id; ?>', '<?php echo $entity_type; ?>');">Delete</li>
+          </ul>
+        </div>
+        <div class="cb"></div>
+        <div class="selectDrop">
+          <div class="assignedDrop">
+            <div class="dropValue">Unassigned</div>
+            <ul>
+              <?php foreach($usersList as $userId => $userText){?>
+              <li onclick="UpdateTaskParam($('#currentTaskId').val(), 'assigned_to', <?php echo $userId; ?>);"><?php echo $userText; ?></li>
+              <?php } ?>
+            </ul>
+          </div>
+        </div>
+       <div class="selectDrop">
+          <div class="datePickInput taskDatePicker ">
+          	<div class="taskpicker noDueDate" onclick="populareDueDateForm($('#currentTaskId').val());">No Due Date</div>
+            <?php /*?><input name="due_date" type="text" class="taskpicker" placeholder="DD/MM/YYYY" />
+            <span class="datePickCal"></span><?php */?></div>
+        </div>
+        <div class="selectDrop">
+          <select class="dropdown" id="task_category" name="task_category">
+		  <option value="0"><?php echo 'Category';?></option>
+		  <?php foreach($CategoryList as $data){?>
+            <option value="<?php echo $data['category_id'];?>"><?php echo $data['category_title'];?></option>
+            <?php } ?>
+          </select>
+        </div>
+        <div class="selectDrop">
+          <select class="dropdown" id="task_subject" name="task_subject">
+            <option value="0">Subject</option>
+            <?php foreach($subjectList as $data){?>
+            <option value="<?php echo $data['subject_id'];?>"><?php echo $data['subject_title'];?></option>
+            <?php } ?>
+          </select>
+        </div>
+        <div class="selectDrop">
+          <select class="dropdown" id="task_priority" name="task_priority">
+            <option value="0">Priority</option>
+            <?php foreach($priorityList as $data){?>
+            <option value="<?php echo $data['priority_id'];?>"><?php echo $data['priority_title'];?></option>
+            <?php } ?>
+          </select>
+        </div>
+        <div class="taslTitle">
+          <p id="taskTitleRightGrid"></p>
+          <input type="hidden" id="currentTaskId" />
+          <input type="text" class="taskTitleEdit inputTxt" id="taskTitleUpdate" onblur="UpdateTaskParam($('#currentTaskId').val(), 'task_title', $('#taskTitleUpdate').val());">
+        </div>
+        <div class="writeCommentBlock">
+          <input type="hidden" name="task_id" value="" />
+          <textarea placeholder="Write a comment..." name="task_comment" id="task_comment"></textarea>
+          <div class="commentBottom">
+            <div class="attachfile">
+              <input type="file" id="file_upload">
+            </div>
+          </div>
+        </div>
+        <a class="popupLink fr" href="javascript: saveComment();">Comment</a>
+        <div class="prevComments">
+          <div id="historyMainDataDiv">
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Calender UI -->
+<div class="datePickerPopup">
+	<div id="div3_example" style="margin:10px 0 30px 0; border:dashed 1px red; width:205px; height:230px;" align="center"></div>
+	<div id="due_date_option" style="display:none;" class="dateControlls">
+		<div>
+			<select name="repeat" id="repeat" onchange="g_globalObject.datePatternSelected($('#repeat option:selected').val());manageEndDate();">
+				<option value="1">No Repeat</option>
+				<option value="2">Daily</option>
+				<option value="3">Working Days</option>
+				<option value="4">Weekly</option>
+				<option value="5">Bi Weekly</option>
+				<option value="6">Monthly</option>
+				<option value="7">Yearly</option>
+			</select>
+		</div>
+		<div class="endDateTrim">
+			<label class="labelCheck"><input type="checkbox" name="endon" id="endon" onclick="manageEndDate();" /><i></i></label> End on: <input type="text" name="endon_date" id="endon_date" placeholder="DD/MM/YYYY" readonly="readonly" class="inputTxt" onblur="validateEndOnDate($(this).val());" />
+		</div>
+	</div>
+	<div class="buttonsDisplay">
+		<input type="hidden" name="due_date" id="due_date" value="" />
+		<input type="button" name="urgent" id="urgent" value="Urgent" class="cmnBtn calBtns" onclick="UpdateTaskParam($('#currentTaskId').val(), 'due_date', $(this).val());" /><input type="button" name="noduedate" id="noduedate" value="No Due Date" class="cmnBtn calBtns" onclick="UpdateTaskParam($('#currentTaskId').val(), 'due_date', $(this).val());" /><input type="button" class="cmnBtn fr" name="save" id="save_due_date" value="Save" disabled="disabled" onclick="UpdateTaskParam($('#currentTaskId').val(), 'due_date', $('#due_date').val());" />
+	</div>
+</div>
+<!-- Calender UI -->
+  
+</div>
+<!-- TaskInfo End-->
+<?php /*?><div class="lightBox" id="newtask">
+  <div class="lightBoxMid" style="width:900px">
+    <div class="lightBoxTitle">Create New Task<a href="javascript: populareDueDateForm();" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p commonForm">
+      <div class="formRow">
+        <!--<label class="labelControll">Task</label>-->
+        <div class="inputDiv">
+          <!--<form name="frm_create_task" id="frm_create_task" metgod="post">-->
+          <input type="hidden" name="entity_type" value="<?php echo $entity_type; ?>" />
+          <input type="hidden" name="entity_id" value="<?php echo $entity_id; ?>" />
+          <input type="task_title" name="task_title" class="inputTxt" />
+          <!--</form>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div><?php */?>
+
+<script type="text/javascript">
+
+var files = new Array();
+var selectedFiles = new Array();
+
+function taskHeight(){
+	if($('.customerTabing').length==0){
+		var contentINH =50;
+		var winH=$(window).height();
+		if(winH > contentINH){
+			var taskH=winH - contentINH;
+			$('.tasksBlock .taskCulmnInn').css({'max-height':taskH+'px','min-height':taskH+'px'});
+		}else{
+			$('.tasksBlock .taskCulmnInn').css({'max-height':'100px'});
+		}
+	}
+
+}
+$(window).resize(function(){
+	taskHeight();
+})
+$(document).ready(function(){
+	taskHeight();
+	$('input[name=task_title]').on('keypress', function(event){
+		if(event.keyCode == 13){
+			createTask();
+		}
+	});	
+	
+	$('#task_category').dropkick({
+		change: function () {
+			var value = this.value;
+			if(value > 0){
+				var id = $('#currentTaskId').val();
+				UpdateTaskParam(id, 'task_category', value);
+			} else {
+				var task_subject = '<option value="0">Subject</option>';
+				$('#task_subject').html(task_subject).dropkick('refresh');
+			}
+		}
+	});
+	
+	$('#task_subject').dropkick({
+		change: function () {
+			var value = this.value;
+			if(value > 0){
+				var id = $('#currentTaskId').val();
+				UpdateTaskParam(id, 'task_subject', value);
+			}
+		}
+	});
+	
+	$('#task_priority').dropkick({
+		change: function () {
+			var value = this.value;
+			if(value > 0){
+				var id = $('#currentTaskId').val();
+				UpdateTaskParam(id, 'task_priority', value);
+			}
+		}
+	});
+	
+	$('input[name=due_date]').on('change', function(){
+		var id = $('#currentTaskId').val();
+		var modColumnValue = $('input[name=due_date]').val();
+		UpdateTaskParam(id, 'due_date', modColumnValue);
+	});
+	
+});
+
+$(document).ready(function(){
+	setTimeout(function(){
+		$('#file_upload').uploadify({
+			'swf'      : '/uploadify.swf',
+			'uploader' : '/attachfile',
+			'auto': false,
+			'multi': true,
+			'fileTypeExts' : '*.pdf; *.txt; *.html; *.zip; *.doc; *.xls; *.ppt; *.gif; *.png; *.jpeg; *.jpg',
+			//'fileSizeLimit' : '100KB',
+			'queueSizeLimit' : 3,
+			'onUploadSuccess' : function(file, data, response) {
+				files.push(file.name);
+			},
+			'onSelect' : function(file) {
+				selectedFiles.push(file.name);
+			}
+		});
+	}, 0);
+});
+</script>
+
+<script type="text/javascript">
+	window.onload = function(){		
+		
+		g_globalObject = new JsDatePick({
+			useMode:1,
+			isStripped:true,
+			target:"div3_example"
+			/*selectedDate:{				This is an example of what the full configuration offers.
+				day:5,						For full documentation about these settings please see the full version of the code.
+				month:9,
+				year:2006
+			},
+			yearsRange:[1978,2020],
+			limitToToday:false,
+			cellColorScheme:"beige",
+			dateFormat:"%m-%d-%Y",
+			imgPath:"img/",
+			weekStartDay:1*/
+		});
+		
+		g_globalObject.setOnSelectedDelegate(function(){
+			var obj = g_globalObject.getSelectedDay();
+			if(obj.month.toString().length == 1)
+				obj.month = '0'+obj.month;
+			var selectedDate = obj.day + "/" + obj.month + "/" + obj.year;
+			
+			$('#save_due_date').removeAttr('disabled');
+			$('#due_date').val(selectedDate);
+			$('#due_date_option').show();
+			populateCalender();
+			
+			/*var endOnDate = '';
+			if($('#endon_date').val() != ''){
+				var dateArr = $('#endon_date').val().split('/');
+				endOnDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
+			}
+			
+			g_globalObject.datePatternSelected($('#repeat option:selected').val(), endOnDate);*/
+		});	
+		
+	};
+</script>

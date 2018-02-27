@@ -1,0 +1,70 @@
+<div class="lightBoxContent fl width100p commonForm rowSpace">
+<?php
+$newOrderForm->prepare();
+echo $this->form()->openTag($newOrderForm);
+echo $this->formElement($this->newOrderForm->get('id'));
+echo $this->formElement($this->newOrderForm->get('cust_id'));
+echo $this->formElement($this->newOrderForm->get('opp_id'));
+echo $this->formElement($this->newOrderForm->get('order_attachment'));
+?>
+
+
+    <div class="formRow">
+		<label class="labelControll"><?php echo $this->newOrderForm->get('exp_delivery_date')->getLabel(); ?>*</label>
+		<div class="inputDiv datePickInput width150"><?php echo $this->formElement($this->newOrderForm->get('exp_delivery_date')); ?><span class="datePickCal"></span></div>
+	</div>
+	 <div class="writeCommentBlock marB10">
+			<?php echo $this->formElement($this->newOrderForm->get('comment')); ?>
+			<div class="commentBottom">
+			  <div class="attachfile">
+				<?php echo $this->newOrderForm->get('order_file')->getLabel(); ?>
+				<?php echo $this->formElement($this->newOrderForm->get('order_file')); ?>
+				<span id="fileNameData" style="display:none; margin-left:100px"></span>
+			  </div>
+			</div>
+		  </div>
+	  <div class="formRow">
+			<label class="labelControll"><?php echo $this->newOrderForm->get('opp_name')->getLabel(); ?>*</label>
+			<div class="inputDiv"><?php echo $this->formElement($this->newOrderForm->get('opp_name')); ?><a data-popup="opportunitylookup" class="cmnBtn blueBtn lightBoxClick" href="javascript:;" id="orderOpportunityLookup">Lookup</a></div>
+		</div>
+		<div class="formRow">
+			<label class="labelControll"><?php echo $this->newOrderForm->get('invoice_number')->getLabel(); ?></label>
+			<div class="inputDiv"><?php echo $this->formElement($this->newOrderForm->get('invoice_number')); ?><a data-popup="invoicelookup" class="cmnBtn blueBtn lightBoxClick" href="javascript:;">Lookup</a>
+			<a href="javascript:;" class="detachInvoice" onclick="$('#invoice_number').val('');">Detach Invoice</a>  
+			</div>
+		</div> 
+		
+	
+	<div class="formButtons tc fl width100p"><?php echo $this->formElement($this->newOrderForm->get('order_save')); ?> <?php echo $this->formElement($this->newOrderForm->get('cancel')); ?></div>
+
+<?php echo $this->form()->closeTag(); ?>
+</div>
+<!-- Consine Item Light Box End--> 
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('#exp_delivery_date').datepicker({
+		dateFormat: '<?php echo $config["jsDateFormat"]; ?>',
+		minDate: new Date(),
+		changeYear: true,
+		beforeShow: function() {
+			$(this).after($(this).datepicker("widget"));
+		}
+	});
+	
+	$('#order_file').live('change', function(){ 
+		//$("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+		$('#order_save').attr('disabled', 'disabled');
+		$("#frm_order").ajaxForm({
+			success: function(response){
+				if(response){
+					$('#fileNameData').show();
+					$('#fileNameData').html(response);
+					$('#order_attachment').val(response);
+				}
+				$('#order_save').removeAttr('disabled');
+			}
+		}).submit();
+	});
+});
+</script>

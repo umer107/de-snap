@@ -1,0 +1,48 @@
+<div class="contentArea padLR0">
+  <div class="fl width100p contentINN">
+	<h2 class="cmnHeader">Invoice Email</h2>
+  </div>
+  <div class="customerTabing fl width100p ctb">	
+	<div class="customTabbingInner">
+		<div class="emailPage">
+			<a class="cmnBtn blueBtn" href="/customerdetails/<?php echo $emailData['cust_id']; ?>">Back to List</a> <a class="cmnBtn blueBtn popupLink lightBoxClick" data-popup="replyEmail" href="javascript:;">Reply</a>
+			<?php
+			for($i = count($emails); $i >= 1; $i--){
+				$email = $imap->getMessage($emails[$i-1]);
+				?>
+				<div class="emailBox">
+					<div class="emailHeader">
+						<table width="100%" cellpadding="5" cellspacing="0" border="0">
+							<tr><?php echo '<td>To:</td> <td colspan="2">'.implode(', ', $email['to']); ?></td></tr>
+							
+							<tr><?php echo '<td>From:</td> <td colspan="2">'.$email['from'];  ?></td></tr>
+							<tr><td>Subject: </td><td><?php  echo $email['subject']; ?></td><td align="right"><?php  echo $email['date']; ?></td></tr>
+							
+						</table>
+					</div>				
+					<div class="emailBody">
+					<?php echo $email['body']; ?>					
+					<?php if(!empty($email['attachments'])){ ?>
+						<div class="attachments">
+							<?php foreach($email['attachments'] as $key => $attachment){ ?>
+								<a href="/downloademailattachment/<?php echo base64_encode($emails[$i-1]); ?>/<?php echo base64_encode($key); ?>"><?php echo $attachment['name']; ?></a><br />
+							<?php } ?>
+						</div>
+					<?php } ?>
+					</div>
+				</div>				
+			<?php }	?>		
+		</div>
+	</div>
+  </div>
+</div>
+
+<div class="lightBox" id="replyEmail">
+ 	<div class="lightBoxMid" style="width:600px">
+		<div class="lightBoxTitle">Reply Email<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+			<div class="lightBoxContent fl width100p commonForm rowSpace">
+				<?php echo $this->partial('invoice/index/replyemail.phtml'); ?>
+			</div>
+		</div>
+	</div>
+</div>

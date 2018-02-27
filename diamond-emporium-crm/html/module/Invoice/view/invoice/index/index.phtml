@@ -1,0 +1,61 @@
+<div class="contentArea padLR0">
+  <div class="fl width100p contentINN">
+	<h2 class="cmnHeader">Quotes &amp; Invoices</h2>
+	<?php //if(isset($flashMessages[0]) && !empty($flashMessages[0]) && $flashMessages[0] != 200) : ?>
+	<?php if(isset($flashMessages[1]) && !empty($flashMessages[1])) : ?>
+		<div style="text-align:center; color: <?php echo $flashMessages[0] == 200 ? '#80c47e' : 'red'; ?>"><?php echo $flashMessages[1]; ?></div>
+	<?php endif; ?>
+  </div>
+  <div class="customerTabing fl width100p ctb">
+	<ul>
+	  <li class="<?php echo $tab == 'quo' ? '' : 'current'; ?>"><a href="javascript:;">Invoices <!--<span>84</span>--></a></li>
+	  <li class="<?php echo $tab == 'quo' ? 'current' : ''; ?>"><a href="javascript:;">Quotes</a></li>
+	</ul>
+	<div class="customTabbingInner">
+	  <div class="customerTabingInfo" style="display:<?php echo $tab == 'quo' ? 'none' : 'block'; ?>">
+		<div class="QuoteMain"> <a class="popupLink lightBoxClick" href="/newinvoice"  data-popup="addItem">Create New Invoice</a>
+		  <div class="cb"></div>
+		  <div class="mainSearch marR10 marT15">                
+			<input type="text" id="invoice_searchInput" placeholder="search.." class="searchInput" name="search">
+			<input type="button" onClick="javascript:getInvoices('invoice-grid',10);" id="globalGridSearch" value="Go!" class="inputGo">        
+		  </div>
+		  <div class="cb"></div>
+          <div class="tableData tableNeView marB30" style="overflow:visible">
+				<div class="tableHading" style="width:100%"> Invoices </div>
+				<div class="formTable manageMembers" id="invoice-grid" style="width:100%"></div>  
+		  </div>
+		</div>
+	  </div>
+	  <div class="customerTabingInfo" style="display:<?php echo $tab == 'quo' ? 'block' : 'none'; ?>">
+		<div class="QuoteMain"> <a class="popupLink" href="/newquotes">Create New Quote</a>
+		  <div class="cb"></div>
+		  <div class="mainSearch marR10 marT15">
+			<input type="text" id="quote_search" placeholder="search.." class="searchInput" name="search" value="<?php echo $_GET['search']?>">
+			<input type="button" onClick="javascript:getQuotes('quote-grid',10);" id="globalGridSearch" value="Go!" class="inputGo">
+		  </div>
+		  <div class="cb"></div>
+			<div class="tableData tableNeView marB30" style="overflow:visible">
+				<div class="tableHading" style="width:100%"> Quote </div>
+				<div class="formTable manageMembers" id="quote-grid" style="width:100%"></div>  
+			</div>
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="lightBox" id="composeEmail">
+ 	<div class="lightBoxMid" style="width:600px">
+		<div class="lightBoxTitle">Compose Email<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+		<div class="lightBoxContent fl width100p commonForm rowSpace">
+			<div id="composeemailpopup"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	getQuotes("quote-grid", 10)
+	getInvoices("invoice-grid", 10);
+})
+</script>

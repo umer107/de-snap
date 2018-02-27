@@ -1,0 +1,8 @@
+#!/bin/sh
+
+rsync -av bin				openseed@dv1.crm.de:sites/crm.diamondemporium.com.au
+rsync -av html/module		openseed@dv1.crm.de:sites/crm.diamondemporium.com.au/html
+rsync -av html/library/De	openseed@dv1.crm.de:sites/crm.diamondemporium.com.au/html/library
+rsync -av html/library/Xero	openseed@dv1.crm.de:sites/crm.diamondemporium.com.au/html/library
+rsync -av html/config		openseed@dv1.crm.de:sites/crm.diamondemporium.com.au/html
+rsync -av html/public		openseed@dv1.crm.de:sites/crm.diamondemporium.com.au/html

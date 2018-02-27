@@ -1,0 +1,725 @@
+AWSTATS DATA FILE 7.4 (build 20140726)
+# If you remove this file, all statistics for date 201507 will be lost/reset.
+# Last config file used to build this data file was /home/diamond/tmp/awstats/awstats.diamond.openseed.com.au.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 28
+POS_GENERAL 2019                
+POS_TIME 2691                
+POS_VISITOR 16109               
+POS_DAY 16703               
+POS_DOMAIN 3466                
+POS_LOGIN 3756                
+POS_ROBOT 3911                
+POS_WORMS 4078                
+POS_EMAILSENDER 4209                
+POS_EMAILRECEIVER 4352                
+POS_SESSION 17417               
+POS_SIDER 17624               
+POS_FILETYPES 4487                
+POS_DOWNLOADS 4762                
+POS_OS 4833                
+POS_BROWSER 5032                
+POS_SCREENSIZE 5525                
+POS_UNKNOWNREFERER 5599                
+POS_UNKNOWNREFERERBROWSER 5686                
+POS_ORIGIN 5797                
+POS_SEREFERRALS 5941                
+POS_PAGEREFS 6085                
+POS_SEARCHWORDS 6233                
+POS_KEYWORDS 6385                
+POS_MISC 2355                
+POS_ERRORS 6444                
+POS_CLUSTER 3612                
+POS_SIDER_404 6582                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20150803092736 1 0 10845341022241
+FirstTime 20150701013103
+LastTime 20150731140734
+LastUpdate 20150803221131 1 0 0 0 0
+TotalVisits 75                  
+TotalUnique 12                  
+MonthHostsKnown 0                   
+MonthHostsUnknown 12                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 0 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 487 899 4220702 10 12 2232
+1 31 31 71395 3 3 1116
+2 1 1 1135 0 0 0
+3 0 0 0 0 0 0
+4 0 0 0 0 0 0
+5 0 0 0 0 0 0
+6 0 0 0 0 0 0
+7 0 0 0 0 0 0
+8 131 186 847550 8 10 4468
+9 54 54 175626 3 4 4468
+10 93 93 260656 4 4 4468
+11 130 202 1001724 3 56 60782
+12 397 619 1972328 19 30 22320
+13 72 138 1224214 10 17 7688
+14 1157 3334 16861454 78 101 12284
+15 1061 2233 8873316 40 70 6670
+16 2380 4416 36222076 711 743 584198
+17 664 1848 38273481 31 46 3744049
+18 480 1008 6913206 33 90 66367
+19 1179 3077 19243110 70 212 3561604
+20 1468 3291 26262669 65 146 1081514
+21 837 2952 14419970 65 74 15752
+22 1345 3193 34365018 17 26 5581
+23 702 2683 31155216 30 40 7857
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 25 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 4
+in 11034 27533 226292749
+au 1626 2548 13919453
+us 5 71 876073
+ca 4 106 1276571
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 25 first Hits must be first (order not required for others)
+BEGIN_ROBOT 1
+crawl 183 3134091 20150723195123 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 10
+css 2854 16636471 0 0
+png 1213 6367149 0 0
+sql 1 1628 0 0
+swf 130 1612738 0 0
+zip 1 16015192 0 0
+html 1380 5688101 0 0
+js 12902 109371093 0 0
+jpg 430 67153740 0 0
+Unknown 11158 17897304 0 0
+gif 189 1621430 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 1
+/DEsv.zip 1 0 16015192
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 9
+winxp 13891 6057
+ios_iphone 372 10
+java 118 118
+win2000 616 412
+linux 528 13
+win7 12168 4431
+macosx 1896 1220
+win8 3 3
+win8.1 666 405
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 21
+chrome44.0.2403.125 774 398
+msie6.0 616 412
+safari7.0 2 2
+chrome40.0.2214.94 92 26
+firefox40.0 570 155
+safari6.0 370 8
+chrome39.0.2171.95 52 1
+firefox38.0 1001 192
+chrome43.0.2357.132 5370 2760
+firefox24.0 52 1
+chrome43.0.2357.130 2935 1541
+chrome44.0.2403.107 904 505
+msie8.0 984 639
+firefox39.0 8934 3336
+msie7.0 54 3
+chrome44.0.2403.89 1749 554
+chrome27.0.1453 370 8
+chrome43.0.2357.134 5307 2006
+safari8.0 2 2
+msie9.0 2 2
+Unknown 118 118
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 1
+Java/1.8.0_51 20150724163624
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 1110 1110
+From1 0 0
+From2 0 0
+From3 0 0
+From4 11559 29148
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 25 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 0
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 25 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 5
+302 990 0
+206 24 5572352
+500 1 2276
+404 331 477817
+301 6 6882
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referrer
+BEGIN_SIDER_404 152
+/js/jquery-migrate-1.2.1.min.js/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/jqxscrollbar.js/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/jqxgrid.pager.js 2 http://diamond.openseed.com.au/public/
+/invoicequotes 2 http://diamond.openseed.com.au/dashboard
+/js/jsDatePick.jquery.full.1.3.js 2 http://diamond.openseed.com.au/public/
+/invoice/delete/27 1 http://diamond.openseed.com.au/invoicequotes
+/js/jqwidgets/jqxdata.js/ 1 http://diamond.openseed.com.au/
+/milestone_attachments/587932083_1437645661.jpg 13 http://diamond.openseed.com.au/jobdetails/16
+/js/engagementring.js 2 http://diamond.openseed.com.au/public/
+/suppliers 1 http://diamond.openseed.com.au/orderdetails/21
+/js/jquery-migrate-1.2.1.min.js 2 http://diamond.openseed.com.au/public/
+/js/jquery.maskedinput.min.js/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/scripts/gettheme.js 2 http://diamond.openseed.com.au/public/
+/js/jquery-ui-timepicker-addon.js/ 1 http://diamond.openseed.com.au/
+/newquotes 2 http://diamond.openseed.com.au/newquotes
+/js/jquery-ui.js 2 http://diamond.openseed.com.au/public/
+/js/jqwidgets/styles/jqx.base-custom.css 2 http://diamond.openseed.com.au/public/
+/inventory_images/1 13 http://diamond.openseed.com.au/pendantdetails/8
+/js/jqwidgets/jqxgrid.selection.js/ 1 http://diamond.openseed.com.au/
+/js/suppliers.js 2 http://diamond.openseed.com.au/public/
+/js/notes.js/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/jqxgrid.sort.js/ 1 http://diamond.openseed.com.au/
+/js/opportunities.js/ 1 http://diamond.openseed.com.au/
+/js/jquery-ui-sliderAccess.js 2 http://diamond.openseed.com.au/public/
+/js/invoice.js 2 http://diamond.openseed.com.au/public/
+/js/opportunities.js 2 http://diamond.openseed.com.au/public/
+/js/jquery.uploadify.min.js/ 1 http://diamond.openseed.com.au/
+/js/inventory.js/ 1 http://diamond.openseed.com.au/
+/js/weddingring.js/ 1 http://diamond.openseed.com.au/
+/invoice/delete/47 2 http://diamond.openseed.com.au/invoicequotes
+/js/jqwidgets/jqxgrid.js/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/jqxpanel.js/ 1 http://diamond.openseed.com.au/
+/js/colorpicker/colpick.js/ 1 http://diamond.openseed.com.au/
+/css/jsDatePick_ltr.min.css 2 http://diamond.openseed.com.au/public/
+/js/jqwidgets/jqxgrid.columnsresize.js 2 http://diamond.openseed.com.au/public/
+/leaddetails/ 8 http://diamond.openseed.com.au/leaddetails/53
+/js/colorpicker/colpick.css/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/jqxdropdownlist.js/ 1 http://diamond.openseed.com.au/
+/opportunitydetails/ 4 http://diamond.openseed.com.au/opportunitydetails/67
+/js/common.js 2 http://diamond.openseed.com.au/public/
+/js/jquery-ui-sliderAccess.js/ 1 http://diamond.openseed.com.au/
+/css/jquery-ui.css 2 http://diamond.openseed.com.au/public/
+/6351342230978411062 1 http://diamond.openseed.com.au/
+/js/tasks.js 2 http://diamond.openseed.com.au/public/
+/comment_attachments/606/10353547_10152499639180957_191502246662191706_n.jpg 1 http://diamond.openseed.com.au/tasks
+/css/uploadify.css 2 http://diamond.openseed.com.au/public/
+/js/jqwidgets/jqxdropdownlist.js 2 http://diamond.openseed.com.au/public/
+/8055719659757189094 1 http://diamond.openseed.com.au/
+/customerdetails/ 66 http://diamond.openseed.com.au/customerdetails/50
+/superadmin@gmail.com/admin 7 -
+/img/uploadify-cancel.png 2 http://diamond.openseed.com.au/css/uploadify.css
+/css/animate.css 2 http://diamond.openseed.com.au/public/
+/js/jqwidgets/jqxlistbox.js 2 http://diamond.openseed.com.au/public/
+/js/chain.js 2 http://diamond.openseed.com.au/public/
+/js/invoice.js/ 1 http://diamond.openseed.com.au/
+/js/colorpicker/1322293437143900589 1 http://diamond.openseed.com.au/
+/js/colorpicker/colpick.js 2 http://diamond.openseed.com.au/public/
+/js/jqwidgets/jqxmenu.js 2 http://diamond.openseed.com.au/public/
+/js/jquery.maskedinput.min.js 2 http://diamond.openseed.com.au/public/
+/js/suppliers.js/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/jqxpanel.js 2 http://diamond.openseed.com.au/public/
+/js/colorpicker/colpick.css 2 http://diamond.openseed.com.au/public/
+/js/earring.js 2 http://diamond.openseed.com.au/public/
+/js/jqwidgets/scripts/gettheme.js/ 1 http://diamond.openseed.com.au/
+/js/jquery.min.1.11.0.js 2 http://diamond.openseed.com.au/public/
+/dashboard/ 1 -
+/js/7512559308036424217 1 http://diamond.openseed.com.au/
+/css/jquery-ui.css/ 1 http://diamond.openseed.com.au/
+/sitemap.xml 4 -
+/robots.txt 7 http://diamond.openseed.com.au/robots.txt
+/js/chain.js/ 1 http://diamond.openseed.com.au/
+/js/order.js/ 1 http://diamond.openseed.com.au/
+/js/tasks.js/ 1 http://diamond.openseed.com.au/
+/js/user.js 2 http://diamond.openseed.com.au/public/
+/js/jqwidgets/jqxbuttons.js/ 1 http://diamond.openseed.com.au/
+/js/miscellaneous.js/ 1 http://diamond.openseed.com.au/
+/css/6660218229724667244 1 http://diamond.openseed.com.au/
+/js/jqwidgets/scripts/1723242636160512771 1 http://diamond.openseed.com.au/
+/=3D%22%22 1 http://diamond.openseed.com.au/emailinvoice
+/js/pendant.js 2 http://diamond.openseed.com.au/public/
+/js/jsDatePick.jquery.full.1.3.js/ 1 http://diamond.openseed.com.au/
+/milestone_attachments/1 1 http://diamond.openseed.com.au/jobdetails/16
+/js/miscellaneous.js 2 http://diamond.openseed.com.au/public/
+/robots.txt/ 1 -
+/js/jqwidgets/jqxdata.js 2 http://diamond.openseed.com.au/public/
+/js/jqwidgets/jqxbuttons.js 2 http://diamond.openseed.com.au/public/
+/css/1970524163633065319 1 http://diamond.openseed.com.au/
+/comment_attachments/457/Desert.jpg 1 http://diamond.openseed.com.au/tasks
+/css/style.css/ 1 http://diamond.openseed.com.au/
+/js/earring.js/ 1 http://diamond.openseed.com.au/
+/invoice/delete/46 1 http://diamond.openseed.com.au/invoicequotes
+/js/jquery-ui-timepicker-addon.js 2 http://diamond.openseed.com.au/public/
+/js/notes.js 2 http://diamond.openseed.com.au/public/
+/js/jqwidgets/jqxmenu.js/ 1 http://diamond.openseed.com.au/
+/orders 1 http://diamond.openseed.com.au/inventory
+/css/style.css 2 http://diamond.openseed.com.au/public/
+/css/jquery-ui-timepicker-addon.css/ 1 http://diamond.openseed.com.au/
+/jobderails/10 1 -
+/jobdetails/ 1 -
+/js/jqwidgets/jqxgrid.sort.js 2 http://diamond.openseed.com.au/public/
+/css/jsDatePick_ltr.min.css/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/jqxgrid.js 2 http://diamond.openseed.com.au/public/
+/js/jquery.uploadify.min.js 2 http://diamond.openseed.com.au/public/
+/css/animate.css/ 1 http://diamond.openseed.com.au/
+/sitemap.xml/ 1 -
+/22072015/ 2 http://diamond.openseed.com.au/
+/js/dropkick.js 2 http://diamond.openseed.com.au/public/
+/js/jqwidgets/styles/jqx.base.css 2 http://diamond.openseed.com.au/public/
+/apple-touch-icon.png 2 -
+/js/jqwidgets/jqxgrid.selection.js 2 http://diamond.openseed.com.au/public/
+/js/leads.js/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/styles/jqx.base-custom.css/ 2 http://diamond.openseed.com.au/
+/js/weddingring.js 2 http://diamond.openseed.com.au/public/
+/js/engagementring.js/ 1 http://diamond.openseed.com.au/
+/createorder 1 -
+/comment_attachments/405/Penguins.jpg 1 http://diamond.openseed.com.au/tasks
+/js/jqwidgets/jqxcore.js/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/jqxgrid.columnsresize.js/ 1 http://diamond.openseed.com.au/
+/js/common.js/ 1 http://diamond.openseed.com.au/
+/js/order.js 2 http://diamond.openseed.com.au/public/
+/js/dropkick.js/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/jqxlistbox.js/ 1 http://diamond.openseed.com.au/
+/js/user.js/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/4067924606162998976 1 http://diamond.openseed.com.au/
+/js/jquery-ui.js/ 1 http://diamond.openseed.com.au/
+/dashboard 4 -
+/js/jqwidgets/5175028028007806887 1 http://diamond.openseed.com.au/
+/js/jqwidgets/styles/jqx.base.css/ 2 http://diamond.openseed.com.au/
+/js/jqwidgets/jqxgrid.pager.js/ 1 http://diamond.openseed.com.au/
+/css/uploadify.css/ 1 http://diamond.openseed.com.au/
+/js/leads.js 2 http://diamond.openseed.com.au/public/
+/js/jqwidgets/styles/6424545236282870020 1 http://diamond.openseed.com.au/
+/js/jquery.form.js/ 1 http://diamond.openseed.com.au/
+/js/5641187981595638196 1 http://diamond.openseed.com.au/
+/apple-touch-icon-precomposed.png 2 -
+/profile_photo/142254581634198913_39.jpg 2 http://diamond.openseed.com.au/customerdetails/39
+/js/jqwidgets/jqxcore.js 2 http://diamond.openseed.com.au/public/
+/orderdetails/21 1 http://diamond.openseed.com.au/orders
+/js/colorpicker/4075299835067251886 1 http://diamond.openseed.com.au/
+/inventory 2 http://diamond.openseed.com.au/newquotes
+/js/jqwidgets/scripts/517519531466497299 1 http://diamond.openseed.com.au/
+/js/jqwidgets/jqxgrid.filter.js/ 1 http://diamond.openseed.com.au/
+/js/pendant.js/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/jqxscrollbar.js 2 http://diamond.openseed.com.au/public/
+/js/jquery.form.js 2 http://diamond.openseed.com.au/public/
+/js/jqwidgets/jqxgrid.filter.js 2 http://diamond.openseed.com.au/public/
+/milestone_attachments/641890833_1437394798.jpg 1 http://diamond.openseed.com.au/jobdetails/1
+/css/jquery-ui-timepicker-addon.css 2 http://diamond.openseed.com.au/public/
+/js/jquery.min.1.11.0.js/ 1 http://diamond.openseed.com.au/
+/js/jqwidgets/styles/995845456642829760 1 http://diamond.openseed.com.au/
+/inventory-pendant 1 http://diamond.openseed.com.au/inventory
+/js/inventory.js 2 http://diamond.openseed.com.au/public/
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 25 first Hits must be first (order not required for others)
+BEGIN_VISITOR 12
+202.62.72.163 11027 27475 225320770 20150730153749
+203.174.189.190 906 1465 6512891 20150730161652
+203.174.133.142 408 636 5263558 20150730184144
+110.175.78.225 219 352 1881840 20150727231006
+180.148.79.162 49 49 119089 20150714145725
+220.245.123.254 44 46 142075 20150731140734
+183.82.47.155 6 6 18123 20150715205151
+204.187.14.75 4 106 1276571 20150724145612
+208.43.239.10 3 3 3488 20150723195105
+49.204.103.53 1 52 953856 20150711235845
+209.58.131.213 1 52 637016 20150723214440
+23.110.1.56 1 16 235569 20150709232918
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 25
+20150701 1 1 1135 1
+20150703 8 110 2412919 1
+20150704 2 2 2270 2
+20150705 5 5 5675 2
+20150706 8 67 6482 2
+20150707 981 2279 8978593 2
+20150708 1666 3252 11281754 3
+20150709 1548 3449 15810726 4
+20150710 625 1066 2246038 6
+20150711 1 52 953856 1
+20150713 655 1425 4584924 2
+20150714 577 1041 4308591 8
+20150715 282 1020 2771634 3
+20150716 348 687 4753379 2
+20150717 943 2012 9215471 2
+20150720 31 31 53180 3
+20150721 647 1590 4077985 2
+20150722 691 2677 58926365 1
+20150723 981 3633 59146718 5
+20150724 1315 2221 20054631 7
+20150727 197 400 3556256 5
+20150728 641 2275 18626106 4
+20150729 113 182 4268974 3
+20150730 359 735 6179109 3
+20150731 44 46 142075 1
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 7
+1h+ 29
+5mn-15mn 7
+2mn-5mn 6
+30s-2mn 5
+0s-30s 20
+15mn-30mn 5
+30mn-1h 3
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 25 first Pages must be first (order not required for others)
+BEGIN_SIDER 260
+/ajaxrecordscount 2355 439237 0 15
+/ 1357 5635048 53 28
+/ajaxgetopportunities 944 2091910 0 2
+/ajaxinvoicelookup 645 350073 0 0
+/ajaxgetdiamonds 524 622614 0 2
+/ajaxorderlist 464 251018 0 5
+/orders 311 1074789 4 0
+/ajaxjoblist 269 55258 0 4
+/ajax-quote 258 122742 0 0
+/ajax-invoice 237 130836 0 2
+/ajaxgetsuppliers 229 109670 0 2
+/invoicequotes 222 506547 3 0
+/inventory 210 1704862 2 0
+/ajaxcustomerslist 197 206034 0 3
+/editgridview 196 32817 0 0
+/ajaxgetweddingrings 181 140860 0 1
+/ajaxgetleads 176 68591 0 1
+/dashboard 168 294510 1 0
+/ajaxgetpendants 139 91544 0 0
+/customers 130 603058 2 0
+/ajaxgetmiscellaneous 130 61870 0 0
+/uploadify.swf 130 1612738 0 2
+/ajaxgetengagementrings 125 68078 0 0
+/ajaxgetearrings 119 65286 0 0
+/ajaxuserlist 117 84083 0 1
+/customerdetails/38 1 15885 0 0
+/jobdetails/36 1 3673 0 0
+/supplierdetails/8 11 39354 0 0
+/inventory_images/ 12 14113 0 0
+/jobdetails/23 27 193528 1 0
+/upoadprofilephoto 2 0 0 0
+/ajaxcustomerslookup 25 14969 0 0
+/jobdetails/33 2 7326 0 0
+/diamonddetails/23 3 17524 0 0
+/opportunitydetails/49 1 9310 0 0
+/workshopfinalstep 5 105 0 0
+/setmasterpass 3 63 0 0
+/deletemiscellaneous 1 21 0 0
+/unassignpartner 3 63 0 0
+/saveengagementring 1 21 0 0
+/newquotes 65 254676 0 0
+/jobdetails/14 2 13387 0 0
+/deletesupplier/15 1 21 0 0
+/orderdetails/31 4 18686 0 0
+/notes 3 63 0 0
+/customerdetails/41 1 0 0 0
+/diamonddetails/9 1 5689 0 0
+/orderdetails/27 6 28142 0 0
+/saveearring 3 63 0 0
+/orderdetails/30 2 9391 0 0
+/orderdetails/20 19 87331 0 0
+/checkviewexist 77 546 1 0
+/orderdetails/26 15 70051 0 0
+/orderdetails/3 2 8314 0 0
+/updateopportunitystatus 1 21 0 0
+/newinvoice 26 81894 0 0
+/orderdetails/22 11 51309 0 0
+/jobdetails/26 9 84305 0 0
+/checkduplicate/51 38 798 0 0
+/leaddetails/26 1 9799 0 0
+/cpanel 12 34619 2 0
+/inventory-weddingring 63 458808 0 0
+/customerdetails/46 5 16403 0 0
+/diamonddetails/8 1 6149 0 0
+/deletetask 1 67 0 0
+/ajaxgetnotes/opportunity/59 2 44 0 0
+/emailinvoice 80 45422 1 2
+/diamonddetails/22 1 5868 0 0
+/profile_photo/ 2 1074 0 0
+/opportunitydetails/67 6 37305 0 0
+/jobdetails/9 2 7104 0 0
+/checkduplicate/12 18 378 0 0
+/diamonddetails/44 2 11251 0 0
+/orderdetails/12 12 53826 0 0
+/jobdetails/20 4 27058 0 0
+/checkduplicate/2 8 168 0 0
+/diamonddetails/19 1 5826 0 0
+/createjobpacket 62 1352 0 0
+/customerdetails/1 5 80387 0 0
+/deletesupplier/14 1 21 0 0
+/jobdetails/1 1 10178 0 0
+/diamonddetails/15 4 22994 1 0
+/ajaxgetnotes/opportunity/67 5 247 0 0
+/customerdetails/50 7 47363 0 0
+/jobdetails/18 4 22333 0 0
+/customerdetails/51 21 330865 0 0
+/jobdetails/15 4 32854 0 0
+/tasks 17 183700 1 0
+/ajaxpartnerslookup/2 6 12840 0 0
+/orderdetails/25 2 8802 0 0
+/supplierdetails/14 2 6986 0 0
+/diamonddetails/4 6 36169 0 0
+/ajaxgetnotes/opportunity/58 1 267 0 0
+/userform 43 39668 0 1
+/checkduplicate/49 8 168 0 0
+/saveuser 11 943 0 0
+/checkduplicateemail 5 105 0 0
+/jobdetails/32 1 3669 0 0
+/deletelead 1 21 0 0
+/startjob 24 504 0 0
+/leads 66 383270 0 0
+/consignform 77 214289 0 2
+/customerdetails/48 3 16111 0 0
+/inventory-chain 23 139270 0 0
+/checkduplicate/52 8 168 0 0
+/orderdetails/7 6 25740 0 0
+/jobdetails/22 2 11273 0 0
+/supplierdetails/9 5 17449 0 0
+/customerdetails/11 1 15613 0 0
+/validateowner 32 672 0 0
+/deletegridview 52 903 0 0
+/ajaxpartnerslookup/51 1 2001 0 0
+/orderdetails/2 17 77237 0 0
+/orderdetails/15 34 154876 0 0
+/js/jqwidgets/styles/ 2 12482 0 0
+/orderdetails/19 9 38754 0 0
+/leaddetails/40 8 78184 0 0
+/diamond_emporium.sql 1 1628 0 0
+/diamonddetails/21 5 29227 0 0
+/customerdetails/2 5 79598 0 0
+/ajaxpartnerslookup/47 1 2001 0 0
+/savediamond 48 498 0 0
+/customerdetails/45 4 0 0 0
+/deleteorder 9 189 0 0
+/createorder 47 1032 0 0
+/jobdetails/10 27 225364 0 0
+/saveattachments 1 23 0 0
+/ajaxgetnotes/opportunity/63 2 44 0 0
+/pendantdetails/19 1 6909 0 0
+/opportunitydetails/59 2 18582 0 0
+/pendantdetails/21 2 14394 0 0
+/supplierdetails/10 7 24478 0 0
+/deletecustomer 9 168 0 0
+/supplierdetails/13 5 18267 0 0
+/opportunitydetails/63 2 18528 0 0
+/ajaxgetnotes/lead/40 8 176 0 0
+/orderdetails/11 12 54233 0 0
+/gettaskhistorydetails 51 9040 0 0
+/savesuppliertask 4 246 0 0
+/customerdetails/39 3 32365 0 0
+/savecomment 4 92 0 0
+/uploadmultiplefile 19 947 0 0
+/orderdetails/21 16 74139 0 0
+/js/colorpicker/ 1 1071 0 0
+/jobdetails/5 1 3369 0 0
+/miscellaneousdetails/10 1 4183 0 0
+/supplierdetails/6 3 10764 0 0
+/jobdetails/31 1 3668 0 0
+/savecustomer 8 168 0 0
+/css/ 1 2205 0 0
+/jobdetails/19 19 182149 0 0
+/opportunitydetails/68 7 65293 0 0
+/editorderform 49 57370 0 0
+/ajaxpartnerslookup/12 3 6000 0 0
+/caststep1 6 127 0 0
+/approvejob/23/143808569571540654 2 23 0 0
+/unlinkfile 3 63 0 0
+/customerdetails/52 9 141408 0 0
+/diamonddetails/18 1 5876 0 0
+/getconsigndetails 4 916 0 0
+/supplierdetails/11 1 3485 0 0
+/orderdetails/8 2 8436 0 0
+/suppliers 112 432692 0 0
+/uploadfile 93 2929 0 0
+/approvejob/10 1 21 0 0
+/deletesupplier/9 2 42 0 0
+/convertleadform 5 11616 0 0
+/customerdetails/43 4 15955 0 0
+/saveconsign 15 317 0 0
+/deletediamond 2 42 0 0
+/jobdetails/12 29 285466 0 0
+/ajaxgetnotes/opportunity/68 8 1135 0 0
+/ajaxgetchain 108 54245 0 0
+/savemiscellaneous 7 149 0 0
+/customerdetails/47 5 47619 0 0
+/orderdetails/10 9 33831 0 0
+/orderdetails/6 1 4248 0 0
+/jobdetails/27 3 18538 0 0
+/orderdetails/16 21 90831 0 0
+/orderdetails/33 1 4724 0 0
+/inventory-miscellaneous 29 154004 0 0
+/gettaskdetails 47 8342 0 0
+/customerdetails/49 5 32018 0 0
+/orderdetails/14 10 45466 0 0
+/jobdetails/21 3 19409 0 0
+/ajaxpartnerslookup/52 2 4050 0 0
+/orderdetails/24 15 69962 0 0
+/startjobrequest 38 3679 0 1
+/customerdetails/31 18 47540 0 0
+/updateindividual 15 345 0 0
+/attachfile 1 38 0 0
+/customerdetails/8 1 15547 0 0
+/jobdetails/28 4 30910 0 0
+/jobdetails/11 3 14403 0 0
+/js/jqwidgets/ 1 12980 0 0
+/ajaxsupplierslookup 23 13381 0 0
+/pendantdetails/20 1 6908 0 0
+/savependant 12 263 0 0
+/opportunitydetails/58 1 9361 0 0
+/jobdetails/8 3 15324 0 0
+/orderdetails/32 7 32717 0 0
+/changetaskstatus 3 63 0 0
+/js/ 1 5659 0 0
+/miscellaneousdetails/6 1 4514 0 0
+/jobdetails/16 19 184870 0 0
+/savemygridview 72 6096 0 0
+/jobdetails/35 2 7312 0 0
+/customerdetails/12 3 47022 0 0
+/checkduplicate 11 231 0 0
+/orderdetails/5 1 4245 0 0
+/orderdetails/18 2 8520 0 0
+/jobdetails/29 1 3669 0 0
+/saveweddingring 1 22 0 0
+/caststep2 6 126 0 0
+/orderdetails/28 7 32676 0 0
+/diamonddetails/6 1 6017 0 0
+/jobdetails/6 2 13174 0 0
+/jobdetails/30 1 3663 0 0
+/orderdetails/4 7 29998 0 0
+/leaddetails/53 5 39164 0 0
+/jobdetails/13 10 69940 0 0
+/ajaxgetnotes/lead/26 1 22 0 0
+/websitelinks 26 75926 0 0
+/customerdetails/42 3 0 0 0
+/orderdetails/9 1 4203 0 0
+/opportunities 79 462309 0 0
+/orderdetails/13 9 40538 0 0
+/inventory-engagementring 40 316287 1 0
+/prototypestep2 6 126 0 1
+/workshopstep1 6 261 0 0
+/approvejob/23/143808567843929240 3 23 0 0
+/diamonddetails/16 2 11554 0 0
+/earringdetails/7 1 6914 0 0
+/orderdetails/29 2 9364 0 0
+/savecaddesign 21 462 0 0
+/orderdetails/23 4 17737 0 0
+/jobdetails/34 1 3654 0 0
+/jobdetails/2 4 14604 0 0
+/supplierdetails/12 5 17990 0 0
+/pendantdetails/8 1 6038 0 0
+/createtask 10 1243 0 0
+/jobdetails/25 5 43659 0 0
+/public/ 2 2354 0 0
+/workshopqualitycontrol 5 105 0 0
+/js/jqwidgets/scripts/ 1 1115 0 0
+/jobdetails/17 4 26304 0 0
+/orderdetails/17 4 17664 0 0
+/createcustomer 2 44 0 0
+/prototypestep1 6 127 0 0
+/orderdetails/1 12 51216 0 0
+/supplierdetails/15 1 3498 0 0
+/users 47 115253 1 0
+/ajaxgetnotes/opportunity/49 1 22 0 0
+/deletesupplier/13 1 21 0 0
+/ajaxgetnotes/lead/53 5 634 0 0
+/inventory-earring 35 258293 0 0
+/savepartner 1 21 0 0
+/jobdetails/7 1 3352 0 0
+/jobdetails/24 3 19384 0 0
+/inventory-pendant 45 344068 1 0
+END_SIDER

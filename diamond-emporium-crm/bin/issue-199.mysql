@@ -1,0 +1,8 @@
+CREATE TABLE `de_alerts` (
+  `alert_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `message` VARCHAR(128) NOT NULL,
+  `created_date` DATETIME NOT NULL,
+  `created_by` INT(11) NOT NULL,
+  `cleared_date` DATETIME NULL,
+  PRIMARY KEY (`alert_id`));

@@ -1,0 +1,351 @@
+Return-path: <pheonix@diamondemporium.com.au>
+Envelope-to: phoenix@diamond.openseed.com.au
+Delivery-date: Tue, 18 Aug 2015 14:12:42 +1000
+Received: from mail-bl2on0100.outbound.protection.outlook.com ([65.55.169.100]:45349 helo=na01-bl2-obe.outbound.protection.outlook.com)
+	by rs13-eqx3-syd.ha-node.net with esmtps (TLSv1.2:AES256-SHA256:256)
+	(Exim 4.85)
+	(envelope-from <pheonix@diamondemporium.com.au>)
+	id 1ZRYGP-000oG5-BX
+	for phoenix@diamond.openseed.com.au; Tue, 18 Aug 2015 14:12:42 +1000
+Content-Type: multipart/mixed;
+	boundary="_f21f7e06-0cf6-424c-be4e-9e8c3d922917_"
+Subject:
+To: Shelley Bedarov <shelley@diamondemporium.com.au>
+From: Christopher Zotos <Christopher.Zotos@iag.com.au>
+MIME-Version: 1.0
+Sender:
+	<MicrosoftExchange329e71ec88ae4615bbc36ab6ce41109e@DiamondEmporium.onmicrosoft.com>
+Message-ID: <4506417b-834d-4348-884e-d06f3b2a50ac@journal.report.generator>
+Date: Tue, 18 Aug 2015 04:12:35 +0000
+X-MS-Journal-Report:
+X-MS-Exchange-Parent-Message-Id:
+	<953848FD63CC9248BE818B438442BF5A0CD7E69B@SDC1MX051.auiag.corp>
+Auto-Submitted: auto-generated
+X-MS-Exchange-Generated-Message-Source: Journal Agent
+X-Microsoft-Exchange-Diagnostics:
+	1;BN3PR03MB1461;25:ijLbYBSOXVSDbGPmHfzvtAYS2vqpVjVGiVmaB4HrBy5g4xhHlGfZaTJjTh/TWZFHafkG2btXj7asB/jLy/8W3jwXxG1Vra9yl1hitN1a5cg7IpED3HIY/KKcRdbkIYbJ2xs9BIe+Fk2PzfSgOostCRzStBDvaTBkvyPXr6ATPMV2wc1mLzBoDtVWqXJyKagMb/FVkP7yxGtQivK2W320jEsnGA/5Trb49nhofdqAz7Nn36jSuUo4sM7EfIZ6Glee;4:Z160MWzROzEp+KHQOIwwJAPBMPSn5V1j2p+4YpbpSxEnPYs93M4GZrHnrteOQWt38k7t9v64kH9hTyLsdoR5Jy69kLJvKUVF1+eJCbqOS486xS2MxSpipzQ78z9lzzgzEd02KIjgKfr5z4qtvCX/s6kar4euEEJs/uslnoEF+PXdVc5U1FKiIdhMfh5xAj54AD2ObJIPo/esy2KbwaO1Io/zM9oo7ucLbSWyzU0Dt8+tOxbSoHNwx1k0JoaTSNOQYbzmUdMTjq6MO2NUh3rAMCxNLsm/BHZKEeoiUQIwyNhHw9ABfxOE3ecv1rnpDve/
+X-Microsoft-Antispam-PRVS:
+	<BN3PR03MB146174330AEA87AC3E7FB60E92780@BN3PR03MB1461.namprd03.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test:
+	BCL:0;PCL:0;RULEID:(601004)(8121501046)(5005006)(3002001);SRVR:BN3PR03MB1461;BCL:0;PCL:0;RULEID:;SRVR:BN3PR03MB1461;
+X-Forefront-PRVS: 067270ECAF
+X-Forefront-Antispam-Report:
+	SFV:NSPM;SFS:(10009020)(6009001)(189002)(199003)(5001860100001)(512954002)(450100001)(564344004)(575784001)(106356001)(33646002)(87976001)(77156002)(62966003)(110136002)(107886002)(84326002)(5001960100002)(64706001)(31696002)(4001540100001)(77806003)(31686004)(189998001)(5001830100001)(5406001)(105586002)(19580405001)(97736004)(68736005)(54356999)(19580395003)(50986999)(74482002)(3110400002)(4001450100002)(46102003)(92566002)(11286001)(5000100001)(25636003)(102106001)(4610100001)(101416001)(77266003)(42882004)(5416002)(5001840100002);DIR:OUT;SFP:1101;SCL:1;SRVR:BN3PR03MB1461;H:;FPR:;SPF:None;PTR:InfoNoRecords;MX:1;A:1;LANG:en;
+Received-SPF: None (protection.outlook.com: diamondemporium.com.au does not
+ designate permitted sender hosts)
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=pheonix@diamondemporium.com.au; 
+X-Microsoft-Exchange-Diagnostics:
+	=?us-ascii?Q?1;BN3PR03MB1461;23:zcXgzq7XRhZDIy9gSPhzQYalU2tWYIixDd5mBh2tk?=
+ =?us-ascii?Q?86m5IC5jFwjNW1Yi5SqE9ifyD2OJnCct34E/7OnV/NDxNuacIr5zw+r/gaSM?=
+ =?us-ascii?Q?LmPkEV+dkr88q1eWgasfVWiDiRCQsRgxnyvtyXG9Kr1ihIUG6EZXTBoQgyTO?=
+ =?us-ascii?Q?r3NOdgGbYjAoZA5V0SK17cvMJVMDQBmOpMer7YXsR4ambLNo/NqSDhbbe6bH?=
+ =?us-ascii?Q?2WmV/F4/FNA3HDvysnWcalKqKM2T3a1xpemntM7IJnhl3fMc5NDaW0SuQ0B2?=
+ =?us-ascii?Q?BR/aHbVaeKadmP4DvEcqW9egM0RzU3Tzk0ZiN/WXX31wbr4fx8M+Efjjk7wA?=
+ =?us-ascii?Q?Lucnz5ARI76j28I4JGqQCHWj1su56kOWyEdFQ0WHUq5kQNKzRupHt6KkYC8l?=
+ =?us-ascii?Q?MU4jgdahcvSetcGZcFnkAF8e9aOZt4n39CbTNVYNytplV+ozv792IuR74sYF?=
+ =?us-ascii?Q?kdGpa3e24A+lrOEiG5RKRMxRi4YYQRWLjrLbs4OZsuA566Z8o9U4t+ozIF6x?=
+ =?us-ascii?Q?Cn47VWrhAQ/Hsz5/M27bDlSzZS2yd+d3olmqRswIJ3f/nNEdlWzlbiDDTBdO?=
+ =?us-ascii?Q?parIKXf4F4zBZ2L9Q67B9U2hBa3a61nJREw7icK33jUW67+n7k96ExYgRrCv?=
+ =?us-ascii?Q?RbzMRORaHG6bnmb2bOQt9SZVFyWoTp7f78OgKzqQvj0b38oIeGcK4JWE+g6J?=
+ =?us-ascii?Q?HwmQKxJOYPouXSKQ6cNu4532Tu3dLrZ5gJXJkzqL2TIP0loRrB9hJncDtmSM?=
+ =?us-ascii?Q?59fcKn4c+QV0RM/eDiyx/QUUcc7AwYl38d4EK1U7Dd8KCGX8Z/mDpxSTd79z?=
+ =?us-ascii?Q?0av8OcaI6RqDU/JhLtUTHwjtMKuIZ88ZB90UWMeBUwSNdHZALiwTF9N9hchw?=
+ =?us-ascii?Q?W+t+Z1mh4DkqkWJwHFloVzMBOxUyDlQc28nnxN3rppsgtUkjHLmunVNnwsc8?=
+ =?us-ascii?Q?LddDb8K876Lix7SA1+b+4GnEONhcpl/428OPMMAgNR2kCjWLbCvmuoyzOxiI?=
+ =?us-ascii?Q?qBKlXn48ijYSr0ulVu2+J1TshtKSknQWhITTkKP0iJL7iPCiSe3E9jet636o?=
+ =?us-ascii?Q?NgUXmUtcTa84bUDHaeDATtKa1RTIM+G8UXeyqo+AkpJNfhJgc8Lz1XCm/mRd?=
+ =?us-ascii?Q?6CjixSYCFPkUDs0X/FxJ+CCDvXY6uFsjiEJjbvo0/E+NxH2l+XdneTJpuLmz?=
+ =?us-ascii?Q?0HwQ01nLJv8pHm6YxRnFd1gpctgdmamc6lyM1LtuERPW9JdC2gVLG0Cpb4lg?=
+ =?us-ascii?Q?fnSEtd3BJDKXhdKN/se+VlOZwbDD6HKKFlWGyNn?=
+X-Microsoft-Exchange-Diagnostics:
+	1;BN3PR03MB1461;5:CB9U7kL0FqqQvhnGVA8ZpL1l/IkAbP5jFaYfzieTihi2yap43fRtjoCOIgRysRRcAzh80A9kjJOKPw7fL81WS9RWw/ejq0UHe41rsvTXR+JPu7TKwJ3NvuBjbxyKIXwbE3datszlm3j7noqUHBC9fA==;24:jlq1v0fPs5MVOlkwdd5/F/v4fJFiWtPM9w7vu0MsFCgn7CbW7Vqcr12vG5RO8HuDicIDD3Bog0kn6xtFJf0GDMzHbmkEFfl0Cz96ydPltG4=
+SpamDiagnosticOutput: 1:23
+SpamDiagnosticMetadata: NSPM
+X-OriginatorOrg: DiamondEmporium.onmicrosoft.com
+
+--_f21f7e06-0cf6-424c-be4e-9e8c3d922917_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Sender: Christopher.Zotos@iag.com.au
+Subject: 
+Message-Id: <953848FD63CC9248BE818B438442BF5A0CD7E69B@SDC1MX051.auiag.corp>
+Recipient: shelley@diamondemporium.com.au
+
+--_f21f7e06-0cf6-424c-be4e-9e8c3d922917_
+Content-Type: message/rfc822
+
+Received: from BY2PR03CA042.namprd03.prod.outlook.com (10.141.249.15) by
+ BN3PR03MB1461.namprd03.prod.outlook.com (10.163.35.12) with Microsoft SMTP
+ Server (TLS) id 15.1.231.21; Tue, 18 Aug 2015 04:12:32 +0000
+Received: from BN1AFFO11OLC004.protection.gbl (2a01:111:f400:7c10::153) by
+ BY2PR03CA042.outlook.office365.com (2a01:111:e400:2c5d::15) with Microsoft
+ SMTP Server (TLS) id 15.1.231.21 via Frontend Transport; Tue, 18 Aug 2015
+ 04:12:32 +0000
+Authentication-Results: spf=pass (sender IP is 216.82.254.106)
+ smtp.mailfrom=iag.com.au; diamondemporium.com.au; dkim=none (message not
+ signed) header.d=none;diamondemporium.com.au; dmarc=bestguesspass action=none
+ header.from=iag.com.au;
+Received-SPF: Pass (protection.outlook.com: domain of iag.com.au designates
+ 216.82.254.106 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.82.254.106; helo=mail1.bemta7.messagelabs.com;
+Received: from mail1.bemta7.messagelabs.com (216.82.254.106) by
+ BN1AFFO11OLC004.mail.protection.outlook.com (10.58.53.75) with Microsoft SMTP
+ Server (TLS) id 15.1.243.9 via Frontend Transport; Tue, 18 Aug 2015 04:12:30
+ +0000
+Return-Path: Christopher.Zotos@iag.com.au
+Received: from [216.82.254.67] by server-10.bemta-7.messagelabs.com id 86/BD-18741-DA0B2D55; Tue, 18 Aug 2015 04:12:29 +0000
+X-Env-Sender: Christopher.Zotos@iag.com.au
+X-Msg-Ref: server-11.tower-196.messagelabs.com!1439871065!21485420!20
+X-Originating-IP: [168.140.182.21]
+X-StarScan-Received:
+X-StarScan-Version: 6.13.16; banners=iag.com.au,-,-
+X-VirusChecked: Checked
+Received: (qmail 1497 invoked from network); 18 Aug 2015 04:12:28 -0000
+Received: from unknown (HELO mail2.iag.com.au) (168.140.182.21)
+  by server-11.tower-196.messagelabs.com with AES128-SHA encrypted SMTP; 18 Aug 2015 04:12:28 -0000
+From: Christopher Zotos <Christopher.Zotos@iag.com.au>
+To: Shelley Bedarov <shelley@diamondemporium.com.au>
+Subject:
+Thread-Index: AdDZa9F8wn+OLxrGTBuL7YY396zWLQ==
+Date: Tue, 18 Aug 2015 04:10:29 +0000
+Message-ID: <953848FD63CC9248BE818B438442BF5A0CD7E69B@SDC1MX051.auiag.corp>
+Accept-Language: en-AU, en-US
+Content-Language: en-AU
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.124.34.67]
+Content-Type: multipart/alternative;
+	boundary="_6e5fcf2b-6cf8-43de-a793-1827c9d85823_"
+MIME-Version: 1.0
+X-MS-Exchange-Organization-OriginalArrivalTime: 18 Aug 2015 04:12:30.9296
+ (UTC)
+X-MS-Exchange-Organization-Network-Message-Id: 36160975-9c69-42c2-f697-08d2a7833c92
+X-MS-Exchange-Organization-OriginalClientIPAddress: 216.82.254.106
+X-MS-Exchange-Organization-OriginalServerIPAddress: 10.58.53.75
+X-EOPAttributedMessage: 0
+X-MS-Exchange-Organization-TargetResourceForest: namprd03.prod.outlook.com
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-Exchange-Organization-Id: 0b36ddba-7b6e-4ec0-b39b-09a1ed883f64
+X-MS-Exchange-Organization-FFO-ServiceTag: NA01B
+X-MS-Exchange-Organization-Exchange-Diagnostics-Stage-SecureDataContainer: 0
+X-MS-Exchange-Organization-DKIMBHOverride: Matched
+X-MS-Exchange-Organization-MxPointsToUs: true
+X-MS-Exchange-Organization-ReceivedHeaderBulk1OnConnect: 1
+X-MS-Exchange-Organization-ReceivedHeaderBulk1: 1
+X-MS-Exchange-Organization-OriginalEnvelopeRecipients: shelley@diamondemporium.com.au
+X-MS-Exchange-Organization-MxRecordAlignment: 2
+X-Microsoft-Exchange-Diagnostics: 1;BN1AFFO11OLC004;1:EGBXomlv84cD1F1jEJwNpHojWXgqBLY3x0rG87dcubd778SEjMUO/sZr1VhDXdVRmBUcY5M1e7MAHs5nxrI4Ai7gy26Efb0Ijn4x1RNNOPc27vOfAZ7kyR6O0qyzjt5pLEy8FR8sHHe/xvb0PTKP9aOoyz7NJqvtr/fLAtjmw3cJ3nvXXTEOaWzjPu7RIAgdaqCrZRFphzHHkj8hlnWJGe/zDm1PbIN3qqqlvEJ7I1uA+B8UGV1T73YofEMu9gujK9g12Q2r28V4os9vdccOxM+OV8QU+fw33/jnjVcwyak0gDkEPTSHtbUD2i9rpsatX+E9vUG8JPftJ165rSKvjOVnjtp/+K7Z99xUFqvSWCCNnr5l6FROLKs6bZii9pAA
+X-Forefront-Antispam-Report:
+	CIP:216.82.254.106;CTRY:US;IPV:NLI;EFV:NLI;SFV:NSPM;SFS:(6009001)(3000300001)(438002)(3050300001)(26244003)(189002)(199003)(106466001)(5001860100001)(63266004)(512954002)(450100001)(77156002)(62966003)(87836001)(110136002)(107886002)(84326002)(33656002)(63326003)(86362001)(64706001)(16236675004)(4001540100001)(45126002)(19625215002)(55666002)(189998001)(5001830100001)(90146999)(102836002)(55846006)(5406001)(2920100001)(5890100001)(54356999)(6806004)(2656002)(17816001)(50986999)(5001970100001)(74482002)(46102003)(92566002)(25636003)(5416002)(9006001);DIR:INB;SFP:;SCL:1;SRVR:BN3PR03MB1461;H:mail1.bemta7.messagelabs.com;FPR:;SPF:Pass;PTR:mail1.bemta7.messagelabs.com;MX:1;A:1;LANG:en;
+X-MS-Exchange-Organization-Scanned-By-IP-Filter: true
+X-MS-Exchange-Organization-Originating-Country: US
+X-MS-Exchange-Organization-Cross-Premises-Headers-Processed: BN1AFFO11OLC004.protection.gbl
+X-MS-Exchange-Organization-OrderedPrecisionLatencyInProgress: LSRV=BY2PR03CA042.namprd03.prod.outlook.com:TOTAL-FE=0.218|SMR=0.135(SMRPI=0.007(SMRPI-FrontendProxyAgent=0.007));2015-08-18T04:12:32.443Z
+X-MS-Exchange-Organization-ProcessedByConnectionValidationAgent: namprd03.prod.outlook.com
+X-MS-Exchange-Organization-MessageLatency: SRV=BN1AFFO11OLC004.protection.gbl:TOTAL-FE=1.294|SMR=1.015(SMRRC=0.057(SMRRC-TenantAttributionAndInboundConnectorAgent=0.024|SMRRC-Protocol
+ Filter Agent=0.002 |SMRRC-IP Filter Agent=0.009|SMRRC-Envelope Filter
+ Agent=0.020)|SMREH=0.808(SMREH-Protocol Filter Agent=0.807 ))|SMS=0.281
+X-MS-Exchange-Organization-MessageLatency:
+	SRV=BY2PR03CA042.namprd03.prod.outlook.com:TOTAL-FE=0.218|SMR=0.135(SMRPI=0.007(SMRPI-FrontendProxyAgent=0.007))
+X-MS-Exchange-Forest-ArrivalHubServer: BN3PR03MB1461.namprd03.prod.outlook.com
+X-MS-Exchange-Organization-AuthSource: BN1AFFO11OLC004.protection.gbl
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-FromEntityHeader: Internet
+X-Microsoft-Exchange-Diagnostics:
+	1;BN3PR03MB1461;2:lSiEDd3QSxT6WjnTwmxxmmyswVKeQpMapVw2qXOVo02+CS0w1h38RiXpa8l+QhNs6L6jSS3Vz3TZT+1NHvbu1yUKVcAIsTrechQ1f2oFcUagAACynpYeghYBjl+SDJWWeA0gd2onomyYimGSr1lgDZoOjhFs8/f23Amwevwpxrs=;3:xkKTcxPwel47LhoBMu0qDku5RzqDBR2ppbOj28+kqvNc2XlumGDp97mhCxA+bRBM1x2g8m0p7TxPpnfPB2i3nlDZuNw/6/Co+Cyvu6qUUwdWkTV3S2wtbD8zSpD14UuFiDbLEC80KnC1LX9mK8xbAjnl5qST15qT+KgWGJjCb3cbyY7osClDjBOMHWIzaozvHl4VyagaLr5/KCL1aHBFKL5rrFCNbUr4RCkT/McUTq0v7XhJFknzhuJWdhsDLUEd;25:Kf4HmSt/QcQpdmnhbuh1qQQ6q4pxuAhek5g/iCm8fGZyAV2Wn3QaHau+Oa/T4hJvoJyP+QYvPcj3805Y0Ynq4uF/58SxZ5nxm4ARYOtvYD2+Hc6GF6QplwdvWKEZF33IYLHlx3oXVOEpgU+6DRRcxiuYk0So5NeNbg4NCHNM+qBM/g/m+8tcA+miQ4z+EQySeVZLxkv7SBVbYl2D1TVVlyxu3/wfZdZnfy0Gddcn/svV1iH6kXffcQlwvUghCUhYS6pQzL83JieuEgRHplXBlw==
+X-Microsoft-Antispam:
+	UriScan:;BCL:0;PCL:0;RULEID:(71701002);SRVR:BN3PR03MB1461;
+X-MS-Exchange-Organization-OriginalSize: 8954
+X-MS-Exchange-Organization-HygienePolicy: Premium
+X-MS-Exchange-Organization-MessageFingerprint:
+	EC144C2C.AC178519.84D79FAB.54E8E9C8.201BC
+X-MS-Exchange-Organization-AVStamp-Service: 1.0
+X-MS-Exchange-Organization-Recipient-Limit-Verified: True
+X-MS-Exchange-Organization-TotalRecipientCount: 1
+X-MS-Exchange-Organization-Transport-Properties: DeliveryPriority=Normal
+X-MS-Exchange-Organization-Prioritization: 1
+X-MS-Exchange-Organization-Antispam-ContentFilter-ScanContext:
+	CategorizerOnResolved;CategorizerOnRouted;
+X-MS-Exchange-Organization-ASDirectionalityType: 1
+X-MS-Exchange-Organization-HeloRdns:
+	mail1.bemta7.messagelabs.com;mail1.bemta7.messagelabs.com
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test:
+	BCL:0;PCL:0;RULEID:(601004)(8121501046)(3002001);SRVR:BN3PR03MB1461;BCL:0;PCL:0;RULEID:;SRVR:BN3PR03MB1461;
+X-Microsoft-Exchange-Diagnostics:
+	1;BN3PR03MB1461;4:D89tQldr6TM2wzqe6XvYk7r5bu45AXtL/i3YZ4C3xD9vR4tz2hFxly39798Xpcoqa/ufg8AiFDlBPq4uwrfhsaRvt6jbmDS/t5UnXHmePs2KfktOPScmiVCM2t4AaJc8Xss5lNkb3WGeudoPn3V5mTPY5YkykMNHjMsto2tkCl5TiaVBwRX+57kzmZZNkOLYGsWT+IQIoyB0kyihXE3Jy60iAIZFZGxIoNFgrui4eSx8WFfy3qJ+MztWlMoVwl/0X71LNLnUAK3IhuKIcPSZdG/Kq8C4oBW/nNa3kuEH3KqufklzhyPcL8Ccs+YSdWTM
+X-MS-Exchange-Organization-SCL: 1
+X-MS-Exchange-Organization-Antispam-ScanContext: DIR:Incoming;SFV:NSPM;SKIP:0;
+X-Microsoft-Exchange-Diagnostics:
+	=?us-ascii?Q?1;BN3PR03MB1461;23:ApgtJSLSzVgb32+a7sevyOm2Dn1JlhbKElkDyIk4t?=
+ =?us-ascii?Q?mHX7NyvBe/pr4syQELA/jLN0AeawiggncHzuzMlwMeQOTopKUaJQQ6QMqVbq?=
+ =?us-ascii?Q?TGx/elhptfxUh77jAXnnk1S4v4cBqpyh5wbdE71KcFc5+QXEe/D0hiNWEYKt?=
+ =?us-ascii?Q?i4ErzIW5v66pRnYHSp25G1sukGgwRtsHwHluwZ/OumjLgwc4YvrWeDiMPeb5?=
+ =?us-ascii?Q?s+/Jz+wRMmcrGr0gjcLoNsn8juCXO4MpK1xQNUnPzZKKL301eAfzL3SpH5pK?=
+ =?us-ascii?Q?i8r0ddNA0U182J3sgIEmWMw1xxI9R722zGrUCGj6D+WuuqsNyVPc4QLBlJvd?=
+ =?us-ascii?Q?e1GRTPM6WTieZtCrvThZRKptgpMdHdf78H/MZpwY5q6H2qR9NnB/rLnsV4J8?=
+ =?us-ascii?Q?VErcTsaAiQvs0YupkhCD1NwHdnTF3mg+NT76NEfNaSCet9e97dsVeU8yXeWo?=
+ =?us-ascii?Q?Z56Ovr6JVJU3kmbdKk7lPIENlg2ZjrDFmpg2yFFNQk/JGbtX3nssoFqD8nTM?=
+ =?us-ascii?Q?6m8ldmggJM+xpsu92BZJvMJgkXdATSPT8Md4LD7e4wd5sSecMtz/+J35d4VN?=
+ =?us-ascii?Q?StF08iyAInr2aGCczKFYNgJmJUnHVRu8wZe9pkgHaQNggXSXk/NrQP9fZS60?=
+ =?us-ascii?Q?FxVb2+5l0vUmM2GrVKd4gXrfY6OBjES8A2pJmjqIlgY/zrxvnolp3AfQiobq?=
+ =?us-ascii?Q?/e++fNasTVJRT6xmA81xSO7IUmQkkLrBob9oDBGoXE6ja6nN21AQ8/Bk2gj7?=
+ =?us-ascii?Q?crrmDoDHvPpWJDixl/iP3+hxA6JzeJTMUNnYPMhGcU0AnoezjQjgIsa+COwn?=
+ =?us-ascii?Q?30wnojYWzUpIbfzwD59iZfRsxqdeAE2hoLmOTpawi0VbBInhZpBqjPpLQ5M+?=
+ =?us-ascii?Q?h6Yr5vjw6mpL3fGsUSTr0SJbCagxA3tzfj1t9WnCg6Oza5T2gsJs59r8zYZ3?=
+ =?us-ascii?Q?Q6z4likNaXvI6252PwfpDTw6bv62EwA5NgAFhRQzry+yl7O4huBxhi06Jdqd?=
+ =?us-ascii?Q?nXdbn1in2W/EhP1hU/06xAMdBAVxSlfkQobRAkMBzoWe7tiFR8FMwHo3Ac93?=
+ =?us-ascii?Q?OHRWcNd3L5II9vw2HCTDFn0a3beP4tMzfawTvCLuLFUkciWKE78nKmjaTuvA?=
+ =?us-ascii?Q?mvWya5BK92yht/IhEJaOsCcpd0MYhLInvQtqYDDgCPVTM+n5hdisYWaivr82?=
+ =?us-ascii?Q?wx0kH3P7bCpJimdpuKasRqUNoRoVqhk8jslh0CgRzwte4FW4G7YaCqLqw=3D?=
+ =?us-ascii?Q?=3D?=
+X-MS-Exchange-Organization-Antispam-PostContentFilter-ScanContext:
+	CategorizerOnResolved;CategorizerOnRouted;
+X-MS-Exchange-Forest-IndexAgent-0:
+	AQ0CZW4AAcECAAAPAAADH4sIAAAAAAAEAK1Ty47bMAwU9pXYGy/6CT
+ y2QJp+QtFbeyh6aO+FYtMxEVsyJCWBf6lf2ZFkB+n2ugvD4VLkaGZI
+ /1lX5Vee6GfHfc/Ttiq/ayea/GiPTMGStwNbwySGQsdk21Zqpol9YN
+ foibRp4sFEXkuKyIk50EX6ngbrA/Vy5H6iPQ5YNxMw0balxtJkT3Q0
+ 9kLSkoTc8m/Z56r8/RZ/VfmrixJa6wYdxEKL08YPEgI3WZp4Gth7fe
+ AkSYInHYKuu4EN4vfgqM30gVAnJrBpuKlKa6AMoEn3yM4DGf+hQ0KU
+ QJdO6i6KQ5tuGocbuNllOst1A1ysrQkaPPDbShP7dR95fALa6OQsPR
+ /AFOQZ0+l39MVMMOosfMHIHM9yvIc2eIuABzFZKiAs+Dk6+Ti/bUwE
+ fYxTskkU6ToV4n7HvWhTc1WeRjvbcmPblvbTrNNfhQr7+YLQ6bwli0
+ PAq2UUlMGAqhyd7WQvIVnwrU0L0OlzHHnNcuZmuZDYOeu2NPasQTq5
+ U4cE7SOwSzNquOfAuYc/Dlr6qox57b2tRYcbw6h1dkhaazuMJyR3y0
+ 78xxSm3ECm8aQ5w74tyiCiOdWcXK57Gz11MQ5O9gCuyvBq1ebZ3iza
+ jJy4RvvTnuG8xZj9Fh9C6JaNmmeKVWtv5CfyNxvbaY8vhw35Wpt4U9
+ zJszhQ9rs3+4bU3b16WKnyUT3huVP3K7XGG8kntSpUieBBPeK5Bnhw
+ hJrUssrFSCLAk4N09AP5Z7XBk/NARiYlq9QVK9eqzOD5RmSu4BmwUJ
+ vEcJ3fG1UhQL5Uz+tE70kVL+pdpV5yVzp9uOJcYfNFePLtWeZaFWjJ
+ BBBDL3rLmV4UheSiaAWcTANBficrYiaRKRac5xu0+2xXRoPkIlUm/p
+ vsz6uy3PuYwBPyZlFRXD28Bqu/zHdfKOsFAAABDs8BUmV0cmlldmVy
+ T3BlcmF0b3IsMTAsMDtSZXRyaWV2ZXJPcGVyYXRvciwxMSwxO1Bvc3
+ REb2NQYXJzZXJPcGVyYXRvciwxMCwxO1Bvc3REb2NQYXJzZXJPcGVy
+ YXRvciwxMSwwO1Bvc3RXb3JkQnJlYWtlckRpYWdub3N0aWNPcGVyYX
+ RvciwxMCwxO1Bvc3RXb3JkQnJlYWtlckRpYWdub3N0aWNPcGVyYXRv
+ ciwxMSwwO1RyYW5zcG9ydFdyaXRlclByb2R1Y2VyLDIwLDEz
+X-MS-Exchange-Forest-IndexAgent: 1 927
+X-MS-Exchange-Forest-EmailMessageHash: E2AF1947
+X-MS-Exchange-Forest-Language: en
+X-Microsoft-Exchange-Diagnostics:
+	1;BN3PR03MB1461;5:kHiTGfwtlx5It0wr5lKQ9uZBQXk4X/yfbWu9PWVKNNnnese9+jops6Li4KEYzftaU1U6c66tVFrXlec34OCV0AHch6Sk4l4v8HDC5vmDG8XFuA3m2NARtmFijNZ/6WGynOSQWGijZ09iSUE5aKlBFQ==;24:l+NtXPkE58aSKFqXsBgNlKUe7wG0gZhH8rsR390ljYRez303Ag3/jV0j9cQAu79Ukp348P1Rsz27EoXn9nQ8XDFmVyqwGa99Ql5O/g/CMKU=;20:NqsCoSAgQUvwlRlbWaKMS058pw2mgV4NvQr4nwJQ9a5ZHVgQ+I60W2J+ne614Rx1H0ygopAmptfbA2+wr1YYDRXXVHOGKeE7fgWgitHDeFGLE47PaivAsXXXYFAfY3BuUv9bypXp55AP8uv5yiJ62GpB6n0Lyr7+h2Z/hrciVzE=
+SpamDiagnosticOutput: 1:23
+SpamDiagnosticMetadata: NSPM
+X-MS-Exchange-Organization-Cross-Session-Cache:
+	=?us-ascii?Q?00SL=3D1;EMSL=3D1;SCL=3D0;BL=3D0;RL=3D1;PID=3D0;PL=3D0;EXPID?=
+ =?us-ascii?Q?=3DSpamDiagnosticsExperimentId0;EIPC0=3D2005,2006,2007,2008,?=
+ =?us-ascii?Q?2009,2010,2011,2012,2013,2014,3000,2016,2015,2000,2001,1000,?=
+ =?us-ascii?Q?1001,2003,2002,2004,1003,1002,2017,5001,5021,5024,5027,5037,?=
+ =?us-ascii?Q?5038,5025,5026,5029,5030,5028,5020,5022,5040,5031,5039,5034,?=
+ =?us-ascii?Q?5033,5032,5023,5036,5035,5002,5011,5010,5003,5005,54,80,110,?=
+ =?us-ascii?Q?70,71,84,82,51,83,50,52,112,115,111,92,91,90,114,113,81,53;M?=
+ =?us-ascii?Q?IPC0=3D2003,5011;EIPC1=3D2005,2006,2007,2008,2009,2010,2011,?=
+ =?us-ascii?Q?2012,2013,2014,3000,2016,2015,2000,2001,1000,1001,2003,2002,?=
+ =?us-ascii?Q?2004,1003,1002,2017,5001,5021,5024,5027,5037,5038,5025,5026,?=
+ =?us-ascii?Q?5029,5030,5028,5020,5022,5040,5031,5039,5034,5033,5032,5023,?=
+ =?us-ascii?Q?5036,5035,5002,5011,5010,5003,5005;MIPC1=3D2003,5011;REP=3D0?=
+ =?us-ascii?Q?1,1,17\;01,2,90\;01,3,28004\;01,4,6093\;01,5,182\;01,6,58\;0?=
+ =?us-ascii?Q?1,7,396\;01,8,211\;01,9,433003\;01,10,95535\;01,11,182\;01,1?=
+ =?us-ascii?Q?2,211\;02,1,35\;02,2,176\;02,3,2068\;02,4,434\;02,5,182\;02,?=
+ =?us-ascii?Q?6,1\;02,7,11;SAUTHOP=3D1;A=3D00;MX=3D00;PTR=3D00mail1.bemta7?=
+ =?us-ascii?Q?.messagelabs.com;SPF=3D011Christopher.Zotos@iag.com.au;DKIM?=
+ =?us-ascii?Q?=3D;DMARC=3D02Christopher.Zotos@iag.com.au\;?=
+X-MS-Exchange-Organization-Processed-By-Gcc-Journaling: Journal Agent
+
+--_6e5fcf2b-6cf8-43de-a793-1827c9d85823_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hey Shelley,
+
+Maria spoke to someone in the office yesterday and they said the ring will=
+ most likely be ready today, do you know if it will be ready today?
+
+
+
+_____________________________________________________________________
+
+The information transmitted in this message and its attachments (if any) i=
+s intended=20
+only for the person or entity to which it is addressed.
+The message may contain confidential and/or privileged material. Any revie=
+w,=20
+retransmission, dissemination or other use of, or taking of any action in =
+reliance=20
+upon this information, by persons or entities other than the intended reci=
+pient is=20
+prohibited.
+
+If you have received this in error, please contact the sender and delete t=
+his e-mail=20
+and associated material from any computer.
+
+The intended recipient of this e-mail may only use, reproduce, disclose or=
+ distribute=20
+the information contained in this e-mail and any attached files, with the =
+permission=20
+of the sender.
+
+This message has been scanned for viruses.
+_____________________________________________________________________
+--_6e5fcf2b-6cf8-43de-a793-1827c9d85823_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii=
+">
+<meta name=3D"Generator" content=3D"Microsoft Exchange Server">
+<!-- converted from rtf -->
+<style><!-- .EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left=
+: #800000 2px solid; } --></style>
+</head>
+<body>
+<font face=3D"Tahoma" size=3D"2"><span style=3D"font-size:10pt;">
+<div><font color=3D"navy">Hey Shelley,</font></div>
+<div><font color=3D"navy">&nbsp;</font></div>
+<div><font color=3D"navy">Maria spoke to someone in the office yesterday a=
+nd they said the ring will most likely be ready today, do you know if it w=
+ill be ready today?</font></div>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nb=
+sp;</span></font></div>
+<div><font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">&nb=
+sp;</span></font></div>
+</span></font>
+<br clear=3D"both">
+_____________________________________________________________________<BR>
+<BR>
+The information transmitted in this message and its attachments (if any) i=
+s intended <BR>
+only for the person or entity to which it is addressed.<BR>
+The message may contain confidential and/or privileged material. Any revie=
+w, <BR>
+retransmission, dissemination or other use of, or taking of any action in =
+reliance <BR>
+upon this information, by persons or entities other than the intended reci=
+pient is <BR>
+prohibited.<BR>
+<BR>
+If you have received this in error, please contact the sender and delete t=
+his e-mail <BR>
+and associated material from any computer.<BR>
+<BR>
+The intended recipient of this e-mail may only use, reproduce, disclose or=
+ distribute <BR>
+the information contained in this e-mail and any attached files, with the =
+permission <BR>
+of the sender.<BR>
+<BR>
+This message has been scanned for viruses.<BR>
+_____________________________________________________________________<BR>
+</body>
+</html>
+
+--_6e5fcf2b-6cf8-43de-a793-1827c9d85823_--
+
+--_f21f7e06-0cf6-424c-be4e-9e8c3d922917_--

@@ -1,0 +1,29 @@
+<div class="contentArea">
+  <h2 class="cmnHeader">Orders</h2>
+	  <a href="javascript:;" class="popupLink lightBoxClick" id="btnCreateOrder" data-popup="createOrder">Create Order</a>
+      <div class="cmnSort">
+       <div class="mainSearch marL0"><input name="lookupsrc" id="lookupsrc" type="text" class="searchInput" placeholder="Search.." /><input type="button" class="inputGo" value="Go!" onclick="getOrders(<?php echo $recordsPerPage; ?>, $('#lookupsrc').val());" id="orderSearch"/></div>
+       </div>
+	   <script type="text/javascript">
+	   		searchByEnterKey('lookupsrc', 'orderSearch');
+	   </script>
+		<?php echo $this->partial('order/index/orderlist.phtml', array('recordsPerPage' => $recordsPerPage)); ?>
+  <!--BOF Grid View Block-->
+</div>		
+
+<div class="lightBox" id="createOrder">
+ 	<div class="lightBoxMid" style="width:600px">
+		<div class="lightBoxTitle">Create Order<a href="javascript:;" class="closePopup" onclick="closeButtonProperty('frm_order');" title="Close">X</a></div>
+		<!--BOF Add New Order Form -->
+		<?php echo $this->partial('order/index/neworder.phtml'); ?>
+		<!--EOF Add New Order Form -->
+    </div>
+</div>
+
+<!--BOF Opportunity lookup list-->
+<?php echo $this->partial('invoice/index/opportunitylookup.phtml', array('identity' => $identity, 'recordsPerPage' => $recordsPerPage, 'cust_id' => $cust_id)); ?>
+<!--EOF Opportunity lookup list-->
+
+<!--BOF Opportunity lookup list-->
+<?php echo $this->partial('order/index/invoicelookup.phtml'); ?>
+<!--EOF Opportunity lookup list-->

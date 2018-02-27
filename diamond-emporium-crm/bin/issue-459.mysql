@@ -1,0 +1,4 @@
+ALTER TABLE `de_users` ADD `image` VARCHAR(200) NULL AFTER `status`, ADD `user_status` VARCHAR(20) NULL AFTER `image`, ADD `user_budget` VARCHAR(25) NULL AFTER `user_status`;
+
+
+update de_users set user_status = 'Available';

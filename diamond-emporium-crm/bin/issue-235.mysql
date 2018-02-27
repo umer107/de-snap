@@ -1,0 +1,3 @@
+ALTER TABLE `de_customers` 
+ADD UNIQUE INDEX `customers_email` (`email` ASC),
+ADD UNIQUE INDEX `customers_mobile` (`mobile` ASC);

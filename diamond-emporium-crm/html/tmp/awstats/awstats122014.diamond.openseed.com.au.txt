@@ -1,0 +1,324 @@
+AWSTATS DATA FILE 7.3 (build 20140126)
+# If you remove this file, all statistics for date 201412 will be lost/reset.
+# Last config file used to build this data file was /home/diamond/tmp/awstats/awstats.diamond.openseed.com.au.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 27
+POS_GENERAL 2019                
+POS_TIME 2705                
+POS_VISITOR 8395                
+POS_DAY 8684                
+POS_DOMAIN 3282                
+POS_LOGIN 3514                
+POS_ROBOT 3669                
+POS_WORMS 3801                
+POS_EMAILSENDER 3932                
+POS_EMAILRECEIVER 4075                
+POS_SESSION 8793                
+POS_SIDER 8998                
+POS_FILETYPES 4210                
+POS_DOWNLOADS 4464                
+POS_OS 4512                
+POS_BROWSER 4591                
+POS_SCREENSIZE 4707                
+POS_UNKNOWNREFERER 4781                
+POS_UNKNOWNREFERERBROWSER 4868                
+POS_ORIGIN 4950                
+POS_SEREFERRALS 5087                
+POS_PAGEREFS 5231                
+POS_SEARCHWORDS 5487                
+POS_KEYWORDS 5639                
+POS_MISC 2369                
+POS_ERRORS 5698                
+POS_CLUSTER 3370                
+POS_SIDER_404 5810                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20150101005219 1402 322632 23328088323483
+FirstTime 20141230223131
+LastTime 20141231235750
+LastUpdate 20150101183603 1402 0 1401 0 0
+TotalVisits 17                  
+TotalUnique 5                   
+MonthHostsKnown 0                   
+MonthHostsUnknown 5                   
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 0 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 0 0 0 0 0 0
+1 3 8 32168 0 1 0
+2 1 4 27636 0 2 0
+3 0 0 0 0 0 0
+4 0 0 0 0 0 0
+5 1 1 8916 0 2 0
+6 0 0 0 0 0 0
+7 0 0 0 0 0 0
+8 0 0 0 0 0 0
+9 0 0 0 0 0 0
+10 0 0 0 0 0 0
+11 0 0 0 0 0 0
+12 1 1 8916 0 2 0
+13 9 14 32966 2 90 101044
+14 0 0 0 0 0 0
+15 0 0 0 0 0 0
+16 0 0 0 0 0 0
+17 1 4 27636 0 0 0
+18 6 14 36221 0 31 32144
+19 158 538 7354287 7 65 64428
+20 74 245 2749086 2 4 40
+21 18 46 522876 2 4 40
+22 145 210 731804 4 196 214756
+23 93 255 1292881 1 4 1054
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 25 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 1
+in 510 1340 12825393
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 25 first Hits must be first (order not required for others)
+BEGIN_ROBOT 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 10
+css 115 1331758 0 0
+png 128 267069 0 0
+woff2 10 114492 0 0
+woff 34 855236 0 0
+php 4 40016 0 0
+html 44 32241 0 0
+jpg 47 268042 0 0
+js 529 9242359 0 0
+Unknown 418 608500 0 0
+gif 11 65680 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 1
+win7 1340 510
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 3
+chrome39.0.2171.95 264 93
+firefox34.0 312 179
+firefox35.0 764 238
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 35 35
+From1 0 0
+From2 0 0
+From3 4 4
+From4 471 1301
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 25 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 2
+http://www.openseed.com.au:2086/cpsess7498703367/scripts4/listaccts 3 3
+http://182.160.156.20/~diamond/ 1 1
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 25 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 3
+302 17 340
+206 2 1034
+404 359 412132
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referer
+BEGIN_SIDER_404 30
+/js/leads.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/common.js 12 http://diamond.openseed.com.au/public/dashboard
+/js/dropkick.js 11 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxcore.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/styles/jqx.base.css 10 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxmenu.js 14 http://diamond.openseed.com.au/public/dashboard
+/css/jquery-ui.css 10 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxgrid.pager.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/notes.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxgrid.selection.js 14 http://diamond.openseed.com.au/public/dashboard
+/css/style.css 10 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxpanel.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxdropdownlist.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/opportunities.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxscrollbar.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/jquery.min.1.11.0.js 10 http://diamond.openseed.com.au/public/dashboard
+/images/logo.jpg 3 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxgrid.sort.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/jquery-migrate-1.2.1.min.js 10 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/scripts/gettheme.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxgrid.filter.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxgrid.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxlistbox.js 14 http://diamond.openseed.com.au/public/dashboard
+/css/animate.css 10 http://diamond.openseed.com.au/public/dashboard
+/leads 1 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxgrid.columnsresize.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/jquery-ui.js 10 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/styles/jqx.base-custom.css 10 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxbuttons.js 14 http://diamond.openseed.com.au/public/dashboard
+/js/jqwidgets/jqxdata.js 14 http://diamond.openseed.com.au/public/dashboard
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 25 first Hits must be first (order not required for others)
+BEGIN_VISITOR 5
+202.62.72.163 182 476 4276295 20141231235750
+175.101.6.98 131 562 7136877 20141231231048
+49.206.189.24 110 153 639360 20141231230209
+183.82.47.155 76 133 722063 20141231233433
+49.207.46.251 11 16 50798 20141231130340
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 2
+20141230 13 22 40333 3
+20141231 497 1318 12785060 14
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 7
+1h+ 3
+5mn-15mn 1
+0s-30s 4
+30s-2mn 4
+2mn-5mn 1
+15mn-30mn 2
+30mn-1h 2
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 25 first Pages must be first (order not required for others)
+BEGIN_SIDER 43
+/ajaxrecordscount 105 6387 0 1
+/ajaxgetleads 79 47738 0 2
+/leads 53 193795 2 0
+/ 27 21014 6 3
+/ajaxcustomerslookup 27 19568 0 0
+/ajaxgetopportunities 22 16947 0 1
+/customers 18 47529 1 0
+/opportunities 18 79513 0 0
+/css/fonts/opensans-regular-webfont.woff 17 420784 0 0
+/css/fonts/opensans-bold-webfont.woff 17 434452 0 0
+/ajaxcustomerslist 15 5811 0 1
+/dashboard 15 18525 1 0
+/editgridview 14 2534 0 0
+/public/ 11 7600 0 1
+/cpanel 10 89160 5 4
+/css/fonts/opensans-bold-webfont.woff2 5 58260 0 0
+/savemygridview 5 461 0 0
+/css/fonts/opensans-regular-webfont.woff2 5 56232 0 0
+/leaddetails/24 4 24452 0 0
+/ajaxgetnotes/lead/24 4 88 0 1
+/ajaxgetnotes/lead/1 3 208 0 0
+/deletelead 3 63 0 0
+/public/dashboard 3 3687 0 0
+/info.php 3 39996 1 2
+/notes 3 203 0 0
+/leaddetails/9 1 6074 0 0
+/leaddetails/6 1 6013 0 0
+/config/autoload/local.php 1 20 0 1
+/config/autoload/ 1 521 0 0
+/ajaxgetnotes/lead/9 1 22 0 0
+/leaddetails/19 1 5920 0 0
+/leaddetails/1 1 6063 0 0
+/leaddetails/10 2 12148 1 0
+/config/ 2 1022 0 0
+/convertleadform 2 2691 0 0
+/~diamond/public/ 1 840 0 0
+/~diamond/ 1 753 0 0
+/leaddetails/3 2 12150 0 0
+/ajaxgetnotes/lead/6 1 353 0 0
+/deletegridview 1 21 0 0
+/ajaxgetnotes/lead/3 2 332 0 0
+/module/ 1 491 0 0
+/ajaxgetnotes/lead/10 2 44 0 0
+END_SIDER

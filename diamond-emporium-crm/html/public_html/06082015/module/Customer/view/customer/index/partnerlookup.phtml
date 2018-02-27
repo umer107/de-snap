@@ -1,0 +1,24 @@
+<div class="lightBox" id="customerlookup">
+    <div class="lightBoxMid" style="width:970px">
+      <div class="lightBoxTitle">Partner Lookup <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+      <div class="lightBoxContent fl width100p lookupPopup padB105">
+        <div class="mainSearch">
+            <input name="lookupsrc" id="lookupsrc" type="text" class="searchInput" placeholder="Search..">
+            <input type="button" class="inputGo" id="partnerLookupSearch" value="Go!" onclick="partnersLookup(<?php echo $recordsPerPage; ?>, <?php echo $customer_id; ?>, $('#lookupsrc').val());"><span id="searchResultsHintpartners" style="color:red;"></span>
+        </div>
+		<a href="javascript:;" class="popupLink lightBoxClick fr" data-popup="new_customer_form">New Customer</a>
+		<!--BOF new lead Form-->
+		<?php echo $this->partial('customer/index/newcustomerform.phtml', array('form' => $this->form, 'identity' => $this->identity, 'recordsPerPage' => $this->recordsPerPage, 'disableLookup' => true)); ?>
+		<!--EOF new lead Form-->
+        <div class="tableData tableNeView" style="overflow:visible">
+          <div class="tableHading"> Partner List </div>
+          	<div class="formTable manageMembers" id="jqxCustomers" style="width:100%">
+				           
+			</div>
+        </div>
+      </div>
+    </div>
+</div>
+<script type="text/javascript">
+	searchByEnterKey('lookupsrc', 'partnerLookupSearch');
+</script>

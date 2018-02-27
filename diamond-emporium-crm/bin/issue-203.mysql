@@ -1,0 +1,2 @@
+ALTER TABLE `de_inventory_diamonds` 
+ADD COLUMN `supplier_stock_code` VARCHAR(32) NULL AFTER `supplier_id`;

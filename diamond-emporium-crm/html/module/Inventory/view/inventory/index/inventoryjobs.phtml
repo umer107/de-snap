@@ -1,0 +1,39 @@
+<div class="contentArea padLR0">
+  <div class="fl width100p contentINN">
+	<h2 class="cmnHeader">DE Collection</h2>
+  </div>
+  <div class="customerTabing fl width100p ctb">
+	<?php echo $this->partial('inventory/index/tab.phtml', array('current' => 'inventoryjobs')); ?>
+	<div class="customTabbingInner">
+	  <div class="customerTabingInfo" style="display:block">
+		<div class="QuoteMain">
+		<!--BOF Grid View Header Block-->
+			<?php echo $this->partial('customer/index/gridviewheader.phtml', array('gridViewOptions' => $this->gridViewOptions, 'recordsPerPage' => $this->recordsPerPage, 'prefixId' => 'inventoryjobpackets_')); ?>
+			<!--EOF Grid View Header Block-->
+		  <div class="cb"></div>
+		  <div class="tableData tableNeView">
+			<div class="tableHading" style="width:100%" id="bindJobListAfterThis"> Job List </div>
+			<div class="formTable manageMembers" id="jqxJobpackets" style="width:100%"></div>
+		</div>
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+<!-- Consine Item Light Box -->
+<div class="lightBox" id="consignItem">
+	<div class="lightBoxMid" style="width:890px">
+		<div class="lightBoxTitle">Consign Item	  -  Job <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+		<div class="lightBoxContent fl width100p" id="consign_form_content">
+		</div>
+	</div>
+</div>
+<!--EOF Add Consign Form -->
+<!--BOF Grid View Block-->
+<?php echo $this->partial('customer/index/gridview.phtml', array('formType' => 'inventoryjobpackets', 'recordsPerPage' => $this->recordsPerPage, 'columnList' => $this->columnList, 'hiddenUserId' => $this->loginUserId, 'prefixId' => 'inventoryjobpackets_')); ?>
+<!--EOF Grid View Block-->
+<script type="text/javascript">
+$(document).ready(function(){
+	getJobPackets(<?php echo $recordsPerPage; ?>, '', '', '');
+});
+</script>

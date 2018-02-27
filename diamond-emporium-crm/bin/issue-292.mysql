@@ -1,0 +1,9 @@
+ALTER TABLE `de_inventory_diamonds` 
+ADD COLUMN `price_usd` DECIMAL(10,2) NULL DEFAULT NULL AFTER `price`,
+ADD COLUMN `price_source_ccy` CHAR(3) NULL DEFAULT NULL AFTER `price_usd`,
+ADD COLUMN `add_to_rapnet` TINYINT NULL AFTER `price_source_ccy`,
+ADD COLUMN `rapnet_pct_discount` DECIMAL(5,2) NULL DEFAULT NULL AFTER `add_to_rapnet`,
+ADD COLUMN `rapnet_cost_per_carat` DECIMAL(10,2) NULL DEFAULT NULL AFTER `rapnet_pct_discount`,
+ADD COLUMN `rapnet_price_aud` DECIMAL(10,2) NULL DEFAULT NULL AFTER `rapnet_cost_per_carat`,
+ADD COLUMN `rapnet_price_usd` DECIMAL(10,2) NULL DEFAULT NULL AFTER `rapnet_price_aud`,
+ADD COLUMN `rapnet_price_source_ccy` CHAR(3) NULL DEFAULT NULL AFTER `rapnet_price_usd`;

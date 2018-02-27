@@ -1,0 +1,1 @@
+UPDATE `de_leads` SET `lead_status` = 'Open' WHERE `lead_status` IS NULL;

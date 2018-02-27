@@ -1,0 +1,67 @@
+
+   
+<div class="bookingDiv calenderView" style="height: 0; overflow: hidden;" >
+		<div class="full pointer relative">
+			<h2 class="fs-24 color-green robotolight double-pad-top d-i-b">Booking</h2>
+			<div class="QuestionViewIcon d-i-b">
+				<img src="<?php echo $this->serverUrl('/images/booking.png'); ?>" class="d-i-b wd-24 double-gap-left relative top-5">
+				<span class="d-i-b fs-14 color-blue relative bottom-2 half-pad-left">Questions view</span>
+			</div>
+			<div class="selectTime transition-ease-02 pull-right fs-14 absolute right-0 z-index1">
+				<span class="pull-left four-pad-top one-half-pad-right triple-pad-left gap-left">Time</span>
+				<div class="pull-left timeSelection_Cl1 lh-26 align-center timeToggles">
+					<a href="javascript:;" class="active" value="AM">AM</a>
+					<a href="javascript:;" value="PM">PM</a>
+				</div>
+				<span class="pull-left four-pad-top pad-right one-half-pad-left">Duration</span>
+				<div class="pull-left durationSelection_Cl1 lh-26 align-center timeToggles">
+					<a href="javascript:;" value="30">30</a>
+					<a href="javascript:;" class="active" value="60">60</a>
+				</div>
+			</div>
+		</div>
+		<div id='calendar'></div>
+		
+		<div class="saveBooking" style="display: block;">
+			<h2 class="color-blue fs-24 robotolight">Confirmation</h2>	
+			<form method="POST" action="">
+				<div class="relative pull-left"><span style="display: inline-block;">Date</span><input readonly="readonly" type="text" name="booking-date"  class="booking-date" placeholder="Date" maxlength="64" value=""></div>
+				<div class="relative pull-left"><span style="display: inline-block;">Hour</span><input readonly="readonly" type="text" name="booking-hour" class="booking-hour" placeholder="Hour" maxlength="64" value=""></div>
+				<div class="relative pull-left">
+					
+					<span class="relative z-index1" style="display: inline-block;">Assigned room</span>
+
+					<div class="relative d-i-b v-a-t double-gap-top">
+						<ul class="dropdown bg-white d-i-b full relative meetingRooms">
+							<li>   
+								<a href="javascript:;" class="selected-text d-b users meetingRoom" value="All">
+									<span class="d-i-b">Meeting Room</span>
+									<i class="icon-dropdown fs-7 pull-right d-i-b "></i>
+								</a>
+							</li>
+							<li>
+								<ul class="dropdownOptions bg-white absolute full-width" style="">
+									<li><a href="javascript:;" value="Meeting Room 1"> Meeting Room 1 </a></li>
+									<li><a href="javascript:;" value="Meeting Room 2"> Meeting Room 2 </a></li>
+									<li><a href="javascript:;" value="Meeting Room 3"> Meeting Room 3 </a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+
+
+				</div>
+				<div class="full fs-14 align-center lh-34 triple-pad-top gap-top">
+					<a href="javascript:;" class="btnSaveBooking d-i-b pull-left  gap-left">Book</a>
+					<a href="javascript:;" class="btnCancelBooking d-i-b  pull-right color-darkGray">Cancel</a>
+				</div>
+			</form>
+		</div>
+		<div class="Confirmation" style="display: none;">
+			<a href="javascript:;">Confirmation</a>
+			<div></div>
+		</div>
+
+	</div>
+
+<div class="opacity0 hide meetingRoomValue" value=""></div>

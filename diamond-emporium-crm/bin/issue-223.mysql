@@ -1,0 +1,2 @@
+ALTER TABLE `de_gridview` 
+ADD COLUMN `is_default` BOOLEAN NOT NULL DEFAULT 0 AFTER `columns_list`;

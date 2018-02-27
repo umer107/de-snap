@@ -1,0 +1,1187 @@
+Return-path: <pheonix@diamondemporium.com.au>
+Envelope-to: phoenix@diamond.openseed.com.au
+Delivery-date: Tue, 18 Aug 2015 13:30:43 +1000
+Received: from mail-by2on0070.outbound.protection.outlook.com ([207.46.100.70]:23560 helo=na01-by2-obe.outbound.protection.outlook.com)
+	by rs13-eqx3-syd.ha-node.net with esmtps (TLSv1.2:AES256-SHA256:256)
+	(Exim 4.85)
+	(envelope-from <pheonix@diamondemporium.com.au>)
+	id 1ZRXbm-000giC-HM
+	for phoenix@diamond.openseed.com.au; Tue, 18 Aug 2015 13:30:43 +1000
+Content-Type: multipart/mixed;
+	boundary="_8f43457b-db1a-4c6b-b068-2bfe868e96c9_"
+Subject: Undeliverable: Form submission from: Make An Enquiry
+To: <apache@ip-172-31-27-174.localdomain>
+From: <postmaster@DiamondEmporium.onmicrosoft.com>
+MIME-Version: 1.0
+Sender:
+	<MicrosoftExchange329e71ec88ae4615bbc36ab6ce41109e@DiamondEmporium.onmicrosoft.com>
+Message-ID: <7c359839-1ca8-4b4c-8491-59ebd2e3aa81@journal.report.generator>
+Date: Tue, 18 Aug 2015 03:30:32 +0000
+X-MS-Journal-Report:
+X-MS-Exchange-Parent-Message-Id:
+	<0d61b6dd-3718-4947-beb3-1d6278dd02c8@CY1PR0301MB0683.namprd03.prod.outlook.com>
+X-MS-Exchange-Message-Is-Ndr:
+Auto-Submitted: auto-generated
+X-MS-Exchange-Generated-Message-Source: Journal Agent
+X-Microsoft-Exchange-Diagnostics:
+	1;CY1PR0301MB0683;25:sbh7Zw9rjrNfYLOhqjAwpi86jCIzpRGQhS+MzN74/yifbyHSzPtINta9Csb1OBfdGJPCq7F1zA7KBOq3YN1z79bHpkVggq8UIog0TVgqO3WXpL5yksTZN/ssYwDu+v7S7+lACBECXmYFksqDlu1/B4iS9l0+IqJJ+uqSrbiTxUadojug5xRdIGlVw4bkotUhrQdwm+bIfic3Z2ujl75vur64mnnAx73OBYPPpn/VkUo7whZLPwTvIwKtk0UP8frHRA8vaSv34NpAScQC1nyBkw==;4:E83IhJgCCPa0kMWzxTnDiC+3lYZlecRWpBkZ9sxcR3xDB98cyGud03tjK++ka3NRz39oealJLBds9iy+AMfrcCutM3rWvOzdpQxsaQ93sDx1g9UaN+wH6OBbSGasUTZCZjoLia38p+JkQ/b6Qe2HpFoPxZGfOco8qvE0PKHa9a2YNEqiFsnnG8aIVC/JE8ezRFl2mTkTSXUFNvqqwPrzkS1UPYPP6rUOQ2+NYO13/ntkYBea2fUEX3lYKEzdaikJqBhkDfOk3ivpwN4Zkcb+T/2zannKRB4PDGShEhwNHy7vGQA5jtoKIcHqsx08zz7V
+X-Microsoft-Antispam-PRVS:
+	<CY1PR0301MB068380F91282A5FA3A1D888492780@CY1PR0301MB0683.namprd03.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:(223229994015905);
+X-Exchange-Antispam-Report-CFA-Test:
+	BCL:0;PCL:0;RULEID:(601004)(5005006)(8121501046)(3002001);SRVR:CY1PR0301MB0683;BCL:0;PCL:0;RULEID:;SRVR:CY1PR0301MB0683;
+X-Forefront-PRVS: 067270ECAF
+X-Forefront-Antispam-Report:
+	SFV:NSPM;SFS:(10009020)(6009001)(189002)(199003)(319900001)(102106001)(101416001)(77156002)(450100001)(62966003)(84326002)(229853001)(2351001)(33646002)(109986003)(64706001)(87976001)(89962001)(46102003)(77806003)(189998001)(110136002)(4001450100002)(107886002)(5001960100002)(54356999)(50986999)(31686004)(92566002)(86152002)(68736005)(19580395003)(19580405001)(86442001)(3110400002)(4610100001)(31696002)(512954002)(86902001)(5001920100001)(64872006)(11286001)(105586002)(106356001)(83832001)(564344004)(4001540100001)(5000100001)(5001830100001)(97736004)(5001860100001)(5001840100002);DIR:OUT;SFP:1101;SCL:1;SRVR:CY1PR0301MB0683;H:;FPR:;SPF:None;PTR:InfoNoRecords;MX:1;A:1;LANG:;
+Received-SPF: None (protection.outlook.com: diamondemporium.com.au does not
+ designate permitted sender hosts)
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=pheonix@diamondemporium.com.au; 
+X-Microsoft-Exchange-Diagnostics:
+	=?us-ascii?Q?1;CY1PR0301MB0683;23:SxHyFOboM25/ruElHH1QE73MQdoGKWDWedhHicw?=
+ =?us-ascii?Q?DJB7Y8rXgCj3KYbhVGX4PDviE0TqQXPGjHEfy/MDf+wkzKxju18wUAc51sbj?=
+ =?us-ascii?Q?jV3T0Gghqsr5BkHX4UWsv8Rqv36PmIm7ZVohzHTclmwuYWqte6XuUmeI3O5g?=
+ =?us-ascii?Q?WvI0SKom9AcZoLL8SG1SmGvVo8ZDjjjkzagieKClOCv98hmF4Z+cTHP51QMF?=
+ =?us-ascii?Q?waEX34cb9LP2DvtkOMxradLInYOuP9IzLowtS5GQ7TpEUK7QqwUzBmZzS254?=
+ =?us-ascii?Q?Fq89XXdD1AzW/CybTN784kVCTsV8KVV1qADq8dcPgkedvxHk7YlTIMtg63Vo?=
+ =?us-ascii?Q?R25G1hz/t3qDbhIzAkpwvme7UxD3V9v2+SHbJo4D4312PIjaclDgZmy28juQ?=
+ =?us-ascii?Q?YL7ntl8zjH9E7qAMJYf9JJTwbud7nLG4NaftvbR/T9eOMc0rnhHH0REJsVet?=
+ =?us-ascii?Q?HWLkBBPyly+c27OuVD7zgCCKYOffjKnBTI2STkEzzx9rE7Ulbd3v6iTRS5TS?=
+ =?us-ascii?Q?ykrxdB8TrRC5bWuzUk0n/1HUrTHgralcHD9zIwjLloGjD2b/252IJv2/CZ/w?=
+ =?us-ascii?Q?kw8phKm5vJEdOhMOdNrVbn5UWowGxJ8AeW82QyodWG7ctyT7kwl8Fj2DRQQo?=
+ =?us-ascii?Q?6j5deO0jS3uKgR2LScJ1bHVPe5YWXf7v1cuSGSk+YzDW66Om2QQYypx2Meb8?=
+ =?us-ascii?Q?rDe+XECkyI7CxrxDmB7jSG4ZeGryMnSOgl+GmZWxkd+XI8UYla2U/UtobpUf?=
+ =?us-ascii?Q?44DlEBZ8ocRpK0g3KTeIoNKkg2Mqkza5nimoUwjwMdC8/s08zUMC/NXIPPEz?=
+ =?us-ascii?Q?2WE0+BgMbGWsuiP+eP00LB+SGHu0pc37yw4W99TUsrhOPl1X/OBZ22Rx0RYk?=
+ =?us-ascii?Q?kJObtBp2JqJcfpT3sZrkxpELr8+V782fZzhTelyYid6lkziiPISkYKVj1JKH?=
+ =?us-ascii?Q?jD7ATG3fr8P4BXBsZVbr7PJZa2QCRZyLj/hiw1e+STO2m+kKTPYPnlgNdvR1?=
+ =?us-ascii?Q?3hP+H/8iipMiGemjET0uoTpZnt4jTa1jqofkQJDCep7TbmU0GUccu1MsHo9+?=
+ =?us-ascii?Q?wDXESBGv1D7/u5d1KQoUDm/opylSh0jis28ik3BL2Hs94G/lmJ/b3tHPMdsS?=
+ =?us-ascii?Q?7WGOEMgCdwxMtnUApTdpwbMrT8S3h7juv9Exsbib3t3WxsBRv0AQ/RZw4OlS?=
+ =?us-ascii?Q?CJfgD4yoDTCjvBvEH40O93BzO9XKlFVwa7wwWfft8E6+9iiOhrpq9PCkoiPG?=
+ =?us-ascii?Q?Qq7Ue9jv0Fbu89P8aMvnBT4bu9gaa3bUnsTU1uN5rLvMf9Bq/i46ppUlKpFf?=
+ =?us-ascii?Q?pxIq8ULAh73fn73w/XHTnZX9DC9FoohBqZpS4Ydx/R2PjEO2pqd3Bm2Lk+Z5?=
+ =?us-ascii?Q?c6ETINg=3D=3D?=
+X-Microsoft-Exchange-Diagnostics:
+	1;CY1PR0301MB0683;5:liCIe56FU9voDgvtCS7w8LcVSN41d9wyYwbOpP7rKrU1XTYNEudzThba/i/l6YCV7N9T7y4vrIdq3krx5gAYu3536e3AjszArdU5i1N7/tXP+l1lQyg7ZCjtvr4JWjWIyMhvbh1GArJXhPyQbgzp4g==;24:0ZfT+STXFPRo1zZgMYKeFLp3gevt97++yCMWV/b1uwPHgx1YAycO1uPJHvb0AMU5i/Q1wTK3dccWuAROhwMwxF0QoSPadLdM9Xo3BqcxDOI=
+SpamDiagnosticOutput: 1:23
+SpamDiagnosticMetadata: NSPM
+X-OriginatorOrg: DiamondEmporium.onmicrosoft.com
+
+--_8f43457b-db1a-4c6b-b068-2bfe868e96c9_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Sender: postmaster@DiamondEmporium.onmicrosoft.com
+Subject: Undeliverable: Form submission from: Make An Enquiry
+Message-Id: <0d61b6dd-3718-4947-beb3-1d6278dd02c8@CY1PR0301MB0683.namprd03.prod.outlook.com>
+Recipient: apache@ip-172-31-27-174.localdomain
+
+--_8f43457b-db1a-4c6b-b068-2bfe868e96c9_
+Content-Type: message/rfc822
+
+MIME-Version: 1.0
+From: <postmaster@DiamondEmporium.onmicrosoft.com>
+To: <apache@ip-172-31-27-174.localdomain>
+Date: Tue, 18 Aug 2015 03:30:30 +0000
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="_6967a094-dbc6-4675-bb7a-8c762fb3189b_"
+X-MS-Exchange-Organization-OriginalArrivalTime: 18 Aug 2015 03:30:30.8499
+ (UTC)
+X-MS-Exchange-Organization-SCL: 1
+X-MS-Exchange-Message-Is-Ndr:
+X-MS-Exchange-Organization-Dsn-Version: 12
+Content-Language: en-US
+Message-ID: <0d61b6dd-3718-4947-beb3-1d6278dd02c8@CY1PR0301MB0683.namprd03.prod.outlook.com>
+In-Reply-To: <20150818033024.17794203A2@ip-172-31-27-174.localdomain>
+References: <20150818033024.17794203A2@ip-172-31-27-174.localdomain>
+Subject: Undeliverable: Form submission from: Make An Enquiry
+Auto-Submitted: auto-replied
+X-MS-Exchange-Organization-FromEntityHeader: Hosted
+X-MS-Exchange-Organization-Transport-Properties: DeliveryPriority=Normal
+X-MS-Exchange-Organization-Prioritization: 1
+X-MS-Exchange-Organization-Spam-Filter-Enumerated-Risk: Normal
+X-MS-Exchange-Organization-AuthSource:
+	CY1PR0301MB0683.namprd03.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 05
+X-MS-Exchange-Organization-Network-Message-Id:
+	1db48e9d-194c-45f1-74af-08d2a77d5e5c
+X-MS-Exchange-Organization-HygienePolicy: Premium
+X-MS-Exchange-Organization-Exchange-Diagnostics-Stage-SecureDataContainer: 0
+X-Microsoft-Exchange-Diagnostics:
+	1;CY1PR0301MB0683;25:kleT450ImcUV66cCMAxtyNOlNmrGOlav5bXQaO8MqrexHl7UO+uTh87J0IfU/zyVQAH75kc+nYpBS+I4oqBdyVEjKtD+27RwohurmHl6d0TJiG+StVkcZF+LzPliUM+ssUKCkkS3Prz6cly0nxrYXqueKM+0eOU+CrJx8HGFkyqF28DMwpqoXDVD/ipaJiL9uM8v0igTbpfcmeH8IipHPYO7pmxskNlj/8coo+EuiGFaet/4s7phDqrzvZ/87mgE;4:LKX9fxWj8pKlWYV6LN9rjxW6I99iYQjaPFWr7Aq+7yvFUEXxjZ3EvTpKqMPc5/Gj9qoyl9Q/6PoKnvnxCcGlJ0mhEGsDbxIJElR5u4vGpLLESbLYK68vhYOB1YzheBv8o+35UV3MW76Ws/pMRcEvNFbH1M226hj3PHl9cLqlfx1NZmrtdzgBNRGNv0PkWqYhEj7iu44rC7LI5Ce/UFVNYU2iCUh9t3mcEB6dSwFILVX8HCEqrPAbw3ljYl6zKpDeq+DHuwKv2yHre34kW522vheHWhQn6RuX49xPhMyjBe8M2NAjtmale4fjlwPWAyC1
+X-MS-Exchange-Organization-AttachmentDetails:
+	0:0pbTSDm2lVwgZEtk62CfxxYdbDpDBXNeU2OiDK/CCEE=:U:Text:ATT00002::#:False;1:doYZEeeJclbr/qKtwrM3u7PfxbuilYbzdZ+dA4yA9GA=:U:Mime:Form
+ submission from Make An Enquiry::#:True
+X-MS-Exchange-Organization-AVStamp-Service: 1.0
+X-MS-Exchange-Organization-OriginalSize: 47202
+X-MS-Exchange-Organization-Recipient-Limit-Verified: True
+X-MS-Exchange-Organization-TotalRecipientCount: 1
+X-MS-Exchange-Organization-Antispam-ContentFilter-ScanContext:
+	CategorizerOnResolved;CategorizerOnRouted;
+X-Microsoft-Antispam-PRVS:
+	<CY1PR0301MB068352D441F32F3199701DD2B8780@CY1PR0301MB0683.namprd03.prod.outlook.com>
+X-MS-Exchange-Organization-ASDirectionalityType: 2
+X-MS-Exchange-Organization-HeloRdns: ;
+X-Exchange-Antispam-Report-Test: UriScan:(108003899814671);
+X-Exchange-Antispam-Report-CFA-Test:
+	BCL:0;PCL:0;RULEID:(601004)(5005006)(8121501046)(3002001);SRVR:CY1PR0301MB0683;BCL:0;PCL:0;RULEID:;SRVR:CY1PR0301MB0683;
+X-Forefront-PRVS: 067270ECAF
+X-Forefront-Antispam-Report:
+	SFV:NSPM;SFS:(10009020)(377454003)(189002)(479174004)(199003)(3905003)(319900001)(102106001)(101416001)(77156002)(42382002)(62966003)(84326002)(229853001)(2351001)(19617315012)(2950100001)(33646002)(109986003)(64706001)(78352002)(87976001)(89962001)(46102003)(1476001)(189998001)(110136002)(4001450100002)(107886002)(76176999)(5001960100002)(54356999)(50986999)(575784001)(92566002)(86152002)(68736005)(19580395003)(19580405001)(74316001)(15975445007)(86442001)(1496007)(31696002)(512874002)(512954002)(18206015028)(86902001)(5001920100001)(64872006)(11286001)(76576001)(105586002)(106356001)(83832001)(4001540100001)(5001830100001)(97736004)(5001860100001)(7099028)(82146005)(5001840100002);DIR:OUT;SFP:1101;SCL:1;SRVR:CY1PR0301MB0683;H:;FPR:;SPF:None;PTR:InfoNoRecords;MX:0;A:0;LANG:en;
+Received-SPF: None (protection.outlook.com:  does not designate permitted
+ sender hosts)
+Authentication-Results: spf=none (sender IP is ) smtp.mailfrom=<>; 
+X-MS-Exchange-Organization-Antispam-ScanContext:
+	DIR:Originating;SFV:NSPM;SKIP:0;
+X-MS-Exchange-Organization-Antispam-OutboundIPPartition: 1101
+X-Microsoft-Exchange-Diagnostics:
+	=?us-ascii?Q?1;CY1PR0301MB0683;23:xyYOTU3FpnHFukxB+S1jQ0DUx9Dz02fW378tHDE?=
+ =?us-ascii?Q?iYrTvm9Cr78Q0WImFFPnzvgRfsoHYI9aJTprElHEaLaVC598NnzUHUSkqGjr?=
+ =?us-ascii?Q?iAKsxztcOKI0rAwxzAPtryl24z8RCaUF+vBgonaNCz2Ftt1RbcKWjRx+/e3s?=
+ =?us-ascii?Q?sqNf/6+k70R2d2vSft9020IXxtsfQNOp0QASOP4tZhMIjRT4y/le8HFPkYrk?=
+ =?us-ascii?Q?HlQgZwRiCbbqiDtQ6hw4wT3+0ki3+6VMpSba7vvLEQuy8bkKZYsPp21aUvJK?=
+ =?us-ascii?Q?RJkGcoMnK7r+doCJOVwIoVW8E+UJAQq0y1KkvmKr/1tQHiR8vHyYAQE5hwTT?=
+ =?us-ascii?Q?iPQ1MJjjEKLX1XPuGZIvEIIzK/sWeY/eiZYgaCVLg+jGX+y0X0erFrkKgB+n?=
+ =?us-ascii?Q?SnSBcl7QLWAUhoolsoKaJlsCeKLpbnd/O2TkJ71JRC1kQOzp+yniqYtWjLX4?=
+ =?us-ascii?Q?fGFdJzFON2nVURLVPK0nkSq9vjOKQYluQLxl5lapCrvYVzVG9ZW5FnZTh8du?=
+ =?us-ascii?Q?Vzy9qrkwBAq+mfFBIgu3lVTsu3UsnLR1gOCh08u1E2+i2uIIXJxOMjTjIu2b?=
+ =?us-ascii?Q?JbMOT7m3xYpXjoQ8wQOeDTKdCUrDGIq2GaJhq94AzF3kn8MLZNhSr7kjPVYp?=
+ =?us-ascii?Q?f0gpxFpOYa+cHwgC+GzwMZbCiniuBBUjdOwyyxuytZ+W5wCR+uJaKDai/+RX?=
+ =?us-ascii?Q?OKNFsilDIkBZkjJyXZdwnqW5cCDSD95V2v3bCoOekflOUepVO1i2+z5VMPrL?=
+ =?us-ascii?Q?jv4oHDfDksT60I5GbIHKHC2OBShARbHhofvipE9gnNIuCs7z9dQHPrFqicFd?=
+ =?us-ascii?Q?vypkhyeoxYd8QPQI1dlm5GiJrs4JKen8c8UmgnhdpFw6dxmEOt0/6eDejcDA?=
+ =?us-ascii?Q?NDrN0bQwdO2NQ2D/8kFOBaYoKH8LX2BDatplohBYTmSCBXxKakNxEBcKXdi0?=
+ =?us-ascii?Q?tLVGCKK26LU/csfG4Cnhfs88uKNxBCspadqByX6snVyqZ41A8ULsvEyWbxqT?=
+ =?us-ascii?Q?+/Zc+03Ptra1yn7+pK3LaRPvAdXCeKY6j477OVBGqYGQGsw8V6cxqiy+4FG4?=
+ =?us-ascii?Q?DjcU6IAWf+OEHWFILmVlsqJ+nMYkNSCc7GGIlP+wNC2oKq/d9Y65lqq1vtIF?=
+ =?us-ascii?Q?cYqQHVk7Ooig7CiHQf2XqnAQ3B9UFs3FFrxQjjCz2jADlKT4tTjKcmUlwB8c?=
+ =?us-ascii?Q?eI7dKYQ46wy6N6tDXD79JU/J7v3C5XtXN3ZuyHDIaioJebOgN6ees9Yi0yMJ?=
+ =?us-ascii?Q?h3gBWJwconaTQ1R4WxpZtWK3+2Nn2DGoDJMgO+juDVux9UVtqXDApGLmCA8a?=
+ =?us-ascii?Q?lm32isXZhvTHWoI4rVeEMQx1z8DFOHx0R+bJi6ZxBxvfIyfhIhwTrI4e3GjJ?=
+ =?us-ascii?Q?lDfv4ClPqtrVdvsDfKT9LODQ8D14lwyeVlsYOiyJDbUSuJ/8c3aqOujYhwuy?=
+ =?us-ascii?Q?SD6AXbjALcpOl8HOuodcefSgDJm/4QZBWKduv2Mbi8pX379IcQ0UbPgTneaD?=
+ =?us-ascii?Q?v9bDtb1ZI6bdqflYs8B27XblYpkgHnnDUgtFahMpK8VtejJbz7wj/g1KzZ4H?=
+ =?us-ascii?Q?LoV1b+OrHhDZf7I6Ve8AH1QPd0c++ygKtfhU73Ps=3D?=
+X-MS-Exchange-Organization-Antispam-PostContentFilter-ScanContext:
+	CategorizerOnResolved;CategorizerOnRouted;
+X-MS-Exchange-Forest-IndexAgent-0:
+	AQ0CZW4AAeQTAAAPAAADH4sIAAAAAAAEALVZC1fqWJYOV0HBy7W6q1
+ Z39XTXmqye7iktL5jwEMS6VYW8VRQBRZ01a1ZIDhAJScxDxF86P2f2
+ PicJiK9bM2u81xhOztln729/+3HCf/8cj5U7p9FoPHZtuBY/IbYtDQ
+ nvGDzR71zVUon9m6JKE0NXyMQ0LNWdJGVjkpRcXjZcTdF/dPg+4RWi
+ qffEIkoSJAUr+alk44SB4eoKLzn8y5Jwd8mU5BGBm7PBQJUJn97LLk
+ qC+6LsqIbOtwkOEQUXtYmsmirRnSj7iccu9LFuTHW+e8ZLimKBNWy8
+ bkzRpqr6wDcc+NwdEX8CP5FmaMJEtW2TaBpReMOig7rh8ORBtZ0k37
+ VmvANrBoamGVNVHxbo9s7MJHScTCRVCyTCiM7DHQGr8amHajIeK2lE
+ suiY5evO66o81qUJ4WWEgFd1/sx1NMMYox7+bY/0+aJp8v3ZXAcqx3
+ aIaeMiZ6TavGQ5qqyRAn9abgNUtmnoNuFLhkL4bFJMigLOrDzII0kH
+ L5/pmqoDEKDmHHbU0tAdSXaW9NyCvc2RAQtAL1W3HQkGmWmgzGfQyw
+ K4pImpkW0EG4yRxyBDYoJ8cEBL2bBArJNkfpjvgKCPpHswiji8a/IU
+ VBA7lSyF2muArrC1t94XmeSLNm5EJkvbSvrsyfIRmf04lw6KTA1rjE
+ 88gdoM6dsYUH1Ny+hrIFIGMFTdJfZnXxaDeiFUZhg6PgUmqo5SepLN
+ 5o2IZg5c7Ve+g3QYEKL0JXmcRFY2DYvwDX1gUOwqVEARBdiUorCYWB
+ Y8MWTZtWwgqSy5NiMccotY+AfMXNTFNiYEfTQdGTAVRfaNB7QVPjvA
+ bXDi3Nd833Ve4K9qL4AM+ysGoXHsBwMuoIrBRItALHuCn/DlR9uTas
+ 9g48lnutcElOCNgQPxocIn16bZY6A+zAWYxLIhzkF/Zp2KPCmCGyaQ
+ OnyCgQyYQTzWy8CKkWSaKNX2xxeJxfhOA1O1loz1IfAQNSEa7UVFBp
+ Yx8Ra+ELMaIPJ2yDK8loLcR3QGVMSMxUt9w9NDJ1OeJJ6omEggWiNg
+ lO0AZVhSgfkJY5BQJOeZ+4BR1kSi6RKW2sYcEp8oABMFF8emlgEhsO
+ B74JjymSf3dI3hDkeL+MiUVxRedThy5piglyBjjkiQBSiPBkuuwCSl
+ L1IQdrOoEyQAUyaYr2AO5l7JttWhjuYaVAjOTEK80A8LEmjI8CWQTv
+ V7knWodERO4u8lTVWCPRaFU4p1IHAcFQBCrHUIUxsfLbNzbohhvcJ3
+ mgKepMPPL3ESlZItImHsSM9SneVq5LV895kmYAqsRX5E0/xcNVWd0Y
+ skV1QUYFgzwG+w6E7qbr+W+PvMlQx2xBqhoo22o2oadY+XPD9TUaCE
+ Q2wnIBiNGsnjA3WCn4owRxGC+lN5aKBtu+ApXb1zCfM1o6dC3T3A9I
+ ppxjIUVyZPcjNOQuWf7ybJ0J7oDijOSsNXO46WEEMfqNZkzqJngLBU
+ CLjMq5mHUVBUknzHHQ4RE6w7Hi+RFNBo9AmUOar4U4/bqJxpADXBvN
+ dcyPCy+S3blUdg38ITe6bLIwhn9ZFFP5u5Deyu4sZYbhaSw2fqiP9D
+ p4DtGmQBVZc0vuk5vkwc0NrG8lby2F2GK/ZL+V0xv5sSxCyfLqSFQi
+ rDF5sw3GFMLDI7C0Ez+JtqJsRcKpEWE6kc3GWSmiFLmmIALPpi97e4
+ 9L2uFfdz+7eAF84GVIBEbh97P9XL9QW+KY0JXwTrqawZzKvQardgWt
+ uverQOoqhsVvCBa1c6ZyeXlXayWG4nAy1PDaeKffABP1ccw4g1x5Be
+ Os1uK/A2VhDXjNLunB8SnVgSK7K4V+labLWFtCA2D4W9fDoJhcW0FC
+ GdxBhJGqz+oMHYY3h+qRsmdhX1sxb2Fo1mhd+66Ja2EYT2Gbqhe4Zd
+ S6NbR/MqJ8VrHmfBB3HRdfHYgu/gwZs+guc/wW/qJQE55vx3fHx4Kh
+ ar1TNRrJaFVC6JAYFGOoQeBpZNVWXLsKG7YFB2iAVHEhhPA89l/PuS
+ HvtMj6WNFvYY9jWE/CyFkJeKgpDOBfsaNBYwFN7QgN/qnnQQ6JSnR+
+ YNPZ7u85ZjfxcJ3tTrpxfCuE4kCEqbRhmBo51SYEn2K/Xjt0QhKWYg
+ HPYzSXEvsw3M/R0qs+V78JvNw296m1W2wAwI4mU7eKjtIgZgKgXX/Q
+ O+60LdFfN80R3yNOkIPtA7Avw8s+xNBvBbKUkQC6IoFgYZQSjkZFEo
+ FMS9Pc+w99mxIIGgBAAnUyik936XaZl0Uszx96rEVyHLO1h3u5ak25
+ iMnlscjy2bXHTxaApHRJr/E5D2Xc2xC7xtDr7oeGrY8tqCRgsrWTaT
+ TGVT4Aj43c9vx2P2xDFpECJiX96K3YNXzvowPlYndLN4bMvvFjAPsn
+ ZsG85LyLykQuccvCplIlnylwGoAuWCuokZ4K2m+o0MhyYMWHMwd3ei
+ 06rC+Zha+3IqKfBvWUZ793gMVVYIKo0NOJwVJqqDGdoDEE9b9vYzkr
+ 0peGsJb0qtr8+ANGggXkBCPrdMKxr4WGsprRYJtf/VfPIjKPc8gqB8
+ vW1aC/CARvozgwFbNNAhg5xCXXK5/UxKSBdTL2wq+gVnR4RN+a1Kpw
+ urukaB//m9Yv/LvNjzX1Xq47GrRKveSnjpEM79w0RHtlQTBGQhaCn6
+ 0I9DRoXamLiEDAmyCryYFNhbEwiuRHdmkgJ0ww/OrqnRUIAmyrKJ8+
+ XvF91qIv/3A561YF8GmjEl0BAoRLPNLzOkVSAE3TAgVqIC3T/2hwU+
+ f6g6qGATlCBWgS9brgkZG46ZKA4grrd2s8l0Mr3tNSx2AlHChu8VfP
+ zeC6B8YxagWKVgdSUIOon/uS9ZjkZm/5UR9n5biLFfgmYj0SiDSPSe
+ kBfzQjotpKAKBE5+s7EDKbRffI8I9PWba+mJluSMCvxXtIyIXeWsVX
+ QcS4XzJlE8bQu8QGH1QyXhd72JsioNdSCuKkOOFA+ehuKBWGi17s67
+ tcnJ+Ul+opiqlVfE3dr9/mPjUryr9m96Pan8kCWZx3ppcvTo3KZPRz
+ 1lfHZv1hSl6rp7j/XmcbpbEo9cNXeUvbvsG6XG3jTdlt0ceTwST2+b
+ YKcp3nTqzsVu+7A6NHanw5Ghu9rZ3YNxda4/DNrtu/KV/iCUTlK3le
+ zR/Y2dGjfzd9fTzK0wtPZSzZ12r+Xkjhv9C7tcEzv583LvYe9B792k
+ ep3s8bG7I6kX92eici+0aiVyr+Tb++ni7XXREmW7XhdIXem4RWV4uT
+ +S9sYg/nhW2i8WB+njUfNyeLfjkMlR1ZGko9NRuqfcnpKjo6l0M+sf
+ a/3h4HxYtzV5D4p9y0iRW7M/uutkFFvqZWfD4uzwoXxdlmtZZ68xky
+ 9TVrp9S070o9z5ly/oDohXMsCklChCwbJNaZJgTXeBLzVahaep8qDU
+ bV8XLjoHjdZl4fSkcVCpsr9f4VhocA+WGpODVGFw16hdTAW5dz6+KI
+ 5FzRx3R9n6WeV+vDO5ycjSyazXLhcfVXLUUMqjq1pjv3Lez3dKzVK6
+ PNGnnWw909qVHOCYaF1rw8GpUS2VzppOLWde9u9SQm23f9G/VoezzD
+ jjplp1fXQ669QUQ0+ddm/Ox+Ojvjq0+/tFrekeHZ8+1BqdfraUP5bH
+ k8xx+2qm7xSL5Vxn1yqmp18O0oWjRslxuurt7Fo7k9pjgxyfn5+RoV
+ NrVPr93I0muM1ORU/1nImpyNOLinZj3exfVVz7CnQi2cdJpli+Su0W
+ L8eudTm8kU+s5k5fkc0M0CvVKHZyx8Kg5XSs8mXqeN/V7weNh5RhC+
+ nRze1UPCOXd3t317Xefka4J81a/q5u9gZXVuXRlPYvOju5iWIP003L
+ tWXbvb1T2iPp+mac2p2R0kTo3J6372e7uf2dYjq9OzJ2sllL3suJ5t
+ G0dZ8zs1ImVRUOH0+LO+M7u6YWM87o4fTYGg3NTv72qHPcuj887NYP
+ UtkCOb2cdBWlPH1sXJRKQla4Gjit1L6sp4d291rriQ3tUD0djPqnlf
+ x4L50pDm8nU+22bopF1akdjbTr3mVVbORK51fD8vBiXOxqpnzY6whC
+ o3zSz9yotaud7oO783Bl79YEt6PcO4OsfZ29zmr313aq0RFK7ctccy
+ zUldTlXf9m1653jGuxVjm0BjWhs5M1JUW+GUuVEqnpQ00ZjUx3VD7f
+ O7nQHscpaFvup9XqTremdUvXQmaoqhdT/U4nleNOk5j75gBSrl6rSV
+ mhfqy63V39tpqqK0buvDtqC8epfLajdi+PDTPf24HKoRfzh5WdyuWU
+ RdM8BvxoAt5fWGpHlvTCwWHppCActOi1fXFSgfS9lRNzAuTZ1PZBp3
+ 3ZLixHSDzGs3DEEtnsFgu8otvLcfR6g7/QjmFtmUt4O4EXLUu9l7TE
+ KxViud2dn2sSwZm7wFsDOZ9KHbzXPEDV+1+vZN9VQc+HpVqBMutIjg
+ s1hL0ggAoX5J8EvnGBBhwa64P/l1cIiALfwb6HtqfQ+QBstiLNPiNu
+ +AJezH9m8CVYiaVNkzcdZErQV88mhkvfC0Or8B9iGhtHyLvpbDKX+0
+ /cYL4AvIPvpiSLFPBBVbVgh1NpQvz2AQ6bJxKMeYM1zYCGFAYr9JU3
+ dJIvNxfxWAu/eoJanRG8HxgCCKEDYhBmskIa+ydXd6xZAYyzHUvSVA
+ mpBo0U0WXCt+g7RPBkSgADOo1ystWJx3r0uyKL0BeNKr5FJvSrElX/
+ FRrDIbQIE0S6DVRn3yQq0LPi3BF+mcfe3Lv2r3zNMIYaHGu6RNNggL
+ 1vY4+nuAUuwW3QMd7LvwLfk/DrJfrdFv0iYOq/c3QMsC0e67sz+kIa
+ HpkWvniDc5mpEcnGrxPxH/sKjR7k8FsR9vJ03ud6327eq2SKL5odcM
+ vIcUy7sLs7nU6TLzN4VwdId/Op3bmg3cx+NkvJ9FWdNM99WOHWVrnw
+ Grf+gVuJhjiei21y36xwq/BxnYviIBePcrEItxbmIvBxM8T9yZsQiX
+ DRSGhtheNWuEiU+whz1rmPUe6PTNoaF2dy6DUMVxhnIzFug43D/zC3
+ xm5gowi9h41gJmjFPq5xMRihE2KgElPD32KdraV6xthauKcWReEjzI
+ f7UIiLsP/chxD3ASYw65j8wAQmLUp1C3aBj1SHKBtc9Q2hT2NMK7iy
+ cbY1s46pxNSAwcXlMCGAwt8lzgBhOzLz2S5wAwvDvpw1atE6F4crkx
+ amjmDTwCImOULdCsYGQDFU4R4e4dWzetX3gvcUdPbnrwV4MibAxw3u
+ I91lnSkToB0gxrb2TUYFmEpsGlOYKcDuKUTr1MBI4E1GtsCKMLIrxl
+ z5zPVh5uVgOZsfyFnzmca0WglxG76b2JINbjNQJtBzEZBV6jWPKr5i
+ VKWPMIHNYVsw6BaxZaICLzBV2c1qAJc/mbkvIEmwlmnCFgKkbBeG9i
+ LsbDzwUdiLnWiAMzMQBDKKMjADlgZUZNr6rIswQgYYsh19os7p7Q9G
+ GesYexevfh6YsyWgQcR/Gij5dG3Uzw9LBnoRukikiMeNKNsLbgJb2E
+ IwPKC0bx0kt3WmVZRmv4gf0Rs0g/3ONAI5MEpNYFG8Dqsgr0bp/NVQ
+ eC3ErXEcBSTM+AkC/41CESQEquonatHG05wMaGz47ov44RCjhmygRa
+ Eo49JzVcGvHyksf+C+fZYqAbeoj3AEMvw29w0zmcYUy8ZgHewYofUC
+ tIVYplwNgUFciO64YGZkwcwIaPBNaAUVC4EJoNAKuzJVN0Lfvich/I
+ 4E7tOnEPcTt8mQYTqDLUitUJQK/7ASiry7Cwj5gduMYcKPxNEpnxg9
+ 5tJAsmfvVwkEIT9ynxaRfI7tXDJNcZQ50XU6uLw8FJ5bHVqdX5EGq8
+ uSX5+8ijlkw980HICJ5oQ+zEGm2RWQ38CcSVNWKAwsWueA0xA7XBip
+ jnou4BaGOUHqAzQC9Z7iuTAtBPoAiBG241fr5uVSWp2XlIwsKfkJO5
+ ZNP1N5aecJhZ7gE6HlNfoe5eILjRA1dl5514EZ/+DWWBr0I3eVJvYI
+ q2gw4c9+3wU7+rEJQiIxFMs4/C7tP676fZHfoa0zj7wXcfE3iLQcSj
+ 6Rlq+es2IepC95youUVz31Ap2oa95BnlUZyLdUjTDtJz++IHxB8grm
+ uvCzXBp9lkujEM7fU50B3kho3Wcp6BmmvAVPQQ5naRaT+UfMjRFaYt
+ aQYyGoE8xwLJcR2tuwmX+hRZw6KBJCgR+QKt6qVYbb/IoFBbLK2ge6
+ +18XiITN3pORMHXB+hqSat1vszERxfy0tkfD83mJofx5C7cIjq+h/J
+ eLVDyEdP3wXehPVOeVECL8gXVrQDNGgE+hTXbzLfddj7sCQEQu9a8c
+ /4X7pctdhdAWbwlNsKuvkNProoOWdYXCuLDdJ7bLZugbdvMv3F+3uZ
+ /+xv3wC/crLVUsY3+ocrWPXLzONf7Mfb8R+hjkE7h+z/3lb6Ef2IjM
+ KWyjf3D//MRt/pP79y1uG2SuY6iuwdbfeVtvzD2IdcG7AfIgkjQeN6
+ Hmhrg4TX3AkASk6ydVAAPhD16rRs8R74aAT7z3YioKH/9Ioy+C1WQt
+ Ouf/KjRqm1iAXnhEmYn/nzUSqzFcRUPGz+G/v9nY8E8ZcH7kNlEg4/
+ kaYx17irmF9VSLNPDy/xrLeCs0vla9E5B38ywWwuHQWoyDcMAjKtAA
+ Kw52NQgLa2JXEcBwkMyZ32nIrLL8ELDOP/WsBk0jGwlWsR2XjjysG2
+ c0Y1BEaG8ZTKPVc9U/nYHCXIHqHxzGV71EB8o8y1r/A/od0PUgLgAA
+ AQLwAjw/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9InV0Zi0xNi
+ I/Pg0KPFRhc2tTZXQ+DQogIDxWZXJzaW9uPjE1LjAuMC4wPC9WZXJz
+ aW9uPg0KICA8VGFza3M+DQogICAgPFRhc2sgU3RhcnRJbmRleD0iNz
+ A5Ij4NCiAgICAgIDxUYXNrU3RyaW5nPkFzayB0aGVtIHRvIGNoZWNr
+ IHRoYXQgYW55IGZvcndhcmRpbmcgdGhleSd2ZSBzZXQgdXAgaXMgd2
+ 9ya2luZyBjb3JyZWN0bHkuPC9UYXNrU3RyaW5nPg0KICAgICAgPEFz
+ c2lnbmVlcz4NCiAgICAgICAgPEVtYWlsVXNlciBJZD0iYXBhY2hlQG
+ lwLTE3Mi0zMS0yNy0xNzQubG9jYWxkb21haW4iIC8+DQogICAgICA8
+ L0Fzc2lnbmVlcz4NCiAgICA8L1Rhc2s+DQogIDwvVGFza3M+DQo8L1
+ Rhc2tTZXQ+AQrmATw/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9
+ InV0Zi0xNiI/Pg0KPEVtYWlsU2V0Pg0KICA8VmVyc2lvbj4xNS4wLj
+ AuMDwvVmVyc2lvbj4NCiAgPEVtYWlscz4NCiAgICA8RW1haWwgU3Rh
+ cnRJbmRleD0iMjUiPg0KICAgICAgPEVtYWlsU3RyaW5nPmVucXVpcm
+ llc0BkaWFtb25kZW1wb3JpdW0uY29tLmF1PC9FbWFpbFN0cmluZz4N
+ CiAgICA8L0VtYWlsPg0KICA8L0VtYWlscz4NCjwvRW1haWxTZXQ+AQ
+ vYATw/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9InV0Zi0xNiI/
+ Pg0KPFVybFNldD4NCiAgPFZlcnNpb24+MTUuMC4wLjA8L1ZlcnNpb2
+ 4+DQogIDxVcmxzPg0KICAgIDxVcmwgU3RhcnRJbmRleD0iMTA5IiBU
+ eXBlPSJVcmwiPg0KICAgICAgPFVybFN0cmluZz5kaWFtb25kZW1wb3
+ JpdW0uY29tLmF1PC9VcmxTdHJpbmc+DQogICAgPC9Vcmw+DQogIDwv
+ VXJscz4NCjwvVXJsU2V0PgEM5AU8P3htbCB2ZXJzaW9uPSIxLjAiIG
+ VuY29kaW5nPSJ1dGYtMTYiPz4NCjxDb250YWN0U2V0Pg0KICA8VmVy
+ c2lvbj4xNS4wLjAuMDwvVmVyc2lvbj4NCiAgPENvbnRhY3RzPg0KIC
+ AgIDxDb250YWN0IFN0YXJ0SW5kZXg9IjIiPg0KICAgICAgPEJ1c2lu
+ ZXNzIFN0YXJ0SW5kZXg9IjIiPg0KICAgICAgICA8QnVzaW5lc3NTdH
+ Jpbmc+RFNOPC9CdXNpbmVzc1N0cmluZz4NCiAgICAgIDwvQnVzaW5l
+ c3M+DQogICAgICA8VXJscz4NCiAgICAgICAgPFVybCBTdGFydEluZG
+ V4PSIxMDkiIFR5cGU9IlVybCI+DQogICAgICAgICAgPFVybFN0cmlu
+ Zz5kaWFtb25kZW1wb3JpdW0uY29tLmF1PC9VcmxTdHJpbmc+DQogIC
+ AgICAgIDwvVXJsPg0KICAgICAgPC9VcmxzPg0KICAgICAgPEVtYWls
+ cz4NCiAgICAgICAgPEVtYWlsIFN0YXJ0SW5kZXg9IjI1Ij4NCiAgIC
+ AgICAgICA8RW1haWxTdHJpbmc+ZW5xdWlyaWVzQGRpYW1vbmRlbXBv
+ cml1bS5jb20uYXU8L0VtYWlsU3RyaW5nPg0KICAgICAgICA8L0VtYW
+ lsPg0KICAgICAgPC9FbWFpbHM+DQogICAgICA8Q29udGFjdFN0cmlu
+ Zz5EU04JCQ0KWW91ciBtZXNzYWdlIHRvIGVucXVpcmllc0BkaWFtb2
+ 5kZW1wb3JpdW0uY29tLmF1IGNvdWxkbid0IGJlIGRlbGl2ZXJlZC4J
+ DQplbnF1aXJpZXMgd2Fzbid0IGZvdW5kIGF0IGRpYW1vbmRlbXBvcm
+ l1bS5jb20uYXU8L0NvbnRhY3RTdHJpbmc+DQogICAgPC9Db250YWN0
+ Pg0KICA8L0NvbnRhY3RzPg0KPC9Db250YWN0U2V0PgEOzwFSZXRyaW
+ V2ZXJPcGVyYXRvciwxMCwxO1JldHJpZXZlck9wZXJhdG9yLDExLDM7
+ UG9zdERvY1BhcnNlck9wZXJhdG9yLDEwLDM7UG9zdERvY1BhcnNlck
+ 9wZXJhdG9yLDExLDA7UG9zdFdvcmRCcmVha2VyRGlhZ25vc3RpY09w
+ ZXJhdG9yLDEwLDY7UG9zdFdvcmRCcmVha2VyRGlhZ25vc3RpY09wZX
+ JhdG9yLDExLDA7VHJhbnNwb3J0V3JpdGVyUHJvZHVjZXIsMjAsMzM=
+X-MS-Exchange-Forest-IndexAgent: 1 6884
+X-MS-Exchange-Forest-EmailMessageHash: 704CC6CE,F6A9BAAC,CDCDA3F5
+X-MS-Exchange-Forest-Language: en
+X-Microsoft-Exchange-Diagnostics:
+	1;CY1PR0301MB0683;5:Pps/KycqG9ZzFffApaH2Ns5Eu8Q8o1PQ35aubUP9CxNrtm9SgILyuUWcJ0bLskU9N40zscXslNC6ge/BSZA3Otca+lideHldIGYuTiY/G4H+Gy3Mz6g7n7rxMs4AGTvwaV4C65uZnQGLKPbFNzcp1A==;24:DNGWg2u9RjeD/fHj15DvLpawF7mMEqwNABDmNEV7PD3YP0c79yidRSOBJrC5QJhhzsB/EzaVbKtGerjmzyBuQGtHqpa/evIAHvqP0jHawWA=;20:CN3YBCkJ/zhkldTA6D3S5dK/l4pmfGQA9t/P0gvBz3Pw+MBZmx+U2T1mO/w1VU2i6Mgbq8YwqbFLOi648IG1tphSWWHJj9Yv0fBYc1mhboBWCY+WLtwaIintBUN+vWiVvefYLQJljh61fO8OL8FRCRjOLThJ3g1r3U/3BTGwS+A=
+SpamDiagnosticOutput: 1:23
+SpamDiagnosticMetadata: NSPM
+X-MS-Exchange-Organization-Cross-Session-Cache:
+	00SL=1;EMSL=1;SCL=0;BL=0;RL=1;PID=0;PL=0;EXPID=SpamDiagnosticsExperimentId0
+X-MS-Exchange-Organization-Processed-By-Gcc-Journaling: Journal Agent
+
+--_6967a094-dbc6-4675-bb7a-8c762fb3189b_
+Content-Type: multipart/alternative; differences=Content-Type;
+	boundary="_9ef444ef-fd0c-4160-9e2d-fa3c6aa7cfee_"
+
+--_9ef444ef-fd0c-4160-9e2d-fa3c6aa7cfee_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+[http://products.office.com/en-us/CMSImages/Office365Logo_Orange.png?versio=
+n=3Db8d100a9-0a8b-8e6a-88e1-ef488fee0470]
+Your message to enquiries@diamondemporium.com.au couldn't be delivered.
+
+enquiries wasn't found at diamondemporium.com.au
+
+apache  Office 365      enquiries
+Action Required                 Recipient
+
+
+Unknown TO address
+
+
+How to Fix It
+The address may be misspelled or may not exist. Try the following:
+
+  *   Retype the email address then resend the message.
+  *   Clear the recipient nickname cache in Outlook or Outlook Web App by f=
+ollowing the steps in this article: NDR Response Code 5.1.10 in Exchange On=
+line and Office 365<http://go.microsoft.com/fwlink/?LinkId=3D389363>.
+  *   Contact the recipient (by phone or instant messaging, for example) to=
+ check that the address is correct.
+  *   The recipient may have set up mail forwarding to an incorrect address=
+. Ask them to check that any forwarding they've set up is working correctly=
+.
+
+
+If the problem continues, forward this message to your email admin.
+
+
+Was this helpful? Send feedback<http://go.microsoft.com/fwlink/?LinkId=3D52=
+5921>.
+________________________________
+
+
+More Info for Email Admins
+This error occurs because the sender sent a message to someone whose mailbo=
+x is hosted by Office 365 but the email address is incorrect or doesn't exi=
+st. The error is reported by the recipient's email system, but most often i=
+t must be fixed by the person who sent it.
+
+A common example of when this can happen is when the recipient changes thei=
+r email address but the sender picks the person from their recipient nickna=
+me list in Outlook or Outlook Web App. The nickname cache doesn't yet know =
+about the new e-mail address -- it has stored the out-of-date email address=
+ information -- so when the message is sent the wrong address is used, even=
+ though the sender chose the right recipient.
+
+Another example is if the recipient is an Office 365 user but a license is =
+not assigned to the user. In the Office 365 Admin Center check that the use=
+r has a valid license assigned to it.
+
+Sometimes it needs to be fixed by the recipient or the recipient's email ad=
+min, for example, when the recipient has created a mail forwarding rule to =
+an incorrect address, or if there's a problem with their email address dire=
+ctory. If the sender is using the correct recipient address, and it's still=
+ not working, send a test message from another user mailbox to see if it's =
+an issue unique to this sender. If you reproduce the problem sending from a=
+nother user account, ask the recipient or the recipient's email admin to co=
+nfirm that the recipient address exists, is correct, and is working. Sugges=
+t they check for misbehaving forwarding rules or possible email address dir=
+ectory issues (such as directory synchronization issues).
+
+For more information, see NDR Response Code 5.1.10 in Exchange Online and O=
+ffice 365<http://go.microsoft.com/fwlink/?LinkId=3D532972>.
+
+
+Original Message Details
+Created Date:   8/18/2015 3:30:24 AM
+Sender Address: apache@ip-172-31-27-174.localdomain
+Recipient Address:      enquiries@diamondemporium.com.au
+Subject:        Form submission from: Make An Enquiry
+
+
+Error Details
+Reported error: 550 5.1.10 RESOLVER.ADR.RecipientNotFound; Recipient not fo=
+und by SMTP address lookup
+DSN generated by:       CY1PR0301MB0683.namprd03.prod.outlook.com
+
+
+Message Hops
+HOP     TIME (UTC)      FROM    TO      WITH    RELAY TIME
+1       8/18/2015
+3:30:24 AM              ip-172-31-27-174.localdomain            *
+2       8/18/2015
+3:30:27 AM      ip-172-31-27-174.localdomain    BN1AFFO11FD027.mail.protect=
+ion.outlook.com      Microsoft SMTP Server   3 sec
+3       8/18/2015
+3:30:29 AM      BN1AFFO11FD027.protection.gbl   CO2PR03CA0037.outlook.offic=
+e365.com     Microsoft SMTP Server (TLS)     2 sec
+4       8/18/2015
+3:30:29 AM      CO2PR03CA0037.namprd03.prod.outlook.com CY1PR0301MB0683.nam=
+prd03.prod.outlook.com       Microsoft SMTP Server (TLS)     *
+
+Original Message Headers
+
+Received: from CO2PR03CA0037.namprd03.prod.outlook.com (10.141.194.164) by
+ CY1PR0301MB0683.namprd03.prod.outlook.com (10.160.158.153) with Microsoft
+ SMTP Server (TLS) id 15.1.225.19; Tue, 18 Aug 2015 03:30:29 +0000
+Received: from BN1AFFO11FD027.protection.gbl (2a01:111:f400:7c10::166) by
+ CO2PR03CA0037.outlook.office365.com (2a01:111:e400:1414::36) with Microsof=
+t
+ SMTP Server (TLS) id 15.1.243.17 via Frontend Transport; Tue, 18 Aug 2015
+ 03:30:29 +0000
+Authentication-Results: spf=3Dnone (sender IP is 54.252.162.198)
+ smtp.mailfrom=3Dip-172-31-27-174.localdomain; diamondemporium.com.au; dkim=
+=3Dnone
+ (message not signed) header.d=3Dnone;diamondemporium.com.au; dmarc=3Dfail
+ action=3Dnone header.from=3Dhotmail.com;
+Received-SPF: None (protection.outlook.com: ip-172-31-27-174.localdomain do=
+es
+ not designate permitted sender hosts)
+Received: from ip-172-31-27-174.localdomain (54.252.162.198) by
+ BN1AFFO11FD027.mail.protection.outlook.com (10.58.52.87) with Microsoft SM=
+TP
+ Server id 15.1.243.9 via Frontend Transport; Tue, 18 Aug 2015 03:30:27 +00=
+00
+Received: by ip-172-31-27-174.localdomain (Postfix, from userid 48)
+        id 17794203A2; Tue, 18 Aug 2015 13:30:24 +1000 (EST)
+To: <enquiries@diamondemporium.com.au>
+Subject: Form submission from: Make An Enquiry
+X-PHP-Originating-Script: 500:mail.inc
+MIME-Version: 1.0
+Content-Type: text/plain; charset=3D"UTF-8"; format=3Dflowed; delsp=3Dyes
+Content-Transfer-Encoding: 8Bit
+X-Mailer: Drupal Webform (PHP/5.3.3)
+Errors-To: info@diamondemporium.com.au
+Sender: <info@diamondemporium.com.au>
+From: Tamara <bartley_406@hotmail.com>
+Message-ID: <20150818033024.17794203A2@ip-172-31-27-174.localdomain>
+Date: Tue, 18 Aug 2015 13:30:24 +1000
+Return-Path: apache@ip-172-31-27-174.localdomain
+X-EOPAttributedMessage: 0
+X-Microsoft-Exchange-Diagnostics: 1;BN1AFFO11FD027;1:PPqQTGmLQL8mdpir8d1/Gv=
+9zIV1qFbZWWaDx5e4zHCmJztj3NhWdkOvpGddFuu6zHMK3TC1Jui7J5qVboCI6w3Rcu7ezJ1NjM=
+000p1ZSHtU/RBFgo/wghonulOqxoXQnxfRRqDXnx0CL2jE5JvZs2kM8qYw4j0gr62M+RWPt7KIb=
+UsDG1S8QDWx6xnWZ2WS5KKu+aiUvO1dv0PGCevd8R93AjYAr1csHH0eHdSuAdgV9ha6kvZsKyC9=
+AAf3KhMVgq+temJFtaaJNh3WdjNeJJwaZybKlbgfQgHslc6MB0Po2ejpbhqS4dsaW5ygAyBxDYD=
+cG5t6IycV2r3RjeLnJ7Q=3D=3D
+X-Forefront-Antispam-Report: CIP:54.252.162.198;CTRY:US;IPV:NLI;EFV:NLI;
+X-Microsoft-Exchange-Diagnostics:
+        1;CY1PR0301MB0683;2:fqIGUw0cWQkUAk1lpkTh5HOEvk+mZ4caLyWRDAzieJIdDhX=
+GI9EQb8SCMC3DmnwS5H4P/atdMe1rYlgfNoFCCOMtG7pVbq20G/bUbYigy4k4u2PHnhNySGdon2=
+NTZQkkJbigsb9AlMuJKNxGISb5C8Kckm4KRXyn+AAD7S/rA3w=3D;3:JICttTijyYlOaRkoeKQQ=
+OegtGIEbb7Zl0uMSEn2WtmpdcwUElZrZ9XEusXOMte5zm4ADX2/AVkurVgZcLrM+bdcp4qDX2IA=
+S7K0fPtSrDV2K9unvfIx2os03hZjw1OeVq6qYGW940veMG8qHpWfXrEzpa9US+7mdsg3Mruscsu=
+jqdRhaYZk2/yeCm0SjQRvy/79+A33/ho+55rc671pJwPv7p5a42F0BzNA+kqsGiA4thxNKrhgpS=
+8jJSKPvBBTH;25:eNVmTddDwzIUCC050XftP29cn3gsTYlW1IlBiNfhbNE8k634AgjmwljHp1Ai=
+tGJhlYWVF1I7CQXgDgUkATlpcBWS00IDLb4ZiGX+Txu+xXs/G0uSdvtf5sY5Y5lvYs2IS0CRV7M=
+k0Hd2VqbZ/sHSoY1GEBrfG0S+5padcZkaECeGngldhhpuhDQ6LUlzk2adevwFF+TGlTCY04giiU=
+wnqneEKSMep9pfleynGGa50HKiuT/njF2Hdo7QThR0K285SiTVKop8W+nsfnA8BE+EVw=3D=3D
+X-Microsoft-Antispam:
+        UriScan:;BCL:0;PCL:0;RULEID:(71701002);SRVR:CY1PR0301MB0683;
+
+
+--_9ef444ef-fd0c-4160-9e2d-fa3c6aa7cfee_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+  <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D=
+1" />
+  <head>
+    <title>
+          DSN
+        </title>
+  </head>
+  <body style=3D"        background-color: white;      ">
+    <table style=3D"        background-color: white;         max-width: 548=
+px;         color: black;         border-spacing: 0px 0px;         padding-=
+top: 0px;         padding-bottom: 0px;        border-collapse: collapse;   =
+   " width=3D"548" cellspacing=3D"0" cellpadding=3D"0">
+      <tbody>
+        <tr>
+          <td style=3D"        text-align: left;        padding-bottom: 20p=
+x;      ">
+            <img height=3D"28" width=3D"126" style=3D"        max-width: 10=
+0%;      " src=3D"http://products.office.com/en-us/CMSImages/Office365Logo_=
+Orange.png?version=3Db8d100a9-0a8b-8e6a-88e1-ef488fee0470" />
+          </td>
+        </tr>
+        <tr>
+          <td style=3D"        font-family: 'Segoe UI', Frutiger, Arial, sa=
+ns-serif;        font-size: 16px;         padding-bottom: 10px;         -ms=
+-text-size-adjust: 100%;        text-align: left;      ">Your message to <s=
+pan style=3D"        color: #0072c6;      ">enquiries@diamondemporium.com.a=
+u</span> couldn't be delivered.<br /></td>
+        </tr>
+        <tr>
+          <td style=3D"        font-family: 'Segoe UI', Frutiger, Arial, sa=
+ns-serif;         font-size: 24px;         padding-top: 0px;         paddin=
+g-bottom: 20px;         text-align: center;         -ms-text-size-adjust: 1=
+00%;      ">
+            <span style=3D"        color: #0072c6;      ">enquiries</span> =
+wasn't found at <span style=3D"        color: #0072c6;      ">diamondempori=
+um.com.au</span><br /></td>
+        </tr>
+        <tr>
+          <td style=3D"        padding-bottom: 15px;         padding-left: =
+0px;         padding-right: 0px;         border-spacing: 0px 0px;      ">
+            <table style=3D"        width: 100%;         font-weight: 600; =
+       border-spacing: 0px 0px;         padding-top: 0px;         padding-b=
+ottom: 0px;        border-collapse: collapse;      ">
+              <tbody>
+                <tr>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        font-size: 15px;        font-weight: 600;        t=
+ext-align: left;        width: 181px;        -ms-text-size-adjust: 100%;   =
+     vertical-align: bottom;      ">
+                    <font color=3D"#ffffff">
+                      <span style=3D"color:#000000">apache</span>
+                    </font>
+                  </td>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        font-size: 15px;        font-weight: 600;        t=
+ext-align: center;        width: 186px;        -ms-text-size-adjust: 100%; =
+       vertical-align: bottom;      ">
+                    <font color=3D"#ffffff">
+                      <span style=3D"color:#000000">Office 365</span>
+                    </font>
+                  </td>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;         -ms-text-size-adjust: 100%;         font-size: 15=
+px;         font-weight: 600;        text-align: right;         width: 181p=
+x;         vertical-align: bottom;      ">
+                    <font color=3D"#ffffff">
+                      <span style=3D"color:#000000">enquiries</span>
+                    </font>
+                  </td>
+                </tr>
+                <tr>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 14px=
+;        font-weight: 400;        text-align: left;        padding-top: 0px=
+;        padding-bottom: 0px;        vertical-align: middle;        width: =
+181px;      ">
+                    <font color=3D"#ffffff">
+                      <span style=3D"        color: #c00000;      ">
+                        <b>Action Required</b>
+                      </span>
+                    </font>
+                  </td>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 14px=
+;        font-weight: 400;        text-align: center;        padding-top: 0=
+px;        padding-bottom: 0px;        vertical-align: middle;        width=
+: 186px;      " />
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 14px=
+;        font-weight: 400;        text-align: right;        padding-top: 0p=
+x;        padding-bottom: 0px;        vertical-align: middle;        width:=
+ 181px;      ">
+                    <font color=3D"#ffffff">
+                      <span style=3D"color:#000000">Recipient</span>
+                    </font>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan=3D"3" style=3D"        padding-top:0;        =
+padding-bottom:0;        padding-left:0;        padding-right:0      ">
+                    <table cellspacing=3D"0" cellpadding=3D"0" style=3D"   =
+     border-spacing: 0px 0px;        padding-top: 0px;        padding-botto=
+m: 0px;        padding-left: 0px;        padding-right: 0px;        border-=
+collapse: collapse;      ">
+                      <tbody>
+                        <tr height=3D"10">
+                          <td width=3D"180" height=3D"10" bgcolor=3D"#c0000=
+0" style=3D"        width: 180px;        line-height: 10px;        height: =
+10px;        font-size: 6px;        padding-top: 0;        padding-bottom: =
+0;        padding-left: 0;        padding-right: 0;      "><!--[if gte mso =
+15]>&nbsp;<[endif]--></td>
+                          <td width=3D"4" height=3D"10" bgcolor=3D"#ffffff"=
+ style=3D"        width: 4px;        line-height: 10px;        height: 10px=
+;        font-size: 6px;        padding-top: 0;        padding-bottom: 0;  =
+      padding-left: 0;        padding-right: 0;      "><!--[if gte mso 15]>=
+&nbsp;<[endif]--></td>
+                          <td width=3D"180" height=3D"10" bgcolor=3D"#ccccc=
+c" style=3D"        width: 180px;        line-height: 10px;        height: =
+10px;        font-size: 6px;        padding-top: 0;        padding-bottom: =
+0;        padding-left: 0;        padding-right: 0;      "><!--[if gte mso =
+15]>&nbsp;<[endif]--></td>
+                          <td width=3D"4" height=3D"10" bgcolor=3D"#ffffff"=
+ style=3D"        width: 4px;        line-height: 10px;        height: 10px=
+;        font-size: 6px;        padding-top: 0;        padding-bottom: 0;  =
+      padding-left: 0;        padding-right: 0;      "><!--[if gte mso 15]>=
+&nbsp;<[endif]--></td>
+                          <td width=3D"180" height=3D"10" bgcolor=3D"#ccccc=
+c" style=3D"        width: 180px;        line-height: 10px;        height: =
+10px;        font-size: 6px;        padding-top: 0;        padding-bottom: =
+0;        padding-left: 0;        padding-right: 0;      "><!--[if gte mso =
+15]>&nbsp;<[endif]--></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 14px=
+;        text-align: left;        width: 181px;        line-height: 20px;  =
+      font-weight: 400;        padding-top: 0px;        padding-left: 0px; =
+       padding-right: 0px;        padding-bottom: 0px;      ">
+                    <font color=3D"#ffffff">
+                      <span style=3D"        color: #c00000;      ">Unknown=
+ TO address</span>
+                    </font>
+                  </td>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 14px=
+;        text-align: center;        width: 186px;        line-height: 20px;=
+        font-weight: 400;        padding-top: 0px;        padding-left: 0px=
+;        padding-right: 0px;        padding-bottom: 0px;      " />
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 14px=
+;        text-align: right;        width: 181px;        line-height: 20px; =
+       font-weight: 400;        padding-top: 0px;        padding-left: 0px;=
+        padding-right: 0px;        padding-bottom: 0px;      " />
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style=3D"        width: 100%;        padding-top: 0px;       =
+ padding-right: 10px;        padding-left: 10px;      ">
+            <br />
+            <table style=3D"        width: 100%;        padding-right: 0px;=
+        padding-left: 0px;        padding-top: 0px;        padding-bottom: =
+0px;        background-color: #f2f5fa;        margin-left: 0px;      ">
+              <tbody>
+                <tr>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 21px=
+;        font-weight: 500;        background-color: #f2f5fa;        padding=
+-top: 0px;        padding-bottom: 0px;        padding-left: 10px;        pa=
+dding-right: 10px;      ">How to Fix It</td>
+                </tr>
+                <tr>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 16px=
+;        font-weight: 400;        padding-top: 0px;        padding-bottom: =
+6px;        padding-left: 10px;        padding-right: 10px;        backgrou=
+nd-color: #f2f5fa;      ">The address may be misspelled or may not exist. T=
+ry the following:</td>
+                </tr>
+                <tr>
+                  <td style=3D"         padding-top: 0px;         padding-b=
+ottom: 0px;         padding-left: 0px;         padding-right: 0px;        b=
+order-spacing: 0px 0px;      ">
+                    <ul style=3D"        font-family: 'Segoe UI', Frutiger,=
+ Arial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 16=
+px;        font-weight: 400;        margin-left: 40px;        margin-bottom=
+: 5px;        background-color: #f2f5fa;        padding-top: 0px;        pa=
+dding-bottom: 0px;        padding-left: 6px;        padding-right: 6px;    =
+  ">
+                      <li>Retype the email address then resend the message.=
+</li>
+                      <li>Clear the recipient nickname cache in Outlook or =
+Outlook Web App by following the steps in this article: <a href=3D"http://g=
+o.microsoft.com/fwlink/?LinkId=3D389363">NDR Response Code 5.1.10 in Exchan=
+ge Online and Office 365</a>.</li>
+                      <li>Contact the recipient (by phone or instant messag=
+ing, for example) to check that the address is correct.</li>
+                      <li>The recipient may have set up mail forwarding to =
+an incorrect address. Ask them to check that any forwarding they've set up =
+is working correctly.</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 16px=
+;        font-weight: 400;        padding-top: 0px;        padding-bottom: =
+6px;        padding-left: 10px;        padding-right: 10px;        backgrou=
+nd-color: #f2f5fa;      ">If the problem continues, forward this message to=
+ your email admin.</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style=3D"        font-family: 'Segoe UI', Frutiger, Arial, sa=
+ns-serif;        -ms-text-size-adjust: 100%;        font-size: 14px;       =
+ font-weight: 400;        padding-top: 10px;        padding-bottom: 0px;   =
+     padding-bottom: 4px;      ">
+            <br />
+            <em>Was this helpful? <a href=3D"http://go.microsoft.com/fwlink=
+/?LinkId=3D525921">Send feedback</a>.</em>
+          </td>
+        </tr>
+        <tr>
+          <td style=3D"        -ms-text-size-adjust: 100%;        font-size=
+: 0px;        line-height: 0px;        padding-top: 0px;        padding-bot=
+tom: 0px;      ">
+            <hr />
+          </td>
+        </tr>
+        <tr>
+          <td style=3D"        font-family: 'Segoe UI', Frutiger, Arial, sa=
+ns-serif;        -ms-text-size-adjust: 100%;        font-size: 21px;       =
+ font-weight: 500;      ">
+            <br />More Info for Email Admins</td>
+        </tr>
+        <tr>
+          <td style=3D"        font-family: 'Segoe UI', Frutiger, Arial, sa=
+ns-serif;        -ms-text-size-adjust: 100%;        font-size: 14px;      "=
+>This error occurs because the sender sent a message to someone whose mailb=
+ox is hosted by Office 365 but the email address is incorrect or doesn't ex=
+ist. The error is reported by the recipient's email system, but most often =
+it must be fixed by the person who sent it.<br /><br />A common example of =
+when this can happen is when the recipient changes their email address but =
+the sender picks the person from their recipient nickname list in Outlook o=
+r Outlook Web App. The nickname cache doesn't yet know about the new e-mail=
+ address -- it has stored the out-of-date email address information -- so w=
+hen the message is sent the wrong address is used, even though the sender c=
+hose the right recipient.<br /><br />Another example is if the recipient is=
+ an Office 365 user but a license is not assigned to the user. In the Offic=
+e 365 Admin Center check that the user has a valid license assigned to it.<=
+br /><br />Sometimes it needs to be fixed by the recipient or the recipient=
+'s email admin, for example, when the recipient has created a mail forwardi=
+ng rule to an incorrect address, or if there's a problem with their email a=
+ddress directory. If the sender is using the correct recipient address, and=
+ it's still not working, send a test message from another user mailbox to s=
+ee if it's an issue unique to this sender. If you reproduce the problem sen=
+ding from another user account, ask the recipient or the recipient's email =
+admin to confirm that the recipient address exists, is correct, and is work=
+ing. Suggest they check for misbehaving forwarding rules or possible email =
+address directory issues (such as directory synchronization issues).<br /><=
+br />For more information, see <a href=3D"http://go.microsoft.com/fwlink/?L=
+inkId=3D532972">NDR Response Code 5.1.10 in Exchange Online and Office 365<=
+/a>.<br /><br /></td>
+        </tr>
+        <tr>
+          <td style=3D"        font-family: 'Segoe UI', Frutiger, Arial, sa=
+ns-serif;        -ms-text-size-adjust: 100%;        font-size: 17px;       =
+ font-weight: 500;      ">Original Message Details</td>
+        </tr>
+        <tr>
+          <td style=3D"        font-size: 14px;        line-height: 20px;  =
+      font-family: 'Segoe UI', Frutiger, Arial, sans-serif;        -ms-text=
+-size-adjust: 100%;        font-weight: 500;      ">
+            <table style=3D"        width: 100%;        border-collapse: co=
+llapse;        margin-left: 10px;      ">
+              <tbody>
+                <tr>
+                  <td valign=3D"top" style=3D"        font-family: 'Segoe U=
+I', Frutiger, Arial, sans-serif;        font-size: 14px;        -ms-text-si=
+ze-adjust: 100%;        white-space: nowrap;        font-weight: 500;      =
+  width: 140px;      ">Created Date:</td>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 14px=
+;        font-weight: 400;      ">8/18/2015 3:30:24 AM</td>
+                </tr>
+                <tr>
+                  <td valign=3D"top" style=3D"        font-family: 'Segoe U=
+I', Frutiger, Arial, sans-serif;        font-size: 14px;        -ms-text-si=
+ze-adjust: 100%;        white-space: nowrap;        font-weight: 500;      =
+  width: 140px;      ">Sender Address:</td>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 14px=
+;        font-weight: 400;      ">apache@ip-172-31-27-174.localdomain</td>
+                </tr>
+                <tr>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        font-size: 14px;        -ms-text-size-adjust: 100%=
+;        white-space: nowrap;        font-weight: 500;        width: 140px;=
+      ">Recipient Address:</td>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 14px=
+;        font-weight: 400;      ">enquiries@diamondemporium.com.au</td>
+                </tr>
+                <tr>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        font-size: 14px;        -ms-text-size-adjust: 100%=
+;        white-space: nowrap;        font-weight: 500;        width: 140px;=
+      ">Subject:</td>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 14px=
+;        font-weight: 400;      ">Form submission from: Make An Enquiry</td=
+>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style=3D"        font-family: 'Segoe UI', Frutiger, Arial, sa=
+ns-serif;        -ms-text-size-adjust: 100%;        font-size: 17px;       =
+ font-weight: 500;      ">
+            <br />Error Details</td>
+        </tr>
+        <tr>
+          <td style=3D"        font-size: 14px;        line-height: 20px;  =
+      font-family: 'Segoe UI', Frutiger, Arial, sans-serif;        -ms-text=
+-size-adjust: 100%;        font-weight: 500;      ">
+            <table style=3D"        width: 100%;        border-collapse: co=
+llapse;        margin-left: 10px;      ">
+              <tbody>
+                <tr>
+                  <td valign=3D"top" style=3D"        font-family: 'Segoe U=
+I', Frutiger, Arial, sans-serif;        font-size: 14px;        -ms-text-si=
+ze-adjust: 100%;        white-space: nowrap;        font-weight: 500;      =
+  width: 140px;      ">Reported error:</td>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 14px=
+;        font-weight: 400;      ">
+                    <em>550 5.1.10 RESOLVER.ADR.RecipientNotFound; Recipien=
+t not found by SMTP address lookup</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        font-size: 14px;        -ms-text-size-adjust: 100%=
+;        white-space: nowrap;        font-weight: 500;        width: 140px;=
+      ">DSN generated by:</td>
+                  <td style=3D"        font-family: 'Segoe UI', Frutiger, A=
+rial, sans-serif;        -ms-text-size-adjust: 100%;        font-size: 14px=
+;        font-weight: 400;      ">CY1PR0301MB0683.namprd03.prod.outlook.com=
+</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <table style=3D"width: 880px;" cellspacing=3D"0">
+      <tr>
+        <td colspan=3D"6" style=3D"        padding-top: 4px;        border-=
+bottom: 1px solid #999999;        padding-bottom: 4px;        line-height: =
+120%;        font-size: 17px;        font-family: 'Segoe UI', Frutiger, Ari=
+al, sans-serif;        -ms-text-size-adjust: 100%;        font-weight: 500;=
+      ">Message Hops</td>
+      </tr>
+      <tr>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        background-color: #f2f5fa;        border-bottom: 1p=
+x solid #999999;        white-space: nowrap;        padding: 8px;      ">HO=
+P</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        background-color: #f2f5fa;        border-bottom: 1p=
+x solid #999999;        white-space: nowrap;        padding: 8px;        wi=
+dth: 80px;      ">TIME (UTC)</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        background-color: #f2f5fa;        border-bottom: 1p=
+x solid #999999;        white-space: nowrap;        padding: 8px;      ">FR=
+OM</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        background-color: #f2f5fa;        border-bottom: 1p=
+x solid #999999;        white-space: nowrap;        padding: 8px;      ">TO=
+</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        background-color: #f2f5fa;        border-bottom: 1p=
+x solid #999999;        white-space: nowrap;        padding: 8px;      ">WI=
+TH</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        background-color: #f2f5fa;        border-bottom: 1p=
+x solid #999999;        white-space: nowrap;        padding: 8px;      ">RE=
+LAY TIME</td>
+      </tr>
+      <tr>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: center;      ">1</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;        width: 80px;      ">8/18/2015<br />3:30=
+:24 AM</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      "></td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">ip-172-31-27-174.localdomain</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      "></td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">*</td>
+      </tr>
+      <tr>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: center;      ">2</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;        width: 80px;      ">8/18/2015<br />3:30=
+:27 AM</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">ip-172-31-27-174.localdomain</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">BN1AFFO11FD027.mail.protection.outlook.=
+com</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">Microsoft SMTP Server</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">3&nbsp;sec</td>
+      </tr>
+      <tr>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: center;      ">3</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;        width: 80px;      ">8/18/2015<br />3:30=
+:29 AM</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">BN1AFFO11FD027.protection.gbl</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">CO2PR03CA0037.outlook.office365.com</td=
+>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">Microsoft SMTP Server (TLS)</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">2&nbsp;sec</td>
+      </tr>
+      <tr>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: center;      ">4</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;        width: 80px;      ">8/18/2015<br />3:30=
+:29 AM</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">CO2PR03CA0037.namprd03.prod.outlook.com=
+</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">CY1PR0301MB0683.namprd03.prod.outlook.c=
+om</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">Microsoft SMTP Server (TLS)</td>
+        <td style=3D"        font-size: 12px;        font-family: 'Segoe UI=
+', Frutiger, Arial, sans-serif;        -ms-text-size-adjust: 100%;        f=
+ont-weight: 500;        border-bottom: 1px solid #999999;        padding: 8=
+px;        text-align: left;      ">*</td>
+      </tr>
+    </table>
+    <p style=3D"        font-family: 'Segoe UI', Frutiger, Arial, sans-seri=
+f;        -ms-text-size-adjust: 100%;        font-size: 17px;        font-w=
+eight: 500;        padding-top: 4px;        padding-bottom: 0;        margi=
+n-top: 19px;        margin-bottom: 5px;      ">Original Message Headers</p>
+    <pre style=3D"        color: gray;        white-space: pre;        padd=
+ing-top: 0;        margin-top: 5px;      ">Received: from CO2PR03CA0037.nam=
+prd03.prod.outlook.com (10.141.194.164) by
+ CY1PR0301MB0683.namprd03.prod.outlook.com (10.160.158.153) with Microsoft
+ SMTP Server (TLS) id 15.1.225.19; Tue, 18 Aug 2015 03:30:29 +0000
+Received: from BN1AFFO11FD027.protection.gbl (2a01:111:f400:7c10::166) by
+ CO2PR03CA0037.outlook.office365.com (2a01:111:e400:1414::36) with Microsof=
+t
+ SMTP Server (TLS) id 15.1.243.17 via Frontend Transport; Tue, 18 Aug 2015
+ 03:30:29 +0000
+Authentication-Results: spf=3Dnone (sender IP is 54.252.162.198)
+ smtp.mailfrom=3Dip-172-31-27-174.localdomain; diamondemporium.com.au; dkim=
+=3Dnone
+ (message not signed) header.d=3Dnone;diamondemporium.com.au; dmarc=3Dfail
+ action=3Dnone header.from=3Dhotmail.com;
+Received-SPF: None (protection.outlook.com: ip-172-31-27-174.localdomain do=
+es
+ not designate permitted sender hosts)
+Received: from ip-172-31-27-174.localdomain (54.252.162.198) by
+ BN1AFFO11FD027.mail.protection.outlook.com (10.58.52.87) with Microsoft SM=
+TP
+ Server id 15.1.243.9 via Frontend Transport; Tue, 18 Aug 2015 03:30:27 +00=
+00
+Received: by ip-172-31-27-174.localdomain (Postfix, from userid 48)
+	id 17794203A2; Tue, 18 Aug 2015 13:30:24 +1000 (EST)
+To: &lt;enquiries@diamondemporium.com.au&gt;
+Subject: Form submission from: Make An Enquiry
+X-PHP-Originating-Script: 500:mail.inc
+MIME-Version: 1.0
+Content-Type: text/plain; charset=3D"UTF-8"; format=3Dflowed; delsp=3Dyes
+Content-Transfer-Encoding: 8Bit
+X-Mailer: Drupal Webform (PHP/5.3.3)
+Errors-To: info@diamondemporium.com.au
+Sender: &lt;info@diamondemporium.com.au&gt;
+From: Tamara &lt;bartley_406@hotmail.com&gt;
+Message-ID: &lt;20150818033024.17794203A2@ip-172-31-27-174.localdomain&gt;
+Date: Tue, 18 Aug 2015 13:30:24 +1000
+Return-Path: apache@ip-172-31-27-174.localdomain
+X-EOPAttributedMessage: 0
+X-Microsoft-Exchange-Diagnostics: 1;BN1AFFO11FD027;1:PPqQTGmLQL8mdpir8d1/Gv=
+9zIV1qFbZWWaDx5e4zHCmJztj3NhWdkOvpGddFuu6zHMK3TC1Jui7J5qVboCI6w3Rcu7ezJ1NjM=
+000p1ZSHtU/RBFgo/wghonulOqxoXQnxfRRqDXnx0CL2jE5JvZs2kM8qYw4j0gr62M+RWPt7KIb=
+UsDG1S8QDWx6xnWZ2WS5KKu+aiUvO1dv0PGCevd8R93AjYAr1csHH0eHdSuAdgV9ha6kvZsKyC9=
+AAf3KhMVgq+temJFtaaJNh3WdjNeJJwaZybKlbgfQgHslc6MB0Po2ejpbhqS4dsaW5ygAyBxDYD=
+cG5t6IycV2r3RjeLnJ7Q=3D=3D
+X-Forefront-Antispam-Report: CIP:54.252.162.198;CTRY:US;IPV:NLI;EFV:NLI;
+X-Microsoft-Exchange-Diagnostics:
+	1;CY1PR0301MB0683;2:fqIGUw0cWQkUAk1lpkTh5HOEvk+mZ4caLyWRDAzieJIdDhXGI9EQb8=
+SCMC3DmnwS5H4P/atdMe1rYlgfNoFCCOMtG7pVbq20G/bUbYigy4k4u2PHnhNySGdon2NTZQkkJ=
+bigsb9AlMuJKNxGISb5C8Kckm4KRXyn+AAD7S/rA3w=3D;3:JICttTijyYlOaRkoeKQQOegtGIE=
+bb7Zl0uMSEn2WtmpdcwUElZrZ9XEusXOMte5zm4ADX2/AVkurVgZcLrM+bdcp4qDX2IAS7K0fPt=
+SrDV2K9unvfIx2os03hZjw1OeVq6qYGW940veMG8qHpWfXrEzpa9US+7mdsg3MruscsujqdRhaY=
+Zk2/yeCm0SjQRvy/79+A33/ho+55rc671pJwPv7p5a42F0BzNA+kqsGiA4thxNKrhgpS8jJSKPv=
+BBTH;25:eNVmTddDwzIUCC050XftP29cn3gsTYlW1IlBiNfhbNE8k634AgjmwljHp1AitGJhlYW=
+VF1I7CQXgDgUkATlpcBWS00IDLb4ZiGX+Txu+xXs/G0uSdvtf5sY5Y5lvYs2IS0CRV7Mk0Hd2Vq=
+bZ/sHSoY1GEBrfG0S+5padcZkaECeGngldhhpuhDQ6LUlzk2adevwFF+TGlTCY04giiUwnqneEK=
+SMep9pfleynGGa50HKiuT/njF2Hdo7QThR0K285SiTVKop8W+nsfnA8BE+EVw=3D=3D
+X-Microsoft-Antispam:
+	UriScan:;BCL:0;PCL:0;RULEID:(71701002);SRVR:CY1PR0301MB0683;
+</pre>
+  </body>
+</html>=
+
+--_9ef444ef-fd0c-4160-9e2d-fa3c6aa7cfee_--
+
+--_6967a094-dbc6-4675-bb7a-8c762fb3189b_
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns;CY1PR0301MB0683.namprd03.prod.outlook.com
+Received-From-MTA: dns;ip-172-31-27-174.localdomain
+Arrival-Date: Tue, 18 Aug 2015 03:30:29 +0000
+
+Original-Recipient: rfc822;enquiries@diamondemporium.com.au
+Final-Recipient: rfc822;enquiries@diamondemporium.com.au
+Action: failed
+Status: 5.1.10
+Diagnostic-Code: smtp;550 5.1.10 RESOLVER.ADR.RecipientNotFound; Recipient not found by SMTP address lookup
+
+
+--_6967a094-dbc6-4675-bb7a-8c762fb3189b_
+Content-Type: message/rfc822
+
+Received: from CO2PR03CA0037.namprd03.prod.outlook.com (10.141.194.164) by
+ CY1PR0301MB0683.namprd03.prod.outlook.com (10.160.158.153) with Microsoft
+ SMTP Server (TLS) id 15.1.225.19; Tue, 18 Aug 2015 03:30:29 +0000
+Received: from BN1AFFO11FD027.protection.gbl (2a01:111:f400:7c10::166) by
+ CO2PR03CA0037.outlook.office365.com (2a01:111:e400:1414::36) with Microsoft
+ SMTP Server (TLS) id 15.1.243.17 via Frontend Transport; Tue, 18 Aug 2015
+ 03:30:29 +0000
+Authentication-Results: spf=none (sender IP is 54.252.162.198)
+ smtp.mailfrom=ip-172-31-27-174.localdomain; diamondemporium.com.au; dkim=none
+ (message not signed) header.d=none;diamondemporium.com.au; dmarc=fail
+ action=none header.from=hotmail.com;
+Received-SPF: None (protection.outlook.com: ip-172-31-27-174.localdomain does
+ not designate permitted sender hosts)
+Received: from ip-172-31-27-174.localdomain (54.252.162.198) by
+ BN1AFFO11FD027.mail.protection.outlook.com (10.58.52.87) with Microsoft SMTP
+ Server id 15.1.243.9 via Frontend Transport; Tue, 18 Aug 2015 03:30:27 +0000
+Received: by ip-172-31-27-174.localdomain (Postfix, from userid 48)
+	id 17794203A2; Tue, 18 Aug 2015 13:30:24 +1000 (EST)
+To: <enquiries@diamondemporium.com.au>
+Subject: Form submission from: Make An Enquiry
+X-PHP-Originating-Script: 500:mail.inc
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: quoted-printable
+X-Mailer: Drupal Webform (PHP/5.3.3)
+Errors-To: info@diamondemporium.com.au
+Sender: <info@diamondemporium.com.au>
+From: Tamara <bartley_406@hotmail.com>
+Message-ID: <20150818033024.17794203A2@ip-172-31-27-174.localdomain>
+Date: Tue, 18 Aug 2015 13:30:24 +1000
+Return-Path: apache@ip-172-31-27-174.localdomain
+X-EOPAttributedMessage: 0
+X-Microsoft-Exchange-Diagnostics: 1;BN1AFFO11FD027;1:PPqQTGmLQL8mdpir8d1/Gv9zIV1qFbZWWaDx5e4zHCmJztj3NhWdkOvpGddFuu6zHMK3TC1Jui7J5qVboCI6w3Rcu7ezJ1NjM000p1ZSHtU/RBFgo/wghonulOqxoXQnxfRRqDXnx0CL2jE5JvZs2kM8qYw4j0gr62M+RWPt7KIbUsDG1S8QDWx6xnWZ2WS5KKu+aiUvO1dv0PGCevd8R93AjYAr1csHH0eHdSuAdgV9ha6kvZsKyC9AAf3KhMVgq+temJFtaaJNh3WdjNeJJwaZybKlbgfQgHslc6MB0Po2ejpbhqS4dsaW5ygAyBxDYDcG5t6IycV2r3RjeLnJ7Q==
+X-Forefront-Antispam-Report: CIP:54.252.162.198;CTRY:US;IPV:NLI;EFV:NLI;
+X-Microsoft-Exchange-Diagnostics: 1;CY1PR0301MB0683;2:fqIGUw0cWQkUAk1lpkTh5HOEvk+mZ4caLyWRDAzieJIdDhXGI9EQb8SCMC3DmnwS5H4P/atdMe1rYlgfNoFCCOMtG7pVbq20G/bUbYigy4k4u2PHnhNySGdon2NTZQkkJbigsb9AlMuJKNxGISb5C8Kckm4KRXyn+AAD7S/rA3w=;3:JICttTijyYlOaRkoeKQQOegtGIEbb7Zl0uMSEn2WtmpdcwUElZrZ9XEusXOMte5zm4ADX2/AVkurVgZcLrM+bdcp4qDX2IAS7K0fPtSrDV2K9unvfIx2os03hZjw1OeVq6qYGW940veMG8qHpWfXrEzpa9US+7mdsg3MruscsujqdRhaYZk2/yeCm0SjQRvy/79+A33/ho+55rc671pJwPv7p5a42F0BzNA+kqsGiA4thxNKrhgpS8jJSKPvBBTH;25:eNVmTddDwzIUCC050XftP29cn3gsTYlW1IlBiNfhbNE8k634AgjmwljHp1AitGJhlYWVF1I7CQXgDgUkATlpcBWS00IDLb4ZiGX+Txu+xXs/G0uSdvtf5sY5Y5lvYs2IS0CRV7Mk0Hd2VqbZ/sHSoY1GEBrfG0S+5padcZkaECeGngldhhpuhDQ6LUlzk2adevwFF+TGlTCY04giiUwnqneEKSMep9pfleynGGa50HKiuT/njF2Hdo7QThR0K285SiTVKop8W+nsfnA8BE+EVw==
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:(71701002);SRVR:CY1PR0301MB0683;
+
+Submitted on Tuesday, August 18, 2015 - 13:30
+Submitted by anonymous user: [131.242.135.77]
+
+Submitted values are:
+
+First Name: Tamara*
+Last  Name: Glover*
+E-mail: bartley_406@hotmail.com
+Phone: 0400000000
+Postal Code: 4503
+Country: Australia
+Reference Product: 2042.SID.PS
+What are you interested in? Engagement Ring
+How did you hear about us? Google
+Tell us more about what you are looking for: Wanting to know what the total
+buy it now price is please.
+
+
+The results of this submission may be viewed at:
+https://www.diamondemporium.com.au/node/82/submission/4955
+
+
+--_6967a094-dbc6-4675-bb7a-8c762fb3189b_--
+
+--_8f43457b-db1a-4c6b-b068-2bfe868e96c9_--

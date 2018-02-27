@@ -1,0 +1,631 @@
+AWSTATS DATA FILE 7.3 (build 20140126)
+# If you remove this file, all statistics for date 201501 will be lost/reset.
+# Last config file used to build this data file was /home/diamond/tmp/awstats/awstats.diamond.openseed.com.au.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 27
+POS_GENERAL 2019                
+POS_TIME 2691                
+POS_VISITOR 8171                
+POS_DAY 9346                
+POS_DOMAIN 3530                
+POS_LOGIN 3810                
+POS_ROBOT 3965                
+POS_WORMS 4097                
+POS_EMAILSENDER 4228                
+POS_EMAILRECEIVER 4371                
+POS_SESSION 10151               
+POS_SIDER 10363               
+POS_FILETYPES 4506                
+POS_DOWNLOADS 4819                
+POS_OS 4867                
+POS_BROWSER 5008                
+POS_SCREENSIZE 5314                
+POS_UNKNOWNREFERER 5388                
+POS_UNKNOWNREFERERBROWSER 5506                
+POS_ORIGIN 5619                
+POS_SEREFERRALS 5761                
+POS_PAGEREFS 5905                
+POS_SEARCHWORDS 6053                
+POS_KEYWORDS 6205                
+POS_MISC 2355                
+POS_ERRORS 6264                
+POS_CLUSTER 3666                
+POS_SIDER_404 6393                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20150202100605 1 0 11135826622591
+FirstTime 20150101005219
+LastTime 20150131221635
+LastUpdate 20150202230531 1 0 0 0 0
+TotalVisits 227                 
+TotalUnique 25                  
+MonthHostsKnown 0                   
+MonthHostsUnknown 25                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 0 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 1306 2911 24587369 48 99 471076
+1 478 1185 16959188 9 22 6135
+2 1159 2301 26070581 54 92 1133413
+3 56 173 4310092 9 10 5196
+4 70 112 720632 2 7 40
+5 22 63 601857 2 4 40
+6 0 0 0 0 0 0
+7 72 149 640640 2 3 918
+8 86 128 234789 4 7 1842
+9 396 459 1410123 5 9 962
+10 1172 1413 6199547 29 40 19893
+11 353 367 1667644 17 19 13716
+12 311 388 1253793 12 14 7807
+13 309 467 2515979 9 12 2789
+14 544 696 1873576 7 14 1898
+15 529 798 2894379 15 30 4605
+16 2325 4100 28705756 70 129 33555
+17 1941 3951 30226631 63 110 35295
+18 1583 2530 12557534 46 70 24715
+19 1428 2475 13822066 31 45 16816
+20 1160 2228 16226399 32 45 21075
+21 846 1657 20452321 34 54 19993
+22 956 1879 16272941 26 39 18738
+23 839 2041 15628588 21 38 2178
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 25 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 3
+in 11248 23795 216769392
+nz 4413 5572 13328567
+au 2280 3104 15734466
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 25 first Hits must be first (order not required for others)
+BEGIN_ROBOT 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 12
+css 2018 20387843 0 0
+eot 4 85822 0 0
+png 2313 7607133 0 0
+ttf 2 91716 0 0
+woff2 334 4579680 0 0
+woff 476 9306176 0 0
+swf 516 6460102 0 0
+html 378 258589 0 0
+jpg 668 40560802 0 0
+js 9186 132212351 0 0
+Unknown 16231 22160557 0 0
+gif 345 2121654 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 5
+macosx 2705 1981
+win8 5570 4411
+Unknown 35 35
+win8.1 81 37
+win7 24080 11477
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 12
+msie11.0 66 23
+chrome40.0.2214.91 820 655
+mozilla 33 1
+msie10.0 3 3
+chrome42.0.2288.6 82 38
+chrome39.0.2171.99 2097 1289
+chrome39.0.2171.95 7838 4548
+safari8.0 123 51
+firefox34.0 7639 4504
+Unknown 35 35
+chrome40.0.2214.93 2255 1183
+firefox35.0 11480 5611
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 1
+Shockwave_Flash 20150131191708
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 1
+Shockwave_Flash 20150131191708
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 516 517
+From1 0 0
+From2 0 0
+From3 0 0
+From4 17425 31954
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 25 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 0
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 25 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 4
+302 250 5000
+206 11 1546652
+500 3 6108
+404 330 284935
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referer
+BEGIN_SIDER_404 32
+/opportunitydetails/ 12 http://diamond.openseed.com.au/uploadify.swf
+/ 24 -
+/cms 1 -
+/customerdetails/9 1 http://diamond.openseed.com.au/customers
+/leaddetails/24 2 -
+/cpanle 1 -
+/customerdetails/35 1 -
+/Customer/Controller/Index 2 -
+/customerdetails/ 119 http://diamond.openseed.com.au/uploadify.swf
+/img/uploadify-cancel.png 35 http://diamond.openseed.com.au/css/uploadify.css
+/opportunitydetails/13 1 -
+/leaddetails/1 4 http://diamond.openseed.com.au/leads
+/dashboard 3 http://diamond.openseed.com.au/
+/leaddetails/15 1 -
+/leads 7 http://diamond.openseed.com.au/dashboard
+/customerdetails/customerdetails/1 4 http://diamond.openseed.com.au/customerdetails/1
+/convertleadform 1 http://diamond.openseed.com.au/leaddetails/26
+/comment_attachments/299/Koala.jpg 1 http://diamond.openseed.com.au/opportunitydetails/2
+/comment_attachments/299/Desert.jpg 1 http://diamond.openseed.com.au/opportunitydetails/2
+/leaddetails/27 4 -
+/opportunitydetails/3 1 -
+/ajaxgetnotes/lead/ 2 http://diamond.openseed.com.au/leaddetails/55
+/customers 4 -
+/ajaxgetnotes/opportunity/ 4 http://diamond.openseed.com.au/opportunitydetails/58
+/opportunities 2 -
+/leaddetails/26 2 -
+/Customer%5CController%5CIndex 1 -
+/l 1 -
+/leaddetails/ 85 http://diamond.openseed.com.au/uploadify.swf
+/customerdetails/13 1 http://diamond.openseed.com.au/customers
+/customerdetails/27 1 -
+/comment_attachments/221/AmericanWhitePelican_ROW15370400903_1366x768.jpg 1 http://diamond.openseed.com.au/leaddetails/25
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 25 first Hits must be first (order not required for others)
+BEGIN_VISITOR 25
+219.89.201.150 4413 5572 13328567 20150130193057
+175.101.6.98 3254 7376 68746219 20150131221635
+183.82.47.155 3175 6421 49414343 20150131201041
+202.62.72.163 2555 6433 74368980 20150131181122
+49.206.189.143 1019 1568 9377451 20150109180054
+49.205.132.135 473 866 6041581 20150113183946
+124.246.10.7 422 524 3394659 20150130105843
+110.175.78.225 402 578 4034353 20150122225524
+203.174.189.190 340 498 2642793 20150130163851
+203.174.133.142 272 440 1890949 20150123164507
+27.97.211.112 272 378 1952906 20150102183333
+49.195.153.47 266 331 364459 20150104150407
+106.76.241.191 234 326 3462684 20150122171054
+49.181.201.171 233 285 508369 20150127103550
+49.180.153.226 227 273 1249109 20150114102610
+49.204.88.81 102 226 2237366 20150131133719
+49.207.63.199 91 92 171790 20150102045810
+110.20.96.78 66 114 1536739 20150130220712
+49.207.47.142 66 101 985304 20150104025610
+220.245.123.254 28 35 68072 20150123183830
+49.195.26.63 19 21 38729 20150128143803
+106.66.131.64 5 6 8962 20150122184349
+58.110.212.172 4 4 6214 20150127120636
+49.207.19.37 2 2 1806 20150123054837
+203.174.133.70 1 1 21 20150130101028
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 27
+20150101 1349 2725 18064274 8
+20150102 2343 4776 35522479 22
+20150103 243 317 1297873 6
+20150104 549 680 1652658 9
+20150105 432 808 5806246 11
+20150106 423 816 5891163 8
+20150107 105 242 1268880 5
+20150108 175 254 1664327 5
+20150109 740 1113 6750698 12
+20150110 24 64 581245 2
+20150112 823 1635 11574257 13
+20150113 1476 3001 20804050 15
+20150114 812 1050 5882611 5
+20150115 152 399 4152803 3
+20150116 282 334 714418 4
+20150118 9 11 12681 1
+20150119 66 216 2652879 3
+20150120 62 193 2062755 5
+20150121 746 2194 24326361 13
+20150122 2060 3002 28958442 18
+20150123 1018 1462 8717140 9
+20150124 27 69 618472 1
+20150127 671 896 2411866 7
+20150128 814 1409 9131176 9
+20150129 677 1127 6764998 9
+20150130 1528 2770 28875264 17
+20150131 335 908 9672409 7
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 7
+1h+ 36
+5mn-15mn 30
+30s-2mn 26
+15mn-30mn 28
+2mn-5mn 23
+0s-30s 48
+30mn-1h 36
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 25 first Pages must be first (order not required for others)
+BEGIN_SIDER 285
+/ajaxrecordscount 3277 194701 1 37
+/ajaxgetleads 2177 1045991 4 28
+/ajaxcustomerslist 1804 1128676 0 32
+/ajaxgetopportunities 1534 1524906 0 25
+/leads 857 3230275 16 2
+/customers 730 2815438 29 1
+/uploadify.swf 516 6460102 1 2
+/gettaskhistorydetails 450 94943 0 16
+/opportunities 440 1801533 9 1
+/gettaskdetails 401 62292 2 0
+/ 378 258589 113 21
+/editgridview 280 44819 0 0
+/ajaxcustomerslookup 242 242361 4 4
+/css/fonts/opensans-regular-webfont.woff 241 4603872 7 5
+/updateindividual 235 6999 2 1
+/css/fonts/opensans-bold-webfont.woff 235 4702304 0 2
+/dashboard 214 276625 6 0
+/css/fonts/opensans-bold-webfont.woff2 167 2330400 0 5
+/css/fonts/opensans-regular-webfont.woff2 167 2249280 3 1
+/checkviewexist 141 2961 0 0
+/ajaxgetnotes/lead/1 136 12381 0 3
+/notes 131 10548 0 0
+/convertleadform 125 205601 0 3
+/leaddetails/1 95 649088 4 1
+/customerdetails/1 84 852947 1 0
+/customerdetails/38 7 81800 0 0
+/opportunitydetails/6 6 42091 0 0
+/upoadprofilephoto 5 123 0 0
+/leaddetails/23 1 6167 0 0
+/ajaxpartnerslookup/21 11 20423 0 1
+/ajaxgetnotes/opportunity/25 2 314 0 0
+/opportunitydetails/18 3 19688 0 0
+/ajaxgetnotes/lead/11 1 22 0 0
+/opportunitydetails/49 1 7684 0 0
+/ajaxpartnerslookup/33 14 18033 0 0
+/unassignpartner 62 1302 1 3
+/css/fonts/opensans-regular-webfont.ttf 1 45152 0 0
+/ajaxgetnotes/lead/29 39 1432 0 0
+/ajaxgetnotes/lead/24 33 4620 1 2
+/ajaxpartnerslookup/10 2 2036 0 0
+/customerdetails/41 19 316286 1 0
+/leaddetails/-3 1 7108 0 0
+/ajaxgetnotes/lead/18 26 572 0 1
+/customerdetails/28 7 82715 0 0
+/ajaxgetnotes/lead/20 4 88 0 0
+/ajaxpartnerslookup/9 3 3054 0 0
+/ajaxgetnotes/opportunity/13 11 1234 0 2
+/ajaxgetnotes/opportunity/24 6 132 0 0
+/leaddetails/55 2 14216 0 0
+/updateopportunitystatus 33 693 0 0
+/ajaxgetnotes/opportunity/48 2 333 0 0
+/ajaxpartnerslookup/16 21 17625 0 2
+/customerdetails/6 11 90774 0 0
+/sendmailtoleadowner 13 2151 1 1
+/leaddetails/5 11 61226 0 0
+/ajaxgetnotes/lead/8 17 2811 0 1
+/leaddetails/26 47 277933 2 0
+/cpanel 13 115908 3 5
+/css/fonts/opensans-regular-webfont.eot 2 42210 0 0
+/customerdetails/33 10 124014 0 0
+/customerdetails/14 8 73381 0 0
+/ajaxgetnotes/lead/35 4 88 0 0
+/ajaxpartnerslookup/4 4 3390 0 1
+/ajaxgetnotes/lead/7 29 638 0 0
+/opportunitydetails/41 1 7564 0 0
+/customerdetails/21 9 94893 0 0
+/customerdetails/29 1 11531 0 0
+/leaddetails/2 1 6116 0 0
+/deletetask 7 459 0 0
+/ajaxgetnotes/lead/16 12 2056 0 0
+/ajaxgetnotes/opportunity/4 21 4681 0 0
+/opportunitydetails/9 1 7385 0 0
+/customerdetails/18 11 102773 0 0
+/leaddetails/16 8 50736 0 0
+/opportunitydetails/12 6 37851 0 0
+/leaddetails/31 5 36279 0 0
+/customerdetails/7 6 48597 0 0
+/leaddetails/11 1 6149 0 0
+/ajaxgetnotes/opportunity/16 2 44 0 0
+/ajaxgetnotes/opportunity/51 8 1420 0 0
+/ajaxgetnotes/opportunity/36 2 342 0 0
+/convertlead 54 1773 0 0
+/opportunitydetails/47 9 68776 0 0
+/opportunitydetails/20 3 19907 0 0
+/leaddetails/36 2 36518 0 0
+/deleteopportunity/3 1 21 0 0
+/ajaxgetnotes/lead/3 24 3812 0 0
+/leaddetails/41 3 24912 0 0
+/opportunitydetails/23 4 28904 0 0
+/ajaxgetnotes/lead/10 2 44 0 0
+/ajaxgetnotes/opportunity/20 3 66 0 0
+/ajaxgetnotes/opportunity/21 17 525 0 0
+/opportunitydetails/38 6 45933 0 0
+/leaddetails/6 4 25677 0 0
+/leaddetails/9 2 12302 0 0
+/tasks 15 93775 0 0
+/ajaxpartnerslookup/27 1 1983 0 0
+/ajaxpartnerslookup/2 5 2347 0 0
+/ajaxgetnotes/lead/9 2 44 0 0
+/deletelead 12 252 0 0
+/ajaxpartnerslookup/24 7 10516 0 0
+/opportunitydetails/2 32 246373 1 0
+/ajaxgetnotes/lead/17 3 66 0 0
+/leaddetails/15 6 38835 0 0
+/customerdetails/4 12 106573 1 0
+/leaddetails/21 1 6185 0 0
+/ajaxgetnotes/opportunity/9 2 44 0 0
+/ajaxgetnotes/lead/22 20 440 0 0
+/ajaxgetnotes/opportunity/19 4 88 0 0
+/ajaxgetnotes/lead/6 4 718 0 0
+/ajaxgetnotes/lead/34 4 88 0 0
+/ajaxpartnerslookup/8 7 7038 0 0
+/opportunitydetails/3 7 52511 1 0
+/customerdetails/11 1 7978 0 0
+/deletegridview 34 714 0 0
+/customerdetails/15 27 236734 0 0
+/leaddetails/38 1 7361 0 0
+/ajaxgetnotes/lead/36 4 88 0 0
+/customerdetails/25 8 96319 0 0
+/ajaxpartnerslookup/23 1 1844 0 0
+/customerdetails/22 7 70501 0 0
+/leaddetails/37 2 14486 1 0
+/customerdetails/10 3 23966 0 0
+/leaddetails/40 1 8185 0 0
+/customerdetails/2 7 56408 0 0
+/ajaxgetnotes/opportunity/47 25 1234 0 1
+/ajaxpartnerslookup/32 7 12287 0 0
+/saveattachments 53 1166 0 0
+/opportunitydetails/22 2 13803 0 0
+/deleteopportunity/4 1 21 0 0
+/ajaxgetnotes/lead/19 40 1159 0 1
+/opportunitydetails/13 6 38149 1 0
+/deletecustomer 15 314 0 0
+/leaddetails/44 2 16212 0 0
+/leaddetails/10 2 12285 0 0
+/ajaxgetnotes/lead/40 2 44 0 0
+/ajaxpartnerslookup/36 2 4473 0 0
+/ajaxgetnotes/lead/41 6 132 0 0
+/ajaxpartnerslookup 1 41 0 0
+/leaddetails/30 7 49551 0 0
+/ajaxoppcustomerslookup 3 4751 0 0
+/ajaxgetnotes/opportunity/14 7 908 0 0
+/customerdetails/39 32 406116 0 0
+/leaddetails/3 36 192347 0 0
+/savecomment 71 1633 1 0
+/leaddetails/27 14 98012 0 0
+/ajaxpartnerslookup/41 5 10755 0 0
+/ajaxgetnotes/opportunity/52 2 556 0 0
+/opportunitydetails/19 3 20929 0 0
+/opportunitydetails/46 10 76098 0 0
+/ajaxpartnerslookup/15 64 50096 2 2
+/ajaxgetnotes/opportunity/41 2 338 0 0
+/ajaxgetnotes/lead/23 1 22 0 0
+/savecustomer 30 630 3 1
+/ajaxgetnotes/lead/12 1 22 0 0
+/leaddetails/7 17 128985 0 0
+/ajaxgetnotes/opportunity/15 2 44 0 0
+/ajaxpartnerslookup/18 7 12924 0 1
+/ajaxgetnotes/opportunity/46 22 484 0 1
+/ajaxpartnerslookup/12 7 6902 0 0
+/ajaxgetnotes/lead/33 8 176 0 0
+/opportunitydetails/4 6 39922 0 0
+/leaddetails/24 32 161323 0 0
+/customerdetails/36 1 11592 0 0
+/ajaxgetnotes/lead/39 2 44 0 0
+/leaddetails/19 30 136002 0 0
+/ajaxgetnotes/lead/2 1 22 0 0
+/leaddetails/33 4 29063 0 0
+/ajaxpartnerslookup/3 3 2526 0 0
+/leaddetails/17 2 13445 0 0
+/leaddetails/4 3 18399 0 0
+/leaddetails/28 13 93068 0 0
+/ajaxgetnotes/opportunity/7 1 22 0 0
+/leaddetails/8 14 108996 0 0
+/opportunitydetails/52 2 15234 0 0
+/customerdetails/19 16 159318 0 0
+/leaddetails/14 1 6164 0 0
+/customerdetails/23 11 110823 2 0
+/ajaxgetnotes/opportunity/3 19 973 0 1
+/deletecomment 18 378 0 0
+/ajaxgetnotes/opportunity/18 3 352 0 0
+/customerdetails/32 37 447559 0 0
+/checkduplicate/41 8 168 0 0
+/ajaxgetnotes/opportunity/10 3 1014 0 0
+/editcomment 7 147 0 0
+/customerdetails/31 2 23638 0 0
+/opportunitydetails/14 5 32027 0 0
+/customerdetails/26 2 24886 0 0
+/attachfile 53 513 0 0
+/leaddetails/43 2 16398 0 0
+/opportunitydetails/36 2 15126 0 0
+/customerdetails/8 8 63750 0 0
+/ajaxpartnerslookup/14 9 7624 0 0
+/ajaxgetnotes/lead/5 10 220 0 0
+/opportunitydetails/58 2 14922 0 0
+/opportunitydetails/8 3 21851 0 0
+/ajaxpartnerslookup/35 5 10391 0 0
+/ajaxgetnotes/opportunity/8 7 154 0 0
+/customerdetails/20 7 70133 0 0
+/ajaxgetnotes/lead/32 6 2112 0 0
+/ajaxgetnotes/lead/37 4 88 0 0
+/customerdetails/5 19 155646 0 0
+/ajaxgetnotes/lead/13 1 22 0 0
+/ajaxgetnotes/opportunity/38 12 264 0 0
+/changetaskstatus 36 756 0 0
+/deleteopportunity/10 1 21 0 0
+/ajaxpartnerslookup/7 4 4008 0 0
+/ajaxgetnotes/opportunity/23 10 220 0 0
+/ajaxgetnotes/opportunity/11 2 44 0 0
+/ajaxgetnotes/lead/27 45 990 0 0
+/opportunitydetails/16 2 12579 0 0
+/savemygridview 74 5499 0 0
+/customerdetails/3 5 42460 0 0
+/opportunitydetails/10 1 6027 0 0
+/customerdetails/16 16 136786 0 0
+/customerdetails/12 5 44181 0 0
+/opportunitydetails/25 2 14491 0 0
+/checkduplicate 78 1638 0 0
+/leaddetails/13 1 6157 0 0
+/ajaxgetnotes/opportunity/6 6 132 0 0
+/ajaxgetnotes/lead/43 6 792 0 0
+/ajaxpartnerslookup/34 5 7959 0 0
+/customerdetails/9 5 40030 0 0
+/leaddetails/22 8 38072 0 0
+/customerdetails/35 7 82456 0 0
+/ajaxpartnerslookup/17 3 3056 0 0
+/ajaxgetnotes/lead/25 22 1909 0 0
+/ajaxgetnotes/opportunity/2 72 3924 0 2
+/ajaxgetnotes/lead/26 79 3822 0 2
+/ajaxpartnerslookup/19 4 7197 0 1
+/opportunitydetails/48 2 15136 0 0
+/ajaxgetnotes/lead/44 4 88 0 0
+/ajaxgetnotes/lead/38 2 44 0 0
+/leaddetails/25 18 127444 0 0
+/ajaxgetnotes/lead/30 26 3188 0 0
+/ajaxpartnerslookup/5 33 26000 0 0
+/leaddetails/32 2 22090 0 0
+/ajaxgetnotes/lead/42 6 644 0 0
+/customerdetails/24 6 63584 1 0
+/matchedcustomer 1 331 0 1
+/customerdetails/13 11 100187 0 0
+/opportunitydetails/5 7 47755 1 0
+/customerdetails/27 15 175518 0 0
+/customerdetails/37 1 11578 0 0
+/customerdetails/40 2 24837 0 0
+/leaddetails/35 2 14621 0 0
+/ajaxpartnerslookup/13 2 2036 0 0
+/ajaxgetnotes/lead/15 9 1412 0 0
+/ajaxgetnotes/lead/21 1 22 0 0
+/ajaxgetnotes/lead/31 10 220 0 0
+/opportunitydetails/51 8 60669 0 0
+/css/fonts/opensans-bold-webfont.eot 2 43612 0 0
+/opportunitydetails/7 1 6372 0 0
+/customerdetails/17 8 72669 0 0
+/ajaxgetnotes/lead/28 55 1489 0 0
+/leaddetails/42 3 25174 0 0
+/opportunitydetails/1 4 25392 0 0
+/createtask 52 5637 0 0
+/leaddetails/12 1 6138 0 0
+/ajaxgetnotes/opportunity/1 4 88 0 0
+/css/fonts/opensans-bold-webfont.ttf 1 46564 0 0
+/leaddetails/39 1 7337 0 0
+/ajaxpartnerslookup/1 18 6386 0 1
+/ajaxgetnotes/opportunity/17 9 198 0 0
+/opportunitydetails/17 9 57548 0 0
+/createcustomer 28 607 0 0
+/ajaxpartnerslookup/6 7 6576 0 0
+/customerdetails/34 4 47346 0 0
+/leaddetails/34 2 14590 0 0
+/opportunitydetails/24 3 20270 0 0
+/ajaxgetnotes/lead/4 4 225 0 0
+/ajaxpartnerslookup/38 12 17600 1 1
+/ajaxgetnotes/opportunity/49 2 44 0 0
+/leaddetails/18 15 112989 0 0
+/ajaxgetnotes/opportunity/5 16 2749 0 1
+/opportunitydetails/11 2 12678 0 0
+/opportunitydetails/21 8 57167 0 0
+/savepartner 32 672 0 1
+/opportunitydetails/15 2 13272 0 0
+/leaddetails/29 8 57062 0 0
+/ajaxgetnotes/opportunity/22 5 110 0 0
+/ajaxgetnotes/opportunity/12 12 1249 0 0
+/customerdetails/30 1 11748 0 0
+/leaddetails/20 6 40929 0 0
+/ajaxgetnotes/lead/14 1 22 0 0
+END_SIDER

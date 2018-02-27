@@ -1,0 +1,10 @@
+<div class="cmnSort">
+  <div class="mainSearch marR10">
+    <input type="text" class="searchInput" placeholder="search.." id="<?php echo $prefixId; ?>searchInput">
+    <input type="button" class="inputGo" value="Go!" id="globalGridSearch" onclick="searchGridsData('<?php echo $prefixId; ?>');">
+  </div>
+  <span id="searchResultsHint" style="color:red;"></span>
+</div>
+<script type="text/javascript">
+	searchByEnterKey('<?php echo $prefixId; ?>searchInput', 'globalGridSearch');
+</script>

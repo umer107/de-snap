@@ -1,0 +1,31 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Quan Lee
+ * Date: 12/7/16
+ * Time: 10:53 AM
+ */
+
+
+$title = 'Add new dashboard';
+$this->headTitle($title);
+?>
+    
+
+<div class="main-dashboard bg-white full robotoregular">
+    
+    <h2 class="fs-24 color-green robotolight"> Enter basic contact info </h2>
+    
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('dashboard', array('action' => 'add')));
+
+
+echo $this->partial('dashboard/dashboard/_form.phtml', array(
+    'form' =>$form,
+));
+?>
+    	
+</div>
+
+

@@ -1,0 +1,18 @@
+<div class="lightBox" id="customermobilelookup">
+    <div class="lightBoxMid" style="width:970px">
+      <div class="lightBoxTitle">Customers Lookup <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+      <div class="lightBoxContent fl width100p lookupPopup padB105">
+        <div class="mainSearch">
+            <input name="lookupsrc" id="lookupMobilesrc" type="text" class="searchInput" placeholder="Search..">
+            <input type="button" class="inputGo" value="Go!" id="submitSearch" onclick="customersMobileLookup(<?php echo $this->recordsPerPage; ?>, $('#lookupMobilesrc').val());"><span id="searchResultsHintjqxCustomersMob" style="color:red;"></span>
+        </div>
+        <div class="tableData tableDataView" style="overflow:visible">
+          <div class="tableHading"> Customers List </div>
+          	<div class="formTable manageMembers" id='jqxCustomersMobile' style="width:100%"></div>
+        </div>
+      </div>
+    </div>
+</div>
+<script type="text/javascript">
+	searchByEnterKey('lookupMobilesrc', 'submitSearch');
+</script>

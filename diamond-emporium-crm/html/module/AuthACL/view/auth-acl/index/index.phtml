@@ -1,0 +1,29 @@
+<div class="contentArea">
+	<?php  $this->headTitle('Login'); ?>
+	<div class="mainLoginForm">
+		<div class="loginInner">
+			<h1><?php echo $this->escapeHtml('Login'); ?></h1>
+			<div class="loginFormFields">
+				<?php if(isset($this->message) && !empty($this->message)) { ?>
+				<div style="margin-top:30px;"><?php echo $this->message; ?></div>
+				<?php } ?>
+				
+				<?php
+				//$form->setAttribute('action', $this->url('album', array('action' => 'add')));
+				$form->prepare();
+				
+				echo $this->form()->openTag($form);
+				 
+				echo $this->formRow($form->get('email'));
+				echo $this->formRow($form->get('password'));
+				echo $this->formSubmit($form->get('submit'));
+				
+				//echo $this->formCollection($form);
+				
+				echo $this->form()->closeTag();
+				?>
+				<div><a href="/forgotpassword" class="forgotpass">Forgot Password ?</a></div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,292 @@
+AWSTATS DATA FILE 7.4 (build 20140726)
+# If you remove this file, all statistics for date 201511 will be lost/reset.
+# Last config file used to build this data file was /home/diamond/tmp/awstats/awstats.diamond.openseed.com.au.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 28
+POS_GENERAL 2019                
+POS_TIME 2692                
+POS_VISITOR 5903                
+POS_DAY 6216                
+POS_DOMAIN 3225                
+POS_LOGIN 3471                
+POS_ROBOT 3626                
+POS_WORMS 3758                
+POS_EMAILSENDER 3889                
+POS_EMAILRECEIVER 4032                
+POS_SESSION 6346                
+POS_SIDER 6519                
+POS_FILETYPES 4167                
+POS_DOWNLOADS 4357                
+POS_OS 4405                
+POS_BROWSER 4510                
+POS_SCREENSIZE 4630                
+POS_UNKNOWNREFERER 4704                
+POS_UNKNOWNREFERERBROWSER 4791                
+POS_ORIGIN 4873                
+POS_SEREFERRALS 5007                
+POS_PAGEREFS 5151                
+POS_SEARCHWORDS 5299                
+POS_KEYWORDS 5451                
+POS_MISC 2356                
+POS_ERRORS 5510                
+POS_CLUSTER 3327                
+POS_SIDER_404 5594                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20151104180420 6 940 8351088381876
+FirstTime 20151102205957
+LastTime 20151104180404
+LastUpdate 20151104231121 6 0 6 0 0
+TotalVisits 6                   
+TotalUnique 5                   
+MonthHostsKnown 0                   
+MonthHostsUnknown 5                   
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 0 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 0 0 0 0 0 0
+1 0 0 0 0 0 0
+2 0 0 0 0 0 0
+3 0 0 0 0 0 0
+4 0 0 0 0 0 0
+5 0 0 0 0 0 0
+6 0 0 0 0 0 0
+7 0 0 0 0 0 0
+8 6 70 1090093 1 3 0
+9 45 103 55570 0 0 0
+10 12 13 12478 0 0 0
+11 0 0 0 0 0 0
+12 72 137 208781 1 2 0
+13 26 26 53562 0 0 0
+14 0 0 0 0 0 0
+15 0 0 0 0 0 0
+16 0 0 0 0 0 0
+17 0 0 0 0 0 0
+18 1 4 21586 0 2 0
+19 0 0 0 0 0 0
+20 2 2 2452 0 0 0
+21 45 112 1184552 1 2 0
+22 1 53 982213 0 1 0
+23 0 0 0 0 0 0
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 25 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 2
+au 208 463 2607488
+in 2 57 1003799
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 25 first Hits must be first (order not required for others)
+BEGIN_ROBOT 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 7
+css 45 245649 0 0
+png 36 66488 0 0
+html 5 6088 0 0
+js 215 2733179 0 0
+jpg 8 53555 0 0
+Unknown 205 355933 0 0
+gif 6 150395 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 3
+macosx 114 47
+winnt 186 63
+win7 220 100
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 3
+chrome46.0.2490.80 330 146
+chrome42.0.2311.135 186 63
+firefox41.0 4 1
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 6 6
+From1 0 0
+From2 0 0
+From3 0 0
+From4 204 514
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 25 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 0
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 25 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 1
+302 3 0
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referrer
+BEGIN_SIDER_404 0
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 25 first Hits must be first (order not required for others)
+BEGIN_VISITOR 5
+121.209.171.183 98 163 262343 20151103130127
+120.150.210.86 57 116 68048 20151103100741
+110.175.78.225 47 114 1187004 20151102210234
+58.108.187.200 6 70 1090093 20151103082723
+202.62.72.163 2 57 1003799 20151104180404 20151104180404 /cpanel
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 3
+20151102 47 114 1187004 1
+20151103 162 402 2402697 4
+20151104 1 4 21586 1
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 4
+1h+ 1
+5mn-15mn 1
+2mn-5mn 2
+0s-30s 1
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 25 first Pages must be first (order not required for others)
+BEGIN_SIDER 47
+/ajaxrecordscount 42 8234 0 2
+/ajaxgetopportunities 22 44152 0 0
+/ajaxgetdiamonds 12 10924 0 0
+/ajaxgetweddingrings 9 3456 0 0
+/ajaxgetengagementrings 7 2268 0 0
+/ajaxgetchain 7 280 0 0
+/invoicequotes 7 16790 0 0
+/ajaxgetpendants 7 280 0 0
+/ajaxgetmiscellaneous 7 1785 0 0
+/ajaxgetearrings 7 280 0 0
+/ajax-invoice 7 5494 0 0
+/inventory 6 55062 0 0
+/ajax-quote 6 2520 0 0
+/ 5 6088 4 1
+/opportunities 4 24883 0 0
+/ajaxorderlist 4 1885 0 0
+/ajaxcustomerslist 3 3615 0 1
+/orders 3 12622 0 0
+/ajaxgetleads 3 1107 0 0
+/customers 3 14115 0 0
+/editinvoicequotes/23 3 15280 0 0
+/dashboard 3 5139 0 0
+/leads 3 18562 0 0
+/inventory-weddingring 2 15693 1 0
+/editgridview 2 410 0 0
+/editorderform 1 1825 0 0
+/viewinvoiceemail/7 1 0 0 0
+/ajaxgetsuppliers 1 437 0 1
+/editinvoicequotes/22 1 7587 0 0
+/viewinvoiceemail/6 1 0 0 0
+/suppliers 1 4723 0 0
+/ajaxgetinvoiceemail 2 3939 0 0
+/newquotes 1 6488 0 0
+/consignform 1 2812 0 0
+/checkviewexist 2 42 0 0
+/ajaxgetmilestoneemail 1 3282 0 0
+/ajaxjoblist 2 522 0 0
+/newinvoice 1 6407 0 0
+/editinvoicequotes/21 2 7626 0 0
+/savemygridview 1 111 0 0
+/cpanel 1 2866 1 0
+/ajaxgetnotes/opportunity/10 1 195 0 0
+/editinvoicequotes/6 1 8220 0 0
+/orderdetails/14 1 4426 0 0
+/opportunitydetails/10 1 9480 0 0
+/customerdetails/29 1 17984 0 0
+/emails 1 2125 0 0
+END_SIDER

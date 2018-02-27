@@ -1,0 +1,10 @@
+#Options +Indexes
+#IndexOptions -FancyIndexing
+
+Options +FollowSymlinks
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^diamond.openseed.com.au
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule ^(.*)$ public/$1 [L]
+

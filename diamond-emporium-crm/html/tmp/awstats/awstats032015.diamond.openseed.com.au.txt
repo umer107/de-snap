@@ -1,0 +1,294 @@
+AWSTATS DATA FILE 7.4 (build 20140726)
+# If you remove this file, all statistics for date 201503 will be lost/reset.
+# Last config file used to build this data file was /home/diamond/tmp/awstats/awstats.diamond.openseed.com.au.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 28
+POS_GENERAL 2019                
+POS_TIME 2691                
+POS_VISITOR 6157                
+POS_DAY 6486                
+POS_DOMAIN 3227                
+POS_LOGIN 3475                
+POS_ROBOT 3630                
+POS_WORMS 3762                
+POS_EMAILSENDER 3893                
+POS_EMAILRECEIVER 4036                
+POS_SESSION 6774                
+POS_SIDER 6973                
+POS_FILETYPES 4171                
+POS_DOWNLOADS 4422                
+POS_OS 4470                
+POS_BROWSER 4563                
+POS_SCREENSIZE 4736                
+POS_UNKNOWNREFERER 4810                
+POS_UNKNOWNREFERERBROWSER 4897                
+POS_ORIGIN 4979                
+POS_SEREFERRALS 5115                
+POS_PAGEREFS 5259                
+POS_SEARCHWORDS 5407                
+POS_KEYWORDS 5559                
+POS_MISC 2355                
+POS_ERRORS 5618                
+POS_CLUSTER 3331                
+POS_SIDER_404 5716                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20150401005308 1 0 11597362112873
+FirstTime 20150311114655
+LastTime 20150331011934
+LastUpdate 20150401230909 1 0 0 0 0
+TotalVisits 12                  
+TotalUnique 6                   
+MonthHostsKnown 0                   
+MonthHostsUnknown 6                   
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 0 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 0 0 0 0 0 0
+1 9 51 600784 1 2 20
+2 0 0 0 0 0 0
+3 0 0 0 0 0 0
+4 0 0 0 0 0 0
+5 0 0 0 0 0 0
+6 0 0 0 0 0 0
+7 0 0 0 0 0 0
+8 0 0 0 0 0 0
+9 1 1 933 0 0 0
+10 3 37 886323 0 1 0
+11 156 253 1511668 6 9 985
+12 0 0 0 0 0 0
+13 81 131 1127527 4 5 1810
+14 15 61 59539 2 2 905
+15 0 0 0 0 0 0
+16 0 0 0 0 0 0
+17 0 0 0 0 0 0
+18 0 0 0 0 0 0
+19 1 1 972 0 0 0
+20 0 0 0 0 0 0
+21 0 0 0 0 0 0
+22 30 115 1586581 2 4 40
+23 0 0 0 0 0 0
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 25 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 2
+au 266 536 4195732
+in 30 114 1578595
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 25 first Hits must be first (order not required for others)
+BEGIN_ROBOT 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 10
+css 56 503622 0 0
+png 57 116429 0 0
+woff2 14 228984 0 0
+woff 2 50308 0 0
+swf 12 153204 0 0
+html 13 12367 0 0
+js 216 4095154 0 0
+jpg 14 137474 0 0
+Unknown 255 409807 0 0
+gif 11 66978 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 2
+macosx 353 178
+win7 297 118
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 5
+chrome41.0.2272.89 293 160
+chrome41.0.2272.101 52 10
+firefox36.0 63 21
+chrome41.0.2272.104 185 92
+chrome41.0.2272.76 57 13
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 13 13
+From1 0 0
+From2 0 0
+From3 0 0
+From4 283 637
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 25 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 0
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 25 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 2
+302 11 220
+404 4 3540
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referrer
+BEGIN_SIDER_404 2
+/leaddetails/ 1 http://diamond.openseed.com.au/leaddetails/51
+/customerdetails/ 3 http://diamond.openseed.com.au/customerdetails/48
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 25 first Hits must be first (order not required for others)
+BEGIN_VISITOR 6
+110.175.78.225 90 181 1695802 20150330220253
+124.246.10.7 88 183 482269 20150323145046
+203.174.189.190 82 132 1128460 20150330133051
+175.101.6.98 30 114 1578595 20150331011934
+203.174.133.142 5 39 888229 20150323095818
+49.180.152.157 1 1 972 20150324191902
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 10
+20150311 13 57 266066 1
+20150312 60 65 156664 1
+20150313 4 38 887296 1
+20150321 81 129 1087032 1
+20150323 16 62 60472 2
+20150324 1 1 972 1
+20150325 1 1 933 1
+20150326 21 63 977811 1
+20150330 90 183 1736297 2
+20150331 9 51 600784 1
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 6
+5mn-15mn 2
+15mn-30mn 1
+0s-30s 5
+30s-2mn 2
+2mn-5mn 1
+30mn-1h 1
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 25 first Pages must be first (order not required for others)
+BEGIN_SIDER 32
+/ajaxrecordscount 54 3250 0 0
+/gettaskhistorydetails 30 5141 0 0
+/gettaskdetails 29 5644 0 0
+/ajaxgetopportunities 28 66829 0 4
+/ajaxgetleads 20 8760 0 0
+/dashboard 15 20085 3 0
+/ajaxcustomerslist 14 15778 0 2
+/ 13 12367 9 4
+/uploadify.swf 12 153204 0 0
+/opportunities 11 61231 0 0
+/leads 11 56356 0 0
+/customers 9 38780 0 0
+/css/fonts/opensans-bold-webfont.woff2 7 116520 0 0
+/css/fonts/opensans-regular-webfont.woff2 7 112464 0 0
+/ajaxgetnotes/lead/51 5 542 0 0
+/opportunitydetails/64 4 35186 0 0
+/ajaxgetnotes/opportunity/64 4 1000 0 1
+/tasks 3 29193 0 0
+/updateindividual 2 46 0 0
+/editgridview 2 398 0 0
+/ajaxcustomerslookup 2 3714 0 0
+/ajaxgetnotes/opportunity/63 2 44 0 1
+/leaddetails/51 2 18368 0 0
+/customerdetails/48 2 28228 0 0
+/css/fonts/opensans-regular-webfont.woff 1 24752 0 0
+/createtask 1 124 0 0
+/opportunitydetails/63 1 8695 0 0
+/notes 1 21 0 0
+/convertleadform 1 2313 0 0
+/savecomment 1 23 0 0
+/convertlead 1 58 0 0
+/css/fonts/opensans-bold-webfont.woff 1 25556 0 0
+END_SIDER

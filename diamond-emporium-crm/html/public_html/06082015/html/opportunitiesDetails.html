@@ -1,0 +1,872 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>::::</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" >
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700,600' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="../public/css/normalize.css" />
+<link rel="stylesheet" href="../public/css/animate.css" />
+<link rel="stylesheet" href="../public/css/style.css" />
+</head>
+<body>
+<section class="fl width100p mainWrapper">
+  <div class="topBar fl">
+    <h2  class="fl">Daimond Emporium Back Office System</h2>
+    <div class="rightInfo">
+      <div class="mainSearch">
+        <form>
+          <input type="text" placeholder="search.." class="searchInput" />
+          <input type="button" value="Go!" class="inputGo" />
+        </form>
+      </div>
+      <span class="userNameDisplay">You are signed in as <strong>John Steven</strong></span> <a href="javascript:;" class="logoutLink">Logout</a></div>
+  </div>
+  <aside class="leftCol">
+    <h1 class="dimondLogo"><a href="index.html"><img src="../public/images/logo.jpg" /></a></h1>
+    <nav class="mainMenu">
+      <ul>
+        <li><a href="javascript:;" class="dashboardLink">Dashboard</a></li>
+        <li ><a href="index.html" class="customersLinke">Customers</a></li>
+        <li ><a href="lead.html" class="leadsLink">Leads <span>24</span></a></li>
+        <li class="current"><a href="javascript:;" class="opportunitiesLink">Opportunities <span>42</span></a></li>
+        <li><a href="javascript:;" class="ordersLink">Orders <span>1</span></a></li>
+        <li><a href="javascript:;" class="inventoryLink">Inventory</a></li>
+        <li><a href="javascript:;"class="suppliersLink">Suppliers</a></li>
+        <li class="notMainLink"><a href="javascript:;">Quotes & Invoices</a></li>
+        <li class="notMainLink"><a href="javascript:;">Tasks</a></li>
+        <li class="notMainLink"><a href="javascript:;">Meetings</a></li>
+        <li class="notMainLink"><a href="javascript:;">Emails</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <section class="rightCol">
+    <div class="contentArea padLR0">
+      <div class="fl width100p contentINN">
+        <div class="customerDetails">
+          <label>Customer Details</label>
+          <div class="custonerInfo">
+            <h2>Sandra Smith</h2>
+            <p>Ph: 0422 777 445</p>
+            <p>E: <a href="mailto:sandra.smith@hotmail.com">sandra.smith@hotmail.com</a></p>
+          </div>
+        </div>
+        <div class="customerDetails">
+          <label>Partner Details</label>
+          <div class="custonerInfo">
+            <h2>James Smith</h2>
+            <p>Ph: 0422 777 445</p>
+            <p>E: <a href="mailto:james.smith@hotmail.com">James.smith@hotmail.com</a></p>
+          </div>
+        </div>
+        <span class="deviderLine" ></span> </div>
+      <div class="customerTabing fl width100p ctb">
+        <ul>
+          <li class="current"><a href="javascript:;">Opportunity Details</a></li>
+          <li><a href="javascript:;">Tasks <span>84</span></a></li>
+          <li><a href="javascript:;">Emails <span>42</span></a></li>
+          <li><a href="javascript:;">Meetings </a></li>
+        </ul>
+        <div class="customTabbingInner"> 
+          <!-- Lead Details -->
+          <div class="customerTabingInfo" style="display:block">
+            <div class="leadSummary"> <a class="cmnBtn" href="javascript:;">Save</a> &nbsp; <a class="cmnBtn redBtn" href="javascript:;">Delete</a> &nbsp; <!--<a  href="javascript:;"  data-popup="convertToOpportunity" class="cmnBtn lookupBtn lightBoxClick">Convert</a>-->
+              <!-- Priority -->
+              <div class="tableData width100p noOverflow">
+                <div  class="tableHading width100p"> Priority </div>
+                <div class="fl width100p commonForm">
+                  <div class="alphaClmn width100p">
+                    <div class="formRow">
+                      <label class="labelControll">Special Instructions</label>
+                      <div class="inputDiv">
+                        <input type="text" class="inputTxt" placeholder="Enter special instructions here">
+                      </div>
+                    </div>
+                    <div class="formRow">
+                      <label class="labelControll">Lead Owner</label>
+                      <div class="inputDiv">
+                        <div class="selectDrop" style="width:150px">
+                          <div class="assignedDrop">
+                            <div class="dropValue"><span>MB</span>Mark Bolten</div>
+                            <ul style="display: none;">
+                              <li><span>MB</span>Mark Bolten</li>
+                              <li><span style="background-color:#E862A2">MB</span>Mark Bolten</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Priority End-->
+              
+              <!-- Lead Overview-->
+              
+              <div class="tableData noOverflow width100p">
+                <div  class="tableHading width100p">Overview </div>
+                <div class="fl width100p commonForm">
+                  <div class="alphaClmn">
+                    <div class="formRow">
+                      <label class="labelControll">Progress</label>
+                      <div class="inputDiv">
+                        <select class="dropdown ">
+                          <option>select</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="formRow">
+                      <label class="labelControll">Urgency Scale</label>
+                      <div class="inputDiv">
+                        <select class="dropdown ">
+                          <option>select</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="formRow">
+                      <label class="labelControll">Budget</label>
+                      <div class="inputDiv">
+                        <input type="text" class="inputTxt"  />
+                      </div>
+                    </div>
+                    <div class="formRow">
+                      <label class="labelControll"> What are they looking for?</label>
+                      <div class="inputDiv">
+                        <textarea></textarea>
+                      </div>
+                    </div>
+                   
+                    
+                  </div>
+                  <div class="betaClmn">
+                    <div class="formRow">
+                      <label class="labelControll">Rating</label>
+                      <div class="inputDiv">
+                        <select class=" dropdown">
+                          <option>select</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="formRow">
+                      <label class="labelControll">Probability</label>
+                      <div class="inputDiv">
+                        <select class=" dropdown">
+                          <option>select</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="formRow">
+                      <label class="labelControll">Est. Close Date</label>
+                      <div class="inputDiv">
+                        <select class=" dropdown">
+                          <option>select</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Lead Overview End-->
+              
+              <!-- Notes-->
+              
+              <div class="tableData">
+        	<div class="tableHading" >
+            	Notes
+            </div>
+            <div class="addNote">
+            	<form>
+                    <div class="inputDiv"><select class="dropdown ">
+                              <option>select</option>
+                            </select>
+                    </div>
+                    <div class="inputDiv"><select class="dropdown ">
+                              <option>Note Type</option>
+                            </select>
+                    </div>
+                     <div class="inputDiv"><input type="text" class="inputTxt " />
+                    </div>
+                    <input type="submit" class="cmnBtn blueBtn" value="Add Note">
+                </form>
+            </div>
+        	<table border="0" cellpadding="8" cellspacing="0" style="table-layout:fixed" width="100%" class="NotesTable"  >
+            	<tr class="noBG"><th width="5"></th>
+                	<th width="92">Date Created</th>
+                    <th width="50"></th>
+                    <th>Logs/Notes</th>
+       
+                    <th width="100">Follow up Date</th>
+                    <th width="50"></th>
+                    <th width="150">Action</th>
+                </tr>
+                <tr><td></td>
+                	<td>12/12/12</td>
+                    <td></td>
+                    <td>Appointment Booked - information about opportunity
+</td>
+                    
+                    <td>12/12/12</td><td></td>
+                    <td><a href="javascript:;">Edit </a> | <a href="javascript:;">Del</a>
+</td>                    
+                </tr>
+                <tr><td></td>
+                	<td>12/12/12</td><td></td>
+                    <td>Appointment Booked
+</td>
+                    
+                    <td>12/12/12</td><td></td>
+                    <td><a href="javascript:;">Edit </a> | <a href="javascript:;">Del</a>
+</td>                    
+                </tr>
+                <tr><td></td>
+                	<td>12/12/12</td><td></td>
+                    <td>Appointment Booked
+</td>
+                    
+                    <td>12/12/12</td><td></td>
+                    <td><a href="javascript:;">Edit </a> | <a href="javascript:;">Del</a>
+</td>                    
+                </tr>
+                <tr><td></td>
+                	<td>12/12/12</td><td></td>
+                    <td>Appointment Booked
+</td>
+                    
+                    <td>12/12/12</td><td></td>
+                    <td><a href="javascript:;">Edit </a> | <a href="javascript:;">Del</a>
+</td>                    
+                </tr>
+                <tr><td></td>
+                	<td>12/12/12</td><td></td>
+                    <td>Appointment Booked
+</td>
+                    
+                    <td>12/12/12</td><td></td>
+                    <td><a href="javascript:;">Edit </a> | <a href="javascript:;">Del</a>
+</td>                    
+                </tr>
+                <tr><td></td>
+                	<td>12/12/12</td><td></td>
+                    <td>Appointment Booked
+</td>
+                    
+                    <td>12/12/12</td><td></td>
+                    <td><a href="javascript:;">Edit </a> | <a href="javascript:;">Del</a>
+</td>                    
+                </tr>
+                
+                
+                
+                
+            </table>
+        </div>
+        		<!-- Notes End-->
+              
+              
+              <!-- Opportunity Status -->
+              	<div class="tableData noOverflow width100p">
+                <div  class="tableHading width100p"> Opportunity Status - CLOSED  <a href="javascript:;"  data-popup="opportunityStatus" class="fr cmnBtn marT0 lightBoxClick"> Open</a></div>
+                <div class="fl width100p commonForm">
+                  <div class="alphaClmn">
+                    <div class="formRow">
+                      <label class="labelControll">Status</label>
+                      <div class="inputDiv">
+                        <!--<select class="dropdown" style="display:none">
+                          <option>select</option>
+                        </select>-->
+                        <p>Won</p>
+                      </div>
+                    </div>
+                    
+                    <div class="formRow">
+                      <label class="labelControll">Close Date</label>
+                      
+                      
+                      
+                      
+                      <div class="inputDiv">
+                      
+                      <div class="datePickInput">
+                  <input type="text" value="12/12/12" placeholder="DD/MM/YY" class="datepickerInput editViewField"  style="display: none;">
+                  <span class="datePickCal" style="display: none;"></span></div>
+                      
+                        <p>12/12/14</p>
+                      </div>
+                    </div>
+                    
+                    
+                    
+                    
+                  </div>
+                  <div class="betaClmn">
+                    <div class="formRow">
+                      <label class="labelControll">Reason</label>
+                      <div class="inputDiv">
+                       <input type="text" class="inputTxt" style="display:none">
+                       <p>Sales staff</p>
+                      </div>
+                    </div>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              <!-- Opportunity Status End-->
+              
+              
+              <!-- Lead Information-->
+              	<div class="tableData noOverflow width100p">
+                <div  class="tableHading width100p"> Opportunity Details </div>
+                <div class="fl width100p commonForm">
+                  <div class="alphaClmn">
+                    <div class="formRow">
+                      <label class="labelControll">Opportunity Type</label>
+                      <div class="inputDiv">
+                        <select class="dropdown">
+                          <option>select</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div class="formRow">
+                      <label class="labelControll">Lead Source</label>
+                      <div class="inputDiv">
+                        <select class="dropdown width60p">
+                          <option>select</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div class="formRow">
+                      <label class="labelControll">Referred by Customer</label>
+                      <div class="inputDiv"><input type="text" class="inputTxt width60p"><a class="cmnBtn blueBtn lightBoxClick" href="javascript:;" data-popup="leadlookup" >Lookup</a></div>
+                    </div>
+                    
+                    
+                  </div>
+                  <div class="betaClmn">
+                    <div class="formRow">
+                      <label class="labelControll">Product</label>
+                      <div class="inputDiv">
+                        <select class="dropdown">
+                          <option>select</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="formRow">
+                      <label class="labelControll">Preferred method of contact</label>
+                      <div class="inputDiv">
+                        <select class="dropdown width60p">
+                          <option>select</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="formRow">
+                      <label class="labelControll">Reference Product</label>
+                      <div class="inputDiv">
+                        <input type="text" class="inputTxt">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Lead Information End-->
+              
+              
+              
+            </div>
+          </div>
+          
+          <!-- Lead Details End--> 
+          <!-- TaskInfo -->
+          <div class="customerTabingInfo">
+            <div class="tasksBlock fl width100p">
+              <div class="alphaCulmn fl"> <a href="javascript:;" class="popupLink" >Create Task</a>
+                <div class="tableData">
+                  <div  class="tableHading"> Tasks </div>
+                  <div class="tasksList fl width100p">
+                    <div class="listView">
+                      <div class="firstCol">
+                        <label class="labelCheck">
+                          <input type="checkbox" />
+                          <i></i></label>
+                      </div>
+                      <div class="secondCol">
+                        <h3 class="taskHead">Please find the right task to complete<br />
+                          <span>Opportunity name</span> </h3>
+                      </div>
+                      <div class="thirdCol"><span class="datePosted newDatePosted">12.12.14</span> <span class="assignTo">MB</span></div>
+                    </div>
+                    <div class="listView current">
+                      <div class="firstCol">
+                        <label class="labelCheck">
+                          <input type="checkbox" />
+                          <i></i></label>
+                      </div>
+                      <div class="secondCol">
+                        <h3 class="taskHead">Please find the right task to complete<br />
+                          <span>Opportunity name</span> </h3>
+                      </div>
+                      <div class="thirdCol"><span class="datePosted">12.12.14</span> <span class="assignTo">MB</span></div>
+                    </div>
+                    <div class="listView">
+                      <div class="firstCol">
+                        <label class="labelCheck">
+                          <input type="checkbox" />
+                          <i></i></label>
+                      </div>
+                      <div class="secondCol">
+                        <h3 class="taskHead">Please find the right task to complete<br />
+                          <span>Opportunity name</span> </h3>
+                      </div>
+                      <div class="thirdCol"><span class="datePosted">12.12.14</span> <span class="assignTo">MB</span></div>
+                    </div>
+                    <div class="completedTasks">
+                      <div class="toggleListView"><i></i><span class="showNhide">Show</span> Completed Tasks (18)</div>
+                      <div class="toggleInfo">
+                        <div class="listView">
+                          <div class="firstCol">
+                            <label class="labelCheck">
+                              <input type="checkbox" />
+                              <i></i></label>
+                          </div>
+                          <div class="secondCol">
+                            <h3 class="taskHead">Please find the right task to complete<br />
+                              <span>Opportunity name</span> </h3>
+                          </div>
+                          <div class="thirdCol"><span class="datePosted">12.12.14</span> <span class="assignTo">MB</span></div>
+                        </div>
+                        <div class="listView">
+                          <div class="firstCol">
+                            <label class="labelCheck">
+                              <input type="checkbox" />
+                              <i></i></label>
+                          </div>
+                          <div class="secondCol">
+                            <h3 class="taskHead">Please find the right task to complete<br />
+                              <span>Opportunity name</span> </h3>
+                          </div>
+                          <div class="thirdCol"><span class="datePosted">12.12.14</span> <span class="assignTo">MB</span></div>
+                        </div>
+                        <div class="listView">
+                          <div class="firstCol">
+                            <label class="labelCheck">
+                              <input type="checkbox" />
+                              <i></i></label>
+                          </div>
+                          <div class="secondCol">
+                            <h3 class="taskHead">Please find the right task to complete<br />
+                              <span>Opportunity name</span> </h3>
+                          </div>
+                          <div class="thirdCol"><span class="datePosted">12.12.14</span> <span class="assignTo">MB</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="betaCulmn fl taskDisrpition">
+                <div class="editDrop"> <span class="editTaskBtn"></span>
+                  <ul>
+                    <li>Edit</li>
+                    <li>Delete</li>
+                  </ul>
+                </div>
+                <div class="cb"></div>
+                <div class="selectDrop">
+                  <div class="assignedDrop">
+                    <div class="dropValue"><span>MB</span>Mark Bolten</div>
+                    <ul>
+                      <li><span>MB</span>Mark Bolten</li>
+                      <li><span style="background-color:#E862A2">MB</span>Mark Bolten</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="selectDrop">
+                  <div class="datePickInput">
+                    <input type="text" class="datepickerInput" placeholder="DD/MM/YY" />
+                    <span class="datePickCal"></span></div>
+                </div>
+                <div class="selectDrop">
+                  <select class="dropdown">
+                    <option>Category</option>
+                  </select>
+                </div>
+                <div class="selectDrop">
+                  <select class="dropdown">
+                    <option>Subject</option>
+                  </select>
+                </div>
+                <div class="selectDrop">
+                  <select class="dropdown">
+                    <option>Priority</option>
+                    <option>High</option>
+                    <option>Low</option>
+                  </select>
+                </div>
+                <div class="taslTitle">
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,</p>
+                  <input type="text" class="taskTitleEdit inputTxt" >
+                </div>
+                <div class="writeCommentBlock">
+                  <textarea placeholder="Write a comment..."></textarea>
+                  <div class="commentBottom">
+                    <div class="attachfile">Attach Files
+                      <input type="file">
+                    </div>
+                  </div>
+                </div>
+                <a class="popupLink fr" href="javascript:;">Comment</a>
+                <div class="prevComments">
+                  <div class="editDrop"> <span class="editTaskBtn"></span>
+                    <ul>
+                      <li>Edit</li>
+                      <li>Delete</li>
+                    </ul>
+                  </div>
+                  <div class="cb"></div>
+                  <div class="commentedOne"><span>MD</span>Mark Bolten</div>
+                  <p class="prevPost">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,</p>
+                  <div class="attachedImages">
+                    <div class="attachmentDisplay"><img src="../public/images/attchImg.jpg" /></div>
+                    <div class="attachmentDisplay"><img src="../public/images/attchImg.jpg" /></div>
+                    <div class="cb"></div>
+                    <div class="datePosted">10:23pm - 12/10/14</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TaskInfo End--> 
+          
+          <!-- Emails -->
+          <div class="customerTabingInfo">
+            <div class="pad20"> Emails Commin Soon.... </div>
+          </div>
+          <!-- Emails End--> 
+          <!-- Meetings -->
+          <div class="customerTabingInfo">
+            <div class="pad20"> Commin Soon.... </div>
+          </div>
+          <!-- Meetings End--> 
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="lightBox" id="opportunityStatus">
+    <div class="lightBoxMid" style="width:600px">
+      <div class="lightBoxTitle">Close Opportunity <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+      <div class="lightBoxContent fl width100p commonForm">
+        
+          <div class="formRow">
+            <label class="labelControll">Status</label>
+            <div class="inputDiv">
+              <select class="dropdown">
+                <option>select</option>
+              </select>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Close Date</label>
+            <div class="inputDiv">
+              <select class="width60p dropdown">
+                <option>select</option>
+              </select>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Reason</label>
+            <div class="inputDiv">
+              <select class=" dropdown">
+                <option>select</option>
+              </select>
+            </div>
+          </div>
+
+        
+        <div class="formButtons tc fl width100p">
+          <input type="submit" value="Save" class="cmnBtn">
+          <input type="button" value="Cancel" class="cmnBtn cancelBtn" >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lightBox" id="leadlookup">
+ 	<div class="lightBoxMid" style="width:970px">
+    <div class="lightBoxTitle">Lead Lookup <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p lookupPopup">
+    	
+        <div class="mainSearch">
+        <form>
+          <input type="text" class="searchInput" placeholder="Search..">
+          <input type="button" class="inputGo" value="Go!">
+        </form>
+      </div>
+    	
+		<div class="tableData">
+        	<div class="tableHading" style="width:1820px">
+            	Opportunity List
+            </div>
+        	<table border="0" cellpadding="8" cellspacing="0" style="table-layout:fixed" width="1820" >
+            	<tr><th width="5"></th>
+                	<th width="92">Created</th>
+                    <th width="100">Customer Owner</th>
+                    <th >Email</th>
+                    <th width="108">Mobile Number</th>
+                    <th width="130">Urgency</th>
+                    <th width="90">Rating</th>
+                    <th width="170">Progress</th>
+                    <th width="130">Probability</th>
+                    <th width="100">Est.<br /> Revenue</th>
+                    <th width="120">Predicted Close Date</th>
+                    <th>Notes</th>
+                    <th width="70">Edit Notes</th>
+                    <th width="100">Follow up Date</th>
+                    <th width="100">Account Owner</th>
+                </tr>
+                <tr><td></td>
+                	<td>12/12/12</td>
+                    <td>Steve Smith</td>
+                    <td>michaelelnakeeb@gmail.com</td>
+                    <td>0401 234 567</td>
+                    <td>High</td>
+                    <td>Warm</td>
+                    <td>Create a quote</td>
+                    <td>75%</td>
+                    <td>$100,000</td>
+                    <td>12/12/12</td>
+                    <td class="noteTxt">10/12/14 - Appointent Booked<br /> wants to have several different</td>
+                    <td>Edit</td>
+                    <td>12/12/12</td>
+                    <td>Jason Smithfield</td>                    
+                </tr>
+                <tr><td></td>
+                	<td>12/12/12</td>
+                    <td>Steve Smith</td>
+                    <td>michaelelnakeeb@gmail.com</td>
+                    <td>0401 234 567</td>
+                    <td>High</td>
+                    <td>Warm</td>
+                    <td>Create a quote</td>
+                    <td>75%</td>
+                    <td>$100,000</td>
+                    <td>12/12/12</td>
+                    <td class="noteTxt">10/12/14 - Appointent Booked<br /> wants to have several different</td>
+                    <td>Edit</td>
+                    <td>12/12/12</td>
+                    <td>Jason Smithfield</td>                    
+                </tr>
+                <tr><td></td>
+                	<td>12/12/12</td>
+                    <td>Steve Smith</td>
+                    <td>michaelelnakeeb@gmail.com</td>
+                    <td>0401 234 567</td>
+                    <td>High</td>
+                    <td>Warm</td>
+                    <td>Create a quote</td>
+                    <td>75%</td>
+                    <td>$100,000</td>
+                    <td>12/12/12</td>
+                    <td class="noteTxt">10/12/14 - Appointent Booked<br /> wants to have several different</td>
+                    <td>Edit</td>
+                    <td>12/12/12</td>
+                    <td>Jason Smithfield</td>                    
+                </tr>
+                <tr><td></td>
+                	<td>12/12/12</td>
+                    <td>Steve Smith</td>
+                    <td>michaelelnakeeb@gmail.com</td>
+                    <td>0401 234 567</td>
+                    <td>High</td>
+                    <td>Warm</td>
+                    <td>Create a quote</td>
+                    <td>75%</td>
+                    <td>$100,000</td>
+                    <td>12/12/12</td>
+                    <td class="noteTxt">10/12/14 - Appointent Booked<br /> wants to have several different</td>
+                    <td>Edit</td>
+                    <td>12/12/12</td>
+                    <td>Jason Smithfield</td>                    
+                </tr>
+                <tr><td></td>
+                	<td>12/12/12</td>
+                    <td>Steve Smith</td>
+                    <td>michaelelnakeeb@gmail.com</td>
+                    <td>0401 234 567</td>
+                    <td>High</td>
+                    <td>Warm</td>
+                    <td>Create a quote</td>
+                    <td>75%</td>
+                    <td>$100,000</td>
+                    <td>12/12/12</td>
+                    <td class="noteTxt">10/12/14 - Appointent Booked<br /> wants to have several different</td>
+                    <td>Edit</td>
+                    <td>12/12/12</td>
+                    <td>Jason Smithfield</td>                    
+                </tr>
+            </table>
+        </div>
+        
+        
+    </div>
+    	
+    </div>	
+ </div>
+  
+  <!--<div class="lightBox" id="convertToOpportunity">
+    <div class="lightBoxMid" style="width:540px">
+      <div class="lightBoxTitle">Convert To Opportunity <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+      
+      <div class="lightBoxContent fl width100p  CTO">
+        <div class="commonForm fl width100p">
+          <div class="formRow">
+            <label class="labelControll">Record Owner</label>
+            <div class="inputDiv">
+              <select class="dropdown">
+                <option>select</option>
+              </select>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Send Email to Owner</label>
+            <div class="inputDiv">
+              
+              <label class="notAvail padL0">
+                          <input type="checkbox" checked="">
+                          <span class="checkInfo checked"></span></label></div>
+            </div>
+            
+          <div class="suggestedMatch">
+          
+          <div class="formRow">
+            <label class="labelControll">Suggested Match</label>
+            <div class="inputDiv matchInfo">
+              <div class="cstmrPhoto"><img src="../public/images/customerPhoto.jpg"></div>
+              <h2>Sandra Smith</h2>
+              <p><strong>Phone:</strong> 0433 222 222</p>
+              <p><strong>Email:</strong> sandrasmith@gmail.com</p>
+          </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Mobile</label>
+            <div class="inputDiv">
+              <p class="mobileAvail">0433 222 222 <a class="available" href="javascript:;"></a></p>
+              
+            </div>
+          </div>
+          
+           <div class="formRow">
+            <label class="labelControll">Email</label>
+            <div class="inputDiv">
+              <p class="mobileAvail">johnsteven123@gmail.com <a class="unavailable" href="javascript:;"></a></p>
+              
+            </div>
+          </div>
+          
+          
+          <div class="formRow">
+            <label class="labelControll">Customer Account</label>
+            <div class="inputDiv">
+              <select class="dropdown width65p">
+                <option>Attach To Suggested</option>
+              </select>
+              <a data-popup="leadlookup" class="cmnBtn blueBtn lightBoxClick" href="javascript:;">Lookup</a>
+            </div>
+          </div>
+          
+          </div>  
+            
+
+          <div class="formRow">
+            <label class="labelControll">Opportunity Name</label>
+            <div class="inputDiv">
+              <select class="dropdown">
+                <option>Lead Interested</option>
+              </select>
+            </div>
+          </div>
+          
+          
+          <div class="formRow">
+            <label class="labelControll">Progress</label>
+            <div class="inputDiv">
+              <select class="dropdown">
+                <option>Select</option>
+              </select>
+            </div>
+          </div>
+          
+        </div>
+        <div class="devider"></div> 
+        
+        <div class="taskAssign">
+        <h2 class="cmnHeader">Create Task</h2>
+        	<div class="selectDrop padL0">
+                <div class="assignedDrop">
+                  <div class="dropValue"><span>MB</span>Mark Bolten</div>
+                  <ul>
+                    <li><span>MB</span>Mark Bolten</li>
+                    <li><span style="background-color:#E862A2">MB</span>Mark Bolten</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="selectDrop">
+                <div class="datePickInput">
+                  <input type="text" class="datepickerInput" placeholder="DD/MM/YY" />
+                  <span class="datePickCal"></span></div>
+              </div>
+              <div class="selectDrop">
+                <select class="dropdown">
+                  <option>Category</option>
+                </select>
+              </div>
+              
+              <div class="selectDrop padL0">
+                <select class="dropdown">
+                  <option>Priority</option>
+                  <option>High</option>
+                  <option>Low</option>
+                </select>
+              </div>
+              <div class="selectDrop ">
+                <select class="dropdown">
+                  <option>Subject</option>
+                </select>
+              </div>
+              <div class="writeCommentBlock">
+                <textarea placeholder="Write a comment..."></textarea>
+                <div class="commentBottom">
+                  <div class="attachfile">Attach Files
+                    <input type="file">
+                  </div>
+                </div>
+              </div>
+        
+        </div>
+               
+        <div class="formButtons tc fl width100p">
+          <input type="submit" value="Save" class="cmnBtn">
+          <input type="button" value="Cancel" class="cmnBtn cancelBtn" >
+        </div>
+      </div>
+      
+    </div>
+  </div>-->
+  
+  
+</section>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script> 
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script> 
+<script>
+if (typeof jQuery == 'undefined') {
+    document.write(unescape("%3Cscript src='../public/js/jquery.min.1.11.0.js' type='text/javascript'%3E%3C/script%3E"));
+	document.write(unescape("%3Cscript src='../public/js/jquery-ui.js' type='text/javascript'%3E%3C/script%3E"));
+}
+</script> 
+<script src="../public/js/dropkick.js"></script> 
+<script src="../public/js/common.js"></script>
+</body>
+</html>

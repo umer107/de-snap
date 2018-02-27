@@ -1,0 +1,5 @@
+ALTER TABLE `de_inventory_engagement_rings` 
+CHANGE COLUMN `band_width` `band_width_top` DECIMAL(10,2) NULL DEFAULT NULL ,
+CHANGE COLUMN `band_thickness` `band_thickness_top` DECIMAL(10,2) NULL DEFAULT NULL ,
+ADD COLUMN `band_width_bottom` DECIMAL(10,2) NULL DEFAULT NULL AFTER `band_width_top`,
+ADD COLUMN `band_thickness_bottom` DECIMAL(10,2) NULL DEFAULT NULL AFTER `band_thickness_top`;

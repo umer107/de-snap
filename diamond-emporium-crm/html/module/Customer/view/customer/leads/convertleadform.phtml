@@ -1,0 +1,249 @@
+<?php
+$convertForm->prepare();
+echo $this->form()->openTag($convertForm);
+echo $this->formElement($convertForm->get('lead_id'));
+echo $this->formElement($convertForm->get('customer_id'));
+echo $this->formElement($convertForm->get('matched_customer_id'));
+?>
+
+<div class="commonForm fl width100p">
+  <div class="formRow">
+	<label class="labelControll"><?php echo $this->convertForm->get('lead_owner')->getLabel(); ?><span class="asterisk">*</span></label>
+	<div class="inputDiv">
+		<?php //echo $this->formElement($this->convertForm->get('lead_owner')); ?>
+		<div class="selectDrop width150">
+			<div class="assignedDrop">
+				<div class="dropValue"><?php echo empty($leadData['lead_owner']) || empty($ownerOptions[$leadData['lead_owner']]) ? $ownerOptions[0] : $ownerOptions[$leadData['lead_owner']]; ?></div>
+				<input type="hidden" id="lead_owner" name="lead_owner" value="<?php echo $leadData['lead_owner']; ?>"/>
+				<ul>
+					<?php foreach($ownerOptions as $userId => $userText){?>
+					<li onclick="$(this).closest('form').find('input[name=lead_owner]').val(<?php echo $userId; ?>);"><?php echo $userText; ?></li>
+				<?php } ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+  </div>
+	
+  <div class="suggestedMatch">
+  
+  <?php if(!empty($matchedCustomer['mobile'])){ ?>
+  <div class="formRow">
+	<label class="labelControll">Suggested Match</label>
+	<div class="inputDiv matchInfo">
+	  <div class="cstmrPhoto"><img src="<?php echo empty($matchedCustomer['profile_photo']) ? '/images/no-profile-photo.jpg' : '/profile_photo/'.$matchedCustomer['profile_photo']; ?>"></div>
+	  <h2><?php echo $matchedCustomer['fullname']; ?></h2>
+	  <p><strong>Phone:</strong> <span id="op_mobile"><?php echo $matchedCustomer['mobile']; ?></span></p>
+	  <p><strong>Email:</strong> <span id="op_email"><?php echo $matchedCustomer['email']; ?></span></p>
+  </div>
+  </div>
+  <?php } else { ?>
+  <div class="formRow">
+	<label class="labelControll">&nbsp;</label>
+	<div class="inputDiv matchInfo">
+	  <div class="cstmrPhoto"><img src="<?php echo empty($matchedCustomer['profile_photo']) ? '/images/no-profile-photo.jpg' : '/profile_photo/'.$matchedCustomer['profile_photo']; ?>"></div>	  
+	  </div>
+	</div>    
+  <?php } ?>
+  <div class="formRow">
+	<label class="labelControll">Name</label>
+	<div class="inputDiv">
+	  <p class="mobileAvail"><?php echo $leadData['first_name'].' '.$leadData['last_name']; ?> <?php /*?><a id="op_mobile_status" class="<?php echo (!empty($leadData['first_name']) && str_replace(' ', '', $matchedCustomer['first_name']) == str_replace(' ', '', $leadData['first_name'])) ? 'available' : 'unavailable'; ?>" href="javascript:;"></a><?php */?></p>
+	  
+	</div>
+  </div>
+  <div class="formRow">
+	<label class="labelControll">Mobile</label>
+	<div class="inputDiv">
+	  <p class="mobileAvail"><?php echo $leadData['mobile']; ?> <a id="op_mobile_status" class="<?php echo (!empty($leadData['mobile']) && str_replace(' ', '', $matchedCustomer['mobile']) == str_replace(' ', '', $leadData['mobile'])) ? 'available' : 'unavailable'; ?>" href="javascript:;"></a></p>
+	  
+	</div>
+  </div>
+  
+   <div class="formRow">
+	<label class="labelControll">Email</label>
+	<div class="inputDiv">
+	  <p class="mobileAvail"><?php echo $leadData['email']; ?> <a id="op_email_status" class="<?php echo (strtolower($matchedCustomer['email']) == strtolower($leadData['email'])) ? 'available' : 'unavailable'; ?>" href="javascript:;"></a></p>
+	  
+	</div>
+  </div>
+  
+  
+  <div class="formRow">
+	<label class="labelControll"><?php echo $convertForm->get('customer_name')->getLabel(); ?></label>
+	<div class="inputDiv">
+	  <?php echo $this->formElement($convertForm->get('customer_name')); ?>
+	  <a data-popup="customerlookup" class="cmnBtn blueBtn lightBoxClick" href="javascript: customersLookup(<?php echo $recordsPerPage; ?>, 'customer_id', 'customer_name');">Lookup</a>
+	  <a class="cmnBtn greenBtn" href="javascript: customersCreateFromLead(<?php echo $convertForm->get('lead_id')->getValue(); ?>, 'customer_id', 'customer_name');">Create/lookup from Lead</a>
+	</div>	
+  </div>
+  
+  </div>	
+
+  <div class="formRow">
+	<label class="labelControll"><?php echo $convertForm->get('opportunity_name')->getLabel(); ?><span class="asterisk">*</span></label>
+	<div class="inputDiv">
+	  <?php echo $this->formElement($convertForm->get('opportunity_name')); ?>
+	</div>
+	
+  </div>  
+  
+  <div class="formRow">
+	<label class="labelControll">Special Instructions</label>
+	<div class="inputDiv">
+	  <input type="text" class="inputTxt" id="special_instructions" name="special_instructions" value="<?php echo $leadData['priority']; ?>">
+	</div>
+	
+  </div>
+  
+  <?php /*?><div class="formRow">
+	<label class="labelControll"><?php echo $convertForm->get('progress_of_opportunity')->getLabel(); ?>*</label>
+	<div class="inputDiv">
+	  <?php echo $this->formElement($convertForm->get('progress_of_opportunity')); ?>
+	</div>
+	
+  </div><?php */?>
+  
+</div>
+<div class="devider"></div> 
+
+<div class="taskAssign">
+<h2 class="cmnHeader">Create Task</h2>
+	  <!--<div class="selectDrop padL0">
+		<div class="assignedDrop">
+			<div class="dropValue">Unassigned</div>
+			<ul>
+				<?php //foreach($usersList as $userId => $userText){?>
+				<li onclick="UpdateTaskParam($('#currentTaskId').val(), 'assigned_to', <?php //echo $userId; ?>);"><?php //echo $userText; ?></li>
+				<?php //} ?>
+			</ul>
+		</div>
+	  </div>-->
+
+	  <div class="inputDiv creatTaskfield fl width100p">
+		<input id="convert_task_title" class="inputTxt" type="text" value="" name="convert_task_title">
+		<span id="error_task_title" class="errorText"></span>
+	  </div>
+
+	  <div class="selectDrop padL0">
+		<select class="dropdown1" id="convert_assigned_to" name="convert_assigned_to">
+			<?php foreach($usersList as $userId => $userText){?>
+			<option value="<?php echo $userId; ?>"><?php echo $userText; ?></option>
+			<?php } ?>
+		</select>
+	  </div>
+	  <div class="selectDrop">
+		<div class="datePickInput">
+		  <input name="convert_due_date" type="text" class="datepickerInput" placeholder="DD/MM/YYYY" style="height:31px" />
+		  <span class="datePickCal"></span></div>
+	  </div>
+	  <div class="selectDrop ">
+		<select class="dropdown1" id="convert_task_category" name="convert_task_category">
+			<option value="0"><?php echo 'Category';?></option>
+			<?php foreach($CategoryList as $data){?>
+			<option value="<?php echo $data['category_id'];?>"><?php echo $data['category_title'];?></option>
+			<?php } ?>
+		</select>
+	  </div>
+	  
+	  <div class="selectDrop padL0 ">
+		<select class="dropdown1" id="convert_task_priority" name="convert_task_priority">
+			<option value="0">Priority</option>
+			<?php foreach($priorityList as $data){?>
+			<option value="<?php echo $data['priority_id'];?>"><?php echo $data['priority_title'];?></option>
+			<?php } ?>
+		</select>
+	  </div>
+	  <div class="selectDrop ">
+		<select class="dropdown1" id="convert_task_subject" name="convert_task_subject">
+			<option value="0">Subject</option>
+			<?php foreach($subjectList as $data){?>
+			<option value="<?php echo $data['subject_id'];?>"><?php echo $data['subject_title'];?></option>
+			<?php } ?>
+		</select>
+	  </div>
+	  <div class="writeCommentBlock">
+          <textarea placeholder="Write a comment..." name="convert_task_comment" id="convert_task_comment"></textarea>
+          <div class="commentBottom">
+            <div class="attachfile">
+              <input type="file" id="convert_file_upload">
+            </div>
+          </div>
+      </div>
+</div>
+	   
+<div class="formButtons tc fl width100p">
+  <input type="button" value="Save" class="cmnBtn" id="convert_bttn" onclick="saveConvert($('#frm_lead_convert'));">
+  <input type="button" value="Cancel" class="cmnBtn cancelBtn" onclick="cancelButtonProperty('frm_lead_convert', 'convertToOpportunity');" />
+</div>
+<span id="hiddenOwnerId" style="display:none;"></span>
+<?php echo $this->form()->closeTag(); ?>
+<script type="text/javascript">
+$(document).ready(function(){
+	var convert_task_subject = '<option value="0">Subject</option>';
+	$('#convert_task_subject').html(convert_task_subject).dropkick('refresh');
+	$('#hiddenOwnerId').html($('#lead_owner').val());
+	$('#frm_lead_convert #lead_owner').dropkick({change: function () {
+			var value = this.value;
+			$('#hiddenOwnerId').html(value);
+		}	
+	});
+	/*$('#sendMailtoLeadOwner').click(function(){
+		if($('#sendMailtoLeadOwner').is(':checked')){
+		   sendMailtoLeadOwner($('#hiddenOwnerId').html(), $('#frm_lead_convert #lead_id').val());
+		}
+	})*/
+	$('#convert_task_category').dropkick({
+		change: function () {
+			var value = this.value;
+			if(value > 0){
+				var url = '/getsubjects';
+				var data = 'task_category='+value;
+				$.ajax({
+						type: 'POST',
+						url: url,
+						//async: false,
+						data: data,
+						success: function(response){
+							//$('#tasksRightGrid').show();
+							var taskData = JSON.parse(response);
+							var task_subject = '<option value="0">Subject</option>';
+							$.each(taskData, function( index, value ) {
+								//$task_subject.append("<option value="+index+">"+value+"</option>");
+								task_subject += "<option value="+index+">"+value+"</option>";
+							});
+							$('#convert_task_subject').html(task_subject);
+			
+							
+							$('#convert_task_subject').dropkick('refresh');
+						}
+					});
+			} else {
+				var convert_task_subject = '<option value="0">Subject</option>';
+				$('#convert_task_subject').html(convert_task_subject).dropkick('refresh');
+			}
+		}
+	});
+});
+
+var convertFiles = new Array();
+var convertSelectedFiles = new Array();
+
+$(document).ready(function(){
+	$('#convert_file_upload').uploadify({
+		'swf'      : '/uploadify.swf',
+		'uploader' : '/attachfile',
+		'auto': false,
+		'multi': true,
+		'fileTypeExts' : '*.pdf; *.txt; *.html; *.zip; *.doc; *.xls; *.ppt; *.gif; *.png; *.jpeg; *.jpg',
+		//'fileSizeLimit' : '100KB',
+		'queueSizeLimit' : 3,
+		'onUploadSuccess' : function(file, data, response) {
+            convertFiles.push(file.name);
+        },
+		'onSelect' : function(file) {
+			convertSelectedFiles.push(file.name);
+		}
+	});
+});
+</script>

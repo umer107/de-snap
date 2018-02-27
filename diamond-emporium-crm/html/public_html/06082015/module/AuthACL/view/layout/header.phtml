@@ -1,0 +1,13 @@
+<div class="topBar fl">
+	<h2  class="fl">Diamond Emporium Back Office System</h2>
+	<div class="rightInfo">
+		<div class="mainSearch">
+			<form>
+				<input type="text" placeholder="search.." class="searchInput" />
+				<input type="button" value="Go!" class="inputGo" />
+			</form>
+		</div>
+		<?php $identity = $this->authService->getIdentity(); ?>
+		<span class="userNameDisplay">You are signed in as <strong><?php echo $identity['first_name'].' '.$identity['last_name']; ?></strong></span> <a href="<?php echo $this->serverUrl('/logout'); ?>" class="logoutLink">Logout</a>
+	</div>
+</div>

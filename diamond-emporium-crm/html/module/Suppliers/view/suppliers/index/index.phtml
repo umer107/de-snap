@@ -1,0 +1,40 @@
+<div class="contentArea" id="oppGridContentArea">
+  <h2 class="cmnHeader">Suppliers</h2>
+  <a href="javascript: newSupplier();" class="popupLink lightBoxClick" data-popup="newSuppliers">New Supplier</a>
+  <!--BOF Grid View Header Block-->
+	<?php echo $this->partial('customer/index/gridviewheader.phtml', array('gridViewOptions' => $this->gridViewOptions, 'recordsPerPage' => $this->recordsPerPage, 'prefixId' => 'sup_')); echo '<div class="pageLoader"></div>';?>
+  <!--EOF Grid View Header Block-->
+
+  <div class="cb"></div>
+  <form name="frm_filter_fsupplier" id="frm_filter_fsupplier" action="" method="post">
+    <div class="commonForm commonFilter">
+    	<div class="culmn">
+		    <div class="formRow">
+				<label class="labelControll">Services Offered</label>
+				<div class="inputDiv">
+					<div class="selectDrop">
+						<select multiple name="filter_services[]" id="filter_services" class="dropdown">
+							<?php foreach($serviceTypes as $value => $text) : ?>
+								<option value="<?php echo $value; ?>"><?php echo $text; ?></option>							
+							<?php endforeach; ?>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+  </form>
+
+  <div class="tableData tableNeView" style="overflow:visible">
+    <div class="tableHading" style="width:100%" id="bindAfterThis"> Supplier List </div>
+    <div class="formTable manageMembers" id="jqxSuppliers">
+    </div>
+  </div>
+</div>
+<!--BOF Grid View Block-->
+<?php echo $this->partial('customer/index/gridview.phtml', array('formType' => 'suppliers', 'recordsPerPage' => $this->recordsPerPage, 'columnList' => $this->columnList, 'hiddenUserId' => $this->loginUserId, 'prefixId' => 'sup_')); ?>
+<!--EOF Grid View Block-->
+
+<!--BOF new suppliers Lightbox-->
+<?php echo $this->partial('suppliers/index/newsupplierslightbox.phtml'); ?>
+<!--EOF new suppliers Lightbox-->

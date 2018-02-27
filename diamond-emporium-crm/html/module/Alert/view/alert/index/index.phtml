@@ -1,0 +1,32 @@
+<div class="contentArea">
+	<div class="fl width100p contentINN">
+		<h2 class="cmnHeader">Alerts</h2>
+    </div>
+    <div class="customerTabing fl width100p ctb">
+		<ul>
+  			<li class="current"><a href="javascript:;">My Alerts</a></li>
+  			<li><a href="javascript:;">All Alerts</a></li>
+  		</ul>
+		<div class="customTabbingInner">
+	  		<div class="customerTabingInfo" style="display:block">
+				<div class="tableData tableNeView marB30" style="overflow:visible">
+					<div class="tableHading" style="width:100%" id="bindAfterThis"> My Alerts </div>
+					<div class="formTable manageMembers" id="jqxMyAlerts" style="width:100%"></div>    
+				</div>
+			</div>
+	  		<div class="customerTabingInfo">
+				<div class="tableData tableNeView marB30" style="overflow:visible">
+					<div class="tableHading" style="width:100%" id="bindAfterThis"> All Alerts </div>
+					<div class="formTable manageMembers" id="jqxAllAlerts" style="width:100%"></div>    
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	getMyAlerts(<?php echo $recordsPerPage; ?>);
+	getAllAlerts(<?php echo $recordsPerPage; ?>);
+});
+</script>

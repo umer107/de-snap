@@ -1,0 +1,218 @@
+<?php
+$consignForm->prepare();
+echo $this->form()->openTag($consignForm);
+echo $this->formElement($this->consignForm->get('id'));
+echo $this->formElement($this->consignForm->get('item_id'));
+echo $this->formElement($this->consignForm->get('jewel_type'));
+echo $this->formElement($this->consignForm->get('edit_mode'));
+?>
+<div class="commonForm rowSpace addItemForm consignPopup">
+  <div class="headSettings">
+	  <h2 class="cmnHeader">Inventory Status</h2>
+	  <div class="alphaClmn">
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->consignForm->get('inventory_status_id')->getLabel(); ?></label>
+		  <div class="inputDiv"><div class="selectDrop width100p"><?php echo $this->formElement($this->consignForm->get('inventory_status_id')); ?></div></div>
+		</div>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->consignForm->get('inventory_status_reason')->getLabel(); ?></label>
+		  <div class="inputDiv"><div class="selectDrop width100p"><?php echo $this->formElement($this->consignForm->get('inventory_status_reason')); ?></div></div>
+		</div>                
+	  </div>
+	  <div class="betaClmn">
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->consignForm->get('inventory_type')->getLabel(); ?></label>
+		  <div class="inputDiv"><div class="selectDrop width100p"><?php echo $this->formElement($this->consignForm->get('inventory_type')); ?></div></div>
+		</div>
+		<div class="formRow">
+		  <label class="labelControll">Consignee Owner</label>
+		  <div class="inputDiv"><?php echo $consign_owner_name; ?></div>
+		</div>                
+		
+	  </div>
+  </div>
+
+  <div class="headSettings">
+	  <h2 class="cmnHeader">Inventory Reservation</h2>
+	  <div class="alphaClmn">
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->consignForm->get('reserve_time')->getLabel(); ?></label>
+		  <div class="inputDiv"><div class="datePickInput width100p"><?php echo $this->formElement($this->consignForm->get('reserve_time')); ?><span class="datePickCal"></span></div></div>
+		</div>
+						
+		
+	  </div>
+	  <div class="betaClmn">
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->consignForm->get('reserve_notes')->getLabel(); ?></label>
+		  <div class="inputDiv"><div class="width100p"><?php echo $this->formElement($this->consignForm->get('reserve_notes')); ?></div></div>
+		</div>
+						
+		
+	  </div>
+  </div>
+  
+  <div class="headSettings">
+	  <h2 class="cmnHeader">Item Location</h2>
+	  <div class="alphaClmn">
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->consignForm->get('inventory_tracking_status')->getLabel(); ?></label>
+		  <div class="inputDiv"><div class="selectDrop width100p"><?php echo $this->formElement($this->consignForm->get('inventory_tracking_status')); ?></div></div>
+		</div>
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->consignForm->get('inventory_tracking_reason')->getLabel(); ?></label>
+		  <div class="inputDiv"><div class="selectDrop width100p"><?php echo $this->formElement($this->consignForm->get('inventory_tracking_reason')); ?></div></div>
+		</div>
+						
+		
+	  </div>
+	  <div class="betaClmn">
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->consignForm->get('tracking_id')->getLabel(); ?></label>
+		  <div class="inputDiv"><div class="selectDrop width100p"><?php echo $this->formElement($this->consignForm->get('tracking_id')); ?></div></div>
+		</div>
+						
+		
+	  </div>
+  </div>
+  
+  <div class="headSettings">
+	  <h2 class="cmnHeader">Terms Of Consignment</h2>
+	  <div class="consignTerms" id="acceptParent">
+		<label class="labelCheck"><input type="checkbox" name="accept" id="accept" value="1" /><i></i></label> <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod nulla eget quam vestibulum gravida. Nunc in vehicula libero, at congue enim. Mauris vestibulum odio nisl. Vestibulum aliquam lorem tortor, id ultrices neque ornare ac. Fusce mattis consectetur malesuada. Vivamus elementum neque vel pharetra tempus. </p>
+	  </div>
+  </div>
+  
+  <div class="consignBottom"><div class="headSettings">
+	  <div class="alphaClmn">
+		<div class="formRow">
+		  <label class="labelControll"><?php echo $this->consignForm->get('owner_id')->getLabel(); ?></label>
+		  <div class="inputDiv"><div class="selectDrop width100p"><?php echo $this->formElement($this->consignForm->get('owner_id')); ?></div></div>
+		</div>
+		<div class="formRow">
+		   <label class="labelControll"><?php echo $this->consignForm->get('password')->getLabel(); ?></label>
+			<div class="inputDiv"><?php echo $this->formElement($this->consignForm->get('password')); ?></div>
+		</div>
+						
+		
+	  </div>
+	  <div class="betaClmn">
+		<div class="formRow">
+			<?php echo $this->formElement($this->consignForm->get('consign_save')); ?>
+			<?php echo $this->formElement($this->consignForm->get('consign_cancel')); ?>
+		</div>
+						
+		
+	  </div>
+  </div>
+  </div>
+
+</div>
+<?php echo $this->form()->closeTag(); ?>
+
+<!-- Consine Item Light Box End--> 
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('#reserve_time').datetimepicker({
+		dateFormat: '<?php echo $config["jsDateFormat"]; ?>',
+		minDate: new Date(),
+		changeYear: true,
+		beforeShow: function() {
+			$(this).after($(this).datepicker("widget"));
+			
+			var reserve_time = '<?php echo $consignData["db_reserve_time"]; ?>';
+			if(reserve_time){
+				var date = new Date(
+					Date.parse(
+						reserve_time.replace('-','/','g')
+					)
+				);
+				$('#reserve_time').datetimepicker('setDate', date);
+			}
+		}
+	});
+	
+	
+	
+	$('.selectDrop select').dropkick();
+	
+	var statusReasonArr = <?php echo $this->inventoryStatusReasons; ?>;
+	var trackingReasonsArr = <?php echo $this->inventoryTrackingReasons; ?>;
+	
+	// Inventory Status
+	function populateInventoryStatusReason(select_id){
+		var inventoryStatus = $('#inventory_status_id option:selected').val();
+		$('#inventory_status_reason')
+			.empty()
+			.append($("<option></option>")
+			.attr("value", 0)
+			.text('Select'));
+		$.each(statusReasonArr, function(key, value) {
+			var idArr = value.inventory_status_id.split(',');
+			$.each(idArr, function(idArrKey, idArrValue) {
+				if(inventoryStatus == idArrValue){
+					if(select_id == value.id){
+						$('#inventory_status_reason')
+							.append($("<option></option>")
+							.attr("value",value.id)
+							.attr("selected","selected")
+							.text(value.inventory_status_reason));
+					}else{
+						$('#inventory_status_reason')
+							.append($("<option></option>")
+							.attr("value",value.id)
+							.text(value.inventory_status_reason));
+					}
+				}			
+			});
+		});
+		$('#inventory_status_reason').dropkick('refresh');
+	}
+	
+	$('#inventory_status_id').dropkick({
+  		change: populateInventoryStatusReason
+	});
+	// Inventory Status
+	
+	// Item Location
+	function populateTrackingStatusReason(select_id){
+		var trsckingStatus = $('#inventory_tracking_status option:selected').val();
+		$('#inventory_tracking_reason')
+			.empty()
+			.append($("<option></option>")
+			.attr("value", 0)
+			.text('Select'));
+		$.each(trackingReasonsArr, function(key, value) {
+			var idArr = value.tracking_status_id.split(',');
+			$.each(idArr, function(idArrKey, idArrValue) {
+				if(trsckingStatus == idArrValue){
+					if(select_id == value.id){
+						$('#inventory_tracking_reason')
+							.append($("<option></option>")
+							.attr("value",value.id)
+							.attr("selected","selected")
+							.text(value.inventory_tracking_reason));
+					}else{
+						$('#inventory_tracking_reason')
+							.append($("<option></option>")
+							.attr("value",value.id)
+							.text(value.inventory_tracking_reason));
+					}
+				}
+			});
+		});
+		$('#inventory_tracking_reason').dropkick('refresh');
+	}
+	
+	$('#inventory_tracking_status').dropkick({
+  		change: populateTrackingStatusReason
+	});
+	
+	if($('#consign_id').val()){
+		populateInventoryStatusReason(<?php echo $consignData['inventory_status_reason_id']; ?>);
+		populateTrackingStatusReason(<?php echo $consignData['inventory_tracking_reason_id']; ?>);
+	}
+});
+
+</script>

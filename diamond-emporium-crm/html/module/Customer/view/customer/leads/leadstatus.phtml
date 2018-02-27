@@ -1,0 +1,54 @@
+<form name="lead_status" id="lead_status" method="post">
+<div class="lightBox" id="leadStatus">
+  <div class="lightBoxMid" style="width:600px">
+    <div class="lightBoxTitle"><span id="oppStatusHeading"><?php if($this->data['lead_status'] == "Closed"){?>Open<?php } else { ?>Close<?php } ?> Lead</span> <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+	
+    <div class="lightBoxContent fl width100p commonForm">
+      <div class="formRow">
+        <label class="labelControll">Status<span class="asterisk">*</span></label>
+        <div class="inputDiv">
+			<input type="hidden" name="lead_statusId" id="lead_statusId" value="<?php echo $this->data['lead_id']?>" />
+          <select class="dropdown" name="lead_status" id="lead_status">
+            <option value="" <?php if($this->data['lead_status'] == ""){?> selected="selected" <?php } ?>>Select</option>
+			<option value="Open" <?php if($this->data['lead_status'] == "Open"){?> selected="selected" <?php } ?>>Open</option>
+			<option value="Closed Lost" <?php if($this->data['lead_status'] == "Closed Lost"){?> selected="selected" <?php } ?>>Closed Lost</option>
+          </select>
+        </div>
+      </div>
+      <div class="formRow">
+        <label class="labelControll">Close Date</label>
+        <div class="inputDiv">
+		<?php 
+			if($this->data['lead_close_date'] == '' || $this->data['lead_close_date'] == '0000-00-00 00:00:00') {
+				$lead_close = date("d/m/Y");
+			} else {
+			  $lead_close_date = str_replace(" 00:00:00", "",$this->data['lead_close_date']);
+			  $lead_close_array = explode("-", $lead_close_date);
+			  $lead_close = $lead_close_array[2].'/'.$lead_close_array[1].'/'.$lead_close_array[0];
+			}
+		?>
+          <div class="datePickInput">
+                <input type="text" class="datepickerInput oppCloseDate" placeholder="DD/MM/YYYY" name="lead_close_date" value="<?php echo $lead_close; ?>"/>
+                <span class="datePickCal"></span></div>
+        </div>
+      </div>
+      <div class="formRow" id="leadStatusReason">
+        <label class="labelControll">Reason<span class="asterisk">*</span></label>
+        <div class="inputDiv">
+          <select class=" dropdown" name="lead_reason" id="lead_reason">
+             <option value="" <?php if($this->data['lead_reason'] == ""){?> selected="selected" <?php } ?>>Select</option>
+			 <option value="Not responding" <?php if($this->data['lead_reason'] == "Not responding"){?> selected="selected" <?php } ?>>Not responding</option>
+			 <option value="Price" <?php if($this->data['lead_reason'] == "Price"){?> selected="selected" <?php } ?>>Price</option>
+			 <option value="Competitor" <?php if($this->data['lead_reason'] == "Competitor"){?> selected="selected" <?php } ?>>Competitor</option>
+			 <option value="Other" <?php if($this->data['lead_reason'] == "Other"){?> selected="selected" <?php } ?>>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="formButtons tc fl width100p">
+        <input type="button" value="Save" class="cmnBtn" onclick="updateLeadStatus($('#lead_status'));">
+        <input type="button" value="Cancel" class="cmnBtn cancelBtn" onclick="cancelButtonProperty('lead_status', 'leadStatus');">
+      </div>
+    </div>
+  </div>
+</div>
+</form>

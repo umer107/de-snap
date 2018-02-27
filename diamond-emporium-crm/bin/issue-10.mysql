@@ -1,0 +1,6 @@
+ALTER TABLE `openseedcrm`.`de_opportunities` 
+DROP COLUMN `probability`,
+DROP COLUMN `urgency`,
+DROP COLUMN `progress_of_opportunity`;
+
+DELETE FROM `openseedcrm`.`de_gridview` where grid_type = 'opportunities';

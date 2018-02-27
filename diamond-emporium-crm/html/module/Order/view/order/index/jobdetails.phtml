@@ -1,0 +1,1014 @@
+<div class="contentArea padLR0">
+  <?php echo $this->partial('customer/index/cust_info_header.phtml', array('customerData' => $order, 'partnerData' => $partnerData)); ?>
+  <div class="customerTabing fl width100p ctb">
+	<div class="customTabbingInner"> 
+	  <!-- Orders -->
+	  <div class="customerTabingInfo relative" style="display:block;">
+		<?php echo $this->partial('order/index/orderinfo.phtml'); ?>
+		<div class="opportunitiesBlock fl width100p productinZone" style="padding-left:330px">
+		  <div class="topSection"> <button id="startJobBtn" type="button" class="lightBoxClick" data-popup="stratZone" style="position:absolute; left:-99999px; opacity:0">&nbsp;</button> <a href="javascript:;" class="checkOrder startzone" style="display:<?php echo $jobDetails['status'] == 0 ? 'block' : 'none'; ?>" onclick="startJob(<?php echo $jobDetails['job_id']; ?>, '<?php echo $order['invoice_number']; ?>');">Start</a> <a href="javascript:;" class="checkOrder pausezone" style="display:<?php echo $jobDetails['status'] == 1 ? 'block' : 'none'; ?>" onclick="changeJobStatus(<?php echo $jobDetails['job_id']; ?>, 2);">Pause</a> <a href="javascript:;" class="checkOrder restartzone" style="display:<?php echo $jobDetails['status'] == 2 ? 'block' : 'none'; ?>" onclick="changeJobStatus(<?php echo $jobDetails['job_id']; ?>, 1);">Resume</a> <a href="javascript:;" class="checkOrder waitingzone" style="display:<?php echo $jobDetails['status'] == 3 ? 'block' : 'none'; ?>">Waiting</a>
+			<div class="orderDetails">
+			  <h2 class="cmnHeader">Job Packet #<?php echo $job_id; ?></h2>
+			  <?php if ($canDelete) : ?>
+			  	<a class="cmnBtn deleteBtn" href="javascript:;" onclick="deleteJobPacket(<?php echo $order['id']; ?>, <?php echo $jobDetails['job_id']; ?>)">Delete</a>
+			  <?php endif; ?>
+			  <a class="cmnBtn edtiBtn popupLink lightBoxClick" href="javascript:;" data-popup="createJob" onclick="updateJobForm(<?php echo $jobDetails['job_id']; ?>, $('#job_form'));">Edit</a> <a data-popup="consignItem" class="popupLink cmnBtn lightBoxClick" href="javascript:;" onclick="openConsignForm(<?php echo $jobDetails['job_id']; ?>, 'job', 'edit');">Consign</a> <a href="/orderdetails/<?php echo $order['id']; ?>" class="cmnBtn backBtn">Back</a>
+			  <input type="hidden" name="data_job_id" id="data_job_id" value="<?php echo $jobDetails['job_id']; ?>" />
+			  <div class="row">
+				<div class="column">
+				  <p>Invoice Items:</p>
+				  <?php foreach($invoice_items as $item){ ?>
+				  <p><?php echo $config['inventory_items'][$item['item_type']]; ?></p>
+				  <?php } ?>
+				</div>
+				<div class="column">
+				  <p>Tracking: <span id="inventory_tracking_status_weddring"><?php echo $ConsignData['inventory_tracking_status'];?></span></p>
+				  <p>Tracking Reason: <span id="inventory_tracking_reason_weddring"><?php echo $ConsignData['inventory_tracking_reason'];?></span></p>
+				  <p>Tracking ID : <span id="tracking_id_weddring"><?php echo $ConsignData['tracking_id'];?></span></p>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <div class="milestoneManagement">
+			<h3 class="cmnHeader">Milestone Management</h3>
+			<ul class="manageList <?php echo ($jobDetails['status'] == 1 || $jobDetails['status'] == 2) ? 'startprduction' : ''; ?>">
+			<?php
+			$metalTypesArr = array();
+			foreach($metalTypes as $key => $value){
+				$metalTypesArr[] = array('id' => $key, 'type' => $value);
+			}
+			
+			$reviewedByUserArr = array();
+			foreach($reviewedByUser as $key => $value){
+				$reviewedByUserArr[] = array('id' => $key, 'name' => $value);
+			}
+			
+			$optionalData = array(
+				'metalTypes' => $metalTypesArr,
+				'reviewedByUser' => $reviewedByUserArr
+			);
+			?>
+			<?php foreach($milestones as $msKey => $milestone){ ?>
+			
+				<?php
+				if($milestone['milestone_type_id'] == 1){
+					$cadMilestoneData = $jobPacketTable->fetchMilestoneData($milestone['id'], $milestone['milestone_type_id']);
+					$files = $jobPacketTable->fetchMilestoneFiles($milestone['id']);
+					$step1Files = array();
+					$step2Files = array();
+					$step3Files = array();
+					foreach($files as $value){
+						if($value['step'] == 1)
+							$step1Files[] = $value['image'];
+						if($value['step'] == 2)
+							$step2Files[] = $value['image'];
+						if($value['step'] == 3)
+							$step3Files[] = $value['image'];
+					}
+				?>
+					<li class="productionStep <?php echo ($jobPacketTable->checkMilestoneCanBeCompleted($milestone['id'], 1, true) || $cadMilestoneData->steps_completed == 3) ? 'editStep' : ''; ?>">
+						<div class="title cadDesign <?php echo $cadMilestoneData->steps_completed == 3 ? 'completed' : ''; ?>">CAD Design
+						  <?php if ($canDelete) : ?>
+						  	<button type="button" class="cmnBtn deleteBtn" onclick="deleteMilestone(<?php echo $milestone['id']; ?>, <?php echo $milestone['milestone_type_id']; ?>, $(this));">Delete</button>
+						  <?php endif; ?>
+						</div>
+						<div class="information" style="display:none;">
+							<h3 class="subheading">1.Create CAD Requirements <span class="hlpInfo"><em>?</em> <span>lipsum is a dummy content</span></span></h3>
+							<form name="frm_cad_requirement" enctype="multipart/form-data" action="/uploadmultiplefile">
+								<input type="hidden" name="milestone_id" value="<?php echo $milestone['id']; ?>"/>
+								<input type="hidden" name="milestone_type_id" value="<?php echo $milestone['milestone_type_id']; ?>"/>
+								<input type="hidden" name="job_id" value="<?php echo $jobDetails['job_id'];?>"/>
+								<input type="hidden" name="steps_completed" value="1"/>
+								<input type="hidden" name="supplier_id" value="<?php echo $cadMilestoneData->supplier_id; ?>"/>
+								<div class="commonForm rowSpace padB0">
+									<div class="formRow">
+									  <label class="labelControll">Supplier Name*</label>
+									  <div class="inputDiv">
+										<input type="text" class="inputTxt width60p" name="supplier_name" readonly="readonly" value="<?php echo $cadMilestoneData->supplier_name; ?>">
+										<input type="button" class="cmnBtn blueBtn lightBoxClick" data-popup="supplierLookup" onclick="supplierLookupForMilestone('supplierLookupGrid', <?php echo $config['recordsPerPage']; ?>, '', '', $(this).closest('form'), 'supplier_id', 'supplier_name');" value="Lookup" /></div>
+										
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Priority</label>
+									  <div class="inputDiv selectMilestone padTB0">
+										<label class="checkinput<?php if($cadMilestoneData->priority){ echo " active"; } ?>">
+										  <input type="checkbox" name="priority" value="1" />
+										  Urgent</label>
+									  </div>
+									</div>
+									<div class="formRow ">
+									  <label class="labelControll">*Expected Delivery Date</label>
+									  <div class="inputDiv">
+										<div class="datePickInput width150">
+									<input type="text" value="<?php if($cadMilestoneData->exp_delivery_date != ''){ echo date($config['formDateFormat'], strtotime($cadMilestoneData->exp_delivery_date)); } ?>" placeholder="DD/MM/YYYY" class="datepickerInput" name="exp_delivery_date"  readonly="readonly">
+									<span class="datePickCal"></span></div>
+									  </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Project Description</label>
+									  <div class="inputDiv">
+										<div class="writeCommentBlock marB10">
+										  <textarea placeholder="Write a comment..." name="description"><?php echo $cadMilestoneData->description; ?></textarea>
+										  <div class="commentBottom">
+											<div class="attachfile">Attach Files
+											 <input type="file" name="multipleattachments[]" multiple="multiple" onchange="uploadImages($(this).closest('form'), $(this).siblings('input[name=multipleimagesHidden]'), 'milestone_attachments');" />
+											 <input type="hidden" name="multipleimagesHidden" value='<?php echo json_encode($step1Files); ?>' />
+											</div>
+										  </div>
+										</div>
+										<div class="uploadedImages">
+											<?php foreach($files as $fileKey => $fileData){
+												if($fileData['milestones_ref_id'] == $milestone['id'] && $fileData['step'] == 1){ ?>
+													<div class="upImg"><img src="/milestone_attachments/<?php echo $fileData['image']; ?>" /></div>
+											<?php }
+											}?>
+										</div>
+									  </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Dropbox Link</label>
+									  <div class="inputDiv">
+										<input type="text" class="inputTxt width60p" name="dropbox_link" value="<?php echo $cadMilestoneData->dropbox_link; ?>"></div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Job Type</label>
+									  <div class="inputDiv selectMilestone padTB0">
+									  <?php foreach($config['job_types'] as $jobId => $jobTitle){?>
+										<label class="checkinput<?php if($cadMilestoneData->job_type == $jobId){ echo " active"; }?>">
+										  <input type="radio" name="job_type" value="<?php echo $jobId; ?>" <?php if($cadMilestoneData->job_type == $jobId){ echo "checked='checked'"; }?>/>
+										  <?php echo $jobTitle; ?></label>
+										 <?php } ?>
+									  </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Email Requirements to Supplier</label>
+									  <div class="inputDiv"><input type="button" class="cmnBtn lightBoxClick" data-popup="composeEmail" data-btn-type="noDisable" onclick="composeMilestoneEmail(<?php echo $milestone['id']; ?>, <?php echo $milestone['milestone_type_id']; ?>, 1);" id="<?php echo $milestone['id']; ?>_1" value="Email" />
+									  	<div class="emailTimestamp">
+									    <?php if(!empty($cadMilestoneData->step1_emailed_on)){ ?>
+									  	<span class="emailSentIcon"></span><span><?php echo date('d/m/Y g:i a', strtotime($cadMilestoneData->step1_emailed_on)); ?></span>
+										<?php } ?>
+										</div>
+									  </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">&nbsp;</label>
+									  <div class="inputDiv">
+										<button class="cmnBtn <?php if($cadMilestoneData->steps_completed >= 1){ ?>blueBtn2<?php } else {?>btnEmpty<?php } ?>" type="button" onclick="saveCADRequirements($(this).closest('form'), 1, $(this));" <?php if($cadMilestoneData->steps_completed >= 1) echo 'disabled="disabled"';?>>
+										<?php if($cadMilestoneData->steps_completed >= 1){ echo "Marked Step As Complete"; } else { echo "Complete Task"; }?></button>
+										&nbsp; <?php if($cadMilestoneData->steps_completed >= 1){ ?>
+										<span class="emailSentIcon"></span><?php } ?></div>
+									</div>
+								</div>
+							  </form>
+							<h3 class="subheading">2. Upload Approved Files <span class="hlpInfo"><em>?</em> <span>lipsum is a dummy content</span></span></h3>
+							<form name="frm_cad_files" action="/uploadmultiplefile" enctype="multipart/form-data">
+								<input type="hidden" name="milestone_id" value="<?php echo $milestone['id']; ?>" />
+								<input type="hidden" name="milestone_type_id" value="<?php echo $milestone['milestone_type_id']; ?>" />
+								<input type="hidden" name="job_id" value="<?php echo $jobDetails['job_id'];?>" />
+								<input type="hidden" name="steps_completed" value="2" />
+								<div class="commonForm rowSpace padB0">
+								<div class="formRow">
+								  <label class="labelControll">Upload Images*</label>
+								  <div class="inputDiv">
+									<label class="uploadImg">
+									  <input type="file" name="multipleimages[]" multiple="multiple" onchange="uploadImages($(this).closest('form'), $(this).siblings('input[name=multipleimagesHidden]'), 'milestone_attachments');" />
+									  <input type="hidden" name="multipleimagesHidden" value='<?php echo json_encode($step2Files); ?>' />
+									  Upload Image</label>
+									<div class="uploadedImages">
+									<?php foreach($files as $fileKey => $fileData){
+										if($fileData['milestones_ref_id'] == $milestone['id'] && $fileData['step'] == 2){ ?>
+											<div class="upImg"><img src="/milestone_attachments/<?php echo $fileData['image']; ?>"/></div>
+									<?php }
+									}?>
+									</div>
+								  </div>
+								</div>
+								<div class="formRow ">
+								  <label class="labelControll">*Date delivered</label>
+								  <div class="inputDiv">
+									<div class="datePickInput width150">
+								<input type="text" value="<?php if($cadMilestoneData->stp2_delivery_date != ''){ echo date($config['formDateFormat'], strtotime($cadMilestoneData->stp2_delivery_date)); } ?>" placeholder="DD/MM/YYYY" class="datepickerInput" name="stp2_delivery_date" readonly="readonly">
+								<span class="datePickCal"></span></div>
+								  </div>
+								</div>
+								<div class="formRow">
+								  <label class="labelControll">&nbsp;</label>
+								  <div class="inputDiv">
+									<button class="cmnBtn <?php if($cadMilestoneData->steps_completed >= 2){ ?>blueBtn2<?php } else {?>btnEmpty<?php } ?>" type="button" onclick="saveCADRequirements($(this).closest('form'), 2, $(this));" <?php if($cadMilestoneData->steps_completed >= 2) echo 'disabled="disabled"';?>>
+										<?php if($cadMilestoneData->steps_completed >= 2){ echo "Marked Step As Complete"; } else { echo "Complete Task"; }?>
+									</button>
+									&nbsp; <?php if($cadMilestoneData->steps_completed >= 2){ ?>
+									<span class="emailSentIcon"></span><?php } ?>
+								  </div>
+								</div>
+								</div>
+							</form>
+							<h3 class="subheading">3. Set Client Review <span class="hlpInfo"><em>?</em> <span>lipsum is a dummy content</span></span></h3>
+							<form name="frm_cad_review" action="/uploadmultiplefile" enctype="multipart/form-data">
+								<input type="hidden" name="milestone_id" value="<?php echo $milestone['id']; ?>" />
+								<input type="hidden" name="milestone_type_id" value="<?php echo $milestone['milestone_type_id']; ?>" />
+								<input type="hidden" name="job_id" value="<?php echo $jobDetails['job_id'];?>" />
+								<input type="hidden" name="steps_completed" value="3" />
+								<div class="commonForm rowSpace padB0">
+									<div class="formRow">
+										<label class="labelControll">Email Client approved images</label>
+										<div class="inputDiv"><input type="button" class="cmnBtn lightBoxClick" data-popup="composeEmail" data-btn-type="noDisable" onclick="composeMilestoneEmail(<?php echo $milestone['id']; ?>, <?php echo $milestone['milestone_type_id']; ?>, 3);" id="<?php echo $milestone['id']; ?>_3" value="Email" />
+											<div class="emailTimestamp">
+											<?php if(!empty($cadMilestoneData->step3_emailed_on)){ ?>
+											<span class="emailSentIcon"></span><span><?php echo date('d/m/Y g:i a', strtotime($cadMilestoneData->step3_emailed_on)); ?></span>
+											<?php } ?>
+											</div>
+										</div>
+									</div>
+									<div class="formRow">
+										<label class="labelControll">Upload Images*</label>
+										<div class="inputDiv">
+											<label class="uploadImg">
+											  <input type="file" name="multipleimages[]" multiple="multiple" onchange="uploadImages($(this).closest('form'), $(this).siblings('input[name=multipleimagesHidden]'), 'milestone_attachments');" />
+											  <input type="hidden" name="multipleimagesHidden" value='<?php echo json_encode($step3Files); ?>' />
+											  Upload Image</label>
+											<div class="uploadedImages">
+											<?php foreach($files as $fileKey => $fileData){
+												if($fileData['milestones_ref_id'] == $milestone['id'] && $fileData['step'] == 3){ ?>
+													<div class="upImg"><img src="/milestone_attachments/<?php echo $fileData['image']; ?>"/></div>
+											<?php }
+											}?>
+											</div>
+										</div>
+									</div>
+									<div class="formRow">
+										<label class="labelControll">&nbsp;</label>
+										<div class="inputDiv">
+											<button class="cmnBtn <?php if($cadMilestoneData->steps_completed >= 3){ ?>blueBtn2<?php } else {?>btnEmpty<?php } ?>" type="button" onclick="saveCADRequirements($(this).closest('form'), 3, $(this));" <?php if($cadMilestoneData->steps_completed >= 3) echo 'disabled="disabled"';?>><?php if($cadMilestoneData->steps_completed >= 3){ echo "Marked Step As Complete"; } else { echo "Complete Task"; }?></button>&nbsp; <?php if($cadMilestoneData->steps_completed >= 3){ ?><span class="emailSentIcon"></span><?php } ?>
+										</div>
+									</div>
+									<div class="floatL width100p marB10 addms"> <input type="button" class="cmnBtn" onclick='addMilestone($(this).closest("li"), <?php echo $milestone['id']; ?>, <?php echo $jobDetails['job_id'];?>, $(this).siblings("div").children("select").find(":selected").val(), <?php echo $config['recordsPerPage']; ?>, <?php echo json_encode($optionalData); ?>);' value="+ Add MIlestone" data-btn-type="noDisable" />
+										<div class="width150 marL10" style="display:inline-block">
+											<select class="dropdown" name="addms">
+												<option value="0">Select</option>
+												<option value="1">CAD</option>
+												<option value="2">Prototype</option>
+												<option value="3">Manufacturing</option>
+												<option value="4">Workshop</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</li>
+				<?php }elseif($milestone['milestone_type_id'] == 2){ ?>
+					<?php
+					$prototype = $jobPacketTable->fetchMilestoneData($milestone['id'], $milestone['milestone_type_id']);
+					$files = $jobPacketTable->fetchMilestoneFiles($milestone['id']);
+					$step1Files = array();
+					foreach($files as $value){
+						if($value['step'] == 1)
+							$step1Files[] = $value['image'];
+					}
+					?>
+					<li class="productionStep <?php echo ($jobPacketTable->checkMilestoneCanBeCompleted($milestone['id'], 1, true) || $prototype->steps_completed == 2) ? 'editStep' : ''; ?>">
+						<div class="title <?php echo $prototype->steps_completed == 2 ? 'completed' : ''; ?>">Prototype
+						  <?php if ($canDelete) : ?>
+						  	<button type="button" class="cmnBtn deleteBtn" onclick="deleteMilestone(<?php echo $milestone['id']; ?>, <?php echo $milestone['milestone_type_id']; ?>, $(this));">Delete</button>
+						  <?php endif; ?>
+						</div>
+						<div class="information" style="display:none;">
+							<h3 class="subheading">Step 1. Prototype Requirements <span class="hlpInfo"><em>?</em> <span>lipsum is a dummy content</span></span></h3>
+							<form name="frm_prototype_requirement" enctype="multipart/form-data" action="/uploadmultiplefile">
+								<input type="hidden" name="milestone_id" value="<?php echo $milestone['id']; ?>"/>
+								<input type="hidden" name="milestone_type_id" value="<?php echo $milestone['milestone_type_id']; ?>"/>
+								<input type="hidden" name="job_id" value="<?php echo $jobDetails['job_id'];?>"/>
+								<input type="hidden" name="steps_completed" value="1"/>
+								<input type="hidden" name="supplier_id" id="supplier_id" value="<?php echo $prototype->supplier_id; ?>" />
+								<div class="commonForm rowSpace padB0">
+									<div class="innerTitle">Create New Job Packet</div>
+									<div class="formRow">
+									  <label class="labelControll">No. Of Parts</label>
+									  <div class="inputDiv">
+										<select class="dropdown width100" name="no_of_parts">
+										  <option value="0">Select</option>
+										  <option value="1" <?php echo $prototype->no_of_parts == 1 ? 'selected="selected"' : ''; ?>>1</option>
+										  <option value="2" <?php echo $prototype->no_of_parts == 2 ? 'selected="selected"' : ''; ?>>2</option>
+										  <option value="3" <?php echo $prototype->no_of_parts == 3 ? 'selected="selected"' : ''; ?>>3</option>
+										  <option value="4" <?php echo $prototype->no_of_parts == 4 ? 'selected="selected"' : ''; ?>>4</option>
+										  <option value="5" <?php echo $prototype->no_of_parts == 5 ? 'selected="selected"' : ''; ?>>5</option>
+										</select>
+									  </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Quantity</label>
+									  <div class="inputDiv ">
+										<select class="dropdown width100" name="quantity">
+										  <option value="0">Select</option>
+										  <option value="1" <?php echo $prototype->quantity == 1 ? 'selected="selected"' : ''; ?>>1</option>
+										  <option value="2" <?php echo $prototype->quantity == 2 ? 'selected="selected"' : ''; ?>>2</option>
+										  <option value="3" <?php echo $prototype->quantity == 3 ? 'selected="selected"' : ''; ?>>3</option>
+										  <option value="4" <?php echo $prototype->quantity == 4 ? 'selected="selected"' : ''; ?>>4</option>
+										  <option value="5" <?php echo $prototype->quantity == 5 ? 'selected="selected"' : ''; ?>>5</option>
+										</select>
+									  </div>
+									</div>
+									<div class="formRow ">
+									  <label class="labelControll">Metal Type</label>
+									  <div class="inputDiv">
+										<div class="fl width150">
+										  <select class="dropdown" id="metal_type_optstg1" name="metal_type_opt" <?php echo (!empty($jobDetails['milestones_completed']) && in_array(2, explode(',', $jobDetails['milestones_completed']))) ? 'disabled="disabled"' : ''; ?>>
+											<?php
+											foreach($metalTypes as $key => $value){
+												echo '<option value="'.$key.'">'.$value.'</option>';
+											}
+											?>
+										  </select>
+										</div>
+										<input type="button" onclick="addMetalType($(this).siblings('.addedInform'), $(this).closest('.inputDiv').find('select'));" class="cmnBtn blueBtn" value="Add Item" <?php echo (!empty($jobDetails['milestones_completed']) && in_array(2, explode(',', $jobDetails['milestones_completed']))) ? 'disabled="disabled"' : ''; ?> />
+										<div class="addedInform">
+										<?php
+										if(isset($prototype->metal_types) && !empty($prototype->metal_types)){
+											$metal_type_ids = explode(',', $prototype->metal_types);
+											foreach($metal_type_ids as $value){
+												echo '<span><input type="hidden" name="metal_types[]" value="'.$value.'"><a href="javascript:;" onclick="deleteMetalType($(this));">-</a>'.$metalTypes[$value].'</span>';
+											}
+										}
+										?>
+										</div>
+										<div class="cb"></div>
+										<a href="javascript:;" class="hideAdvance">Hide Advanced</a> </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Priority</label>
+									  <div class="inputDiv selectMilestone padTB0">
+										<label class="checkinput <?php echo $prototype->priority == 1 ? 'active' : ''; ?>">
+										  <input type="checkbox" name="priority" value="1" <?php echo $prototype->priority == 1 ? 'checked="checked"' : ''; ?> />
+										  Urgent</label>
+									  </div>
+									</div>
+									<div class="formRow ">
+									  <label class="labelControll">Requirements</label>
+									  <div class="inputDiv">
+										<div class="writeCommentBlock marB10">
+										  <textarea placeholder="Write a comment..." name="requirement_desc"><?php echo $prototype->requirement_desc; ?></textarea>
+										  <div class="commentBottom">
+											<div class="attachfile">Attach Files
+											  <input type="file" name="multipleattachments[]" multiple="multiple" onchange="uploadImages($(this).closest('form'), $(this).siblings('input[name=multipleimagesHidden]'), 'milestone_attachments');" />
+											  <input type="hidden" name="multipleimagesHidden" value="" />
+											</div>
+										  </div>
+										</div>
+										<div class="uploadedImages">
+										<?php foreach($files as $fileKey => $fileData){
+												if($fileData['milestones_ref_id'] == $milestone['id'] && $fileData['step'] == 1){ ?>
+													<div class="upImg"><img src="/milestone_attachments/<?php echo $fileData['image']; ?>"/></div>
+											<?php }
+										}?>
+										</div>
+									  </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Supplier Name*</label>
+									  <div class="inputDiv">
+										<input type="text" class="inputTxt width60p" name="supplier_name" readonly="readonly" value="<?php echo $prototype->supplier_name; ?>" />
+										<input type="button" class="cmnBtn blueBtn lightBoxClick" data-popup="supplierLookup" onclick="supplierLookupForMilestone('supplierLookupGrid', <?php echo $config['recordsPerPage']; ?>, '', '', $(this).closest('form'), 'supplier_id', 'supplier_name');" value="Lookup" /></div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Dropbox Link</label>
+									  <div class="inputDiv">
+										<input type="text" class="inputTxt" name="dropbox_link" value="<?php echo $prototype->dropbox_link; ?>" />
+									  </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">*Expected Delivery Date</label>
+									  <div class="inputDiv">
+										<div class="datePickInput width150">
+										  <input type="text" name="exp_delivery_date" readonly="readonly" class="datepickerInput" placeholder="DD/MM/YYYY" value="<?php echo empty($prototype->exp_delivery_date) ? '' : date($config['formDateFormat'], strtotime($prototype->exp_delivery_date)); ?>" /><span class="datePickCal"></span>
+										</div>
+									  </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">&nbsp;</label>
+									  <div class="inputDiv">
+										<button type="button" class="cmnBtn <?php echo $prototype->steps_completed >= 1 ? 'blueBtn2' : 'btnEmpty'; ?>" onclick="savePrototypeStep1($(this), $(this).closest('form'));" <?php echo $prototype->steps_completed >= 1 ? 'disabled="disabled"' : ''; ?>><?php echo $prototype->steps_completed >= 1 ? 'Marked Step As Complete' : 'Complete Step'; ?></button>&nbsp; 
+										<?php if($prototype->steps_completed >= 1){ ?>
+										<span class="emailSentIcon"></span>
+										<?php } ?>
+									  </div>
+									</div>
+									
+									<div class="formRow">
+									  <label class="labelControll">Email Requirements to Supplier</label>
+									  <div class="inputDiv"><input type="button" class="cmnBtn lightBoxClick" data-popup="composeEmail" data-btn-type="noDisable" onclick="composeMilestoneEmail(<?php echo $milestone['id']; ?>, <?php echo $milestone['milestone_type_id']; ?>, 1);" id="<?php echo $milestone['id']; ?>_1" value="Email" />
+									  	<div class="emailTimestamp">
+									  	<?php if(!empty($prototype->step1_emailed_on)){ ?>
+										<span class="emailSentIcon"></span><span><?php echo date('d/m/Y g:i a', strtotime($prototype->step1_emailed_on)); ?></span>
+										<?php } ?>
+										</div>
+									  </div>
+									</div>
+								</div>
+							</form>
+							<h3 class="subheading">Step 2. Client Review <span class="hlpInfo"><em>?</em> <span>lipsum is a dummy content</span></span></h3>
+							<form name="frm_prototype_review">
+								<input type="hidden" name="milestone_id" value="<?php echo $milestone['id']; ?>"/>
+								<input type="hidden" name="milestone_type_id" value="<?php echo $milestone['milestone_type_id']; ?>"/>
+								<input type="hidden" name="job_id" value="<?php echo $jobDetails['job_id'];?>"/>
+								<input type="hidden" name="steps_completed" value="2"/>
+								<div class="commonForm rowSpace padB0">
+								<div class="formRow ">
+									  <label class="labelControll">*Date Delivered</label>
+									  <div class="inputDiv">
+										<div class="datePickInput width150">
+										  <input type="text" name="date_delivered" readonly="readonly" class="datepickerInput" placeholder="DD/MM/YYYY" value="<?php echo empty($prototype->date_delivered) ? '' : date($config['formDateFormat'], strtotime($prototype->date_delivered)); ?>" /><span class="datePickCal"></span>
+										</div>
+										<!--<a href="javascript:;" class="cmnBtn marL10 marT3">Confirm & Email Sales</a>--> </div>
+									</div>
+									<div class="formRow">
+										<label class="labelControll">&nbsp;</label>
+										<div class="inputDiv">
+											<button class="cmnBtn <?php if($prototype->steps_completed >= 2){ ?>blueBtn2<?php } else {?>btnEmpty<?php } ?>" type="button" onclick="savePrototypeStep2($(this), $(this).closest('form'));"><?php if($prototype->steps_completed >= 2){ echo "Marked Step As Complete"; } else { echo "Complete Task"; }?></button>&nbsp; <?php if($prototype->steps_completed >= 2){ ?><span class="emailSentIcon"></span><?php } ?>
+										</div>
+									</div>
+									
+									<div class="floatL width100p marB10 addms"> <input type="button" class="cmnBtn" onclick='addMilestone($(this).closest("li"), <?php echo $milestone['id']; ?>, <?php echo $jobDetails['job_id'];?>, $(this).siblings("div").children("select").find(":selected").val(), <?php echo $config['recordsPerPage']; ?>, <?php echo json_encode($optionalData); ?>);' value="+ Add MIlestone" data-btn-type="noDisable" />
+										<div class="width150 marL10" style="display:inline-block">
+											<select class="dropdown" name="addms">
+												<option value="0">Select</option>
+												<option value="1">CAD</option>
+												<option value="2">Prototype</option>
+												<option value="3">Manufacturing</option>
+												<option value="4">Workshop</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</li>
+				<?php }elseif($milestone['milestone_type_id'] == 3){ ?>
+					<?php
+					$cast = $jobPacketTable->fetchMilestoneData($milestone['id'], $milestone['milestone_type_id']);
+					$files = $jobPacketTable->fetchMilestoneFiles($milestone['id']);
+					$step1Files = array();
+					foreach($files as $value){
+						if($value['step'] == 1)
+							$step1Files[] = $value['image'];
+					}
+					?>		
+					<li class="productionStep <?php echo ($jobPacketTable->checkMilestoneCanBeCompleted($milestone['id'], 1, true) || $cast->steps_completed == 2) ? 'editStep' : ''; ?>">
+						<div class="title <?php echo $cast->steps_completed == 2 ? 'completed' : ''; ?>">Manufacturing
+						  <?php if ($canDelete) : ?>
+						  	<button type="button" class="cmnBtn deleteBtn" onclick="deleteMilestone(<?php echo $milestone['id']; ?>, <?php echo $milestone['milestone_type_id']; ?>, $(this));">Delete</button>
+						  <?php endif; ?>
+						</div>
+						<div class="information" style="display:none;">
+							<h3 class="subheading">Step 1. Create a Manufacturing Job <span class="hlpInfo"><em>?</em> <span>lipsum is a dummy content</span></span></h3>
+							<form name="frm_cast_job" enctype="multipart/form-data" action="/uploadmultiplefile">
+								<input type="hidden" name="milestone_id" value="<?php echo $milestone['id']; ?>"/>
+								<input type="hidden" name="milestone_type_id" value="<?php echo $milestone['milestone_type_id']; ?>"/>
+								<input type="hidden" name="job_id" value="<?php echo $jobDetails['job_id'];?>"/>
+								<input type="hidden" name="steps_completed" value="1"/>
+								<input type="hidden" name="supplier_id" id="supplier_id" value="<?php echo $cast->supplier_id; ?>" />
+								<div class="commonForm rowSpace padB0">
+									<div class="innerTitle">Create New Job Packet</div>
+									<div class="formRow">
+									  <label class="labelControll">No. Of Parts</label>
+									  <div class="inputDiv">
+										<select class="dropdown width100" name="no_of_parts">
+										  <option value="0">Select</option>
+										  <option value="1" <?php echo $cast->no_of_parts == 1 ? 'selected="selected"' : ''; ?>>1</option>
+										  <option value="2" <?php echo $cast->no_of_parts == 2 ? 'selected="selected"' : ''; ?>>2</option>
+										  <option value="3" <?php echo $cast->no_of_parts == 3 ? 'selected="selected"' : ''; ?>>3</option>
+										  <option value="4" <?php echo $cast->no_of_parts == 4 ? 'selected="selected"' : ''; ?>>4</option>
+										  <option value="5" <?php echo $cast->no_of_parts == 5 ? 'selected="selected"' : ''; ?>>5</option>
+										</select>
+									  </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Quantity</label>
+									  <div class="inputDiv ">
+										<select class="dropdown width100" name="quantity">
+										  <option value="0">Select</option>
+										  <option value="1" <?php echo $cast->quantity == 1 ? 'selected="selected"' : ''; ?>>1</option>
+										  <option value="2" <?php echo $cast->quantity == 2 ? 'selected="selected"' : ''; ?>>2</option>
+										  <option value="3" <?php echo $cast->quantity == 3 ? 'selected="selected"' : ''; ?>>3</option>
+										  <option value="4" <?php echo $cast->quantity == 4 ? 'selected="selected"' : ''; ?>>4</option>
+										  <option value="5" <?php echo $cast->quantity == 5 ? 'selected="selected"' : ''; ?>>5</option>
+										</select>
+									  </div>
+									</div>
+									<div class="formRow ">
+									  <label class="labelControll">Metal Type</label>
+									  <div class="inputDiv">
+										<div class="fl width150">
+										  <select class="dropdown" id="metal_type_opt_manu" name="metal_type_opt" <?php echo (!empty($jobDetails['milestones_completed']) && in_array(2, explode(',', $jobDetails['milestones_completed']))) ? 'disabled="disabled"' : ''; ?>>
+											<?php
+											foreach($metalTypes as $key => $value){
+												echo '<option value="'.$key.'">'.$value.'</option>';
+											}
+											?>
+										  </select>
+										</div>
+										<input type="button" onclick="addMetalType($(this).siblings('.addedInform'), $(this).closest('.inputDiv').find('select'));" class="cmnBtn blueBtn" value="Add Item" <?php echo (!empty($jobDetails['milestones_completed']) && in_array(2, explode(',', $jobDetails['milestones_completed']))) ? 'disabled="disabled"' : ''; ?> />
+										<div class="addedInform">
+										<?php
+										if(isset($cast->metal_types) && !empty($cast->metal_types)){
+											$metal_type_ids = explode(',', $cast->metal_types);
+											foreach($metal_type_ids as $value){
+												echo '<span><input type="hidden" name="metal_types[]" value="'.$value.'"><a href="javascript:;" onclick="deleteMetalType($(this));">-</a>'.$metalTypes[$value].'</span>';
+											}
+										}
+										?>
+										</div>
+										<div class="cb"></div>
+										<a href="javascript:;" class="hideAdvance">Hide Advanced</a> </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Priority</label>
+									  <div class="inputDiv selectMilestone padTB0">
+										<label class="checkinput <?php echo $cast->priority == 1 ? 'active' : ''; ?>">
+										  <input type="checkbox" name="priority" value="1" <?php echo $cast->priority == 1 ? 'checked="checked"' : ''; ?> />
+										  Urgent</label>
+									  </div>
+									</div>
+									<div class="formRow ">
+									  <label class="labelControll">Requirements</label>
+									  <div class="inputDiv">
+										<div class="writeCommentBlock marB10">
+										  <textarea placeholder="Write a comment..." name="requirement_desc"><?php echo $cast->requirement_desc; ?></textarea>
+										  <div class="commentBottom">
+											<div class="attachfile">Attach Files
+											  <input type="file" name="multipleattachments[]" multiple="multiple" onchange="uploadImages($(this).closest('form'), $(this).siblings('input[name=multipleimagesHidden]'), 'milestone_attachments');" />
+											  <input type="hidden" name="multipleimagesHidden" value="" />
+											</div>
+										  </div>
+										</div>
+										<div class="uploadedImages">
+										<?php foreach($files as $fileKey => $fileData){
+												if($fileData['milestones_ref_id'] == $milestone['id'] && $fileData['step'] == 1){ ?>
+													<div class="upImg"><img src="/milestone_attachments/<?php echo $fileData['image']; ?>"/><?php /*?><a class="closeImg" onclick="deleteFile('milestone_attachments/<?php echo $fileData['image']; ?>', $(this).closest('.inputDiv').find('input[name=multipleimagesHidden]'), $(this).closest('.upImg'));" style="cursor:pointer">X</a><?php */?></div>
+											<?php }
+										}?>
+										</div>
+									  </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Supplier Name*</label>
+									  <div class="inputDiv">
+										<input type="text" class="inputTxt width60p" name="supplier_name" readonly="readonly" value="<?php echo $cast->supplier_name; ?>" />
+										<input type="button" class="cmnBtn blueBtn lightBoxClick" data-popup="supplierLookup" onclick="supplierLookupForMilestone('supplierLookupGrid', <?php echo $config['recordsPerPage']; ?>, '', '', $(this).closest('form'), 'supplier_id', 'supplier_name');" value="Lookup" /></div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">CAD Dropbox Link</label>
+									  <div class="inputDiv">
+										<input type="text" class="inputTxt" name="dropbox_link" value="<?php echo $cast->dropbox_link; ?>" />
+									  </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">*Expected Delivery Date</label>
+									  <div class="inputDiv">
+										<div class="datePickInput width150">
+										  <input type="text" name="exp_delivery_date" readonly="readonly" class="datepickerInput" placeholder="DD/MM/YYYY" value="<?php echo empty($cast->exp_delivery_date) ? '' : date($config['formDateFormat'], strtotime($cast->exp_delivery_date)); ?>" /><span class="datePickCal"></span>
+										</div>
+									  </div>
+									</div>									
+									<div class="formRow">
+									  <label class="labelControll">&nbsp;</label>
+									  <div class="inputDiv">
+										<button type="button" class="cmnBtn <?php echo $cast->steps_completed >= 1 ? 'blueBtn2' : 'btnEmpty'; ?>" onclick="saveCastStep1($(this), $(this).closest('form'));" <?php echo $cast->steps_completed >= 1 ? 'disabled="disabled"' : ''; ?>><?php echo $cast->steps_completed >= 1 ? 'Marked Step As Complete' : 'Complete Step'; ?></button>&nbsp; 
+										<?php if($cast->steps_completed >= 1){ ?>
+										<span class="emailSentIcon"></span>
+										<?php } ?>
+									  </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">*Date Job Delivered</label>
+									  <div class="inputDiv">
+										<div class="datePickInput width150">
+										  <input type="text" name="date_delivered" readonly="readonly" class="datepickerInput" placeholder="DD/MM/YYYY" value="<?php echo empty($cast->date_delivered) ? '' : date($config['formDateFormat'], strtotime($cast->date_delivered)); ?>" /><span class="datePickCal"></span>
+										</div>
+										<!--<a href="javascript:;" class="cmnBtn marL10 marT3">Confirm & Email Sales</a>--> </div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">Email Requirements to Supplier</label>
+									  <div class="inputDiv"><input type="button" class="cmnBtn lightBoxClick" data-popup="composeEmail" data-btn-type="noDisable" onclick="composeMilestoneEmail(<?php echo $milestone['id']; ?>, <?php echo $milestone['milestone_type_id']; ?>, 1);" id="<?php echo $milestone['id']; ?>_1" value="Email" />
+									  	<div class="emailTimestamp">
+									  	<?php if(!empty($cast->step1_emailed_on)){ ?>
+										<span class="emailSentIcon"></span><span><?php echo date('d/m/Y g:i a', strtotime($cast->step1_emailed_on)); ?></span>
+										<?php } ?>
+										</div>
+									  </div>
+									</div>
+								</div>
+							</form>
+							<h3 class="subheading">Step 2. DE Review <span class="hlpInfo"><em>?</em> <span>lipsum is a dummy content</span></span></h3>
+							<form name="frm_cast_review">
+
+								<input type="hidden" name="milestone_id" value="<?php echo $milestone['id']; ?>"/>
+								<input type="hidden" name="milestone_type_id" value="<?php echo $milestone['milestone_type_id']; ?>"/>
+								<input type="hidden" name="job_id" value="<?php echo $jobDetails['job_id'];?>"/>
+								<input type="hidden" name="steps_completed" value="2"/>
+								<div class="commonForm rowSpace padB0">
+									<div class="formRow">
+										<label class="labelControll">&nbsp;</label>
+										<div class="inputDiv">
+											<button class="cmnBtn <?php if($cast->steps_completed >= 2){ ?>blueBtn2<?php } else {?>btnEmpty<?php } ?>" type="button" onclick="saveCastStep2($(this), $(this).closest('form'));"><?php if($cast->steps_completed >= 2){ echo "Marked Step As Complete"; } else { echo "Complete Task"; }?></button>&nbsp; <?php if($cast->steps_completed >= 2){ ?><span class="emailSentIcon"></span><?php } ?>
+										</div>
+									</div>
+									<div class="floatL width100p marB10 addms"> <input type="button" class="cmnBtn" onclick='addMilestone($(this).closest("li"), <?php echo $milestone['id']; ?>, <?php echo $jobDetails['job_id'];?>, $(this).siblings("div").children("select").find(":selected").val(), <?php echo $config['recordsPerPage']; ?>, <?php echo json_encode($optionalData); ?>);' value="+ Add MIlestone" data-btn-type="noDisable" />
+										<div class="width150 marL10" style="display:inline-block">
+											<select class="dropdown" name="addms">
+												<option value="0">Select</option>
+												<option value="1">CAD</option>
+												<option value="2">Prototype</option>
+												<option value="3">Manufacturing</option>
+												<option value="4">Workshop</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</li>
+				<?php }elseif($milestone['milestone_type_id'] == 4){ ?>
+					<?php
+					$workshop = $jobPacketTable->fetchMilestoneData($milestone['id'], $milestone['milestone_type_id']);
+					
+					$suppliersToWorkshop = $workshopTable->fetchWorkshopSuppliers($milestone['id']);
+					foreach($suppliersToWorkshop as $key => $value){
+						$suppliersToWorkshop[$key]['tasks'] = unserialize($suppliersToWorkshop[$key]['tasks']);
+					}
+					?>
+					<li class="productionStep <?php echo ($jobPacketTable->checkMilestoneCanBeCompleted($milestone['id'], 1, true) || $workshop->steps_completed == 3) ? 'editStep' : ''; ?>">
+						<div class="title <?php echo $workshop->steps_completed == 3 ? 'completed' : ''; ?>">Workshop
+							<?php if ($canDelete) : ?>
+							  <button type="button" class="cmnBtn deleteBtn" onclick="deleteMilestone(<?php echo $milestone['id']; ?>, <?php echo $milestone['milestone_type_id']; ?>, $(this));">Delete</button>
+							<?php endif; ?>
+						</div>
+						<div class="information workShopeCounter" style="display:none;">
+						  <h3 class="subheading"><em class="countSuple"></em> Create Production Line  <span class="hlpInfo"><em>?</em> <span>lipsum is a dummy content</span></span> <a data-popup="printjob" href="javascript:;" onclick="printJob(<?php echo $milestone['id']; ?>);" class="popupLink cmnBtn fr marT0 lightBoxClick">Print Job</a></h3>
+							<form name="frm_workshop_production" enctype="multipart/form-data" action="/uploadmultiplefile">
+								<input type="hidden" name="milestone_id" value="<?php echo $milestone['id']; ?>"/>
+								<input type="hidden" name="milestone_type_id" value="<?php echo $milestone['milestone_type_id']; ?>"/>
+								<input type="hidden" name="job_id" value="<?php echo $jobDetails['job_id'];?>"/>
+								<input type="hidden" name="steps_completed" value="1"/>
+								<div class="commonForm rowSpace padB0">
+									<div class="workShopUploadImg">
+										<div class="uploadinn ">
+										<?php if(empty($workshop->image)){ ?>
+										<label class="uploadImg">
+										  <input type="file" name="multipleattachments[]" onchange="uploadImages($(this).closest('form'), $(this).siblings('input[name=multipleimagesHidden]'), 'milestone_attachments');" />
+										<input type="hidden" name="multipleimagesHidden" value='' />
+										  Upload Image</label>
+										  <div class="uploadedImages"></div>
+										<?php } else { ?>
+										<div class="upImg"><img src="/milestone_attachments/<?php echo $workshop->image; ?>" /></div>
+										<?php } ?>
+										</div>
+									</div>
+									<div class="formRow">
+										<label class="labelControll"></label>
+										<div class="inputDiv">						
+										<button type="button" class="cmnBtn <?php echo $workshop->steps_completed >= 1 ? 'blueBtn2' : 'btnEmpty'; ?>" onclick="saveWorkshopStep1($(this), $(this).closest('form'));" <?php echo $workshop->steps_completed >= 1 ? 'disabled="disabled"' : ''; ?>><?php echo $workshop->steps_completed >= 1 ? 'Marked Step As Complete' : 'Complete Step'; ?></button>&nbsp; 
+										<?php if($workshop->steps_completed >= 1){ ?>
+										<span class="emailSentIcon"></span>
+										<?php } ?>
+										</div>
+									</div>
+									<div class="formRow">
+										<label class="labelControll">Add Supplier</label>
+										<div class="inputDiv"><input type="button" class="cmnBtn blueBtn lightBoxClick" data-popup="supplierLookup" data-btn-type="noDisable" onclick="supplierLookupForWorkshop('supplierLookupGrid', <?php echo $config['recordsPerPage']; ?>, '', <?php echo $jobDetails['job_id']; ?>, <?php echo $milestone['id']; ?>, $(this));" <?php echo $workshop->steps_completed >= 3 ? 'disabled="disabled"' : ''; ?> value="Lookup" /></div>
+									</div>
+								</div>
+							</form>
+							<div class="suppliersList">
+							<!-- Suppliers are added here -->
+							<?php foreach($suppliersToWorkshop as $key => $value){ ?>
+							  <h3 class="subheading">2. <?php echo $value['supplier_name']; ?> <!--<a href="javascript:;" class="cmnBtn  deleteBtn fr marT0">Delete</a>--></h3>
+							  <div class="commonForm rowSpace padB0">
+								<div class="formRow">
+								  <label class="labelControll">Add Job Type</label>
+								  <div class="inputDiv selectMilestone padTB0 typeJob">
+									<?php foreach($jobTypes as $k => $v){ ?>
+									<label class="checkinput <?php echo array_key_exists($k, $value['tasks']) ? 'active' : ''; ?>">
+									  <input type="checkbox" <?php echo array_key_exists($k, $value['tasks']) ? 'checked="checked"' : ''; ?> disabled="disabled" />
+									  <?php echo $v; ?></label>
+									<?php } ?>
+								  </div>
+								</div>
+								<div class="typeJobList">
+								  <?php foreach($value['tasks'] as $tk => $tv){ ?>
+								  <div class="typeJobInfo"> <a href="javascript:;" class="deleteJobInactive"><?php echo $jobTypes[$tk]; ?></a>
+									<div class="formRow">
+									  <label class="labelControll">Expected Cost</label>
+									  <div class="inputDiv">
+										<input type="text" class="inputTxt width100" placeholder="0.00" value="<?php echo $tv['cost']; ?>" data-numeric="yes" data-btn-type="noDisable" />
+										<a class="cmnBtn blueBtn" href="javascript:;" onclick="updateTaskCost(<?php echo $value['id']; ?>, <?php echo $value['milestone_id']; ?>, <?php echo $tk; ?>, $(this).siblings('input').val());">Update Cost</a>
+										<div class="fl width100p padT10">
+										  <input type="text" class="inputTxt width60p" disabled="disabled" />
+										  <a class="cmnBtn blueBtn" href="javascript:;">Add Task</a>
+										  <?php foreach($tv['taskinfo'] as $infov){ ?>
+										  <div class="addedInform"> <span><a href="javascript:;">-</a><?php echo $infov; ?></span> </div>
+										  <?php } ?>
+										</div>
+									  </div>
+									</div>
+								  </div>
+								  <?php } ?>
+								</div>
+								<div class="formRow ">
+								  <label class="labelControll">*Expected Delivery Date</label>
+								  <div class="inputDiv">
+									<div class="datePickInput width150">
+									  <input type="text" name="exp_delivery_date" value="<?php echo date($config['formDateFormat'], strtotime($value['exp_delivery_date'])); ?>" class="datepickerInput" placeholder="DD/MM/YYYY" readonly="readonly" disabled="disabled" /><span class="datePickCal"></span>
+									</div>
+								  </div>
+								</div>
+								<div class="formRow">
+								  <label class="labelControll">DE Review</label>
+								  <div class="inputDiv">
+									<button type="button" class="cmnBtn blueBtn2" disabled="disabled">Complete Task</button>&nbsp;
+									<span class="emailSentIcon"></span>
+								  </div>
+								</div>
+							  </div>
+							<?php } ?>
+							</div>
+							<h3 class="subheading"><em class="countSuple"></em>DE Quality Control <span class="hlpInfo"><em>?</em> <span>lipsum is a dummy content</span></span></h3>
+							<form name="frm_workshop_qc">
+								<input type="hidden" name="milestone_id" value="<?php echo $milestone['id']; ?>"/>
+								<input type="hidden" name="milestone_type_id" value="<?php echo $milestone['milestone_type_id']; ?>"/>
+								<input type="hidden" name="job_id" value="<?php echo $jobDetails['job_id'];?>"/>
+								<input type="hidden" name="steps_completed" value="2"/>
+								<div class="commonForm rowSpace padB0">
+									<div class="formRow">
+										<label class="labelControll">Reviewed By</label>
+										<div class="inputDiv">
+											<div class="width150">
+												<select class="dropdown" name="qa_reviewed_by">
+													<?php foreach($reviewedByUser as $key => $value){ ?>
+													<option value="<?php echo $key; ?>" <?php echo ($key == $workshop->qa_reviewed_by) ? 'selected="selected"' : ''; ?>><?php echo $value; ?></option>
+													<?php } ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="formRow">
+									  <label class="labelControll">&nbsp;</label>
+									  <div class="inputDiv">
+										<!--<button type="button" class="cmnBtn btnEmpty" onclick="saveWorkshopQualityControl($(this), $('#frm_workshop_qc'));">Complete Step</button>-->
+										<button type="button" class="cmnBtn <?php echo $workshop->steps_completed >= 2 ? 'blueBtn2' : 'btnEmpty'; ?>" onclick="saveWorkshopQualityControl($(this), $(this).closest('form'));" <?php echo $workshop->steps_completed >= 2 ? 'disabled="disabled"' : ''; ?>><?php echo $workshop->steps_completed >= 2 ? 'Marked Step As Complete' : 'Complete Step'; ?></button>&nbsp; 
+										<?php if($workshop->steps_completed >= 2){ ?>
+										<span class="emailSentIcon"></span>
+										<?php } ?>
+									  </div>
+									</div>
+								</div>
+							</form>
+							<h3 class="subheading"><em class="countSuple"></em> Client Review <span class="hlpInfo"><em>?</em> <span>lipsum is a dummy content</span></span></h3>
+							<form name="frm_workshop_review">
+								<input type="hidden" name="milestone_id" value="<?php echo $milestone['id']; ?>"/>
+								<input type="hidden" name="milestone_type_id" value="<?php echo $milestone['milestone_type_id']; ?>"/>
+								<input type="hidden" name="job_id" value="<?php echo $jobDetails['job_id'];?>"/>
+								<input type="hidden" name="steps_completed" value="3"/>
+								<div class="commonForm rowSpace padB0">
+									<div class="formRow">
+									  <label class="labelControll">&nbsp;</label>
+									  <div class="inputDiv">
+										<!--<button type="button" class="cmnBtn btnEmpty" onclick="saveWorkshopFinalStepControl($(this), $('#frm_workshop_review'));">Complete Step</button>-->
+										<button type="button" class="cmnBtn <?php echo $workshop->steps_completed >= 3 ? 'blueBtn2' : 'btnEmpty'; ?>" onclick="saveWorkshopFinalStepControl($(this), $(this).closest('form'));" <?php echo $workshop->steps_completed >= 3 ? 'disabled="disabled"' : ''; ?>><?php echo $workshop->steps_completed >= 3 ? 'Marked Step As Complete' : 'Complete Step'; ?></button>&nbsp; 
+										<?php if($workshop->steps_completed >= 3){ ?>
+										<span class="emailSentIcon"></span>
+										<?php } ?>
+									  </div>
+									</div>
+									
+									<div class="floatL width100p marB10 addms"> <input type="button" class="cmnBtn" onclick='addMilestone($(this).closest("li"), <?php echo $milestone['id']; ?>, <?php echo $jobDetails['job_id'];?>, $(this).siblings("div").children("select").find(":selected").val(), <?php echo $config['recordsPerPage']; ?>, <?php echo json_encode($optionalData); ?>);' value="+ Add MIlestone" data-btn-type="noDisable" />
+										<div class="width150 marL10" style="display:inline-block">
+											<select class="dropdown" name="addms">
+												<option value="0">Select</option>
+												<option value="1">CAD</option>
+												<option value="2">Prototype</option>
+												<option value="3">Manufacturing</option>
+												<option value="4">Workshop</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</li>
+				<?php } ?>
+			<?php } ?>
+			</ul>
+		  </div>
+		</div>
+	  </div>
+	  <!-- Orders End-->
+	</div>
+  </div>
+</div>
+	
+<!--Consign Popup -->
+<div class="lightBox" id="createOrder">
+  <div class="lightBoxMid" style="width:880px">
+    <div class="lightBoxTitle">Consign Item	  -  Diamond<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p commonForm consignPopup ">
+      <div class="headSettings">
+        <h2 class="cmnHeader">Item Location</h2>
+        <div class="alphaClmn">
+          <div class="formRow">
+            <label class="labelControll">Tracking Status</label>
+            <div class="inputDiv">
+              <select class="dropdown">
+                <option></option>
+              </select>
+            </div>
+          </div>
+          <div class="formRow">
+            <label class="labelControll">Tracking Reason</label>
+            <div class="inputDiv">
+              <select class="dropdown">
+                <option></option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="betaClmn">
+          <div class="formRow">
+            <label class="labelControll">Tracking ID</label>
+            <div class="inputDiv">
+              <input class="inputTxt" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cb"></div>
+      <div class="headSettings">
+        <h2 class="cmnHeader">Terms Of Consignment</h2>
+        <div id="acceptParent" class="consignTerms">
+          <label class="labelCheck">
+            <input type="checkbox" value="1" id="accept" name="accept">
+            <i></i></label>
+          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod nulla eget quam vestibulum gravida. Nunc in vehicula libero, at congue enim. Mauris vestibulum odio nisl. Vestibulum aliquam lorem tortor, id ultrices neque ornare ac. Fusce mattis consectetur malesuada. Vivamus elementum neque vel pharetra tempus. </p>
+        </div>
+      </div>
+      <div class="consignBottom" style="width:580px">
+        <div class="headSettings padB30">
+          <div class="alphaClmn">
+            <div class="formRow">
+              <label class="labelControll" style="width:150px">Management Password</label>
+              <div class="inputDiv">
+                <input type="password" value="" class="inputTxt" id="password" name="password">
+              </div>
+            </div>
+          </div>
+          <div class="betaClmn padT5">
+            <div class="formRow">
+              <button value="" class="cmnBtn blueBtn marT0" type="button">Consign</button>
+              <button value="Cancel" class="cmnBtn cancelBtn marT0"  type="button">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Consign Popup End--> 
+
+<!--Rewuest Popup -->
+<div class="lightBox" id="stratZone">
+  <div class="lightBoxMid" style="width:625px">
+    <div class="lightBoxTitle">Request Override<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p commonForm consignPopup ">
+      <div class="reQuestReason fl width100p">
+	  <form name="frm_job_start" id="frm_job_start" method="post">
+	  	<input type="hidden" name="start_job_id" id="start_job_id" value="<?php echo $jobDetails['job_id']; ?>" />
+        <p>This job does not have an attached invoice that meets the minimum 40% deposit. Request an override below</p>
+        <div class="formRow">
+          <label class="labelControll" style=" text-align:right">Reason</label>
+          <div class="inputDiv">
+            <textarea class="cmntextarea" name="start_comment" id="start_comment"></textarea>
+          </div>
+        </div>
+        <div class="formButtons tc fl width100p padB30">
+          <input type="button" class="cmnBtn cancelBtn" value="Cancel" onclick="cancelButtonProperty('frm_job_start', 'stratZone');" />
+          <input type="button" class="cmnBtn " value="Request" onClick="startJobRequest($('#frm_job_start'));" />
+        </div>
+	  </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Consine Item Light Box -->
+<div class="lightBox" id="consignItem">
+  <div class="lightBoxMid" style="width:890px">
+    <div class="lightBoxTitle">Consign Item	  -  Job <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p" id="consign_form_content"> </div>
+  </div>
+</div>
+<!--EOF Add Consign Form -->
+
+<!--BOF Supplier Lookup -->
+<div class="lightBox" id="supplierLookup">
+  <div class="lightBoxMid" style="width:970px">
+    <div class="lightBoxTitle">Supplier Lookup <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p lookupPopup">
+      <div class="mainSearch">
+        <input name="supplier_lookupsrc" type="text" class="searchInput" placeholder="Search..">
+        <input type="button" class="inputGo" value="Go!" onclick="supplierLookupForMilestone('supplierLookupGrid', <?php echo $this->recordsPerPage; ?>, $('input[name=supplier_lookupsrc]').val(), '', $(this).closest('form'), 'supplier_id', 'supplier_name');" id="customerLookupSearch"><span id="searchResultsHintjqxOpportunity" style="color:red;"></span>
+      </div>
+      <div class="tableData tableNeView" style="overflow:visible">
+        <div class="tableHading"> Supplier List </div>
+        <div class="formTable manageMembers" id="supplierLookupGrid" style="width:100%"> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--EOF Supplier Lookup -->
+
+<!--BOF Job form-->
+<div class="lightBox" id="createJob">
+ 	<div class="lightBoxMid" style="width:760px">
+		<div class="lightBoxTitle">Edit Job Packet<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+		<div class="lightBoxContent fl width100p commonForm">
+			<div id="job_form">
+				
+			</div>
+		</div>	
+    </div>	
+ </div>
+<!--EOF Job form-->
+
+<div class="lightBox" id="editOrder">
+ 	<div class="lightBoxMid" style="width:600px">
+		<div class="lightBoxTitle">Edit Order<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    </div>
+</div>
+
+<!--BOF compose email form-->
+<div class="lightBox" id="composeEmail">
+ 	<div class="lightBoxMid" style="width:600px">
+		<div class="lightBoxTitle">Compose Email<a href="javascript:;" class="closePopup" title="Close">X</a></div>
+			<div class="lightBoxContent fl width100p commonForm rowSpace">
+				<div id="composeemailpopup">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--EOF compose email form-->
+
+<!--BOF print job-->
+<div class="lightBox" id="printjob">
+ 	<div class="lightBoxMid" style="width:1000px">
+		<div class="lightBoxTitle">Print Job <a href="javascript:;" class="closePopup" title="Close">X</a>  <input type="button" name="print" onclick="$('#printjobhtml').print();" value="Print" class="cmnBtn" style="float:right; margin:1px 15px 0" /></div>
+			<div class="lightBoxContent fl width100p commonForm rowSpace" style="padding:0">
+			
+				<div id="printjobhtml">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--EOF print job-->
+
+
+<script type="text/javascript">
+$(document).on('click', '.manageList > li .title', function(){
+	if($(this).closest('.manageList').hasClass('startprduction') && $(this).parent('li').hasClass('editStep')){
+		if($(this).siblings('.information').is(':visible')){
+			$(this).siblings('.information').slideUp();
+			$(this).removeClass('active');
+			
+		}else{
+			//$('.manageList > li .title').removeClass('active');
+			//$('.manageList > li').find('.information').slideUp();
+			if($(this).parent('li').prev('li').length > 0 && $(this).parent('li').prev('li').find('.information').is(':visible')){			//alert('hai');
+				$(this).parent('li').prev('li').find('.title').removeClass('active');//.addClass('completed')
+				$(this).parent('li').prev('li').find('.information').slideUp();
+				
+			}	
+			$(this).siblings('.information').slideDown();
+			$(this).addClass('active');
+			
+		}
+	}
+});
+
+$(document).ready(function(){
+	$('.datePickInput input[type=text]').datepicker({
+		dateFormat: '<?php echo $config["jsDateFormat"]; ?>',
+		minDate: new Date(),
+		changeYear: true,
+		beforeShow: function() {
+			$(this).after($(this).datepicker("widget"));
+		}
+	});
+	
+	$('form').each(function(){
+		disableMilestone($(this));
+	});
+});
+</script>

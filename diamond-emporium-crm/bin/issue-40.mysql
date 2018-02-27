@@ -1,0 +1,20 @@
+CREATE TABLE `de_how_heard_lookup` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `how_heard` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+
+INSERT INTO `de_how_heard_lookup` VALUES (1, 'Google');
+INSERT INTO `de_how_heard_lookup` VALUES (2, 'Word of mouth');
+INSERT INTO `de_how_heard_lookup` VALUES (3, 'Facebook');
+INSERT INTO `de_how_heard_lookup` VALUES (4, 'The Knot');
+INSERT INTO `de_how_heard_lookup` VALUES (5, 'Returning Customer');
+INSERT INTO `de_how_heard_lookup` VALUES (6, 'Business Review Weekly');
+INSERT INTO `de_how_heard_lookup` VALUES (7, 'Australian Financial Review');
+INSERT INTO `de_how_heard_lookup` VALUES (8, 'Instagram');
+INSERT INTO `de_how_heard_lookup` VALUES (9, 'Sydney Morning Herald');
+INSERT INTO `de_how_heard_lookup` VALUES (10, 'Other');
+
+ALTER TABLE `de_leads` 
+ADD COLUMN `how_heard` INT(11) NULL AFTER `lead_source`,
+ADD COLUMN `postcode` VARCHAR(10) NULL AFTER `lead_type`;

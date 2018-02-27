@@ -1,0 +1,76 @@
+<div class="lightBox" id="leadsList">
+  <div class="lightBoxMid" style="width:970px">
+    <div class="lightBoxTitle">New Opportunity <a href="javascript:;" class="closePopup" title="Close">X</a></div>
+    <div class="lightBoxContent fl width100p commonForm">
+      <?php
+		$form->prepare();
+		echo $this->form()->openTag($form);
+		echo $this->formElement($this->form->get('referred_by_customer'));
+		echo $this->formElement($this->form->get('customer_mobile_data'));
+	  ?>
+      <div class="alphaClmn">
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('customer_mobile')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('customer_mobile')); ?><a href="javascript:;" class="cmnBtn blueBtn lightBoxClick" data-popup="customermobilelookup" id="oppmobilelookup" onclick="customersMobileLookup(<?php echo $recordsPerPage; ?>);">Lookup</a>
+		  <input type="hidden" name="user_id" id="user_id" value="" />
+		  </div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('opportunity_type')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"> <?php echo $this->formElement($this->form->get('opportunity_type')); ?> </div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('lead_source')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"> <?php echo $this->formElement($this->form->get('lead_source')); ?> </div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('referred_by_name')->getLabel(); ?><span class="asterisk"></span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('referred_by_name')); ?><a href="javascript:;" class="cmnBtn blueBtn lightBoxClick" data-popup="oppCustomerDatalookup" id="oppcustomerlookup" onclick="oppCustomersLookup(<?php echo $recordsPerPage; ?>, 'referred_by_customer', 'referred_by_name');">Lookup</a></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('looking_for')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('looking_for')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('product')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('product')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('preferred_contact')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('preferred_contact')); ?></div>
+        </div>
+      </div>
+      <div class="betaClmn">
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('progress_of_opportunity')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('progress_of_opportunity')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('urgency')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('urgency')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('budget')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('budget')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('rating')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('rating')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll"><?php echo $this->form->get('probability')->getLabel(); ?><span class="asterisk">*</span></label>
+          <div class="inputDiv"><?php echo $this->formElement($this->form->get('probability')); ?></div>
+        </div>
+        <div class="formRow">
+          <label class="labelControll">Est. Close Date<span class="asterisk">*</span></label>
+          <div class="inputDiv">
+            <div class="datePickInput">
+              <input type="text" placeholder="DD/MM/YYYY" class="datepickerInput" name="est_close_date">
+              <span class="datePickCal"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="formButtons tc fl width100p"><?php echo $this->formElement($this->form->get('save')); ?> <?php echo $this->formElement($this->form->get('cancel')); ?></div>
+      <?php echo $this->form()->closeTag(); ?> </div>
+  </div>
+</div>
