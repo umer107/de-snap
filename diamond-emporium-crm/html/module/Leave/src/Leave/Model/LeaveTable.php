@@ -24,6 +24,7 @@ class LeaveTable
         $this->tableGateway = $tableGateway;
     }
 
+
     //SortDateTimeArray
     function compare_func($a, $b)
     {
@@ -1006,12 +1007,384 @@ public function fetchLeadRecord($filter= null)
                         
        }
 
+ public function fetchNextInLineUser($filter = null)     
+   { 
 
+        try {
+            
+      $fullname = new \Zend\Db\Sql\Expression(
+        'CONCAT(u.first_name, \' \', u.last_name)'
+      );
+       $lead_owner = new \Zend\Db\Sql\Expression(
+        'l.lead_owner'
+      );          
+      $select = new \Zend\Db\Sql\Select();
+      $select->from(array('u' => 'de_users'))
+           ->columns(array(
+              'user_id','image','user_name' => $fullname, 'user_budget'
+                ))->join(array('l' => 'de_userdetail'), 'u.user_id = l.assign_to_UserId', array("lead_owner" => $lead_owner, 'assign_to_UserId' , 'budget'), 'left');      
+          // ))->join(array('l' => 'de_userdetail'), 'u.user_id = l.lead_owner', array("lead_owner" => $lead_owner, 'assign_to_UserId'), 'left');      
+
+      //SalesUser
+      $role_id = 6; 
+      
+      if($role_id == 6)
+      {
+        $select->where(array('u.role_id = ?' => $role_id)); 
+      }       
+       
+       $budget = $filter['budget']; 
+       $start_budget = 0; 
+       $end_budget = 0; 
+       //Budget Greater than 2000 and Smaller than 5000 
+       if($budget >= 2000 && $budget <= 4999) 
+       {
+           $start_budget = 2000; 
+           $end_budget = 3000;            
+       } 
+       //Budget Greater than 5000 and Smaller than 10000 
+       else if($budget >= 5000 && $budget <= 9999) 
+       {
+          
+       } 
+       //Greater than 10000 and  Smaller than 20000 
+       else if($budget >= 10000 && $budget <= 19999) 
+       {
+       } 
+       //Greater than 20000 and  Smaller than 35000 
+       else if($budget >= 20000 && $budget <= 34999) 
+       {
+       } 
+       //Greater than 35000 and  Smaller than 50000 
+       else if($budget >= 35000 && $budget <= 49999) 
+       {
+       } 
+       //Greater than 50000 and  Smaller than 75000 
+       else if($budget >= 50000 && $budget <= 74999) 
+       {
+       } 
+       //Greater than 75000 and  Smaller than 100000 
+        else if($budget >= 75000 && $budget <= 99999) 
+       { 
+       } 
+
+       $data = $this->executeQuery($select);
+       $result = $data->toArray();
+                   
+       //Group BY
+       $groups = array();
+       foreach ($result as $item)
+       {
+           
+       $key = $item['user_id'];                    
+       $groups[$key]['assign_to_UserId'] = $key;
+       $groups[$key]['items'] = $item;
+       $groups[$key]['count'] += 1;
+                      
+       }
+      
+       return $groups;
+       
+       
+                        
+      }catch(\Exception $e){
+      \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+    }
   
+   } 
+   
 
- 
+   
+   
+   public function fetchUserNextInLine($filter = null)
+   {
+       //-----------------------------------------------UserList------------------------------------// 
+      //Sales-Person-RoleId =  6  
+      $role_id = 6; 
+      $select = new \Zend\Db\Sql\Select(); 
+      $select->from('de_users')->columns(array('user_id'));                         
+                         
+      //FullName  From Table "de_userdetail" 
+      $fullname = new \Zend\Db\Sql\Expression( 
+        'CONCAT(u.first_name, \' \', u.last_name)' 
+      ); 
+                
+       
+      $select = new \Zend\Db\Sql\Select(); 
+      $select->from(array('u' => 'de_users')) 
+           ->columns(array( 
+              'user_id','image','user_name' => $fullname,'lead_assign_to' =>  'user_id'    
+           ))->where(array('u.role_id = ?' => $role_id)); 
+               
+       $select->order('user_name Asc');
+       
+       $data = $this->executeQuery($select);      
+       
+       $result = $data->toArray();       
+       
+       $groupUser = array();
+       
+       foreach ($result as $item){
+       $key = $item['user_id'];                    
+       $groupUser[$key]['user_id'] = $key;
+       $groupUser[$key]['items'] = $item;
+       $groupUser[$key]['count'] += 1;
+                      
+       }
+      
+      
+       //-----------------------------------------------LeadList------------------------------------// 
+       $budget = $filter['budget']; 
+       
+       $start_budget = 0; 
+       
+       $end_budget = 0; 
+       
+       
+    //Budget Greater than 2000 and Smaller than 5000 
+    if($budget >= 2000 && $budget <= 4999) 
+     { 
+        
+       $start_budget = 2000; 
+       $end_budget = 4999; 
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from(array('l' => 'de_userdetail')) 
+           ->columns(array( 
+              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
+               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
+       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+       $data_detail = $this->executeQuery($select_detail);               
+       $result_detail = $data_detail->toArray(); 
+            
+       $groups = array();
+       
+       foreach ($result_detail as $item){
+       $key = $item['user_id'];                    
+       $groups[$key]['user_id'] = $key;
+       $groups[$key]['items'] = $item;
+       $groups[$key]['count'] += 1;
+                      
+       }
+     } 
+     //Budget Greater than 5,000  and Smaller than 9,999 $5,000 - $9,999  
+      if($budget >= 5000 && $budget <= 9999) 
+     { 
+        
+       $start_budget = 5000; 
+       $end_budget = 9999; 
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from(array('l' => 'de_userdetail')) 
+           ->columns(array( 
+              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
+               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
+       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+       $data_detail = $this->executeQuery($select_detail);               
+       $result_detail = $data_detail->toArray(); 
+            
+       $groups = array();
+       
+       foreach ($result_detail as $item){
+       $key = $item['user_id'];                    
+       $groups[$key]['user_id'] = $key;
+       $groups[$key]['items'] = $item;
+       $groups[$key]['count'] += 1;
+                      
+       }
+     } 
+    //Budget Greater than 5,000  and Smaller than 9,999 $10,000 - $19,999
+     if($budget >= 10000 && $budget <= 19999) 
+     { 
+        
+       $start_budget = 10000; 
+       $end_budget = 19999; 
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from(array('l' => 'de_userdetail')) 
+           ->columns(array( 
+              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
+               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
+       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+       $data_detail = $this->executeQuery($select_detail);               
+       $result_detail = $data_detail->toArray(); 
+            
+       $groups = array();
+       
+       foreach ($result_detail as $item){
+       $key = $item['user_id'];                    
+       $groups[$key]['user_id'] = $key;
+       $groups[$key]['items'] = $item;
+       $groups[$key]['count'] += 1;
+                      
+       }
+     } 
+    //Budget Greater than 5,000  and Smaller than 9,999 $20,000 - $34,999
+     if($budget >= 20000 && $budget <= 34999) 
+     { 
+        
+       $start_budget = 2000; 
+       $end_budget = 34999; 
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from(array('l' => 'de_userdetail')) 
+           ->columns(array( 
+              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
+               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
+       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+       $data_detail = $this->executeQuery($select_detail);               
+       $result_detail = $data_detail->toArray(); 
+            
+       $groups = array();
+       
+       foreach ($result_detail as $item){
+       $key = $item['user_id'];                    
+       $groups[$key]['user_id'] = $key;
+       $groups[$key]['items'] = $item;
+       $groups[$key]['count'] += 1;
+                      
+       }
+     } 
+    //Budget Greater than 5,000  and Smaller than 9,999 $35,000 - $49,999
+     if($budget >= 35000 && $budget <= 49999) 
+     { 
+        
+       $start_budget = 35000; 
+       $end_budget = 49999; 
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from(array('l' => 'de_userdetail')) 
+           ->columns(array( 
+              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
+               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
+       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+       $data_detail = $this->executeQuery($select_detail);               
+       $result_detail = $data_detail->toArray(); 
+            
+       $groups = array();
+       
+       foreach ($result_detail as $item){
+       $key = $item['user_id'];                    
+       $groups[$key]['user_id'] = $key;
+       $groups[$key]['items'] = $item;
+       $groups[$key]['count'] += 1;
+                      
+       }
+     } 
+    //Budget Greater than 5,000  and Smaller than 9,999 $50,000 - $74,999
+     if($budget >= 50000 && $budget <= 74999) 
+     { 
+        
+       $start_budget = 50000; 
+       $end_budget = 74999; 
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from(array('l' => 'de_userdetail')) 
+           ->columns(array( 
+              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
+               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
+       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+       $data_detail = $this->executeQuery($select_detail);               
+       $result_detail = $data_detail->toArray(); 
+            
+       $groups = array();
+       
+       foreach ($result_detail as $item){
+       $key = $item['user_id'];                    
+       $groups[$key]['user_id'] = $key;
+       $groups[$key]['items'] = $item;
+       $groups[$key]['count'] += 1;
+                      
+       }
+     } 
+    //Budget Greater than 5,000  and Smaller than 9,999 $75,000 - $99,999
+     if($budget >= 75000 && $budget <= 99999) 
+     { 
+        
+       $start_budget = 75000; 
+       $end_budget = 99999; 
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from(array('l' => 'de_userdetail')) 
+           ->columns(array( 
+              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
+               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
+       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+       $data_detail = $this->executeQuery($select_detail);               
+       $result_detail = $data_detail->toArray(); 
+            
+       $groups = array();
+       
+       foreach ($result_detail as $item){
+       $key = $item['user_id'];                    
+       $groups[$key]['user_id'] = $key;
+       $groups[$key]['items'] = $item;
+       $groups[$key]['count'] += 1;
+                      
+       }
+     } 
+    //Budget Greater than 5,000  and Smaller than 9,999 $100,000+
+     if($budget >= 100000) 
+     { 
+        
+       $start_budget = 100000;
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail = new \Zend\Db\Sql\Select(); 
+       $select_detail->from(array('l' => 'de_userdetail')) 
+           ->columns(array( 
+              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
+               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
+       $select_detail->where->greaterThanOrEqualTo('l.budget', $start_budget );
+       $data_detail = $this->executeQuery($select_detail);               
+       $result_detail = $data_detail->toArray(); 
+            
+       $groups = array();
+       
+       foreach ($result_detail as $item){
+       $key = $item['user_id'];                    
+       $groups[$key]['user_id'] = $key;
+       $groups[$key]['items'] = $item;
+       $groups[$key]['count'] += 1;
+                      
+       }
+     } 
+     //Merge Array
+     $merge_array = $groups + $groupUser;
+     //SortArrayAcoordingToName
+     $sortArray = array();
+     foreach ($merge_array as $key => $row)
+     {
+      $sortArray[$key] = $row['items']['user_name']; 
+     }
+     //sort
+     array_multisort($sortArray, SORT_ASC, $merge_array);
+     //GroupArray
+     $result_end = array();
+       foreach ($merge_array as $element) {
+       $result_end[$element['user_id']][] = $element;
+      }
+     
+      return $result_end;
 
- //**********************Dashboard**********************************************************//
+   }
+
+  //**********************Dashboard**********************************************************//
    
 
 
