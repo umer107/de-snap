@@ -203,6 +203,7 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 .bookingDiv{width: 1425px; float: left;}
 .suggestedDate{ border: 1px solid #27ad09; height: 30px; min-width: 256px;}
 .changeDateText{padding-left: 138px }
+#suggestedDateCalender{    position: absolute; left: 96px; top: 107px;}
 
 /*Calendar View*/
 .fc th, .fc td, .fc hr, .fc thead, .fc tbody, .fc-row { border-color: transparent !important; background: transparent !important;}
@@ -285,9 +286,9 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 #calendar2 .fc-day-number { display: block; width: 100%; text-align: center; font-size: 10px; color: #a5a5a5; padding-bottom: 24px; }
 #calendar2 .fc-toolbar.fc-header-toolbar{    margin-bottom: 0; }
 #calendar2 .loading img{ max-width: 360px; }
-.AM-heading{ width: 50px; top: 138px; }
+.AM-heading{ width: 50px; top: 61px; }
 .AM-heading span{ color: #b2b2b2; display: block; padding-bottom: 19px; line-height: 28px; }
-.PM-heading{ width: 50px; top: 138px; }
+.PM-heading{ width: 50px; top: 61px; }
 .PM-heading span{ color: #b2b2b2; display: block; padding-bottom: 19px; line-height: 28px; }
 #calendar2 .fc-view-container{ position: relative; z-index: 10; }
 .Confirmation{ float: right; width: 285px; padding-top: 90px;}

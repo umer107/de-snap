@@ -340,6 +340,7 @@ return false;
       {
           userStatusValue = 'Lunch60';
       }
+
       /*-----------------------------------------------------*/
       //User Update Ajax Call
        $.ajax({
@@ -348,6 +349,8 @@ return false;
         data: {status: userStatusValue},
         success: function (data) {}
         });    
+       $('.userDropdown').slideUp(300);
+       return false;
     /*-----------------------------------------------------*/  
       
     });// End
@@ -597,11 +600,11 @@ return false;
 
    getUserStatus();
 
-   //Set Interval of 30 second on function of getUserStatus()
+   //Set Interval of 1 minute on function of getUserStatus()
 
    setInterval(function(){
-       // getUserStatus();  // this will run after every 5 seconds
-   }, 30000);
+        getUserStatus();  // this will run after every 1 minute
+   }, 60000);
 
 /* ----------------------------------------------------*/
 /* ----------------------------------------------------*/
@@ -660,7 +663,7 @@ return false;
         }
         else if (isValidEmailAddress(getemail)) {
             $(this).next('label').addClass('opacity0');
-            validateBasicInfo();
+            //validateBasicInfo();
         }
         else {
             $(this).next('label').removeClass('opacity0');
@@ -1291,11 +1294,11 @@ setTimeout(function(){
         var getReferral = $('#referralDropdown').closest('a.selected-text').attr('value');
         var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
         var getAgent = $('#assign_us_Dropdown').closest('a.selected-text').attr('value');
-        var getState = $('#stateDropdown').closest('a.selected-text').attr('value');
+        //var getState = $('#stateDropdown').closest('a.selected-text').attr('value');
         var getCity = $('#cityValue').val();
         var getPhone = $('#phonenumber').val();
         var getEmail = $('#email').val();
-        if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All' || getState == 'All' || getCity == 'All')
+        if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All' || getCity == 'All')
         {
             if(getProduct == 'All')
             { $('.producterror').removeClass('opacity0'); }
@@ -1309,12 +1312,12 @@ setTimeout(function(){
             if(getAgent == 'All')
             { $('.agenterror').removeClass('opacity0'); }
 
-            if(getState == 'All')
-            { 
-                $('.stateerror').removeClass('opacity0'); 
-                $('.add-address').slideUp();
-                $('.addressContainer').slideDown(300);
-            }
+            //if(getState == 'All')
+            //{ 
+            //    $('.stateerror').removeClass('opacity0'); 
+            //    $('.add-address').slideUp();
+            //    $('.addressContainer').slideDown(300);
+            //}
             if(getCity == 'All')
             { 
                 $('.cityerror').removeClass('opacity0'); 
@@ -1364,17 +1367,24 @@ setTimeout(function(){
     /*-------------------------------------------------*/
 
     // Save Booking     
-    $(document).on('click', '.btn-saveBooking.saveNow', function () {
-        
+    $(document).on('click', '.btn-saveBooking', function () {
+        debugger
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
         var checkBookingValue = $('.suggestedDate').html();
 
-        if(checkBookingDate == false || checkBookingValue == "")
+        //if(checkBookingDate == false || checkBookingValue == "")
+        //{
+        //    showBookingError();
+        //    return false;    
+        //}
+        
+        if(checkBookingValue == "")
         {
             showBookingError();
             return false;    
         }
-        
+
+
         $('.next-saveDiv').removeClass('hide');
         $('.bookNowDiv').addClass('hide');
         additionalDetailsExpand();
@@ -1542,7 +1552,7 @@ setTimeout(function(){
             //$('.'+getValue).removeClass('hide');
             //$('.City .selected-text').attr('value','All');
             //$('#cityDropdown').html('City');
-            $('.stateerror').addClass('opacity0');
+            //$('.stateerror').addClass('opacity0');
         }
 
         // Check if City dropdown
@@ -1818,7 +1828,7 @@ setTimeout(function(){
         var getEmail = $('#email').val();
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
 
-        if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All' || getState == 'All' || getCity == 'All')
+        if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All' || getCity == 'All')
         {
             if(getProduct == 'All')
             { $('.producterror').removeClass('opacity0'); }
@@ -1832,12 +1842,12 @@ setTimeout(function(){
             if(getAgent == 'All')
             { $('.agenterror').removeClass('opacity0'); }
 
-            if(getState == 'All')
-            { 
-                $('.stateerror').removeClass('opacity0'); 
-                $('.add-address').slideUp();
-                $('.addressContainer').slideDown(300);
-            }
+            //if(getState == 'All')
+            //{ 
+            //    $('.stateerror').removeClass('opacity0'); 
+            //    $('.add-address').slideUp();
+            //    $('.addressContainer').slideDown(300);
+            //}
             if(getCity == 'All')
             { 
                 $('.cityerror').removeClass('opacity0'); 
@@ -1857,12 +1867,20 @@ setTimeout(function(){
         }
         if(checkBookingDate == false)
         {
-            showBookingError();
-            return false
+            //showBookingError();
+            //return false
         }
 
     
       var data = getValuesFromForm();
+      debugger
+      if(data.booking_duration == null || undefined)
+      {
+        data.booking_duration = '';
+        
+      }
+      
+      
       //alert("Successfully triggered");
       //Ajax Call
         $.ajax({
@@ -2398,7 +2416,6 @@ setTimeout(function(){
 
                   if(parsed[0].reson_skip_next_in_line != "")
                   {
-                      debugger;
                       $('.otherReasonDiv').removeClass('hide');
                       $('.otherReasonDiv a.selected-text').attr('value',parsed[0].reson_skip_next_in_line);
                       $('.otherReasonDiv a.selected-text span').html(parsed[0].reson_skip_next_in_line);
@@ -3379,12 +3396,14 @@ function validateBasicInfo() {
         var getPhone = $('.phonenumber').val();
         var getEmailValue = $('.email').val().length;
         var getemail = $('.email').val();
-        if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue > 0 && getEmailValue > 0)
+        //if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue > 0 && getEmailValue > 0)
+        if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue)
         {   
 
             if($('.firstname').hasClass('hasError') || $('.lastname').hasClass('hasError'))
             {}
-            else if(validatePhone(getPhone) && isValidEmailAddress(getemail) ) { 
+            //else if(validatePhone(getPhone) && isValidEmailAddress(getemail) ) { 
+            else if(validatePhone(getPhone)) { 
                 if($('.additional-details').is(':hidden'))
                 {
                     $('.add-address').slideDown(300);
@@ -4122,6 +4141,66 @@ $(document).on('click','.calendarLeaveYear', function (e) {
 /*---------------------------------------------*/
 /*---------------------------------------------*/
 
+// calendar suggestedDate
+/*---------------------------------------------*/
+/*---------------------------------------------*/
+/*---------------------------------------------*/
+
+$(document).on('click','.suggestedDate', function (e) {
+
+
+    $('#suggestedDateCalender').multiDatesPicker({
+
+        onSelect:function(data, event){
+          debugger
+          $('#suggestedDateCalender').multiDatesPicker('resetDates');
+          $('#suggestedDateCalender').multiDatesPicker('destroy');
+          var el = $(this);
+          var selectedDate = data
+          var SelectedDay = event.selectedDay;
+          var SelectedMonth = event.selectedMonth;
+          var SelectedMonthIncrement = SelectedMonth;
+          SelectedMonthIncrement++;
+          var SelectedYear = event.selectedYear;
+          var setCompleteDate = SelectedYear + '-' + SelectedMonthIncrement + '-' + SelectedDay;
+          //2018-02-12
+
+          // Get Day Name
+          var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+          var getDayName = new Date(data);
+          var getDay = weekday[getDayName.getDay()];
+
+          // Get Month Name
+
+          var m_names = ['January', 'February', 'March', 
+               'April', 'May', 'June', 'July', 
+               'August', 'September', 'October', 'November', 'December'];
+
+          var getMonth = m_names[SelectedMonth];
+
+          var setDate = getDay + ' ' + SelectedDay + ' ' + getMonth ;
+          //Saturday 10 March 8:00 - 9:00 AM
+
+          $('.suggestedDate, #bookingDate').html(setDate);
+          $('#bookingDate').attr('time', '');
+          $('#bookingDate').attr('timezone', 'AM');
+          $('#bookingDate').attr('date', setCompleteDate);
+          //<span id="bookingDate"  time="8:00 - 9:00" timezone="AM" date="2018-02-12">Monday 12 February 8:00 - 9:00 AM</span>
+          
+        }
+
+    });
+
+
+
+});
+
+// calendar month selection
+/*---------------------------------------------*/
+/*---------------------------------------------*/
+/*---------------------------------------------*/
+
+
 $(document).on('click','.monthCalendarDropdown span', function (e) {
 
     
@@ -4630,7 +4709,7 @@ $(document).on('click', function(event){
 
 // Reloading Calendar
 function SetCalendarCloseLead(calendarDate){
-
+  debugger
     $('.closeLeadCalendar').multiDatesPicker('resetDates');
     $('.closeLeadCalendar').multiDatesPicker('destroy');
     $('.closeLeadCalendar').multiDatesPicker({
