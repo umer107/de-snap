@@ -175,6 +175,7 @@ $resources = array(
     'Dashboard\Controller\Dashboard::ajaxGetTeamStatus',  
     'SaveDashboard\Controller\SaveDashboard::index',
     'Dashboard\Controller\Dashboard::ajaxGetLeadDetailForLeadPage',
+    'Dashboard\Controller\Dashboard::GetNextInLine',
 
 	);
 
