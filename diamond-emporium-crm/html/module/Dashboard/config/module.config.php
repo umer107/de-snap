@@ -146,6 +146,17 @@ return array(
                             ),
                         ),
                     ),
+            'GetNextInLine' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'GetNextInLine',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'GetNextInLine',
+                            ),
+                        ),
+                    ),
+            
             
         )
         
