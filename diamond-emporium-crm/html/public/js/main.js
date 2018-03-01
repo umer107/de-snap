@@ -1876,7 +1876,7 @@ setTimeout(function(){
       debugger
       if(data.booking_duration == null || undefined)
       {
-        data.booking_duration = '';
+        data.booking_duration = 0;
         
       }
       
