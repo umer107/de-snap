@@ -268,8 +268,8 @@ class DashboardController extends AbstractActionController
                       $objUserTable = $sm->get('Leave\Model\LeaveTable');
                       $leadsArr = $objUserTable->fetchUserNextInLine($params);
                      
-                      //echo json_encode($leadsArr);
-                      print_r($leadsArr);
+                      echo json_encode($leadsArr);
+                      
                       exit;
                  
            

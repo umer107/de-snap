@@ -214,6 +214,7 @@ $(document).ready(function () {
                 {                  
                   return false;                  
                 }
+
                 $('.assignToDiv a.selected-text').attr('value','All');
                 $('.assignToDiv a.selected-text span').html('Assign to');
                 var arr = [];
@@ -221,12 +222,19 @@ $(document).ready(function () {
                 for(var x in parsed){
                   arr.push(parsed[x]);
                 }
-                arr.sort(function (obj1, obj2){
-                  return obj2["0"].items.user_name - obj1["0"].items.user_name
-                });
+                //arr.sort(function (obj1, obj2){
+                //  return obj2["0"].items.user_name - obj1["0"].items.user_name
+                //});
 
+                arr.sort(function(a, b) {
+                    var textA = a["0"].items.user_name;
+                    var textB = b["0"].items.user_name;
+                    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+                });
+                console.log(arr);
 
                 // Get Smaller lead count number
+                
                 var makeList = [];
                 for(i=0; i < arr.length; i++)
                 {
