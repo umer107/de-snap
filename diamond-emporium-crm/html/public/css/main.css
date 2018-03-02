@@ -204,7 +204,13 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 .suggestedDate{ border: 1px solid #27ad09; height: 30px; min-width: 256px;}
 .changeDateText{padding-left: 138px }
 #suggestedDateCalender{    position: absolute; left: 96px; top: 107px;}
-
+.hideBudget {
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+}
 /*Calendar View*/
 .fc th, .fc td, .fc hr, .fc thead, .fc tbody, .fc-row { border-color: transparent !important; background: transparent !important;}
 .fc tbody .fc-row .fc-content-skeleton tbody tr:last-child td { padding-bottom: 0em;}

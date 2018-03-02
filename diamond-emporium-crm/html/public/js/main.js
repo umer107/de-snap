@@ -317,7 +317,7 @@ $(document).ready(function () {
             data: {budget: $budget},
             success: function (data) {
                 // convert json into Array
-                debugger
+                
                 var parsed = '';          
                 try{                           
                   parsed = JSON.parse(data);              
@@ -441,7 +441,7 @@ $(document).ready(function () {
     // user menu dp dropdown select
 
     $(document).on('click', '.userDropdown div p img', function () { 
-      debugger
+      
         $('.userDropdown div p img').removeClass('active');
         $(this).addClass('active');
         var getValue = $(this).attr('value');
@@ -459,7 +459,7 @@ $(document).ready(function () {
             $(this).attr('data-value',getTimeValue);
         }
         
-      debugger
+      
       var userStatusValue = getValue.replace('menu' , '');
       if(userStatusValue == 'Lunch' && getTimeValue == undefined)
       {
@@ -2547,11 +2547,15 @@ setTimeout(function(){
               //$('.additional-details .dropdown.budget .dropdownOptions li a[value="'+parsed[0].budget+'"]').click();
               //$('.additional-details .dropdown.budget .dropdownOptions').hide();
               $('#BudgetText').val(parsed[0].budget);
+              $('#BudgetText').focusin();
+              $('#BudgetText').focusout();
 
               $('.additional-details .preferredMethod .selected-text').attr('value',parsed[0].contact_method);
               $('.additional-details .preferredMethod .selected-text span').html(parsed[0].contact_method);
               $('.additional-details .requirements').val(parsed[0].specify_requirements);
               
+
+
               setTimeout(function(){ 
                   $('.additional-details .dropdown.assignToDiv .dropdownOptions li a[id="'+parsed[0].assign_to_UserId+'"]').click();
                   $('.additional-details .dropdown.assignToDiv .dropdownOptions').hide();
@@ -2564,6 +2568,22 @@ setTimeout(function(){
                       $('.otherReasonDiv a.selected-text span').html(parsed[0].reson_skip_next_in_line);
                   }
                   
+                  // Check to see is user is other than super user and hiding assign to                     
+                  if(window.adminUser == true)
+                  {
+                    $('#BudgetText').closest('div.relative').removeAttr('readonly'); 
+                    $('.hideBudget').addClass('hide');
+                    $('.assignToDiv').closest('div.relative').removeClass('hide');
+                    $('.otherReasonDiv').removeClass('hide');
+                   }
+                  else
+                  { 
+                    $('#BudgetText').closest('div.relative').attr('readonly','readonly');
+                    $('.assignToDiv').closest('div.relative').addClass('hide');
+                    $('.otherReasonDiv').addClass('hide');
+                    $('.hideBudget').removeClass('hide');
+                   }
+
                   // Booking Calendar
                   
                   var getAmPm = parsed[0].booking_timezone;
@@ -2587,27 +2607,27 @@ setTimeout(function(){
                   
                     
                   $('.suggestedDate').html('');
-                  $('.questionView').removeClass('hide');
+                  //$('.questionView').removeClass('hide');
                   $('.btn-saveBooking').addClass('saveNow');
                   // destroy calendar
                   $('#calendar2').fullCalendar("destroy");
 
-                  $('#bookingDate').attr('time', "8:00 - 9:00");
-                  $('#bookingDate').attr('timeZone', getAmPm);
-                  $('#bookingDate').attr('date', getFullDate); 
-                  $('.coverAreaBooking').removeClass('hide');
-                  $('.timeSelection a[value="'+getAmPm+'"]').addClass('active'); // Setting am pm active class
-                  $('.daySelection a[value="'+getDay+'"]').addClass('active'); // Setting day active class
-                  $('.durationSelection a[value="'+parsed[0].booking_duration+'"]').addClass('active'); // Setting duration active class
+                  //$('#bookingDate').attr('time', "8:00 - 9:00");
+                  //$('#bookingDate').attr('timeZone', getAmPm);
+                  //$('#bookingDate').attr('date', getFullDate); 
+                  //$('.coverAreaBooking').removeClass('hide');
+                  //$('.timeSelection a[value="'+getAmPm+'"]').addClass('active'); // Setting am pm active class
+                  //$('.daySelection a[value="'+getDay+'"]').addClass('active'); // Setting day active class
+                  //$('.durationSelection a[value="'+parsed[0].booking_duration+'"]').addClass('active'); // Setting duration active class
                                     
-                  loadQuestionViewcalnder(getDay, getFullDate, getOnlyDate, getAssigneeId, getAmPm); // SLoading Calendar
-
+                  //loadQuestionViewcalnder(getDay, getFullDate, getOnlyDate, getAssigneeId, getAmPm); // SLoading Calendar
+                  $('.next-saveDiv').addClass('one-half-pad-top');
                   $('#bookingDate').attr('timezone', getAmPm);
                   $('#bookingDate').attr('date', getFullDate);
                   $('#bookingDate').attr('time', parsed[0].booking_time);
-                  $('#bookingDate').addClass('nowCanSave');
-                  
-                  $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time + ' ' + getAmPm); // Setting booking date field
+                  //$('#bookingDate').addClass('nowCanSave');
+                  $('.suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time);
+                  $('#bookingDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time + ' ' + getAmPm); // Setting booking date field
               }, 1000);
               
               
@@ -2619,7 +2639,6 @@ setTimeout(function(){
               $('.dashboard-header').addClass('hide');
               $('.basicInfo div.relative span, .additional-details div.relative span:first-child').css('display','inline-block');
               $('.addressContainer, .additional-details').show();
-              $('.selectWeek, .selectTime').removeClass('opacity0')
               $('.bookNowDiv').removeClass('hide'); 
               $('.btn-nextDetails').addClass('hide');
               $('.btn-saveDetails').removeClass('hide');
@@ -5169,8 +5188,12 @@ $(document).on('click','.closeLeadClick', function (e) {
             url: "/dashboard/ajaxGetUserLoginDetail",
             data: {},
             success: function (data) {
-                
-                //TODO HANDLER
+              
+                var getData = data;
+                if(data.role_id == 1)
+                { window.adminUser = true; }
+                else
+                { window.adminUser = false; }
 
             }
 
