@@ -156,6 +156,17 @@ return array(
                             ),
                         ),
                     ),
+            'ajaxGetUserLoginDetail' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetUserLoginDetail',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetUserLoginDetail',
+                            ),
+                        ),
+                    ),
+            
             
             
         )

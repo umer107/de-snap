@@ -277,7 +277,20 @@ class DashboardController extends AbstractActionController
         }
    }
            
-
+   public function ajaxGetUserLoginDetailAction()
+   {
+       try {
+                      $sm = $this->getServiceLocator();
+		      $identity = $sm->get('AuthService')->getIdentity();                      
+                      echo json_encode($identity);
+                      exit;
+                 
+           
+       }catch (Exception $e) {
+            \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+        }
+       
+   }
 
    public function addAction()
     {

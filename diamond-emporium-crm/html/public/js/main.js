@@ -5159,7 +5159,26 @@ $(document).on('click','.closeLeadClick', function (e) {
       $('.calendarClose ').addClass('maxHeightHide');
 
 });
+
+
+
+
+    function GetLoginUserDetail() {
+        $.ajax({
+            type: "GET",
+            url: "/dashboard/ajaxGetUserLoginDetail",
+            data: {},
+            success: function (data) {
+                
+                //TODO HANDLER
+
+            }
+
+        });    
+        
+    }
     
+    GetLoginUserDetail();
     
     
         

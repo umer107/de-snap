@@ -176,6 +176,7 @@ $resources = array(
     'SaveDashboard\Controller\SaveDashboard::index',
     'Dashboard\Controller\Dashboard::ajaxGetLeadDetailForLeadPage',
     'Dashboard\Controller\Dashboard::GetNextInLine',
+    'Dashboard\Controller\Dashboard::ajaxGetUserLoginDetail',
 
 	);
 
