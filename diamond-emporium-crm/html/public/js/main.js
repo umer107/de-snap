@@ -4156,11 +4156,18 @@ $(document).on('click','.suggestedDate', function (e) {
           $('#suggestedDateCalender').multiDatesPicker('resetDates');
           $('#suggestedDateCalender').multiDatesPicker('destroy');
           var el = $(this);
-          var selectedDate = data
+          var selectedDate = data;
           var SelectedDay = event.selectedDay;
+          if(SelectedDay < 10)
+            SelectedDay = '0'+SelectedDay;
+
           var SelectedMonth = event.selectedMonth;
+
           var SelectedMonthIncrement = SelectedMonth;
           SelectedMonthIncrement++;
+          if(SelectedMonthIncrement < 10)
+            SelectedMonthIncrement = '0'+SelectedMonthIncrement;
+
           var SelectedYear = event.selectedYear;
           var setCompleteDate = SelectedYear + '-' + SelectedMonthIncrement + '-' + SelectedDay;
           //2018-02-12
