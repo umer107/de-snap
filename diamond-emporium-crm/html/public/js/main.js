@@ -17,22 +17,14 @@ $(document).ready(function () {
             success: function (data) {
                 // convert json into Array
 
-
-var parsed = '';
-
-                   
-try{
-                         
-parsed = JSON.parse(data);
-                   
-}
-                   
-catch(e)
-                   
-{
-                       
-return false;                  
-}
+                var parsed = '';               
+                  try{
+                    parsed = JSON.parse(data);                  
+                  }           
+                  catch(e)                  
+                  {                   
+                  return false;                  
+                  }
                 var arr = [];
                 
                 for(var x in parsed){
@@ -107,7 +99,7 @@ return false;
                   teamStatus += '<div class="full" value="menuAvailable">';
                   teamStatus += '<span><img src="/profile_image/'+getUserimage+'"></span>';
                   //******************GETTEAMSTATUS******************************//
-                  if(arr[i][0].status == 0)
+                  if(arr[i][0].status == 0 || arr[i][0].status == null)
                   {
                       teamStatus += '<div><p class="fs-13 robotomedium ellipsis" title="'+arr[i][0].UserFullName+'">'+arr[i][0].UserFullName+'</p><p class="fs-14 color-orange ellipsis" title="'+arr[i][0].user_status+'">'+arr[i][0].user_status+'</p></div>';
                       
@@ -161,6 +153,160 @@ return false;
       GetTeamStatus(); 
     }, 300000);
 
+    // Validate Budget 
+    $(document).on('keyup', '#BudgetText', function () { 
+        var el = $(this);
+        var BudgetNumber = el.val();
+        if(BudgetNumber == '')
+        {
+          $('.budgetForError').html(' ').addClass('opacity0');
+          return false;
+        }
+        else if(!validateNumber(BudgetNumber))
+        {
+          $('.budgetForError').html('Only numbers are allowed').removeClass('opacity0');
+        }
+        else
+        {
+          $('.budgetForError').html(' ').addClass('opacity0');
+        }
+
+    });// End
+
+    // Calling Sales person next in line
+    $(document).on('blur', '#BudgetText', function () { 
+        
+        var el = $(this);
+        var userBudget = el.val();
+        userBudget = parseInt(userBudget);
+        if(userBudget > 0 && userBudget < 2000)
+        {
+          $('.budgetForError').html('Budget cannot be less than 2000$').removeClass('opacity0');
+          //el.focus();
+        }
+        else
+        {
+          GetNextInLine(userBudget);
+          if($('.dropdownheightSet').hasClass('hide')) 
+            { 
+                $('.dropdownheightSet').hide().removeClass('hide'); 
+            }
+        }
+
+    });// End
+
+    function GetNextInLine(userBudget) {
+       
+        //$budget = '$2-5K';
+        $budget = userBudget;
+        $.ajax({
+            type: "GET",
+            url: "/dashboard/GetNextInLine",
+            data: {budget: $budget},
+            success: function (data) {
+                // convert json into Array
+                
+                var parsed = '';          
+                try{                           
+                  parsed = JSON.parse(data);              
+                }                 
+                catch(e)                
+                {                  
+                  return false;                  
+                }
+                $('.assignToDiv a.selected-text').attr('value','All');
+                $('.assignToDiv a.selected-text span').html('Assign to');
+                var arr = [];
+                
+                for(var x in parsed){
+                  arr.push(parsed[x]);
+                }
+                arr.sort(function (obj1, obj2){
+                  return obj2["0"].items.user_name - obj1["0"].items.user_name
+                });
+
+
+                // Get Smaller lead count number
+                var makeList = [];
+                for(i=0; i < arr.length; i++)
+                {
+                    makeList.push(arr[i][0].count);
+                }
+                
+                var getSmallestNumber =  Math.min.apply(null, makeList);
+                var repititionCheck = 1000000000000;
+                var repititionCheckAdded = 1000000000000;
+
+                // Append Agent list into agent dropdown
+
+                var dropdownList = "";
+                // local
+                
+                for(i=0 ; i < arr.length; i++)
+                {
+
+                    
+                    if(arr[i][0].count == getSmallestNumber)
+                    {
+                        var getUserimage = arr[i][0].items.image;
+                        var getUserName = arr[i][0].items.user_name;
+
+                        if(getUserimage == "" || getUserimage == null)
+                        {
+                            getUserimage = 'sampleUser.png';
+                        }
+                        dropdownList += '<li><a href="javascript:;" id="'+arr[i][0].items.user_id+'" value="'+getUserName+'"><span><img class="pull-left" src="/profile_image/'+getUserimage+'"><span><div><label>Next in line:</label><label>'+getUserName+'</label></div></span></span></a></li>';
+                        $('.otherSelection .inlineAgentImg').attr('src', '/profile_image/'+getUserimage);
+                        $('.otherSelection .inlineAgentName').html(getUserName);
+                        var getAgentOptions = $('.agentOptions').html();
+                        dropdownList += getAgentOptions;
+                        break;
+                    }
+                }
+
+                var Adding = true;
+                for(i=0 ; i < arr.length; i++)
+                {
+                    var getUserimage = arr[i][0].items.image;
+                    var getUserName = arr[i][0].items.user_name;
+                    if(getUserimage == "" || getUserimage == null)
+                    {
+                        getUserimage = 'sampleUser.png';
+                    }
+                    
+                    if(arr[i][0].count == getSmallestNumber)
+                    {   
+                        if(repititionCheck == repititionCheckAdded)
+                        {
+                            Adding = false;
+                            repititionCheckAdded++
+                        }
+                    else
+                        {
+                            Adding = true;
+                        }
+                    }
+                    else
+                    {
+                        Adding = true;
+                    }
+                    
+                    if(Adding == true)
+                    {
+
+                        dropdownList += '<li><a href="javascript:;" id="'+arr[i][0].items.user_id+'" value="'+getUserName+'"><span><img class="pull-left" src="/profile_image/'+getUserimage+'"><span><div><label>Next in line:</label><label>'+getUserName+'</label></div></span></span></a></li>';
+                    }
+                }
+
+                $('.assignToDiv ul.dropdownOptions').html(dropdownList);
+                $('ul.assignToDiv.dropdown li:first-child').addClass('nextInline');
+                //window.GetAdditionalDetails = $('.additional-details').html();
+                //window.getNewLeadAll = $('.newLead').html();
+            }
+
+        });    
+        
+    }
 
     function GetUserBasedOnBudget(userBudget) {
         //$budget = '$2-5K';
@@ -171,22 +317,15 @@ return false;
             data: {budget: $budget},
             success: function (data) {
                 // convert json into Array
-
-var parsed = '';
-
-                   
-try{
-                         
-parsed = JSON.parse(data);
-                   
-}
-                   
-catch(e)
-                   
-{
-                       
-return false;                  
-}
+                debugger
+                var parsed = '';          
+                try{                           
+                  parsed = JSON.parse(data);              
+                }                 
+                catch(e)                
+                {                  
+                  return false;                  
+                }
                 $('.assignToDiv a.selected-text').attr('value','All');
                 $('.assignToDiv a.selected-text span').html('Assign to');
                 var arr = [];
@@ -302,26 +441,29 @@ return false;
     // user menu dp dropdown select
 
     $(document).on('click', '.userDropdown div p img', function () { 
+      debugger
         $('.userDropdown div p img').removeClass('active');
         $(this).addClass('active');
         var getValue = $(this).attr('value');
     });// End
 
-    $(document).on('click', '.userDropdown div', function () {      
+    $(document).on('click', '.userDropdown div', function () {  
+        
         var getValue = $(this).attr('value');       
         if(getValue == "menuLunch")
         {      
+
             var getLunchTime = $('.userDropdown div p img').filter('.active').attr('value');
             var getTimeValue = $('.userDropdown div p img').filter('.active').attr('data-value');
             $('.menuLunch .displayPicture img').attr('src',getLunchTime);
             $(this).attr('data-value',getTimeValue);
         }
-        $('.user-list').addClass('hide');
-        $('.' + getValue).removeClass('hide');
-
+        
+      debugger
       var userStatusValue = getValue.replace('menu' , '');
       if(userStatusValue == 'Lunch' && getTimeValue == undefined)
       {
+          return false;
           userStatusValue = 'Lunch';
       }
       else if(userStatusValue == 'Lunch' && getTimeValue == 15)
@@ -340,7 +482,8 @@ return false;
       {
           userStatusValue = 'Lunch60';
       }
-
+      $('.user-list').addClass('hide');
+      $('.' + getValue).removeClass('hide');
       /*-----------------------------------------------------*/
       //User Update Ajax Call
        $.ajax({
@@ -405,23 +548,16 @@ return false;
     data: '{}', 
     success: function (data) {
         
-var parseResult = '';
-
-                   
-try{
-                         
-parseResult = JSON.parse(data);
-                   
-}
-                   
-catch(e)
-                   
-{
-                       
-return false;                  
-}
+        var parseResult = '';              
+        try{    
+          parseResult = JSON.parse(data);               
+        }
+        catch(e)
+        {               
+          return false;                  
+        }
         $('.userDropdown').addClass('loadingContent'); 
-     var checkUserImage = parseResult.image;
+        var checkUserImage = parseResult.image;
         if(checkUserImage == null)
         {
           $('#displayUserPicture img').attr("src", "/profile_image/sampleUser.png" );
@@ -453,6 +589,7 @@ return false;
         }
         else if(parseResult.user_status === "Lunch")
         {
+            
             $('.userDropdown div[value="menuLunch"]').trigger('click');
             $('.userDropdown').removeClass('loadingContent');
             $('.user-dp-Dropdown').removeClass('hide');
@@ -460,6 +597,7 @@ return false;
          else if(parseResult.user_status === "Lunch15")
         {   
             //alert("Lunch15");
+            
             $('.userDropdown div[value="menuLunch"]').trigger('click');
             $('.userDropdown').removeClass('loadingContent');
             $('.user-dp-Dropdown').removeClass('hide');
@@ -468,22 +606,22 @@ return false;
             setInterval(function(){
               //alert("Available");
                 $.ajax({
-              type: "POST",
-              url: "/ajaxuserstatusupdate",
-              data: {
-                  
-              status: 'Available'
-              
-              },
-             success: function(data) {
-                 
-            $('.userDropdown div[value="menuAvailable"]').trigger('click');
-            $('.userDropdown').removeClass('loadingContent');
-            $('.user-dp-Dropdown').removeClass('hide');
-                 
-             }
-            });
-          }, 900000);
+                type: "POST",
+                url: "/ajaxuserstatusupdate",
+                data: {
+                    
+                status: 'Available'
+                
+                },
+               success: function(data) {
+                   
+                  $('.userDropdown div[value="menuAvailable"]').trigger('click');
+                  $('.userDropdown').removeClass('loadingContent');
+                  $('.user-dp-Dropdown').removeClass('hide');
+                     
+                 }
+                });
+            }, 900000);
 
         }
          else if(parseResult.user_status === "Lunch30")
@@ -604,7 +742,7 @@ return false;
 
    setInterval(function(){
         getUserStatus();  // this will run after every 1 minute
-   }, 60000);
+   }, 900000);
 
 /* ----------------------------------------------------*/
 /* ----------------------------------------------------*/
@@ -1292,7 +1430,8 @@ setTimeout(function(){
     {
         var getProduct = $('#productDropdown').closest('a.selected-text').attr('value');
         var getReferral = $('#referralDropdown').closest('a.selected-text').attr('value');
-        var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
+        //var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
+        var getBudget = $('#BudgetText').val();
         var getAgent = $('#assign_us_Dropdown').closest('a.selected-text').attr('value');
         //var getState = $('#stateDropdown').closest('a.selected-text').attr('value');
         var getCity = $('#cityValue').val();
@@ -1368,7 +1507,7 @@ setTimeout(function(){
 
     // Save Booking     
     $(document).on('click', '.btn-saveBooking', function () {
-        debugger
+        
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
         var checkBookingValue = $('.suggestedDate').html();
 
@@ -1535,15 +1674,16 @@ setTimeout(function(){
         }
 
         // Check if budget dropdown
-        if(el.closest('.dropdown').hasClass('budget'))
-        {
-            GetUserBasedOnBudget(getValue);
-            if($('.dropdownheightSet').hasClass('hide')) 
-            { 
-                $('.dropdownheightSet').hide().removeClass('hide'); 
-            }
-            $('.budgeterror').addClass('opacity0');
-        }
+        //if(el.closest('.dropdown').hasClass('budget'))
+        //{
+            //GetUserBasedOnBudget(getValue);
+        //    GetNextInLine(getValue);
+        //    if($('.dropdownheightSet').hasClass('hide')) 
+        //    { 
+        //        $('.dropdownheightSet').hide().removeClass('hide'); 
+        //    }
+        //    $('.budgeterror').addClass('opacity0');
+        //}
         
         // Check if State dropdown
         if(el.closest('.dropdown').hasClass('State'))
@@ -1796,7 +1936,7 @@ setTimeout(function(){
             product : $("#productDropdown").text(),
             referral : $("#referralDropdown").text(),
             special_instructions : $("[name= 'special_instructions']").val(),
-            budget : $("#budgetDropdown").text(),
+            budget : $("#BudgetText").val(),
             reference_product : $("#referrenceDropdown").val(),
             contact_method : $("#perferrefDropdown").text(),
             assign_to : $("#assign_us_Dropdown").text(),
@@ -1820,7 +1960,7 @@ setTimeout(function(){
       
         var getProduct = $('#productDropdown').closest('a.selected-text').attr('value');
         var getReferral = $('#referralDropdown').closest('a.selected-text').attr('value');
-        var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
+        var getBudget = $('#BudgetText').val();
         var getAgent = $('#assign_us_Dropdown').closest('a.selected-text').attr('value');
         var getState = $('#stateDropdown').closest('a.selected-text').attr('value');
         var getCity = $('#cityValue').val();
@@ -1873,7 +2013,7 @@ setTimeout(function(){
 
     
       var data = getValuesFromForm();
-      debugger
+      
       if(data.booking_duration == null || undefined)
       {
         data.booking_duration = 0;
@@ -2403,8 +2543,11 @@ setTimeout(function(){
               $('.additional-details .dropdown.referral .selected-text span').html(parsed[0].referral);
               $('.additional-details .instructions').val(parsed[0].special_instructions);
               $('.additional-details .ReferenceProduct').val(parsed[0].reference_product);
-              $('.additional-details .dropdown.budget .dropdownOptions li a[value="'+parsed[0].budget+'"]').click();
-              $('.additional-details .dropdown.budget .dropdownOptions').hide();
+
+              //$('.additional-details .dropdown.budget .dropdownOptions li a[value="'+parsed[0].budget+'"]').click();
+              //$('.additional-details .dropdown.budget .dropdownOptions').hide();
+              $('#BudgetText').val(parsed[0].budget);
+
               $('.additional-details .preferredMethod .selected-text').attr('value',parsed[0].contact_method);
               $('.additional-details .preferredMethod .selected-text span').html(parsed[0].contact_method);
               $('.additional-details .requirements').val(parsed[0].specify_requirements);
@@ -3449,6 +3592,18 @@ function validatePhone(PhoneNumber) {
         return false;
     }
 }
+// Validating number Only
+function validateNumber(Number) {
+    //var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
+    var filter = /^[0-9 ]+$/
+    if (filter.test(Number)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 // Get Only Dates
 function getOnlyDates() {
     
@@ -4152,7 +4307,7 @@ $(document).on('click','.suggestedDate', function (e) {
     $('#suggestedDateCalender').multiDatesPicker({
 
         onSelect:function(data, event){
-          debugger
+          
           $('#suggestedDateCalender').multiDatesPicker('resetDates');
           $('#suggestedDateCalender').multiDatesPicker('destroy');
           var el = $(this);
@@ -4402,22 +4557,15 @@ function loadLeads(){
 
                     // convert json into Array
 
-        var parsed = '';
-                   
-try{
-                         
-parsed = JSON.parse(data);
-                  
- }
-                  
- catch(e)
-                   
-{
-                      
- $('.leadsContainer .loading').hide();
-
-return false;
-                   }
+                  var parsed = '';
+                  try{         
+                    parsed = JSON.parse(data);              
+                  }
+                    catch(e)
+                  {             
+                    $('.leadsContainer .loading').hide();
+                    return false;
+                  }
 
                     var leads = [];
                     for(var x in parsed){
@@ -4716,7 +4864,7 @@ $(document).on('click', function(event){
 
 // Reloading Calendar
 function SetCalendarCloseLead(calendarDate){
-  debugger
+
     $('.closeLeadCalendar').multiDatesPicker('resetDates');
     $('.closeLeadCalendar').multiDatesPicker('destroy');
     $('.closeLeadCalendar').multiDatesPicker({
@@ -4871,23 +5019,14 @@ $(document).on('click', function(event){
             success: function (data) {
                 
                 // convert json into Array
-
-
-var parsed = '';
-
-                   
-try{
-                         
-parsed = JSON.parse(data);
-                   
-}
-                   
-catch(e)
-                   
-{
-                       
-return false;                  
-}
+                var parsed = '';                 
+                try{                      
+                parsed = JSON.parse(data);               
+                }                
+                catch(e)                
+                {                    
+                return false;                  
+                }
 
                 var arr = [];
                 

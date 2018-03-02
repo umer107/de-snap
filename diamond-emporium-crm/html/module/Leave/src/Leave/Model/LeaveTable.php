@@ -1128,7 +1128,7 @@ public function fetchLeadRecord($filter= null)
        $key = $item['user_id'];                    
        $groupUser[$key]['user_id'] = $key;
        $groupUser[$key]['items'] = $item;
-       $groupUser[$key]['count'] += 1;
+       $groupUser[$key]['count'] = 0;
                       
        }
       

@@ -167,8 +167,20 @@ echo '<div class="relative d-i-b v-a-t">';
                 echo $this->formRow($form->get("special_instructions"));
             
         echo '</div>';
+
+    // budget text
+
+     echo '<div class="relative d-i-b v-a-t"><span style="display: none" class="text-top">Budget</span>
+            <input type="text" name="Budget" id="BudgetText" autocomplete="off" class="Budget" placeholder="Budget" maxlength="30" value="">
+            <span style="display: none">RBudget</span>
+            <label class="opacity0 error budgeterror"> Please select budget </label>
+            <label class="opacity0 error budgetForError"></label>
+          </div>';
+
+
+
         //budget
-echo '<div class="relative d-i-b v-a-t">';
+echo '<div class="relative d-i-b v-a-t hide" style="display:none">';
   echo '<span style="display: none" class="text-top">Budget </span>';
   echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 budget">';
             echo '<li>';
@@ -189,6 +201,8 @@ echo '<div class="relative d-i-b v-a-t">';
         echo '</ul>';
         echo '<label class="opacity0 error budgeterror"> Please select budget </label>';
     echo '</div>';
+
+
 
 
     //ReferenceProduct
