@@ -456,7 +456,7 @@ $(document).ready(function () {
     });// End
 
     $(document).on('click', '.userDropdown div', function () {  
-        
+        debugger
         var getValue = $(this).attr('value');       
         if(getValue == "menuLunch")
         {      
@@ -555,7 +555,7 @@ $(document).ready(function () {
     url: "/ajaxGetUserStatus",
     data: '{}', 
     success: function (data) {
-        
+        debugger
         var parseResult = '';              
         try{    
           parseResult = JSON.parse(data);               
@@ -622,7 +622,7 @@ $(document).ready(function () {
                 
                 },
                success: function(data) {
-                   
+                   debugger
                   $('.userDropdown div[value="menuAvailable"]').trigger('click');
                   $('.userDropdown').removeClass('loadingContent');
                   $('.user-dp-Dropdown').removeClass('hide');
@@ -2576,7 +2576,8 @@ setTimeout(function(){
                       $('.otherReasonDiv a.selected-text span').html(parsed[0].reson_skip_next_in_line);
                   }
                   
-                  // Check to see is user is other than super user and hiding assign to                     
+                  // Check to see is user is other than super user and hiding assign to 
+                  debugger                    
                   if(window.adminUser == true)
                   {
                     $('#BudgetText').closest('div.relative').removeAttr('readonly'); 
@@ -2593,7 +2594,7 @@ setTimeout(function(){
                    }
 
                   // Booking Calendar
-                  
+                  debugger
                   var getAmPm = parsed[0].booking_timezone;
                   var getFullDate = parsed[0].booking_date;
                   var getAssigneeId = parsed[0].assign_to_UserId;
@@ -2619,7 +2620,11 @@ setTimeout(function(){
                   $('.btn-saveBooking').addClass('saveNow');
                   // destroy calendar
                   $('#calendar2').fullCalendar("destroy");
-
+                  
+                  $('#bookingDate').attr('time', parsed[0].booking_time);
+                  $('#bookingDate').attr('timeZone', getAmPm);
+                  $('#bookingDate').attr('date', getFullDate); 
+                  
                   //$('#bookingDate').attr('time', "8:00 - 9:00");
                   //$('#bookingDate').attr('timeZone', getAmPm);
                   //$('#bookingDate').attr('date', getFullDate); 
@@ -2634,8 +2639,16 @@ setTimeout(function(){
                   $('#bookingDate').attr('date', getFullDate);
                   $('#bookingDate').attr('time', parsed[0].booking_time);
                   //$('#bookingDate').addClass('nowCanSave');
-                  $('.suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time);
-                  $('#bookingDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time + ' ' + getAmPm); // Setting booking date field
+                  if(parsed[0].booking_time != "" )
+                  {
+                    $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time + ' ' + getAmPm); // Setting booking date field
+                  }
+                  else
+                  {
+                    $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth);  
+                  }
+                  
+                  
               }, 1000);
               
               
@@ -5152,6 +5165,7 @@ $(document).on('click','.leadUserName', function (e) {
                html += "<p><label>Contact Method :</label><label>" + parsed[0].contact_method + " </label></p> ";
                html += "<p><label>Lead Status:</label><label>" + parsed[0].lead_status + " </label></p> ";
                html += "<p><label>Assign To:</label><label>" + parsed[0].assign_to + " </label></p> ";
+               html += "<p><label>Booking Time:</label><label>" + parsed[0].booking_time + " </label></p> ";
                html += "<p><label>Booking Date:</label><label>" + parsed[0].booking_date + " </label></p> ";
                html += "<p><label>Specify requirements:</label><label>" + parsed[0].specify_requirements + " </label></p> ";
                
@@ -5198,7 +5212,16 @@ $(document).on('click','.closeLeadClick', function (e) {
             success: function (data) {
               
                 var getData = data;
-                if(data.role_id == 1)
+                debugger
+                var parsed = '';               
+                try{
+                  parsed = JSON.parse(data);                  
+                }           
+                catch(e)                  
+                {                   
+                return false;                  
+                }
+                if(parsed.role_id == 1)
                 { window.adminUser = true; }
                 else
                 { window.adminUser = false; }
