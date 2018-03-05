@@ -181,7 +181,7 @@ class DashboardController extends AbstractActionController
               if($request->isPost()){
                  $post = $request->getPost()->toArray();                                 		
 		 $objUserTable = $sm->get('SaveDashboard\Model\SaveDashboardTable');
-                 
+                    
                  if($post['lead_status'] == 'Closed / Lost')
                  {
                      $post['lead_status'] = 'Deal closed';
