@@ -182,7 +182,8 @@ $(document).ready(function () {
         if(userBudget > 0 && userBudget < 2000)
         {
           $('.budgetForError').html('Budget cannot be less than 2000$').removeClass('opacity0');
-          //el.focus();
+          el.focus();
+          $('#BudgetText').addClass('itHasError');
         }
         else
         {
@@ -191,6 +192,7 @@ $(document).ready(function () {
             { 
                 $('.dropdownheightSet').hide().removeClass('hide'); 
             }
+            $('#BudgetText').removeClass('itHasError');
         }
 
     });// End
@@ -2107,7 +2109,7 @@ setTimeout(function(){
         var getPhone = $('#phonenumber').val();
         var getEmail = $('#email').val();
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
-        debugger
+        
         if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All' || getCity == 'All')
         {
             if(getProduct == 'All')
@@ -2150,8 +2152,13 @@ setTimeout(function(){
             showBookingError();
             return false
         }
-
-      return false;
+        var checkBudgeterror = $('#BudgetText').hasClass('itHasError');
+        if(checkBudgeterror)
+        {
+          $('.budgetForError').html('Budget cannot be less than 2000$').removeClass('opacity0');
+          return false
+        }
+        
       var data = getValuesFromForm();
 
       if(data.booking_duration == null || undefined)
@@ -2771,6 +2778,7 @@ setTimeout(function(){
                   $('#bookingDate').attr('date', getFullDate);
                   $('#bookingDate').attr('time', parsed[0].booking_time);
                   //$('#bookingDate').addClass('nowCanSave');
+                  $('#bookingDate').addClass('nowCanSave');
                   if(parsed[0].booking_time != "" )
                   {
                     $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time + ' ' + getAmPm); // Setting booking date field
@@ -3676,7 +3684,7 @@ setTimeout(function(){
     window.getNewLeadAll = $('.newLead').html();
     //$('.loadAgents ul.dropdownOptions').html(dropdownList);
     
-}, 1000);
+}, 2500);
 
 
 // Expand Additional Detail Div
