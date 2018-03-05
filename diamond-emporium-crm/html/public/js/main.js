@@ -1829,6 +1829,7 @@ setTimeout(function(){
         
         $('.assignToDiv .otherSelection').hide();
         el.closest('.dropdownOptions').find('li').removeClass('hide');
+        $('ul.assignToDiv .dropdownOptions').hide();
         
         $('.btn-bookNow').addClass('canOpen');
         var getAgent = $('ul.assignToDiv .dropdownOptions li').filter('.activeField').find('a').attr('value');
@@ -2096,7 +2097,7 @@ setTimeout(function(){
     }
    
     $(document).on('click','#submitbutton', function (e) {
-      
+        
         var getProduct = $('#productDropdown').closest('a.selected-text').attr('value');
         var getReferral = $('#referralDropdown').closest('a.selected-text').attr('value');
         var getBudget = $('#BudgetText').val();
@@ -2106,7 +2107,7 @@ setTimeout(function(){
         var getPhone = $('#phonenumber').val();
         var getEmail = $('#email').val();
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
-
+        debugger
         if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All' || getCity == 'All')
         {
             if(getProduct == 'All')
@@ -2146,11 +2147,11 @@ setTimeout(function(){
         }
         if(checkBookingDate == false)
         {
-            //showBookingError();
-            //return false
+            showBookingError();
+            return false
         }
 
-      
+      return false;
       var data = getValuesFromForm();
 
       if(data.booking_duration == null || undefined)
@@ -4518,6 +4519,7 @@ $(document).on('click','.suggestedDate', function (e) {
           $('#bookingDate').attr('time', '');
           $('#bookingDate').attr('timezone', 'AM');
           $('#bookingDate').attr('date', setCompleteDate);
+          $('#bookingDate').addClass('nowCanSave');
           //<span id="bookingDate"  time="8:00 - 9:00" timezone="AM" date="2018-02-12">Monday 12 February 8:00 - 9:00 AM</span>
           
         }
@@ -5129,7 +5131,7 @@ $(document).on('click','.btn-saveCloseLead', function (e) {
             
             loadLeads(); 
             
-        }
+          }
         });  
         
         

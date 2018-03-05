@@ -43,7 +43,7 @@ class DashboardForm extends Form
 	$this->add($phoneNumber);
         
         $email = new \Zend\Form\Element\Text('email');
-	$email->setAttributes(array('id' => 'email', 'type'  => 'text', 'autocomplete' => 'off' , 'placeholder' => 'Email*', 'class' => 'email checkEmailCount', 'maxlength' => 40));
+	$email->setAttributes(array('id' => 'email', 'type'  => 'text', 'autocomplete' => 'off' , 'placeholder' => 'Email', 'class' => 'email checkEmailCount', 'maxlength' => 40));
 	$this->add($email);
   
         
