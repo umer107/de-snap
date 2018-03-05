@@ -2704,7 +2704,7 @@ setTimeout(function(){
 
 
               setTimeout(function(){ 
-                debugger
+                
                   $('.additional-details .dropdown.assignToDiv .dropdownOptions li a[id="'+parsed[0].assign_to_UserId+'"]').click();
                   $('.additional-details .dropdown.assignToDiv .dropdownOptions').hide();
                   $('.additional-details .dropdown.assignToDiv .dropdownOptions .btn-skip2').click();
