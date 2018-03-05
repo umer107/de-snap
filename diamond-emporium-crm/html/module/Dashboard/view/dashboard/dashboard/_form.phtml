@@ -262,7 +262,7 @@ echo '<div class="relative pull-left"><span style="display: none" class="text-to
             echo '<span style="display: none" class="text-top">Reason to skip next in line </span>';
             echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280">';
                     echo '<li>';
-                     echo '   <a href="javascript:;" class="selected-text d-b users" value="Reason"><span id = "skip_reason_dropdown" class="d-i-b">Reason </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+                     echo '   <a href="javascript:;" class="selected-text d-b users" value="Reason"><span id = "skip_reason_dropdown" class="d-i-b"></span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
                     echo '</li>';
                     echo '<li>';
 
@@ -374,13 +374,17 @@ echo "<div class='agentOptions hide'>";
                                     echo '<p value="Other">Other</p>';
                                 echo '</div>';
                                 echo '<div style="display:none" class="full other-explain "><input type="text" placeholder="Please Explain"  maxlength="100"/></div>';
+
                             echo '</div>';
 
                  echo '</div>';
 
-            echo '<div class="full double-pad-top triple-gap-top cancelSkip">';
+            echo '<div class="full double-pad-top triple-gap-top cancelSkip relative">';
+                echo '<span class="selectReason opacity0 transition-ease-02">Please! select a reason</span>';
+                echo '<span class="selectReason2 opacity0 transition-ease-02">Please! explain reason</span>';
                 echo '<span class="btn-cancelAgent pointer d-i-b">Cancel</span>';
                 echo '<span class="btn-skip button">Skip</span>';
+                echo '<span class="btn-skip2 button hide" style="display:none">Skip</span>';
             echo '</div>';
         echo '</div>';
 echo '</div>'; 

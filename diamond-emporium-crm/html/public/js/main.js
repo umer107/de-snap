@@ -456,7 +456,7 @@ $(document).ready(function () {
     });// End
 
     $(document).on('click', '.userDropdown div', function () {  
-        debugger
+        
         var getValue = $(this).attr('value');       
         if(getValue == "menuLunch")
         {      
@@ -555,7 +555,7 @@ $(document).ready(function () {
     url: "/ajaxGetUserStatus",
     data: '{}', 
     success: function (data) {
-        debugger
+        
         var parseResult = '';              
         try{    
           parseResult = JSON.parse(data);               
@@ -622,7 +622,7 @@ $(document).ready(function () {
                 
                 },
                success: function(data) {
-                   debugger
+                   
                   $('.userDropdown div[value="menuAvailable"]').trigger('click');
                   $('.userDropdown').removeClass('loadingContent');
                   $('.user-dp-Dropdown').removeClass('hide');
@@ -1804,7 +1804,29 @@ setTimeout(function(){
 
     $(document).on('click','.btn-skip',function(){
 
+        
         var el = $(this);
+        var checkDefaultValue = $('.additioanlSelection a').attr('value');
+        var checkSelectedValue = $('.AdditionaldrodownList p').filter('.activeReason').attr('value');
+        var inputValue = $('.other-explain input').val();
+        if( checkDefaultValue == "Reasons" )
+        {
+          $('.selectReason').removeClass('opacity0');
+          setTimeout(function(){ 
+            $('.selectReason').addClass('opacity0');
+          }, 3000);
+          return false;
+        }
+        if( inputValue == "" && checkDefaultValue == "Reasons")
+        {
+          $('.selectReason2').removeClass('opacity0');
+          setTimeout(function(){ 
+            $('.selectReason2').addClass('opacity0');
+          }, 3000);
+          return false;
+        }
+        
+        
         $('.assignToDiv .otherSelection').hide();
         el.closest('.dropdownOptions').find('li').removeClass('hide');
         
@@ -1821,8 +1843,117 @@ setTimeout(function(){
         $('ul.assignToDiv .dropdownOptions').addClass('dropdownheightSet');
         // check dropdown selected value
 
+        
+
+        var check = $('.Additionaldrodown').hasClass('novalue');
+
+
+        if( checkDefaultValue == "Reasons" )
+        {
+            $('.dropdownOptions').slideUp(150);
+
+            $('.agenterror').addClass('opacity0');
+            if($('.daySelection').hasClass('setForCalendar'))
+            {
+              
+              suggestedDate()
+            }
+        }
+        else
+        {
+            if(checkSelectedValue == 'Other')
+            { 
+                var el = $(this);
+                var SetValue = "Other: " + $('.other-explain input').val();
+                setTimeout(function(){ 
+
+                    $('.dropdownOptions').slideUp(150);
+                    $('.other-explain').closest('.dropdownOptions').find('li').removeClass('hide');
+                    $('.other-explain').closest('.dropdown').find('a.selected-text span').html(getAgent);
+                    $('.other-explain').closest('.dropdown').find('a.selected-text').attr('value', getAgent);
+                    $('.other-explain').hide();
+                    // Other reason dropdown setting
+                    $('.otherReasonDiv .dropdown').find('a.selected-text span').html(SetValue);
+                    $('.otherReasonDiv .dropdown').find('a.selected-text').attr('value', SetValue);
+                    $('.otherReasonDiv').removeClass('hide');
+                    $('.otherReasonDiv span.text-top').slideDown(150);
+                    $('.otherReasonExplained a').attr('value', SetValue);
+                    $('.otherReasonExplained a').html(SetValue);
+                    basicInfoUserDp();
+                    $('.other-explain input').val('');
+                    $('ul.assignToDiv .dropdownOptions').addClass('dropdownheightSet');
+                    // Reset Additional Dropdown
+                    var setValue2 = '<a href="javascript:;" value="Reasons">Reasons<span></span></a>';
+                    $('.Additionaldrodown div.additioanlSelection').html(setValue2);
+                    $('.agenterror').addClass('opacity0');
+                    // Checking if calendar is initialized
+                    if($('.daySelection').hasClass('setForCalendar'))
+                    {
+                      suggestedDate()
+                    }
+
+                }, 500);
+            }
+            else
+            {
+                setTimeout(function(){ 
+                    $('.dropdownOptions').slideUp(150);
+                    el.closest('.dropdownOptions').find('li').removeClass('hide');
+                    el.closest('.dropdown').find('a.selected-text span').html(getAgent);
+                    el.closest('.dropdown').find('a.selected-text').attr('value', getAgent);
+                    $('.other-explain').hide();
+                    // Other reason dropdown setting
+                    $('.otherReasonDiv .dropdown').find('a.selected-text span').html(checkSelectedValue);
+                    $('.otherReasonDiv .dropdown').find('a.selected-text').attr('value', checkSelectedValue);
+                    $('.otherReasonDiv').removeClass('hide');
+                    $('.otherReasonDiv span.text-top').slideDown(150);
+                    $('.otherReasonExplained a').attr('value', 'Other');
+                    $('.otherReasonExplained a').html('Other');
+                    // Basic Info Image set
+                    basicInfoUserDp();
+                    $('ul.assignToDiv .dropdownOptions').addClass('dropdownheightSet');
+                    var setValue2 = '<a href="javascript:;" value="Reasons">Reasons<span></span></a>';
+                    $('.Additionaldrodown div.additioanlSelection').html(setValue2);
+                    $('.agenterror').addClass('opacity0');
+                    // Checking if calendar is initialized
+                    if($('.daySelection').hasClass('setForCalendar'))
+                    {
+                      suggestedDate()
+                    }
+
+                }, 500);
+            }
+        }
+        
+        
+
+    });// End
+
+    $(document).on('click','.btn-skip2',function(){
+
+        
+        var el = $(this);
         var checkDefaultValue = $('.additioanlSelection a').attr('value');
         var checkSelectedValue = $('.AdditionaldrodownList p').filter('.activeReason').attr('value');
+        var inputValue = $('.other-explain input').val();        
+        
+        $('.assignToDiv .otherSelection').hide();
+        el.closest('.dropdownOptions').find('li').removeClass('hide');
+        
+        $('.btn-bookNow').addClass('canOpen');
+        var getAgent = $('ul.assignToDiv .dropdownOptions li').filter('.activeField').find('a').attr('value');
+        var userId = $('ul.assignToDiv .dropdownOptions li').filter('.activeField').find('a').attr('id');
+        window.selectedAssigneeId = userId;
+        el.closest('.dropdown').find('a.selected-text span').html(getAgent);
+        el.closest('.dropdown').find('a.selected-text').attr('value', getAgent);
+        el.closest('.dropdown').find('a.selected-text').attr('assigneId', userId);
+        $('.otherReasonDiv').addClass('hide');
+        // Basic Info Image set
+        basicInfoUserDp();
+        $('ul.assignToDiv .dropdownOptions').addClass('dropdownheightSet');
+        // check dropdown selected value
+
+        
 
         var check = $('.Additionaldrodown').hasClass('novalue');
 
@@ -2019,9 +2150,9 @@ setTimeout(function(){
             //return false
         }
 
-    
-      var data = getValuesFromForm();
       
+      var data = getValuesFromForm();
+
       if(data.booking_duration == null || undefined)
       {
         data.booking_duration = 0;
@@ -2565,25 +2696,25 @@ setTimeout(function(){
 
 
               setTimeout(function(){ 
+                debugger
                   $('.additional-details .dropdown.assignToDiv .dropdownOptions li a[id="'+parsed[0].assign_to_UserId+'"]').click();
                   $('.additional-details .dropdown.assignToDiv .dropdownOptions').hide();
-                  $('.additional-details .dropdown.assignToDiv .dropdownOptions .btn-skip').click();
-
-                  if(parsed[0].reson_skip_next_in_line != "")
-                  {
-                      $('.otherReasonDiv').removeClass('hide');
-                      $('.otherReasonDiv a.selected-text').attr('value',parsed[0].reson_skip_next_in_line);
-                      $('.otherReasonDiv a.selected-text span').html(parsed[0].reson_skip_next_in_line);
-                  }
+                  $('.additional-details .dropdown.assignToDiv .dropdownOptions .btn-skip2').click();
                   
                   // Check to see is user is other than super user and hiding assign to 
-                  debugger                    
+                                    
                   if(window.adminUser == true)
                   {
                     $('#BudgetText').closest('div.relative').removeAttr('readonly'); 
                     $('.hideBudget').addClass('hide');
-                    $('.assignToDiv').closest('div.relative').removeClass('hide');
-                    $('.otherReasonDiv').removeClass('hide');
+                    
+                    if(parsed[0].reson_skip_next_in_line != "")
+                    {
+                        $('.assignToDiv').closest('div.relative').removeClass('hide');
+                        $('.otherReasonDiv').removeClass('hide');
+                        $('.otherReasonDiv a.selected-text').attr('value',parsed[0].reson_skip_next_in_line);
+                        $('.otherReasonDiv a.selected-text span').html(parsed[0].reson_skip_next_in_line);
+                    }
                    }
                   else
                   { 
@@ -2594,7 +2725,7 @@ setTimeout(function(){
                    }
 
                   // Booking Calendar
-                  debugger
+                  
                   var getAmPm = parsed[0].booking_timezone;
                   var getFullDate = parsed[0].booking_date;
                   var getAssigneeId = parsed[0].assign_to_UserId;
@@ -4987,9 +5118,9 @@ $(document).on('click','.btn-saveCloseLead', function (e) {
     else
     { 
        
-        $lead_status =  $('.closeStatus').val();
-        $lead_id =  $(".closeLeadPopup").attr("leadid");
-        $lead_date = $('.closeLeadDate').attr('value');
+        $lead_status = getStatusValue;
+        $lead_id =  getLeadId;
+        $lead_date = getDatesValue;
         $.ajax({
         type: "POST",
         url: "dashboard/ajaxUpdateleadStatus",
@@ -5212,7 +5343,7 @@ $(document).on('click','.closeLeadClick', function (e) {
             success: function (data) {
               
                 var getData = data;
-                debugger
+                
                 var parsed = '';               
                 try{
                   parsed = JSON.parse(data);                  
