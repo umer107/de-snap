@@ -67,19 +67,8 @@ class UserForm extends Form {
 			$color = new \Zend\Form\Element\Text('color');
 			$color->setLabel('Colour');
 			$color->setAttributes(array('id' => 'color', 'class' => 'inputTxt', 'maxlength' => 6, 'readonly' => 'readonly'));
-			$this->add($color);
+			$this->add($color);                       
                         
-                       $selectbudget = array(
-                         '$2-5k',
-                         '$5-10k',
-                        '$10-20k',
-                        '20k+',
-                        );
-                        $user_budget = new \Zend\Form\Element\Select('user_budget');
-			$user_budget->setLabel('User Budget');
-			$user_budget->setAttributes(array('id' => 'user_budget', 'options' => $selectbudget, 'class' => 'dropdown'));
-			$this->add($user_budget);
-						
 			$cancel = new \Zend\Form\Element\Button('cancel');
 			$cancel->setLabel('Cancel');
 			$cancel->setValue('Cancel');
