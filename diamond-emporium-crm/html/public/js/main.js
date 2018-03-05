@@ -5118,9 +5118,9 @@ $(document).on('click','.btn-saveCloseLead', function (e) {
     else
     { 
        
-        $lead_status =  $('.closeStatus').val();
-        $lead_id =  $(".closeLeadPopup").attr("leadid");
-        $lead_date = $('.closeLeadDate').attr('value');
+        $lead_status = getStatusValue;
+        $lead_id =  getLeadId;
+        $lead_date = getDatesValue;
         $.ajax({
         type: "POST",
         url: "dashboard/ajaxUpdateleadStatus",
