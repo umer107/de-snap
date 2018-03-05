@@ -149,22 +149,7 @@ class IndexController extends AbstractActionController
 			if($request->isPost()){
                             //parse_str($request->getPost()->toArray()['frm_user'], $posts);
 				$posts = $request->getPost()->toArray();
-                                if($posts['user_budget'] == 0)
-                                {
-                                    $posts['user_budget'] = '$2-5K';
-                                }
-                                else if($posts['user_budget'] == 1)
-                                {
-                                    $posts['user_budget'] = '$5-10K';
-                                }
-                                else if($posts['user_budget'] == 2)
-                                {
-                                    $posts['user_budget'] = '$10-20K';
-                                }
-                                else if($posts['user_budget'] == 3)
-                                {
-                                    $posts['user_budget'] = '$20K+';
-                                }
+                                
 			        // $File = $request->getFiles()->toArray();
 				$objUserTable = $sm->get('User\Model\UserTable');
 				if(isset($posts['password']) && !empty($posts['password']))
@@ -280,8 +265,8 @@ class IndexController extends AbstractActionController
 				$fileParts = pathinfo($_FILES['item_image']['name']);
 			
 				$tempFile = $_FILES['item_image']['tmp_name'];
-				$targetPath = $config['documentRoot'] . 'profile_image'; //For Production Site
-                //$targetPath = $config['documentRootProfile'] . 'profile_image';//For Beta Testing
+				//$targetPath = $config['documentRoot'] . 'profile_image'; //For Production Site
+                $targetPath = $config['documentRootProfile'] . 'profile_image';//For Beta Testing
 				$targetFileName =  sha1($file['name'] . uniqid('',true)).$fileParts['extension'];
 				$targetFile = rtrim($targetPath,'/') . '/' . $targetFileName;
 				
