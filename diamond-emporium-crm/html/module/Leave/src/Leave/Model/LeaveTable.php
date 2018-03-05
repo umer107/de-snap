@@ -369,7 +369,32 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                          }
                         //End-Filter-Parameter-From-User
                         if(!empty($filter['budget'])) {
-        $select->where(array('l.budget = ?' =>  $value));
+                            $start_budget = 0;
+                            $end_budget = 0;
+                            if($filter['budget'] == '$2-5K')
+                            {
+                              $start_budget = 2000;
+                              $end_budget = 4999;
+                              $select->where->between('l.budget',$start_budget, $end_budget); 
+                            }
+                            else if($filter['budget'] == '$5-10K')
+                            {
+                              $start_budget = 5000;
+                              $end_budget = 9999;
+                              $select->where->between('l.budget',$start_budget, $end_budget); 
+                            }
+                            else if($filter['budget'] == '$10-20k')
+                            {
+                              $start_budget = 10000;
+                              $end_budget = 19999;
+                              $select->where->between('l.budget',$start_budget, $end_budget); 
+                            }
+                            else if($filter['budget'] == '$20K+')
+                            {
+                              $start_budget = 20000;
+                              $select->where->greaterThanOrEqualTo('l.budget', $start_budget );
+                            }
+              //$select->where(array('l.budget = ?' =>  $value));
       }
                         if(!empty($filter['lead_status'])) {
         $select->where(array('l.lead_status = ?' =>  $lead_status));
