@@ -178,11 +178,24 @@ $(document).ready(function () {
         
         var el = $(this);
         var userBudget = el.val();
+        var userBudgetValue = el.val();
         userBudget = parseInt(userBudget);
         if(userBudget > 0 && userBudget < 2000)
         {
-          $('.budgetForError').html('Budget cannot be less than 2000$').removeClass('opacity0');
-          el.focus();
+          $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
+          //el.focus();
+          $('#BudgetText').addClass('itHasError');
+        }
+        else if(userBudget == 0)
+        {
+          $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
+          //el.focus();
+          $('#BudgetText').addClass('itHasError');
+        }
+        else if(userBudgetValue == '')
+        {
+          $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
+          //el.focus();
           $('#BudgetText').addClass('itHasError');
         }
         else
@@ -2160,7 +2173,7 @@ setTimeout(function(){
         var checkBudgeterror = $('#BudgetText').hasClass('itHasError');
         if(checkBudgeterror)
         {
-          $('.budgetForError').html('Budget cannot be less than 2000$').removeClass('opacity0');
+          $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
           return false
         }
         
