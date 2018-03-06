@@ -2172,7 +2172,7 @@ setTimeout(function(){
         
       }
       
-      return false;
+      
       //alert("Successfully triggered");
       //Ajax Call
         $.ajax({
@@ -2792,7 +2792,7 @@ setTimeout(function(){
                   {
                     $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth);  
                   }
-                  
+                  $('.btn-saveBooking').trigger('click');
                   
               }, 1000);
               
@@ -5291,6 +5291,10 @@ $(document).on('click','.leadUserName', function (e) {
                 if(parsed[0].lead_status == "Closed")
                 {
                     $('.editDetails').addClass('disabled');
+                }
+                else
+                {
+                    $('.editDetails').removeClass('disabled');
                 }
                 var html = "";
          ////  [{"id":"5","first_name":"test","last_name":"lead","phone_number":"87587765765","email":"test@hotmail.com","product":"Wedding Band","referral":"Word of mouth","special_instructions":"453425","budget":"$2-5k","reference_product":"","contact_method":"Phone call","assign_to":"test farrukh 2-5","reson_skip_next_in_line":"Reason ","lead_status":"Open","lead_owner":"44","create_date":"2018-02-11 01:22:25","booking_date":"2018-02-19"}]
