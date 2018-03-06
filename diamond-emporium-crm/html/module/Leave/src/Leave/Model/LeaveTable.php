@@ -335,20 +335,19 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
       $select->from('de_userdetail')->columns(array('id'));
                         
                         
-                        //FullName  From Table "de_users"
+     //FullName  From Table "de_users"
       $fullname = new \Zend\Db\Sql\Expression(
         'CONCAT(u.first_name, \' \', u.last_name)'
       );
-                        //Image  From Table "de_users"
-                        $image = new \Zend\Db\Sql\Expression(
-        'u.image'
-      );
+                       
       $select = new \Zend\Db\Sql\Select();
       $select->from(array('l' => 'de_userdetail'))
            ->columns(array(
-              'id','first_name', 'last_name', 'phone_number', 'email', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method', 'assign_to','reson_skip_next_in_line','lead_status','lead_owner','create_date','booking_date'         
+              'id','first_name', 'last_name', 'phone_number', 'email', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','lead_owner_fullname' => 'lead_owner_name', 'assign_to','reson_skip_next_in_line','lead_status','lead_owner','create_date','booking_date'         
            ))          
-           ->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('lead_owner_fullname' => $fullname , 'lead_owner_image' => $image ), 'left');
+           ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('lead_owner_image' => 'image' ), 'left');
+      
+      
                         //Start-Filter-Parameter-From-User
                          $value = $filter['budget'];
                          $lead_status = $filter['lead_status'];
