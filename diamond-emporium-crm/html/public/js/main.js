@@ -1403,7 +1403,7 @@ setTimeout(function(){
         
         
         //$('.suggestedDate, #bookingDate').html(setDate);
-        $('.suggestedDate').html('');
+        //$('.suggestedDate').html('');
         $('.questionView').removeClass('hide');
         $('.btn-saveBooking').addClass('saveNow');
         
@@ -1553,12 +1553,17 @@ setTimeout(function(){
         additionalDetailsExpand();
         $('.savedBooking').addClass('hide');
         $('.btn-bookNow').removeClass('hide');
+        $('#bookingDate').removeClass('nowCanSave');
+        $('.suggestedDate').html('');
     });
 
 /*------------------------------------------------*/
 
     // Book Now Calendar Close
     $(document).on('click', '.cancelBookedbooking', function () {
+      debugger
+        $('.suggestedDate').html('');
+        $('#bookingDate').removeClass('nowCanSave');
         $('.btn-bookNow').removeClass('hide');
         cancelBookedBookingAction();
     });
@@ -2167,7 +2172,7 @@ setTimeout(function(){
         
       }
       
-      
+      return false;
       //alert("Successfully triggered");
       //Ajax Call
         $.ajax({
@@ -3634,7 +3639,7 @@ setTimeout(function(){
         var getAssigneeId = window.selectedAssigneeId;
         loadingCalendar2();
 
-        $('.suggestedDate').html('');
+        //$('.suggestedDate').html('');
         var getOnlyDate = getOnlyDates();
         var currentDate = moment(window.getFullDate);
         getFullDate = moment(currentDate).subtract(1, 'M').format('YYYY-MM-DD');
@@ -3652,7 +3657,7 @@ setTimeout(function(){
         var getAmPm = $('.timeSelection a').filter('.active').attr('value');
         var getAssigneeId = window.selectedAssigneeId;
         loadingCalendar2();
-        $('.suggestedDate').html('');
+        //$('.suggestedDate').html('');
         var getOnlyDate = getOnlyDates();
         var currentDate = moment(window.getFullDate);
         getFullDate = moment(currentDate).add(1, 'M').format('YYYY-MM-DD');
