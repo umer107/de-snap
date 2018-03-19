@@ -1154,18 +1154,11 @@ public function fetchLeadRecord($filter= null)
       
        //-----------------------------------------------LeadList------------------------------------// 
        $budget = $filter['budget']; 
-       
-       $start_budget = 0; 
-       
-       $end_budget = 0; 
-       
-       
+
     //Budget Greater than 2000 and Smaller than 5000 
-    if($budget >= 2000 && $budget <= 4999) 
+    if($budget == '$2,000 - $4,999') 
      { 
-        
-       $start_budget = 2000; 
-       $end_budget = 4999; 
+              
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from('de_userdetail')->columns(array('id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
@@ -1173,8 +1166,8 @@ public function fetchLeadRecord($filter= null)
            ->columns(array( 
               //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
                'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
-       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -1189,11 +1182,9 @@ public function fetchLeadRecord($filter= null)
        }
      } 
      //Budget Greater than 5,000  and Smaller than 9,999 $5,000 - $9,999  
-      if($budget >= 5000 && $budget <= 9999) 
+      if($budget == '$5,000 - $9,999') 
      { 
-        
-       $start_budget = 5000; 
-       $end_budget = 9999; 
+
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from('de_userdetail')->columns(array('id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
@@ -1201,8 +1192,8 @@ public function fetchLeadRecord($filter= null)
            ->columns(array( 
               //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
                'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
-       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -1217,11 +1208,9 @@ public function fetchLeadRecord($filter= null)
        }
      } 
     //Budget Greater than 5,000  and Smaller than 9,999 $10,000 - $19,999
-     if($budget >= 10000 && $budget <= 19999) 
+     if($budget == '$10,000 - $19,999') 
      { 
-        
-       $start_budget = 10000; 
-       $end_budget = 19999; 
+
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from('de_userdetail')->columns(array('id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
@@ -1229,8 +1218,8 @@ public function fetchLeadRecord($filter= null)
            ->columns(array( 
               //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
                'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
-       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -1245,11 +1234,9 @@ public function fetchLeadRecord($filter= null)
        }
      } 
     //Budget Greater than 5,000  and Smaller than 9,999 $20,000 - $34,999
-     if($budget >= 20000 && $budget <= 34999) 
+     if($budget == '$20,000 - $34,999') 
      { 
-        
-       $start_budget = 2000; 
-       $end_budget = 34999; 
+
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from('de_userdetail')->columns(array('id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
@@ -1257,8 +1244,8 @@ public function fetchLeadRecord($filter= null)
            ->columns(array( 
               //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
                'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
-       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -1273,11 +1260,9 @@ public function fetchLeadRecord($filter= null)
        }
      } 
     //Budget Greater than 5,000  and Smaller than 9,999 $35,000 - $49,999
-     if($budget >= 35000 && $budget <= 49999) 
+     if($budget == '$35,000 - $49,999') 
      { 
-        
-       $start_budget = 35000; 
-       $end_budget = 49999; 
+
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from('de_userdetail')->columns(array('id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
@@ -1285,8 +1270,8 @@ public function fetchLeadRecord($filter= null)
            ->columns(array( 
               //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
                'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
-       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -1301,11 +1286,9 @@ public function fetchLeadRecord($filter= null)
        }
      } 
     //Budget Greater than 5,000  and Smaller than 9,999 $50,000 - $74,999
-     if($budget >= 50000 && $budget <= 74999) 
+     if($budget == '$50,000 - $74,999') 
      { 
-        
-       $start_budget = 50000; 
-       $end_budget = 74999; 
+
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from('de_userdetail')->columns(array('id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
@@ -1313,8 +1296,8 @@ public function fetchLeadRecord($filter= null)
            ->columns(array( 
               //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
                'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
-       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -1329,11 +1312,9 @@ public function fetchLeadRecord($filter= null)
        }
      } 
     //Budget Greater than 5,000  and Smaller than 9,999 $75,000 - $99,999
-     if($budget >= 75000 && $budget <= 99999) 
+     if($budget == '$75,000 - $99,999') 
      { 
-        
-       $start_budget = 75000; 
-       $end_budget = 99999; 
+
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from('de_userdetail')->columns(array('id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
@@ -1341,8 +1322,8 @@ public function fetchLeadRecord($filter= null)
            ->columns(array( 
               //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
                'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
-       $select_detail->where->between('l.budget',$start_budget, $end_budget); 
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -1357,10 +1338,9 @@ public function fetchLeadRecord($filter= null)
        }
      } 
     //Budget Greater than 5,000  and Smaller than 9,999 $100,000+
-     if($budget >= 100000) 
+     if($budget == '$100,000+') 
      { 
-        
-       $start_budget = 100000;
+
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from('de_userdetail')->columns(array('id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
@@ -1368,8 +1348,8 @@ public function fetchLeadRecord($filter= null)
            ->columns(array( 
               //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
                'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');; 
-       $select_detail->where->greaterThanOrEqualTo('l.budget', $start_budget );
+           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
+       $select_detail->where->greaterThanOrEqualTo('l.budget',$budget);
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
