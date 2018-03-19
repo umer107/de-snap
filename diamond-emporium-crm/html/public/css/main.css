@@ -545,7 +545,8 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .calendarDropdown{ width: 120px; background: white; border: 1px solid #dfdfdf; top: 32px; z-index: 1000;}
 .calendarDropdown span{ display: block; height: 28px; line-height: 28px; padding-left: 10px; font-size: 14px; cursor: pointer; } 
 .calendarDropdown span:hover{ background:#4778a8; color: white; }
-.rings a.btn.active, .rings a.btn:hover{ background: #29629a; color: white; }
+.rings a{ background-color: white; border: 1px solid #dfdfdf; border-radius: 30px; color: #7499bd; display: inline-block; line-height: 24px; margin: 0 1px; text-align: center; min-width: 94px; padding: 0 4px;}
+.rings a.active, .rings a:hover{ background: #29629a; color: white; }
 .submitDates, .submitDatesCloseLead { border: 1px solid #7499bd; color: #7499bd; line-height: 36px; height: 36px; float: left;; width: 40px; text-align: center; border-radius: 50%; cursor: pointer; margin-left: 113px; position: relative;}
 .submitDates:hover, .submitDatesCloseLead:hover{background-color:#29629a; color:#fff}
 .mainLoader{position: fixed; width: 100%; z-index: 100; background: #f1f2f1; height: 100%; left: 0; right: 0; top: 0; bottom: 0;}

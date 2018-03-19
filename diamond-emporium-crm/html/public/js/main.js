@@ -213,7 +213,7 @@ $(document).ready(function () {
     function GetNextInLine(userBudget) {
        
         //$budget = '$2-5K';
-        debugger
+        
         $budget = userBudget;
         $.ajax({
             type: "GET",
@@ -221,7 +221,7 @@ $(document).ready(function () {
             data: {budget: $budget},
             success: function (data) {
                 // convert json into Array
-                  debugger
+                
                 var parsed = '';          
                 try{                           
                   parsed = JSON.parse(data);              
@@ -2751,8 +2751,9 @@ setTimeout(function(){
               $('.additional-details .instructions').val(parsed[0].special_instructions);
               $('.additional-details .ReferenceProduct').val(parsed[0].reference_product);
 
-              //$('.additional-details .dropdown.budget .dropdownOptions li a[value="'+parsed[0].budget+'"]').click();
-              //$('.additional-details .dropdown.budget .dropdownOptions').hide();
+              $('.additional-details .dropdown.budget .dropdownOptions li a[value="'+parsed[0].budget+'"]').click();
+              $('.additional-details .dropdown.budget .dropdownOptions').hide();
+
               $('#BudgetText').val(parsed[0].budget);
               $('#BudgetText').focusin();
               $('#BudgetText').focusout();
@@ -2764,7 +2765,7 @@ setTimeout(function(){
 
 
               setTimeout(function(){ 
-                
+                  
                   $('.additional-details .dropdown.assignToDiv .dropdownOptions li a[id="'+parsed[0].assign_to_UserId+'"]').click();
                   $('.additional-details .dropdown.assignToDiv .dropdownOptions').hide();
                   $('.additional-details .dropdown.assignToDiv .dropdownOptions .btn-skip2').click();
@@ -4780,7 +4781,7 @@ function loadLeads(){
     $('.loadLeadsHere').hide();
     $('.leadsContainer .loading').fadeIn(400);
     setTimeout(function(){ 
-    
+        
         var agentBudget = $('.rings a').filter('.active').attr('value');
         var agentStatus = $('.agentStatus').attr('value');
         var agentReferral = $('.Referral').attr('value');
@@ -4813,7 +4814,7 @@ function loadLeads(){
                     $('.leadsContainer .loading').hide();
                     return false;
                   }
-
+                  
                     var leads = [];
                     for(var x in parsed){
                       leads.push(parsed[x]);
@@ -5360,7 +5361,7 @@ $(document).on('click','.leadUserName', function (e) {
                 var html = "";
          ////  [{"id":"5","first_name":"test","last_name":"lead","phone_number":"87587765765","email":"test@hotmail.com","product":"Wedding Band","referral":"Word of mouth","special_instructions":"453425","budget":"$2-5k","reference_product":"","contact_method":"Phone call","assign_to":"test farrukh 2-5","reson_skip_next_in_line":"Reason ","lead_status":"Open","lead_owner":"44","create_date":"2018-02-11 01:22:25","booking_date":"2018-02-19"}]
                 
-                
+               
                html += "<p><label>First Name:</label><label>" + parsed[0].first_name.replace(/'/g, '"') + "</label></p> ";
                html += "<p><label>Last Name:</label><label>" + parsed[0].last_name + " </label></p> ";
                html += "<p><label>Phone Number:</label><label>" + parsed[0].phone_number + " </label></p> ";
