@@ -97,6 +97,8 @@ echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('id')).'<div class="full basicInfo formfields color-darkGray  fs-14">';
     
    // Title Select
+
+   echo '<div class="relative pull-left gap-right pad-right">';
    echo '<div class="relative pull-left">';
     echo '<span style="display: none" class="text-top">Title</span>';
         echo '<ul class="dropdown bg-white d-i-b pull-left relative title">';
@@ -139,6 +141,10 @@ echo $this->formHidden($form->get('id')).'<div class="full basicInfo formfields 
              echo '</li>';
         echo '</ul>';
     echo '</div>';
+    echo '</div>';
+
+
+
 
     echo '<div class="relative pull-left"><span style="display: none">First name</span>'.$this->formRow($form->get("first_name")).'<label class="opacity0">Only "-" and alphabets are allowed</label></div>';
     echo '<div class="relative pull-left"><span style="display: none">Last name</span>'.$this->formRow($form->get("last_name")).'<label class="opacity0">Only "-" and alphabets are allowed</label></div>';

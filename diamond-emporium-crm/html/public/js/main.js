@@ -213,6 +213,7 @@ $(document).ready(function () {
     function GetNextInLine(userBudget) {
        
         //$budget = '$2-5K';
+        debugger
         $budget = userBudget;
         $.ajax({
             type: "GET",
@@ -220,7 +221,7 @@ $(document).ready(function () {
             data: {budget: $budget},
             success: function (data) {
                 // convert json into Array
-                
+                  debugger
                 var parsed = '';          
                 try{                           
                   parsed = JSON.parse(data);              
@@ -1602,7 +1603,7 @@ setTimeout(function(){
 
     // Book Now Calendar Close
     $(document).on('click', '.cancelBookedbooking', function () {
-      debugger
+      
         $('.suggestedDate').html('');
         $('#bookingDate').removeClass('nowCanSave');
         $('.btn-bookNow').removeClass('hide');
@@ -2157,7 +2158,7 @@ setTimeout(function(){
     }
    
     $(document).on('click','#submitbutton', function (e) {
-        debugger
+        
         var getProduct = $('#productDropdown').closest('a.selected-text').attr('value');
         var getReferral = $('#referralDropdown').closest('a.selected-text').attr('value');
         var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
@@ -3772,7 +3773,7 @@ function additionalDetailsMinimize() {
 
 // Validate Basic Info
 function validateBasicInfo() {
-  debugger
+  
         var getFirstNameValue = $('.firstname').val().length;
         var getLastNameValue = $('.lastname').val().length;
         var getPhoneValue = $('.phonenumber').val().length;
