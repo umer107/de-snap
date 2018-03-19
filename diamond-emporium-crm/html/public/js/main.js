@@ -864,7 +864,7 @@ $(document).ready(function () {
     // Show additional details container
 
     $(document).on('click', '.btn-nextDetails', function () {
-      $('.additional-details').slideDown(300);  
+      $('.additional-details').slideDown(500);  
       $('.btn-nextDetails').addClass('hide');
       $('.btn-saveDetails, .btn-bookNow').removeClass('hide');
       $('.next-saveDiv').addClass('one-half-pad-top');
@@ -948,6 +948,32 @@ $(document).ready(function () {
     $(document).on('click', '.durationSelection a', function () {
         $('.durationSelection a').removeClass('active');
         $(this).addClass('active');
+    });
+
+    // Time selection for Calendar 2
+
+    $(document).on('click', '.timeSelectionOnly a', function () {
+        $('.timeSelectionOnly a').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    $(document).on('click', '.durationSelectionOnly a', function () {
+        $('.durationSelectionOnly a').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    $(document).on('click', '.timeSlots ul li', function () {
+      
+        $('.timeSlots ul li').removeClass('active');
+        $(this).addClass('active');
+        var allRoomsBooked = $(this).hasClass('three');
+        if(allRoomsBooked)
+        {
+          $('.timeSlotError').removeClass('opacity0');
+          setTimeout(function(){ 
+            $('.timeSlotError').addClass('opacity0');
+          }, 2000);
+        }
     });
     
     // Time selection for Calendar 1
@@ -1453,8 +1479,8 @@ setTimeout(function(){
     {
         var getProduct = $('#productDropdown').closest('a.selected-text').attr('value');
         var getReferral = $('#referralDropdown').closest('a.selected-text').attr('value');
-        //var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
-        var getBudget = $('#BudgetText').val();
+        var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
+        //var getBudget = $('#BudgetText').val();
         var getAgent = $('#assign_us_Dropdown').closest('a.selected-text').attr('value');
         //var getState = $('#stateDropdown').closest('a.selected-text').attr('value');
         var getCity = $('#cityValue').val();
@@ -1701,17 +1727,17 @@ setTimeout(function(){
             loadLeads(); 
         }
 
-        // Check if budget dropdown
-        //if(el.closest('.dropdown').hasClass('budget'))
-        //{
+        //Check if budget dropdown
+        if(el.closest('.dropdown').hasClass('budget'))
+        {
             //GetUserBasedOnBudget(getValue);
-        //    GetNextInLine(getValue);
-        //    if($('.dropdownheightSet').hasClass('hide')) 
-        //    { 
-        //        $('.dropdownheightSet').hide().removeClass('hide'); 
-        //    }
-        //    $('.budgeterror').addClass('opacity0');
-        //}
+            GetNextInLine(getValue);
+            if($('.dropdownheightSet').hasClass('hide')) 
+            { 
+                $('.dropdownheightSet').hide().removeClass('hide'); 
+            }
+            $('.budgeterror').addClass('opacity0');
+        }
         
         // Check if State dropdown
         if(el.closest('.dropdown').hasClass('State'))
@@ -2096,7 +2122,7 @@ setTimeout(function(){
             product : $("#productDropdown").text(),
             referral : $("#referralDropdown").text(),
             special_instructions : $("[name= 'special_instructions']").val(),
-            budget : $("#BudgetText").val(),
+            budget : $('#budgetDropdown').closest('a.selected-text').attr('value'),
             reference_product : $("#referrenceDropdown").val(),
             contact_method : $("#perferrefDropdown").text(),
             assign_to : $("#assign_us_Dropdown").text(),
@@ -2117,10 +2143,11 @@ setTimeout(function(){
     }
    
     $(document).on('click','#submitbutton', function (e) {
-        
+        debugger
         var getProduct = $('#productDropdown').closest('a.selected-text').attr('value');
         var getReferral = $('#referralDropdown').closest('a.selected-text').attr('value');
-        var getBudget = $('#BudgetText').val();
+        var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
+        //var getBudget = $('#BudgetText').val();
         var getAgent = $('#assign_us_Dropdown').closest('a.selected-text').attr('value');
         var getState = $('#stateDropdown').closest('a.selected-text').attr('value');
         var getCity = $('#cityValue').val();
@@ -2128,7 +2155,7 @@ setTimeout(function(){
         var getEmail = $('#email').val();
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
         
-        if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All' || getCity == 'All')
+        if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All')
         {
             if(getProduct == 'All')
             { $('.producterror').removeClass('opacity0'); }
@@ -2170,12 +2197,12 @@ setTimeout(function(){
             showBookingError();
             return false
         }
-        var checkBudgeterror = $('#BudgetText').hasClass('itHasError');
-        if(checkBudgeterror)
-        {
-          $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
-          return false
-        }
+        //var checkBudgeterror = $('#BudgetText').hasClass('itHasError');
+        //if(checkBudgeterror)
+        //{
+        //  $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
+        //  return false
+        // }
         
       var data = getValuesFromForm();
 
@@ -3747,9 +3774,12 @@ function validateBasicInfo() {
             else if(validatePhone(getPhone)) { 
                 if($('.additional-details').is(':hidden'))
                 {
-                    $('.add-address').slideDown(300);
+                    //$('.add-address').hide();
+                    //$('.add-address').slideDown(300);
                     $('.next-saveDiv').removeClass('hide');
                     $('.newLead').addClass('opened');
+                    $('.btn-nextDetails').trigger('click');
+                    $('.add-addressClick').trigger('click');
                 }
                 
             }

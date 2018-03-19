@@ -51,10 +51,14 @@ $selectAssignTo = array(
  );
 //Select Budget
 $selectbudget = array(
-    '$2-5k',
-    '$5-10k',
-    '$10-20k',
-    '$20k+',
+    '$2,000 - $4,999',
+    '$5,000 - $9,999',
+    '$10,000 - $19,999',
+    '$20,000 - $34,999',
+    '$35,000 - $49,999',
+    '$50,000 - $74,999',
+    '$75,000 - $99,999',
+    '$100,000+',
  );
 
 //SElect Reference Product
@@ -170,7 +174,7 @@ echo '<div class="relative d-i-b v-a-t">';
 
     // budget text
 
-     echo '<div class="relative d-i-b v-a-t"><span style="display: none" class="text-top">Budget</span>
+     echo '<div class="relative d-i-b v-a-t" hide style="display:none"><span style="display: none" class="text-top">Budget</span>
             <input type="text" name="Budget" id="BudgetText" autocomplete="off" class="Budget" placeholder="Budget" maxlength="30" value="">
             <p class="hideBudget hide"></p>
             <span style="display: none">Budget</span>
@@ -181,7 +185,7 @@ echo '<div class="relative d-i-b v-a-t">';
 
 
         //budget
-echo '<div class="relative d-i-b v-a-t hide" style="display:none">';
+echo '<div class="relative d-i-b v-a-t">';
   echo '<span style="display: none" class="text-top">Budget </span>';
   echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 budget">';
             echo '<li>';
@@ -190,12 +194,11 @@ echo '<div class="relative d-i-b v-a-t hide" style="display:none">';
             echo '<li>';
              // echo $this->formRow($title);
             echo    '<ul class="dropdownOptions bg-white absolute full-width" style="display:none;">';
-                        
-                        foreach($selectbudget as $budget){ 
-                            echo '<li>';
-                                echo "<a href='javascript:;' value='$budget'> $budget </a>";
-                            echo '</li>';
-                        }
+                    foreach($selectbudget as $budget){ 
+                        echo '<li>';
+                            echo "<a href='javascript:;' value='$budget'> $budget </a>";
+                        echo '</li>';
+                    }
             echo    '</ul>';
 
             echo '</li>';
@@ -216,7 +219,7 @@ echo '<div class="relative pull-left"><span style="display: none" class="text-to
   echo '<span style="display: none" class="text-top">Preferred method of contact </span>';
   echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 preferredMethod">';
             echo '<li>';
-             echo '   <a href="javascript:;" class="selected-text d-b users" value="All"><span id = "perferrefDropdown" class="d-i-b">Preferred method of contact </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+             echo '   <a href="javascript:;" class="selected-text d-b users" value="All"><span id = "perferrefDropdown" class="d-i-b">Communication Method</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
             echo '</li>';
             echo '<li>';
              // echo $this->formRow($title);

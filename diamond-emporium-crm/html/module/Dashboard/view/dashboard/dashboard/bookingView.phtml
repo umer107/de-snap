@@ -1,9 +1,10 @@
 <div class="bookNowDiv full hide relative">
 	<!-- Heading View -->
 	<div class="full bookNowMain">
-		<h2 class="fs-24 color-green robotolight double-pad-bottom double-pad-top full"> 
+		<h2 class="fs-24 color-green robotolight double-pad-bottom double-pad-top full relative"> 
 			<span class="pull-left">Booking</span> 
 			<label class="pull-left pad-left color-red bookingError fs-12 transition-ease-02 gap-top two-pad-top robotomedium opacity0">Please! select a booking date</label>
+			<label class="pull-left pad-left color-red timeSlotError absolute fs-12 transition-ease-02 gap-top two-pad-top robotomedium opacity0">All rooms are booked.</label>
 			<div class="bookingViewIcon d-i-b hide opacity0">
 					<img class="wd-24 d-i-b double-gap-left relative top-4" src="<?php echo $this->serverUrl('/images/ic_calendar.svg'); ?>" />
 					<a href="javascript:;" class="color-blue fs-14 robotoregular relative bottom-2">calendar view</a> 
@@ -16,7 +17,43 @@
 			<span class="pull-left four-pad-top one-half-pad-right">Suggested date:</span>
 			<div id="suggestedDate" class="pull-left suggestedDate lh-28 pad-left pad-right relative"></div>
 			<div id="suggestedDateCalender" class=""></div>
-			<span class="full color-lightGray fs-10 lh-12 half-pad-top changeDateText">Click on calendar below to change time or date</span>
+			<div class="pull-right triple-pad-right hide">
+				<div class="pull-left selectTime transition-ease-02  triple-gap-bottom">
+					<span class="pull-left four-pad-top one-half-pad-right triple-pad-left gap-left">Time</span>
+					<div class="pull-left timeSelectionOnly lh-26 align-center timeToggles gap-right">
+						<a href="javascript:;" value="AM" class="active">AM</a>
+						<a href="javascript:;" value="PM">PM</a>
+					</div>
+					<div class="pull-left durationSelectionOnly lh-26 align-center timeToggles triple-gap-left">
+						<a href="javascript:;" value="30" class="active">30</a>
+						<a href="javascript:;" value="60">60</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="full relative hide">
+				
+				<div class="absolute fs-10 AM-calender left-0">
+					<span>8 AM</span>
+					<span>9 AM</span>
+					<span>10 AM</span>
+					<span>11 AM</span>
+				</div>
+
+				<div class="full timeSlots">
+					<p class="robotomedium">Saturday this week</p>
+					<span>3rd March</span>
+					<ul>
+						<li class="three">8:00 - 9:00</li>
+						<li class="two">9:00 - 10:00</li>
+						<li class="zero">10:00 - 11:00</li>
+						<li class="one">11:00 - 12:00</li>
+					</ul>
+				</div>
+
+			</div>
+
+
 		</div>
 
 		<!-- Day Selection View -->

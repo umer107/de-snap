@@ -661,14 +661,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
            try {
                
                $select = new \Zend\Db\Sql\Select();
-     $select->from('de_userdetail')->columns(array('id'));
-                 
-                 
-                 
-                 
-                
-                 
-                   $booking_start_date = new \Zend\Db\Sql\Expression('l.booking_date');
+          $select->from('de_userdetail')->columns(array('id'));
+
+       $booking_start_date = new \Zend\Db\Sql\Expression('l.booking_date');
        $booking_time = new \Zend\Db\Sql\Expression('l.booking_time');
                    
                     $select->from(array('l' => 'de_userdetail'))
@@ -707,9 +702,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                  }
                  
                  $data = $this->executeQuery($select);    
-     $result = $data->toArray();  
+                 $result = $data->toArray();  
                  
-                 $groups = array();
+                      $groups = array();
  
                           foreach ($result as $item) {
 

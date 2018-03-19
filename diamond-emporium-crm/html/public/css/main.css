@@ -193,27 +193,20 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 
 /* Booking Div Start*/
 	
-.daySelection, .weekSelection, .timeSelection, .durationSelection, .timeSelection_Cl1, .durationSelection_Cl1{ border: 1px solid #dfdfdf; border-radius: 18px; overflow: hidden;}
+.daySelection, .weekSelection, .timeSelection, .timeSelectionOnly, .durationSelection, .durationSelectionOnly, .timeSelection_Cl1, .durationSelection_Cl1{ border: 1px solid #dfdfdf; border-radius: 18px; overflow: hidden;}
 .timeToggles a{color: #7499bd; float: left; border-right: 1px solid #dfdfdf;}
 .timeToggles a:last-child{ border-right: 0 none}
 .daySelection a{ width: 84px;}
 .weekSelection a{ width: 168px;}
-.durationSelection a, .timeSelection a, .timeSelection_Cl1 a, .durationSelection_Cl1 a{ width: 48px;}
-.daySelection a:hover, .daySelection a.active, .weekSelection a:hover, .weekSelection a.active, .durationSelection a:hover, .durationSelection a.active, .timeSelection a:hover, .timeSelection a.active, .timeSelection_Cl1 a:hover, .timeSelection_Cl1 a.active, .durationSelection_Cl1 a:hover, .durationSelection_Cl1 a.active{ background-color: #7499bd; color: #fff; }
+.durationSelection a, .durationSelectionOnly a, .timeSelection a, .timeSelectionOnly a, .timeSelection_Cl1 a, .durationSelection_Cl1 a{ width: 48px;}
+.daySelection a:hover, .daySelection a.active, .weekSelection a:hover, .weekSelection a.active, .durationSelectionOnly a.active, .durationSelectionOnly a:hover, .durationSelection a:hover, .durationSelection a.active, .timeSelection a:hover, .timeSelection a.active, .timeSelectionOnly a:hover, .timeSelectionOnly a.active, .timeSelection_Cl1 a:hover, .timeSelection_Cl1 a.active, .durationSelection_Cl1 a:hover, .durationSelection_Cl1 a.active{ background-color: #7499bd; color: #fff; }
 .bookingDiv{width: 1425px; float: left;}
 .suggestedDate{ border: 1px solid #27ad09; height: 30px; min-width: 256px;}
 .changeDateText{padding-left: 138px }
 #suggestedDateCalender{    position: absolute; left: 96px; top: 107px;}
 .hideBudget { position: absolute; top: -8px; left: 0; width: 100%; height: 60px;}
-.selectReason, .selectReason2 {
-    position: absolute;
-    color: red;
-    font-size: 12px;
-    display: block;
-    text-align: center;
-    width: 100%;
-    top: -12px;
-}
+.selectReason, .selectReason2 { position: absolute; color: red; font-size: 12px; display: block; text-align: center; width: 100%; top: -12px; }
+
 /*Calendar View*/
 .fc th, .fc td, .fc hr, .fc thead, .fc tbody, .fc-row { border-color: transparent !important; background: transparent !important;}
 .fc tbody .fc-row .fc-content-skeleton tbody tr:last-child td { padding-bottom: 0em;}
@@ -306,6 +299,19 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 .Confirmation div{background-color: #f6f6f6; width: 100%; height: 676px;}
 .amHeight{ min-height: 266px; }
 .pmHeight{ min-height: 308px; }
+.timeSlots { padding-left: 41px; text-align: center; width: 179px;}
+.timeSlots p { color: #7499bd; font-size: 14px; line-height: 14px;}
+.timeSlots span { color: #a5a5a5; font-size: 10px; line-height: 18px; display: block;}
+.timeSlots ul{ display: block; margin-top: 23px; padding: 0 17px;}
+.timeSlots ul li{ cursor: pointer; display: block; width: 100%; text-align: center; font-size: 14px; color: #5d5d5d; line-height: 26px; margin-bottom: 20px;}
+.timeSlots ul li.three{background-color: #fff;  border: 1px solid #dfdfdf;}
+.timeSlots ul li.two{background-color: #d9ead3; border: 1px solid #d9ead3;}
+.timeSlots ul li.two.active, .timeSlots ul li.two:hover{ background-color: #ffffff !important; border: 1px solid #27ad09; }
+.timeSlots ul li.one{ background-color: #eab78a; border: 1px solid #eab78a;}
+.timeSlots ul li.one.active, .timeSlots ul li.one:hover{ background-color: #ffffff !important; border: 1px solid #ff9e5c; }
+.timeSlots ul li.zero{ background-color: #f4cccd; border: 1px solid #f4cccd;}
+.timeSlots ul li.zero.active, .timeSlots ul li.zero:hover{background-color: #ffffff !important; border: 1px solid #e24252; }
+
 /* Booking Div End*/
 
 .loading{ background: #f1f2f1; }
@@ -314,7 +320,11 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 .fullHeight{ height: 100%; line-height: 100% }
 .leadsLoadingHeight{ height: 100%; line-height: 100% }
 .leavesLoading{ z-index: 120; left: 0; top: 0; bottom: 0; right: 0; }
-
+.AM-calender{ width: 50px; top: 55px; }
+.AM-calender span{ color: #b2b2b2; display: block; padding-bottom: 19px; line-height: 28px; }
+.PM-calender{ width: 50px; top: 55px; }
+.PM-calender span{ color: #b2b2b2; display: block; padding-bottom: 19px; line-height: 28px; }
+.timeSlotError{ left: 86px; }
 /* Ending Wasif Munir Css for Dashboard ---------------------------- */
 
 /* ----------------------------------------------------------------- */
