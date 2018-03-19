@@ -166,7 +166,16 @@ return array(
                             ),
                         ),
                     ),
-            
+             'ajaxGetCountriesList' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetCountriesList',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetCountriesList',
+                            ),
+                        ),
+                    ),
             
             
         )

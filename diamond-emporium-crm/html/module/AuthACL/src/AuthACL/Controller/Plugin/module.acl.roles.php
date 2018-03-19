@@ -177,6 +177,8 @@ $resources = array(
     'Dashboard\Controller\Dashboard::ajaxGetLeadDetailForLeadPage',
     'Dashboard\Controller\Dashboard::GetNextInLine',
     'Dashboard\Controller\Dashboard::ajaxGetUserLoginDetail',
+    'Dashboard\Controller\Dashboard::ajaxGetCountriesList',
+    
 
 	);
 
