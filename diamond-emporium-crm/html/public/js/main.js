@@ -814,9 +814,11 @@ $(document).ready(function () {
 
     // Validating Email and opening next screen buttons
     $(document).on('keyup', '.basicInfo input.checkEmailCount', function () {
+
         var getFirstNameValue = $('.firstname').val().length;
         var getLastNameValue = $('.lastname').val().length;
         var getPhoneValue = $('.phonenumber').val().length;
+        
         var getValue = $(this).val().length;
         var getemail = $(this).val();
         if ($.trim(getemail).length == 0) {
@@ -1739,6 +1741,16 @@ setTimeout(function(){
             $('.budgeterror').addClass('opacity0');
         }
         
+        // Check if it is Title
+        if(el.closest('.dropdown').hasClass('title'))
+        {
+          validateBasicInfo();
+        }
+        // Check if it is gender
+        if(el.closest('.dropdown').hasClass('Gender'))
+        {
+          validateBasicInfo();
+        }
         // Check if State dropdown
         if(el.closest('.dropdown').hasClass('State'))
         {   
@@ -2135,7 +2147,9 @@ setTimeout(function(){
             //booking_room : $(".meetingRoomValue").attr('value')
             booking_room : '',
             lead_id : $('.thisLeadId').attr('leadId'),
-            booking_duration: $('.durationSelection a').filter('.active').attr('value')
+            booking_duration: $('.durationSelection a').filter('.active').attr('value'),
+            gender : $('.Gender a.selected-text').attr('value'),
+            title : $('.title a.selected-text').attr('value')
 
            
         };
@@ -2154,7 +2168,7 @@ setTimeout(function(){
         var getPhone = $('#phonenumber').val();
         var getEmail = $('#email').val();
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
-        
+        //var data = getValuesFromForm();
         if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All')
         {
             if(getProduct == 'All')
@@ -3758,14 +3772,17 @@ function additionalDetailsMinimize() {
 
 // Validate Basic Info
 function validateBasicInfo() {
+  debugger
         var getFirstNameValue = $('.firstname').val().length;
         var getLastNameValue = $('.lastname').val().length;
         var getPhoneValue = $('.phonenumber').val().length;
         var getPhone = $('.phonenumber').val();
+        var getTitle = $('.title a.selected-text').attr('value');
+        var getGender = $('.Gender a.selected-text').attr('value');
         var getEmailValue = $('.email').val().length;
         var getemail = $('.email').val();
         //if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue > 0 && getEmailValue > 0)
-        if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue)
+        if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue && getTitle != 'All' && getGender != 'All')
         {   
 
             if($('.firstname').hasClass('hasError') || $('.lastname').hasClass('hasError'))

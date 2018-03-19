@@ -69,15 +69,77 @@ $selectreferenceproduct = array(
     'Reference Product',
     'Reference Product'
  );
+
 //Select Contact Method
 $selectcontactmethod = array(
     'Phone/Email',
     'Phone call',
     'Email'
  );
+
+//Select Title Method
+$selectTitle = array(
+    'Mr',
+    'Ms',
+    'Mrs',
+    'Miss'
+ );
+
+//Select Gender Method
+$selectGender = array(
+    'Male',
+    'Female',
+    'Other/Not Specified'
+ );
+
 //
 echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('id')).'<div class="full basicInfo formfields color-darkGray  fs-14">';
+    
+   // Title Select
+   echo '<div class="relative pull-left">';
+    echo '<span style="display: none" class="text-top">Title</span>';
+        echo '<ul class="dropdown bg-white d-i-b pull-left relative title">';
+             echo '<li>';
+             echo '   <a href="javascript:;" class="selected-text d-b" value="All"><span id ="title" class="d-i-b">Title</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+             echo '</li>';
+             echo '<li>';
+             // echo $this->formRow($title);
+                 echo    '<ul class="dropdownOptions bg-white absolute full-width" style="display:none;">';
+                        
+                        foreach($selectTitle as $title){ 
+                            echo '<li>';
+                                echo "<a href='javascript:;' value='$title'> $title </a>";
+                            echo '</li>';
+                        }
+                echo    '</ul>';
+
+             echo '</li>';
+        echo '</ul>';
+    echo '</div>';
+
+    // Gender Select
+    echo '<div class="relative pull-left">';
+    echo '<span style="display: none" class="text-top">Gender</span>';
+        echo '<ul class="dropdown bg-white d-i-b pull-left relative Gender">';
+             echo '<li>';
+             echo '   <a href="javascript:;" class="selected-text d-b" value="All"><span id ="Gender" class="d-i-b">Gender</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+             echo '</li>';
+             echo '<li>';
+             // echo $this->formRow($title);
+                 echo    '<ul class="dropdownOptions bg-white absolute full-width" style="display:none;">';
+                        
+                        foreach($selectGender as $Gender){ 
+                            echo '<li>';
+                                echo "<a href='javascript:;' value='$Gender'> $Gender </a>";
+                            echo '</li>';
+                        }
+                echo    '</ul>';
+
+             echo '</li>';
+        echo '</ul>';
+    echo '</div>';
+
     echo '<div class="relative pull-left"><span style="display: none">First name</span>'.$this->formRow($form->get("first_name")).'<label class="opacity0">Only "-" and alphabets are allowed</label></div>';
     echo '<div class="relative pull-left"><span style="display: none">Last name</span>'.$this->formRow($form->get("last_name")).'<label class="opacity0">Only "-" and alphabets are allowed</label></div>';
     echo '<div class="relative pull-left"><span style="display: none">Phone number*</span>'.$this->formRow($form->get("phone_number")).'<label class="opacity0">Please enter a valid phone number</label></div>';

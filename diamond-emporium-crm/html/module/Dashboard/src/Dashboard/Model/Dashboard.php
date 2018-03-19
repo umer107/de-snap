@@ -30,12 +30,12 @@ class DashboardForm extends Form
         
         
         $first_name = new \Zend\Form\Element\Text('first_name');
-	$first_name->setAttributes(array('id' => 'first_name', 'class' => 'firstname', 'placeholder' => 'First name','type'  => 'text',  'maxlength' => 64));
+	$first_name->setAttributes(array('id' => 'first_name', 'class' => 'firstname', 'placeholder' => 'First name*','type'  => 'text',  'maxlength' => 64));
 	$this->add($first_name);
         
         
         $last_name = new \Zend\Form\Element\Text('last_name');
-	$last_name->setAttributes(array('id' => 'last_name',  'placeholder' => 'Last name', 'type'  => 'text', 'class' => 'lastname', 'maxlength' => 64));
+	$last_name->setAttributes(array('id' => 'last_name',  'placeholder' => 'Last name*', 'type'  => 'text', 'class' => 'lastname', 'maxlength' => 64));
 	$this->add($last_name);
         
         $phoneNumber = new \Zend\Form\Element\Text('phone_number');

@@ -56,6 +56,9 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { bac
 .content-list:nth-child(odd) .dropdown li a.selected-text{background:#f5f5f5;}
 .content-list:nth-child(odd) .calendar-div .dropdown li a.selected-text{background:#ffffff;}
 .dropdown li a.selected-text span{ padding-right: 10px; width: 258px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; float: left; }
+.dropdown.title, .dropdown.Gender{   }
+.dropdown.title li a.selected-text span, .dropdown.Gender li a.selected-text span{ width: 108px;}
+.dropdown.title .dropdownOptions, .dropdown.Gender .dropdownOptions{ width: 165px; }
 #loadHere .dropdown li a.selected-text span{ width: 102px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: inline-block;}
 #loadHere .dropdown li a.selected-text span.inherit{ overflow: inherit; }
 .dropdown li ul{z-index:11}
