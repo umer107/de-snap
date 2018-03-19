@@ -561,6 +561,29 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
             
         }
 
+        //fetchCountriesList
+        public function fetchCountriesList($filter = null)
+        {            
+              try {                
+                 $select = new \Zend\Db\Sql\Select();
+                 $select->from('de_countries')->columns(array('country_id'));         
+                 
+                 $select = new \Zend\Db\Sql\Select();
+                 $select->from(array('c' => 'de_countries'))
+                         ->columns(array('country_id','country_name'));        
+                 $select->order('country_id Asc ');               
+                 //End-Sort-Data        
+                 $data = $this->executeQuery($select);   
+                 $result = $data->toArray();
+                 return $result;               
+                 
+            } catch (\Exception $ex) {
+                \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+            }
+            
+        }
+
+
         //
           //GetCalenderData
         public function  fetchCalenderData($filter = null)
