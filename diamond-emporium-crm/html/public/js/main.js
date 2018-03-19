@@ -5445,6 +5445,35 @@ $(document).on('click','.closeLeadClick', function (e) {
     
     GetLoginUserDetail();
     
+    /*------------------------------------------------------------------*/
+   /*---------------------Start GetCountries Ajax List------------------------ */
+   /*------------------------------------------------------------------*/
+   
+    function GetCountriesList() {
+        $.ajax({
+            type: "GET",
+            url: "/dashboard/ajaxGetCountriesList",
+            data: {},
+            success: function (data) {
+                var getData = data;                
+                var parsed = '';               
+                try{
+                  parsed = JSON.parse(data);                  
+                }           
+                catch(e){                   
+                return false;                  
+                }
+            }
+
+        });    
+        
+    }
+   
+   GetCountriesList();
+   /*------------------------------------------------------------------*/
+   /*---------------------Stop GetCountries Ajax List------------------------ */
+   /*------------------------------------------------------------------*/
+    
     
         
         
