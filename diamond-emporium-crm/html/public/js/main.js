@@ -8,6 +8,23 @@ $(document).ready(function () {
 /*---------------------Start Onload Function------------------------ */
 /*------------------------------------------------------------------*/
     
+
+  var countries = [
+     { value: 'Andorra', data: 'AD' },
+     // ...
+     { value: 'Zimbabwe', data: 'ZZ' }
+  ];
+
+  $('#aaautocomplete').autocomplete({
+      lookup: countries,
+      onSelect: function (suggestion) {
+          alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+      }
+  });
+
+
+
+
     
     function GetTeamStatus() {
         //$budget = '$2-5K';
@@ -1485,7 +1502,7 @@ setTimeout(function(){
         var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
         //var getBudget = $('#BudgetText').val();
         var getAgent = $('#assign_us_Dropdown').closest('a.selected-text').attr('value');
-        var getCountry = $('.country a.selected-text').attr('value');
+        var getCountry = $('#countryName').attr('value');
         var getState = $('#stateDropdown').closest('a.selected-text').attr('value');
         debugger
         var checkCountry = true;
@@ -2189,7 +2206,7 @@ setTimeout(function(){
         var getPhone = $('#phonenumber').val();
         var getEmail = $('#email').val();
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
-        var getCountry = $('.country a.selected-text').attr('value');
+        var getCountry = $('#countryName').attr('value');
         
         var checkCountry = true;
         if(getCountry == 'Australia')
@@ -3831,6 +3848,7 @@ function validateBasicInfo() {
                     //$('.add-address').hide();
                     //$('.add-address').slideDown(300);
                     GetCountriesList();
+                    $('.ui-state-default, .ui-autocomplete-input').val('Australia');
                     $('.next-saveDiv').removeClass('hide');
                     $('.newLead').addClass('opened');
                     $('.btn-nextDetails').trigger('click');
@@ -5287,6 +5305,9 @@ $(document).on('click', function(event){
     
 });// End
 
+
+
+
 /*------------------------------------------------------------------*/
 /*-------------------------- End Close Lead ----------------------- */
 /*------------------------------------------------------------------*/
@@ -5501,18 +5522,180 @@ $(document).on('click','.closeLeadClick', function (e) {
                 {                   
                   return false;                  
                 }
+                
+                
                 var setHtml = '';
+                var setHtml2 = '';
                 for (var i = 0; i < parsed.length; i++) {
                   var countryName = parsed[i].country_name;
                   setHtml += "<li><a href='javascript:;' value='"+countryName+"'>"+countryName+"</a></li>";
+                  setHtml2 += "<option value='"+countryName+"'>"+countryName+"</option>";
+
                 }
                 $('.countryList').html(setHtml);
+                $('#combobox').html(setHtml2);
+                
             }
 
         });    
         
     }
-   
+
+
+      function GetCountriesList2() {
+        $.ajax({
+            type: "GET",
+            url: "/dashboard/ajaxGetCountriesList",
+            data: {},
+            success: function (data) {
+                var getData = data;                
+                var parsed = '';               
+                try{
+                  parsed = JSON.parse(data);                  
+                }           
+                catch(e)
+                {                   
+                  return false;                  
+                }
+
+
+                var setHtml2 = '';
+                for (var i = 0; i < parsed.length; i++) {
+                  var countryName = parsed[i].country_name;
+                  setHtml2 += "<option value='"+countryName+"'>"+countryName+"</option>";
+
+                }
+                $('#combobox').html(setHtml2);
+                $('.ui-autocomplete li:first-child a').trigger('click');
+                $('.ui-autocomplete li:first-child').trigger('click');
+            }
+
+        });    
+        
+    }
+
+    GetCountriesList2();
+
+    setTimeout(function(){           
+
+       $(document).ready(function(){
+
+            (function($) {
+              $.widget("ui.combobox", {
+                  _create: function() {
+                      var input, self = this,
+                          select = this.element.hide(),
+                          selected = select.children(":selected"),
+                          value = selected.val() ? selected.text() : "",
+                          wrapper = $("<span>").addClass("ui-combobox").insertAfter(select);
+
+                      input = $("<input>").appendTo(wrapper).val(value).addClass("ui-state-default").autocomplete({
+                          delay: 0,
+                          minLength: 0,
+                          source: function(request, response) {
+
+                              var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+                              response(select.children("option").map(function() {
+                                  var text = $(this).text();
+                                  if (this.value && (!request.term || matcher.test(text))) return {
+                                      label: text.replace(
+                                      new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(request.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "$1"),
+                                      value: text,
+                                      option: this
+                                  };
+                              }));
+                          },
+                          select: function(event, ui) {
+                              
+                              ui.item.option.selected = true;
+                              self._trigger("selected", event, {
+                                  item: ui.item.option
+                              });
+                              var getCountry = ui.item.label;
+                              $('#countryName').attr('value', getCountry);
+                              $('.stateerror').addClass('opacity0');
+
+                              
+                          },
+                          change: function(event, ui) {
+                              if (!ui.item) {
+                                  var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex($(this).val()) + "$", "i"),
+                                      valid = false;
+                                  select.children("option").each(function() {
+                                      if ($(this).text().match(matcher)) {
+                                          this.selected = valid = true;
+                                          return false;
+                                      }
+                                  });
+                                  if (!valid) {
+                                    
+                                      // remove invalid value, as it didn't match anything
+                                      $(this).val("");
+                                      //select.val("");
+                                      //input.data("autocomplete").term = "";
+                                      return false;
+                                  }
+                              }
+                          }
+                      }).addClass("ui-widget ui-widget-content ui-corner-left");
+
+                      //input.data("autocomplete")._renderItem = function(ul, item) {
+                      //    return $("<li></li>").data("item.autocomplete", item).append("<a>" + item.label + "</a>").appendTo(ul);
+                      //};
+
+                      input.data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+                        return $( "<li>" )
+                          .data( "ui-autocomplete-item", item )
+                          .append( "<a>" + item.label+"</a>" )
+                          .appendTo( ul );
+                      };
+
+                      $("<button>").attr("tabIndex", -1).attr("title", "Show All Items").appendTo(wrapper).button({
+                          icons: {
+                          //    primary: "ui-icon-triangle-1-s"
+                          },
+                          text: false
+                      }).removeClass("ui-corner-all").addClass("ui-corner-right ui-button-icon ui-combobox-button").click(function() {
+                          // close if already visible
+                          if (input.autocomplete("widget").is(":visible")) {
+                              input.autocomplete("close");
+                              return;
+                          }
+
+                          // work around a bug (likely same cause as #5265)
+                          $(this).blur();
+
+                          // pass empty string as value to search for, displaying all results
+                          input.autocomplete("search", "");
+                          input.focus();
+                      });
+                  },
+
+                  destroy: function() {
+                     // this.wrapper.remove();
+                     // this.element.show();
+                     // $.Widget.prototype.destroy.call(this);
+                  }
+              });
+          })(jQuery);
+
+    }, 1000);
+    $(function() {
+        $("#combobox").combobox({
+            selected: function(event, ui) {
+                $('#log').text('selected ' + $("#combobox").val());
+            }
+        });
+        
+        //$("#combobox").closest(".ui-widget").find("input, button").prop("disabled", true);
+    });
+    
+
+   });
+
+  
+
+
    /*------------------------------------------------------------------*/
    /*---------------------Stop GetCountries Ajax List------------------------ */
    /*------------------------------------------------------------------*/
