@@ -71,6 +71,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { bac
 .dropdown li ul li:hover{background-color: #4778A8;}
 .dropdown li ul li:hover a{color: #ffffff;}
 .dropdownOptions{top:30px; width: 321px; border: 1px solid #DFDFDF; left: -20px; padding: 5px 0;}
+.dropdownOptions.countryList{max-height: 388px; overflow: auto;}
 .selected-text i { background: url(/images/arrow-down.png); display: inline-block; width: 14px; height: 8px; margin-top: 11px; background-repeat: no-repeat;}
 .maxHeightShow{max-height: 2000px; overflow: initial;}
 .maxHeightHide{max-height: 0px; overflow: hidden;}
@@ -559,46 +560,22 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 /* ----------------------------------------------------------------- */
 
 @media screen and (max-width:1369px){
-.additional-details input.requirements {
-    width: 909px;
-}
+
+.additional-details input.requirements { width: 909px; }
 .selectweek.triple-pad-left{padding-left: 0}
- 
 .selectweek.gap-left{margin-left: 0}
 .next-options, .leaveNext-options{padding-top: 40px}
 
 }
 
-
-.leadDeailInnerContainer{
-    float: left;
-    width: 100%;
-    font-size: 14px;
-    color: #5d5d5d;
-    padding: 10px 60px 10px 60px;
-}
-.leadDeailInnerContainer p{
-    float: left;
-    width: 100%;
-    line-height: 36px;
-    padding-left: 20px;
-}
+.leadDeailInnerContainer{ float: left; width: 100%; font-size: 14px; color: #5d5d5d; padding: 10px 60px 10px 60px;}
+.leadDeailInnerContainer p{ float: left; width: 100%; line-height: 36px; padding-left: 20px;}
 .leadDeailInnerContainer div{border:1px solid #efefef}
 .leadDeailInnerContainer p:nth-child(odd){background: #efefef;}
 .leadDeailInnerContainer p label{}
 .leadDeailInnerContainer p label:first-child{ float: left; width: 200px; font-weight: bold;}
 .leadDeailInnerContainer p label:last-child{}
-.editDetails{    width: 100px;
-    height: 36px;
-    text-align: center;
-    font-family: robotomedium;
-    font-size: 14px;
-    border: 1px solid #dfdfdf;
-    background: white;
-    line-height: 36px;
-    border-radius: 28px;
-    color: #29629a;}
-
+.editDetails{ width: 100px; height: 36px; text-align: center; font-family: robotomedium; font-size: 14px; border: 1px solid #dfdfdf; background: white; line-height: 36px; border-radius: 28px; color: #29629a;}
 .editDetails:hover{background: #29629a; color:white}
 .editDetails.disabled{background: #afafaf;color:white}
 .editDetails.disabled:hover{background: #afafaf;color: white;}
