@@ -332,68 +332,72 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
             try {
                 
                   $select = new \Zend\Db\Sql\Select();
-      $select->from('de_userdetail')->columns(array('id'));
+                  $select->from('de_userdetail')->columns(array('id'));                        
                         
-                        
-     //FullName  From Table "de_users"
-      $fullname = new \Zend\Db\Sql\Expression(
-        'CONCAT(u.first_name, \' \', u.last_name)'
-      );
+                  //FullName  From Table "de_users"
+                  $fullname = new \Zend\Db\Sql\Expression('CONCAT(u.first_name, \' \', u.last_name)');
+        
+      
                        
-      $select = new \Zend\Db\Sql\Select();
-      $select->from(array('l' => 'de_userdetail'))
-           ->columns(array(
-              'id','title','gender','first_name', 'last_name', 'phone_number', 'email', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','lead_owner_fullname' => 'lead_owner_name', 'assign_to','reson_skip_next_in_line','lead_status','lead_owner','create_date','booking_date'         
-           ))          
-           ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('lead_owner_image' => 'image' ), 'left');
-      
-      
-                        //Start-Filter-Parameter-From-User
-                         $value = $filter['budget'];
-                         $lead_status = $filter['lead_status'];
-                         $referral = $filter['referral'];
-                         $booking_date = $filter['booking_date'];
+                  $select = new \Zend\Db\Sql\Select();
+                  $select->from(array('l' => 'de_userdetail'))
+                         ->columns(array('id','title','gender','first_name', 'last_name', 'phone_number', 'email', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','lead_owner_fullname' => 'lead_owner_name', 'assign_to','reson_skip_next_in_line','lead_status','lead_owner','create_date','booking_date'))          
+                         ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('lead_owner_image' => 'image' ), 'left');
+                  
+                  //Start-Filter-Parameter-From-User
+                   $value = $filter['budget'];
+                   $lead_status = $filter['lead_status'];
+                   $referral = $filter['referral'];
+                   $booking_date = $filter['booking_date'];
                          
-                         if($filter['budget'] == 'all')
-                         {
-                             $filter['budget'] = '';
-                         }
-                         if($filter['lead_status'] == 'All')
-                         {
-                             $filter['lead_status'] = '';
-                         }
-                         if($filter['referral'] == 'All')
-                         {
-                             $filter['referral'] = '';
-                         }
-                        //End-Filter-Parameter-From-User
-                        if(!empty($filter['budget'])) {
-                            $start_budget = 0;
-                            $end_budget = 0;
-                            if($filter['budget'] == '$2-5K')
+                    if($filter['budget'] == 'all')
+                     {
+                       $filter['budget'] = '';
+                     }
+                    if($filter['lead_status'] == 'All')
+                     {
+                       $filter['lead_status'] = '';
+                     }
+                    if($filter['referral'] == 'All')
+                     {
+                       $filter['referral'] = '';
+                     }
+                   //End-Filter-Parameter-From-User
+                    if(!empty($filter['budget'])) {
+                     $start_budget = 0;
+                     $end_budget = 0;
+                    if($filter['budget'] == '$2,000 - $4,999'){                                                  
+                       $select->where(array('l.budget = ?' =>  $filter['budget']));
+                      }
+                    else if($filter['budget'] == '$5,000 - $9,999')
+                      {
+                        $select->where(array('l.budget = ?' =>  $filter['budget']));
+                      }
+                      else if($filter['budget'] == '$10,000 - $19,999')
+                       {
+                         $select->where(array('l.budget = ?' =>  $filter['budget']));
+                       }
+                            else if($filter['budget'] == '$20,000 - $34,999')
                             {
-                              $start_budget = 2000;
-                              $end_budget = 4999;
-                              $select->where->between('l.budget',$start_budget, $end_budget); 
+                               $select->where(array('l.budget = ?' =>  $filter['budget']));
                             }
-                            else if($filter['budget'] == '$5-10K')
+                            else if($filter['budget'] == '$35,000 - $49,999')
                             {
-                              $start_budget = 5000;
-                              $end_budget = 9999;
-                              $select->where->between('l.budget',$start_budget, $end_budget); 
+                              $select->where(array('l.budget = ?' =>  $filter['budget'])); 
                             }
-                            else if($filter['budget'] == '$10-20k')
+                            else if($filter['budget'] == '$50,000 - $74,999')
                             {
-                              $start_budget = 10000;
-                              $end_budget = 19999;
-                              $select->where->between('l.budget',$start_budget, $end_budget); 
+                              $select->where(array('l.budget = ?' =>  $filter['budget']));
                             }
-                            else if($filter['budget'] == '$20K+')
+                            else if($filter['budget'] == '$75,000 - $99,999')
                             {
-                              $start_budget = 20000;
-                              $select->where->greaterThanOrEqualTo('l.budget', $start_budget );
+                              $select->where(array('l.budget = ?' =>  $filter['budget']));
+                            }    
+                            else if($filter['budget'] == '$100,000+')
+                            {
+                              $select->where(array('l.budget = ?' =>  $filter['budget']));
                             }
-              //$select->where(array('l.budget = ?' =>  $value));
+                            //$select->where(array('l.budget = ?' =>  $value));
       }
                         if(!empty($filter['lead_status'])) {
         $select->where(array('l.lead_status = ?' =>  $lead_status));
@@ -509,7 +513,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                          $select->order('id Desc');
                         //End Sorting
                          
-      $data = $this->executeQuery($select);
+       $data = $this->executeQuery($select);
                         
                         
                          $result = $data->toArray();
