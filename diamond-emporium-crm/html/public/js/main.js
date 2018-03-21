@@ -2185,7 +2185,7 @@ setTimeout(function(){
             booking_duration: $('.durationSelection a').filter('.active').attr('value'),
             gender : $('.Gender a.selected-text').attr('value'),
             title : $('.title a.selected-text').attr('value'),
-            country : $('.country a.selected-text').attr('value')
+            country : $('#countryName').attr('value')
 
            
         };
