@@ -831,11 +831,8 @@ $(document).ready(function () {
 /* ----------------------------------------------------*/
 
     // Validating Email and opening next screen buttons
-    $(document).on('keyup', '.basicInfo input.checkEmailCount', function () {
+    $(document).on('keyup', '.additionalDiv input.checkEmailCount', function () {
 
-        var getFirstNameValue = $('.firstname').val().length;
-        var getLastNameValue = $('.lastname').val().length;
-        var getPhoneValue = $('.phonenumber').val().length;
         
         var getValue = $(this).val().length;
         var getemail = $(this).val();
