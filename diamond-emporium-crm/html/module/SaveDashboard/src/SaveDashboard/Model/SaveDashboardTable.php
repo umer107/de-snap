@@ -103,14 +103,18 @@ class SaveDashboardTable
         $booking_date = $data['booking_date'];
         $booking_time = $data['booking_time'];
         $booking_timezone = $data['booking_timezone'];
+        //Start-IF Booking Date is null or empty then add current date
+        if($booking_date == ''){
+            
+            $data['booking_date'] = date('Y-m-d');
+        }
+        //End-IF Booking Date is null or empty then add current date
         
-        
-         /*if(!empty($booking_date && $booking_time && $booking_timezone))              
-             {*/
+       
 	$select->where(array('l.booking_date = ?' => $booking_date ,'l.booking_time = ?' => $booking_time ,'l.booking_timezone = ?' => $booking_timezone ));	
         $exec_data = $this->executeQuery($select);
         $counter = count($exec_data);
-           
+        //Start-Condition is Apply when BookingTime Is Not Null Or Empty
           if($booking_time != '')
          {
             if($counter == 0)
@@ -135,8 +139,9 @@ class SaveDashboardTable
            }
               
           }
+          //End-Condition is Apply when BookingTime Is Not Null Or Empty
                  
-          //Insert
+          //Insert The Record Into The Database
                  return $this->tableGateway->insert($data);
                  
         }
