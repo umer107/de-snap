@@ -341,7 +341,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                        
                   $select = new \Zend\Db\Sql\Select();
                   $select->from(array('l' => 'de_userdetail'))
-                         ->columns(array('id','title','gender','first_name', 'last_name', 'phone_number', 'email', 'country','communication_method','product', 'referral','special_instructions','budget','reference_product', 'contact_method','lead_owner_fullname' => 'lead_owner_name', 'assign_to','reson_skip_next_in_line','lead_status','lead_owner','create_date','booking_date'))          
+                         ->columns(array('id','title','gender','first_name', 'last_name', 'phone_number', 'email', 'country','communication_method','user_booking_date','product', 'referral','special_instructions','budget','reference_product', 'contact_method','lead_owner_fullname' => 'lead_owner_name', 'assign_to','reson_skip_next_in_line','lead_status','lead_owner','create_date','booking_date'))          
                          ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('lead_owner_image' => 'image' ), 'left');
                   
                   //Start-Filter-Parameter-From-User
@@ -1036,7 +1036,7 @@ public function fetchLeadRecord($filter= null)
       $select = new \Zend\Db\Sql\Select();
       $select->from(array('l' => 'de_userdetail'))
            ->columns(array(
-              'id','title','gender','first_name', 'last_name', 'phone_number', 'email','country','communication_method','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method', 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'           
+              'id','title','gender','first_name', 'last_name', 'phone_number', 'email','country','communication_method','user_booking_date','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method', 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'           
            ));
                         
                       

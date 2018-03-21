@@ -107,6 +107,11 @@ class SaveDashboardTable
         if($booking_date == ''){
             
             $data['booking_date'] = date('Y-m-d');
+            $date['user_booking_date'] = 0;
+        }
+        else
+        {
+            $date['user_booking_date'] = 1;
         }
         //End-IF Booking Date is null or empty then add current date
         
