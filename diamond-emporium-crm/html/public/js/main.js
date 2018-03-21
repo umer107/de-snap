@@ -2174,6 +2174,7 @@ setTimeout(function(){
             budget : $('#budgetDropdown').closest('a.selected-text').attr('value'),
             reference_product : $("#referrenceDropdown").val(),
             contact_method : $("#perferrefDropdown").text(),
+            communication_method : $("#CommunicationMethod").text(),
             assign_to : $("#assign_us_Dropdown").text(),
             specify_requirements : $("#specify_requirements").val(),
             reson_skip_next_in_line : $("#skip_reason_dropdown").text(),
@@ -2270,8 +2271,9 @@ setTimeout(function(){
         //  $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
         //  return false
         // }
-        
+        debugger
       var data = getValuesFromForm();
+      
 
       if(data.booking_duration == null || undefined)
       {
