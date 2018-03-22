@@ -5565,6 +5565,7 @@ $(document).on('click','.closeLeadClick', function (e) {
    /*------------------------------------------------------------------*/
    
     function GetCountriesList() {
+      debugger
         $.ajax({
             type: "GET",
             url: "/dashboard/ajaxGetCountriesList",
@@ -5589,7 +5590,7 @@ $(document).on('click','.closeLeadClick', function (e) {
                   setHtml2 += "<option value='"+countryName+"'>"+countryName+"</option>";
 
                 }
-                $('.countryList').html(setHtml);
+                //$('.countryList').html(setHtml);
                 $('#combobox').html(setHtml2);
                 
             }
@@ -5671,7 +5672,10 @@ $(document).on('click','.closeLeadClick', function (e) {
                               var getCountry = ui.item.label;
                               $('#countryName').attr('value', getCountry);
                               $('.stateerror').addClass('opacity0');
-
+                              if(getCountry == 'Australia')
+                              { $('.stateDiv').removeClass('hide'); }
+                              else
+                              { $('.stateDiv').addClass('hide'); }
                               
                           },
                           change: function(event, ui) {
