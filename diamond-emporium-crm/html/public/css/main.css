@@ -16,7 +16,14 @@
 .ui-widget-header .ui-state-hover,
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
-.ui-widget-header .ui-state-focus { border: border: 0 none; background: #ffffff; font-weight: normal; color: #212121;}
+.ui-widget-header .ui-state-focus { border: border: 0 none; background: #4778A8; font-weight: normal;  line-height: 28px; height: 28px; color: white }
+.ui-state-hover span{color: white}
+.ui-state-hover a,
+.ui-widget-content .ui-state-hover a,
+.ui-widget-header .ui-state-hover a,
+.ui-state-focus a,
+.ui-widget-content .ui-state-focus a,
+.ui-widget-header .ui-state-focus  a { color: #ffffff !important;}
 .countryDiv{ height: 52px; width: 317px;}
 .ui-menu .ui-menu-item{ color: #A5A5A5; font-size: 11px; line-height: 28px; height: 28px;  padding: 0 0 0 22px; margin: 0 !important}
 .ui-menu .ui-menu-item:hover{ background: #4778A8; border: 0 none !important; padding: 0 0 0 22px; }
@@ -587,7 +594,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .leadDeailInnerContainer div{border:1px solid #efefef}
 .leadDeailInnerContainer p:nth-child(odd){background: #efefef;}
 .leadDeailInnerContainer p label{}
-.leadDeailInnerContainer p label:first-child{ float: left; width: 200px; font-weight: bold;}
+.leadDeailInnerContainer p label:first-child{ float: left; width: 240px; font-weight: bold;}
 .leadDeailInnerContainer p label:last-child{}
 .editDetails{ width: 100px; height: 36px; text-align: center; font-family: robotomedium; font-size: 14px; border: 1px solid #dfdfdf; background: white; line-height: 36px; border-radius: 28px; color: #29629a;}
 .editDetails:hover{background: #29629a; color:white}
