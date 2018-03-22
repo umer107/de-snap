@@ -2824,8 +2824,9 @@ setTimeout(function(){
 
               $('.additional-details .requirements').val(parsed[0].specify_requirements);
               
-               GetCountriesList();
-               $('.ui-state-default, .ui-autocomplete-input').val(parsed[0].country);
+               
+               
+               $('#countryName').attr('value',parsed[0].country);
                if(parsed[0].country == 'Australia')
                {
                 $('.stateDiv').removeClass('hide');
@@ -2834,8 +2835,20 @@ setTimeout(function(){
                {
                 $('.stateDiv').addClass('hide');
                }
-
-
+               //GetCountriesList();
+               $('#combobox').html('');
+               $('#combobox').html(window.comboboxList);
+               $(function() {
+                  $("#combobox").combobox({
+                      selected: function(event, ui) {
+                          $('#log').text('selected ' + $("#combobox").val());
+                      }
+                  });
+                  $("#combobox").next().next('.ui-combobox').remove();
+                  
+                  //$("#combobox").closest(".ui-widget").find("input, button").prop("disabled", true);
+              });
+               $('.ui-state-default, .ui-autocomplete-input').val(parsed[0].country);
               setTimeout(function(){ 
                   
                   $('.additional-details .dropdown.assignToDiv .dropdownOptions li a[id="'+parsed[0].assign_to_UserId+'"]').click();
@@ -2909,7 +2922,7 @@ setTimeout(function(){
                   $('.next-saveDiv').addClass('one-half-pad-top');
 
                   
-                  debugger
+                  
                   if(parsed[0].user_booking_date == '1')
                   {
                     $('#bookingDate').attr('timezone', getAmPm);
@@ -3890,7 +3903,18 @@ function validateBasicInfo() {
                 {
                     //$('.add-address').hide();
                     //$('.add-address').slideDown(300);
-                    GetCountriesList();
+                    //GetCountriesList();
+                    $('#combobox').html('');
+                    $('#combobox').html(window.comboboxList);
+                    $(function() {
+                        $("#combobox").combobox({
+                            selected: function(event, ui) {
+                                $('#log').text('selected ' + $("#combobox").val());
+                            }
+                        });
+                        $("#combobox").next().next('.ui-combobox').remove();
+                        
+                    });
                     $('.ui-state-default, .ui-autocomplete-input').val('Australia');
                     $('.next-saveDiv').removeClass('hide');
                     $('.newLead').addClass('opened');
@@ -5565,7 +5589,7 @@ $(document).on('click','.closeLeadClick', function (e) {
    /*------------------------------------------------------------------*/
    
     function GetCountriesList() {
-      debugger
+
         $.ajax({
             type: "GET",
             url: "/dashboard/ajaxGetCountriesList",
@@ -5592,13 +5616,14 @@ $(document).on('click','.closeLeadClick', function (e) {
                 }
                 //$('.countryList').html(setHtml);
                 $('#combobox').html(setHtml2);
+                window.comboboxList = setHtml2;
                 
             }
 
         });    
         
     }
-
+    GetCountriesList();
 
       function GetCountriesList2() {
         $.ajax({
@@ -5632,7 +5657,7 @@ $(document).on('click','.closeLeadClick', function (e) {
         
     }
 
-    GetCountriesList2();
+    //GetCountriesList2();
 
     setTimeout(function(){           
 
@@ -5740,7 +5765,8 @@ $(document).on('click','.closeLeadClick', function (e) {
               });
           })(jQuery);
 
-    }, 1000);
+    }, 0);
+
     $(function() {
         $("#combobox").combobox({
            classes: {
