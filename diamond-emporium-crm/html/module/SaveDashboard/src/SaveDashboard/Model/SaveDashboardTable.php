@@ -189,27 +189,30 @@ class SaveDashboardTable
              
          }
         else {
-            
-            if($counter == 0)
+         if($booking_time != '')
          {
+            if($counter == 0)
+           {
              //TODO HANDLER booking_room  set to 1
              $data['booking_room'] = 1;
-         }
-         else if($counter == 1)
-         {
+           }
+           else if($counter == 1)
+           {
              //TODO HANDLER booking_room set to 2
              $data['booking_room'] = 2;
-         }
-         else if($counter == 2)
-         {
+           }
+           else if($counter == 2)
+           {
              //TODO HANDLER booking_room set to 3
              $data['booking_room'] = 3;
-         }
-        else
-        {
+           }
+           else
+           {
             //TODO HANDLER    return 0 or exit;
             return " Room Full Pleae Find Another Nearby Hotel";
-        }
+           }
+              
+          }
               
 	        if($where)
 		  return $this->tableGateway->update($data, $where);
