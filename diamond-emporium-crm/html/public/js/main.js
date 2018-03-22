@@ -2277,7 +2277,7 @@ setTimeout(function(){
         data.booking_duration = 0;
         
       }
-      
+            
       
       //alert("Successfully triggered");
       //Ajax Call
@@ -2756,7 +2756,7 @@ setTimeout(function(){
 /* ------------------ Start Edit Detail ------------------------*/
     
     $(document).on('click','.editDetails:not(.disabled)', function (e) {
-    showMainLoading();  
+    //showMainLoading();  
     var getLeadId = $(this).attr('lead-id');    
     
     $.ajax({
@@ -2907,20 +2907,30 @@ setTimeout(function(){
                                     
                   //loadQuestionViewcalnder(getDay, getFullDate, getOnlyDate, getAssigneeId, getAmPm); // SLoading Calendar
                   $('.next-saveDiv').addClass('one-half-pad-top');
-                  $('#bookingDate').attr('timezone', getAmPm);
-                  $('#bookingDate').attr('date', getFullDate);
-                  $('#bookingDate').attr('time', parsed[0].booking_time);
+
+                  
+                  debugger
+                  if(parsed[0].user_booking_date == '1')
+                  {
+                    $('#bookingDate').attr('timezone', getAmPm);
+                    $('#bookingDate').attr('date', getFullDate);
+                    $('#bookingDate').attr('time', parsed[0].booking_time);
+                  }
+                  
                   //$('#bookingDate').addClass('nowCanSave');
                   $('#bookingDate').addClass('nowCanSave');
-                  if(parsed[0].booking_time != "" )
-                  {
-                    $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time + ' ' + getAmPm); // Setting booking date field
+                  if(parsed[0].user_booking_date == '1'){
+                    if(parsed[0].booking_time != "" )
+                    {
+                      $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time + ' ' + getAmPm); // Setting booking date field
+                    }
+                    else
+                    {
+                      $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth);  
+                    }
+                    $('.btn-saveBooking').trigger('click');
                   }
-                  else
-                  {
-                    $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth);  
-                  }
-                  $('.btn-saveBooking').trigger('click');
+                  
                   
               }, 1000);
               
@@ -2933,9 +2943,22 @@ setTimeout(function(){
               $('.dashboard-header').addClass('hide');
               $('.basicInfo div.relative span, .additional-details div.relative span:first-child').css('display','inline-block');
               $('.addressContainer, .additional-details').show();
-              $('.bookNowDiv').removeClass('hide'); 
               $('.btn-nextDetails').addClass('hide');
               $('.btn-saveDetails').removeClass('hide');
+              if(parsed[0].user_booking_date == '1')
+              {
+                $('.bookNowDiv').removeClass('hide'); 
+                
+                
+              }
+              else
+              {
+                
+                $('.next-saveDiv, .btn-bookNow').removeClass('hide');
+                
+              } 
+
+              
                 
             }
         });            
@@ -5466,10 +5489,11 @@ $(document).on('click','.leadUserName', function (e) {
                html += "<p><label>Prefered method of contact:</label><label>" + parsed[0].contact_method + " </label></p> ";
                html += "<p><label>Special Instruction:</label><label>" + parsed[0].special_instructions + " </label></p> ";
                html += "<p><label>Lead Status:</label><label>" + parsed[0].lead_status + " </label></p> ";
-               
-               html += "<p><label>Booking Time:</label><label>" + parsed[0].booking_time + " </label></p> ";
-               html += "<p><label>Booking Date:</label><label>" + parsed[0].booking_date + " </label></p> ";
-               
+               if(parsed[0].user_booking_date == '1')
+               {
+                  html += "<p><label>Booking Time:</label><label>" + parsed[0].booking_time + " </label></p> ";
+                  html += "<p><label>Booking Date:</label><label>" + parsed[0].booking_date + " </label></p> ";
+               }
                
                 $('.leadDeailInnerContainer div').html(html);
                 $('.leadsContainer').addClass('hide');
