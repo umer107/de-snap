@@ -4671,7 +4671,6 @@ $(document).on('click','.calendarLeaveYear', function (e) {
 
 $(document).on('click','.suggestedDate', function (e) {
 
-
     $('#suggestedDateCalender').multiDatesPicker({
         minDate: 0,
         onSelect:function(data, event){
@@ -4722,11 +4721,26 @@ $(document).on('click','.suggestedDate', function (e) {
 
     });
 
-
-
 });
 
-// calendar month selection
+/*---------------------------------------------*/
+/*---------------------------------------------*/
+/*---------------------------------------------*/
+
+// Suggested Date on outside click 
+
+    $(document).on('click' ,function(event){
+      var container = $(".suggestedDateCalender, .suggestedDate");
+        if (!container.is(event.target) && container.has(event.target).length === 0)
+        {
+          $('#suggestedDateCalender').multiDatesPicker('resetDates');
+          $('#suggestedDateCalender').multiDatesPicker('destroy');
+        }
+    });// End
+
+// Suggested Date on outside click 
+
+
 /*---------------------------------------------*/
 /*---------------------------------------------*/
 /*---------------------------------------------*/
@@ -5534,6 +5548,7 @@ $(document).on('click','.leadUserName', function (e) {
 $(document).on('click','.closeLeadClick', function (e) {
        
       var el =$(this);
+      $('.calendarClose ').addClass('maxHeightHide');
       if(el.hasClass('active'))
       { 
         el.removeClass('active');
@@ -5547,7 +5562,7 @@ $(document).on('click','.closeLeadClick', function (e) {
         el.next('.closeLeadPopup').slideDown(300);
       } 
 
-      $('.calendarClose ').addClass('maxHeightHide');
+      
 
 });
 
