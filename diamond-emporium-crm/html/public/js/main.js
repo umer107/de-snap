@@ -1399,6 +1399,211 @@ window.todayDate2 = todaysDate2
     window.weeklyDate = setFirstDate + ' - ' + setLastDate;
 
 /*---------------------------------------------*/
+
+
+
+/*------------------New Calendar Js ---------------------*/
+/*------------------New Calendar Js ---------------------*/
+/*------------------New Calendar Js ---------------------*/
+
+// Rings filter
+
+$(document).on('click','.bookingRooms a', function (e) {
+
+    var getValue = $(this).attr('value');
+    $('.bookingRooms a').removeClass('active');
+    $(this).addClass('active');
+
+    if(getValue == "All Rooms")
+    {
+      $('.roomFour, .roomThree, .roomTwo, .roomOne').removeClass('hide');
+    }
+    else if(getValue == "Room 1")
+    {
+      $('.roomFour, .roomThree, .roomTwo').addClass('hide');
+      $('.roomOne').removeClass('hide');
+    }
+    else if(getValue == "Room 2")
+    {
+      $('.roomFour, .roomThree, .roomOne').addClass('hide');
+      $('.roomTwo').removeClass('hide');
+    }
+    else if(getValue == "Room 3")
+    {
+      $('.roomFour, .roomTwo, .roomOne').addClass('hide');
+      $('.roomThree').removeClass('hide');
+    }
+    else
+    {
+      $('.roomThree, .roomTwo, .roomOne').addClass('hide');
+      $('.roomFour').removeClass('hide');
+    }
+
+    
+});
+
+/*====================================================*/
+
+// New Calendar Dates Scroll
+$(document).on('click','.arrowNext, .arrowPrev', function (e) {
+  
+  if($(this).attr('date-scroll') == "next")
+  {
+    var getThisDate = $('.weeklyDates span').attr('nextweekdate');
+    loadWeeklyDates(getThisDate);
+  }
+  else
+  {
+    var getThisDate = $('.weeklyDates span').attr('previousweekdate');
+    loadWeeklyDates(getThisDate);
+  }
+
+});
+
+/*====================================================*/
+
+$(document).on('click','.daysSlider label.room2', function (e) {
+    $(this).closest('.roomsContainer').addClass('scrolled');
+    var getDay = $(this).closest('.daysCalendar').attr('titleDay');
+    $('.' + getDay).find('.roomsContainer').addClass('scrolled');
+});
+
+/*====================================================*/
+
+$(document).on('click','.daysSlider label.room3', function (e) {
+    $(this).closest('.roomsContainer').removeClass('scrolled');
+    var getDay = $(this).closest('.daysCalendar').attr('titleDay');
+    $('.' + getDay).find('.roomsContainer').removeClass('scrolled');
+});
+
+/*====================================================*/
+
+$(document).on('click','.addBookingLinka', function (e) {
+
+    
+    var p = $(this)
+    var offset = p.offset();
+    var getOffsetTop = offset.top;
+    var getOffsetLeft = offset.left;
+    var setHtml = '<div class="addBookingContainer">'
+          setHtml += '<div class="roomBooking orange roomOne">';
+            setHtml += '<p class="bold fs-12 headBar"><span class="ellipsis"> Claudia Lopez</span><span>BO</span></p>';
+            setHtml += '<div class="full align-left half-pad-left lh-18 one-pad-top">';
+              setHtml += '<p><i class="icon-calendarClose fs-12 "></i> <span class="bold d-i-b half-pad-left">ER</span></p>';
+              setHtml += '<p><i class="icon-calendarClose fs-12 "></i> <span class="bold d-i-b half-pad-left">$12,000</span></p>';
+            setHtml += '</div>';
+            setHtml += '</div>';
+        setHtml += '</div>';
+
+    var container = "<div class='tempContainer fixed' style='top:"+getOffsetTop+"px ; left:"+getOffsetLeft+"px'>" + setHtml + "</div>";
+    $(this).after(container);
+});
+
+
+// close dropdown on outside click 
+    $(document).on('click', function(event){
+        var container = $(".tempContainer, .addBookingLink");
+        if (!container.is(event.target) &&            
+            container.has(event.target).length === 0)
+            {
+              
+                if($('.tempContainer').is(':visible'))
+                {
+                  $('.tempContainer').hide(0)
+                }
+            }
+    });// End
+
+// Weekly Dates 
+
+
+  //var date = '2018-06-12';
+  var thisdate = new Date();
+  loadWeeklyDates(thisdate);
+  function loadWeeklyDates(date) {
+
+
+
+      //console.log('next start', moment(date).weekday(7).format('DD/MM/YYYY')); 
+      //console.log('next end', moment(date).weekday(13).format('DD/MM/YYYY')); 
+
+      //var getCurrentDates = moment(date).weekday(7).format('D');
+      //var getCurrentMonths = moment(date).weekday(13).format('MMMM');
+      
+
+
+      //console.log('prev start', moment(date).weekday(-7).format('DD/MM/YYYY')); 
+      //console.log('prev end', moment(date).weekday(-1).format('DD/MM/YYYY')); 
+
+      console.log('current start', moment(date).weekday(0).format('DD/MM/YYYY')); 
+      console.log('current end', moment(date).weekday(6).format('DD/MM/YYYY')); 
+      
+      var getStartDate = moment(date).weekday(0).format('YYYY-MM-DD');
+      var getNextWeekStartDate = moment(date).weekday(7).format('YYYY-MM-DD');
+      var getPreviousWeekStartDate = moment(date).weekday(-7).format('YYYY-MM-DD');
+      var getCurrentYear = moment(date).weekday(6).format('YYYY');
+
+      setFirstDate = '';
+      setLastDate = '';
+
+      for (var a = 0; a < 7; a++) {
+
+          var getCurrentDate = moment(date).weekday(a).format('D');
+          var getCurrentMonth = moment(date).weekday(a).format('MMMM');
+          var getCurrentMonth = moment(date).weekday(a).format('MMMM');
+          var dateSuffix = ''
+          if(getCurrentDate == 1 || getCurrentDate == 21 || getCurrentDate == 31)
+          {
+              dateSuffix = 'st'
+          }
+          else if(getCurrentDate == 2 || getCurrentDate == 22)
+          {
+              dateSuffix = 'nd'   
+          }
+          else if(getCurrentDate == 3 || getCurrentDate == 23)
+          {
+              dateSuffix = 'rd' 
+          }
+          else
+          {
+              dateSuffix = 'th'    
+          }
+          if(a == 0)
+          {
+              setFirstDate = getCurrentDate + dateSuffix + ' - '; 
+          }
+          else if(a == 6)
+          {
+              setLastDate = getCurrentDate + dateSuffix
+          }
+          var completeDate = setFirstDate + setLastDate + ' '+ getCurrentMonth + ', ' + getCurrentYear;
+
+      }
+
+      $('.weeklyDates span').html(completeDate).attr('startDate',getStartDate);
+      $('.weeklyDates span').attr('nextWeekDate',getNextWeekStartDate);
+      $('.weeklyDates span').attr('previousWeekDate',getPreviousWeekStartDate);
+      
+
+  }
+
+/*====================================================*/
+
+
+
+/*------------------New Calendar Js ---------------------*/
+/*------------------New Calendar Js ---------------------*/
+/*------------------New Calendar Js ---------------------*/
+
+
+
+
+
+
+/*---------------------------------------------*/
+
+
+/*---------------------------------------------*/
 /*---------------------------------------------*/
 /*---------------------------------------------*/
 
@@ -1424,7 +1629,7 @@ setTimeout(function(){
             }
     });
 
-
+/*
     function suggestedDate() {
         
         var getAssigneeId = window.selectedAssigneeId;
@@ -1470,6 +1675,7 @@ setTimeout(function(){
         $('#bookingDate').attr('timeZone', getAmPm);
         $('#bookingDate').attr('date', getFullDate); 
         $('.coverAreaBooking').removeClass('hide');
+        var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
         loadQuestionViewcalnder(getDay, getFullDate, getOnlyDate, getAssigneeId, getAmPm);
     }
 
@@ -1487,8 +1693,15 @@ setTimeout(function(){
         $('#bookingDate').attr('date', getFullDate);
 
         $('.suggestedDate, #bookingDate').html(setDate);
-    }
+    }*/
     
+    function suggestedDate() {
+        
+        var getAssigneeId = window.selectedAssigneeId;
+        loadingCalendar2();
+        var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
+        loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
+    }
 /*--------------------------------------------------*/
     // Validation
 
@@ -1561,7 +1774,8 @@ setTimeout(function(){
             $('.icMinimize').addClass('hide');
             $('.icExpand').removeClass('hide');
             $('.next-saveDiv').addClass('hide');
-            $('.bookNowDiv').removeClass('hide');
+            //$('.bookNowDiv').removeClass('hide');
+            $('.NewCalendarContainer').removeClass('hide');
         }
 
     }
@@ -1620,10 +1834,12 @@ setTimeout(function(){
     // Book Now Calendar Close
     $(document).on('click', '.cancelBooking', function () {
         $('.next-saveDiv').removeClass('hide');
-        $('.bookNowDiv').addClass('hide');
+        //$('.bookNowDiv').addClass('hide');
+        $('.NewCalendarContainer').addClass('hide');
         additionalDetailsExpand();
         $('.savedBooking').addClass('hide');
         $('.btn-bookNow').removeClass('hide');
+
         $('#bookingDate').removeClass('nowCanSave');
         $('.suggestedDate').html('');
     });
@@ -2756,7 +2972,7 @@ setTimeout(function(){
 /* ------------------ Start Edit Detail ------------------------*/
     
     $(document).on('click','.editDetails:not(.disabled)', function (e) {
-    //showMainLoading();  
+    showMainLoading();  
     var getLeadId = $(this).attr('lead-id');    
     
     $.ajax({
@@ -2906,9 +3122,7 @@ setTimeout(function(){
                   // destroy calendar
                   $('#calendar2').fullCalendar("destroy");
                   
-                  $('#bookingDate').attr('time', parsed[0].booking_time);
-                  $('#bookingDate').attr('timeZone', getAmPm);
-                  $('#bookingDate').attr('date', getFullDate); 
+                  
                   
                   //$('#bookingDate').attr('time', "8:00 - 9:00");
                   //$('#bookingDate').attr('timeZone', getAmPm);
@@ -2933,6 +3147,7 @@ setTimeout(function(){
                   //$('#bookingDate').addClass('nowCanSave');
                   $('#bookingDate').addClass('nowCanSave');
                   if(parsed[0].user_booking_date == '1'){
+
                     if(parsed[0].booking_time != "" )
                     {
                       $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time + ' ' + getAmPm); // Setting booking date field
@@ -2985,10 +3200,12 @@ setTimeout(function(){
 /*------------------------------------------------------------------*/
 
 
-    function loadQuestionViewcalnder(getDay, getFullDate, getOnlyDate, getAssigneeId, getAmPm)
+    //function loadQuestionViewcalnder(getDay, getFullDate, getOnlyDate, getAssigneeId, getAmPm)
+    function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
     { 
 
-           var data =  {booking_date : getFullDate , day : getDay, assigneeId : getAssigneeId, booking_timezone : getAmPm}
+           //var data =  {booking_date : getFullDate , day : getDay, assigneeId : getAssigneeId, booking_timezone : getAmPm}
+           var data =  {booking_date : getWeeklyDate , assign_UserId : getAssigneeId}
            // Check if Timezone is AM or PM
           if(getAmPm == "AM")
           { 
@@ -4843,6 +5060,12 @@ $(document).on('click','.calenderfilterOptions span', function (e) {
     loadLeads();
 });
 
+
+
+
+
+
+
 /*---------------------------------------------*/
 /*---------------------------------------------*/
 /*---------------------------------------------*/
@@ -4862,10 +5085,11 @@ $(document).on('click','.rings a', function (e) {
 // Get calendar Dates
 
 $(document).on('click','.submitDates', function (e) {
-    var getDates = $('#altField').val(); 
+    var getDates = $('#altField').val();
+
     if(getDates == "")
     {
-        showCalendarError()
+        showCalendarError();
         $('.calendarDropdown').slideUp(0);
         return false
     }   
@@ -4875,7 +5099,7 @@ $(document).on('click','.submitDates', function (e) {
     $(this).closest('.dropdownOptions').slideUp(50);
     $('#multiCalendar').multiDatesPicker('resetDates');
     $('.calendarDropdown').slideUp(0);
-    loadLeads()
+    loadLeads();
 });
 
 /*---------------------------------------------*/
@@ -4889,18 +5113,18 @@ $(document).on('click','.icon-close', function (e) {
     if(el.closest('a.selected-text').hasClass('agentStatus'))
     {
         el.prev('span').html('Status');
-        loadLeads()
+        loadLeads();
     }
     if(el.closest('a.selected-text').hasClass('Referral'))
     {
         el.prev('span').html('Referral');
-        loadLeads()
+        loadLeads();
     }
     else if(el.closest('a.selected-text').hasClass('LeadsCalendar'))
     {
         $('.LeadsCalendar span').html('This month');
         $('.dateSelected').html(window.thisMonth);
-        loadLeads()
+        loadLeads();
     }
     return false
 });
@@ -5303,7 +5527,7 @@ $(document).on('click','.closeLeadDate', function (e) {
         el.closest('.closeLeadPopup').find('.calendarClose').addClass('hide');
         el.closest('.closeLeadPopup').find('.calendarClose').addClass('maxHeightHide');
         setTimeout(function(){ 
-            el.closest('.closeLeadPopup').find('.calendarClose ').removeClass('hide');
+            el.closest('.closeLeadPopup').find('.calendarClose').removeClass('hide');
         }, 500);
 
       }
