@@ -1696,7 +1696,7 @@ setTimeout(function(){
     }*/
     
     function suggestedDate() {
-        
+        debugger
         var getAssigneeId = window.selectedAssigneeId;
         loadingCalendar2();
         var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
@@ -1707,6 +1707,7 @@ setTimeout(function(){
 
     function validation()
     {
+        debugger;
         var getProduct = $('#productDropdown').closest('a.selected-text').attr('value');
         var getReferral = $('#referralDropdown').closest('a.selected-text').attr('value');
         var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
@@ -1776,18 +1777,21 @@ setTimeout(function(){
             $('.next-saveDiv').addClass('hide');
             //$('.bookNowDiv').removeClass('hide');
             $('.NewCalendarContainer').removeClass('hide');
+            suggestedDate();
         }
 
     }
 
     // Book Now Open
     $(document).on('click', '.btn-bookNow', function () {
+       
         validation();
     });
 
     // Book Now Open
-    $(document).on('click', '.btn-bookNow.canOpen', function () {
-        validation();
+    //$(document).on('click', '.btn-bookNow.canOpen', function () {
+        //debugger;
+       //validation();
 
         //additionalDetailsMinimize();
         //$('.icMinimize').addClass('hide');
@@ -1796,7 +1800,7 @@ setTimeout(function(){
         //$('.bookNowDiv').removeClass('hide');
         //$(this).removeClass('open').addClass('close');
         //$('.bookingDiv').css('height','auto');   
-    });
+    //});
 
     /*-------------------------------------------------*/
 
@@ -3201,12 +3205,13 @@ setTimeout(function(){
 
 
     //function loadQuestionViewcalnder(getDay, getFullDate, getOnlyDate, getAssigneeId, getAmPm)
-    function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
+    function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate)
     { 
 
            //var data =  {booking_date : getFullDate , day : getDay, assigneeId : getAssigneeId, booking_timezone : getAmPm}
            var data =  {booking_date : getWeeklyDate , assign_UserId : getAssigneeId}
            // Check if Timezone is AM or PM
+          /*
           if(getAmPm == "AM")
           { 
             $('.PM-heading').addClass('hide'); 
@@ -3221,7 +3226,7 @@ setTimeout(function(){
             $('#calendar2').addClass('pmHeight');
             $('#calendar2').removeClass('amHeight');
           
-          }
+          }*/
             // Get 
            $.ajax({
                 
