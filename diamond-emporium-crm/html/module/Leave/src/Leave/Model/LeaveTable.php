@@ -779,6 +779,11 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
              $calendar_time[1] = '9-10';
              $calendar_time[2] = '11-12';
              $calendar_time[3] = '12-1';
+             $calendar_time[4] = '1-2';
+             $calendar_time[5] = '2-3';
+             $calendar_time[6] = '3-4';
+             $calendar_time[7] = '4-5';
+             $calendar_time[8] = '5-6';
              //return $calendar_time;
              /*Set The Array of Time*/
              
