@@ -732,8 +732,22 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         
                         foreach ($result as $item1)
                         {
-                          
-                          $groups[$key][$key1][$item1['booking_room']] = $item1; 
+                         
+                         $key2 = $item1['booking_room'];
+                         //Empty Data Not Push into Array   
+                          if(!empty($key))
+                          {
+                              if(!empty($key1))
+                              {
+                                  if(!empty($key2))
+                                  {
+                                        $groups[$key][$key1][$item1['booking_room']] = $item1; 
+                                  }
+                              }
+                          }
+                          //Empty Data Not Push into Array
+                                
+                            //$groups[$key][$key1][$item1['booking_room']] = $item1; 
                         }
                         
 
