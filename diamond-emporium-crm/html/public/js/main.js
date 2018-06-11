@@ -1457,7 +1457,7 @@ $(document).on('click','.arrowNext, .arrowPrev', function (e) {
     var getThisDate = $('.weeklyDates span').attr('previousweekdate');
     loadWeeklyDates(getThisDate);
   }
-
+  suggestedDate();
 });
 
 /*====================================================*/
@@ -1696,7 +1696,7 @@ setTimeout(function(){
     }*/
     
     function suggestedDate() {
-        debugger
+        
         var getAssigneeId = window.selectedAssigneeId;
         loadingCalendar2();
         var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
@@ -1707,7 +1707,7 @@ setTimeout(function(){
 
     function validation()
     {
-        debugger;
+        
         var getProduct = $('#productDropdown').closest('a.selected-text').attr('value');
         var getReferral = $('#referralDropdown').closest('a.selected-text').attr('value');
         var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
@@ -1960,6 +1960,45 @@ setTimeout(function(){
         el.closest('.dropdown').prev('span.text-top').slideDown(150);
         el.closest('.dropdown').next('select').find('option').attr('value',getValue);
         el.closest('.dropdown').next('label').addClass('opacity0');
+
+        //If Title
+        if(el.closest('.dropdown').hasClass('title'))
+        {   
+          
+          if(getValue == "Mr")
+          {
+            $('.dropdown.Gender').find('a.selected-text').attr('value','Male');
+            $('.dropdown.Gender').find('span').html('Male');
+          }
+          else
+          {
+            $('.dropdown.Gender').find('a.selected-text').attr('value','Female');
+            $('.dropdown.Gender').find('span').html('Female');
+          }
+          $('.dropdown.Gender').prev('.text-top').show();
+            
+            //return false; 
+        }
+
+        //If Gender
+        if(el.closest('.dropdown').hasClass('Gender'))
+        {   
+          
+          if(getValue == "Male")
+          {
+            $('.dropdown.title').find('a.selected-text').attr('value','Mr');
+            $('.dropdown.title').find('span').html('Mr');
+          }
+          else
+          {
+            $('.dropdown.title').find('a.selected-text').attr('value','Mrs');
+            $('.dropdown.title').find('span').html('Mrs');
+          }
+          //$('.dropdown.Gender').prev('.text-top').show();
+            
+            //return false; 
+        }
+
 
         // If Calendar
         if(el.closest('.dropdown').hasClass('calendar'))
@@ -3205,10 +3244,11 @@ setTimeout(function(){
 
 
     //function loadQuestionViewcalnder(getDay, getFullDate, getOnlyDate, getAssigneeId, getAmPm)
-    function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate)
+    /*function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate)
     { 
 
            //var data =  {booking_date : getFullDate , day : getDay, assigneeId : getAssigneeId, booking_timezone : getAmPm}
+           debugger
            var data =  {booking_date : getWeeklyDate , assign_UserId : getAssigneeId}
            // Check if Timezone is AM or PM
           /*
@@ -3228,7 +3268,7 @@ setTimeout(function(){
           
           }*/
             // Get 
-           $.ajax({
+          /* $.ajax({
                 
                 type: "GET",
                 url: "dashboard/ajaxGetDataForCustomViewCalender",
@@ -3395,10 +3435,83 @@ setTimeout(function(){
                   }, 1000);
                    
 
+            }*/
+            
+        /*});
+    }*/
+
+
+    function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate)
+    { 
+           
+           var data =  {booking_date : getWeeklyDate , assign_UserId : getAssigneeId}
+          // Get 
+           $.ajax({
+                
+                type: "GET",
+                url: "dashboard/ajaxGetDataForCustomViewCalender",
+                data: data,
+                success: function (data) {
+                console.log(data);
+                // Convert Json into Array
+                var parsed = '';
+                try{
+                  parsed = JSON.parse(data);
+                }
+                catch(e)
+                {
+                  return false;                  
+                }   
+
+                // Get Weekly Start Dates 
+                /*================================*/
+
+                var dateCounter = 0;
+                var weeklyDatesArray = [];
+                $.each(parsed, function(key, value){
+                  dateCounter++;
+                  var getkey = key;
+                  weeklyDatesArray.push(getkey);
+                  // get Day by Name
+                  var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                  var a = new Date(getkey);
+                  var getDayName = weekday[a.getDay()];
+                  // get Day Date
+                  var dayDate = a.getDate();
+                  // get Month
+                  var getMonth = a.getMonth()+1;
+                  var setFinalDate = getDayName + ' ' + getMonth + '/' + dayDate;
+                  $('.daysCalendar.'+dateCounter + ' .headerPart').html(setFinalDate);
+                });
+
+                // Get Weekly End Dates 
+
+                /*================================*/
+
+                // Bind Data to  Weekly Start Dates 
+                
+                var arr = [];
+                for(var x in parsed){
+                  arr.push(parsed[x]);
+                }
+                console.log(arr);
+
+                for (var i = 0; i < arr.length; i++) {
+                  var dayTimes = arr[i];
+
+                  $.each(dayTimes, function(key, value){
+                    var getKey = key;
+                    var getKeyValue = value;
+                    var jjkjkj = dayTimess;
+                  });
+                  
+                }
+
             }
             
         });
     }
+
 
     //Function Call on Window onLoad
         
