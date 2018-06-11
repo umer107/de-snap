@@ -171,6 +171,7 @@ $resources = array(
     'Dashboard\Controller\Dashboard::ajaxGetLeadsByBudget',
     'Dashboard\Controller\Dashboard::ajaxGetDataforCalender',
     'Dashboard\Controller\Dashboard::ajaxGetDataForQuestionViewCalender',
+    'Dashboard\Controller\Dashboard::ajaxGetDataForCustomViewCalender',
     'Dashboard\Controller\Dashboard::ajaxUpdateleadStatus',  
     'Dashboard\Controller\Dashboard::ajaxGetTeamStatus',  
     'SaveDashboard\Controller\SaveDashboard::index',

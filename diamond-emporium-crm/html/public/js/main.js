@@ -3270,7 +3270,7 @@ setTimeout(function(){
            $.ajax({
                 
                 type: "GET",
-                url: "dashboard/ajaxGetDataForQuestionViewCalender",
+                url: "dashboard/ajaxGetDataForCustomViewCalender",
                 data: data,
                 success: function (data) {
                   console.log(data);

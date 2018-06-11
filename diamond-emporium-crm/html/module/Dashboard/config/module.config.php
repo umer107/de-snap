@@ -115,7 +115,18 @@ return array(
                                 'action'     => 'ajaxUpdateleadStatus',
                             ),
                         ),
+                    ),            
+             'ajaxGetDataForCustomViewCalender' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetDataForCustomViewCalender',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetDataForCustomViewCalender',
+                            ),
+                        ),
                     ),
+            
             'ajaxGetTeamStatus' => array(
                         'type' => 'Segment',
                         'options' => array(
