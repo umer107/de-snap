@@ -4,6 +4,46 @@
     {
       "icon": {
         "paths": [
+          "M512 0c-281.6 0-512 230.4-512 512s230.4 512 512 512 512-230.4 512-512-230.4-512-512-512zM771.2 544h-227.2v227.2h-64v-227.2h-227.2v-64h227.2v-227.2h64v227.2h227.2v64z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(216, 216, 216)"
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "addBookingLink"
+        ],
+        "colorPermutations": {
+          "21621621612552552551": [
+            {
+              "f": 0
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(216, 216, 216)"
+        }
+      ],
+      "properties": {
+        "order": 178,
+        "id": 0,
+        "name": "addBookingLink",
+        "prevSize": 32,
+        "code": 59655
+      },
+      "setIdx": 0,
+      "setId": 6,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
           "M51.2 311.467h921.6v55.467h-921.6v-55.467z",
           "M332.8 273.067h-170.667v-72.533h55.467v17.067h59.733v-17.067h55.467z",
           "M861.867 273.067h-170.667v-72.533h55.467v17.067h59.733v-17.067h55.467z",
@@ -65,10 +105,10 @@
         ],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "grid": 0,
         "tags": [
           "calendarClose"
-        ]
+        ],
+        "grid": 0
       },
       "attrs": [
         {
@@ -115,14 +155,14 @@
         }
       ],
       "properties": {
-        "order": 3,
+        "order": 175,
         "id": 0,
         "name": "calendarClose",
         "prevSize": 32,
         "code": 59654
       },
-      "setIdx": 0,
-      "setId": 8,
+      "setIdx": 1,
+      "setId": 5,
       "iconIdx": 0
     },
     {
@@ -156,14 +196,14 @@
       ],
       "properties": {
         "order": 8,
-        "id": 0,
+        "id": 1,
         "name": "close",
         "prevSize": 32,
         "code": 59653
       },
       "setIdx": 1,
-      "setId": 7,
-      "iconIdx": 0
+      "setId": 5,
+      "iconIdx": 1
     },
     {
       "icon": {
@@ -188,14 +228,14 @@
       "attrs": [],
       "properties": {
         "order": 2,
-        "id": 1,
+        "id": 2,
         "name": "dashboard",
         "prevSize": 32,
         "code": 59648
       },
       "setIdx": 1,
-      "setId": 7,
-      "iconIdx": 1
+      "setId": 5,
+      "iconIdx": 2
     },
     {
       "icon": {
@@ -214,14 +254,14 @@
       "attrs": [],
       "properties": {
         "order": 3,
-        "id": 2,
+        "id": 3,
         "name": "downarrow",
         "prevSize": 32,
         "code": 59649
       },
       "setIdx": 1,
-      "setId": 7,
-      "iconIdx": 2
+      "setId": 5,
+      "iconIdx": 3
     },
     {
       "icon": {
@@ -245,14 +285,14 @@
       "attrs": [],
       "properties": {
         "order": 4,
-        "id": 3,
+        "id": 4,
         "name": "leads",
         "prevSize": 32,
         "code": 59650
       },
       "setIdx": 1,
-      "setId": 7,
-      "iconIdx": 3
+      "setId": 5,
+      "iconIdx": 4
     },
     {
       "icon": {
@@ -282,14 +322,14 @@
       "attrs": [],
       "properties": {
         "order": 5,
-        "id": 4,
+        "id": 5,
         "name": "leave",
         "prevSize": 32,
         "code": 59651
       },
       "setIdx": 1,
-      "setId": 7,
-      "iconIdx": 4
+      "setId": 5,
+      "iconIdx": 5
     },
     {
       "icon": {
@@ -315,14 +355,14 @@
       "attrs": [],
       "properties": {
         "order": 6,
-        "id": 5,
+        "id": 6,
         "name": "newLead",
         "prevSize": 32,
         "code": 59652
       },
       "setIdx": 1,
-      "setId": 7,
-      "iconIdx": 5
+      "setId": 5,
+      "iconIdx": 6
     }
   ],
   "height": 1024,
