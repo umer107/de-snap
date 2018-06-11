@@ -49,38 +49,29 @@ class DashboardController extends AbstractActionController
     
     public function ajaxAddDashboardAction()
     {
-     
           try{
       
-      $sm = $this->getServiceLocator();
-			$identity = $sm->get('AuthService')->getIdentity();
-			$request = $this->getRequest();
-			
-      $lead_owner = $identity['user_id'];
-      $lead_owner_name = $identity['first_name'] . ' ' . $identity['last_name'];
-                        
-			if($request->isPost()){
+             $sm = $this->getServiceLocator();
+             $identity = $sm->get('AuthService')->getIdentity();
+             $request = $this->getRequest();
+	     $lead_owner = $identity['user_id'];	
+             $lead_owner_name = $identity['first_name'] . ' ' . $identity['last_name'];
+             
+             if($request->isPost()){
                             
-			$posts = $request->getPost()->toArray();
-                        
-                        
-                        $AssignInUserId = $posts['assign_id'];
-                        unset($posts['assign_id']);
-                        $posts['assign_to_UserId'] = $AssignInUserId;
-                              
-                   
-                       
-			$posts['create_date'] = date('Y-m-d H:i:s');
-                        $posts['lead_owner_name'] =  $lead_owner_name;
-                        $posts['lead_owner'] = $lead_owner;
-                      
-			$objUserTable = $sm->get('SaveDashboard\Model\SaveDashboardTable');
-      
-	                 $userid = $identity['user_id'];
-                         
-			 $objUserTable->saveDashboard($posts);
-      }
-			exit;
+		$posts = $request->getPost()->toArray();
+                $AssignInUserId = $posts['assign_id'];
+                unset($posts['assign_id']);
+                $posts['assign_to_UserId'] = $AssignInUserId;
+		$posts['create_date'] = date('Y-m-d H:i:s');
+                $posts['lead_owner_name'] =  $lead_owner_name;
+                $posts['lead_owner'] = $lead_owner;
+                $objUserTable = $sm->get('SaveDashboard\Model\SaveDashboardTable');     
+		$userid = $identity['user_id'];	
+                $objUserTable->saveDashboard($posts);
+                }
+	      
+                exit;
       }
 
       catch (Exception $e)
@@ -169,7 +160,28 @@ class DashboardController extends AbstractActionController
         }
     }
     
-    
+    //Start --> Ajax-Custom-View-Calender
+    public function  ajaxGetDataForCustomViewCalenderAction()
+    {
+        
+            try {
+            $sm = $this->getServiceLocator();
+            $identity = $sm->get('AuthService')->getIdentity();
+            $config = $this->getServiceLocator()->get('Config');
+            $params = $this->getRequest()->getQuery()->toArray();         
+            $leadsRes = $this->getServiceLocator()->get('Leave\Model\LeaveTable');          
+            $calArr = $leadsRes->fetchCustomViewcalender($params);
+         
+            echo json_encode($calArr);
+            exit;
+            
+        } catch (Exception $e) {
+            \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+        }
+    }
+    //End --> Ajax-Custom-View-Calender
+
+
     public function  ajaxUpdateleadStatusAction()
     {
         try {
