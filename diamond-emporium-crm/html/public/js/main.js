@@ -1961,6 +1961,45 @@ setTimeout(function(){
         el.closest('.dropdown').next('select').find('option').attr('value',getValue);
         el.closest('.dropdown').next('label').addClass('opacity0');
 
+        //If Title
+        if(el.closest('.dropdown').hasClass('title'))
+        {   
+          
+          if(getValue == "Mr")
+          {
+            $('.dropdown.Gender').find('a.selected-text').attr('value','Male');
+            $('.dropdown.Gender').find('span').html('Male');
+          }
+          else
+          {
+            $('.dropdown.Gender').find('a.selected-text').attr('value','Female');
+            $('.dropdown.Gender').find('span').html('Female');
+          }
+          $('.dropdown.Gender').prev('.text-top').show();
+            
+            //return false; 
+        }
+
+        //If Gender
+        if(el.closest('.dropdown').hasClass('Gender'))
+        {   
+          
+          if(getValue == "Male")
+          {
+            $('.dropdown.title').find('a.selected-text').attr('value','Mr');
+            $('.dropdown.title').find('span').html('Mr');
+          }
+          else
+          {
+            $('.dropdown.title').find('a.selected-text').attr('value','Mrs');
+            $('.dropdown.title').find('span').html('Mrs');
+          }
+          //$('.dropdown.Gender').prev('.text-top').show();
+            
+            //return false; 
+        }
+
+
         // If Calendar
         if(el.closest('.dropdown').hasClass('calendar'))
         {   
