@@ -326,8 +326,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
 
 
     
-     //GetLeadsData
-            public function  fetchRecordByBudgetId($filter = null)
+         //GetLeadsData
+        public function  fetchRecordByBudgetId($filter = null)
         {
             try {
                 
@@ -678,6 +678,151 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
         }
         //End Get Calender Data
         
+       //Start -- CustomViewCalenderBusinessLogic
+       //---Start
+       public function fetchCustomViewcalender($filter = null)
+       {
+           try
+           {
+                $select = new \Zend\Db\Sql\Select();
+                $select->from('de_userdetail')->columns(array('id'));
+                $select = new \Zend\Db\Sql\Select();
+                $select->from(array('l' => 'de_userdetail'))
+                      ->columns(array(
+                'id','title' , 'gender' , 'first_name' , 'last_name' , 'phone_number' , 'email' , 'country' , 'Street' , 'State' , 'communication_method' , 'City' , 'Zip' , 'product' , 'referral' , 'special_instructions' , 'budget' , 'reference_product' , 'contact_method' , 'assign_to' , 'assign_to_UserId' , 'reson_skip_next_in_line' , 'specify_requirements' , 'lead_status' , 'lead_owner' , 'lead_owner_name' , 'create_date' , 'lead_close_date' , 'booking_date' , 'booking_time' , 'booking_room' , 'booking_duration' , 'user_booking_date'       
+                ));    
+              
+               
+               //Filter The Data Of Current Week
+               if(!empty($filter['booking_date']))
+               {                  
+                   $date = $filter['booking_date'];
+                   $start_date =  date("Y-m-d", strtotime('monday this week', strtotime($date)));  
+                   $end_date =  date("Y-m-d", strtotime('sunday this week', strtotime($date)));
+                   $select->where->between('l.booking_date', $start_date, $end_date);
+               }
+               //Filter Data Based On  Assign_Us_UserId
+               if(!empty($filter['assign_UserId']))
+               {
+                   $lead_assigni = $filter['assign_UserId'];
+                   $select->where(array('l.assign_to_UserId = ?' =>  $lead_assigni));
+               }
+               //Filter the Data Based on Budget
+               if(!empty($filter['budget']))
+               {
+                   $lead_assgni_budget = $filter['budget'];
+                   $select->where(array('l.budget = ?' =>  $lead_assgni_budget));
+               }
+               $data = $this->executeQuery($select);                     
+               $result = $data->toArray();
+               
+               
+               /****Group-Data Start****/
+                $groups = array();
+                
+                foreach ($result as $item) {
+                       
+                    $key = $item['booking_date'];
+                    
+                    
+                    foreach ($result as $items)
+                    {
+                        $key1 = $item['booking_time'];
+                        //$groups['Date'][$key]['Time'][$key1] = $items; 
+                        
+                        foreach ($result as $item1)
+                        {
+                          
+                          $groups[$key][$key1][$item1['booking_room']] = $item1; 
+                        }
+                        
+
+                    }
+                    
+                    
+                    
+                    //$groups[$key]['items'] = $item;
+                    //$groups[$key]['count'] += 1;
+                    //-------------------------------------------------------//
+
+                    
+                    
+                    
+                   
+                      
+                }
+            
+             /*foreach ($result as $item)
+             {
+                 $groups[$item['booking_date']][$item['booking_time']][$item['booking_room']] = $item;
+             }*/
+           
+             //-------------------------------------------------------------------------------------//
+             //-----------------------------Start Template Area-------------------------------------//
+             /*Set The Array Of Whole Weeks*/ 
+             $week_array = array();
+             $current_date = $filter['booking_date'];
+             $begin_date =  date("Y-m-d", strtotime('monday this week', strtotime($current_date)));  
+             $end_date =  date("Y-m-d", strtotime('sunday this week', strtotime($current_date)));
+             $num_days = floor((strtotime($end_date)-strtotime($begin_date))/(60*60*24));           
+             for ($i=0; $i<= $num_days; $i++)
+             {
+                 $week_array[] = date('Y-m-d', strtotime($begin_date . "+ $i days")); 
+             }
+             //return $week_array;
+             
+             /*Set The Array Of Whole Weeks*/  
+             
+             /*Set The Array of Time*/
+             $calendar_time = array();
+             $calendar_time[0] = '8-9';
+             $calendar_time[1] = '9-10';
+             $calendar_time[2] = '11-12';
+             $calendar_time[3] = '12-1';
+             //return $calendar_time;
+             /*Set The Array of Time*/
+             
+             /*Set The room of time*/
+             $calendar_room = array();
+             $calendar_room[0] = '1';
+             $calendar_room[1] = '2';
+             $calendar_room[2] = '3';
+             $calendar_room[3] = '4';
+             /*Set The room of time*/
+             $template_array = array();
+             foreach($week_array as $week_range)
+             {
+                 foreach($calendar_time as $cal_time)
+                 {
+                     foreach ($calendar_room as $cal_room)
+                     {
+                         $template_array[$week_range][$cal_time][$cal_room] = "";
+                     }
+                 }
+             }
+             //return $template_array;
+            //-------------------------------------------------------------------------------------//
+            //-------------------------------End Template Area-------------------------------------//
+               /****Group-Data End****/
+             
+             /*Merge Two Array*/             
+             //$result_set =  array_merge_recursive($template_array,$groups);
+             $result_set =  array_merge_recursive($groups,$template_array);
+             //array_merge_recursive
+             //$result_set = array_merge($groups,$template_array);
+             
+             return $result_set;
+             
+             //return $groups;
+           } catch (\Exception $ex) {
+                \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+            }
+           
+       }
+       //---End
+       //End -- CustomViewCalenderBusinessLogic
+        
+        
         /*
          ****************************************** 
          ***** QuestionViewCalenderService Start***
@@ -733,7 +878,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                  
                       $groups = array();
  
-                          foreach ($result as $item) {
+                     foreach ($result as $item) {
 
                       
                          $key = $item['start'];
@@ -755,7 +900,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                          }
 
                       }
-            $output = array();
+                     $output = array();
                       foreach ($groups as $arr)
                       {
                            
