@@ -3231,7 +3231,7 @@ setTimeout(function(){
            $.ajax({
                 
                 type: "GET",
-                url: "dashboard/ajaxGetDataForCustomViewCalenderAction",
+                url: "dashboard/ajaxGetDataForCustomViewCalender",
                 data: data,
                 success: function (data) {
                   console.log(data);
