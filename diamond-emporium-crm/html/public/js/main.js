@@ -3201,7 +3201,7 @@ setTimeout(function(){
 
 
     //function loadQuestionViewcalnder(getDay, getFullDate, getOnlyDate, getAssigneeId, getAmPm)
-    function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
+    function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate)
     { 
 
            //var data =  {booking_date : getFullDate , day : getDay, assigneeId : getAssigneeId, booking_timezone : getAmPm}
@@ -3226,7 +3226,7 @@ setTimeout(function(){
            $.ajax({
                 
                 type: "GET",
-                url: "dashboard/ajaxGetDataForQuestionViewCalender",
+                url: "dashboard/ajaxGetDataForCustomViewCalenderAction",
                 data: data,
                 success: function (data) {
                   console.log(data);
