@@ -728,7 +728,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                     
                     foreach ($result as $items)
                     {
-                        $key1 = $item['booking_time'];
+                        //$key1 = $item['booking_time'];
                         //$groups['Date'][$key]['Time'][$key1] = $items; 
                         
                         
@@ -738,16 +738,18 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         {
                             $item1['booking_color'] = "#D3D3D3";
                         }
-                         $key2 = $item1['booking_room'];
+                         $booking_time_key = $item1['booking_time'];                         
+                         $booking_room_key = $item1['booking_room'];
                          //Empty Data Not Push into Array   
                           if(!empty($key))
                           {
-                              if(!empty($key1))
+                              if(!empty($booking_time_key))
                               {
-                                  if(!empty($key2))
+                                  if(!empty($booking_room_key))
                                   {
                                      
-                                        $groups[$key][$key1][$item1['booking_room']] = $item1; 
+                                        //$groups[$key][$key1][$item1['booking_room']] = $item1; 
+                                      $groups[$key][$booking_time_key][$booking_room_key] = $item1; 
                                   }
                               }
                           }
@@ -756,6 +758,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                             //$groups[$key][$key1][$item1['booking_room']] = $item1; 
                         }
                         
+                        //return $groups;
 
                     }
                     
@@ -834,10 +837,45 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
              /*Merge Two Array*/             
              //$result_set =  array_merge_recursive($template_array,$groups);
              $result_set =  array_merge_recursive($groups,$template_array);
+             
+             
+             //$result_set = array_merge($template_array,$template_array);
+             
              //array_merge_recursive
              //$result_set = array_merge($groups,$template_array);
              
-             return $result_set;
+             
+             /******************************CustomMergeArray**************************************/
+             
+             
+             foreach ($groups as $item_group)
+             {
+                 foreach ($item_group as $item_group1)
+                 {
+                     foreach ($item_group1 as $item_group2)
+                     {
+                        $booking_date_add = $item_group2['booking_date'];
+                        $booking_time_add = $item_group2['booking_time'];
+                        $booking_room_add = $item_group2['booking_room'];
+                
+                        $template_array[$booking_date_add][$booking_time_add][$booking_room_add] = $item_group2;
+                        
+                     }
+                 }
+               
+             }
+             
+             
+             
+             
+             /******************************CustomMergeArray************************************/
+             
+             
+             
+             
+             
+             //return $result_set;
+             return $template_array;
              
              //return $groups;
            } catch (\Exception $ex) {
