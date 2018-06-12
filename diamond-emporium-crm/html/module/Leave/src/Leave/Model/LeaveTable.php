@@ -728,7 +728,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                     
                     foreach ($result as $items)
                     {
-                        $key1 = $item['booking_time'];
+                        //$key1 = $item['booking_time'];
                         //$groups['Date'][$key]['Time'][$key1] = $items; 
                         
                         
@@ -738,16 +738,18 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         {
                             $item1['booking_color'] = "#D3D3D3";
                         }
-                         $key2 = $item1['booking_room'];
+                         $booking_time_key = $item1['booking_time'];                         
+                         $booking_room_key = $item1['booking_room'];
                          //Empty Data Not Push into Array   
                           if(!empty($key))
                           {
-                              if(!empty($key1))
+                              if(!empty($booking_time_key))
                               {
-                                  if(!empty($key2))
+                                  if(!empty($booking_room_key))
                                   {
                                      
-                                        $groups[$key][$key1][$item1['booking_room']] = $item1; 
+                                        //$groups[$key][$key1][$item1['booking_room']] = $item1; 
+                                      $groups[$key][$booking_time_key][$booking_room_key] = $item1; 
                                   }
                               }
                           }
@@ -756,6 +758,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                             //$groups[$key][$key1][$item1['booking_room']] = $item1; 
                         }
                         
+                        //return $groups;
 
                     }
                     
