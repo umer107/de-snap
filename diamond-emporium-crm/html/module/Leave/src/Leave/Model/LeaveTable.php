@@ -690,7 +690,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $select->from(array('l' => 'de_userdetail'))
                       ->columns(array(
                 'id','title' , 'gender' , 'first_name' , 'last_name' , 'phone_number' , 'email' , 'country' , 'Street' , 'State' , 'communication_method' , 'City' , 'Zip' , 'product' , 'referral' , 'special_instructions' , 'budget' , 'reference_product' , 'contact_method' , 'assign_to' , 'assign_to_UserId' , 'reson_skip_next_in_line' , 'specify_requirements' , 'lead_status' , 'lead_owner' , 'lead_owner_name' , 'create_date' , 'lead_close_date' , 'booking_date' , 'booking_time' , 'booking_room' , 'booking_duration' , 'user_booking_date'       
-                ));    
+                ))
+                ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('booking_color' => 'color'), 'left');    
               
                
                //Filter The Data Of Current Week
@@ -730,9 +731,13 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         $key1 = $item['booking_time'];
                         //$groups['Date'][$key]['Time'][$key1] = $items; 
                         
+                        
                         foreach ($result as $item1)
                         {
-                         
+                        if(empty($item1['booking_color']))
+                        {
+                            $item1['booking_color'] = "#D3D3D3";
+                        }
                          $key2 = $item1['booking_room'];
                          //Empty Data Not Push into Array   
                           if(!empty($key))
@@ -741,6 +746,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                               {
                                   if(!empty($key2))
                                   {
+                                     
                                         $groups[$key][$key1][$item1['booking_room']] = $item1; 
                                   }
                               }
