@@ -1698,7 +1698,7 @@ setTimeout(function(){
     function suggestedDate() {
         
         var getAssigneeId = window.selectedAssigneeId;
-        loadingCalendar2();
+        startCalendarLoading();
         var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
         loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
     }
@@ -1944,6 +1944,7 @@ setTimeout(function(){
                 {$('ul.dropdown').find('ul.dropdownOptions').slideUp(150);}
             }
     });// End
+
 
 
     // Select dropdown value
@@ -3499,7 +3500,7 @@ setTimeout(function(){
                 var currentCounter = 0;
                 var newCounter = 0
                 // Getting into each weekly date
-                for (var i = 0; i < 8; i++) {
+                for (var i = 0; i < 7; i++) {
                   currentCounter++;
                   var dayTimes = arr[i];
                   var setDivContainer = "";
@@ -3515,8 +3516,13 @@ setTimeout(function(){
                     // Setting html for binding bookings
                     var setThisHtml = '<div class="roomsContainer relative transition-ease-02">';
                     // Getting into each weekly date, times and then Rooms
-
+                    var newRoomCounter = 1;
+                    var roomNumber = "";
                     for (var i = 1; i < 5; i++) {
+                      if(newRoomCounter == 1){roomNumber = "roomOne"}
+                      else if(newRoomCounter == 1){roomNumber = "roomTwo"}
+                      else if(newRoomCounter == 1){roomNumber = "roomThree"}
+                      else{roomNumber = "roomFour"}
                       var getRoom = getAllRooms[i];
                       if(getRoom == "")
                       {
@@ -3524,16 +3530,20 @@ setTimeout(function(){
                       }
                       else
                       {
+                        var setBackgroundColor = "style='background-color:#"+getAllRooms[i].booking_color+"'";
+                        var Color = "style='color:#"+getAllRooms[i].booking_color+"'";
                         setThisHtml +='<label class="">';
-                          setThisHtml +='<div class="roomBooking red roomTwo">';
-                            setThisHtml +='<p class="bold fs-12 headBar"><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>BO</span></p>';
-                            setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top">';
-                              setThisHtml +='<p><i class="icon-calendarClose fs-12 "></i> <span class="bold d-i-b half-pad-left">ER</span></p>';
-                              setThisHtml +='<p><i class="icon-calendarClose fs-12 "></i> <span class="bold d-i-b half-pad-left">$12,000</span></p>';
+                          setThisHtml +='<div class="roomBooking '+roomNumber+'">';
+                            setThisHtml +='<p class="bold fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>BO</span></p>';
+                            setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
+                              setThisHtml +='<p><i class="icon-calendarClose fs-12 " '+Color+'></i> <span class="bold d-i-b half-pad-left">ER</span></p>';
+                              setThisHtml +='<p><i class="icon-calendarClose fs-12 " '+Color+'></i> <span class="bold d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
+                              setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColor+'></div>';
                             setThisHtml +='</div>';
                           setThisHtml +='</div>';
                         setThisHtml +='</label>';
                       }
+                      newRoomCounter++
                     }
 
                     setThisHtml += '<p class="borderPart"></p>';
@@ -3544,8 +3554,11 @@ setTimeout(function(){
                   });
 
                 }
-                console.log('main loop iterate' + currentCounter);
-                console.log('main inner loop iterate' + newCounter);
+
+                // Reset slider
+                $('.daysSlider div.roomsContainer').removeClass('scrolled');
+                // End Loading
+                endCalendarLoading();
 
 
             }
@@ -4239,6 +4252,18 @@ setTimeout(function(){
         $('#calendar2').find('.loading').remove();
         var loadingHtml = '<div class="loading fullHeight align-center absolute z-index99 full top-0  left-0" style=""><img src="/images/loading.gif"></div>';
         $('#calendar2').append(loadingHtml);
+    }
+    function startCalendarLoading()
+    {
+        var loadingHtml = '<div class="loading fullHeight align-center absolute z-index99 full top-0  left-0" style=""><img src="/images/loading.gif"></div>';
+        $('.NewCalendarContainer').append(loadingHtml);
+    }
+    function endCalendarLoading()
+    {
+        
+        setTimeout(function(){ 
+          $('.NewCalendarContainer').find('.loading').remove();
+        }, 500);
     }
 }); // Ending Document ready
 
