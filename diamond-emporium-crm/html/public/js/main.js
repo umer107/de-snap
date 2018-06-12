@@ -3452,7 +3452,6 @@ setTimeout(function(){
                 url: "dashboard/ajaxGetDataForCustomViewCalender",
                 data: data,
                 success: function (data) {
-                console.log(data);
                 // Convert Json into Array
                 var parsed = '';
                 try{
@@ -3464,6 +3463,7 @@ setTimeout(function(){
                 }   
 
                 // Get Weekly Start Dates 
+
                 /*================================*/
 
                 var dateCounter = 0;
@@ -3490,29 +3490,93 @@ setTimeout(function(){
 
                 // Bind Data to  Weekly Start Dates 
                 
+                // Marray array for data
                 var arr = [];
                 for(var x in parsed){
                   arr.push(parsed[x]);
                 }
                 console.log(arr);
-
-                for (var i = 0; i < arr.length; i++) {
+                var currentCounter = 0;
+                var newCounter = 0
+                // Getting into each weekly date
+                for (var i = 0; i < 8; i++) {
+                  currentCounter++;
                   var dayTimes = arr[i];
+                  var setDivContainer = "";
 
-                  $.each(dayTimes, function(key, value){
-                    var getKey = key;
-                    var getKeyValue = value;
-                    var jjkjkj = dayTimess;
-                  });
+                  // Getting into each weekly date Times
                   
+                  $.each(dayTimes, function(key, value){
+                    newCounter++;
+                    var getKey = getTime(key);
+                    setDivContainer = ".daysContent."+[currentCounter] + " .daysContentSlider." + getKey;
+                    var getAllRooms = dayTimes[key];
+
+                    // Setting html for binding bookings
+                    var setThisHtml = '<div class="roomsContainer relative transition-ease-02">';
+                    // Getting into each weekly date, times and then Rooms
+
+                    for (var i = 1; i < 5; i++) {
+                      var getRoom = getAllRooms[i];
+                      if(getRoom == "")
+                      {
+                        setThisHtml +='<label class=""><a class="addBookingLink" href="javascript:;"><i class="icon-addBookingLink fs-15"></i></a></label>';
+                      }
+                      else
+                      {
+                        setThisHtml +='<label class="">';
+                          setThisHtml +='<div class="roomBooking red roomTwo">';
+                            setThisHtml +='<p class="bold fs-12 headBar"><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>BO</span></p>';
+                            setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top">';
+                              setThisHtml +='<p><i class="icon-calendarClose fs-12 "></i> <span class="bold d-i-b half-pad-left">ER</span></p>';
+                              setThisHtml +='<p><i class="icon-calendarClose fs-12 "></i> <span class="bold d-i-b half-pad-left">$12,000</span></p>';
+                            setThisHtml +='</div>';
+                          setThisHtml +='</div>';
+                        setThisHtml +='</label>';
+                      }
+                    }
+
+                    setThisHtml += '<p class="borderPart"></p>';
+                    setThisHtml +='</div>';
+
+                    $(setDivContainer).html(setThisHtml);
+
+                  });
+
                 }
+                console.log('main loop iterate' + currentCounter);
+                console.log('main inner loop iterate' + newCounter);
+
 
             }
             
         });
     }
 
+    function getTime(key)
+    {
+      if(key == "8-9")
+        { return 8}
+      if(key == "9-10")
+        { return 9}
+      if(key == "10-11")
+        { return 10}
+      if(key == "11-12")
+        { return 11}
+      if(key == "12-1")
+        { return 12}
+      if(key == "1-2")
+        { return 1}
+      if(key == "2-3")
+        { return 2}
+      if(key == "3-4")
+        { return 3}
+      if(key == "4-5")
+        { return 4}
+      if(key == "5-6")
+        { return 5}
 
+    }
     //Function Call on Window onLoad
         
 
