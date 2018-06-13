@@ -1,0 +1,1 @@
+ALTER TABLE `de_userdetail` ADD `product_shortcode` VARCHAR(8) NOT NULL AFTER `product`;

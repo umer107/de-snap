@@ -2437,12 +2437,17 @@ setTimeout(function(){
         
         return {
           
+            lead_id : $('.thisLeadId').attr('leadId'),
+            title : $('.title a.selected-text').attr('value'),
+            gender : $('.Gender a.selected-text').attr('value'),  
             first_name : $("#first_name").val(),
             last_name : $("#last_name").val(),
             phone_number : $("#phonenumber").val(),
             email : $("#email").val(),
+            country : $('#countryName').attr('value'),
             Street : $("#street").val(),
             State : $("#stateDropdown").text(),
+            communication_method : $("#CommunicationMethod").text(),
             City : $("#cityValue").val(),
             Zip : $("#Zip").val(),
             product : $("#productDropdown").text(),
@@ -2450,22 +2455,20 @@ setTimeout(function(){
             special_instructions : $("[name= 'special_instructions']").val(),
             budget : $('#budgetDropdown').closest('a.selected-text').attr('value'),
             reference_product : $("#referrenceDropdown").val(),
-            contact_method : $("#perferrefDropdown").text(),
-            communication_method : $("#CommunicationMethod").text(),
+            contact_method : $("#perferrefDropdown").text(),            
             assign_to : $("#assign_us_Dropdown").text(),
-            specify_requirements : $("#specify_requirements").val(),
+            assign_id : $(".assignToDiv a.selected-text").attr("assigneid"),
             reson_skip_next_in_line : $("#skip_reason_dropdown").text(),
+            specify_requirements : $("#specify_requirements").val(),            
             booking_date : $("#bookingDate").attr("date"),
             booking_time : $("#bookingDate").attr("time"),
-            booking_timezone : $("#bookingDate").attr("timezone"), 
-            assign_id : $(".assignToDiv a.selected-text").attr("assigneid"),           
+            //booking_timezone : $("#bookingDate").attr("timezone"),                   
             //booking_room : $(".meetingRoomValue").attr('value')
-            booking_room : '',
-            lead_id : $('.thisLeadId').attr('leadId'),
-            booking_duration: $('.durationSelection a').filter('.active').attr('value'),
-            gender : $('.Gender a.selected-text').attr('value'),
-            title : $('.title a.selected-text').attr('value'),
-            country : $('#countryName').attr('value')
+            booking_room : ''
+            //booking_duration: $('.durationSelection a').filter('.active').attr('value'),
+           
+                      
+            
 
            
         };
@@ -2548,15 +2551,16 @@ setTimeout(function(){
         //  $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
         //  return false
         // }
-        
+      
+      debugger;
       var data = getValuesFromForm();
       
 
-      if(data.booking_duration == null || undefined)
+      /*if(data.booking_duration == null || undefined)
       {
         data.booking_duration = 0;
         
-      }
+      }*/
             
       
       //alert("Successfully triggered");

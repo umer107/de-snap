@@ -60,10 +60,7 @@ class DashboardController extends AbstractActionController
              if($request->isPost()){
                             
 		$posts = $request->getPost()->toArray();
-                $AssignInUserId = $posts['assign_id'];
-                unset($posts['assign_id']);
-                $posts['assign_to_UserId'] = $AssignInUserId;
-		$posts['create_date'] = date('Y-m-d H:i:s');
+               
                 $posts['lead_owner_name'] =  $lead_owner_name;
                 $posts['lead_owner'] = $lead_owner;
                 $objUserTable = $sm->get('SaveDashboard\Model\SaveDashboardTable');     
