@@ -689,7 +689,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $select = new \Zend\Db\Sql\Select();
                 $select->from(array('l' => 'de_userdetail'))
                       ->columns(array(
-                'id','title' , 'gender' , 'first_name' , 'last_name' , 'phone_number' , 'email' , 'country' , 'Street' , 'State' , 'communication_method' , 'City' , 'Zip' , 'product' , 'referral' , 'special_instructions' , 'budget' , 'reference_product' , 'contact_method' , 'assign_to' , 'assign_to_UserId' , 'reson_skip_next_in_line' , 'specify_requirements' , 'lead_status' , 'lead_owner' , 'lead_owner_name' , 'create_date' , 'lead_close_date' , 'booking_date' , 'booking_time' , 'booking_room' , 'booking_duration' , 'user_booking_date'       
+                'id','title' , 'gender' , 'first_name' , 'last_name' , 'phone_number' , 'email' , 'country' , 'Street' , 'State' , 'communication_method' , 'City' , 'Zip' , 'product' , 'product_shortcode' , 'referral' , 'special_instructions' , 'budget' , 'reference_product' , 'contact_method' , 'assign_to' , 'assignto_shortcode' , 'assign_to_UserId' , 'reson_skip_next_in_line' , 'specify_requirements' , 'lead_status' , 'lead_owner' , 'lead_owner_name' , 'create_date' , 'lead_close_date' , 'booking_date' , 'booking_time' , 'booking_room' , 'user_booking_date'       
                 ))
                 ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('booking_color' => 'color'), 'left');    
               
