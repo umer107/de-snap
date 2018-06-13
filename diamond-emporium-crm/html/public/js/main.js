@@ -1457,6 +1457,11 @@ $(document).on('click','.arrowNext, .arrowPrev', function (e) {
     var getThisDate = $('.weeklyDates span').attr('previousweekdate');
     loadWeeklyDates(getThisDate);
   }
+  // Reset Rooms filter
+  $('.bookingRooms a').removeClass('active');
+  $('.all-rooms').addClass('active');
+   
+  // Calling load calendar
   suggestedDate();
 });
 
@@ -1478,26 +1483,55 @@ $(document).on('click','.daysSlider label.room3', function (e) {
 
 /*====================================================*/
 
-$(document).on('click','.addBookingLinka', function (e) {
+$(document).on('click','.addBookingLink', function (e) {
 
-    
+    $('.addBookingLink').removeClass('thisClicked');
+    $(this).addClass('thisClicked');
     var p = $(this)
     var offset = p.offset();
     var getOffsetTop = offset.top;
     var getOffsetLeft = offset.left;
-    var setHtml = '<div class="addBookingContainer">'
-          setHtml += '<div class="roomBooking orange roomOne">';
-            setHtml += '<p class="bold fs-12 headBar"><span class="ellipsis"> Claudia Lopez</span><span>BO</span></p>';
-            setHtml += '<div class="full align-left half-pad-left lh-18 one-pad-top">';
-              setHtml += '<p><i class="icon-calendarClose fs-12 "></i> <span class="bold d-i-b half-pad-left">ER</span></p>';
-              setHtml += '<p><i class="icon-calendarClose fs-12 "></i> <span class="bold d-i-b half-pad-left">$12,000</span></p>';
-            setHtml += '</div>';
-            setHtml += '</div>';
+    getOffsetTop = getOffsetTop - 4;
+    getOffsetLeft = getOffsetLeft + 19;
+
+    var getBudget = $('.dropdown.budget').find('a.selected-text').attr('value');
+    var getTime = $(this).closest('.daysContentSlider').attr('time'); 
+    var setHtml = "";
+    var setHtml = '<div class="addBookingContainer roomsContainer">';
+      setHtml += '<div class="roomBooking roomFour">';
+        setHtml += '<p class=" fs-12 headBar" style="background-color:#32c7c7"><span class="ellipsis">Ayesha Khalid</span><span>BO</span></p>';
+          setHtml += '<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
+            setHtml += '<p><i class="icon-calendarClose fs-12 " style="color:#32c7c7"></i> <span class=" d-i-b half-pad-left">ER</span></p>';
+            setHtml += '<p><i class="icon-calendarClose fs-12 " style="color:#32c7c7"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
+            setHtml += '<p class="bookingTiming"><i class="icon-calendarClose fs-12 " style="color:#32c7c7"></i> <span class=" d-i-b half-pad-left">'+getTime+'</span></p>';
+            setHtml += '<p><a class="savePopupBooking" href="JavaScript:;" style="color:#32c7c7">OK</a></p>';
+          setHtml += '<div class="transparentBG absolute" style="background-color:#32c7c7"></div>';
         setHtml += '</div>';
+      setHtml += '</div>';
+    setHtml += '</div>';
+
 
     var container = "<div class='tempContainer fixed' style='top:"+getOffsetTop+"px ; left:"+getOffsetLeft+"px'>" + setHtml + "</div>";
-    $(this).after(container);
+    //$(this).after(container);
+    $('.addBookingPopup').html(container).removeClass('hide');
 });
+
+/*====================================================*/
+
+$(document).on('click','.savePopupBooking', function (e) {
+    var selectHtml = $('.addBookingPopup .addBookingContainer').html();
+    $('.addBookingLink.thisClicked').closest('label').html(selectHtml);
+    $('.addBookingPopup').html('');
+    $('.addBookingPopup').addClass('hide');
+    
+});
+
+/* ==================================================== */
+
+$('section.rightCol').on('scroll', function(event){
+      $('.addBookingPopup').html('');
+      $('.addBookingPopup').addClass('hide');
+  });// End
 
 
 // close dropdown on outside click 
@@ -1506,34 +1540,21 @@ $(document).on('click','.addBookingLinka', function (e) {
         if (!container.is(event.target) &&            
             container.has(event.target).length === 0)
             {
-              
-                if($('.tempContainer').is(':visible'))
-                {
-                  $('.tempContainer').hide(0)
-                }
+              $('.addBookingPopup').html('');
+              $('.addBookingPopup').addClass('hide');
             }
     });// End
 
-// Weekly Dates 
 
+/* ==================================================== */
+
+
+// Weekly Dates 
 
   //var date = '2018-06-12';
   var thisdate = new Date();
   loadWeeklyDates(thisdate);
   function loadWeeklyDates(date) {
-
-
-
-      //console.log('next start', moment(date).weekday(7).format('DD/MM/YYYY')); 
-      //console.log('next end', moment(date).weekday(13).format('DD/MM/YYYY')); 
-
-      //var getCurrentDates = moment(date).weekday(7).format('D');
-      //var getCurrentMonths = moment(date).weekday(13).format('MMMM');
-      
-
-
-      //console.log('prev start', moment(date).weekday(-7).format('DD/MM/YYYY')); 
-      //console.log('prev end', moment(date).weekday(-1).format('DD/MM/YYYY')); 
 
       console.log('current start', moment(date).weekday(0).format('DD/MM/YYYY')); 
       console.log('current end', moment(date).weekday(6).format('DD/MM/YYYY')); 
@@ -1583,7 +1604,6 @@ $(document).on('click','.addBookingLinka', function (e) {
       $('.weeklyDates span').html(completeDate).attr('startDate',getStartDate);
       $('.weeklyDates span').attr('nextWeekDate',getNextWeekStartDate);
       $('.weeklyDates span').attr('previousWeekDate',getPreviousWeekStartDate);
-      
 
   }
 
@@ -3534,10 +3554,10 @@ setTimeout(function(){
                         var Color = "style='color:#"+getAllRooms[i].booking_color+"'";
                         setThisHtml +='<label class="">';
                           setThisHtml +='<div class="roomBooking '+roomNumber+'">';
-                            setThisHtml +='<p class="bold fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>BO</span></p>';
+                            setThisHtml +='<p class=" fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>BO</span></p>';
                             setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
-                              setThisHtml +='<p><i class="icon-calendarClose fs-12 " '+Color+'></i> <span class="bold d-i-b half-pad-left">ER</span></p>';
-                              setThisHtml +='<p><i class="icon-calendarClose fs-12 " '+Color+'></i> <span class="bold d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
+                              setThisHtml +='<p><i class="icon-calendarClose fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">ER</span></p>';
+                              setThisHtml +='<p><i class="icon-calendarClose fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
                               setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColor+'></div>';
                             setThisHtml +='</div>';
                           setThisHtml +='</div>';
