@@ -292,11 +292,35 @@ $(document).ready(function () {
                         var getUserimage = arr[i][0].items.image;
                         var getUserName = arr[i][0].items.user_name;
 
+                        // Get short code for Agent Name Start
+
+                        var res = getUserName.split(" ");
+                        var firstNameWord = res[0];
+                        var middleNameWord = res[1];
+                        var lastsNameWord = res[2];
+                        var firstLetterFirstName = firstNameWord.charAt(0);
+                        var middleLetterFirstName = '';
+                        var lastLetterFirstName = '';
+
+                        if(middleNameWord != null){ middleLetterFirstName = middleNameWord.charAt(0); }
+                        if(lastsNameWord != null){ lastLetterFirstName = lastsNameWord.charAt(0); }
+                        
+                        if(lastsNameWord != null)
+                        {
+                          var shortCode = firstLetterFirstName+middleLetterFirstName+lastLetterFirstName;
+                        }
+                        else
+                        {
+                          var shortCode = firstLetterFirstName+middleLetterFirstName;
+                        }
+                        
+                        // Get short code for Agent Name End
+
                         if(getUserimage == "" || getUserimage == null)
                         {
                             getUserimage = 'sampleUser.png';
                         }
-                        dropdownList += '<li><a href="javascript:;" id="'+arr[i][0].items.user_id+'" value="'+getUserName+'"><span><img class="pull-left" src="/profile_image/'+getUserimage+'"><span><div><label>Next in line:</label><label>'+getUserName+'</label></div></span></span></a></li>';
+                        dropdownList += '<li><a href="javascript:;" id="'+arr[i][0].items.user_id+'" value="'+getUserName+'" shortcode="'+shortCode+'"><span><img class="pull-left" src="/profile_image/'+getUserimage+'"><span><div><label>Next in line:</label><label>'+getUserName+'</label></div></span></span></a></li>';
                         $('.otherSelection .inlineAgentImg').attr('src', '/profile_image/'+getUserimage);
                         $('.otherSelection .inlineAgentName').html(getUserName);
                         var getAgentOptions = $('.agentOptions').html();
@@ -310,6 +334,31 @@ $(document).ready(function () {
                 {
                     var getUserimage = arr[i][0].items.image;
                     var getUserName = arr[i][0].items.user_name;
+
+                    // Get short code for Agent Name Start
+
+                    var res = getUserName.split(" ");
+                    var firstNameWord = res[0];
+                    var middleNameWord = res[1];
+                    var lastsNameWord = res[2];
+                    var firstLetterFirstName = firstNameWord.charAt(0);
+                    var middleLetterFirstName = '';
+                    var lastLetterFirstName = '';
+
+                    if(middleNameWord != null){ middleLetterFirstName = middleNameWord.charAt(0); }
+                    if(lastsNameWord != null){ lastLetterFirstName = lastsNameWord.charAt(0); }
+
+                    if(lastsNameWord != null)
+                    {
+                    var shortCode = firstLetterFirstName+middleLetterFirstName+lastLetterFirstName;
+                    }
+                    else
+                    {
+                    var shortCode = firstLetterFirstName+middleLetterFirstName;
+                    }
+
+                    // Get short code for Agent Name End
+
                     if(getUserimage == "" || getUserimage == null)
                     {
                         getUserimage = 'sampleUser.png';
@@ -335,7 +384,7 @@ $(document).ready(function () {
                     if(Adding == true)
                     {
 
-                        dropdownList += '<li><a href="javascript:;" id="'+arr[i][0].items.user_id+'" value="'+getUserName+'"><span><img class="pull-left" src="/profile_image/'+getUserimage+'"><span><div><label>Next in line:</label><label>'+getUserName+'</label></div></span></span></a></li>';
+                        dropdownList += '<li><a href="javascript:;" id="'+arr[i][0].items.user_id+'" value="'+getUserName+'" shortcode="'+shortCode+'"><span><img class="pull-left" src="/profile_image/'+getUserimage+'"><span><div><label>Next in line:</label><label>'+getUserName+'</label></div></span></span></a></li>';
                     }
                 }
 
@@ -1444,7 +1493,7 @@ $(document).on('click','.bookingRooms a', function (e) {
 
 /*====================================================*/
 
-// New Calendar Dates Scroll
+// New Calendar Dates Scroll Filters
 $(document).on('click','.arrowNext, .arrowPrev', function (e) {
   
   if($(this).attr('date-scroll') == "next")
@@ -1466,7 +1515,7 @@ $(document).on('click','.arrowNext, .arrowPrev', function (e) {
 });
 
 /*====================================================*/
-
+// New Calendar Dates Scroll Filter
 $(document).on('click','.daysSlider label.room2', function (e) {
     $(this).closest('.roomsContainer').addClass('scrolled');
     var getDay = $(this).closest('.daysCalendar').attr('titleDay');
@@ -1474,7 +1523,7 @@ $(document).on('click','.daysSlider label.room2', function (e) {
 });
 
 /*====================================================*/
-
+// New Calendar Dates Scroll Filter
 $(document).on('click','.daysSlider label.room3', function (e) {
     $(this).closest('.roomsContainer').removeClass('scrolled');
     var getDay = $(this).closest('.daysCalendar').attr('titleDay');
@@ -1483,29 +1532,41 @@ $(document).on('click','.daysSlider label.room3', function (e) {
 
 /*====================================================*/
 
+// Add new Booking popup
 $(document).on('click','.addBookingLink', function (e) {
 
     $('.addBookingLink').removeClass('thisClicked');
+    $('.labelContainer').removeClass('thisLabelClicked');
     $(this).addClass('thisClicked');
+    $(this).closest('.labelContainer').addClass('thisLabelClicked');
     var p = $(this)
     var offset = p.offset();
     var getOffsetTop = offset.top;
     var getOffsetLeft = offset.left;
     getOffsetTop = getOffsetTop - 4;
     getOffsetLeft = getOffsetLeft + 19;
-
+    
     var getBudget = $('.dropdown.budget').find('a.selected-text').attr('value');
-    var getTime = $(this).closest('.daysContentSlider').attr('time'); 
+    var getTime = $(this).closest('.daysContentSlider').attr('time');
+    
+    var getTimeSlots = getTimeSlot(getTime);
+    $('#bookingDate').attr('timeSlot', getTimeSlots);
+    $('#bookingDate').attr('timeSlotFull', getTime);
+
+    var getName = $('#first_name').val() + ' ' + $('#last_name').val();
+    var getProductSC = $('.dropdown.product').find('a.selected-text').attr('shortcode');
+    var getUserSC = $('.dropdown.assignToDiv').find('a.selected-text').attr('shortcode');
+
     var setHtml = "";
     var setHtml = '<div class="addBookingContainer roomsContainer">';
       setHtml += '<div class="roomBooking roomFour">';
-        setHtml += '<p class=" fs-12 headBar" style="background-color:#32c7c7"><span class="ellipsis">Ayesha Khalid</span><span>BO</span></p>';
+        setHtml += '<p class=" fs-12 headBar" style="background-color:'+window.userColor+'"><span class="ellipsis">'+getName+'</span><span>'+getUserSC+'</span></p>';
           setHtml += '<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
-            setHtml += '<p><i class="icon-calendarClose fs-12 " style="color:#32c7c7"></i> <span class=" d-i-b half-pad-left">ER</span></p>';
-            setHtml += '<p><i class="icon-calendarClose fs-12 " style="color:#32c7c7"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
-            setHtml += '<p class="bookingTiming"><i class="icon-calendarClose fs-12 " style="color:#32c7c7"></i> <span class=" d-i-b half-pad-left">'+getTime+'</span></p>';
-            setHtml += '<p><a class="savePopupBooking" href="JavaScript:;" style="color:#32c7c7">OK</a></p>';
-          setHtml += '<div class="transparentBG absolute" style="background-color:#32c7c7"></div>';
+            setHtml += '<p><i class="icon-calendarClose fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
+            setHtml += '<p><i class="icon-calendarClose fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
+            setHtml += '<p class="bookingTiming"><i class="icon-calendarClose fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getTime+'</span></p>';
+            setHtml += '<p><a class="savePopupBooking" href="JavaScript:;" style="color:'+window.userColor+'">OK</a></p>';
+          setHtml += '<div class="transparentBG absolute" style="background-color:'+window.userColor+'"></div>';
         setHtml += '</div>';
       setHtml += '</div>';
     setHtml += '</div>';
@@ -1514,20 +1575,54 @@ $(document).on('click','.addBookingLink', function (e) {
     var container = "<div class='tempContainer fixed' style='top:"+getOffsetTop+"px ; left:"+getOffsetLeft+"px'>" + setHtml + "</div>";
     //$(this).after(container);
     $('.addBookingPopup').html(container).removeClass('hide');
+
+
 });
 
 /*====================================================*/
-
+// Save new Booking popup
 $(document).on('click','.savePopupBooking', function (e) {
     var selectHtml = $('.addBookingPopup .addBookingContainer').html();
+    var getDayName = $('.addBookingLink.thisClicked').closest('.daysCalendar').attr('dayname');
+    var getDateNumber = $('.addBookingLink.thisClicked').closest('.daysContent').attr('datenumber');
+    $('#bookingDate').attr('dayName', getDayName);
+    $('#bookingDate').attr('datenumber', getDateNumber);
     $('.addBookingLink.thisClicked').closest('label').html(selectHtml);
     $('.addBookingPopup').html('');
     $('.addBookingPopup').addClass('hide');
+
+    // Apply new booking made
+    
+    $('.next-saveDiv').removeClass('hide');
+    $('.bookNowDiv').addClass('hide');
+    additionalDetailsExpand();
+    $('.btn-bookNow').addClass('hide');
+    $('.savedBooking').removeClass('hide');
+    $('.bookingViewIcon').addClass('hide');
+    $('.bookingHeading').removeClass('hide');
+
+    var getMonth = $('#bookingDate').attr('monthname');
+    var getYear = $('#bookingDate').attr('bookingyear');
+    var getDay = $('#bookingDate').attr('dayname');
+    var getDate = $('#bookingDate').attr('datenumber');
+    if(getDate < 10)
+      { getDate = '0'+getDate; }
+    var getTime = $('#bookingDate').attr('timeslotfull');
+    var getRoom = $('.thisLabelClicked').attr('roomnumber');
+    var getMonthNumber = $('#bookingDate').attr('monthnumber');
+    if(getMonthNumber < 10)
+      { getMonthNumber = '0'+getMonthNumber; }
+    $('#bookingDate').attr('roomNumber', getRoom);
+    var getComlpeteDate = getYear+'-'+getMonthNumber+'-'+getDate;
+    $('#bookingDate').attr('ComlpeteDate', getComlpeteDate);
+    var setHtml = getDay + ' ' + getDate + ' ' + getMonth + ', ' + getYear + ' ' + getTime;
+    $('#bookingDate').html(setHtml);
+    $('.NewCalendarContainer').addClass('hide');
     
 });
 
 /* ==================================================== */
-
+// Cancel popup on scroll
 $('section.rightCol').on('scroll', function(event){
       $('.addBookingPopup').html('');
       $('.addBookingPopup').addClass('hide');
@@ -1545,6 +1640,32 @@ $('section.rightCol').on('scroll', function(event){
             }
     });// End
 
+// Get Time slots 
+function getTimeSlot(getTime) {
+  
+  if(getTime == "8:00 - 9:00 AM")
+  { return "8-9" }
+  else if(getTime == "9:00 - 10:00 AM")
+  { return "9-10" }
+  else if(getTime == "10:00 - 11:00 AM")
+  { return "10-11" }
+  else if(getTime == "11:00 - 12:00 PM")
+  { return "11-12" }
+  else if(getTime == "12:00 - 1:00 PM")
+  { return "12-1" }
+  else if(getTime == "1:00 - 2:00 PM")
+  { return "1-2" }
+  else if(getTime == "2:00 - 3:00 PM")
+  { return "2-3" }
+  else if(getTime == "3:00 - 4:00 PM")
+  { return "3-4" }
+  else if(getTime == "4:00 - 5:00 PM")
+  { return "4-5" }
+  else
+  { return "5-6" }
+    
+
+}
 
 /* ==================================================== */
 
@@ -1555,7 +1676,7 @@ $('section.rightCol').on('scroll', function(event){
   var thisdate = new Date();
   loadWeeklyDates(thisdate);
   function loadWeeklyDates(date) {
-
+      
       console.log('current start', moment(date).weekday(0).format('DD/MM/YYYY')); 
       console.log('current end', moment(date).weekday(6).format('DD/MM/YYYY')); 
       
@@ -1563,7 +1684,7 @@ $('section.rightCol').on('scroll', function(event){
       var getNextWeekStartDate = moment(date).weekday(7).format('YYYY-MM-DD');
       var getPreviousWeekStartDate = moment(date).weekday(-7).format('YYYY-MM-DD');
       var getCurrentYear = moment(date).weekday(6).format('YYYY');
-
+      var getMonthNumber = moment(date).format('M');
       setFirstDate = '';
       setLastDate = '';
 
@@ -1598,9 +1719,11 @@ $('section.rightCol').on('scroll', function(event){
               setLastDate = getCurrentDate + dateSuffix
           }
           var completeDate = setFirstDate + setLastDate + ' '+ getCurrentMonth + ', ' + getCurrentYear;
+          $('#bookingDate').attr('monthName', getCurrentMonth);
+          $('#bookingDate').attr('bookingYear', getCurrentYear);
 
       }
-
+      $('#bookingDate').attr('monthNumber', getMonthNumber);
       $('.weeklyDates span').html(completeDate).attr('startDate',getStartDate);
       $('.weeklyDates span').attr('nextWeekDate',getNextWeekStartDate);
       $('.weeklyDates span').attr('previousWeekDate',getPreviousWeekStartDate);
@@ -2049,6 +2172,7 @@ setTimeout(function(){
                 $('.dropdownheightSet').hide().removeClass('hide'); 
             }
             $('.budgeterror').addClass('opacity0');
+
         }
         
         // Check if it is Title
@@ -2085,6 +2209,8 @@ setTimeout(function(){
         if(el.closest('.dropdown').hasClass('product'))
         {   
             $('.producterror').addClass('opacity0');
+            var getShortCode = $(this).find('a').attr('shortcode');
+            el.closest('.dropdown').find('a.selected-text').attr('shortcode', getShortCode);
         }
 
         // Check if Referral dropdown
@@ -2114,6 +2240,10 @@ setTimeout(function(){
             var el = $(this);
 
             $('ul.dropdownOptions li').removeClass('activeField');
+
+            var getShortCode = $(this).find('a').attr('shortcode'); 
+            el.closest('.dropdown').find('a.selected-text').attr('shortcode', getShortCode);
+
             el.addClass('activeField');
             if($(this).hasClass('nextInline'))
             {
@@ -2460,11 +2590,10 @@ setTimeout(function(){
             assign_id : $(".assignToDiv a.selected-text").attr("assigneid"),
             reson_skip_next_in_line : $("#skip_reason_dropdown").text(),
             specify_requirements : $("#specify_requirements").val(),            
-            booking_date : $("#bookingDate").attr("date"),
-            booking_time : $("#bookingDate").attr("time"),
+            booking_date : $("#bookingDate").attr("ComlpeteDate"),
+            booking_time : $("#bookingDate").attr("timeslot"),
             //booking_timezone : $("#bookingDate").attr("timezone"),                   
-            //booking_room : $(".meetingRoomValue").attr('value')
-            booking_room : ''
+            booking_room : $('#bookingDate').attr('roomnumber')
             //booking_duration: $('.durationSelection a').filter('.active').attr('value'),
            
                       
@@ -2554,7 +2683,7 @@ setTimeout(function(){
       
       debugger;
       var data = getValuesFromForm();
-      
+      debugger;
 
       /*if(data.booking_duration == null || undefined)
       {
@@ -3505,8 +3634,10 @@ setTimeout(function(){
                   var dayDate = a.getDate();
                   // get Month
                   var getMonth = a.getMonth()+1;
+                  
                   var setFinalDate = getDayName + ' ' + getMonth + '/' + dayDate;
                   $('.daysCalendar.'+dateCounter + ' .headerPart').html(setFinalDate);
+                  $('.daysContent.'+dateCounter).attr('dateNumber', dayDate);
                 });
 
                 // Get Weekly End Dates 
@@ -3548,15 +3679,18 @@ setTimeout(function(){
                       else if(newRoomCounter == 1){roomNumber = "roomThree"}
                       else{roomNumber = "roomFour"}
                       var getRoom = getAllRooms[i];
+                    
                       if(getRoom == "")
                       {
-                        setThisHtml +='<label class=""><a class="addBookingLink" href="javascript:;"><i class="icon-addBookingLink fs-15"></i></a></label>';
+                        window.userColor = '#D3D3D3';
+                        setThisHtml +='<label class="labelContainer" roomNumber="'+i+'"><a class="addBookingLink" href="javascript:;"><i class="icon-addBookingLink fs-15"></i></a></label>';
                       }
                       else
                       {
+                        window.userColor = '#'+getAllRooms[i].booking_color;
                         var setBackgroundColor = "style='background-color:#"+getAllRooms[i].booking_color+"'";
                         var Color = "style='color:#"+getAllRooms[i].booking_color+"'";
-                        setThisHtml +='<label class="">';
+                        setThisHtml +='<label class="labelContainer" roomNumber="'+i+'">';
                           setThisHtml +='<div class="roomBooking '+roomNumber+'">';
                             setThisHtml +='<p class=" fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>BO</span></p>';
                             setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top relative">';

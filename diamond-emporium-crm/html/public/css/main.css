@@ -638,7 +638,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .roomsContainer .roomBooking { height: 61px; width: 100%; position: relative; z-index: 1; background: white;}
 .roomsContainer .roomBooking p.headBar{ color: white; line-height: 22px; height: 22px; text-align: left; padding-left: 5px; }
 .roomsContainer .roomBooking p.headBar span:first-child { width: 82px; float: left; border-right: 1px solid white; }
-.roomsContainer .roomBooking p.headBar span:last-child {float: left; padding-left: 5px; }
+.roomsContainer .roomBooking p.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; }
 .addBookingLink { position: absolute; left: 5px; top: 5px; opacity: 0 }
 .daysContentSlider label:hover .addBookingLink { opacity: 1 }
 .sundayContent { background: #f6f6f6; width: 113px; height: 619px; }
@@ -647,7 +647,8 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .roomBooking p{position: relative; z-index: 1}
 .transparentBG{ width: 100%; height: 39px; left: 0; top: 0; opacity: .3; }
 .addBookingContainer{ float: left; width: 124px; height: 122px;}
-.addBookingPopup{ left: 0; right: 0; top:0; width: 100%; height: 100%; z-index: 1;}
+/*.addBookingPopup{ left: 0; right: 0; top:0; width: 100%; height: 100%; z-index: 1;}*/
+.addBookingPopup{ z-index: 1;}
 .addBookingPopup .roomBooking{ height: 100%;}
 .addBookingPopup .transparentBG{ height: 100px; }
 .addBookingPopup .roomBooking p.headBar span:first-child { width: 92px; }

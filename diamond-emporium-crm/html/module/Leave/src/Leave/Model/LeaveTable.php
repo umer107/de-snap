@@ -736,7 +736,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         {
                         if(empty($item1['booking_color']))
                         {
-                            $item1['booking_color'] = "#D3D3D3";
+                            $item1['booking_color'] = "D3D3D3";
                         }
                          $booking_time_key = $item1['booking_time'];                         
                          $booking_room_key = $item1['booking_room'];

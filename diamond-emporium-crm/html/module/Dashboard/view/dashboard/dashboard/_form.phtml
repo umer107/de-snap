@@ -15,18 +15,18 @@ $form->prepare();
 
 //Select Product
 $selectproduct = array(
-    'Engagement Ring',
-    'Wedding Band',
-    'Eternity Band',
-    'Loose Diamond',
-    'Earrings',
-    'Dress Rings',
-    'Pendant',
-    'Bracelet',
-    'Timepiece',
-    'Custom Jewellery',
-    'Loose Gemstone',
-    'Other'
+    array("Engagement Ring","ER"),
+    array("Wedding Band","WB"),
+    array("Eternity Band","EB"),
+    array("Loose Diamond","LD"),
+    array("Earrings","E"),
+    array("Dress Rings","DR"),
+    array("Pendant","P"),
+    array("Bracelet","B"),
+    array("Timepiece","T"),
+    array("Custom Jewellery","CW"),
+    array("Loose Gemstone","LG"),
+    array("Other","O")
  );
 $attrproduct = array(   
     'class' => 'dropdownOptions bg-white absolute full-width',
@@ -246,9 +246,11 @@ echo '<div class="relative pull-left">';
                         
                         foreach($selectproduct as $product){ 
                             echo '<li>';
-                                echo "<a href='javascript:;' value='$product'> $product </a>";
+                                echo "<a href='javascript:;' value='$product[0]' shortCode='$product[1]'> $product[0] </a>";
                             echo '</li>';
                         }
+
+
             echo    '</ul>';
 
             echo '</li>';
