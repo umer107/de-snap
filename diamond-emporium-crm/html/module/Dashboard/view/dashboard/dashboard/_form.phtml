@@ -103,7 +103,7 @@ $selectGender = array(
 
 //
 echo $this->form()->openTag($form);
-echo $this->formHidden($form->get('id')).'<div class="full basicInfo formfields color-darkGray  fs-14">';
+echo $this->formHidden($form->get('id')).'<div class="full basicInfo formfields color-darkGray initialScreen fs-14">';
     
    // -----------------------------------------------------------------
    // -----------------------------------------------------------------
@@ -177,16 +177,126 @@ echo '<div class="relative pull-left gap-right pad-right">';
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
 
-    // Assignee Name
-    echo '<div class="selectedAgent relative pull-left">
-            <span style="display: none">Assigned to</span>
-            <p class="userDp pull-left half-gap-top"></p>
-            <p class="userName pull-left double-gap-top gap-left two-pad-left half-pad-top"></p>
+    // email
+    echo '<div class="relative pull-left"><span style="display: none" class="text-top">Email</span>'.$this->formRow($form->get("email")).'<label class="opacity0 error ">Please enter a valid email</label></div>';
 
-        </div>'; 
+    // Assignee Name
+    //echo '<div class="selectedAgent relative pull-left" di>
+    //        <span style="display: none">Assigned to</span>
+    //        <p class="userDp pull-left half-gap-top"></p>
+    //        <p class="userName pull-left double-gap-top gap-left two-pad-left half-pad-top"></p>
+
+    //    </div>'; 
    
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
+
+    
+    // Country List
+    echo '<div class="relative full pull-left initialScreen hideshow">';
+    echo '<div id="countryName" class="hide" value="Australia"></div>
+
+         <div class="relative pull-left countryDiv">
+            <span style="display: inline-block" class="text-top">Country </span>
+            
+            <div class="ui-widget">
+                <select id="combobox">
+
+                </select>
+            </div>
+        </div>';
+
+    // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+
+    // States    
+    
+    echo '<div class="relative pull-left stateDiv">
+        <span style="display: none" class="text-top">State </span>
+        <ul class="dropdown bg-white d-i-b pull-left relative wd-280 State">
+            <li>
+                <a href="javascript:;" class="selected-text d-b" value="All"><span id="stateDropdown" class="d-i-b">State </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>
+            </li>
+            <li>
+                <ul class="dropdownOptions bg-white absolute full-width" style="display:none;">
+                        <li><a href="javascript:;" value="ACT">ACT</a></li>
+                        <li><a href="javascript:;" value="NSW">NSW</a></li>
+                        <li><a href="javascript:;" value="NT">NT</a></li>
+                        <li><a href="javascript:;" value="QLD">QLD</a></li>
+                        <li><a href="javascript:;" value="WA">WA</a></li>
+                        <li><a href="javascript:;" value="TAS">TAS</a></li>
+                        <li><a href="javascript:;" value="VIC">VIC</a></li>
+                        <li><a href="javascript:;" value="SA">SA</a></li>
+                </ul>
+            </li>
+        </ul>
+        <label class="opacity0 error stateerror"> Please select State </label>
+    </div> <!-- State Div End -->';  
+
+    // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+
+    // Full Address 
+
+    echo '<div class="relative pull-left"><span style="display: none" class="text-top">Full Address</span><input type="text" id="fullAddress" placeholder="Full Address (optional)" /></div>';
+
+    // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+    
+    
+    //Communication Method
+    
+    echo '<div class="relative pull-left">';
+      echo '<span style="display: none" class="text-top">Communication Method </span>';
+      echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 CommunicationMethod">';
+            echo '<li>';
+             echo '   <a href="javascript:;" class="selected-text d-b" value="All"><span id ="CommunicationMethod" class="d-i-b">Communication Method</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+            echo '</li>';
+            echo '<li>';
+             // echo $this->formRow($title);
+            echo    '<ul class="dropdownOptions bg-white absolute full-width" style="display:none;">';
+                        
+                        foreach($communicationmethod as $method){ 
+                            echo '<li>';
+                                echo "<a href='javascript:;' value='$method'> $method </a>";
+                            echo '</li>';
+                        }
+            echo    '</ul>';
+
+            echo '</li>';
+        echo '</ul>';
+
+    echo '</div>';
+    
+    // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+
+    //ContactMethod
+    echo '<div class="relative pull-left">';
+      echo '<span style="display: none" class="text-top">Preferred method of contact </span>';
+      echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 preferredMethod">';
+                echo '<li>';
+                 echo '   <a href="javascript:;" class="selected-text d-b users" value="All"><span id = "perferrefDropdown" class="d-i-b">Preferred method of contact </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+                echo '</li>';
+                echo '<li>';
+                 // echo $this->formRow($title);
+                echo    '<ul class="dropdownOptions bg-white absolute full-width" style="display:none;">';
+                            
+                            foreach($selectcontactmethod as $method){ 
+                                echo '<li>';
+                                    echo "<a href='javascript:;' value='$method'> $method </a>";
+                                echo '</li>';
+                            }
+                echo    '</ul>';
+
+                echo '</li>';
+            echo '</ul>';
+        echo '</div>';
+
+       echo '</div>'; 
+    // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+
 
     // Add Address Fields 
     //echo $this->partial('dashboard/dashboard/addAddress.phtml');
@@ -223,11 +333,7 @@ echo '</h2>';
 
 echo '<div class="full additionalDiv">';
 
-    // -----------------------------------------------------------------
-    // -----------------------------------------------------------------
 
- // Email
-    echo '<div class="relative pull-left"><span style="display: none" class="text-top">Email</span>'.$this->formRow($form->get("email")).'<label class="opacity0 error ">Please enter a valid email</label></div>';
 
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
@@ -260,8 +366,71 @@ echo '<div class="relative pull-left">';
 
     echo '</div>';
     
+
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
+
+
+    //Referral
+    echo '<div class="relative pull-left">';
+      echo '<span style="display: none" class="text-top">How did they hear about us?</span>';
+      echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 referral">';
+            echo '<li>';
+             echo '   <a href="javascript:;" class="selected-text d-b users" value="All"><span id = "referralDropdown" class="d-i-b">How did they hear about us? </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+            echo '</li>';
+            echo '<li>';
+             // echo $this->formRow($title);
+            echo    '<ul class="dropdownOptions bg-white absolute full-width" style="display:none;">';
+                        foreach($selectreferral as $referral){
+                            echo '<li>';
+                                echo "<a href='javascript:;' value='$referral[0]'><span class='ref-Img'><img class='pull-left' src=' $referral[1]'></span> $referral[0]</a>";                               
+                            echo '</li>';
+                        }
+            echo    '</ul>';
+
+            echo '</li>';
+        echo '</ul>';
+
+        echo '<label class="opacity0 error referralerror"> Please select how did they hear about us? </label>';
+
+        echo '<select style="display:none" name="referral"><option value="" selected="selected"></option><select>';
+    echo '</div>';
+
+
+    // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+
+
+    // Referral Address 
+
+    echo '<div class="relative pull-left"><span style="display: none" class="text-top">Referral</span><input type="text" placeholder="Referral" id="
+    onlyReferral" /></div>';
+
+
+    // -----------------------------------------------------------------      
+    // -----------------------------------------------------------------
+
+   //specify_requirements  
+     echo '<div class="relative pull-left">';
+          echo '<span style="display: none" class="text-top">What they are looking for</span>';
+            echo $this->formRow($form->get("specify_requirements"));
+        echo '</div>'; 
+
+
+    // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+
+    //Special Istruction
+    echo '<div class="relative pull-left">';
+        echo '<span style="display: none" class="text-top">Special instructions</span>';
+            echo $this->formRow($form->get("special_instructions"));
+        
+    echo '</div>';
+
+
+    // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+
 
 //budget
 echo '<div class="relative pull-left">';
@@ -334,159 +503,26 @@ echo '<div class="relative pull-left">';
                 echo '</ul>';
         echo '</div>';
 
-    // -----------------------------------------------------------------      
-    // -----------------------------------------------------------------
+       
 
-   //specify_requirements  
-     echo '<div class="relative pull-left">';
-          echo '<span style="display: none" class="text-top">What they are looking for</span>';
-            echo $this->formRow($form->get("specify_requirements"));
-        echo '</div>';    
-
-    // -----------------------------------------------------------------
-    // -----------------------------------------------------------------
-
-
-    //Referral
-    echo '<div class="relative pull-left">';
-      echo '<span style="display: none" class="text-top">Referral</span>';
-      echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 referral">';
-            echo '<li>';
-             echo '   <a href="javascript:;" class="selected-text d-b users" value="All"><span id = "referralDropdown" class="d-i-b">Referral </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
-            echo '</li>';
-            echo '<li>';
-             // echo $this->formRow($title);
-            echo    '<ul class="dropdownOptions bg-white absolute full-width" style="display:none;">';
-                        foreach($selectreferral as $referral){
-                            echo '<li>';
-                                echo "<a href='javascript:;' value='$referral[0]'><span class='ref-Img'><img class='pull-left' src=' $referral[1]'></span> $referral[0]</a>";                               
-                            echo '</li>';
-                        }
-            echo    '</ul>';
-
-            echo '</li>';
-        echo '</ul>';
-
-        echo '<label class="opacity0 error referralerror"> Please select referral </label>';
-
-        echo '<select style="display:none" name="referral"><option value="" selected="selected"></option><select>';
-    echo '</div>';
-
-
-    // -----------------------------------------------------------------
-    // -----------------------------------------------------------------
-    // Country List
-    echo '<div id="countryName" class="hide" value="Australia"></div>
-
-         <div class="relative pull-left countryDiv">
-            <span style="display: inline-block" class="text-top">Country </span>
-            
-            <div class="ui-widget">
-                <select id="combobox">
-
-                </select>
-            </div>
-        </div>';
-
-    // -----------------------------------------------------------------
-    // -----------------------------------------------------------------
-
-    // States    
     
-    echo '<div class="relative pull-left stateDiv">
-        <span style="display: none" class="text-top">State </span>
-        <ul class="dropdown bg-white d-i-b pull-left relative wd-280 State">
-            <li>
-                <a href="javascript:;" class="selected-text d-b" value="All"><span id="stateDropdown" class="d-i-b">State </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>
-            </li>
-            <li>
-                <ul class="dropdownOptions bg-white absolute full-width" style="display:none;">
-                        <li><a href="javascript:;" value="ACT">ACT</a></li>
-                        <li><a href="javascript:;" value="NSW">NSW</a></li>
-                        <li><a href="javascript:;" value="NT">NT</a></li>
-                        <li><a href="javascript:;" value="QLD">QLD</a></li>
-                        <li><a href="javascript:;" value="WA">WA</a></li>
-                        <li><a href="javascript:;" value="TAS">TAS</a></li>
-                        <li><a href="javascript:;" value="VIC">VIC</a></li>
-                        <li><a href="javascript:;" value="SA">SA</a></li>
-                </ul>
-            </li>
-        </ul>
-        <label class="opacity0 error stateerror"> Please select State </label>
-    </div> <!-- State Div End -->';  
 
-    // -----------------------------------------------------------------
-    // -----------------------------------------------------------------
-    
-    //Communication Method
-    
-    echo '<div class="relative pull-left">';
-      echo '<span style="display: none" class="text-top">Communication Method </span>';
-      echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 CommunicationMethod">';
-            echo '<li>';
-             echo '   <a href="javascript:;" class="selected-text d-b" value="All"><span id ="CommunicationMethod" class="d-i-b">Communication Method</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
-            echo '</li>';
-            echo '<li>';
-             // echo $this->formRow($title);
-            echo    '<ul class="dropdownOptions bg-white absolute full-width" style="display:none;">';
-                        
-                        foreach($communicationmethod as $method){ 
-                            echo '<li>';
-                                echo "<a href='javascript:;' value='$method'> $method </a>";
-                            echo '</li>';
-                        }
-            echo    '</ul>';
 
-            echo '</li>';
-        echo '</ul>';
 
-    echo '</div>';
-    
+
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
 
     //ReferenceProduct
 
-    echo '<div class="relative pull-left"><span style="display: none" class="text-top">Reference product</span><input type="text" name="ReferenceProduct" id="referrenceDropdown" class="ReferenceProduct" placeholder="Reference product" maxlength="30" value=""><span style="display: none">Reference product</span></div>';
+    echo '<div class="relative pull-left"><span style="display: none" class="text-top">Reference product</span><input autocomplete="off" type="text" name="ReferenceProduct" id="referrenceDropdown" class="ReferenceProduct" placeholder="Reference product" maxlength="30" value=""><span style="display: none">Reference product</span></div>';
 
-    // -----------------------------------------------------------------
-    // -----------------------------------------------------------------
 
-    //ContactMethod
-echo '<div class="relative pull-left">';
-  echo '<span style="display: none" class="text-top">Preferred method of contact </span>';
-  echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 preferredMethod">';
-            echo '<li>';
-             echo '   <a href="javascript:;" class="selected-text d-b users" value="All"><span id = "perferrefDropdown" class="d-i-b">Preferred method of contact </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
-            echo '</li>';
-            echo '<li>';
-             // echo $this->formRow($title);
-            echo    '<ul class="dropdownOptions bg-white absolute full-width" style="display:none;">';
-                        
-                        foreach($selectcontactmethod as $method){ 
-                            echo '<li>';
-                                echo "<a href='javascript:;' value='$method'> $method </a>";
-                            echo '</li>';
-                        }
-            echo    '</ul>';
-
-            echo '</li>';
-        echo '</ul>';
-    echo '</div>';
     
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
     
-    //Special Istruction
-        echo '<div class="relative pull-left">';
-            echo '<span style="display: none" class="text-top">Special instructions</span>';
-                echo $this->formRow($form->get("special_instructions"));
-            
-        echo '</div>';
-
-
-    // -----------------------------------------------------------------
-    // -----------------------------------------------------------------
+    
 
     // budget text
 
@@ -531,6 +567,7 @@ echo '<h2 class="fs-24 color-green robotolight double-pad-top hide bookingHeadin
 
     // next-saveDiv Start
     echo'<div class="next-saveDiv full hide">';
+        echo '<h2 class="fs-24 color-green robotolight double-pad-bottom showOnNewBooking"> Booking </h2>';
         echo '  <a href="javascript:;" class="btn-blue fs-14 button bg-white btn-bookNow open lh-34 align-center robotomedium hide pull-left gap-bottom">Book Now</a>';
         
         echo '<div class="pull-left fs-14 hide savedBooking">

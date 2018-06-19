@@ -1600,7 +1600,7 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('.savedBooking').removeClass('hide');
     $('.bookingViewIcon').addClass('hide');
     $('.bookingHeading').removeClass('hide');
-
+    $('.showOnNewBooking').addClass('hide');
     var getMonth = $('#bookingDate').attr('monthname');
     var getYear = $('#bookingDate').attr('bookingyear');
     var getDay = $('#bookingDate').attr('dayname');
@@ -1999,6 +1999,7 @@ setTimeout(function(){
         $('.suggestedDate').html('');
         $('#bookingDate').removeClass('nowCanSave');
         $('.btn-bookNow').removeClass('hide');
+        $('.showOnNewBooking').removeClass('hide');
         cancelBookedBookingAction();
     });
 
@@ -4502,6 +4503,7 @@ function validateBasicInfo() {
                     $('.newLead').addClass('opened');
                     $('.btn-nextDetails').trigger('click');
                     $('.add-addressClick').trigger('click');
+                    $('.initialScreen').removeClass('hideshow');
                 }
                 
             }
@@ -4534,7 +4536,7 @@ function isValidEmailAddress(emailAddress) {
 // Validating Phone Number
 function validatePhone(PhoneNumber) {
     //var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
-    var filter = /^[0-9 ]+$/
+    var filter = /^[0-9  + ]+$/
     if (filter.test(PhoneNumber)) {
         return true;
     }
