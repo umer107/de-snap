@@ -1,0 +1,1 @@
+ALTER TABLE de_userdetail DROP COLUMN Zip;
