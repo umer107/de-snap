@@ -1919,7 +1919,7 @@ setTimeout(function(){
             $('.icExpand').removeClass('hide');
             $('.next-saveDiv').addClass('hide');
             //$('.bookNowDiv').removeClass('hide');
-            $('.NewCalendarContainer').removeClass('hide');
+            $('.NewCalendarContainer').removeClass('hide').addClass('openNow');
             suggestedDate();
         }
 
@@ -2008,12 +2008,22 @@ setTimeout(function(){
     // Book Now Calendar Close
     $(document).on('click', '.editBooking', function () {
         $('.next-saveDiv').addClass('hide');
-        $('.bookNowDiv').removeClass('hide');
+        //$('.bookNowDiv').removeClass('hide');
         additionalDetailsMinimize();
         $('.savedBooking').removeClass('hide');
         $('.btn-bookNow').addClass('hide');
         $('.bookingViewIcon').removeClass('hide');
         $('.bookingHeading').addClass('hide');
+
+        if($('.NewCalendarContainer').hasClass('openNow'))
+        {
+          $('.NewCalendarContainer').removeClass('hide');
+        }
+        else
+        {
+          $('.NewCalendarContainer').removeClass('hide').addClass('openNow');
+          suggestedDate();
+        }
     });
 
 /*--------------------------------------------------*/
@@ -3170,6 +3180,7 @@ setTimeout(function(){
 /* ------------------ Start Edit Detail ------------------------*/
     
     $(document).on('click','.editDetails:not(.disabled)', function (e) {
+      debugger
     showMainLoading();  
     var getLeadId = $(this).attr('lead-id');    
     
@@ -3237,7 +3248,8 @@ setTimeout(function(){
               $('.additional-details .CommunicationMethod .selected-text span').html(parsed[0].communication_method);
 
               $('.additional-details .requirements').val(parsed[0].specify_requirements);
-              
+               
+              $('.initialScreen').removeClass('hideshow');
                
                
                $('#countryName').attr('value',parsed[0].country);
@@ -3337,24 +3349,27 @@ setTimeout(function(){
                   
                   if(parsed[0].user_booking_date == '1')
                   {
-                    $('#bookingDate').attr('timezone', getAmPm);
-                    $('#bookingDate').attr('date', getFullDate);
-                    $('#bookingDate').attr('time', parsed[0].booking_time);
+                    //$('#bookingDate').attr('timezone', getAmPm);
+                    //$('#bookingDate').attr('date', getFullDate);
+                    //$('#bookingDate').attr('time', parsed[0].booking_time);
                   }
                   
                   //$('#bookingDate').addClass('nowCanSave');
                   $('#bookingDate').addClass('nowCanSave');
                   if(parsed[0].user_booking_date == '1'){
+                    
+                    $('.btn-bookNow open, .bookNowMain').addClass('hide');
+                    $('.savedBooking, .next-saveDiv').removeClass('hide');
 
-                    if(parsed[0].booking_time != "" )
-                    {
-                      $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time + ' ' + getAmPm); // Setting booking date field
-                    }
-                    else
-                    {
-                      $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth);  
-                    }
-                    $('.btn-saveBooking').trigger('click');
+                   // if(parsed[0].booking_time != "" )
+                   // {
+                   //   $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time + ' ' + getAmPm); // Setting booking date field
+                   // }
+                   // else
+                   // {
+                   //   $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth);  
+                   // }
+                   // $('.btn-saveBooking').trigger('click');
                   }
                   
                   
