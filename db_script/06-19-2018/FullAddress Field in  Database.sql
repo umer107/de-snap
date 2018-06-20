@@ -1,0 +1,1 @@
+ALTER TABLE `de_userdetail` ADD `full_address` VARCHAR(100) NULL AFTER `State`;

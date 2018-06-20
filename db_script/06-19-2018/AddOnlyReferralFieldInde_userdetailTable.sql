@@ -1,0 +1,1 @@
+ALTER TABLE `de_userdetail` ADD `only_referral` VARCHAR(40) NULL AFTER `referral`;

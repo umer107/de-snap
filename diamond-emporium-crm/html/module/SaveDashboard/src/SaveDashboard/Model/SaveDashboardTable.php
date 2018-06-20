@@ -95,14 +95,39 @@ class SaveDashboardTable
             $product_shortcode = $first_letter.$last_letter;
             $data['product_shortcode'] = $product_shortcode;
           /*Product Short Code*/
+            
           /*AssignUsUserShortCode*/
             $assigni_name = explode(" ", $data['assign_to']);
-            $lastname_assigni_name = array_pop($assigni_name);
-            $firstname_assigni_name = implode(" ", $assigni_name);
-            $first_letter_assigni_name = $firstname_assigni_name[0];
-            $last_letter_assigni_name = $lastname_assigni_name[0];
-            $assign_shortcode = $first_letter_assigni_name.$last_letter_assigni_name;
-            $data['assignto_shortcode'] = $assign_shortcode;
+            $total_assigni_count = count($assigni_name);
+            if($total_assigni_count >= 1 && $total_assigni_count <  2)
+            {
+               $firstname_assigni = $assigni_name[0];
+               $first_letter_assigni_name = $firstname_assigni[0];
+               $assign_shortcode = $first_letter_assigni_name;
+               $data['assignto_shortcode'] = $first_letter_assigni_name;
+               
+            }
+            else if($total_assigni_count >=1  && $total_assigni_count < 3)
+            {
+               $firstname_assigni = $assigni_name[0];
+               $lastname_assigni =  $assigni_name[1];
+               $first_letter_assigni_name = $firstname_assigni[0];
+               $last_letter_assigni_name =  $lastname_assigni[0];
+               $assign_shortcode = $first_letter_assigni_name.$last_letter_assigni_name;
+                $data['assignto_shortcode'] = $assign_shortcode;
+               
+            }
+            else if($total_assigni_count >=1  && $total_assigni_count < 4)
+            {
+               $firstname_assigni = $assigni_name[0];
+               $middle_assigni =  $assigni_name[1];
+               $lastname_assigni =  $assigni_name[2];
+               $first_letter_assigni_name = $firstname_assigni[0];
+               $middle_assigni_letter_assigni_name =  $middle_assigni[0];
+               $last_letter_assigni_name = $lastname_assigni[0];
+               $assign_shortcode = $first_letter_assigni_name.$middle_assigni_letter_assigni_name.$last_letter_assigni_name;
+               $data['assignto_shortcode'] = $assign_shortcode;
+            }
           /*AssignUsUserShortCode*/
             $AssignInUserId = $data['assign_id'];
             unset($data['assign_id']);
@@ -114,7 +139,7 @@ class SaveDashboardTable
              {
               $data['lead_status'] = 'Open';
            
-            if(empty($data['booking_room']))
+              if(empty($data['booking_room']))
              {
                if(empty($data['booking_date']))
                {
@@ -175,81 +200,27 @@ class SaveDashboardTable
            }       
         
           else {
-  
-          
-          
-          unset($data['booking_room']);
-          $select = new \Zend\Db\Sql\Select();
-	  $select->from('de_userdetail')->columns(array('id'));
-          
-          $select = new \Zend\Db\Sql\Select();
-			$select->from(array('l' => 'de_userdetail'))
-				   ->columns(array('id','booking_date','booking_time','booking_timezone'));	
-          
-          $booking_date = $data['booking_date'];
-          $booking_time = $data['booking_time'];
-          $booking_timezone = $data['booking_timezone'];
-        
-        
-         /*if(!empty($booking_date && $booking_time && $booking_timezone))              
-             {*/
-	 $select->where(array('l.booking_date = ?' => $booking_date ,'l.booking_time = ?' => $booking_time ,'l.booking_timezone = ?' => $booking_timezone ));
-	     /*}*/
-         $exec_data = $this->executeQuery($select);
-         $data_booking = $exec_data->toArray();
-         $counter = count($exec_data);
-         
-         $data_bookingDate = $data_booking[0]['booking_date'];
-         $data_bookingTime = $data_booking[0]['booking_time'];
-         $data_bookingTimeZone = $data_booking[0]['booking_timezone'];
-         
-         if($data_bookingDate ==  $booking_date  && $data_bookingTime == $booking_time && $data_bookingTimeZone == $booking_timezone  )
-         {
-          
-             if($where)
-		  return $this->tableGateway->update($data, $where);
-		else
-		 return $this->tableGateway->update($data, array('id' => $leadId));
-             
-         }
-        else {
-            
-            if($counter == 0)
-         {
-             //TODO HANDLER booking_room  set to 1
-             $data['booking_room'] = 1;
-         }
-         else if($counter == 1)
-         {
-             //TODO HANDLER booking_room set to 2
-             $data['booking_room'] = 2;
-         }
-         else if($counter == 2)
-         {
-             //TODO HANDLER booking_room set to 3
-             $data['booking_room'] = 3;
-         }
-        else
-        {
-            //TODO HANDLER    return 0 or exit;
-            return " Room Full Pleae Find Another Nearby Hotel";
-        }
               
-	        if($where)
-		  return $this->tableGateway->update($data, $where);
-		else
-		 return $this->tableGateway->update($data, array('id' => $leadId));
-            
-        }
-             
-         
-			
-                
+             if(empty($data['booking_room']))
+             {
+               if(empty($data['booking_date']))
+               {
+                   unset($data['booking_room']);
+                   $data['booking_date'] = date('Y-m-d'); 
+                   $data['user_booking_date'] = 1;
+               }
              }
-				   		              
-          //return $this->tableGateway->insert($data);
-
-          
+            else{
+               $data['user_booking_date'] = 0;
+             } 
+             if($where){
+                  return $this->tableGateway->update($data, $where);
+             } 
+             else{
+                  return $this->tableGateway->update($data, array('id' => $leadId));
+             }
+         }
+         
         }
      	 catch(\Exception $e){
 			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
