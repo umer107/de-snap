@@ -1539,6 +1539,7 @@ $(document).on('click','.addBookingLink', function (e) {
     $('.labelContainer').removeClass('thisLabelClicked');
     $(this).addClass('thisClicked');
     $(this).closest('.labelContainer').addClass('thisLabelClicked');
+    var getRoomNumber = $(this).closest('.labelContainer').attr('roomnumber');
     var p = $(this)
     var offset = p.offset();
     var getOffsetTop = offset.top;
@@ -1556,10 +1557,10 @@ $(document).on('click','.addBookingLink', function (e) {
     var getName = $('#first_name').val() + ' ' + $('#last_name').val();
     var getProductSC = $('.dropdown.product').find('a.selected-text').attr('shortcode');
     var getUserSC = $('.dropdown.assignToDiv').find('a.selected-text').attr('shortcode');
-
+    debugger
     var setHtml = "";
     var setHtml = '<div class="addBookingContainer roomsContainer">';
-      setHtml += '<div class="roomBooking roomFour">';
+      setHtml += '<div class="roomBooking">';
         setHtml += '<p class=" fs-12 headBar" style="background-color:'+window.userColor+'"><span class="ellipsis">'+getName+'</span><span>'+getUserSC+'</span></p>';
           setHtml += '<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
             setHtml += '<p><i class="icon-calendarClose fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
@@ -1645,55 +1646,7 @@ $('section.rightCol').on('scroll', function(event){
             }
     });// End
 
-// Get Time slots 
-function getTimeSlot(getTime) {
-  
-  if(getTime == "8:00 - 9:00 AM")
-  { return "8-9" }
-  else if(getTime == "9:00 - 10:00 AM")
-  { return "9-10" }
-  else if(getTime == "10:00 - 11:00 AM")
-  { return "10-11" }
-  else if(getTime == "11:00 - 12:00 PM")
-  { return "11-12" }
-  else if(getTime == "12:00 - 1:00 PM")
-  { return "12-1" }
-  else if(getTime == "1:00 - 2:00 PM")
-  { return "1-2" }
-  else if(getTime == "2:00 - 3:00 PM")
-  { return "2-3" }
-  else if(getTime == "3:00 - 4:00 PM")
-  { return "3-4" }
-  else if(getTime == "4:00 - 5:00 PM")
-  { return "4-5" }
-  else
-  { return "5-6" }
-    
-}
-function getTimeSlotFull(getTime) {
-  
-  if(getTime == "8-9")
-  { return "8:00 - 9:00 AM" }
-  else if(getTime == "9-10")
-  { return "9:00 - 10:00 AM" }
-  else if(getTime == "10-11")
-  { return "10:00 - 11:00 AM" }
-  else if(getTime == "11-12")
-  { return "11:00 - 12:00 PM" }
-  else if(getTime == "12-1")
-  { return "12:00 - 1:00 PM" }
-  else if(getTime == "1-2")
-  { return "1:00 - 2:00 PM" }
-  else if(getTime == "2-3")
-  { return "2:00 - 3:00 PM" }
-  else if(getTime == "3-4")
-  { return "3:00 - 4:00 PM" }
-  else if(getTime == "4-5")
-  { return "4:00 - 5:00 PM" }
-  else
-  { return "5:00 - 6:00 PM" }
-    
-}
+
 
 /* ==================================================== */
 
@@ -3254,16 +3207,13 @@ setTimeout(function(){
               $('#fullAddress').val(parsed[0].full_address);
               
               // Address Fields
-              //$('.basicInfo .street').val(parsed[0].Street);
-              $('.stateDiv .dropdown.State .selected-text').attr('value',parsed[0].State);
-              $('.stateDiv .dropdown.State .selected-text span').html(parsed[0].State);
-              //$('.basicInfo .cityValue').val(parsed[0].City);
-              //$('.basicInfo .Zip').val(parsed[0].Zip);
+              $('.stateDiv .dropdown.State .dropdownOptions li a[value="'+parsed[0].State+'"]').trigger('click');
               // Additional Detail Fields
-              $('.additional-details .dropdown.product .selected-text').attr('value',parsed[0].product);
-              $('.additional-details .dropdown.product .selected-text span').html(parsed[0].product);
-              $('.additional-details .dropdown.referral .selected-text').attr('value',parsed[0].referral);
-              $('.additional-details .dropdown.referral .selected-text span').html(parsed[0].referral);
+
+              $('.additional-details .dropdown.product .dropdownOptions li a[value="'+parsed[0].product+'"]').trigger('click');
+
+              $('.additional-details .dropdown.referral .dropdownOptions li a[value="'+parsed[0].referral+'"]').trigger('click');
+
               $('.additional-details .instructions').val(parsed[0].special_instructions);
               $('.additional-details .ReferenceProduct').val(parsed[0].reference_product);
 
@@ -3274,11 +3224,9 @@ setTimeout(function(){
               $('#BudgetText').focusin();
               $('#BudgetText').focusout();
               // Preferred method
-              $('.additional-details .preferredMethod .selected-text').attr('value',parsed[0].contact_method);
-              $('.additional-details .preferredMethod .selected-text span').html(parsed[0].contact_method);
+              $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
               // Communication method
-              $('.additional-details .CommunicationMethod .selected-text').attr('value',parsed[0].communication_method);
-              $('.additional-details .CommunicationMethod .selected-text span').html(parsed[0].communication_method);
+              $('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+parsed[0].communication_method+'"]').trigger('click');
 
               $('.additional-details .requirements').val(parsed[0].specify_requirements);
                
@@ -3356,7 +3304,7 @@ setTimeout(function(){
                                    'August', 'September', 'October', 'November', 'December'];
                   //month name
                   var getMonth = m_names[d.getMonth()];
-                  
+                  var getCurrentDate = d.getDate();
                   
                     
                   $('.suggestedDate').html('');
@@ -3396,7 +3344,7 @@ setTimeout(function(){
                     var getFullTime = getTimeSlotFull(timeslot);
                     var timeslotfull = getFullTime;
                     var getBookingDay = getDay;
-                    var datenumber = 1;
+                    var datenumber = getCurrentDate;
                     if(datenumber < 10)
                       { datenumber = '0'+datenumber; }
                     var roomnumber = parsed[0].booking_room; 
@@ -3405,29 +3353,16 @@ setTimeout(function(){
                     $('#bookingDate').attr('timeslot',timeslot);
                     $('#bookingDate').attr('timeslotfull',timeslotfull);
                     $('#bookingDate').attr('dayname',getBookingDay);
-                    //$('#bookingDate').attr('datenumber', datenumber);
+                    $('#bookingDate').attr('datenumber', datenumber);
                     $('#bookingDate').attr('roomnumber',roomnumber);
                     $('#bookingDate').attr('comlpetedate', comlpetedate);
                     var setHtml = getBookingDay + ' ' + datenumber + ' ' + monthname + ', ' + bookingyear + ' ' + getFullTime;
                     $('#bookingDate').html(setHtml);
-
-                    
-                    // Calling load calendar
-                    //suggestedDate();
-                    //$('.NewCalendarContainer').removeClass('hide');
-                    
-                    //$('#bookingDate').html(setHtml);
-
-                    //geDateValues();
-                   // if(parsed[0].booking_time != "" )
-                   // {
-                   //   $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time + ' ' + getAmPm); // Setting booking date field
-                   // }
-                   // else
-                   // {
-                   //   $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth);  
-                   // }
-                   // $('.btn-saveBooking').trigger('click');
+                  }
+                  else
+                  {
+                    $('.bookNowDiv').addClass('hide');
+                    $('.btn-bookNow, .next-saveDiv').removeClass('hide');
                   }
                   
                   
@@ -3717,7 +3652,17 @@ setTimeout(function(){
                 // Get Weekly End Dates 
 
                 /*================================*/
+                // Get User Color 
+                window.userColor = '#D3D3D3';
+                $.ajax({
 
+                  type: "GET",
+                  url: "/leave/ajaxGetUserColor",
+                  data: {user_id : getAssigneeId},
+                  success: function (data) {
+                    window.userColor = data
+                  }
+                });
                 // Bind Data to  Weekly Start Dates 
                 
                 // Marray array for data
@@ -3753,15 +3698,16 @@ setTimeout(function(){
                       else if(newRoomCounter == 1){roomNumber = "roomThree"}
                       else{roomNumber = "roomFour"}
                       var getRoom = getAllRooms[i];
-                    
+                      debugger
+
                       if(getRoom == "")
                       {
-                        window.userColor = '#D3D3D3';
+                        //window.userColor = '#D3D3D3';
                         setThisHtml +='<label class="labelContainer" roomNumber="'+i+'"><a class="addBookingLink" href="javascript:;"><i class="icon-addBookingLink fs-15"></i></a></label>';
                       }
                       else
                       {
-                        window.userColor = '#'+getAllRooms[i].booking_color;
+                        //window.userColor = '#'+getAllRooms[i].booking_color;
                         var setBackgroundColor = "style='background-color:#"+getAllRooms[i].booking_color+"'";
                         var Color = "style='color:#"+getAllRooms[i].booking_color+"'";
                         setThisHtml +='<label class="labelContainer" roomNumber="'+i+'">';
@@ -6171,29 +6117,27 @@ $(document).on('click','.leadUserName', function (e) {
                html += "<p><label>Last Name:</label><label>" + parsed[0].last_name + " </label></p> ";
                html += "<p><label>Phone Number:</label><label>" + parsed[0].phone_number + " </label></p> ";
                html += "<p><label>Email:</label><label>" + parsed[0].email + " </label></p> ";
-               html += "<p><label>Product:</label><label>" + parsed[0].product + " </label></p> ";
-               html += "<p><label>Budget:</label><label>" + parsed[0].budget + " </label></p> ";
-               html += "<p><label>Assign To:</label><label>" + parsed[0].assign_to + " </label></p> ";
-               html += "<p><label>What they are looking for:</label><label>" + parsed[0].specify_requirements + " </label></p> ";
-               html += "<p><label>Referral:</label><label>" + parsed[0].referral + " </label></p> ";
                html += "<p><label>Country:</label><label>" + parsed[0].country + " </label></p> ";
                if(parsed[0].country == 'Australia')
                {
                   html += "<p><label>State:</label><label>" + parsed[0].State + " </label></p> ";
                }
-               //html += "<p><label>City:</label><label>" + parsed[0].City + " </label></p> ";
-               //html += "<p><label>Zip:</label><label>" + parsed[0].Zip + " </label></p> ";
-               
-               
-               
+               html += "<p><label>Full Address:</label><label>" + parsed[0].full_address + " </label></p> ";
                html += "<p><label>Communication Method:</label><label>" + parsed[0].communication_method + " </label></p> ";
-               html += "<p><label>Reference Product:</label><label>" + parsed[0].reference_product + " </label></p> ";
                html += "<p><label>Prefered method of contact:</label><label>" + parsed[0].contact_method + " </label></p> ";
+               html += "<p><label>Product:</label><label>" + parsed[0].product + " </label></p> ";
+               html += "<p><label>How did they hear about us?:</label><label>" + parsed[0].referral + " </label></p> ";
+               html += "<p><label>Referral:</label><label>" + parsed[0].referral + " </label></p> ";
+               html += "<p><label>What they are looking for:</label><label>" + parsed[0].specify_requirements + " </label></p> ";
                html += "<p><label>Special Instruction:</label><label>" + parsed[0].special_instructions + " </label></p> ";
+               html += "<p><label>Budget:</label><label>" + parsed[0].budget + " </label></p> ";
+               html += "<p><label>Assign To:</label><label>" + parsed[0].assign_to + " </label></p> ";
+               html += "<p><label>Reference Product:</label><label>" + parsed[0].reference_product + " </label></p> ";
                html += "<p><label>Lead Status:</label><label>" + parsed[0].lead_status + " </label></p> ";
-               if(parsed[0].user_booking_date == '1')
+               if(parsed[0].user_booking_date == '0')
                {
-                  html += "<p><label>Booking Time:</label><label>" + parsed[0].booking_time + " </label></p> ";
+                  var getBookingTime = getTimeSlotFull(parsed[0].booking_time);
+                  html += "<p><label>Booking Time:</label><label>" + getBookingTime + " </label></p> ";
                   html += "<p><label>Booking Date:</label><label>" + parsed[0].booking_date + " </label></p> ";
                }
                
@@ -6231,6 +6175,56 @@ $(document).on('click','.closeLeadClick', function (e) {
 });
 
 
+
+// Get Time slots 
+function getTimeSlot(getTime) {
+  
+  if(getTime == "8:00 - 9:00 AM")
+  { return "8-9" }
+  else if(getTime == "9:00 - 10:00 AM")
+  { return "9-10" }
+  else if(getTime == "10:00 - 11:00 AM")
+  { return "10-11" }
+  else if(getTime == "11:00 - 12:00 PM")
+  { return "11-12" }
+  else if(getTime == "12:00 - 1:00 PM")
+  { return "12-1" }
+  else if(getTime == "1:00 - 2:00 PM")
+  { return "1-2" }
+  else if(getTime == "2:00 - 3:00 PM")
+  { return "2-3" }
+  else if(getTime == "3:00 - 4:00 PM")
+  { return "3-4" }
+  else if(getTime == "4:00 - 5:00 PM")
+  { return "4-5" }
+  else
+  { return "5-6" }
+    
+}
+function getTimeSlotFull(getTime) {
+  
+  if(getTime == "8-9")
+  { return "8:00 - 9:00 AM" }
+  else if(getTime == "9-10")
+  { return "9:00 - 10:00 AM" }
+  else if(getTime == "10-11")
+  { return "10:00 - 11:00 AM" }
+  else if(getTime == "11-12")
+  { return "11:00 - 12:00 PM" }
+  else if(getTime == "12-1")
+  { return "12:00 - 1:00 PM" }
+  else if(getTime == "1-2")
+  { return "1:00 - 2:00 PM" }
+  else if(getTime == "2-3")
+  { return "2:00 - 3:00 PM" }
+  else if(getTime == "3-4")
+  { return "3:00 - 4:00 PM" }
+  else if(getTime == "4-5")
+  { return "4:00 - 5:00 PM" }
+  else
+  { return "5:00 - 6:00 PM" }
+    
+}
 
 
     function GetLoginUserDetail() {
