@@ -24,13 +24,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-clock:before {
+  content: "\e908";
+}
+.icon-diamond:before {
+  content: "\e909";
+}
 .icon-addBookingLink:before {
   content: "\e907";
   color: #d8d8d8;
 }
 .icon-calendarClose:before {
   content: "\e906";
-
+  color: #127abb;
 }
 .icon-close:before {
   content: "\e905";
@@ -51,5 +57,3 @@
 .icon-newLead:before {
   content: "\e904";
 }
-
-

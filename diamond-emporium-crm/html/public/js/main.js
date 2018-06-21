@@ -1563,9 +1563,9 @@ $(document).on('click','.addBookingLink', function (e) {
       setHtml += '<div class="roomBooking">';
         setHtml += '<p class=" fs-12 headBar" style="background-color:'+window.userColor+'"><span class="ellipsis">'+getName+'</span><span>'+getUserSC+'</span></p>';
           setHtml += '<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
-            setHtml += '<p><i class="icon-calendarClose fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
-            setHtml += '<p><i class="icon-calendarClose fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
-            setHtml += '<p class="bookingTiming"><i class="icon-calendarClose fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getTime+'</span></p>';
+            setHtml += '<p><i class="icon-diamond fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
+            setHtml += '<p><i class="icon-diamond fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
+            setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getTime+'</span></p>';
             setHtml += '<p><a class="savePopupBooking" href="JavaScript:;" style="color:'+window.userColor+'">OK</a></p>';
           setHtml += '<div class="transparentBG absolute" style="background-color:'+window.userColor+'"></div>';
         setHtml += '</div>';
@@ -1824,6 +1824,7 @@ setTimeout(function(){
         var getAssigneeId = window.selectedAssigneeId;
         startCalendarLoading();
         var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
+        
         loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
     }
 /*--------------------------------------------------*/
@@ -2645,7 +2646,10 @@ setTimeout(function(){
         };
         
     }
-   
+    $(document).on('click','.saveNewBooking', function (e) {
+      $('#submitbutton').trigger('click');
+    });
+    
     $(document).on('click','#submitbutton', function (e) {
         
         var getProduct = $('#productDropdown').closest('a.selected-text').attr('value');
@@ -3248,7 +3252,7 @@ setTimeout(function(){
                   {                  
                     return false;                  
                   }
-                  debugger
+                  
                   window.userColor = '#'+parsed["0"].color;
                   console.log(window.userColor);
                 }
@@ -3695,11 +3699,29 @@ setTimeout(function(){
                 // Get Weekly Start Dates 
 
                 /*================================*/
+                var checkLeadId = $('.thisLeadId').attr('leadId');
+                var currentDate = '';
+                if(checkLeadId != "")
+                  { currentDate = new Date(); }
+                else
+                  { currentDate = new Date(); }
 
+                
+                var day = currentDate.getDate();
+                if(day < 10){day = '0'+ day}
+                var month = currentDate.getMonth() + 1;
+                if(month < 10){month = '0'+ month}
+                var year = currentDate.getFullYear();
+                var currentTime = year + "-" + month + "-" + day;
+
+                // Check if it is Edit or new lead
+                var checkLeadId = $('.thisLeadId').attr('leadId');
+                //var currentTime = new Date();
                 var dateCounter = 0;
                 var weeklyDatesArray = [];
+
                 $.each(parsed, function(key, value){
-                  
+
                   dateCounter++;
                   var getkey = key;
                   weeklyDatesArray.push(getkey);
@@ -3711,9 +3733,22 @@ setTimeout(function(){
                   var dayDate = a.getDate();
                   // get Month
                   var getMonth = a.getMonth()+1;
-                  
                   var setFinalDate = getDayName + ' ' + getMonth + '/' + dayDate;
                   $('.daysCalendar.'+dateCounter + ' .headerPart').html(setFinalDate);
+                  $('.daysCalendar.'+dateCounter + ' .headerPart').attr('keyDates',key);
+
+                  if(checkLeadId != "")
+                  {
+
+                  }
+                  else
+                  {
+                    if(currentTime == key)
+                    {
+                      $('.daysCalendar.'+dateCounter + ' .headerPart').addClass('activeColor');
+                    }
+                  }
+                  
                   $('.daysContent.'+dateCounter).attr('dateNumber', dayDate);
                 });
 
@@ -3773,8 +3808,8 @@ setTimeout(function(){
                           setThisHtml +='<div class="roomBooking '+roomNumber+'">';
                             setThisHtml +='<p class=" fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>BO</span></p>';
                             setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
-                              setThisHtml +='<p><i class="icon-calendarClose fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">ER</span></p>';
-                              setThisHtml +='<p><i class="icon-calendarClose fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
+                              setThisHtml +='<p><i class="icon-diamond fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">ER</span></p>';
+                              setThisHtml +='<p><i class="icon-diamond fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
                               setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColor+'></div>';
                             setThisHtml +='</div>';
                           setThisHtml +='</div>';

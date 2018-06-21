@@ -606,6 +606,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .daysCalendar{ width: 230px; border-right: 1px solid #dfdfdf; }
 .daysCalendar.daySunday{ width: 113px; border-right: 0 none;}
 .daysCalendar p.headerPart{ height: 44px; line-height: 44px; border-bottom: 1px solid #dfdfdf; color: #b2b2b2;}
+.daysCalendar p.headerPart.activeColor{color: #15a4fa;}
 .daysSlider { width: 100%; overflow: hidden; height: 28px; line-height: 28px; background: #e7f5fd; border-bottom: 1px solid #dfdfdf; }
 .daySunday .daysSlider  {background: #f6f6f6}
 .daysContent span.sundayLine{ float: left; height: 31px; width: 100%; border-bottom: 1px solid #dfdfdf; }
@@ -653,6 +654,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .addBookingPopup .transparentBG{ height: 100px; }
 .addBookingPopup .roomBooking p.headBar span:first-child { width: 92px; }
 .addBookingPopup .roomBooking p a{ margin: 10px 0 0 21px; font-size: 14px; width: 71px; height: 25px; border-radius: 17.5px; background-color: #ffffff; border: solid 1px #d8d8d8; display: inline-block; text-align: center; line-height: 24px;}
+
 
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
