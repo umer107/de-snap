@@ -593,7 +593,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .weeklyDates { color: #444c63; margin: 0 auto; width: 380px; text-align: center; padding-top: 2px; height: 34px; }
 .weeklyDates span { position: relative; top: -2px; }
 .weeklyDates label{ width: 30px; height: 30px; border: 1px solid #dfdfdf; border-radius: 8px; display: inline-block; border-radius: 50%; }
-.weeklyDates label img{ width: 10px; margin-bottom: 5px; }
+.weeklyDates label img{ width: 10px; margin-bottom: 5px; opacity: 0.6; }
 .saveNewBooking{ right: 60px; top:16px; }
 .saveNewBooking a{ width: 120px; } 
 #NewCalendar{}

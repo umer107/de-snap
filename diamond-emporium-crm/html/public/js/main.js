@@ -1557,7 +1557,7 @@ $(document).on('click','.addBookingLink', function (e) {
     var getName = $('#first_name').val() + ' ' + $('#last_name').val();
     var getProductSC = $('.dropdown.product').find('a.selected-text').attr('shortcode');
     var getUserSC = $('.dropdown.assignToDiv').find('a.selected-text').attr('shortcode');
-    debugger
+    
     var setHtml = "";
     var setHtml = '<div class="addBookingContainer roomsContainer">';
       setHtml += '<div class="roomBooking">';
@@ -1820,7 +1820,7 @@ setTimeout(function(){
     }*/
     
     function suggestedDate() {
-        debugger
+        
         var getAssigneeId = window.selectedAssigneeId;
         startCalendarLoading();
         var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
@@ -2091,6 +2091,9 @@ setTimeout(function(){
         
         var getValue = $(this).find('a').attr('value');
         var getAsignee_Id = $(this).find('a').attr('id');
+
+
+        
         el.closest('.dropdown').find('a.selected-text span').html(getValue);
         el.closest('.dropdown').find('a.selected-text').attr('value', getValue);
         el.closest('.dropdown').find('ul.dropdownOptions').slideToggle(150);
@@ -2238,6 +2241,7 @@ setTimeout(function(){
             el.closest('.dropdown').find('a.selected-text').attr('shortcode', getShortCode);
 
             el.addClass('activeField');
+
             if($(this).hasClass('nextInline'))
             {
                 var chek = "";
@@ -2245,6 +2249,26 @@ setTimeout(function(){
             if(el.hasClass('nextInline'))
             { 
                 var getId = $(this).find('a').attr('id');
+                // Get User Color
+                $.ajax({
+
+                  type: "GET",
+                  url: "/dashboard/ajaxGetUserColor",
+                  data: {user_id : getId},
+                  success: function (data) {
+                    var parsed = '';          
+                    try{                           
+                      parsed = JSON.parse(data);              
+                    }                 
+                    catch(e)                
+                    {                  
+                      return false;                  
+                    }
+                    window.userColor = '#'+parsed["0"].color;
+                    console.log(window.userColor);
+                  }
+                });
+
                 window.selectedAssigneeId = getId;
                 var getValue = $(this).find('a').attr('value');
                 el.closest('.dropdown').find('a.selected-text span').html(getValue);
@@ -2329,6 +2353,29 @@ setTimeout(function(){
         $('.btn-bookNow').addClass('canOpen');
         var getAgent = $('ul.assignToDiv .dropdownOptions li').filter('.activeField').find('a').attr('value');
         var userId = $('ul.assignToDiv .dropdownOptions li').filter('.activeField').find('a').attr('id');
+
+        // Get User Color
+
+        $.ajax({
+
+          type: "GET",
+          url: "/dashboard/ajaxGetUserColor",
+          data: {user_id : userId},
+          success: function (data) {
+            var parsed = '';          
+            try{                           
+              parsed = JSON.parse(data);              
+            }                 
+            catch(e)                
+            {                  
+              return false;                  
+            }
+            window.userColor = '#'+parsed["0"].color;
+            console.log(window.userColor);
+          }
+        });
+
+
         window.selectedAssigneeId = userId;
         el.closest('.dropdown').find('a.selected-text span').html(getAgent);
         el.closest('.dropdown').find('a.selected-text').attr('value', getAgent);
@@ -2676,9 +2723,9 @@ setTimeout(function(){
         //  return false
         // }
       
-      debugger;
+      
       var data = getValuesFromForm();
-      debugger;
+      
 
       /*if(data.booking_duration == null || undefined)
       {
@@ -3185,7 +3232,27 @@ setTimeout(function(){
 
               var html = "";
              
-              //  " [{"id":"16","first_name":"Alfateh","last_name":"Test","phone_number":"090078601","email":"alfa@gmail.com","Street":"3rd floor, CCA-1, Phase-5, DHA, lahore","State":"NSW","City":"Lahore","Zip":"54000","product":"Wedding Band","referral":"Google","special_instructions":"3rd floor, CCA-1, Phase-5, DHA, lahore","budget":"$5-10k","reference_product":"","contact_method":"Phone call","assign_to":"test test","assign_to_UserId":"53","reson_skip_next_in_line":"Reason ","lead_status":"Closed","specify_requirements":"3rd floor, CCA-1, Phase-5, DHA","lead_owner":"35","create_date":"2018-02-14 05:00:30","lead_close_date":"2018-1-2 00:00:00","booking_date":"2018-02-05","booking_time":"8:00 - 9:00","booking_timezone":"AM","booking_room":"1"}]"
+              // Get User Color
+              var getThisUserId = parsed[0].assign_to_UserId;
+              $.ajax({
+
+                type: "GET",
+                url: "/dashboard/ajaxGetUserColor",
+                data: {user_id : getThisUserId},
+                success: function (data) {
+                  var parsed = '';          
+                  try{                           
+                    parsed = JSON.parse(data);              
+                  }                 
+                  catch(e)                
+                  {                  
+                    return false;                  
+                  }
+                  debugger
+                  window.userColor = '#'+parsed["0"].color;
+                  console.log(window.userColor);
+                }
+              });
               
               //Setting Lead Id
               
@@ -3606,7 +3673,7 @@ setTimeout(function(){
 
     function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate)
     { 
-           debugger
+           
            var data =  {booking_date : getWeeklyDate , assign_UserId : getAssigneeId}
           // Get 
            $.ajax({
@@ -3632,6 +3699,7 @@ setTimeout(function(){
                 var dateCounter = 0;
                 var weeklyDatesArray = [];
                 $.each(parsed, function(key, value){
+                  
                   dateCounter++;
                   var getkey = key;
                   weeklyDatesArray.push(getkey);
@@ -3652,17 +3720,7 @@ setTimeout(function(){
                 // Get Weekly End Dates 
 
                 /*================================*/
-                // Get User Color 
-                window.userColor = '#D3D3D3';
-                $.ajax({
-
-                  type: "GET",
-                  url: "/leave/ajaxGetUserColor",
-                  data: {user_id : getAssigneeId},
-                  success: function (data) {
-                    window.userColor = data
-                  }
-                });
+                
                 // Bind Data to  Weekly Start Dates 
                 
                 // Marray array for data
@@ -3698,7 +3756,7 @@ setTimeout(function(){
                       else if(newRoomCounter == 1){roomNumber = "roomThree"}
                       else{roomNumber = "roomFour"}
                       var getRoom = getAllRooms[i];
-                      debugger
+                      
 
                       if(getRoom == "")
                       {
@@ -3708,8 +3766,9 @@ setTimeout(function(){
                       else
                       {
                         //window.userColor = '#'+getAllRooms[i].booking_color;
-                        var setBackgroundColor = "style='background-color:#"+getAllRooms[i].booking_color+"'";
-                        var Color = "style='color:#"+getAllRooms[i].booking_color+"'";
+                        var setBackgroundColor = "style='background-color:"+window.userColor+"'";
+                        var Color = "style='color:"+window.userColor+"'";
+
                         setThisHtml +='<label class="labelContainer" roomNumber="'+i+'">';
                           setThisHtml +='<div class="roomBooking '+roomNumber+'">';
                             setThisHtml +='<p class=" fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>BO</span></p>';
@@ -6127,7 +6186,7 @@ $(document).on('click','.leadUserName', function (e) {
                html += "<p><label>Prefered method of contact:</label><label>" + parsed[0].contact_method + " </label></p> ";
                html += "<p><label>Product:</label><label>" + parsed[0].product + " </label></p> ";
                html += "<p><label>How did they hear about us?:</label><label>" + parsed[0].referral + " </label></p> ";
-               html += "<p><label>Referral:</label><label>" + parsed[0].referral + " </label></p> ";
+               html += "<p><label>Referral:</label><label>" + parsed[0].only_referral + " </label></p> ";
                html += "<p><label>What they are looking for:</label><label>" + parsed[0].specify_requirements + " </label></p> ";
                html += "<p><label>Special Instruction:</label><label>" + parsed[0].special_instructions + " </label></p> ";
                html += "<p><label>Budget:</label><label>" + parsed[0].budget + " </label></p> ";
