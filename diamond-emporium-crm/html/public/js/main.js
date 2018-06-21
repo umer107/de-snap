@@ -1601,6 +1601,13 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('.bookingViewIcon').addClass('hide');
     $('.bookingHeading').removeClass('hide');
     $('.showOnNewBooking').addClass('hide');
+    geDateValues();    
+    $('.NewCalendarContainer').addClass('hide');
+    
+});
+
+  function geDateValues()
+  {
     var getMonth = $('#bookingDate').attr('monthname');
     var getYear = $('#bookingDate').attr('bookingyear');
     var getDay = $('#bookingDate').attr('dayname');
@@ -1608,6 +1615,7 @@ $(document).on('click','.savePopupBooking', function (e) {
     if(getDate < 10)
       { getDate = '0'+getDate; }
     var getTime = $('#bookingDate').attr('timeslotfull');
+
     var getRoom = $('.thisLabelClicked').attr('roomnumber');
     var getMonthNumber = $('#bookingDate').attr('monthnumber');
     if(getMonthNumber < 10)
@@ -1616,11 +1624,8 @@ $(document).on('click','.savePopupBooking', function (e) {
     var getComlpeteDate = getYear+'-'+getMonthNumber+'-'+getDate;
     $('#bookingDate').attr('ComlpeteDate', getComlpeteDate);
     var setHtml = getDay + ' ' + getDate + ' ' + getMonth + ', ' + getYear + ' ' + getTime;
-    $('#bookingDate').html(setHtml);
-    $('.NewCalendarContainer').addClass('hide');
-    
-});
-
+    $('#bookingDate').html(setHtml); 
+  }
 /* ==================================================== */
 // Cancel popup on scroll
 $('section.rightCol').on('scroll', function(event){
@@ -1839,7 +1844,7 @@ setTimeout(function(){
     }*/
     
     function suggestedDate() {
-        
+        debugger
         var getAssigneeId = window.selectedAssigneeId;
         startCalendarLoading();
         var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
@@ -2017,7 +2022,8 @@ setTimeout(function(){
 
         if($('.NewCalendarContainer').hasClass('openNow'))
         {
-          $('.NewCalendarContainer').removeClass('hide');
+          $('.NewCalendarContainer').removeClass('hide').addClass('openNow');
+          suggestedDate();
         }
         else
         {
@@ -3363,6 +3369,39 @@ setTimeout(function(){
                     $('.btn-bookNow open, .bookNowMain').addClass('hide');
                     $('.savedBooking, .next-saveDiv').removeClass('hide');
 
+                    var monthname = '';
+                    var bookingyear = '';
+                    var monthnumber = '';
+                    var timeslot = '';
+                    var timeslotfull = '';
+                    var dayname = '';
+                    var datenumber = '';
+                    if(datenumber < 10)
+                      { datenumber = '0'+datenumber; }
+                    var roomnumber = ''; 
+                    var comlpetedate = '';
+
+                    $('#bookingDate').attr('monthname',monthname);
+                    $('#bookingDate').attr('bookingyear',bookingyear);
+                    $('#bookingDate').attr('monthnumber',monthnumber);
+                    $('#bookingDate').attr('timeslot',timeslot);
+                    $('#bookingDate').attr('timeslotfull',timeslotfull);
+                    $('#bookingDate').attr('dayname',dayname);
+                    $('#bookingDate').attr('datenumber', datenumber);
+                    $('#bookingDate').attr('roomnumber',roomnumber);
+                    $('#bookingDate').attr('comlpetedate', comlpetedate);
+                    var setHtml = getDay + ' ' + datenumber + ' ' + monthname + ', ' + bookingyear + ' ' + getTime;
+                    
+
+                    var getThisDate = parsed[0].booking_date;
+                    loadWeeklyDates(getThisDate);
+                    // Calling load calendar
+                    suggestedDate();
+                    $('.NewCalendarContainer').removeClass('hide');
+                    
+                    //$('#bookingDate').html(setHtml);
+
+                    //geDateValues();
                    // if(parsed[0].booking_time != "" )
                    // {
                    //   $('#bookingDate, .suggestedDate').html(getDay + ' ' + getOnlyDate + ' ' + getMonth + ' ' + parsed[0].booking_time + ' ' + getAmPm); // Setting booking date field
@@ -3615,7 +3654,7 @@ setTimeout(function(){
 
     function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate)
     { 
-           
+           debugger
            var data =  {booking_date : getWeeklyDate , assign_UserId : getAssigneeId}
           // Get 
            $.ajax({
