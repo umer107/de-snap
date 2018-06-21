@@ -120,7 +120,23 @@ class DashboardController extends AbstractActionController
     }
     
     
+    //AjaxGetUserColor
     
+    public function ajaxGetUserColorAction()
+    {
+        try
+        {
+            $config = $this->getServiceLocator()->get('Config');
+            $params = $this->getRequest()->getQuery()->toArray();         
+            $leadsTable = $this->getServiceLocator()->get('Leave\Model\LeaveTable');
+            $leadsArr = $leadsTable->fetchUserColor($params);
+            echo json_encode($leadsArr);
+            exit;
+        }catch(Exception $e)
+        {
+            \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+        }
+    }
     //Load Calender
     public function  ajaxGetDataforCalenderAction()
     {

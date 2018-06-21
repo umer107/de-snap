@@ -96,6 +96,16 @@ return array(
                             ),
                         ),
                     ),
+             'ajaxGetUserColor' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetUserColor',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetUserColor',
+                            ),
+                        ),
+                    ),
             'ajaxGetDataForQuestionViewCalender' => array(
                         'type' => 'Segment',
                         'options' => array(

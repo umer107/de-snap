@@ -1349,8 +1349,36 @@ public function fetchLeadRecord($filter= null)
    } 
    
 
+   public function  fetchUserColor($filter = null)
+   {
+      $UserId = $filter['user_id'];
+      $select = new \Zend\Db\Sql\Select(); 
+      $select->from(array('u' => 'de_users')) 
+           ->columns(array( 
+              'color'    
+           ))->where(array('u.user_id = ?' => $UserId)); 
+               
+      
+       
+       $data = $this->executeQuery($select);      
+       
+       $result = $data->toArray(); 
+       
+       
+       $color = $result[0]['color'];
+       
+       if(empty(($color)))
+       {
+           $result[0]['color'] = 'D3D3D3';
+       }
+       
+       return $result;
+       
+       
+   }
+
    
-   
+
    public function fetchUserNextInLine($filter = null)
    {
        //-----------------------------------------------UserList------------------------------------// 

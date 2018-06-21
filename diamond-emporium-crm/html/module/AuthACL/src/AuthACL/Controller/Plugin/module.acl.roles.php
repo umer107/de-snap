@@ -179,6 +179,7 @@ $resources = array(
     'Dashboard\Controller\Dashboard::GetNextInLine',
     'Dashboard\Controller\Dashboard::ajaxGetUserLoginDetail',
     'Dashboard\Controller\Dashboard::ajaxGetCountriesList',
+    'Dashboard\Controller\Dashboard::ajaxGetUserColor',
     
 
 	);
