@@ -1669,7 +1669,30 @@ function getTimeSlot(getTime) {
   else
   { return "5-6" }
     
-
+}
+function getTimeSlotFull(getTime) {
+  
+  if(getTime == "8-9")
+  { return "8:00 - 9:00 AM" }
+  else if(getTime == "9-10")
+  { return "9:00 - 10:00 AM" }
+  else if(getTime == "10-11")
+  { return "10:00 - 11:00 AM" }
+  else if(getTime == "11-12")
+  { return "11:00 - 12:00 PM" }
+  else if(getTime == "12-1")
+  { return "12:00 - 1:00 PM" }
+  else if(getTime == "1-2")
+  { return "1:00 - 2:00 PM" }
+  else if(getTime == "2-3")
+  { return "2:00 - 3:00 PM" }
+  else if(getTime == "3-4")
+  { return "3:00 - 4:00 PM" }
+  else if(getTime == "4-5")
+  { return "4:00 - 5:00 PM" }
+  else
+  { return "5:00 - 6:00 PM" }
+    
 }
 
 /* ==================================================== */
@@ -3188,7 +3211,6 @@ setTimeout(function(){
 /* ------------------ Start Edit Detail ------------------------*/
     
     $(document).on('click','.editDetails:not(.disabled)', function (e) {
-      debugger
     showMainLoading();  
     var getLeadId = $(this).attr('lead-id');    
     
@@ -3227,11 +3249,14 @@ setTimeout(function(){
               $('.basicInfo .firstname').val(parsed[0].first_name);
               $('.basicInfo .lastname').val(parsed[0].last_name);
               $('.basicInfo .phonenumber').val(parsed[0].phone_number);
-              $('.additional-details .email').val(parsed[0].email);
+              $('#email').val(parsed[0].email);
+              $('#onlyReferral').val(parsed[0].only_referral);
+              $('#fullAddress').val(parsed[0].full_address);
+              
               // Address Fields
               //$('.basicInfo .street').val(parsed[0].Street);
-              $('.additional-details .dropdown.State .selected-text').attr('value',parsed[0].State);
-              $('.additional-details .dropdown.State .selected-text span').html(parsed[0].State);
+              $('.stateDiv .dropdown.State .selected-text').attr('value',parsed[0].State);
+              $('.stateDiv .dropdown.State .selected-text span').html(parsed[0].State);
               //$('.basicInfo .cityValue').val(parsed[0].City);
               //$('.basicInfo .Zip').val(parsed[0].Zip);
               // Additional Detail Fields
@@ -3314,7 +3339,7 @@ setTimeout(function(){
 
                   // Booking Calendar
                   
-                  var getAmPm = parsed[0].booking_timezone;
+                  //var getAmPm = parsed[0].booking_timezone;
                   var getFullDate = parsed[0].booking_date;
                   var getAssigneeId = parsed[0].assign_to_UserId;
                   var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -3354,50 +3379,42 @@ setTimeout(function(){
                   $('.next-saveDiv').addClass('one-half-pad-top');
 
                   
-                  
-                  if(parsed[0].user_booking_date == '1')
-                  {
-                    //$('#bookingDate').attr('timezone', getAmPm);
-                    //$('#bookingDate').attr('date', getFullDate);
-                    //$('#bookingDate').attr('time', parsed[0].booking_time);
-                  }
-                  
-                  //$('#bookingDate').addClass('nowCanSave');
                   $('#bookingDate').addClass('nowCanSave');
-                  if(parsed[0].user_booking_date == '1'){
+                  if(parsed[0].user_booking_date == '0'){
+
                     
                     $('.btn-bookNow open, .bookNowMain').addClass('hide');
                     $('.savedBooking, .next-saveDiv').removeClass('hide');
-
-                    var monthname = '';
-                    var bookingyear = '';
-                    var monthnumber = '';
-                    var timeslot = '';
-                    var timeslotfull = '';
-                    var dayname = '';
-                    var datenumber = '';
-                    if(datenumber < 10)
-                      { datenumber = '0'+datenumber; }
-                    var roomnumber = ''; 
-                    var comlpetedate = '';
-
-                    $('#bookingDate').attr('monthname',monthname);
-                    $('#bookingDate').attr('bookingyear',bookingyear);
-                    $('#bookingDate').attr('monthnumber',monthnumber);
-                    $('#bookingDate').attr('timeslot',timeslot);
-                    $('#bookingDate').attr('timeslotfull',timeslotfull);
-                    $('#bookingDate').attr('dayname',dayname);
-                    $('#bookingDate').attr('datenumber', datenumber);
-                    $('#bookingDate').attr('roomnumber',roomnumber);
-                    $('#bookingDate').attr('comlpetedate', comlpetedate);
-                    var setHtml = getDay + ' ' + datenumber + ' ' + monthname + ', ' + bookingyear + ' ' + getTime;
-                    
-
                     var getThisDate = parsed[0].booking_date;
                     loadWeeklyDates(getThisDate);
+                    $('.btn-bookNow').addClass('hide');
+
+                    var monthname = $('#bookingDate').attr('monthname');
+                    var bookingyear = $('#bookingDate').attr('bookingyear');
+                    var monthnumber = $('#bookingDate').attr('monthnumber');
+                    var timeslot = parsed[0].booking_time;
+                    var getFullTime = getTimeSlotFull(timeslot);
+                    var timeslotfull = getFullTime;
+                    var getBookingDay = getDay;
+                    var datenumber = 1;
+                    if(datenumber < 10)
+                      { datenumber = '0'+datenumber; }
+                    var roomnumber = parsed[0].booking_room; 
+                    var comlpetedate = parsed[0].booking_date;
+
+                    $('#bookingDate').attr('timeslot',timeslot);
+                    $('#bookingDate').attr('timeslotfull',timeslotfull);
+                    $('#bookingDate').attr('dayname',getBookingDay);
+                    //$('#bookingDate').attr('datenumber', datenumber);
+                    $('#bookingDate').attr('roomnumber',roomnumber);
+                    $('#bookingDate').attr('comlpetedate', comlpetedate);
+                    var setHtml = getBookingDay + ' ' + datenumber + ' ' + monthname + ', ' + bookingyear + ' ' + getFullTime;
+                    $('#bookingDate').html(setHtml);
+
+                    
                     // Calling load calendar
-                    suggestedDate();
-                    $('.NewCalendarContainer').removeClass('hide');
+                    //suggestedDate();
+                    //$('.NewCalendarContainer').removeClass('hide');
                     
                     //$('#bookingDate').html(setHtml);
 
