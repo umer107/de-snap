@@ -30,20 +30,20 @@ class DashboardForm extends Form
         
         
         $first_name = new \Zend\Form\Element\Text('first_name');
-	$first_name->setAttributes(array('id' => 'first_name', 'autocomplete' => 'off' ,'class' => 'firstname', 'placeholder' => 'First name','type'  => 'text',  'maxlength' => 40));
+	$first_name->setAttributes(array('id' => 'first_name', 'autocomplete' => 'off' ,'class' => 'firstname', 'placeholder' => '*First name','type'  => 'text',  'maxlength' => 40));
 	$this->add($first_name);
         
         
         $last_name = new \Zend\Form\Element\Text('last_name');
-	$last_name->setAttributes(array('id' => 'last_name', 'autocomplete' => 'off' , 'placeholder' => 'Last name', 'type'  => 'text', 'class' => 'lastname', 'maxlength' => 40));
+	$last_name->setAttributes(array('id' => 'last_name', 'autocomplete' => 'off' , 'placeholder' => '*Last name', 'type'  => 'text', 'class' => 'lastname', 'maxlength' => 40));
 	$this->add($last_name);
         
         $phoneNumber = new \Zend\Form\Element\Text('phone_number');
-	$phoneNumber->setAttributes(array('id' => 'phonenumber', 'autocomplete' => 'off' , 'type'  => 'text','placeholder' => 'Phone number*',  'class' => 'phonenumber', 'maxlength' => 20));
+	$phoneNumber->setAttributes(array('id' => 'phonenumber', 'autocomplete' => 'off' , 'type'  => 'text','placeholder' => '*Phone number',  'class' => 'phonenumber', 'maxlength' => 20));
 	$this->add($phoneNumber);
         
         $email = new \Zend\Form\Element\Text('email');
-	$email->setAttributes(array('id' => 'email', 'type'  => 'text', 'autocomplete' => 'off' , 'placeholder' => 'Email', 'class' => 'email checkEmailCount', 'maxlength' => 40));
+	$email->setAttributes(array('id' => 'email', 'type'  => 'text', 'autocomplete' => 'off' , 'placeholder' => '*Email', 'class' => 'email checkEmailCount', 'maxlength' => 40));
 	$this->add($email);
   
         

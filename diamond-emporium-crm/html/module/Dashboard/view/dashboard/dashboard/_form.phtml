@@ -111,10 +111,10 @@ echo $this->formHidden($form->get('id')).'<div class="full basicInfo formfields 
 
 echo '<div class="relative pull-left gap-right pad-right">';
    echo '<div class="relative pull-left">';
-    echo '<span style="display: none" class="text-top">Title</span>';
+    echo '<span style="display: none" class="text-top">*Title</span>';
         echo '<ul class="dropdown bg-white d-i-b pull-left relative title">';
              echo '<li>';
-             echo '   <a href="javascript:;" class="selected-text d-b" value="All"><span id ="title" class="d-i-b">Title</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+             echo '   <a href="javascript:;" class="selected-text d-b" value="All"><span id ="title" class="d-i-b">*Title</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
              echo '</li>';
              echo '<li>';
              // echo $this->formRow($title);
@@ -135,10 +135,10 @@ echo '<div class="relative pull-left gap-right pad-right">';
     // -----------------------------------------------------------------
     // Gender Select
     echo '<div class="relative pull-left">';
-    echo '<span style="display: none" class="text-top">Gender</span>';
+    echo '<span style="display: none" class="text-top">*Gender</span>';
         echo '<ul class="dropdown bg-white d-i-b pull-left relative Gender">';
              echo '<li>';
-             echo '   <a href="javascript:;" class="selected-text d-b" value="All"><span id ="Gender" class="d-i-b">Gender</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+             echo '   <a href="javascript:;" class="selected-text d-b" value="All"><span id ="Gender" class="d-i-b">*Gender</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
              echo '</li>';
              echo '<li>';
              // echo $this->formRow($title);
@@ -160,25 +160,25 @@ echo '<div class="relative pull-left gap-right pad-right">';
     // -----------------------------------------------------------------
 
     // FirstName
-    echo '<div class="relative pull-left"><span style="display: none">First name</span>'.$this->formRow($form->get("first_name")).'<label class="opacity0">Only "-" and alphabets are allowed</label></div>';
+    echo '<div class="relative pull-left"><span style="display: none">*First name</span>'.$this->formRow($form->get("first_name")).'<label class="opacity0">Only "-" and alphabets are allowed</label></div>';
 
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
 
     // LastName
-    echo '<div class="relative pull-left"><span style="display: none">Last name</span>'.$this->formRow($form->get("last_name")).'<label class="opacity0">Only "-" and alphabets are allowed</label></div>';
+    echo '<div class="relative pull-left"><span style="display: none">*Last name</span>'.$this->formRow($form->get("last_name")).'<label class="opacity0">Only "-" and alphabets are allowed</label></div>';
     
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
 
     // Phone
-    echo '<div class="relative pull-left"><span style="display: none">Phone number*</span>'.$this->formRow($form->get("phone_number")).'<label class="opacity0">Please enter a valid phone number</label></div>';
+    echo '<div class="relative pull-left"><span style="display: none">*Phone number*</span>'.$this->formRow($form->get("phone_number")).'<label class="opacity0">Please enter a valid phone number</label></div>';
 
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
 
     // email
-    echo '<div class="relative pull-left"><span style="display: none" class="text-top">Email</span>'.$this->formRow($form->get("email")).'<label class="opacity0 error ">Please enter a valid email</label></div>';
+    echo '<div class="relative pull-left"><span style="display: none" class="text-top">*Email</span>'.$this->formRow($form->get("email")).'<label class="opacity0 error ">Please enter a valid email</label></div>';
 
     // Assignee Name
     //echo '<div class="selectedAgent relative pull-left" di>
@@ -197,7 +197,7 @@ echo '<div class="relative pull-left gap-right pad-right">';
     echo '<div id="countryName" class="hide" value="Australia"></div>
 
          <div class="relative pull-left countryDiv">
-            <span style="display: inline-block" class="text-top">Country </span>
+            <span style="display: inline-block" class="text-top">*Country </span>
             
             <div class="ui-widget">
                 <select id="combobox">
@@ -212,10 +212,10 @@ echo '<div class="relative pull-left gap-right pad-right">';
     // States    
     
     echo '<div class="relative pull-left stateDiv">
-        <span style="display: none" class="text-top">State </span>
+        <span style="display: none" class="text-top">*State </span>
         <ul class="dropdown bg-white d-i-b pull-left relative wd-280 State">
             <li>
-                <a href="javascript:;" class="selected-text d-b" value="All"><span id="stateDropdown" class="d-i-b">State </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>
+                <a href="javascript:;" class="selected-text d-b" value="All"><span id="stateDropdown" class="d-i-b">*State </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>
             </li>
             <li>
                 <ul class="dropdownOptions bg-white absolute full-width" style="display:none;">
@@ -341,10 +341,10 @@ echo '<div class="full additionalDiv">';
 // Product
 
 echo '<div class="relative pull-left">';
-  echo '<span style="display: none" class="text-top">Product</span>';
+  echo '<span style="display: none" class="text-top">*Product</span>';
   echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 product">';
             echo '<li>';
-            echo '<a href="javascript:;" class="selected-text d-b users" value="All"><span id="productDropdown"class="d-i-b">Product </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+            echo '<a href="javascript:;" class="selected-text d-b users" value="All"><span id="productDropdown"class="d-i-b">*Product </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
             echo '</li>';
             echo '<li>';
              // echo $this->formRow($title);
@@ -433,10 +433,10 @@ echo '<div class="relative pull-left">';
 
 //budget
 echo '<div class="relative pull-left">';
-  echo '<span style="display: none" class="text-top">Budget </span>';
+  echo '<span style="display: none" class="text-top">*Budget </span>';
   echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 budget">';
             echo '<li>';
-             echo '   <a href="javascript:;" class="selected-text d-b users" value="All"><span id = "budgetDropdown"class="d-i-b">Budget </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+             echo '   <a href="javascript:;" class="selected-text d-b users" value="All"><span id = "budgetDropdown"class="d-i-b">*Budget </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
             echo '</li>';
             echo '<li>';
              // echo $this->formRow($title);
@@ -458,10 +458,10 @@ echo '<div class="relative pull-left">';
     //AssignTo
 
          echo '<div class="relative pull-left">';
-                echo '<span style="display: none" class="text-top">Assign to</span>';
+                echo '<span style="display: none" class="text-top">*Assign to</span>';
                 echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 assignToDiv">';
                     echo '<li>';
-                        echo '<a href="javascript:;" class="selected-text d-b users" value="All"><span id = "assign_us_Dropdown" class="d-i-b">Assign to </span><i class="icon-dropdown fs-7 pull-right d-i-b"></i></a>';
+                        echo '<a href="javascript:;" class="selected-text d-b users" value="All"><span id = "assign_us_Dropdown" class="d-i-b">*Assign to </span><i class="icon-dropdown fs-7 pull-right d-i-b"></i></a>';
                     echo '</li>';
                     echo '<li>';
                     // echo $this->formRow($title);

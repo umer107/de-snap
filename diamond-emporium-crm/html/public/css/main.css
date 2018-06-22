@@ -589,30 +589,31 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 /*------------------ New Calendar ---------------------*/
 
 .NewCalendarContainer{ width: 1580px; }
-.calendarHead { background-color: #e7f5fd; line-height: 34px; padding: 15px 0; border: 1px solid #dfdfdf; }
+.calendarHead { background-color: #e7f5fd; line-height: 34px; padding: 22px 0; border: 1px solid #dfdfdf; }
 .weeklyDates { color: #444c63; margin: 0 auto; width: 380px; text-align: center; padding-top: 2px; height: 34px; }
 .weeklyDates span { position: relative; top: -2px; }
 .weeklyDates label{ width: 30px; height: 30px; border: 1px solid #dfdfdf; border-radius: 8px; display: inline-block; border-radius: 50%; }
-.weeklyDates label img{ width: 10px; margin-bottom: 5px; opacity: 0.6; }
+.weeklyDates label img{ width: 10px; margin-bottom: 5px; }
 .saveNewBooking{ right: 60px; top:16px; }
 .saveNewBooking a{ width: 120px; } 
 #NewCalendar{}
 .NewCalendar{border-left: 1px solid #dfdfdf; border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; }
 .hourContainer { float: left; width: 85px; border-right: 1px solid #dfdfdf; text-align: right; }
-.hourContainer p { height: 44px; line-height: 44px; border-bottom: 1px solid #dfdfdf; padding-right: 10px; }
-.hoursList { padding-right: 10px; padding-top: 28px; }
+.hourContainer p { height: 50px; line-height: 50px; border-bottom: 1px solid #dfdfdf; padding-right: 10px; }
+.hoursList { padding-right: 10px; margin-top: -5px; }
 .hoursList label{ display: block; line-height: 62px; color: #b2b2b2; }
+.hoursList label.till6{}
 .loadnewCalendar, .loadnewCalendarContent{ width: 1493px; }
 .daysCalendar{ width: 230px; border-right: 1px solid #dfdfdf; }
 .daysCalendar.daySunday{ width: 113px; border-right: 0 none;}
-.daysCalendar p.headerPart{ height: 44px; line-height: 44px; border-bottom: 1px solid #dfdfdf; color: #b2b2b2;}
+.daysCalendar p.headerPart{ height: 50px; line-height: 50px; border-bottom: 1px solid #dfdfdf; color: #b2b2b2;}
 .daysCalendar p.headerPart.activeColor{color: #15a4fa;}
 .daysSlider { width: 100%; overflow: hidden; height: 28px; line-height: 28px; background: #e7f5fd; border-bottom: 1px solid #dfdfdf; }
 .daySunday .daysSlider  {background: #f6f6f6}
 .daysContent span.sundayLine{ float: left; height: 31px; width: 100%; border-bottom: 1px solid #dfdfdf; }
 .daysContent span.sundayLine:nth-child(2n+1){ border-bottom: 1px dashed #dfdfdf; }
 .daysSlider label { position: relative; width: 113px; display: inline-block; text-align: center; color: #2f78af; font-weight: 600; position: relative; cursor: pointer;}
-.daysSlider label img{ width: 9px; position: absolute; top: 10px; }
+.daysSlider label img{ width: 10px; position: absolute; top: 10px; }
 .daysSlider label.room2 img { right: 5px; }
 .daysSlider label.room3 img { left: 5px; }
 .daysSlider div.roomsContainer, .daysContentSlider div.roomsContainer{ left: 0;width: 465px; }

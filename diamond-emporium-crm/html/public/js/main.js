@@ -48,8 +48,7 @@ $(document).ready(function () {
                   arr.push(parsed[x]);
                 }
                 var getcount =  arr.length;
-
-                //console.log(arr);
+                
                 var teamStatus = "";
                 var teamAbsence = 0;
                 for (var i = 0; i < arr.length; i++) 
@@ -264,7 +263,6 @@ $(document).ready(function () {
                     var textB = b["0"].items.user_name;
                     return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
                 });
-                console.log(arr);
 
                 // Get Smaller lead count number
                 
@@ -880,7 +878,7 @@ $(document).ready(function () {
 /* ----------------------------------------------------*/
 
     // Validating Email and opening next screen buttons
-    $(document).on('keyup', '.additionalDiv input.checkEmailCount', function () {
+    $(document).on('keyup', '.basicInfo input.checkEmailCount', function () {
 
         
         var getValue = $(this).val().length;
@@ -890,7 +888,7 @@ $(document).ready(function () {
         }
         else if (isValidEmailAddress(getemail)) {
             $(this).next('label').addClass('opacity0');
-            //validateBasicInfo();
+            validateBasicInfo();
         }
         else {
             $(this).next('label').removeClass('opacity0');
@@ -1656,10 +1654,7 @@ $('section.rightCol').on('scroll', function(event){
   //var date = '2018-06-12';
   var thisdate = new Date();
   loadWeeklyDates(thisdate);
-  function loadWeeklyDates(date) {
-      
-      console.log('current start', moment(date).weekday(0).format('DD/MM/YYYY')); 
-      console.log('current end', moment(date).weekday(6).format('DD/MM/YYYY')); 
+  function loadWeeklyDates(date) { 
       
       var getStartDate = moment(date).weekday(0).format('YYYY-MM-DD');
       var getNextWeekStartDate = moment(date).weekday(7).format('YYYY-MM-DD');
@@ -1857,13 +1852,15 @@ setTimeout(function(){
         var getCity = $('#cityValue').val();
         var getPhone = $('#phonenumber').val();
         var getEmail = $('#email').val();
-        if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All' || checkCountry == false)
+        //if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All' || checkCountry == false)
+        if(getProduct == 'All' || getBudget == 'All' || getAgent == 'All' || checkCountry == false)
         {
             if(getProduct == 'All')
             { $('.producterror').removeClass('opacity0'); }
             
             if(getReferral == 'All')
-            { $('.referralerror').removeClass('opacity0'); }
+            { //$('.referralerror').removeClass('opacity0'); 
+            }
 
             if(getBudget == 'All')
             { $('.budgeterror').removeClass('opacity0'); }
@@ -2135,7 +2132,7 @@ setTimeout(function(){
             $('.dropdown.title').find('a.selected-text').attr('value','Mrs');
             $('.dropdown.title').find('span').html('Mrs');
           }
-          //$('.dropdown.Gender').prev('.text-top').show();
+          $('.dropdown.title').prev('.text-top').show();
             
             //return false; 
         }
@@ -2266,7 +2263,7 @@ setTimeout(function(){
                       return false;                  
                     }
                     window.userColor = '#'+parsed["0"].color;
-                    console.log(window.userColor);
+                    
                   }
                 });
 
@@ -2288,9 +2285,10 @@ setTimeout(function(){
                 var userId = $(this).find('a').attr('id');
 
                 $('.agenterror').addClass('opacity0');
-                if($('.daySelection').hasClass('setForCalendar'))
+
+                if($('.NewCalendarContainer').hasClass('openNow'))
                 {
-                  suggestedDate()
+                  suggestedDate();
                 }
                 
 
@@ -2372,7 +2370,7 @@ setTimeout(function(){
               return false;                  
             }
             window.userColor = '#'+parsed["0"].color;
-            console.log(window.userColor);
+            
           }
         });
 
@@ -2431,9 +2429,9 @@ setTimeout(function(){
                     $('.Additionaldrodown div.additioanlSelection').html(setValue2);
                     $('.agenterror').addClass('opacity0');
                     // Checking if calendar is initialized
-                    if($('.daySelection').hasClass('setForCalendar'))
+                    if($('.NewCalendarContainer').hasClass('openNow'))
                     {
-                      suggestedDate()
+                      suggestedDate();
                     }
 
                 }, 500);
@@ -2460,9 +2458,9 @@ setTimeout(function(){
                     $('.Additionaldrodown div.additioanlSelection').html(setValue2);
                     $('.agenterror').addClass('opacity0');
                     // Checking if calendar is initialized
-                    if($('.daySelection').hasClass('setForCalendar'))
+                    if($('.NewCalendarContainer').hasClass('openNow'))
                     {
-                      suggestedDate()
+                      suggestedDate();
                     }
 
                 }, 500);
@@ -3254,7 +3252,7 @@ setTimeout(function(){
                   }
                   
                   window.userColor = '#'+parsed["0"].color;
-                  console.log(window.userColor);
+                  
                 }
               });
               
@@ -3763,7 +3761,7 @@ setTimeout(function(){
                 for(var x in parsed){
                   arr.push(parsed[x]);
                 }
-                console.log(arr);
+                
                 var currentCounter = 0;
                 var newCounter = 0
                 // Getting into each weekly date
@@ -4588,7 +4586,8 @@ function validateBasicInfo() {
         var getEmailValue = $('.email').val().length;
         var getemail = $('.email').val();
         //if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue > 0 && getEmailValue > 0)
-        if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue && getTitle != 'All' && getGender != 'All')
+        if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue > 0 && getEmailValue > 0 && getTitle != 'All' && getGender != 'All')
+        //if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue && getTitle != 'All' && getGender != 'All')
         {   
 
             if($('.firstname').hasClass('hasError') || $('.lastname').hasClass('hasError'))
