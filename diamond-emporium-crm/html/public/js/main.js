@@ -48,7 +48,7 @@ $(document).ready(function () {
                   arr.push(parsed[x]);
                 }
                 var getcount =  arr.length;
-                
+
                 var teamStatus = "";
                 var teamAbsence = 0;
                 for (var i = 0; i < arr.length; i++) 
@@ -1613,6 +1613,8 @@ $(document).on('click','.savePopupBooking', function (e) {
     var getDate = $('#bookingDate').attr('datenumber');
     if(getDate < 10)
       { getDate = '0'+getDate; }
+    var getSuffixDate = getSuffix3(getDate);
+    var getDateSuffix = getDate+getSuffixDate;
     var getTime = $('#bookingDate').attr('timeslotfull');
 
     var getRoom = $('.thisLabelClicked').attr('roomnumber');
@@ -1622,9 +1624,11 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('#bookingDate').attr('roomNumber', getRoom);
     var getComlpeteDate = getYear+'-'+getMonthNumber+'-'+getDate;
     $('#bookingDate').attr('ComlpeteDate', getComlpeteDate);
-    var setHtml = getDay + ' ' + getDate + ' ' + getMonth + ', ' + getYear + ' ' + getTime;
+    var setHtml = getDay + ' ' + getDateSuffix + ' ' + getMonth + ', ' + getYear + ' ' + getTime;
     $('#bookingDate').html(setHtml); 
   }
+
+
 /* ==================================================== */
 // Cancel popup on scroll
 $('section.rightCol').on('scroll', function(event){
@@ -3416,6 +3420,10 @@ setTimeout(function(){
                     var datenumber = getCurrentDate;
                     if(datenumber < 10)
                       { datenumber = '0'+datenumber; }
+
+                    var getSuffixDate = getSuffix3(datenumber);
+                    
+                    var datenumberSuffix = datenumber+getSuffixDate;
                     var roomnumber = parsed[0].booking_room; 
                     var comlpetedate = parsed[0].booking_date;
 
@@ -3425,7 +3433,7 @@ setTimeout(function(){
                     $('#bookingDate').attr('datenumber', datenumber);
                     $('#bookingDate').attr('roomnumber',roomnumber);
                     $('#bookingDate').attr('comlpetedate', comlpetedate);
-                    var setHtml = getBookingDay + ' ' + datenumber + ' ' + monthname + ', ' + bookingyear + ' ' + getFullTime;
+                    var setHtml = getBookingDay + ' ' + datenumberSuffix + ' ' + monthname + ', ' + bookingyear + ' ' + getFullTime;
                     $('#bookingDate').html(setHtml);
                   }
                   else
@@ -6350,6 +6358,28 @@ function getTimeSlotFull(getTime) {
     
     GetLoginUserDetail();
     
+    function getSuffix3(getDay)
+    {
+        var suffix = ''
+        if(getDay == 1 || getDay == 21 || getDay == 31)
+        {
+            suffix = 'st'
+        }
+        else if(getDay == 2 || getDay == 22)
+        {
+            suffix = 'nd'   
+        }
+        else if(getDay == 3 || getDay == 23)
+        {
+            suffix = 'rd' 
+        }
+        else
+        {
+            suffix = 'th'    
+        }
+        return suffix;
+    }
+
     /*------------------------------------------------------------------*/
    /*---------------------Start GetCountries Ajax List------------------------ */
    /*------------------------------------------------------------------*/
