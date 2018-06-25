@@ -1616,7 +1616,7 @@ $(document).on('click','.savePopupBooking', function (e) {
     var getSuffixDate = getSuffix3(getDate);
     var getDateSuffix = getDate+getSuffixDate;
     var getTime = $('#bookingDate').attr('timeslotfull');
-
+    var getTimeFull = fullTimeFormat(getTime);
     var getRoom = $('.thisLabelClicked').attr('roomnumber');
     var getMonthNumber = $('#bookingDate').attr('monthnumber');
     if(getMonthNumber < 10)
@@ -1624,7 +1624,7 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('#bookingDate').attr('roomNumber', getRoom);
     var getComlpeteDate = getYear+'-'+getMonthNumber+'-'+getDate;
     $('#bookingDate').attr('ComlpeteDate', getComlpeteDate);
-    var setHtml = getDay + ' ' + getDateSuffix + ' ' + getMonth + ', ' + getYear + ' ' + getTime;
+    var setHtml = getDay + ' ' + getDateSuffix + ' ' + getMonth + ', ' + getYear + ' ' + getTimeFull;
     $('#bookingDate').html(setHtml); 
   }
 
@@ -1671,8 +1671,10 @@ $('section.rightCol').on('scroll', function(event){
       for (var a = 0; a < 7; a++) {
 
           var getCurrentDate = moment(date).weekday(a).format('D');
-          var getCurrentMonth = moment(date).weekday(a).format('MMMM');
-          var getCurrentMonth = moment(date).weekday(a).format('MMMM');
+          //var getCurrentMonth = moment(date).weekday(a).format('MMMM');
+          //var getCurrentMonth = moment(date).weekday(a).format('MMMM');
+          debugger
+          var monthShortName = moment.monthsShort(getMonthNumber - 1);
           var dateSuffix = ''
           if(getCurrentDate == 1 || getCurrentDate == 21 || getCurrentDate == 31)
           {
@@ -1698,8 +1700,8 @@ $('section.rightCol').on('scroll', function(event){
           {
               setLastDate = getCurrentDate + dateSuffix
           }
-          var completeDate = setFirstDate + setLastDate + ' '+ getCurrentMonth + ', ' + getCurrentYear;
-          $('#bookingDate').attr('monthName', getCurrentMonth);
+          var completeDate = setFirstDate + setLastDate + ' '+ monthShortName + ', ' + getCurrentYear;
+          $('#bookingDate').attr('monthName', monthShortName);
           $('#bookingDate').attr('bookingYear', getCurrentYear);
 
       }
@@ -6099,11 +6101,36 @@ $(document).on('click', function(event){
 });// End
 
 
+function fullTimeFormat(getTime)
+{
+   if(getTime == "8:00 - 9:00 AM")
+    { return "8:00 AM - 9:00 AM" }
+    else if(getTime == "9:00 - 10:00 AM")
+    { return "9:00 AM - 10:00 AM" }
+    else if(getTime == "10:00 - 11:00 AM")
+    { return "10:00 AM - 11:00 AM" }
+    else if(getTime == "11:00 - 12:00 PM")
+    { return "11:00 AM - 12:00 PM" }
+    else if(getTime == "12:00 - 1:00 PM")
+    { return "12:00 PM - 1:00 PM" }
+    else if(getTime == "1:00 - 2:00 PM")
+    { return "1:00 PM - 2:00 PM" }
+    else if(getTime == "2:00 - 3:00 PM")
+    { return "2:00 PM - 3:00 PM" }
+    else if(getTime == "3:00 - 4:00 PM")
+    { return "3:00 PM - 4:00 PM" }
+    else if(getTime == "4:00 - 5:00 PM")
+    { return "4:00 PM - 5:00 PM" }
+    else
+    { return "5:00 PM - 6:00 PM" }
 
+}
 
 /*------------------------------------------------------------------*/
 /*-------------------------- End Close Lead ----------------------- */
 /*------------------------------------------------------------------*/
+
+
 
 // New Leave
 
@@ -6305,25 +6332,25 @@ function getTimeSlot(getTime) {
 function getTimeSlotFull(getTime) {
   
   if(getTime == "8-9")
-  { return "8:00 - 9:00 AM" }
+  { return "8:00 AM - 9:00 AM" }
   else if(getTime == "9-10")
-  { return "9:00 - 10:00 AM" }
+  { return "9:00 AM - 10:00 AM" }
   else if(getTime == "10-11")
-  { return "10:00 - 11:00 AM" }
+  { return "10:00 AM - 11:00 AM" }
   else if(getTime == "11-12")
-  { return "11:00 - 12:00 PM" }
+  { return "11:00 AM - 12:00 PM" }
   else if(getTime == "12-1")
-  { return "12:00 - 1:00 PM" }
+  { return "12:00 PM - 1:00 PM" }
   else if(getTime == "1-2")
-  { return "1:00 - 2:00 PM" }
+  { return "1:00 PM - 2:00 PM" }
   else if(getTime == "2-3")
-  { return "2:00 - 3:00 PM" }
+  { return "2:00 PM - 3:00 PM" }
   else if(getTime == "3-4")
-  { return "3:00 - 4:00 PM" }
+  { return "3:00 PM - 4:00 PM" }
   else if(getTime == "4-5")
-  { return "4:00 - 5:00 PM" }
+  { return "4:00 PM - 5:00 PM" }
   else
-  { return "5:00 - 6:00 PM" }
+  { return "5:00 PM - 6:00 PM" }
     
 }
 

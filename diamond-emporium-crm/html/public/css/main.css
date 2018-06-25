@@ -590,10 +590,27 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 
 .NewCalendarContainer{ width: 1580px; }
 .calendarHead { background-color: #e7f5fd; line-height: 34px; padding: 22px 0; border: 1px solid #dfdfdf; }
-.weeklyDates { color: #444c63; margin: 0 auto; width: 380px; text-align: center; padding-top: 2px; height: 34px; }
-.weeklyDates span { position: relative; top: -2px; }
-.weeklyDates label{ width: 30px; height: 30px; border: 1px solid #dfdfdf; border-radius: 8px; display: inline-block; border-radius: 50%; }
-.weeklyDates label img{ width: 10px; margin-bottom: 5px; }
+.weeklyDates { color: #444c63; margin: 0 auto; width: 380px; text-align: center; padding-top: 2px; height: 34px; position: relative;}
+/*.weeklyDates span { position: relative; top: -2px; }*/
+.weeklyDates span {
+    position: relative;
+    display: inline-block;
+    vertical-align: super;
+    line-height: 34px;
+}
+.weeklyDates label{ width: 30px; height: 30px; border: 1px solid #dfdfdf; border-radius: 8px; display: inline-block; border-radius: 50%; position: relative; }
+/*.weeklyDates label img{ width: 10px; margin-bottom: 5px; }*/
+.weeklyDates label img {
+    width: 10px;
+    margin-bottom: 5px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    vertical-align: middle;
+    display: grid;
+    top: 9px;
+}
 .saveNewBooking{ right: 60px; top:16px; }
 .saveNewBooking a{ width: 120px; } 
 #NewCalendar{}
