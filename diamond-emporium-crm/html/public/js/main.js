@@ -1562,7 +1562,7 @@ $(document).on('click','.addBookingLink', function (e) {
         setHtml += '<p class=" fs-12 headBar" style="background-color:'+window.userColor+'"><span class="ellipsis">'+getName+'</span><span>'+getUserSC+'</span></p>';
           setHtml += '<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
             setHtml += '<p><i class="icon-diamond fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
-            setHtml += '<p><i class="icon-diamond fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
+            setHtml += '<p><i class="icon-dollar fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
             setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getTime+'</span></p>';
             setHtml += '<p><a class="savePopupBooking" href="JavaScript:;" style="color:'+window.userColor+'">OK</a></p>';
           setHtml += '<div class="transparentBG absolute" style="background-color:'+window.userColor+'"></div>';
@@ -1673,7 +1673,7 @@ $('section.rightCol').on('scroll', function(event){
           var getCurrentDate = moment(date).weekday(a).format('D');
           //var getCurrentMonth = moment(date).weekday(a).format('MMMM');
           //var getCurrentMonth = moment(date).weekday(a).format('MMMM');
-          debugger
+          
           var monthShortName = moment.monthsShort(getMonthNumber - 1);
           var dateSuffix = ''
           if(getCurrentDate == 1 || getCurrentDate == 21 || getCurrentDate == 31)
@@ -3793,10 +3793,12 @@ setTimeout(function(){
                     // Getting into each weekly date, times and then Rooms
                     var newRoomCounter = 1;
                     var roomNumber = "";
+                    debugger
                     for (var i = 1; i < 5; i++) {
+                      debugger
                       if(newRoomCounter == 1){roomNumber = "roomOne"}
-                      else if(newRoomCounter == 1){roomNumber = "roomTwo"}
-                      else if(newRoomCounter == 1){roomNumber = "roomThree"}
+                      else if(newRoomCounter == 2){roomNumber = "roomTwo"}
+                      else if(newRoomCounter == 3){roomNumber = "roomThree"}
                       else{roomNumber = "roomFour"}
                       var getRoom = getAllRooms[i];
                       
@@ -3817,7 +3819,7 @@ setTimeout(function(){
                             setThisHtml +='<p class=" fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>BO</span></p>';
                             setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
                               setThisHtml +='<p><i class="icon-diamond fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">ER</span></p>';
-                              setThisHtml +='<p><i class="icon-diamond fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
+                              setThisHtml +='<p><i class="icon-dollar fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
                               setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColor+'></div>';
                             setThisHtml +='</div>';
                           setThisHtml +='</div>';

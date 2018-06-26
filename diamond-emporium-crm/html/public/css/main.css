@@ -664,6 +664,8 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 
 .tempContainer{ width: 122px; }
 .roomBooking p{position: relative; z-index: 1}
+.roomBooking div.half-pad-left{ padding-left: 2px; }
+.roomBooking div.half-pad-left p span.half-pad-left{padding-left: 0; }
 .transparentBG{ width: 100%; height: 39px; left: 0; top: 0; opacity: .3; }
 .addBookingContainer{ float: left; width: 124px; height: 122px;}
 /*.addBookingPopup{ left: 0; right: 0; top:0; width: 100%; height: 100%; z-index: 1;}*/
