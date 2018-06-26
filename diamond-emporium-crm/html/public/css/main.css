@@ -611,8 +611,9 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
     display: grid;
     top: 9px;
 }
-.saveNewBooking{ right: 60px; top:16px; }
-.saveNewBooking a{ width: 120px; } 
+.saveNewBooking{ right: 60px; top:24px; }
+.cancelNewBooking{ right: 188px; top:24px; }
+.saveNewBooking a, .cancelNewBooking a{ width: 120px; } 
 #NewCalendar{}
 .NewCalendar{border-left: 1px solid #dfdfdf; border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; }
 .hourContainer { float: left; width: 85px; border-right: 1px solid #dfdfdf; text-align: right; }

@@ -248,7 +248,7 @@ $(document).ready(function () {
                 }
 
                 $('.assignToDiv a.selected-text').attr('value','All');
-                $('.assignToDiv a.selected-text span').html('Assign to');
+                $('.assignToDiv a.selected-text span').html('*Assign to');
                 var arr = [];
                 
                 for(var x in parsed){
@@ -415,7 +415,7 @@ $(document).ready(function () {
                   return false;                  
                 }
                 $('.assignToDiv a.selected-text').attr('value','All');
-                $('.assignToDiv a.selected-text span').html('Assign to');
+                $('.assignToDiv a.selected-text span').html('*Assign to');
                 var arr = [];
                 
                 for(var x in parsed){
@@ -1710,6 +1710,16 @@ $('section.rightCol').on('scroll', function(event){
       $('.weeklyDates span').attr('nextWeekDate',getNextWeekStartDate);
       $('.weeklyDates span').attr('previousWeekDate',getPreviousWeekStartDate);
 
+      var startDate = new Date();
+      var endDate = new Date(getStartDate);
+      if (startDate > endDate) {
+        $('.weeklyDates label.arrowPrev').addClass('hide');
+      }
+      else
+      {
+        $('.weeklyDates label.arrowPrev').removeClass('hide');
+      }
+
   }
 
 /*====================================================*/
@@ -2328,7 +2338,7 @@ setTimeout(function(){
 
     $(document).on('click','.btn-skip',function(){
 
-        
+        debugger
         var el = $(this);
         var checkDefaultValue = $('.additioanlSelection a').attr('value');
         var checkSelectedValue = $('.AdditionaldrodownList p').filter('.activeReason').attr('value');
@@ -2386,6 +2396,7 @@ setTimeout(function(){
         el.closest('.dropdown').find('a.selected-text').attr('value', getAgent);
         el.closest('.dropdown').find('a.selected-text').attr('assigneId', userId);
         $('.otherReasonDiv').addClass('hide');
+        $('.dropdown.assignToDiv').prev('span.text-top').slideDown(150);
         // Basic Info Image set
         basicInfoUserDp();
         $('ul.assignToDiv .dropdownOptions').addClass('dropdownheightSet');
@@ -2425,6 +2436,7 @@ setTimeout(function(){
                     $('.otherReasonDiv .dropdown').find('a.selected-text').attr('value', SetValue);
                     $('.otherReasonDiv').removeClass('hide');
                     $('.otherReasonDiv span.text-top').slideDown(150);
+                    
                     $('.otherReasonExplained a').attr('value', SetValue);
                     $('.otherReasonExplained a').html(SetValue);
                     basicInfoUserDp();
@@ -2455,6 +2467,7 @@ setTimeout(function(){
                     $('.otherReasonDiv .dropdown').find('a.selected-text').attr('value', checkSelectedValue);
                     $('.otherReasonDiv').removeClass('hide');
                     $('.otherReasonDiv span.text-top').slideDown(150);
+                    $('.assignToDiv').closest('.relative').find('.text-top').slideDown(150);
                     $('.otherReasonExplained a').attr('value', 'Other');
                     $('.otherReasonExplained a').html('Other');
                     // Basic Info Image set
@@ -2650,8 +2663,16 @@ setTimeout(function(){
         };
         
     }
+
+    // Save New Booking
     $(document).on('click','.saveNewBooking', function (e) {
       $('#submitbutton').trigger('click');
+    });
+    // Cancel New Booking
+    $(document).on('click','.cancelNewBooking', function (e) {
+      $('.next-saveDiv').removeClass('hide');
+      $('.NewCalendarContainer').addClass('hide');
+      additionalDetailsExpand();
     });
     
     $(document).on('click','#submitbutton', function (e) {
@@ -2769,7 +2790,7 @@ setTimeout(function(){
 
       //Reset New lead form
       $('.newLead').html(window.getNewLeadAll);
-
+      $('.newLead').removeClass('inEditMode');
       return false;
       //$("#dashboard").submit();
 
@@ -3219,6 +3240,7 @@ setTimeout(function(){
 /* ------------------ Start Edit Detail ------------------------*/
     
     $(document).on('click','.editDetails:not(.disabled)', function (e) {
+    $('.newLead').addClass('inEditMode');
     showMainLoading();  
     var getLeadId = $(this).attr('lead-id');    
     
@@ -3461,18 +3483,12 @@ setTimeout(function(){
               if(parsed[0].user_booking_date == '1')
               {
                 $('.bookNowDiv').removeClass('hide'); 
-                
-                
               }
               else
               {
-                
                 $('.next-saveDiv, .btn-bookNow').removeClass('hide');
-                
-              } 
-
-              
-                
+              }    
+              $('.calendarWeeklyDate').attr('bookingDate', parsed[0].booking_date); 
             }
         });            
 });
@@ -3793,9 +3809,9 @@ setTimeout(function(){
                     // Getting into each weekly date, times and then Rooms
                     var newRoomCounter = 1;
                     var roomNumber = "";
-                    debugger
+                    
                     for (var i = 1; i < 5; i++) {
-                      debugger
+                      
                       if(newRoomCounter == 1){roomNumber = "roomOne"}
                       else if(newRoomCounter == 2){roomNumber = "roomTwo"}
                       else if(newRoomCounter == 3){roomNumber = "roomThree"}
@@ -3813,12 +3829,12 @@ setTimeout(function(){
                         //window.userColor = '#'+getAllRooms[i].booking_color;
                         var setBackgroundColor = "style='background-color:"+window.userColor+"'";
                         var Color = "style='color:"+window.userColor+"'";
-
+                        
                         setThisHtml +='<label class="labelContainer" roomNumber="'+i+'">';
                           setThisHtml +='<div class="roomBooking '+roomNumber+'">';
-                            setThisHtml +='<p class=" fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>BO</span></p>';
+                            setThisHtml +='<p class=" fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>'+getAllRooms[i].assignto_shortcode+'</span></p>';
                             setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
-                              setThisHtml +='<p><i class="icon-diamond fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">ER</span></p>';
+                              setThisHtml +='<p><i class="icon-diamond fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].product_shortcode+'</span></p>';
                               setThisHtml +='<p><i class="icon-dollar fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
                               setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColor+'></div>';
                             setThisHtml +='</div>';
@@ -6254,12 +6270,12 @@ $(document).on('click','.leadUserName', function (e) {
                }
                html += "<p><label>Full Address:</label><label>" + parsed[0].full_address + " </label></p> ";
                html += "<p><label>Communication Method:</label><label>" + parsed[0].communication_method + " </label></p> ";
-               html += "<p><label>Prefered method of contact:</label><label>" + parsed[0].contact_method + " </label></p> ";
+               html += "<p><label>Preferred method of contact:</label><label>" + parsed[0].contact_method + " </label></p> ";
                html += "<p><label>Product:</label><label>" + parsed[0].product + " </label></p> ";
                html += "<p><label>How did they hear about us?:</label><label>" + parsed[0].referral + " </label></p> ";
                html += "<p><label>Referral:</label><label>" + parsed[0].only_referral + " </label></p> ";
                html += "<p><label>What they are looking for:</label><label>" + parsed[0].specify_requirements + " </label></p> ";
-               html += "<p><label>Special Instruction:</label><label>" + parsed[0].special_instructions + " </label></p> ";
+               html += "<p><label>Special Instructions:</label><label>" + parsed[0].special_instructions + " </label></p> ";
                html += "<p><label>Budget:</label><label>" + parsed[0].budget + " </label></p> ";
                html += "<p><label>Assign To:</label><label>" + parsed[0].assign_to + " </label></p> ";
                html += "<p><label>Reference Product:</label><label>" + parsed[0].reference_product + " </label></p> ";
