@@ -1664,7 +1664,8 @@ $('section.rightCol').on('scroll', function(event){
       var getNextWeekStartDate = moment(date).weekday(7).format('YYYY-MM-DD');
       var getPreviousWeekStartDate = moment(date).weekday(-7).format('YYYY-MM-DD');
       var getCurrentYear = moment(date).weekday(6).format('YYYY');
-      var getMonthNumber = moment(date).format('M');
+      var getMonthNumber = moment(getNextWeekStartDate).format('M');
+      var currentDayDate = moment(thisdate).format('YYYY-MM-DD');
       setFirstDate = '';
       setLastDate = '';
 
@@ -1709,15 +1710,17 @@ $('section.rightCol').on('scroll', function(event){
       $('.weeklyDates span').html(completeDate).attr('startDate',getStartDate);
       $('.weeklyDates span').attr('nextWeekDate',getNextWeekStartDate);
       $('.weeklyDates span').attr('previousWeekDate',getPreviousWeekStartDate);
-
+      $('.weeklyDates span').attr('currentDayDate',currentDayDate);
+      
+      // Hide past Dates
       var startDate = new Date();
       var endDate = new Date(getStartDate);
       if (startDate > endDate) {
-        $('.weeklyDates label.arrowPrev').addClass('hide');
+        //$('.weeklyDates label.arrowPrev').addClass('hide');
       }
       else
       {
-        $('.weeklyDates label.arrowPrev').removeClass('hide');
+        //$('.weeklyDates label.arrowPrev').removeClass('hide');
       }
 
   }
@@ -2338,7 +2341,7 @@ setTimeout(function(){
 
     $(document).on('click','.btn-skip',function(){
 
-        debugger
+        
         var el = $(this);
         var checkDefaultValue = $('.additioanlSelection a').attr('value');
         var checkSelectedValue = $('.AdditionaldrodownList p').filter('.activeReason').attr('value');
@@ -3743,7 +3746,7 @@ setTimeout(function(){
                 //var currentTime = new Date();
                 var dateCounter = 0;
                 var weeklyDatesArray = [];
-
+                var getCurrentFullDate = $('.calendarWeeklyDate').attr('currentdaydate');
                 $.each(parsed, function(key, value){
 
                   dateCounter++;
@@ -3773,7 +3776,18 @@ setTimeout(function(){
                     }
                   }
                   
-                  $('.daysContent.'+dateCounter).attr('dateNumber', dayDate);
+                  if(getCurrentFullDate > key)
+                  {
+                    $('.daysContent.'+dateCounter).attr('dateNumber', dayDate).addClass('pastdate');
+                    $('.daysContent.'+dateCounter).attr('fullDate', key);
+                  }
+                  else
+                  {
+                    $('.daysContent.'+dateCounter).attr('dateNumber', dayDate).removeClass('pastdate');;
+                    $('.daysContent.'+dateCounter).attr('fullDate', key);
+                  }
+                  
+                 
                 });
 
                 // Get Weekly End Dates 
@@ -3856,6 +3870,7 @@ setTimeout(function(){
                 // Reset slider
                 $('.daysSlider div.roomsContainer').removeClass('scrolled');
                 // End Loading
+
                 endCalendarLoading();
 
 
