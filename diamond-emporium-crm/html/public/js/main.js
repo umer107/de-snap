@@ -1581,15 +1581,17 @@ $(document).on('click','.addBookingLink', function (e) {
 /*====================================================*/
 // Save new Booking popup
 $(document).on('click','.savePopupBooking', function (e) {
+
     var selectHtml = $('.addBookingPopup .addBookingContainer').html();
     var getDayName = $('.addBookingLink.thisClicked').closest('.daysCalendar').attr('dayname');
     var getDateNumber = $('.addBookingLink.thisClicked').closest('.daysContent').attr('datenumber');
+    var getSelectedDate = $('.addBookingLink.thisClicked').closest('.daysContent').attr('fulldate');
     $('#bookingDate').attr('dayName', getDayName);
     $('#bookingDate').attr('datenumber', getDateNumber);
     $('.addBookingLink.thisClicked').closest('label').html(selectHtml);
     $('.addBookingPopup').html('');
     $('.addBookingPopup').addClass('hide');
-
+    
     // Apply new booking made
     
     $('.next-saveDiv').removeClass('hide');
@@ -1600,31 +1602,45 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('.bookingViewIcon').addClass('hide');
     $('.bookingHeading').removeClass('hide');
     $('.showOnNewBooking').addClass('hide');
-    geDateValues();    
+    geDateValues(getSelectedDate);    
     $('.NewCalendarContainer').addClass('hide');
     
 });
 
-  function geDateValues()
+  function geDateValues(getSelectedDate)
   {
-    var getMonth = $('#bookingDate').attr('monthname');
-    var getYear = $('#bookingDate').attr('bookingyear');
-    var getDay = $('#bookingDate').attr('dayname');
-    var getDate = $('#bookingDate').attr('datenumber');
+    
+    var d = new Date(getSelectedDate);
+    var getDate = d.getDate();
     if(getDate < 10)
       { getDate = '0'+getDate; }
     var getSuffixDate = getSuffix3(getDate);
     var getDateSuffix = getDate+getSuffixDate;
+
+    var getMonth = moment(getSelectedDate).format('MMMM');
+    var getMonthNumber = moment(getSelectedDate).format('MM');
+    
+    var monthShortName = moment.monthsShort(getMonthNumber - 1);
+
+    var getCurrentYear= moment(getSelectedDate).weekday(a).format('YYYY');
+
+    $('#bookingDate').attr('monthname',monthShortName);
+    $('#bookingDate').attr('bookingyear',getCurrentYear);
+    $('#bookingDate').attr('datenumber', getDate);
+    var getDay = $('#bookingDate').attr('dayname');
+    
+    
     var getTime = $('#bookingDate').attr('timeslotfull');
     var getTimeFull = fullTimeFormat(getTime);
     var getRoom = $('.thisLabelClicked').attr('roomnumber');
-    var getMonthNumber = $('#bookingDate').attr('monthnumber');
-    if(getMonthNumber < 10)
-      { getMonthNumber = '0'+getMonthNumber; }
+
     $('#bookingDate').attr('roomNumber', getRoom);
     var getComlpeteDate = getYear+'-'+getMonthNumber+'-'+getDate;
     $('#bookingDate').attr('ComlpeteDate', getComlpeteDate);
-    var setHtml = getDay + ' ' + getDateSuffix + ' ' + getMonth + ', ' + getYear + ' ' + getTimeFull;
+
+    
+
+    var setHtml = getDay + ' ' + getDateSuffix + ' ' + monthShortName + ', ' + getYear + ' ' + getTimeFull;
     $('#bookingDate').html(setHtml); 
   }
 
@@ -1664,6 +1680,7 @@ $('section.rightCol').on('scroll', function(event){
       var getNextWeekStartDate = moment(date).weekday(7).format('YYYY-MM-DD');
       var getPreviousWeekStartDate = moment(date).weekday(-7).format('YYYY-MM-DD');
       var getCurrentYear = moment(date).weekday(6).format('YYYY');
+      var getMonthNumberCurrent = moment(date).format('M');
       var getMonthNumber = moment(getNextWeekStartDate).format('M');
       var currentDayDate = moment(thisdate).format('YYYY-MM-DD');
       setFirstDate = '';
@@ -1676,6 +1693,8 @@ $('section.rightCol').on('scroll', function(event){
           //var getCurrentMonth = moment(date).weekday(a).format('MMMM');
           
           var monthShortName = moment.monthsShort(getMonthNumber - 1);
+          var monthShortNameEdit = moment.monthsShort(getMonthNumberCurrent - 1);
+          
           var dateSuffix = ''
           if(getCurrentDate == 1 || getCurrentDate == 21 || getCurrentDate == 31)
           {
@@ -1703,10 +1722,11 @@ $('section.rightCol').on('scroll', function(event){
           }
           var completeDate = setFirstDate + setLastDate + ' '+ monthShortName + ', ' + getCurrentYear;
           $('#bookingDate').attr('monthName', monthShortName);
+          $('#bookingDate').attr('monthNameEdit', monthShortNameEdit);
           $('#bookingDate').attr('bookingYear', getCurrentYear);
 
       }
-      $('#bookingDate').attr('monthNumber', getMonthNumber);
+      $('#bookingDate').attr('monthNumber', getMonthNumberCurrent);
       $('.weeklyDates span').html(completeDate).attr('startDate',getStartDate);
       $('.weeklyDates span').attr('nextWeekDate',getNextWeekStartDate);
       $('.weeklyDates span').attr('previousWeekDate',getPreviousWeekStartDate);
@@ -3437,7 +3457,7 @@ setTimeout(function(){
                     loadWeeklyDates(getThisDate);
                     $('.btn-bookNow').addClass('hide');
 
-                    var monthname = $('#bookingDate').attr('monthname');
+                    var monthname = $('#bookingDate').attr('monthNameEdit');
                     var bookingyear = $('#bookingDate').attr('bookingyear');
                     var monthnumber = $('#bookingDate').attr('monthnumber');
                     var timeslot = parsed[0].booking_time;
@@ -5664,9 +5684,13 @@ function loadLeads(){
     setTimeout(function(){ 
         
         var agentBudget = $('.rings a').filter('.active').attr('value');
+        if (agentBudget == undefined || agentBudget =="") { agentBudget = "all"}
         var agentStatus = $('.agentStatus').attr('value');
+        if (agentStatus == undefined || agentStatus =="") { agentStatus = "All"}
         var agentReferral = $('.Referral').attr('value');
+        if (agentReferral == undefined || agentReferral =="") { agentReferral = "All"}
         var agentDate = $('.LeadsCalendar').attr('value');
+        if (agentDate == undefined || agentDate =="") { agentDate = "All"}
         var data = {
           
           budget : agentBudget,
@@ -5675,7 +5699,7 @@ function loadLeads(){
           booking_date : agentDate
           
         };
-     
+       
         // Starting ajax call
         $.ajax({
         
@@ -5685,7 +5709,7 @@ function loadLeads(){
                 success: function (data) {   
 
                     // convert json into Array
-
+                  
                   var parsed = '';
                   try{         
                     parsed = JSON.parse(data);              
