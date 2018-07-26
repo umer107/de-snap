@@ -6768,18 +6768,34 @@ function getTimeSlotFull(getTime) {
             }
         });
 
-        $("#comboboxLookup").combobox({
-           classes: {
-              "ui-autocomplete": "your-custom-class",
-          },
-            selected: function(event, ui) {
-                var getVal = $("#comboboxLookup").val();
-                $('#onlyReferral').val(getVal);
-                $('.showLookups').slideUp();
-                setTimeout(function(){ $('.showLookups').addClass('hide'); }, 500);
+
+        // Look up Api
+
+        $.ajax({
+            type: "GET",
+            url: "/dashboard/ajaxGetCustomerOnLookup", 
+            data: {},
+            success: function (data) {
+              debugger
+                $("#comboboxLookup").combobox({
+                 classes: {
+                    "ui-autocomplete": "",
+                },
+                selected: function(event, ui) {
+                    var getVal = $("#comboboxLookup").val();
+                    $('#onlyReferral').val(getVal);
+                    $('.showLookups').slideUp();
+                    setTimeout(function(){ $('.showLookups').addClass('hide'); }, 500);
+
+                }
+              });
 
             }
+
         });
+
+
+        
         
         //$("#combobox").closest(".ui-widget").find("input, button").prop("disabled", true);
     });
