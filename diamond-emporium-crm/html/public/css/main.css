@@ -9,7 +9,7 @@
 .formfields input { font-size: 14px !important; background: white; border: white; border-bottom: 1px solid #DFDFDF; width: 278px; line-height: 28px; position: relative; margin-top: 21px; margin-right: 36px;}
 .formfields span { letter-spacing: 1px; z-index: 1; color:#A5A5A5; font-size:10px; position:absolute; top: 9px; left: 0;min-width: 100px;}
 .formfields span.ui-combobox{ top: 0;}
-.formfields span.ui-combobox button{ display: none }
+.formfields span.ui-combobox button{ display: block; position: absolute;right: 20px; top: 20px;}
 .ui-autocomplete{ max-height: 400px; overflow: auto; width: 321px; border: 1px solid #DFDFDF; margin-left: -17px; }
 .ui-state-hover,
 .ui-widget-content .ui-state-hover,
@@ -25,6 +25,8 @@
 .ui-widget-content .ui-state-focus a,
 .ui-widget-header .ui-state-focus  a { color: #ffffff !important;}
 .countryDiv{ height: 52px; width: 317px;}
+.countryDiv .icon-dropdown, .customerList .icon-dropdown{ padding: 10px 7px; cursor: pointer; background: url(/images/arrow-down.png); display: inline-block; width: 14px; height: 8px; margin-top: 11px; background-repeat: no-repeat; position: absolute; right: 38px; top: 21px; z-index: 2;}
+.customerList .icon-dropdown{ right: 33px; top: 23px; }
 .ui-menu .ui-menu-item{ color: #A5A5A5; font-size: 11px; line-height: 28px; height: 28px;  padding: 0 0 0 22px; margin: 0 !important}
 .ui-menu .ui-menu-item:hover{ background: #4778A8; border: 0 none !important; padding: 0 0 0 22px; }
 .ui-menu .ui-menu-item:hover a{ color: #ffffff; }
@@ -231,7 +233,18 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 #suggestedDateCalender{    position: absolute; left: 96px; top: 107px;}
 .hideBudget { position: absolute; top: -8px; left: 0; width: 100%; height: 60px;}
 .selectReason, .selectReason2 { position: absolute; color: red; font-size: 12px; display: block; text-align: center; width: 100%; top: -12px; }
-
+.lookup{ right: 0; z-index: 1; background: #0E79BB; color: white; font-size: 10px; padding: 2px 5px; border-radius: 4px; top: 5px; right: 35px; }
+.showLookups { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
+.LookupBG{    position: fixed; background: black; opacity: .5; left: 0; right: 0; width: 100%; height: 100%; z-index: 10; }
+.showLookupsInner {width: 640px; margin: 0 auto; background: white; position: relative; z-index: 11; margin-top: 20px }
+.customerHeading { background: #29629a; color: white; line-height: 32px; padding: 0 20px; }
+.customerList { padding: 20px; line-height: 25px; position: relative; }
+.customerList input{ width: 599px; background: white; line-height: 30px; padding-left: 10px; }
+.customerList button{ opacity: 0;
+    position: absolute;
+    right: 19px;
+    width: 40px;
+    height: 34px; z-index: 3; }
 /*Calendar View*/
 .fc th, .fc td, .fc hr, .fc thead, .fc tbody, .fc-row { border-color: transparent !important; background: transparent !important;}
 .fc tbody .fc-row .fc-content-skeleton tbody tr:last-child td { padding-bottom: 0em;}
@@ -500,6 +513,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .dd-small.dropdown li ul li a span.previousClient{ background: url(/images/ic_pClient.png) no-repeat; }
 .dd-small.dropdown li ul li a span.walkIn{ background: url(/images/ic_walkIn.png) no-repeat; }
 .dd-small.dropdown li ul li a span.facebook{ background: url(/images/ic_facebook.png) no-repeat; }
+.dd-small.dropdown li ul li a span.instagram{ background: url(/images/ic_insta.png) no-repeat; }
 .dd-small.dropdown li ul li a span.other{ background: url(/images/ic_other.png) no-repeat; }
 .border-count-green { border-bottom: 4px solid #D9EAD3; line-height: 20px; width: 22px; margin: 0 3px; }
 .border-count-red { border-bottom: 4px solid #F4CCCD; line-height: 20px; width: 22px; margin: 0 3px; }
@@ -618,7 +632,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .NewCalendar{border-left: 1px solid #dfdfdf; border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; }
 .hourContainer { float: left; width: 85px; border-right: 1px solid #dfdfdf; text-align: right; }
 .hourContainer p { height: 50px; line-height: 50px; border-bottom: 1px solid #dfdfdf; padding-right: 10px; }
-.hoursList { padding-right: 10px; margin-top: -5px; }
+.hoursList { padding-right: 10px; margin-top: 26px; }
 .hoursList label{ display: block; line-height: 62px; color: #b2b2b2; }
 .hoursList label.till6{}
 .loadnewCalendar, .loadnewCalendarContent{ width: 1493px; }

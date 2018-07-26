@@ -39,6 +39,7 @@ $selectreferral = array(
     array("Previous client","/images/ic_pClient.png",),
     array("Walk In","/images/ic_walkIn.png",),
     array("Facebook","/images/ic_facebook.png",),
+    array("Instagram","/images/ic_insta.png",),
     array("Other","/images/ic_other.png")
  );
 // Assign To
@@ -83,11 +84,13 @@ $communicationmethod = array(
 $selectcontactmethod = array(
     'Phone/Email',
     'Phone',
-    'Email'
+    'Email',
+    'Other'
  );
 
 //Select Title Method
 $selectTitle = array(
+    'Unknown',
     'Mr',
     'Ms',
     'Mrs',
@@ -195,10 +198,10 @@ echo '<div class="relative pull-left gap-right pad-right">';
     // Country List
     echo '<div class="relative full pull-left initialScreen hideshow one-half-pad-top">';
     echo '<div id="countryName" class="hide" value="Australia"></div>
-
+          
          <div class="relative pull-left countryDiv">
             <span style="display: inline-block" class="text-top">*Country </span>
-            
+            <i class="icon-dropdown fs-7 pull-right d-i-b "></i>
             <div class="ui-widget">
                 <select id="combobox">
 
@@ -276,7 +279,7 @@ echo '<div class="relative pull-left gap-right pad-right">';
       echo '<span style="display: none" class="text-top">Preferred method of contact </span>';
       echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 preferredMethod">';
                 echo '<li>';
-                 echo '   <a href="javascript:;" class="selected-text d-b users" value="All"><span id = "perferrefDropdown" class="d-i-b">Preferred method of contact </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+                 echo '   <a href="javascript:;" class="selected-text d-b users" value="All"><span id="perferrefDropdown" class="d-i-b">Preferred method of contact </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
                 echo '</li>';
                 echo '<li>';
                  // echo $this->formRow($title);
@@ -294,9 +297,15 @@ echo '<div class="relative pull-left gap-right pad-right">';
         echo '</div>';
 
        echo '</div>'; 
+
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
 
+   //ContactMethod
+    echo '<div class="relative pull-left hide one-half-gap-top"><span style="display: none" class="text-top">Preferred method of contact (Other)</span><input maxlength="45" autocomplete="Off" type="text" id="perferrefDropdownOther" placeholder="Preferred method of contact (Other)" /></div>';
+       
+    // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
 
     // Add Address Fields 
     //echo $this->partial('dashboard/dashboard/addAddress.phtml');
@@ -376,7 +385,7 @@ echo '<div class="relative pull-left">';
       echo '<span style="display: none" class="text-top">How did they hear about us?</span>';
       echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 referral">';
             echo '<li>';
-             echo '   <a href="javascript:;" class="selected-text d-b users" value="All"><span id = "referralDropdown" class="d-i-b">How did they hear about us? </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+             echo '   <a href="javascript:;" class="selected-text d-b users" value="All"><span id="referralDropdown" class="d-i-b">How did they hear about us? </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
             echo '</li>';
             echo '<li>';
              // echo $this->formRow($title);
@@ -401,9 +410,19 @@ echo '<div class="relative pull-left">';
     // -----------------------------------------------------------------
 
 
+    // Referral Dropdown
+    echo '<div class="relative pull-left hide"><span style="display: none" class="text-top">How did they hear about us? (Other)</span><input maxlength="45" autocomplete="Off" type="text" id="referralDropdownOther" placeholder="How did they hear about us? (Other)" /></div>';
+
+    // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+
     // Referral Address 
 
-    echo '<div class="relative pull-left"><span style="display: none" class="text-top">Referral</span><input  maxlength="40" autocomplete="Off" type="text" placeholder="Referral" id="onlyReferral" /></div>';
+    echo '<div class="relative pull-left">
+            <span style="display: none" class="text-top">Referral</span>
+            <a href="javascript:;" class="lookup absolute">Lookup</a>
+            <input  maxlength="40" readOnly="readOnly" autocomplete="Off" type="text" placeholder="Referral" id="onlyReferral" />
+        </div>';
 
 
     // -----------------------------------------------------------------      
