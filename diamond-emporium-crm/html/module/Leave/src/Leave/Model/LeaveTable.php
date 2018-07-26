@@ -1377,7 +1377,29 @@ public function fetchLeadRecord($filter= null)
        
    }
 
-   
+   public function  fetchCustomerData()
+   {
+               try{
+		
+                $fullname = new \Zend\Db\Sql\Expression(
+                 'CONCAT(c.first_name, \' \', c.last_name)'
+                );    
+                $select = new \Zend\Db\Sql\Select(); 
+                $select->from(array('c' => 'de_customers')) ->columns(array( 'id','user_name' => $fullname));    
+                $select->order("id desc");
+                $data = $this->executeQuery($select);      
+                $result = $data->toArray(); 
+       
+                return $result;
+             
+           
+                    
+		}catch(\Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+		}
+       
+       
+   }
 
    public function fetchUserNextInLine($filter = null)
    {

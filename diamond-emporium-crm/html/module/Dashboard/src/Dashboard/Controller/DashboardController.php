@@ -119,7 +119,22 @@ class DashboardController extends AbstractActionController
         
     }
     
-    
+    //GetCustomersOnLookup
+     public function  ajaxGetCustomerOnLookupAction()
+    {
+        
+        try {
+            $config = $this->getServiceLocator()->get('Config');
+            $params = $this->getRequest()->getQuery()->toArray();         
+            $leadsTable = $this->getServiceLocator()->get('Leave\Model\LeaveTable');
+            $leadsArr = $leadsTable->fetchCustomerData();
+            echo json_encode($leadsArr);
+	    exit;
+        } catch(Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+	}
+        
+    }
     //AjaxGetUserColor
     
     public function ajaxGetUserColorAction()

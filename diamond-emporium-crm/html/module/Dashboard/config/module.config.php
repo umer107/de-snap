@@ -106,6 +106,16 @@ return array(
                             ),
                         ),
                     ),
+             'ajaxGetCustomerOnLookup' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetCustomerOnLookup',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetCustomerOnLookup',
+                            ),
+                        ),
+                    ),
             'ajaxGetDataForQuestionViewCalender' => array(
                         'type' => 'Segment',
                         'options' => array(

@@ -180,7 +180,7 @@ $resources = array(
     'Dashboard\Controller\Dashboard::ajaxGetUserLoginDetail',
     'Dashboard\Controller\Dashboard::ajaxGetCountriesList',
     'Dashboard\Controller\Dashboard::ajaxGetUserColor',
-    
+    'Dashboard\Controller\Dashboard::ajaxGetCustomerOnLookup',
 
 	);
 
