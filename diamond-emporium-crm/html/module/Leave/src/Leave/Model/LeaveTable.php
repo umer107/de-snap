@@ -886,7 +886,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                if(!empty($filter['assign_UserId']))
                {
                    $lead_assigni_leave = $filter['assign_UserId'];
-                   $select->where(array('l.Leave_AssignUserName = ?' =>  $lead_assigni_leave));
+                   $select->where(array('l.Leave_UserId = ?' =>  $lead_assigni_leave));
                }
                 
                //Filter The Data Of Current Week

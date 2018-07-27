@@ -3920,6 +3920,7 @@ setTimeout(function(){
                 // Bind Data to  Weekly Start Dates 
                 
                 // Marray array for data
+                
                 var arr = [];
                 for(var x in parsed){
                   arr.push(parsed[x]);
@@ -3938,6 +3939,9 @@ setTimeout(function(){
                   $.each(dayTimes, function(key, value){
                     newCounter++;
                     var getKey = getTime(key);
+                    var chcekKey = key;
+                    if(chcekKey == '100') 
+                      return false;
                     setDivContainer = ".daysContent."+[currentCounter] + " .daysContentSlider." + getKey;
                     var getAllRooms = dayTimes[key];
 
