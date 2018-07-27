@@ -644,6 +644,11 @@ $(document).ready(function () {
         {               
           return false;                  
         }
+        if(parseResult.role_id == "1" || parseResult.role_id == "2" || parseResult.role_id == "5")
+        {
+          $('.dashboard-header a.new-Leave').addClass('opacity0');
+        }
+
         $('.userDropdown').addClass('loadingContent'); 
         var checkUserImage = parseResult.image;
         if(checkUserImage == null)
@@ -1676,6 +1681,10 @@ $('section.rightCol').on('scroll', function(event){
   loadWeeklyDates(thisdate);
   function loadWeeklyDates(date) { 
       
+      // 25/06/2018 - 01/07/2018
+      var getStartDateDisplay = moment(date).weekday(0).format('MM/DD/YYYY');
+      var getNextWeekStartDateDisplay = moment(date).weekday(7).format('MM/DD/YYYY');      
+
       var getStartDate = moment(date).weekday(0).format('YYYY-MM-DD');
       var getNextWeekStartDate = moment(date).weekday(7).format('YYYY-MM-DD');
       var getPreviousWeekStartDate = moment(date).weekday(-7).format('YYYY-MM-DD');
@@ -1720,7 +1729,10 @@ $('section.rightCol').on('scroll', function(event){
           {
               setLastDate = getCurrentDate + dateSuffix
           }
-          var completeDate = setFirstDate + setLastDate + ' '+ monthShortName + ', ' + getCurrentYear;
+
+          //var completeDate = setFirstDate + setLastDate + ' '+ monthShortName + ', ' + getCurrentYear;
+          var completeDate = getStartDateDisplay + ' - '+ getNextWeekStartDateDisplay;
+
           $('#bookingDate').attr('monthName', monthShortName);
           $('#bookingDate').attr('monthNameEdit', monthShortNameEdit);
           $('#bookingDate').attr('bookingYear', getCurrentYear);
@@ -2138,6 +2150,35 @@ setTimeout(function(){
         el.closest('.dropdown').next('select').find('option').attr('value',getValue);
         el.closest('.dropdown').next('label').addClass('opacity0');
 
+
+        //If Preferred method
+        if(el.closest('.dropdown').hasClass('preferredMethod'))
+        {   
+          if(getValue == "Other")
+          {
+            $('#perferrefDropdownOther').closest('.relative').removeClass('hide');
+          }
+          else
+          {
+            $('#perferrefDropdownOther').closest('.relative').addClass('hide');
+          }
+        }
+
+
+        //If Preferred method
+        if(el.closest('.dropdown').hasClass('referral'))
+        {   
+          if(getValue == "Other")
+          {
+            $('#referralDropdownOther').closest('.relative').removeClass('hide');
+          }
+          else
+          {
+            $('#referralDropdownOther').closest('.relative').addClass('hide');
+          }
+        }
+
+
         //If Title
         if(el.closest('.dropdown').hasClass('title'))
         {   
@@ -2146,6 +2187,12 @@ setTimeout(function(){
           {
             $('.dropdown.Gender').find('a.selected-text').attr('value','Male');
             $('.dropdown.Gender').find('span').html('Male');
+          }
+          
+          else if(getValue == "Unknown")
+          {
+            $('.dropdown.Gender').find('a.selected-text').attr('value','Other/Not Specified');
+            $('.dropdown.Gender').find('span').html('Other/Not Specified');
           }
           else
           {
@@ -2165,6 +2212,12 @@ setTimeout(function(){
           {
             $('.dropdown.title').find('a.selected-text').attr('value','Mr');
             $('.dropdown.title').find('span').html('Mr');
+          }
+          
+          else if(getValue == "Other/Not Specified")
+          {
+            $('.dropdown.title').find('a.selected-text').attr('value','Unknown');
+            $('.dropdown.title').find('span').html('Unknown');
           }
           else
           {
@@ -2339,6 +2392,14 @@ setTimeout(function(){
                 $('ul.assignToDiv .dropdownOptions').removeClass('dropdownheightSet');
             }
         });// End
+
+
+    // Additional Agent dropdown Selection 
+
+
+    $(document).on('click','.countryDiv .icon-dropdown' ,function(){
+        $('.formfields span.ui-combobox button').trigger('click');
+    });// End
 
     // Additional Agent dropdown Selection 
 
@@ -2645,7 +2706,18 @@ setTimeout(function(){
 
     function getValuesFromForm()
     {
-        
+        var preferredMethod = $("#perferrefDropdown").text();
+        var preferredMethodOther = $("#perferrefDropdownOther").val();
+        var preferredMethodVal = '';
+        if ( preferredMethod == "Other"){ preferredMethodVal = preferredMethodOther; }
+        else { preferredMethodVal = preferredMethod; }
+
+        var referralMethod = $("#referralDropdown").text();
+        var referralMethodOther = $("#referralDropdownOther").val();
+        var referralMethodVal = '';
+        if ( referralMethod == "Other"){ referralMethodVal = referralMethodOther; }
+        else { referralMethodVal = referralMethod; }
+
         return {
           
             lead_id : $('.thisLeadId').attr('leadId'),
@@ -2660,9 +2732,9 @@ setTimeout(function(){
             full_address : $("#fullAddress").val(),
             //Street : $("#street").val(),
             communication_method : $("#CommunicationMethod").text(),
-            contact_method : $("#perferrefDropdown").text(),  
+            contact_method : preferredMethodVal,  
             product : $("#productDropdown").text(),            
-            referral : $("#referralDropdown").text(),
+            referral : referralMethodVal,
             only_referral : $("#onlyReferral").val(),
             //City : $("#cityValue").val(),
             //Zip : $("#Zip").val(),
@@ -2686,6 +2758,8 @@ setTimeout(function(){
         };
         
     }
+
+    
 
     // Save New Booking
     $(document).on('click','.saveNewBooking', function (e) {
@@ -2778,7 +2852,6 @@ setTimeout(function(){
       
       var data = getValuesFromForm();
       
-
       /*if(data.booking_duration == null || undefined)
       {
         data.booking_duration = 0;
@@ -3332,7 +3405,21 @@ setTimeout(function(){
 
               $('.additional-details .dropdown.product .dropdownOptions li a[value="'+parsed[0].product+'"]').trigger('click');
 
-              $('.additional-details .dropdown.referral .dropdownOptions li a[value="'+parsed[0].referral+'"]').trigger('click');
+              
+
+              // Referral method
+              
+              if(parsed[0].referral != "Google" && parsed[0].referral != "Word of mouth" && parsed[0].referral != "Previous client" && parsed[0].referral != "Walk In" && parsed[0].referral != "Facebook" && parsed[0].referral != "Instagram")
+              { 
+                $('#referralDropdownOther').val(parsed[0].referral);
+                $('#referralDropdownOther').closest('.relative').removeClass('hide'); 
+                $('.additional-details .dropdown.referral .dropdownOptions li a[value="Other"]').trigger('click');
+              }
+              else
+              {
+                $('#referralDropdownOther').closest('.relative').addClass('hide'); 
+                $('.additional-details .dropdown.referral .dropdownOptions li a[value="'+parsed[0].referral+'"]').trigger('click');
+              }
 
               $('.additional-details .instructions').val(parsed[0].special_instructions);
               $('.additional-details .ReferenceProduct').val(parsed[0].reference_product);
@@ -3343,8 +3430,20 @@ setTimeout(function(){
               $('#BudgetText').val(parsed[0].budget);
               $('#BudgetText').focusin();
               $('#BudgetText').focusout();
+
               // Preferred method
-              $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
+              if(parsed[0].contact_method != "Phone/Email" && parsed[0].contact_method != "Phone" && parsed[0].contact_method != "Email")
+              { 
+                $('#perferrefDropdownOther').val(parsed[0].contact_method);
+                $('#perferrefDropdownOther').closest('.relative').removeClass('hide'); 
+                $('.dropdown.preferredMethod .dropdownOptions li a[value="Other"]').trigger('click');
+              }
+              else
+              {
+                $('#perferrefDropdownOther').closest('.relative').addClass('hide'); 
+                $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
+              }
+              
               // Communication method
               $('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+parsed[0].communication_method+'"]').trigger('click');
 
@@ -3780,7 +3879,11 @@ setTimeout(function(){
                   var dayDate = a.getDate();
                   // get Month
                   var getMonth = a.getMonth()+1;
-                  var setFinalDate = getDayName + ' ' + getMonth + '/' + dayDate;
+                  if(dayDate < 10)
+                    {dayDate = '0'+dayDate}
+                  if(getMonth < 10)
+                    {getMonth = '0'+getMonth}
+                  var setFinalDate = getDayName + ' ' + dayDate + '/' + getMonth;
                   $('.daysCalendar.'+dateCounter + ' .headerPart').html(setFinalDate);
                   $('.daysCalendar.'+dateCounter + ' .headerPart').attr('keyDates',key);
 
@@ -4673,7 +4776,7 @@ function validateBasicInfo() {
                         $("#combobox").next().next('.ui-combobox').remove();
                         
                     });
-                    $('.ui-state-default, .ui-autocomplete-input').val('Australia');
+                    $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
                     $('.next-saveDiv').removeClass('hide');
                     $('.newLead').addClass('opened');
                     $('.btn-nextDetails').trigger('click');
@@ -5604,8 +5707,22 @@ $(document).on('click','.calenderfilterOptions span', function (e) {
 
 
 
+/*---------------------------------------------*/
+/*---------------------------------------------*/
+/*---------------------------------------------*/
 
+// Loop up Code
 
+$(document).on('click','.lookup', function (e) {
+    $('.showLookups').removeClass('hide').slideDown();
+    $('.customerList .ui-autocomplete-input').val('');
+    $('.customerList .ui-combobox input').attr('placeholder','Type to search');
+});
+
+$(document).on('click','.customerHeading span', function (e) {
+  $('.showLookups').slideUp();
+  setTimeout(function(){ $('.showLookups').addClass('hide'); }, 100);
+});
 
 
 /*---------------------------------------------*/
@@ -5838,6 +5955,8 @@ function loadLeads(){
                                 {  referral = '/images/ic_walkIn.png'  }
                                 else if(leads[i].items[j].referral == "Facebook")
                                 {  referral = '/images/ic_facebook.png'  }
+                                else if(leads[i].items[j].referral == "Instagram")
+                                {  referral = '/images/ic_insta.png'  }
                                 else
                                 {  referral = '/images/ic_other.png'  }
 
@@ -6623,6 +6742,7 @@ function getTimeSlotFull(getTime) {
                           text: false
                       }).removeClass("ui-corner-all").addClass("ui-corner-right ui-button-icon ui-combobox-button").click(function() {
                           // close if already visible
+                          
                           if (input.autocomplete("widget").is(":visible")) {
                               input.autocomplete("close");
                               return;
@@ -6634,6 +6754,7 @@ function getTimeSlotFull(getTime) {
                           // pass empty string as value to search for, displaying all results
                           input.autocomplete("search", "");
                           input.focus();
+                          return false;
                       });
                   },
 
@@ -6656,6 +6777,52 @@ function getTimeSlotFull(getTime) {
                 $('#log').text('selected ' + $("#combobox").val());
             }
         });
+
+
+        // Look up Api
+
+        $.ajax({
+            type: "GET",
+            url: "/dashboard/ajaxGetCustomerOnLookup", 
+            data: {},
+            success: function (data) {
+
+                var getData = data;                
+                var parsed = '';               
+                try{
+                  parsed = JSON.parse(data);                  
+                }           
+                catch(e)
+                {                   
+                  return false;                  
+                }
+                var htmlDate = "";
+
+
+                for (var i = 0; i < parsed.length; i++) {
+                  htmlDate += "<tr>";
+                  htmlDate += "<td value='"+ parsed[i].user_name +"'>" + parsed[i].user_name +"</td>";
+                  htmlDate += "</tr>";
+                }
+                
+                $("#datatable tbody").html(htmlDate);
+
+                 var table = $('#datatable').DataTable( {"lengthChange": false,});
+                  $('.customerList input').attr('placeholder', 'Type to search...');
+                  $('#datatable tbody').on( 'click', 'tr', function () {
+                    var getVal = $(this).find('td').attr('value');
+                    $('#onlyReferral').val(getVal);
+                    $('.showLookups').slideUp();
+                    setTimeout(function(){ $('.showLookups').addClass('hide'); }, 500);
+                  });
+        
+
+            }
+
+        });
+
+
+        
         
         //$("#combobox").closest(".ui-widget").find("input, button").prop("disabled", true);
     });
