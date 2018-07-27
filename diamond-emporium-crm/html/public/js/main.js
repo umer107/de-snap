@@ -644,6 +644,11 @@ $(document).ready(function () {
         {               
           return false;                  
         }
+        if(parseResult.role_id == "1" || parseResult.role_id == "2" || parseResult.role_id == "5")
+        {
+          $('.dashboard-header a.new-Leave').addClass('opacity0');
+        }
+
         $('.userDropdown').addClass('loadingContent'); 
         var checkUserImage = parseResult.image;
         if(checkUserImage == null)
@@ -5710,9 +5715,14 @@ $(document).on('click','.calenderfilterOptions span', function (e) {
 
 $(document).on('click','.lookup', function (e) {
     $('.showLookups').removeClass('hide').slideDown();
-    $('.customerList .ui-autocomplete-input').val(' ')
+    $('.customerList .ui-autocomplete-input').val('');
+    $('.customerList .ui-combobox input').attr('placeholder','Type to search');
 });
 
+$(document).on('click','.customerHeading span', function (e) {
+  $('.showLookups').slideUp();
+  setTimeout(function(){ $('.showLookups').addClass('hide'); }, 100);
+});
 
 
 /*---------------------------------------------*/
@@ -6776,19 +6786,36 @@ function getTimeSlotFull(getTime) {
             url: "/dashboard/ajaxGetCustomerOnLookup", 
             data: {},
             success: function (data) {
-              debugger
-                $("#comboboxLookup").combobox({
-                 classes: {
-                    "ui-autocomplete": "",
-                },
-                selected: function(event, ui) {
-                    var getVal = $("#comboboxLookup").val();
+
+                var getData = data;                
+                var parsed = '';               
+                try{
+                  parsed = JSON.parse(data);                  
+                }           
+                catch(e)
+                {                   
+                  return false;                  
+                }
+                var htmlDate = "";
+
+
+                for (var i = 0; i < parsed.length; i++) {
+                  htmlDate += "<tr>";
+                  htmlDate += "<td value='"+ parsed[i].user_name +"'>" + parsed[i].user_name +"</td>";
+                  htmlDate += "</tr>";
+                }
+                
+                $("#datatable tbody").html(htmlDate);
+
+                 var table = $('#datatable').DataTable( {"lengthChange": false,});
+                  $('.customerList input').attr('placeholder', 'Type to search...');
+                  $('#datatable tbody').on( 'click', 'tr', function () {
+                    var getVal = $(this).find('td').attr('value');
                     $('#onlyReferral').val(getVal);
                     $('.showLookups').slideUp();
                     setTimeout(function(){ $('.showLookups').addClass('hide'); }, 500);
-
-                }
-              });
+                  });
+        
 
             }
 

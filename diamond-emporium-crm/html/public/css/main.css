@@ -26,7 +26,7 @@
 .ui-widget-header .ui-state-focus  a { color: #ffffff !important;}
 .countryDiv{ height: 52px; width: 317px;}
 .countryDiv .icon-dropdown, .customerList .icon-dropdown{ padding: 10px 7px; cursor: pointer; background: url(/images/arrow-down.png); display: inline-block; width: 14px; height: 8px; margin-top: 11px; background-repeat: no-repeat; position: absolute; right: 38px; top: 21px; z-index: 2;}
-.customerList .icon-dropdown{ right: 33px; top: 23px; }
+.customerList .icon-dropdown{ right: 33px; top: 23px; opacity: 0}
 .ui-menu .ui-menu-item{ color: #A5A5A5; font-size: 11px; line-height: 28px; height: 28px;  padding: 0 0 0 22px; margin: 0 !important}
 .ui-menu .ui-menu-item:hover{ background: #4778A8; border: 0 none !important; padding: 0 0 0 22px; }
 .ui-menu .ui-menu-item:hover a{ color: #ffffff; }
@@ -235,16 +235,16 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 .selectReason, .selectReason2 { position: absolute; color: red; font-size: 12px; display: block; text-align: center; width: 100%; top: -12px; }
 .lookup{ right: 0; z-index: 1; background: #0E79BB; color: white; font-size: 10px; padding: 2px 5px; border-radius: 4px; top: 5px; right: 35px; }
 .showLookups { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
-.LookupBG{    position: fixed; background: black; opacity: .5; left: 0; right: 0; width: 100%; height: 100%; z-index: 10; }
+.LookupBG{ position: fixed; background: black; opacity: .5; left: 0; right: 0; width: 100%; height: 100%; z-index: 10; }
 .showLookupsInner {width: 640px; margin: 0 auto; background: white; position: relative; z-index: 11; margin-top: 20px }
-.customerHeading { background: #29629a; color: white; line-height: 32px; padding: 0 20px; }
+.customerHeading { background: #29629a; color: white; line-height: 32px; padding: 0 20px; position: relative; }
+.customerHeading span{ float: right; font-weight: bold; font-size: 15px; position: absolute; right: 10px; top: 8px; width: 16px; text-align: center; height: 16px; line-height: 12px; cursor: pointer; }
 .customerList { padding: 20px; line-height: 25px; position: relative; }
-.customerList input{ width: 599px; background: white; line-height: 30px; padding-left: 10px; }
-.customerList button{ opacity: 0;
-    position: absolute;
-    right: 19px;
-    width: 40px;
-    height: 34px; z-index: 3; }
+.customerList input{ font-size: 13px; font-weight: normal; width: 599px; background: white; line-height: 30px; padding-left: 10px; margin-left: 0 !important; box-sizing: border-box; }
+.customerList label{ text-align: left; font-size: 14px; font-weight: bold; }
+.customerList .dataTables_wrapper .dataTables_filter { float: left; text-align: left;}
+.customerList button{ display :none; position: absolute; right: 19px; width: 40px; height: 34px; z-index: 3; }
+.customerList table tr{ cursor: pointer;text-align: left; }
 /*Calendar View*/
 .fc th, .fc td, .fc hr, .fc thead, .fc tbody, .fc-row { border-color: transparent !important; background: transparent !important;}
 .fc tbody .fc-row .fc-content-skeleton tbody tr:last-child td { padding-bottom: 0em;}
