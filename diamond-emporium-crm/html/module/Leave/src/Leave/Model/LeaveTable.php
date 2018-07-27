@@ -886,7 +886,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                if(!empty($filter['assign_UserId']))
                {
                    $lead_assigni_leave = $filter['assign_UserId'];
-                   $select->where(array('l.Leave_AssignUserName = ?' =>  $lead_assigni_leave));
+                   $select_leave->where(array('l.Leave_UserId = ?' =>  $lead_assigni_leave));
                }
                 
                //Filter The Data Of Current Week
@@ -906,7 +906,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                    
                    $booking_date_add_leave = $items_leave['Leave_StartDate'];
                    $leave_user_id = $items_leave['Leave_UserId'];
-                   $template_array[$booking_date_add_leave][$leave_user_id] = $items_leave;
+                   $template_array[$booking_date_add_leave]['100'] = $items_leave;
                }
                
               /******************************CustomAddLeaveEnd************************************/
