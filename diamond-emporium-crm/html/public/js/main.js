@@ -3941,7 +3941,12 @@ setTimeout(function(){
                     var getKey = getTime(key);
                     var chcekKey = key;
                     if(chcekKey == '100') 
+                    {
+                      var checkPreviousCounter = currentCounter;
+                      checkPreviousCounter--;
+                      $(".daysContent."+[checkPreviousCounter]).addClass('agentOnLeave');
                       return false;
+                    }
                     setDivContainer = ".daysContent."+[currentCounter] + " .daysContentSlider." + getKey;
                     var getAllRooms = dayTimes[key];
 
