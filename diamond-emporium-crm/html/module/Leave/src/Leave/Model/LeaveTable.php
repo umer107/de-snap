@@ -703,11 +703,11 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                    $select->where->between('l.booking_date', $start_date, $end_date);
                }
                //Filter Data Based On  Assign_Us_UserId
-               if(!empty($filter['assign_UserId']))
+               /*if(!empty($filter['assign_UserId']))
                {
                    $lead_assigni = $filter['assign_UserId'];
                    $select->where(array('l.assign_to_UserId = ?' =>  $lead_assigni));
-               }
+               }*/
                //Filter the Data Based on Budget
                if(!empty($filter['budget']))
                {
@@ -870,7 +870,46 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
              
              /******************************CustomMergeArray************************************/
              
+              /******************************CustomAddLeaveStart************************************/
              
+             
+             
+                $select_leave = new \Zend\Db\Sql\Select();
+                $select_leave->from('de_leaves')->columns(array('Leave_id'));
+                $select_leave = new \Zend\Db\Sql\Select();
+                $select_leave->from(array('l' => 'de_leaves'))
+                      ->columns(array(
+                'Leave_id','Leave_StartDate' , 'Leave_AssignUserName' , 'Leave_UserId' , 'Leave_Reason'
+                ));
+                
+               //Filter Data Based On  Assign_Us_UserId
+               if(!empty($filter['assign_UserId']))
+               {
+                   $lead_assigni_leave = $filter['assign_UserId'];
+                   $select->where(array('l.Leave_AssignUserName = ?' =>  $lead_assigni_leave));
+               }
+                
+               //Filter The Data Of Current Week
+               if(!empty($filter['booking_date']))
+               {                  
+                   $date_booking = $filter['booking_date'];
+                   $start_date_leave =  date("Y-m-d", strtotime('monday this week', strtotime($date_booking)));  
+                   $end_date_leave =  date("Y-m-d", strtotime('sunday this week', strtotime($date_booking)));
+                   $select_leave->where->between('l.Leave_StartDate', $start_date_leave, $end_date_leave);
+               }
+               $data_leave = $this->executeQuery($select_leave);                     
+               $result_leave = $data_leave->toArray();
+
+               
+               foreach($result_leave as $items_leave)
+               {
+                   
+                   $booking_date_add_leave = $items_leave['Leave_StartDate'];
+                   $leave_user_id = $items_leave['Leave_UserId'];
+                   $template_array[$booking_date_add_leave][$leave_user_id] = $items_leave;
+               }
+               
+              /******************************CustomAddLeaveEnd************************************/
              
              
              
