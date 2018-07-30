@@ -885,8 +885,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                //Filter Data Based On  Assign_Us_UserId
                if(!empty($filter['assign_UserId']))
                {
-                   $lead_assigni_leave = $filter['assign_UserId'];
-                   $select->where(array('l.Leave_UserId = ?' =>  $lead_assigni_leave));
+                   $lead_assigni_leave = $filter['assign_UserId'];                   
                    $select_leave->where(array('l.Leave_UserId = ?' =>  $lead_assigni_leave));
                }
                 

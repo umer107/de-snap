@@ -464,7 +464,12 @@ ul.assignToDivLeave.dropdown li ul li:first-child a label:first-child { color:#a
 .newLeaveContainer .innerContainer label.showError { position: absolute; width: 100%; font-size: 10px; color: red; left: 0; bottom: -18px; }
 .newLeaveContainer .innerContainer input{ border: white; border-bottom: 1px solid #DFDFDF; width: 281px; line-height: 28px; position: relative; margin-top: 11px; margin-right: 36px; }
 .newLeaveContainer .innerContainer ul.dropdown { margin-right: 36px; margin-top: 10px; }
-
+.table-condensed .available,.table-condensed .unavailable {
+    background: none;
+    float: none;
+    width: auto;
+    height: auto;
+}
 
 
 /* End leaves Container */
