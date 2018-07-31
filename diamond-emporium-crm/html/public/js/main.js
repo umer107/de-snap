@@ -2749,12 +2749,9 @@ setTimeout(function(){
             booking_date : $("#bookingDate").attr("ComlpeteDate"),
             booking_time : $("#bookingDate").attr("timeslot"),
             //booking_timezone : $("#bookingDate").attr("timezone"),                   
-            booking_room : $('#bookingDate').attr('roomnumber')
+            booking_room : $('#bookingDate').attr('roomnumber'),
             //booking_duration: $('.durationSelection a').filter('.active').attr('value'),
-           
-                      
-            
-
+            color : window.userColor
            
         };
         
@@ -2852,7 +2849,7 @@ setTimeout(function(){
       
       
       var data = getValuesFromForm();
-      
+
       /*if(data.booking_duration == null || undefined)
       {
         data.booking_duration = 0;
