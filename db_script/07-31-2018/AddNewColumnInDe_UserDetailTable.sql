@@ -1,0 +1,1 @@
+ALTER TABLE `de_userdetail` ADD `color` VARCHAR(40) NULL AFTER `user_booking_date`;
