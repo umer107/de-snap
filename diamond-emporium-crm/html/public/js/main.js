@@ -644,9 +644,10 @@ $(document).ready(function () {
         {               
           return false;                  
         }
-        if(parseResult.role_id == "1" || parseResult.role_id == "2" || parseResult.role_id == "5")
+
+        if(parseResult.role_id == "3" || parseResult.role_id == "4" || parseResult.role_id == "6" || parseResult.role_id == "7" || parseResult.role_id == "8"  || parseResult.role_id == "9")
         {
-          $('.dashboard-header a.new-Leave').addClass('opacity0');
+          $('.dashboard-header a.new-Leave').addClass('opacity0').hide();
         }
 
         $('.userDropdown').addClass('loadingContent'); 
@@ -1682,8 +1683,8 @@ $('section.rightCol').on('scroll', function(event){
   function loadWeeklyDates(date) { 
       
       // 25/06/2018 - 01/07/2018
-      var getStartDateDisplay = moment(date).weekday(0).format('MM/DD/YYYY');
-      var getNextWeekStartDateDisplay = moment(date).weekday(7).format('MM/DD/YYYY');      
+      var getStartDateDisplay = moment(date).weekday(0).format('DD/MM/YYYY');
+      var getNextWeekStartDateDisplay = moment(date).weekday(7).format('DD/MM/YYYY');      
 
       var getStartDate = moment(date).weekday(0).format('YYYY-MM-DD');
       var getNextWeekStartDate = moment(date).weekday(7).format('YYYY-MM-DD');
@@ -5094,7 +5095,8 @@ $(document).on('click','.btn-cancelLeave', function (e) {
         
         return {
           
-            date : $("#dateRange").val(),
+            startDate : $("#dateRange").attr('startDate'),
+            endDate : $("#dateRange").attr('endDate'),
             AssignUs : $("#assign_us_Dropdown2").text(),
             Reason : $("#Reasons").text(),
             Id : $(".assignToDivLeave a.selected-text").attr('asigneeId-value'),
@@ -5146,16 +5148,16 @@ $(document).on('click','.btn-saveDetailsLeave', function (e) {
         //AjaxCallSaveLeadsOnSaveClick--Start
          
          var model = getValuesFromLeaveForm();
-        
+
          $.ajax({
 
-          type: "POST",
-          url: "/leave/ajaxSaveLeaves",
-          data: model,
-          success: function (data) {
+            type: "POST",
+            url: "/leave/ajaxSaveLeaves",
+            data: model,
+            success: function (data) {
 
-          }
-        });    
+            }
+          });    
         
         //AjaxCallSaveLeadsOnSaveClick--End
         
@@ -6058,24 +6060,55 @@ loadLeads()
 /*------------------------------------------------------------------*/
 
 
+function loadLeaveCalendar(){
+    $(function () {
+      var getTodayDate = moment(); //Get the current date
+      getTodayDate.format("YYYY-MM-DD"); 
+      $('input[name="daterange"]').daterangepicker({
+          minDate:getTodayDate,
+          startDate: getTodayDate, 
+          locale: {
+              format: 'YYYY-MM-DD'
+          }
+      }, function (start, end, label) {
+      });
+      $('input[name="daterange"]').val('');
+      $('input[name="daterange"]').on('apply.daterangepicker', function (ev, picker) {
+          var startDate = picker.startDate;
+          var endDate = picker.endDate;  
+          var checkStartDate = startDate.format('YYYY-MM-DD');
+          var checkEndDate = endDate.format('YYYY-MM-DD');
+          if(checkStartDate === checkEndDate)
+          {
+            $('#dateRange').val(startDate.format('DD-MM-YYYY'));
+            $('#dateRange').attr('startDate', startDate.format('YYYY-MM-DD'));
+            $('#dateRange').attr('endDate', endDate.format('YYYY-MM-DD'));
+          }
+          else
+          {
+            var setDate = startDate.format('DD-MM-YYYY') + ' - ' + endDate.format('DD-MM-YYYY');
+            $('#dateRange').attr('startDate', startDate.format('YYYY-MM-DD'));
+            $('#dateRange').attr('endDate', endDate.format('YYYY-MM-DD'));
+            $('#dateRange').val(setDate);
+          }
+      });
+
+  });
+
+}
+loadLeaveCalendar();
+
+
 $(document).on('click','#dateRange', function (e) {
     $('.calendarLeave ').removeClass('maxHeightHide');
 });
 
 
-function loadLeaveCalendar(){
-  $(function() {
-      var getTodayDate = moment(); //Get the current date
-      getTodayDate.format("YYYY-MM-DD");   
-      $('input[name="daterange"]').daterangepicker({
-          startDate: getTodayDate, 
-          locale: {
-              format: 'YYYY-MM-DD'
-          }
-      });
-  });
-}
-loadLeaveCalendar();
+$('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+  debugger
+  console.log(picker.startDate.format('YYYY-MM-DD'));
+  console.log(picker.endDate.format('YYYY-MM-DD'));
+});
 
 
 function loadAddNewLeaveCalendar(){
