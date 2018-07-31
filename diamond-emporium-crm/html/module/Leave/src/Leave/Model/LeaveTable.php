@@ -1172,7 +1172,47 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
            }
        }
-
+       //FetchUserEmail
+       public function fetchUserEmail($filter = null)
+       {
+           
+        try
+        {
+             $select = new \Zend\Db\Sql\Select();
+             $select->from('de_userdetail')->columns(array('id'));
+                        
+                        
+              //FullName  From Table "de_users"
+              $fullname = new \Zend\Db\Sql\Expression(
+               'CONCAT(u.first_name, \' \', u.last_name)'
+              );
+              //Image  From Table "de_users"
+               $image = new \Zend\Db\Sql\Expression(
+                'u.image'
+                );
+               
+              $select = new \Zend\Db\Sql\Select();
+              $select->from(array('l' => 'de_userdetail'))
+                  ->columns(array(
+              'id','title','gender','first_name', 'last_name', 'phone_number', 'email','country', 'full_address' ,'communication_method','product_shortcode','user_booking_date','State','product', 'referral', 'only_referral' ,'special_instructions','budget','reference_product', 'contact_method', 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_room',           
+               ));
+              
+              $select->where(array('l.email = ?' => $filter['email']));  
+              $select->order("id desc");
+              $data = $this->executeQuery($select);                                          
+              $result = $data->toArray();
+              if(empty($result))
+              {
+                  return 0;
+              }
+              
+              return $result;
+              
+        }catch(\Exception $e){
+         \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+        }
+           
+       }
 //FETCH TEAM STATUS
      public function  fetchTeamStatus($filter = null)
      {
