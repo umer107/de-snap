@@ -96,6 +96,16 @@ return array(
                             ),
                         ),
                     ),
+            'ajaxGetCheckUserEmail' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetCheckUserEmail',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetCheckUserEmail',
+                            ),
+                        ),
+                    ),
              'ajaxGetUserColor' => array(
                         'type' => 'Segment',
                         'options' => array(

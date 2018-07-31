@@ -118,7 +118,25 @@ class DashboardController extends AbstractActionController
 	}
         
     }
-    
+    //EmailExistOrNot
+     public function ajaxGetCheckUserEmailAction()
+    {
+                  try{
+                      $sm = $this->getServiceLocator();
+		      $identity = $sm->get('AuthService')->getIdentity();
+                      $config = $this->getServiceLocator()->get('Config');
+                      $params = $this->getRequest()->getQuery()->toArray();
+                      $objUserTable = $sm->get('Leave\Model\LeaveTable');
+                      $leadsArr = $objUserTable->fetchUserEmail($params);
+                     
+                      echo json_encode($leadsArr);
+                      exit;
+      }
+      catch (Exception $e)
+      {
+          \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+      }
+    }
     //GetCustomersOnLookup
      public function  ajaxGetCustomerOnLookupAction()
     {
