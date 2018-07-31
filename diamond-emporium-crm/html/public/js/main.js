@@ -3920,6 +3920,7 @@ setTimeout(function(){
                 // Bind Data to  Weekly Start Dates 
                 
                 // Marray array for data
+                
                 var arr = [];
                 for(var x in parsed){
                   arr.push(parsed[x]);
@@ -3938,6 +3939,18 @@ setTimeout(function(){
                   $.each(dayTimes, function(key, value){
                     newCounter++;
                     var getKey = getTime(key);
+                    var chcekKey = key;
+                    if(chcekKey == '100') 
+                    {
+                      var checkPreviousCounter = currentCounter;
+                      checkPreviousCounter--;
+                      $(".daysContent."+[checkPreviousCounter]).addClass('agentOnLeave');
+                      return false;
+                    }
+                    else
+                    {
+                      $(".daysContent."+[currentCounter]).removeClass('agentOnLeave');
+                    }
                     setDivContainer = ".daysContent."+[currentCounter] + " .daysContentSlider." + getKey;
                     var getAllRooms = dayTimes[key];
 
@@ -5168,7 +5181,7 @@ $(document).on('click','.btn-saveDetailsLeave', function (e) {
         $('.newLeaveContainer').html(window.newLeaveHtml);
         loadAddNewLeaveCalendar();
         SetLeaveContent(window.startingMonth,window.startingYear);
-
+        loadLeaveCalendar();
 })
 
 /*---------------------------------------------*/
@@ -6049,6 +6062,22 @@ $(document).on('click','#dateRange', function (e) {
     $('.calendarLeave ').removeClass('maxHeightHide');
 });
 
+
+function loadLeaveCalendar(){
+  $(function() {
+      var getTodayDate = moment(); //Get the current date
+      getTodayDate.format("YYYY-MM-DD");   
+      $('input[name="daterange"]').daterangepicker({
+          startDate: getTodayDate, 
+          locale: {
+              format: 'YYYY-MM-DD'
+          }
+      });
+  });
+}
+loadLeaveCalendar();
+
+
 function loadAddNewLeaveCalendar(){
 
      $('.leaveCalendar').multiDatesPicker('resetDates');
@@ -6056,16 +6085,16 @@ function loadAddNewLeaveCalendar(){
      $(".leaveCalendar").multiDatesPicker({
        minDate: 0,
        onSelect:function(data, event){
-
+        debugger
         var getValues = [];
         var checkValue = $('#dateRange').val();
-
+        var checkCounter = 0
         $('.calendarLeave table td.ui-state-highlight').each(function(){
+          checkCounter++;
           var getDate = parseInt($(this).find('a').text());
           var getMonth = parseInt($(this).attr('data-month'));
           var getYear = parseInt($(this).attr('data-year'));
           getMonth++
-          //var setLeaveDate = getMonth+'/'+getDate+'/'+getYear;
           var setLeaveDate;
           if(getDate <= 9)
           {
@@ -6076,16 +6105,14 @@ function loadAddNewLeaveCalendar(){
             getMonth = "0" + getMonth;
           }
           setLeaveDate = getYear + "-" + getMonth + "-" + getDate + ' ';
-          //if(getDate <= 9)
-          // {
-          //     setLeaveDate = getYear + "-0" + getMonth + "-0" + getDate + ' ';
-          // }
-          // else
-          // {
-          //     setLeaveDate = getYear + "-" + getMonth + "-" + getDate + ' ';
-          // }
           
           getValues.push(setLeaveDate);
+          if(checkCounter > 1)
+          {
+            $('.calendarLeave').addClass('maxHeightHide');
+            return false
+          }
+            
         });
         
         $('#dateRange').attr('value', getValues);    
