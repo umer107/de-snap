@@ -886,7 +886,7 @@ $(document).ready(function () {
     // Validating Email and opening next screen buttons
     $(document).on('keyup', '.basicInfo input.checkEmailCount', function () {
 
-        
+        $('.emailexists').addClass('opacity0');
         var getValue = $(this).val().length;
         var getemail = $(this).val();
         if ($.trim(getemail).length == 0) {
@@ -920,6 +920,96 @@ $(document).ready(function () {
                 $(this).next('label').addClass('opacity0');
                 validateBasicInfo();
             }
+    });// End
+
+/* ----------------------------------------------------*/
+    
+    // Email Check
+
+    $(document).on('click', '.availability', function () {
+        var getemail = $('#email').val();
+        var getValue = $('#email').val().length;
+
+        if ($.trim(getemail).length == 0) {
+            $('.emailexists').addClass('opacity0');
+            $('#email').next('label').removeClass('opacity0');
+        }
+        else if (isValidEmailAddress(getemail)) {
+            $('#email').next('label').addClass('opacity0');
+            
+             $.ajax({
+              type: "POST",
+              url: "/dashboard/ajaxGetCheckUserEmail?email="+getemail,
+              //data: {'email' : email},
+              success: function (data) 
+              {
+                $('.showloading').show();
+                var parsed = '';          
+                try{                           
+                  parsed = JSON.parse(data);              
+                }                 
+                catch(e)                
+                {                  
+                  return false;                  
+                }
+                if(parsed.length == 1)
+                {
+                  
+                  $('.firstname').val(parsed["0"].first_name);
+                  $('.lastname').val(parsed["0"].last_name);
+                  $('.phonenumber').val(parsed["0"].phone_number);
+                  $('.phonenumber').val(parsed["0"].phone_number);
+                  $('#fullAddress').val(parsed["0"].full_address);
+                  $('.basicInfo span').show();
+                  $('.dropdown.title .dropdownOptions li a[value="'+parsed[0].title+'"]').trigger('click');
+                  $('.countryDiv input').val(parsed["0"].country);
+                  var getCountry = parsed["0"].country;
+                  
+                  if(getCountry == "Australia")
+                  { 
+                    $('.dropdown.State .dropdownOptions li a[value="'+parsed[0].State+'"]').trigger('click');
+                    $('.stateDiv').removeClass('hide');
+                  }
+                  else
+                  { 
+                    $('.stateDiv').addClass('hide'); 
+                  }
+                  $('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+parsed[0].communication_method+'"]').trigger('click');
+
+                  // Preferred method
+                  if(parsed[0].contact_method != "Phone/Email" && parsed[0].contact_method != "Phone" && parsed[0].contact_method != "Email")
+                  { 
+                    $('#perferrefDropdownOther').val(parsed[0].contact_method);
+                    $('#perferrefDropdownOther').closest('.relative').removeClass('hide'); 
+                    $('.dropdown.preferredMethod .dropdownOptions li a[value="Other"]').trigger('click');
+                  }
+                  else
+                  {
+                    $('#perferrefDropdownOther').closest('.relative').addClass('hide'); 
+                    $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
+                  }
+                  $('.topBar').trigger('click');
+                  
+                  
+                }
+                else
+                {
+                  $('.emailexists').removeClass('opacity0');
+                }
+                setTimeout(function(){ $('.showloading').hide(); }, 500);
+                
+                
+              }
+            }); 
+
+        }
+        else {
+            $('.emailexists').addClass('opacity0');
+            $('#email').next('label').removeClass('opacity0');
+        }
+
+     
+
     });// End
 
 /* ----------------------------------------------------*/
@@ -3877,10 +3967,10 @@ setTimeout(function(){
                   var dayDate = a.getDate();
                   // get Month
                   var getMonth = a.getMonth()+1;
-                  if(dayDate < 10)
-                    {dayDate = '0'+dayDate}
-                  if(getMonth < 10)
-                    {getMonth = '0'+getMonth}
+                  //if(dayDate < 10)
+                  //  {dayDate = '0'+dayDate}
+                  //if(getMonth < 10)
+                  //  {getMonth = '0'+getMonth}
                   var setFinalDate = getDayName + ' ' + dayDate + '/' + getMonth;
                   $('.daysCalendar.'+dateCounter + ' .headerPart').html(setFinalDate);
                   $('.daysCalendar.'+dateCounter + ' .headerPart').attr('keyDates',key);
@@ -3975,8 +4065,8 @@ setTimeout(function(){
                       else
                       {
                         //window.userColor = '#'+getAllRooms[i].booking_color;
-                        var setBackgroundColor = "style='background-color:"+window.userColor+"'";
-                        var Color = "style='color:"+window.userColor+"'";
+                        var setBackgroundColor = "style='background-color:"+getAllRooms[i].color+"'";
+                        var Color = "style='color:"+getAllRooms[i].color+"'";
                         
                         setThisHtml +='<label class="labelContainer" roomNumber="'+i+'">';
                           setThisHtml +='<div class="roomBooking '+roomNumber+'">';
