@@ -709,11 +709,11 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                    $select->where(array('l.assign_to_UserId = ?' =>  $lead_assigni));
                }*/
                //Filter the Data Based on Budget
-               if(!empty($filter['budget']))
+               /*if(!empty($filter['budget']))
                {
                    $lead_assgni_budget = $filter['budget'];
                    $select->where(array('l.budget = ?' =>  $lead_assgni_budget));
-               }
+               }*/
                $data = $this->executeQuery($select);                     
                $result = $data->toArray();
                
@@ -728,10 +728,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                     
                     foreach ($result as $items)
                     {
-                        //$key1 = $item['booking_time'];
-                        //$groups['Date'][$key]['Time'][$key1] = $items; 
-                        
-                        
+
                         foreach ($result as $item1)
                         {
                         if(empty($item1['booking_color']))
@@ -847,8 +844,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
              
              /******************************CustomMergeArray**************************************/
              
-             
-             foreach ($groups as $item_group)
+             //foreach ($groups as $item_group)
+             /*foreach ($groups as $item_group)
              {
                  foreach ($item_group as $item_group1)
                  {
@@ -863,8 +860,17 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                      }
                  }
                
+             }*/
+             foreach ($result as $item_group)
+             {
+
+               $booking_date_add = $item_group['booking_date'];
+               $booking_time_add = $item_group['booking_time'];
+               $booking_room_add = $item_group['booking_room'];
+               $template_array[$booking_date_add][$booking_time_add][$booking_room_add] = $item_group;
+                        
+
              }
-             
              
              
              
