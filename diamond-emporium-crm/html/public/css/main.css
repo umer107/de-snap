@@ -655,11 +655,11 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .daysContent span.sundayLine:nth-child(2n+1){ border-bottom: 1px dashed #dfdfdf; }
 
 .daysContent.pastdate {background: #f6f6f6;}
-.daysContent.pastdate .addBookingLink{opacity:0 !important;} 
+.daysContent.pastdate .addBookingLink{opacity:0 !important; display: none;} 
 .daysContent.pastdate .daysContentSlider label{cursor: no-drop;}
 
 .daysContent.agentOnLeave {background: #fd3a31;}
-.daysContent.agentOnLeave .addBookingLink{opacity:0 !important;} 
+.daysContent.agentOnLeave .addBookingLink{opacity:0 !important; display: none;} 
 .daysContent.agentOnLeave .daysContentSlider label{cursor: no-drop;}
 .colorDefinition{ width: 132px;}
 .colorDefinition label{ float: left; width: 92px; height: 16px; margin-bottom: 2px; font-weight: bold;}
