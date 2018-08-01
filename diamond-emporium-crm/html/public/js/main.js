@@ -960,7 +960,7 @@ $(document).ready(function () {
                   $('.phonenumber').val(parsed["0"].phone_number);
                   $('.phonenumber').val(parsed["0"].phone_number);
                   $('#fullAddress').val(parsed["0"].full_address);
-                  
+                  $('.basicInfo span').show();
                   $('.dropdown.title .dropdownOptions li a[value="'+parsed[0].title+'"]').trigger('click');
                   $('.countryDiv input').val(parsed["0"].country);
                   var getCountry = parsed["0"].country;
