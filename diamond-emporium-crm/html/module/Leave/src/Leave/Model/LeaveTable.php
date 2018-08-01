@@ -96,11 +96,11 @@ class LeaveTable
             $leave_reason = $data['Reason'];
             $data['Leave_Reason'] = $leave_reason;
             unset($data['Reason']);
-             $date = $data['Leave_StartDate'];
-             $end_date = $data['Leave_EndDate'];
+             $date = $data['startDate'];
+             $end_date = $data['endDate'];
              
-             unset($data['Leave_StartDate']);
-             unset($data['Leave_EndDate']);
+             unset($data['startDate']);
+             unset($data['endDate']);
              
              //Check Leave Already Assign To User           
                  
