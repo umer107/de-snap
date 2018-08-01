@@ -70,48 +70,15 @@ class LeaveController extends AbstractActionController
 	      $request = $this->getRequest();
              
               if($request->isPost()){
-                $start_date = '';
-               $end_date = '';      
-               
-	      $posts = $request->getPost()->toArray();	
-              $objUserTable = $sm->get('Leave\Model\LeaveTable');    
-              
-              $leave_date = $posts['date'];
-             
-              //Check $leave_date contain ","
-             if(!empty($leave_date))
-             {
-              if(strpos($leave_date, ',') !=  FALSE)
-              {
-                  //Convert String Into Array
-                  $array = explode(',', $leave_date);
                   
-              if(!empty($array))
-              {
-                  $start_date = reset($array);
-                  $end_date = end($array);
-              }
-              
-              }
-              
-              else{
-                  
-                  $start_date = $leave_date;
-                  $end_date = $leave_date;
-                  
-              }
-             }
-                 $posts['Leave_StartDate'] = trim($start_date); 
-                 $posts['Leave_EndDate'] = trim($end_date);
+	         $posts = $request->getPost()->toArray();	
+                 $objUserTable = $sm->get('Leave\Model\LeaveTable');                
                  $Leave_AssignUserName  = $posts['AssignUs'];
                  $posts['Leave_AssignUserName'] = $Leave_AssignUserName;
-                 $posts['Leave_UserId'] = $posts['Id'];
-                 unset($posts['date']);
+                 $posts['Leave_UserId'] = $posts['Id'];                
                  unset($posts['leave_userName']);
                  unset($posts['AssignUs']);
-                 unset($posts['Id']);
-
-             
+                 unset($posts['Id']);             
                  $objUserTable->saveLeave($posts);      
 
               }
