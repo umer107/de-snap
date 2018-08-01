@@ -3989,12 +3989,12 @@ setTimeout(function(){
                   
                   if(getCurrentFullDate > key)
                   {
-                    $('.daysContent.'+dateCounter).attr('dateNumber', dayDate).addClass('pastdate');
+                    $('.daysContent.'+dateCounter).attr('dateNumber', dayDate).addClass('pastdate').attr('title',"Booking cannot be made on past date");
                     $('.daysContent.'+dateCounter).attr('fullDate', key);
                   }
                   else
                   {
-                    $('.daysContent.'+dateCounter).attr('dateNumber', dayDate).removeClass('pastdate');;
+                    $('.daysContent.'+dateCounter).attr('dateNumber', dayDate).removeClass('pastdate').attr('title',"");
                     $('.daysContent.'+dateCounter).attr('fullDate', key);
                   }
                   
@@ -4025,19 +4025,23 @@ setTimeout(function(){
                   // Getting into each weekly date Times
                   
                   $.each(dayTimes, function(key, value){
+                    window.onLeaveCheck = false;
                     newCounter++;
                     var getKey = getTime(key);
                     var chcekKey = key;
                     if(chcekKey == '100') 
                     {
                       var checkPreviousCounter = currentCounter;
-                      checkPreviousCounter--;
-                      $(".daysContent."+[checkPreviousCounter]).addClass('agentOnLeave');
-                      return false;
+                      //checkPreviousCounter--;
+                      var setLeaveData = dayTimes[key].Leave_AssignUserName + " is on leave";
+                      $(".daysContent."+[checkPreviousCounter]).addClass('agentOnLeave').attr('title',setLeaveData);
+                      window.onLeaveCheck = true;
+                      //return false;
                     }
                     else
                     {
-                      $(".daysContent."+[currentCounter]).removeClass('agentOnLeave');
+                      window.onLeaveCheck = false;
+                      //$(".daysContent."+[currentCounter]).removeClass('agentOnLeave').attr('title',"");
                     }
                     setDivContainer = ".daysContent."+[currentCounter] + " .daysContentSlider." + getKey;
                     var getAllRooms = dayTimes[key];
@@ -4048,40 +4052,43 @@ setTimeout(function(){
                     var newRoomCounter = 1;
                     var roomNumber = "";
                     
-                    for (var i = 1; i < 5; i++) {
-                      
-                      if(newRoomCounter == 1){roomNumber = "roomOne"}
-                      else if(newRoomCounter == 2){roomNumber = "roomTwo"}
-                      else if(newRoomCounter == 3){roomNumber = "roomThree"}
-                      else{roomNumber = "roomFour"}
-                      var getRoom = getAllRooms[i];
-                      
-
-                      if(getRoom == "")
+                    if(window.onLeaveCheck == false)
                       {
-                        //window.userColor = '#D3D3D3';
-                        setThisHtml +='<label class="labelContainer" roomNumber="'+i+'"><a class="addBookingLink" href="javascript:;"><i class="icon-addBookingLink fs-15"></i></a></label>';
-                      }
-                      else
-                      {
-                        //window.userColor = '#'+getAllRooms[i].booking_color;
-                        var setBackgroundColor = "style='background-color:"+getAllRooms[i].color+"'";
-                        var Color = "style='color:"+getAllRooms[i].color+"'";
-                        
-                        setThisHtml +='<label class="labelContainer" roomNumber="'+i+'">';
-                          setThisHtml +='<div class="roomBooking '+roomNumber+'">';
-                            setThisHtml +='<p class=" fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>'+getAllRooms[i].assignto_shortcode+'</span></p>';
-                            setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
-                              setThisHtml +='<p><i class="icon-diamond fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].product_shortcode+'</span></p>';
-                              setThisHtml +='<p><i class="icon-dollar fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
-                              setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColor+'></div>';
-                            setThisHtml +='</div>';
-                          setThisHtml +='</div>';
-                        setThisHtml +='</label>';
-                      }
-                      newRoomCounter++
-                    }
+                        for (var i = 1; i < 5; i++) {
+                          
+                          if(newRoomCounter == 1){roomNumber = "roomOne"}
+                          else if(newRoomCounter == 2){roomNumber = "roomTwo"}
+                          else if(newRoomCounter == 3){roomNumber = "roomThree"}
+                          else{roomNumber = "roomFour"}
+                          var getRoom = getAllRooms[i];
+                          
 
+                          if(getRoom == "")
+                          {
+                            //window.userColor = '#D3D3D3';
+                            setThisHtml +='<label class="labelContainer" roomNumber="'+i+'"><a class="addBookingLink" href="javascript:;"><i class="icon-addBookingLink fs-15"></i></a></label>';
+                          }
+                          else
+                          {
+                            //window.userColor = '#'+getAllRooms[i].booking_color;
+                            var setBackgroundColor = "style='background-color:"+getAllRooms[i].color+"'";
+                            var Color = "style='color:"+getAllRooms[i].color+"'";
+                            
+                            setThisHtml +='<label class="labelContainer" roomNumber="'+i+'">';
+                              setThisHtml +='<div class="roomBooking '+roomNumber+'">';
+                                setThisHtml +='<p class=" fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>'+getAllRooms[i].assignto_shortcode+'</span></p>';
+                                setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
+                                  setThisHtml +='<p><i class="icon-diamond fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].product_shortcode+'</span></p>';
+                                  setThisHtml +='<p><i class="icon-dollar fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
+                                  setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColor+'></div>';
+                                setThisHtml +='</div>';
+                              setThisHtml +='</div>';
+                            setThisHtml +='</label>';
+                          }
+                          newRoomCounter++
+                        }
+                      }
+                      
                     setThisHtml += '<p class="borderPart"></p>';
                     setThisHtml +='</div>';
 
