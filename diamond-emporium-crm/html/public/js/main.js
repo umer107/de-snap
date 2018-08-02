@@ -995,6 +995,8 @@ $(document).ready(function () {
                 else
                 {
                   $('.emailexists').removeClass('opacity0');
+                  
+                  setTimeout(function(){ $('.emailexists').addClass('opacity0'); },3000);
                 }
                 setTimeout(function(){ $('.showloading').hide(); }, 500);
                 
@@ -1652,6 +1654,19 @@ $(document).on('click','.addBookingLink', function (e) {
     var getProductSC = $('.dropdown.product').find('a.selected-text').attr('shortcode');
     var getUserSC = $('.dropdown.assignToDiv').find('a.selected-text').attr('shortcode');
     
+
+    var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
+          setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuation="15" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">15 minutes</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
+          setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
+            setDropdown += '<li><a href="javascript:;" getDuation="15" value="15 minutes">15 minutes</a></li>';
+              setDropdown += '<li><a href="javascript:;" getDuation="30" value="30 minutes">30 minutes</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuation="45" value="45 minutes">45 minutes</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuation="60" value="60 minutes">60 minutes</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuation="75" value="75 minutes">75 minutes</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuation="90" value="90 minutes">90 minutes</a></li>';
+              setDropdown += '</ul></li>';
+            setDropdown += '</ul>';
+
     var setHtml = "";
     var setHtml = '<div class="addBookingContainer roomsContainer">';
       setHtml += '<div class="roomBooking">';
@@ -1660,7 +1675,9 @@ $(document).on('click','.addBookingLink', function (e) {
             setHtml += '<p><i class="icon-diamond fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
             setHtml += '<p><i class="icon-dollar fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
             setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getTime+'</span></p>';
-            setHtml += '<p><a class="savePopupBooking" href="JavaScript:;" style="color:'+window.userColor+'">OK</a></p>';
+            setHtml += '<p class="bookingTiming pull-left"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i></p>';
+            setHtml += setDropdown;
+            setHtml += '<p class="full"><a class="savePopupBooking" href="JavaScript:;" style="color:'+window.userColor+'">OK</a></p>';
           setHtml += '<div class="transparentBG absolute" style="background-color:'+window.userColor+'"></div>';
         setHtml += '</div>';
       setHtml += '</div>';
@@ -6117,7 +6134,7 @@ function loadLeads(){
 
                         $('.loadLeadsHere').fadeIn(400);
 
-                    }, 1500);
+                    }, 500);
 
 
             } // End Success Response
@@ -6128,7 +6145,12 @@ function loadLeads(){
 
 } // End Function
 
-loadLeads()
+
+$(window).load(function(){
+    setTimeout(function(){ 
+      loadLeads();   
+  }, 1000);
+});
 
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/

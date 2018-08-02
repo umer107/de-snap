@@ -72,7 +72,6 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { bac
 /*-----------------------------------------*/
 
 /*Dropdown Css Start*/
-
 .wd-280{width:280px;} 
 .dropdown{  height: 30px; line-height: 30px; }
 .dropdown li a{color:#5D5D5D; text-align:left; font-size:14px; display:block; border: 1px solid white; border-bottom: 1px solid #DFDFDF; overflow: auto;}
@@ -86,6 +85,8 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { bac
 #loadHere .dropdown li a.selected-text span.inherit{ overflow: inherit; }
 .dropdown li ul{z-index:11}
 .dropdown li ul li { line-height: 29px; height: 29px; text-align: left; cursor: pointer;}
+.wd-105{width:105px;} 
+.dropdown.durationTime li a.selected-text span{}
 /* For budget dropdown*/
 .dropdown.referral li ul li { margin: 9px 0;}
 .dropdown li ul li:last-child {border-bottom:0 none;}
@@ -434,8 +435,8 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 .leavesDetail .details.blue{ border-color: #7499bd; }
 .leavesDetail .details.gray{ border-color: #c6c6c6; col }
 .leavesDetail .details span{display: block;}
-.leavesDetail .details span:first-child{ font-family: robotomedium; font-size: 13px; }
-.leavesDetail .details span:last-child{ font-family: robotoregular; font-size: 14px; }
+.leavesDetail .details span:first-child{ font-family: robotomedium; font-size: 12px; }
+.leavesDetail .details span:last-child{ font-family: robotoregular; font-size: 13px; }
 .absenseTooltip{ position: relative;top: -3px; z-index: 120; font-size: 13px; font-family: robotomedium; color:#7499bd; text-align: center; cursor: pointer; line-height: 1  }
 .tooltipContainer{ border-radius: 2px; position: absolute; z-index: 120; background: white; width: 224px; box-shadow: 1px 1px 19px #a5a5a5; padding: 6px 0 1px 0; top: 143px; left: 1px;}
 .tooltipContainer img{ position: absolute; top: -22px; width: 224px; left: 0px; max-width: 224px; }
@@ -712,15 +713,23 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .roomsContainer:not(.addBookingContainer) .roomBooking div.half-pad-left p span.half-pad-left{padding-left: 0; }
 
 .transparentBG{ width: 100%; height: 39px; left: 0; top: 0; opacity: .3; }
-.addBookingContainer{ float: left; width: 124px; height: 122px;}
+.addBookingContainer{ float: left; width: 124px; height: 145px;}
 /*.addBookingPopup{ left: 0; right: 0; top:0; width: 100%; height: 100%; z-index: 1;}*/
 .addBookingPopup{ z-index: 1;}
 .addBookingPopup .roomBooking{ height: 100%;}
-.addBookingPopup .transparentBG{ height: 100px; }
+.addBookingPopup .transparentBG{ height: 152px; }
 .addBookingPopup .roomBooking p.headBar span:first-child { width: 92px; }
-.addBookingPopup .roomBooking p a{ margin: 10px 0 0 21px; font-size: 14px; width: 71px; height: 25px; border-radius: 17.5px; background-color: #ffffff; border: solid 1px #d8d8d8; display: inline-block; text-align: center; line-height: 24px;}
-
-
+.addBookingPopup .roomBooking p a.savePopupBooking{ margin: 6px 0 0 22px; font-size: 14px; width: 71px; height: 25px; border-radius: 17.5px; background-color: #ffffff; border: solid 1px #d8d8d8; display: inline-block; text-align: center; line-height: 24px;}
+.addBookingPopup .transparentBG{ height: 123px; }
+.dropdown.durationTime li a.selected-text span{ width: 78px; }
+.dropdown.durationTime{ height: 18px; line-height: 18px; width: 98px;}
+.dropdown.durationTime li a { color: #5D5D5D; text-align: left; font-size: 12px; border: none;    padding-left: 7px; }
+.dropdown.durationTime .selected-text i{ background-size: 11px 7px; background: none; width: 10px; margin-top: 5px; }
+.dropdown.durationTime .dropdownOptions{ top: 20px; width: 94px; left: 4px; padding: 0px 0; }
+.dropdown.durationTime li ul li { line-height: 24px; height: 24px; text-align: left; cursor: pointer; }
+.addBookingPopup .roomBooking p{ line-height: 20px;}
+.dropdown.durationTime li ul li:hover{ background-color: white;}
+.dropdown.durationTime li ul li:hover a{color: #5D5D5D;    font-weight: bold; }
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
