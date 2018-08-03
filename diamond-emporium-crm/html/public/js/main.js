@@ -1656,14 +1656,14 @@ $(document).on('click','.addBookingLink', function (e) {
     
 
     var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
-          setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuation="15" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">15 minutes</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
+          setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="15" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">15 minutes</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
           setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
-            setDropdown += '<li><a href="javascript:;" getDuation="15" value="15 minutes">15 minutes</a></li>';
-              setDropdown += '<li><a href="javascript:;" getDuation="30" value="30 minutes">30 minutes</a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuation="45" value="45 minutes">45 minutes</a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuation="60" value="60 minutes">60 minutes</a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuation="75" value="75 minutes">75 minutes</a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuation="90" value="90 minutes">90 minutes</a></li>';
+            setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
+              setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="75" value="75 minutes">75 minutes</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="90" value="90 minutes">90 minutes</a></li>';
               setDropdown += '</ul></li>';
             setDropdown += '</ul>';
 
@@ -1699,12 +1699,14 @@ $(document).on('click','.savePopupBooking', function (e) {
     var getDayName = $('.addBookingLink.thisClicked').closest('.daysCalendar').attr('dayname');
     var getDateNumber = $('.addBookingLink.thisClicked').closest('.daysContent').attr('datenumber');
     var getSelectedDate = $('.addBookingLink.thisClicked').closest('.daysContent').attr('fulldate');
+    var getDuration = $('.dropdown.durationTime').find('a.selected-text').attr('getduration');
+    console.log(getDuration);
     $('#bookingDate').attr('dayName', getDayName);
     $('#bookingDate').attr('datenumber', getDateNumber);
     $('.addBookingLink.thisClicked').closest('label').html(selectHtml);
     $('.addBookingPopup').html('');
     $('.addBookingPopup').addClass('hide');
-    
+    $('#bookingDate').attr('durationTime', getDuration);
     // Apply new booking made
     
     $('.next-saveDiv').removeClass('hide');
@@ -2258,6 +2260,16 @@ setTimeout(function(){
         el.closest('.dropdown').next('select').find('option').attr('value',getValue);
         el.closest('.dropdown').next('label').addClass('opacity0');
 
+
+
+        //If Preferred method
+        if(el.closest('.dropdown').hasClass('durationTime'))
+        { 
+          var checkTime = $(this).find('a').attr('getDuration');
+          el.closest('.dropdown').find('a.selected-text').attr('getDuration', checkTime); 
+          $('#perferrefDropdownOther').closest('.relative').removeClass('hide');
+
+        }
 
         //If Preferred method
         if(el.closest('.dropdown').hasClass('preferredMethod'))
@@ -2857,6 +2869,7 @@ setTimeout(function(){
             booking_time : $("#bookingDate").attr("timeslot"),
             //booking_timezone : $("#bookingDate").attr("timezone"),                   
             booking_room : $('#bookingDate').attr('roomnumber'),
+            durationTime : $('#bookingDate').attr('durationTime'),
             //booking_duration: $('.durationSelection a').filter('.active').attr('value'),
             color : window.userColor
            
@@ -2941,32 +2954,12 @@ setTimeout(function(){
             }
 
             return false;
-        }
-        if(checkBookingDate == false)
-        {
-            //showBookingError();
-            //return false
-        }
-        //var checkBudgeterror = $('#BudgetText').hasClass('itHasError');
-        //if(checkBudgeterror)
-        //{
-        //  $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
-        //  return false
-        // }
-      
+        }  
       
       var data = getValuesFromForm();
 
-      /*if(data.booking_duration == null || undefined)
-      {
-        data.booking_duration = 0;
-        
-      }*/
-            
-      
-      //alert("Successfully triggered");
       //Ajax Call
-        $.ajax({
+      $.ajax({
         type: "POST",
         url: "/dashboard/ajaxAddDashboard",
         data: data, 
