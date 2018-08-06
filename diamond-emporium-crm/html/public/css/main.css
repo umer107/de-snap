@@ -654,7 +654,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .daySunday .daysSlider  {background: #f6f6f6}
 .daysContent span.sundayLine{ float: left; height: 31px; width: 100%; border-bottom: 1px solid #dfdfdf; }
 .daysContent span.sundayLine:nth-child(2n+1){ border-bottom: 1px dashed #dfdfdf; }
-
+.daysContent .icon-addBookingLinkNew{color: #d8d8d8}
 /*.daysContent.pastdate {background: #f6f6f6;}*/
 .daysContent.pastdate {background: #a6a6a6;}
 .daysContent.pastdate .addBookingLink{opacity:0 !important; display: none;} 

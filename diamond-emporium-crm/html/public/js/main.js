@@ -4079,10 +4079,10 @@ setTimeout(function(){
                           {
                             //window.userColor = '#D3D3D3';
                             setThisHtml +='<label class="labelContainer '+positionLeft+'" roomNumber="'+i+'">';
-                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="0" href="javascript:;"><i class="icon-addBookingLink fs-12"></i></a></p>';
-                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="15" href="javascript:;"><i class="icon-addBookingLink fs-12"></i></a></p>';
-                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="30" href="javascript:;"><i class="icon-addBookingLink fs-12"></i></a></p>';
-                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="45" href="javascript:;"><i class="icon-addBookingLink fs-12"></i></a></p>';
+                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="0" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="15" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="30" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="45" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
                             setThisHtml +='</label>';
                           }
                           else
