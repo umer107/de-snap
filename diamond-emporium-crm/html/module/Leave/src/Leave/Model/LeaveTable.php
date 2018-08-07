@@ -689,7 +689,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $select = new \Zend\Db\Sql\Select();
                 $select->from(array('l' => 'de_userdetail'))
                       ->columns(array(
-                'id','title' , 'gender' , 'first_name' , 'last_name' , 'phone_number' , 'email' , 'country' ,'State' ,'full_address', 'communication_method' , 'product' , 'product_shortcode' , 'referral' , 'only_referral' , 'special_instructions' , 'budget' , 'reference_product' , 'contact_method' , 'assign_to' , 'assignto_shortcode' , 'assign_to_UserId' , 'reson_skip_next_in_line' , 'specify_requirements' , 'lead_status' , 'lead_owner' , 'lead_owner_name' , 'create_date' , 'lead_close_date' , 'booking_date' , 'booking_time' , 'booking_room' , 'user_booking_date' ,'color'     
+                'id','title' , 'gender' , 'first_name' , 'last_name' , 'phone_number' , 'email' , 'country' ,'State' ,'full_address', 'communication_method' , 'product' , 'product_shortcode' , 'referral' , 'only_referral' , 'special_instructions' , 'budget' , 'reference_product' , 'contact_method' , 'assign_to' , 'assignto_shortcode' , 'assign_to_UserId' , 'reson_skip_next_in_line' , 'specify_requirements' , 'lead_status' , 'lead_owner' , 'lead_owner_name' , 'create_date' , 'lead_close_date' , 'booking_date' , 'booking_time' , 'booking_room' , 'user_booking_date' ,'color' , 'durationTime' ,'bookingstart'  
                 ))
                 ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('booking_color' => 'color'), 'left');    
               
@@ -1720,7 +1720,7 @@ public function fetchLeadRecord($filter= null)
               //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
                'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
            ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
-       $select_detail->where->greaterThanOrEqualTo('l.budget',$budget);
+       $select_detail->where->where('l.budget',$budget);
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
