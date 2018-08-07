@@ -995,6 +995,8 @@ $(document).ready(function () {
                 else
                 {
                   $('.emailexists').removeClass('opacity0');
+                  
+                  setTimeout(function(){ $('.emailexists').addClass('opacity0'); },3000);
                 }
                 setTimeout(function(){ $('.showloading').hide(); }, 500);
                 
@@ -1638,8 +1640,8 @@ $(document).on('click','.addBookingLink', function (e) {
     var offset = p.offset();
     var getOffsetTop = offset.top;
     var getOffsetLeft = offset.left;
-    getOffsetTop = getOffsetTop - 4;
-    getOffsetLeft = getOffsetLeft + 19;
+    getOffsetTop = getOffsetTop + 1;
+    getOffsetLeft = getOffsetLeft + 15;
     
     var getBudget = $('.dropdown.budget').find('a.selected-text').attr('value');
     var getTime = $(this).closest('.daysContentSlider').attr('time');
@@ -1652,6 +1654,19 @@ $(document).on('click','.addBookingLink', function (e) {
     var getProductSC = $('.dropdown.product').find('a.selected-text').attr('shortcode');
     var getUserSC = $('.dropdown.assignToDiv').find('a.selected-text').attr('shortcode');
     
+
+    var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
+          setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="15" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">15 minutes</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
+          setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
+            setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
+              setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="75" value="75 minutes">75 minutes</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="90" value="90 minutes">90 minutes</a></li>';
+              setDropdown += '</ul></li>';
+            setDropdown += '</ul>';
+
     var setHtml = "";
     var setHtml = '<div class="addBookingContainer roomsContainer">';
       setHtml += '<div class="roomBooking">';
@@ -1660,7 +1675,9 @@ $(document).on('click','.addBookingLink', function (e) {
             setHtml += '<p><i class="icon-diamond fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
             setHtml += '<p><i class="icon-dollar fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
             setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getTime+'</span></p>';
-            setHtml += '<p><a class="savePopupBooking" href="JavaScript:;" style="color:'+window.userColor+'">OK</a></p>';
+            setHtml += '<p class="bookingTiming pull-left"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i></p>';
+            setHtml += setDropdown;
+            setHtml += '<p class="full"><a class="savePopupBooking" href="JavaScript:;" style="color:'+window.userColor+'">OK</a></p>';
           setHtml += '<div class="transparentBG absolute" style="background-color:'+window.userColor+'"></div>';
         setHtml += '</div>';
       setHtml += '</div>';
@@ -1682,12 +1699,15 @@ $(document).on('click','.savePopupBooking', function (e) {
     var getDayName = $('.addBookingLink.thisClicked').closest('.daysCalendar').attr('dayname');
     var getDateNumber = $('.addBookingLink.thisClicked').closest('.daysContent').attr('datenumber');
     var getSelectedDate = $('.addBookingLink.thisClicked').closest('.daysContent').attr('fulldate');
+    var getDuration = $('.dropdown.durationTime').find('a.selected-text').attr('getduration');
+    var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
     $('#bookingDate').attr('dayName', getDayName);
     $('#bookingDate').attr('datenumber', getDateNumber);
     $('.addBookingLink.thisClicked').closest('label').html(selectHtml);
     $('.addBookingPopup').html('');
     $('.addBookingPopup').addClass('hide');
-    
+    $('#bookingDate').attr('durationTime', getDuration);
+    $('#bookingDate').attr('bookingStart', bookingTimeStart);
     // Apply new booking made
     
     $('.next-saveDiv').removeClass('hide');
@@ -2241,6 +2261,16 @@ setTimeout(function(){
         el.closest('.dropdown').next('select').find('option').attr('value',getValue);
         el.closest('.dropdown').next('label').addClass('opacity0');
 
+
+
+        //If Preferred method
+        if(el.closest('.dropdown').hasClass('durationTime'))
+        { 
+          var checkTime = $(this).find('a').attr('getDuration');
+          el.closest('.dropdown').find('a.selected-text').attr('getDuration', checkTime); 
+          $('#perferrefDropdownOther').closest('.relative').removeClass('hide');
+
+        }
 
         //If Preferred method
         if(el.closest('.dropdown').hasClass('preferredMethod'))
@@ -2840,6 +2870,8 @@ setTimeout(function(){
             booking_time : $("#bookingDate").attr("timeslot"),
             //booking_timezone : $("#bookingDate").attr("timezone"),                   
             booking_room : $('#bookingDate').attr('roomnumber'),
+            durationTime : $('#bookingDate').attr('durationTime'),
+            bookingstart : $('#bookingDate').attr('bookingstart'),
             //booking_duration: $('.durationSelection a').filter('.active').attr('value'),
             color : window.userColor
            
@@ -2924,32 +2956,12 @@ setTimeout(function(){
             }
 
             return false;
-        }
-        if(checkBookingDate == false)
-        {
-            //showBookingError();
-            //return false
-        }
-        //var checkBudgeterror = $('#BudgetText').hasClass('itHasError');
-        //if(checkBudgeterror)
-        //{
-        //  $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
-        //  return false
-        // }
-      
+        }  
       
       var data = getValuesFromForm();
 
-      /*if(data.booking_duration == null || undefined)
-      {
-        data.booking_duration = 0;
-        
-      }*/
-            
-      
-      //alert("Successfully triggered");
       //Ajax Call
-        $.ajax({
+      $.ajax({
         type: "POST",
         url: "/dashboard/ajaxAddDashboard",
         data: data, 
@@ -3989,12 +4001,12 @@ setTimeout(function(){
                   
                   if(getCurrentFullDate > key)
                   {
-                    $('.daysContent.'+dateCounter).attr('dateNumber', dayDate).addClass('pastdate');
+                    $('.daysContent.'+dateCounter).attr('dateNumber', dayDate).addClass('pastdate').attr('title',"Booking cannot be made on past date");
                     $('.daysContent.'+dateCounter).attr('fullDate', key);
                   }
                   else
                   {
-                    $('.daysContent.'+dateCounter).attr('dateNumber', dayDate).removeClass('pastdate');;
+                    $('.daysContent.'+dateCounter).attr('dateNumber', dayDate).removeClass('pastdate').attr('title',"");
                     $('.daysContent.'+dateCounter).attr('fullDate', key);
                   }
                   
@@ -4025,19 +4037,23 @@ setTimeout(function(){
                   // Getting into each weekly date Times
                   
                   $.each(dayTimes, function(key, value){
+                    window.onLeaveCheck = false;
                     newCounter++;
                     var getKey = getTime(key);
                     var chcekKey = key;
                     if(chcekKey == '100') 
                     {
                       var checkPreviousCounter = currentCounter;
-                      checkPreviousCounter--;
-                      $(".daysContent."+[checkPreviousCounter]).addClass('agentOnLeave');
-                      return false;
+                      //checkPreviousCounter--;
+                      var setLeaveData = dayTimes[key].Leave_AssignUserName + " is on leave";
+                      $(".daysContent."+[checkPreviousCounter]).addClass('agentOnLeave').attr('title',setLeaveData);
+                      window.onLeaveCheck = true;
+                      //return false;
                     }
                     else
                     {
-                      $(".daysContent."+[currentCounter]).removeClass('agentOnLeave');
+                      window.onLeaveCheck = false;
+                      //$(".daysContent."+[currentCounter]).removeClass('agentOnLeave').attr('title',"");
                     }
                     setDivContainer = ".daysContent."+[currentCounter] + " .daysContentSlider." + getKey;
                     var getAllRooms = dayTimes[key];
@@ -4047,41 +4063,49 @@ setTimeout(function(){
                     // Getting into each weekly date, times and then Rooms
                     var newRoomCounter = 1;
                     var roomNumber = "";
-                    
-                    for (var i = 1; i < 5; i++) {
-                      
-                      if(newRoomCounter == 1){roomNumber = "roomOne"}
-                      else if(newRoomCounter == 2){roomNumber = "roomTwo"}
-                      else if(newRoomCounter == 3){roomNumber = "roomThree"}
-                      else{roomNumber = "roomFour"}
-                      var getRoom = getAllRooms[i];
-                      
-
-                      if(getRoom == "")
+                    var positionLeft = "";
+                    if(window.onLeaveCheck == false)
                       {
-                        //window.userColor = '#D3D3D3';
-                        setThisHtml +='<label class="labelContainer" roomNumber="'+i+'"><a class="addBookingLink" href="javascript:;"><i class="icon-addBookingLink fs-15"></i></a></label>';
-                      }
-                      else
-                      {
-                        //window.userColor = '#'+getAllRooms[i].booking_color;
-                        var setBackgroundColor = "style='background-color:"+getAllRooms[i].color+"'";
-                        var Color = "style='color:"+getAllRooms[i].color+"'";
-                        
-                        setThisHtml +='<label class="labelContainer" roomNumber="'+i+'">';
-                          setThisHtml +='<div class="roomBooking '+roomNumber+'">';
-                            setThisHtml +='<p class=" fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>'+getAllRooms[i].assignto_shortcode+'</span></p>';
-                            setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
-                              setThisHtml +='<p><i class="icon-diamond fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].product_shortcode+'</span></p>';
-                              setThisHtml +='<p><i class="icon-dollar fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
-                              setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColor+'></div>';
-                            setThisHtml +='</div>';
-                          setThisHtml +='</div>';
-                        setThisHtml +='</label>';
-                      }
-                      newRoomCounter++
-                    }
+                        for (var i = 1; i < 5; i++) {
+                          
+                          if(newRoomCounter == 1){roomNumber = "roomOne"; positionLeft = 'roomOnePos'}
+                          else if(newRoomCounter == 2){roomNumber = "roomTwo"; positionLeft = 'roomTwoPos'}
+                          else if(newRoomCounter == 3){roomNumber = "roomThree"; positionLeft = 'roomThreePos'}
+                          else{roomNumber = "roomFour"; positionLeft = 'roomFourPos'}
+                          var getRoom = getAllRooms[i];
+                          
 
+                          if(getRoom == "")
+                          {
+                            //window.userColor = '#D3D3D3';
+                            setThisHtml +='<label class="labelContainer '+positionLeft+'" roomNumber="'+i+'">';
+                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="0" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="15" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="30" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="45" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                            setThisHtml +='</label>';
+                          }
+                          else
+                          {
+                            //window.userColor = '#'+getAllRooms[i].booking_color;
+                            var setBackgroundColor = "style='background-color:"+getAllRooms[i].color+"'";
+                            var Color = "style='color:"+getAllRooms[i].color+"'";
+                            
+                            setThisHtml +='<label class="labelContainer '+positionLeft+'" roomNumber="'+i+'">';
+                              setThisHtml +='<div class="roomBooking '+roomNumber+'">';
+                                setThisHtml +='<p class=" fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>'+getAllRooms[i].assignto_shortcode+'</span></p>';
+                                setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
+                                  setThisHtml +='<p><i class="icon-diamond fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].product_shortcode+'</span></p>';
+                                  setThisHtml +='<p><i class="icon-dollar fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
+                                  //setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColor+'></div>';
+                                setThisHtml +='</div>';
+                              setThisHtml +='</div>';
+                            setThisHtml +='</label>';
+                          }
+                          newRoomCounter++
+                        }
+                      }
+                      
                     setThisHtml += '<p class="borderPart"></p>';
                     setThisHtml +='</div>';
 
@@ -6110,7 +6134,7 @@ function loadLeads(){
 
                         $('.loadLeadsHere').fadeIn(400);
 
-                    }, 1500);
+                    }, 500);
 
 
             } // End Success Response
@@ -6121,7 +6145,12 @@ function loadLeads(){
 
 } // End Function
 
-loadLeads()
+
+$(window).load(function(){
+    setTimeout(function(){ 
+      loadLeads();   
+  }, 1000);
+});
 
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
