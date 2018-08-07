@@ -1,0 +1,1 @@
+ALTER TABLE `de_userdetail` ADD `durationTime` VARCHAR(20) NULL AFTER `color`, ADD `bookingstart` VARCHAR(50) NULL AFTER `durationTime`;
