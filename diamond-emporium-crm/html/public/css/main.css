@@ -687,7 +687,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .roomTwoPos{left: 115px}
 .roomThreePos{left: 230px}
 .roomFourPos{left: 345px}
-.daysContentSlider p.borderPart { position: absolute; top: 30px; width: 465px; height: 1px; border-bottom: 1px dashed #dfdfdf; }
+.daysContentSlider p.borderPart { display:none; position: absolute; top: 30px; width: 465px; height: 1px; border-bottom: 1px dashed #dfdfdf; }
 .daysContentSlider .roomsContainer{ height: 61px; }
 .daysContent{ width: 230px; float: left; }
 .loadnewCalendarContent .daysCalendar{ left: 0; position: relative; overflow: hidden;}

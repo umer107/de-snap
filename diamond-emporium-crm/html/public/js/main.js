@@ -2882,6 +2882,14 @@ setTimeout(function(){
     
 
     // Save New Booking
+    $(document).on('click','.calendarLink', function (e) {
+
+      console.log('working');
+
+    });
+
+
+    // Save New Booking
     $(document).on('click','.saveNewBooking', function (e) {
       $('#submitbutton').trigger('click');
     });

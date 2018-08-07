@@ -24,8 +24,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-calendar:before {
+  content: "\e90c";
+}
 .icon-addBookingLinkNew:before {
   content: "\e90b";
+  color: #d8d8d8;
 }
 .icon-dollar:before {
   content: "\e90a";
@@ -63,6 +67,3 @@
 .icon-newLead:before {
   content: "\e904";
 }
-
-
-
