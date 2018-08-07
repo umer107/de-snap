@@ -30,14 +30,19 @@ a{text-decoration:none}
 
 .checking{color:red}
 aside.leftCol,section.rightCol{float:left; width:240px; background-color:#323a45; height:100%; overflow:auto}
-aside.leftCol{margin-left:-240px}
-section.rightCol{width:100%; background-color:#F6F6F6; position:relative; z-index: 1;}
-.dimondLogo{float:left; margin:25px 18px 11px}
-nav.mainMenu ul li, nav.mainMenu ul,nav.mainMenu{float:left; width:100%}
-nav.mainMenu ul{padding-left:0; list-style-type:none}
-nav.mainMenu ul li{ padding:0 15px; position:relative; border-left:transparent solid 5px}
-nav.mainMenu ul li a{color:#7F8A9C; font-size:14px; padding:10px 0; border-bottom:#2d323a solid 1px; float:left; width:100%;text-decoration:none; }
-nav.mainMenu ul li a:before{content:''; display:inline-block; vertical-align:middle; width:17px; height:13px;background:url(../images/sprite.png) 0 0 no-repeat; margin-right:10px}
+aside.leftCol{margin-left:-240px }
+section.rightCol{width:100%; background-color:#F6F6F6; position:relative; z-index: 1; }
+.dimondLogo{float:left; margin:25px 18px 11px }
+nav.mainMenu ul li, nav.mainMenu ul,nav.mainMenu{float:left; width:100% }
+nav.mainMenu ul{padding-left:0; list-style-type:none }
+nav.mainMenu ul li{ padding:0 15px; position:relative; border-left:transparent solid 5px }
+nav.mainMenu ul li a{ color:#7F8A9C; font-size:14px; padding:10px 0; border-bottom:#2d323a solid 1px; float:left; width:100%;text-decoration:none; }
+nav.mainMenu ul li a:before{ content:''; display:inline-block; vertical-align:middle; width:17px; height:13px;background:url(../images/sprite.png) 0 0 no-repeat; margin-right:10px }
+
+nav.mainMenu ul li a.calendarLink:before {background: none; margin-right: 7px;  }
+nav.mainMenu ul li a.calendarLink i { position: absolute; left: 16px; top: 12px;}
+nav.mainMenu ul li a.calendarLink:hover i{color: #1cb7f4; }
+
 nav.mainMenu ul li:hover a.dashboardLink:before,nav.mainMenu ul li.current a.dashboardLink:before{background-position:0 -13px}
 nav.mainMenu ul li a.customersLinke:before{background-position:-17px 0}
 nav.mainMenu ul li:hover a.customersLinke:before,nav.mainMenu ul li.current a.customersLinke:before{background-position:-17px -13px}

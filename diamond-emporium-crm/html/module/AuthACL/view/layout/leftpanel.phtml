@@ -5,6 +5,9 @@
   <nav class="mainMenu">
     <ul>
       <li <?php if(in_array($this->matchedRouteName, array('index/dashboard'))) echo 'class="current"'; ?>><a href="<?php echo $this->serverUrl('/dashboard'); ?>" class="dashboardLink">Dashboard</a></li>
+      
+      <li><a href="javascript:;" class="calendarLink"><i class="icon-calendar fs-14"></i> Customers</a></li>
+      
       <li <?php if(in_array($this->matchedRouteName, array('index/index', 'index/customerdetails'))) echo 'class="current"'; ?>><a href="<?php echo $this->serverUrl('/customers'); ?>" class="customersLinke">Customers <span id="customersCountGlobal">0</span></a></li>
       <li <?php if(in_array($this->matchedRouteName, array('lead/leads', 'lead/leaddetails'))) echo 'class="current"'; ?>><a href="<?php echo $this->serverUrl('/leads'); ?>" class="leadsLink">Leads <span id="leadsCountGlobal">0</span></a></li>
       <li <?php if(in_array($this->matchedRouteName, array('opportunities/index', 'opportunities/opportunitydetails'))) echo 'class="current"'; ?>><a href="<?php echo $this->serverUrl('/opportunities'); ?>" class="opportunitiesLink">Opportunities <span id="opportunitiesCountGlobal">0</span></a></li>
