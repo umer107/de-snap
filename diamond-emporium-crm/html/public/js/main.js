@@ -1653,7 +1653,7 @@ $(document).on('click','.addBookingLink', function (e) {
     var getName = $('#first_name').val() + ' ' + $('#last_name').val();
     var getProductSC = $('.dropdown.product').find('a.selected-text').attr('shortcode');
     var getUserSC = $('.dropdown.assignToDiv').find('a.selected-text').attr('shortcode');
-    
+    var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
 
     var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
           setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="15" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">15 minutes</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
@@ -1674,7 +1674,8 @@ $(document).on('click','.addBookingLink', function (e) {
           setHtml += '<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
             setHtml += '<p><i class="icon-diamond fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
             setHtml += '<p><i class="icon-dollar fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
-            setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getTime+'</span></p>';
+            
+            setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">Starting at '+bookingTimeStart+'</span></p>';
             setHtml += '<p class="bookingTiming pull-left"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i></p>';
             setHtml += setDropdown;
             setHtml += '<p class="full"><a class="savePopupBooking" href="JavaScript:;" style="color:'+window.userColor+'">OK</a></p>';
@@ -4096,18 +4097,57 @@ setTimeout(function(){
                           else
                           {
                             //window.userColor = '#'+getAllRooms[i].booking_color;
+                            var getDurationTime = getAllRooms[i].durationTime;
+                            var getBookingstartTime = getAllRooms[i].bookingstart;
+                            var height1 = '';
+                            var height2 = '';
+                            var positionTop = '';
+
+                            if(getDurationTime != null)
+                            {
+                              if(getDurationTime == '15') { height1 = '16px'; height2 = '0px'; }
+                              else if(getDurationTime == '30') { height1 = '33px'; height2 = '17px'; }
+                              else if(getDurationTime == '45') { height1 = '48px'; height2 = '33px'; }
+                              else if(getDurationTime == '60') { height1 = '65px'; height2 = '49px'; }
+                              else if(getDurationTime == '75') { height1 = '80px'; height2 = '65px'; }
+                              else{ height1 = '97px'; height2 = '81px'; }
+                              
+                            }
+                            if(getBookingstartTime != null)
+                            {
+                              if(getBookingstartTime == '0') { positionTop = '0px'; }
+                              else if(getBookingstartTime == '15') { positionTop = '15px';}
+                              else if(getBookingstartTime == '30') { positionTop = '31px';}
+                              else if(getBookingstartTime == '45') { positionTop = '47px';}
+                            }
+
                             var setBackgroundColor = "style='background-color:"+getAllRooms[i].color+"'";
+                            var setBackgroundColorHeight = 'style="background-color:'+getAllRooms[i].color+'; height:'+height2+'"';
                             var Color = "style='color:"+getAllRooms[i].color+"'";
                             
-                            setThisHtml +='<label class="labelContainer '+positionLeft+'" roomNumber="'+i+'">';
-                              setThisHtml +='<div class="roomBooking '+roomNumber+'">';
-                                setThisHtml +='<p class=" fs-12 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>'+getAllRooms[i].assignto_shortcode+'</span></p>';
-                                setThisHtml +='<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
-                                  setThisHtml +='<p><i class="icon-diamond fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].product_shortcode+'</span></p>';
-                                  setThisHtml +='<p><i class="icon-dollar fs-12 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
-                                  //setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColor+'></div>';
+                            // Setting New Booking Link Loop newBookingLink
+
+                            
+
+                            // Seeting booking Html
+                            setThisHtml +='<label class="labelContainer '+positionLeft+'" roomNumber="'+i+'"  duration="'+getDurationTime+'"    bookingstart="'+getAllRooms[i].bookingstart+'"   >';
+
+                              setThisHtml +='<div class="addBookingLinkContent">';
+                                setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="0" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                                setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="15" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                                setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="30" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                                setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="45" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                              setThisHtml +='</div>';
+
+                              setThisHtml +='<div class="roomBooking '+roomNumber+'" style="height:' + height1 + '; top:'+ positionTop +'">';
+                                setThisHtml +='<p class=" fs-11 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>'+getAllRooms[i].assignto_shortcode+'</span></p>';
+                                setThisHtml +='<div class="full align-left half-pad-left lh-16 fs-11 one-pad-top relative">';
+                                  setThisHtml +='<p><i class="icon-diamond fs-11 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].product_shortcode+'</span></p>';
+                                  setThisHtml +='<p><i class="icon-dollar fs-11 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
+                                  setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColorHeight+' style="height:'+ height2 +'"></div>';
                                 setThisHtml +='</div>';
                               setThisHtml +='</div>';
+
                             setThisHtml +='</label>';
                           }
                           newRoomCounter++
@@ -6626,6 +6666,7 @@ $(document).on('click','.leadUserName', function (e) {
                {
                   var getBookingTime = getTimeSlotFull(parsed[0].booking_time);
                   html += "<p><label>Booking Time:</label><label>" + getBookingTime + " </label></p> ";
+                  html += "<p><label>Booking Duarion:</label><label>" + getBookingTime + "mints </label></p> ";
                   html += "<p><label>Booking Date:</label><label>" + parsed[0].booking_date + " </label></p> ";
                }
                

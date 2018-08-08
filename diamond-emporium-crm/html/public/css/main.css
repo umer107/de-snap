@@ -643,7 +643,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .hourContainer { float: left; width: 85px; border-right: 1px solid #dfdfdf; text-align: right; }
 .hourContainer p { height: 50px; line-height: 50px; border-bottom: 1px solid #dfdfdf; padding-right: 10px; }
 .hoursList { padding-right: 10px; margin-top: 26px; }
-.hoursList label{ display: block; line-height: 62px; color: #b2b2b2; }
+.hoursList label{ display: block; line-height: 52px; color: #b2b2b2; padding-bottom: 12px; }
 .hoursList label.till6{}
 .loadnewCalendar, .loadnewCalendarContent{ width: 1493px; overflow: hidden;}
 .daysCalendar{ width: 230px; border-right: 1px solid #dfdfdf; }
@@ -652,7 +652,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .daysCalendar p.headerPart.activeColor{color: #15a4fa;}
 .daysSlider { width: 100%; overflow: hidden; height: 28px; line-height: 28px; background: #e7f5fd; border-bottom: 1px solid #dfdfdf; }
 .daySunday .daysSlider  {background: #f6f6f6}
-.daysContent span.sundayLine{ float: left; height: 31px; width: 100%; border-bottom: 1px solid #dfdfdf; }
+.daysContent span.sundayLine{ float: left; height: 32px; width: 100%; border-bottom: 1px solid #dfdfdf; }
 .daysContent span.sundayLine:nth-child(2n+1){ border-bottom: 1px dashed #dfdfdf; }
 .daysContent .icon-addBookingLinkNew{color: #d8d8d8}
 /*.daysContent.pastdate {background: #f6f6f6;}*/
@@ -679,8 +679,8 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .daysSlider label.room3 img { left: 5px; }
 .daysSlider div.roomsContainer, .daysContentSlider div.roomsContainer{ left: 0;width: 465px; }
 .daysSlider div.roomsContainer.scrolled, .daysContentSlider div.roomsContainer.scrolled { left: -230px; }
-.daysContentSlider { width: 100%; /*overflow-x: hidden;*/ height: 62px; border-bottom: 1px solid #dfdfdf; }
-.daysContentSlider label { border-right: 1px solid #dfdfdf; height: 61px; width: 115px; float: left; text-align: center; position:absolute; }
+.daysContentSlider { width: 100%; /*overflow-x: hidden;*/ height: 64px; border-bottom: 1px solid #dfdfdf; }
+.daysContentSlider label { border-right: 1px solid #dfdfdf; height: 64px; width: 115px; float: left; text-align: center; position:absolute; }
 .daysContentSlider label p.newBookingBorder{position: relative; display: block; border-bottom: 1px dashed #dadfea; height: 16px;}
 .daysContentSlider label p.newBookingBorder:last-child {border-bottom: 0 none;}
 .roomOnePos{}
@@ -688,7 +688,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .roomThreePos{left: 230px}
 .roomFourPos{left: 345px}
 .daysContentSlider p.borderPart { display:none; position: absolute; top: 30px; width: 465px; height: 1px; border-bottom: 1px dashed #dfdfdf; }
-.daysContentSlider .roomsContainer{ height: 61px; }
+.daysContentSlider .roomsContainer{ height: 64px; }
 .daysContent{ width: 230px; float: left; }
 .loadnewCalendarContent .daysCalendar{ left: 0; position: relative; overflow: hidden;}
 .loadnewCalendarContent .daysCalendar.scrolled{ left: -230px; }
@@ -704,14 +704,15 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .roomsContainer .roomBooking.green p i{color: #25a20b}
 .roomsContainer .roomBooking.red p i{color: #ee4860}
 .roomsContainer .roomBooking.blue p i{color: #009cd7}
-.roomsContainer .roomBooking { height: 61px; width: 100%; position: relative; z-index: 1; background: white;}
-.roomsContainer .roomBooking p.headBar{ color: white; line-height: 22px; height: 22px; text-align: left; padding-left: 4px; }
+.roomsContainer .roomBooking { border-bottom: 1px solid #dfdfdf; height: 61px; width: 100%; position: relative; z-index: 1; background: white; overflow: hidden;}
+.roomsContainer .roomBooking p.headBar{ color: white; line-height: 15px; height: 15px; text-align: left; padding-left: 4px; }
 .roomsContainer .roomBooking p.headBar span:first-child { width: 82px; float: left; border-right: 1px solid white; }
 .roomsContainer .roomBooking p.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; }
 .addBookingLink { position: absolute; left: 2px; top: 0px; opacity: 0 }
 .daysContentSlider label p:hover .addBookingLink { opacity: 1 }
-.sundayContent { background: #f6f6f6; width: 113px; height: 619px; }
-
+.sundayContent { background: #f6f6f6; width: 113px; height: 640px; }
+.addBookingLinkContent{    position: absolute; left: 0; top: 0px; height: 64px; right: 0; z-index: 0; }
+.addBookingPopup .roomsContainer .roomBooking{ border-bottom: none; overflow: initial;}
 .tempContainer{ width: 122px; }
 .roomBooking p{position: relative; z-index: 1}
 
