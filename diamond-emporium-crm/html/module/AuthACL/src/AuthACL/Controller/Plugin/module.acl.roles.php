@@ -182,6 +182,7 @@ $resources = array(
     'Dashboard\Controller\Dashboard::ajaxGetUserColor',
     'Dashboard\Controller\Dashboard::ajaxGetCustomerOnLookup',
     'Dashboard\Controller\Dashboard::ajaxGetCheckUserEmail',
+    'Dashboard\Controller\Dashboard::ajaxGetUserLeaves',
 
 	);
 

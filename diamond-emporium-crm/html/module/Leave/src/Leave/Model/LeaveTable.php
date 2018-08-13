@@ -146,6 +146,7 @@ class LeaveTable
    }
    
    
+   
    public function getUserLeaves($data)
    {
        try {
@@ -931,6 +932,119 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
        //---End
        //End -- CustomViewCalenderBusinessLogic
         
+        /*
+         ****************************************** 
+         ***** LeaveByUserId Start***
+         ****************************************** 
+        */
+       
+        public function fetchLeavesByUserId($filter= null)
+        {
+            
+            try {
+           
+             //Template
+             $week_array = array();
+             $current_date = $filter['booking_date'];
+             $begin_date =  date("Y-m-d", strtotime('monday this week', strtotime($current_date)));  
+             $end_date =  date("Y-m-d", strtotime('sunday this week', strtotime($current_date)));
+             $num_days = floor((strtotime($end_date)-strtotime($begin_date))/(60*60*24));           
+             for ($i=0; $i<= $num_days; $i++)
+             {
+                 $week_array[] = date('Y-m-d', strtotime($begin_date . "+ $i days")); 
+             }
+             
+             $template_array = array();
+             foreach($week_array as $week_range){
+                 
+                
+                $template_array[$week_range]['isOnLeave'] = 0;
+                $day = date("D", strtotime($week_range));
+                
+                switch ($day)
+                {
+                    case "Mon":
+                        $day = "Monday";
+                        break;
+                    case "Tue":
+                        $day = "Monday";
+                        break;
+                    case "Wed":
+                        $day = "Monday";
+                        break;
+                    case "Thu":
+                        $day = "Monday";
+                        break;
+                    case "Fri":
+                        $day = "Monday";
+                        break;
+                    case "Sat":
+                        $day = "Monday";
+                        break;
+                    case "Sun":
+                        $day = "Monday";
+                        break;
+                    default :
+                        $day = "SomeIssueOccured";
+                } 
+                
+                
+                $template_array[$week_range]['Day'] = $day;
+  
+             }
+           
+             
+             // return $template_array;
+             //BusinessLogic
+             $select = new \Zend\Db\Sql\Select();
+             $select->from('de_leaves')->columns(array('Leave_id'));
+             $select = new \Zend\Db\Sql\Select();
+             $select->from(array('l' => 'de_leaves'))
+                      ->columns(array(
+                'Leave_id','Leave_StartDate' , 'Leave_AssignUserName' , 'Leave_UserId' , 'Leave_Reason'
+             ));
+                
+             if(!empty($filter['assign_UserId']))
+             {
+                $lead_assigni_leave = $filter['assign_UserId'];                   
+                $select->where(array('l.Leave_UserId = ?' =>  $lead_assigni_leave));
+             }
+             if(!empty($filter['booking_date']))
+             {                  
+                $date_booking = $filter['booking_date'];
+                $start_date_leave =  date("Y-m-d", strtotime('monday this week', strtotime($date_booking)));  
+                $end_date_leave =  date("Y-m-d", strtotime('sunday this week', strtotime($date_booking)));
+                $select->where->between('l.Leave_StartDate', $start_date_leave, $end_date_leave);
+             }
+             $data = $this->executeQuery($select);                     
+             $result = $data->toArray(); 
+              
+            foreach($result as $items_leave)
+            {
+                   
+                   $booking_date_add_leave = $items_leave['Leave_StartDate'];
+                   $leave_user_id = $items_leave['Leave_UserId'];
+                   $template_array[$booking_date_add_leave]['isOnLeave'] = 1;
+             }
+                
+            return $template_array;
+                
+            }catch (Exception $e) {
+               
+               \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+           }
+            
+            
+        }
+
+
+
+
+        /*
+         ****************************************** 
+         ***** LeaveByUserId Start***
+         ****************************************** 
+        */
         
         /*
          ****************************************** 
