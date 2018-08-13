@@ -95,6 +95,16 @@ return array(
                                 'action'     => 'ajaxGetDataforCalender',
                             ),
                         ),
+                    ),            
+             'ajaxGetUserLeaves' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetUserLeaves',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetUserLeaves',
+                            ),
+                        ),
                     ),
             'ajaxGetCheckUserEmail' => array(
                         'type' => 'Segment',

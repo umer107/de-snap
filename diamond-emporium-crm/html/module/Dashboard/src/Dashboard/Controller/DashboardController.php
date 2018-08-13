@@ -227,7 +227,27 @@ class DashboardController extends AbstractActionController
     }
     //End --> Ajax-Custom-View-Calender
 
-
+    //Start ajaxGetUserLeavesAction
+    public function  ajaxGetUserLeavesAction()
+    {
+        
+            try {
+            $sm = $this->getServiceLocator();
+            $identity = $sm->get('AuthService')->getIdentity();
+            $config = $this->getServiceLocator()->get('Config');
+            $params = $this->getRequest()->getQuery()->toArray();         
+            $leadsRes = $this->getServiceLocator()->get('Leave\Model\LeaveTable');          
+            $calArr = $leadsRes->fetchLeavesByUserId($params);
+         
+            echo json_encode($calArr);
+            exit;
+            
+        } catch (Exception $e) {
+            \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+        }
+    }
+    
+   //End ajaxGetUserLeavesAction
     public function  ajaxUpdateleadStatusAction()
     {
         try {
