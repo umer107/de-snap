@@ -1654,9 +1654,13 @@ $(document).on('click','.addBookingLink', function (e) {
     var getProductSC = $('.dropdown.product').find('a.selected-text').attr('shortcode');
     var getUserSC = $('.dropdown.assignToDiv').find('a.selected-text').attr('shortcode');
     var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
+    if(bookingTimeStart == "0")
+      {bookingTimeStart = "00"}
+    var StartingHour = $('.addBookingLink.thisClicked').closest('.daysContentSlider').attr('startingtime');
+
 
     var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
-          setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="15" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">15 minutes</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
+          setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">Duration</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
           setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
             setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
               setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
@@ -1675,7 +1679,7 @@ $(document).on('click','.addBookingLink', function (e) {
             setHtml += '<p><i class="icon-diamond fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
             setHtml += '<p><i class="icon-dollar fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
             
-            setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">Starting at '+bookingTimeStart+'</span></p>';
+            setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">Starting at ' +StartingHour+':'+bookingTimeStart+'</span></p>';
             setHtml += '<p class="bookingTiming pull-left"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i></p>';
             setHtml += setDropdown;
             setHtml += '<p class="full"><a class="savePopupBooking" href="JavaScript:;" style="color:'+window.userColor+'">OK</a></p>';
@@ -1702,6 +1706,8 @@ $(document).on('click','.savePopupBooking', function (e) {
     var getSelectedDate = $('.addBookingLink.thisClicked').closest('.daysContent').attr('fulldate');
     var getDuration = $('.dropdown.durationTime').find('a.selected-text').attr('getduration');
     var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
+    
+
     $('#bookingDate').attr('dayName', getDayName);
     $('#bookingDate').attr('datenumber', getDateNumber);
     $('.addBookingLink.thisClicked').closest('label').html(selectHtml);
@@ -1709,6 +1715,7 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('.addBookingPopup').addClass('hide');
     $('#bookingDate').attr('durationTime', getDuration);
     $('#bookingDate').attr('bookingStart', bookingTimeStart);
+
     // Apply new booking made
     
     $('.next-saveDiv').removeClass('hide');
@@ -3942,6 +3949,7 @@ setTimeout(function(){
                 data: data,
                 success: function (data) {
                 // Convert Json into Array
+                debugger
                 var parsed = '';
                 try{
                   parsed = JSON.parse(data);
@@ -4011,6 +4019,8 @@ setTimeout(function(){
                   if(getCurrentFullDate > key)
                   {
                     $('.daysContent.'+dateCounter).attr('dateNumber', dayDate).addClass('pastdate').attr('title',"Booking cannot be made on past date");
+                    $('.daysContent.sundayContent.'+dateCounter).removeClass('pastdate').attr('title',"");
+                   
                     $('.daysContent.'+dateCounter).attr('fullDate', key);
                   }
                   else

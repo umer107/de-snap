@@ -642,7 +642,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .NewCalendar{border-left: 1px solid #dfdfdf; border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; }
 .hourContainer { float: left; width: 85px; border-right: 1px solid #dfdfdf; text-align: right; }
 .hourContainer p { height: 50px; line-height: 50px; border-bottom: 1px solid #dfdfdf; padding-right: 10px; }
-.hoursList { padding-right: 10px; margin-top: 26px; }
+.hoursList { padding-right: 10px; margin-top: 10px; }
 .hoursList label{ display: block; line-height: 52px; color: #b2b2b2; padding-bottom: 12px; }
 .hoursList label.till6{}
 .loadnewCalendar, .loadnewCalendarContent{ width: 1493px; overflow: hidden;}
@@ -720,7 +720,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .roomsContainer:not(.addBookingContainer) .roomBooking div.half-pad-left p span.half-pad-left{padding-left: 0; }
 
 .transparentBG{ width: 100%; height: 39px; left: 0; top: 0; opacity: .3; }
-.addBookingContainer{ float: left; width: 124px; height: 145px;}
+.addBookingContainer{ float: left; width: 124px; height: 138px;}
 /*.addBookingPopup{ left: 0; right: 0; top:0; width: 100%; height: 100%; z-index: 1;}*/
 .addBookingPopup{ z-index: 1;}
 .addBookingPopup .roomBooking{ height: 100%;}
@@ -730,13 +730,14 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .addBookingPopup .transparentBG{ height: 123px; }
 .dropdown.durationTime li a.selected-text span{ width: 78px; }
 .dropdown.durationTime{ height: 18px; line-height: 18px; width: 98px;}
-.dropdown.durationTime li a { color: #5D5D5D; text-align: left; font-size: 12px; border: none;    padding-left: 7px; }
+.dropdown.durationTime li a { color: #5D5D5D; text-align: left; font-size: 12px; border: none;    padding-left: 5px; }
 .dropdown.durationTime .selected-text i{ background-size: 11px 7px; background: none; width: 10px; margin-top: 5px; }
 .dropdown.durationTime .dropdownOptions{ top: 20px; width: 94px; left: 4px; padding: 0px 0; }
 .dropdown.durationTime li ul li { line-height: 24px; height: 24px; text-align: left; cursor: pointer; }
 .addBookingPopup .roomBooking p{ line-height: 20px;}
 .dropdown.durationTime li ul li:hover{ background-color: white;}
 .dropdown.durationTime li ul li:hover a{color: #5D5D5D;    font-weight: bold; }
+.roomBooking span.half-pad-left{ padding-left: 2px;}
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
