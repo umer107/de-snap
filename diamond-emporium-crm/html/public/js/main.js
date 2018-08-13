@@ -1054,6 +1054,22 @@ $(document).ready(function () {
     //});
 
 /* ----------------------------------------------------*/
+    
+    // Calendar Button
+
+    $(document).on('click', '.mainMenu a.calendarLink', function () {
+        $('.dashboard-header, .leadsContainer, .leadDeailContainer, .newLead, .leavesContainer, .newLeaveContainer').addClass('hide');
+
+        var getHtml = $('.NewCalendarContainer').html();
+        var setHtml = "<div class='NewCalendarContainer full relative'>";
+        setHtml += getHtml;
+        setHtml += "</div>";
+        $('.calendarLoad').html(setHtml);
+        $('.calendarLoad .bookingHeading').addClass('hide');
+        $('.calendarLoad').removeClass('hide');
+        suggestedDate();
+
+    });// End
 
     // Expand Additional Details
 
@@ -2082,7 +2098,7 @@ setTimeout(function(){
 
     // Book Now Open
     //$(document).on('click', '.btn-bookNow.canOpen', function () {
-        //debugger;
+       
        //validation();
 
         //additionalDetailsMinimize();
@@ -2889,12 +2905,7 @@ setTimeout(function(){
 
     
 
-    // Save New Booking
-    $(document).on('click','.calendarLink', function (e) {
 
-      console.log('working');
-
-    });
 
 
     // Save New Booking
@@ -3451,285 +3462,296 @@ setTimeout(function(){
 /* ------------------ Start Edit Detail ------------------------*/
 /* ------------------ Start Edit Detail ------------------------*/
     
+    // Calling Edit function
+
+
     $(document).on('click','.editDetails:not(.disabled)', function (e) {
-    $('.newLead').addClass('inEditMode');
-    showMainLoading();  
-    var getLeadId = $(this).attr('lead-id');    
-    
-    $.ajax({
-            type: "GET",
-            url: "/dashboard/ajaxGetLeadDetailForLeadPage",
-            data: {leadId:getLeadId},
-            success: function (data) {
-              
-              var parsed = '';
-              try
-              {
-                parsed = JSON.parse(data);                  
-              }
-              catch(e)
-              {                  
-               return false;                    
-              }
 
-              var html = "";
-             
-              // Get User Color
-              var getThisUserId = parsed[0].assign_to_UserId;
-              $.ajax({
+        $('.newLead').addClass('inEditMode');
+        
+        var getLeadId = $(this).attr('lead-id');    
+        EditLead(getLeadId)
+                   
+    });
 
-                type: "GET",
-                url: "/dashboard/ajaxGetUserColor",
-                data: {user_id : getThisUserId},
-                success: function (data) {
-                  var parsed = '';          
-                  try{                           
-                    parsed = JSON.parse(data);              
-                  }                 
-                  catch(e)                
-                  {                  
-                    return false;                  
-                  }
-                  
-                  window.userColor = '#'+parsed["0"].color;
-                  
-                }
-              });
-              
-              //Setting Lead Id
-              
-              $('.thisLeadId').attr('leadId',parsed[0].id);
-              
-              // Basic Info Fields
-              // Title
-              $('.basicInfo .title .selected-text').attr('value',parsed[0].title);
-              $('.basicInfo .title .selected-text span').html(parsed[0].title);
-              // Gender
-              $('.basicInfo .Gender .selected-text').attr('value',parsed[0].gender);
-              $('.basicInfo .Gender .selected-text span').html(parsed[0].gender);
-              // First Name Last Name Phone & Email
-              $('.basicInfo .firstname').val(parsed[0].first_name);
-              $('.basicInfo .lastname').val(parsed[0].last_name);
-              $('.basicInfo .phonenumber').val(parsed[0].phone_number);
-              $('#email').val(parsed[0].email);
-              $('#onlyReferral').val(parsed[0].only_referral);
-              $('#fullAddress').val(parsed[0].full_address);
-              
-              // Address Fields
-              $('.stateDiv .dropdown.State .dropdownOptions li a[value="'+parsed[0].State+'"]').trigger('click');
-              // Additional Detail Fields
-
-              $('.additional-details .dropdown.product .dropdownOptions li a[value="'+parsed[0].product+'"]').trigger('click');
-
-              
-
-              // Referral method
-              
-              if(parsed[0].referral != "Google" && parsed[0].referral != "Word of mouth" && parsed[0].referral != "Previous client" && parsed[0].referral != "Walk In" && parsed[0].referral != "Facebook" && parsed[0].referral != "Instagram")
-              { 
-                $('#referralDropdownOther').val(parsed[0].referral);
-                $('#referralDropdownOther').closest('.relative').removeClass('hide'); 
-                $('.additional-details .dropdown.referral .dropdownOptions li a[value="Other"]').trigger('click');
-              }
-              else
-              {
-                $('#referralDropdownOther').closest('.relative').addClass('hide'); 
-                $('.additional-details .dropdown.referral .dropdownOptions li a[value="'+parsed[0].referral+'"]').trigger('click');
-              }
-
-              $('.additional-details .instructions').val(parsed[0].special_instructions);
-              $('.additional-details .ReferenceProduct').val(parsed[0].reference_product);
-
-              $('.additional-details .dropdown.budget .dropdownOptions li a[value="'+parsed[0].budget+'"]').click();
-              $('.additional-details .dropdown.budget .dropdownOptions').hide();
-
-              $('#BudgetText').val(parsed[0].budget);
-              $('#BudgetText').focusin();
-              $('#BudgetText').focusout();
-
-              // Preferred method
-              if(parsed[0].contact_method != "Phone/Email" && parsed[0].contact_method != "Phone" && parsed[0].contact_method != "Email")
-              { 
-                $('#perferrefDropdownOther').val(parsed[0].contact_method);
-                $('#perferrefDropdownOther').closest('.relative').removeClass('hide'); 
-                $('.dropdown.preferredMethod .dropdownOptions li a[value="Other"]').trigger('click');
-              }
-              else
-              {
-                $('#perferrefDropdownOther').closest('.relative').addClass('hide'); 
-                $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
-              }
-              
-              // Communication method
-              $('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+parsed[0].communication_method+'"]').trigger('click');
-
-              $('.additional-details .requirements').val(parsed[0].specify_requirements);
-               
-              $('.initialScreen').removeClass('hideshow');
-               
-               
-               $('#countryName').attr('value',parsed[0].country);
-               if(parsed[0].country == 'Australia')
-               {
-                $('.stateDiv').removeClass('hide');
-               }
-               else
-               {
-                $('.stateDiv').addClass('hide');
-               }
-               //GetCountriesList();
-               $('#combobox').html('');
-               $('#combobox').html(window.comboboxList);
-               $(function() {
-                  $("#combobox").combobox({
-                      selected: function(event, ui) {
-                          $('#log').text('selected ' + $("#combobox").val());
-                      }
-                  });
-                  $("#combobox").next().next('.ui-combobox').remove();
-                  
-                  //$("#combobox").closest(".ui-widget").find("input, button").prop("disabled", true);
-              });
-               $('.ui-state-default, .ui-autocomplete-input').val(parsed[0].country);
-              setTimeout(function(){ 
-                  
-                  $('.additional-details .dropdown.assignToDiv .dropdownOptions li a[id="'+parsed[0].assign_to_UserId+'"]').click();
-                  $('.additional-details .dropdown.assignToDiv .dropdownOptions').hide();
-                  $('.additional-details .dropdown.assignToDiv .dropdownOptions .btn-skip2').click();
-                  
-                  // Check to see is user is other than super user and hiding assign to 
-                                    
-                  if(window.adminUser == true)
-                  {
-                    $('#BudgetText').closest('div.relative').removeAttr('readonly'); 
-                    $('.hideBudget').addClass('hide');
-                    
-                    if(parsed[0].reson_skip_next_in_line != "")
-                    {
-                        $('.assignToDiv').closest('div.relative').removeClass('hide');
-                        $('.otherReasonDiv').removeClass('hide');
-                        $('.otherReasonDiv a.selected-text').attr('value',parsed[0].reson_skip_next_in_line);
-                        $('.otherReasonDiv a.selected-text span').html(parsed[0].reson_skip_next_in_line);
-                    }
-                   }
-                  else
-                  { 
-                    $('#BudgetText').closest('div.relative').attr('readonly','readonly');
-                    $('.assignToDiv').closest('div.relative').addClass('hide');
-                    $('.otherReasonDiv').addClass('hide');
-                    $('.hideBudget').removeClass('hide');
-                   }
-
-                  // Booking Calendar
-                  
-                  //var getAmPm = parsed[0].booking_timezone;
-                  var getFullDate = parsed[0].booking_date;
-                  var getAssigneeId = parsed[0].assign_to_UserId;
-                  var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-                  var getDayName = new Date(getFullDate);
-                  var getDay = weekday[getDayName.getDay()];
-
-                  var d = new Date(getFullDate);
-                  var getOnlyDate = d.getDate();
-                  // Get month name
-                  var getMonth = d.getMonth() + 1;
-                  // Get Current Month Dates
-                  var m_names = ['January', 'February', 'March', 
-                                   'April', 'May', 'June', 'July', 
-                                   'August', 'September', 'October', 'November', 'December'];
-                  //month name
-                  var getMonth = m_names[d.getMonth()];
-                  var getCurrentDate = d.getDate();
-                  
-                    
-                  $('.suggestedDate').html('');
-                  //$('.questionView').removeClass('hide');
-                  $('.btn-saveBooking').addClass('saveNow');
-                  // destroy calendar
-                  $('#calendar2').fullCalendar("destroy");
-                  
-                  
-                  
-                  //$('#bookingDate').attr('time', "8:00 - 9:00");
-                  //$('#bookingDate').attr('timeZone', getAmPm);
-                  //$('#bookingDate').attr('date', getFullDate); 
-                  //$('.coverAreaBooking').removeClass('hide');
-                  //$('.timeSelection a[value="'+getAmPm+'"]').addClass('active'); // Setting am pm active class
-                  //$('.daySelection a[value="'+getDay+'"]').addClass('active'); // Setting day active class
-                  //$('.durationSelection a[value="'+parsed[0].booking_duration+'"]').addClass('active'); // Setting duration active class
-                                    
-                  //loadQuestionViewcalnder(getDay, getFullDate, getOnlyDate, getAssigneeId, getAmPm); // SLoading Calendar
-                  $('.next-saveDiv').addClass('one-half-pad-top');
-
-                  
-                  $('#bookingDate').addClass('nowCanSave');
-                  if(parsed[0].user_booking_date == '0'){
-
-                    
-                    $('.btn-bookNow open, .bookNowMain').addClass('hide');
-                    $('.savedBooking, .next-saveDiv').removeClass('hide');
-                    var getThisDate = parsed[0].booking_date;
-                    loadWeeklyDates(getThisDate);
-                    $('.btn-bookNow').addClass('hide');
-
-                    var monthname = $('#bookingDate').attr('monthNameEdit');
-                    var bookingyear = $('#bookingDate').attr('bookingyear');
-                    var monthnumber = $('#bookingDate').attr('monthnumber');
-                    var timeslot = parsed[0].booking_time;
-                    var getFullTime = getTimeSlotFull(timeslot);
-                    var timeslotfull = getFullTime;
-                    var getBookingDay = getDay;
-                    var datenumber = getCurrentDate;
-                    if(datenumber < 10)
-                      { datenumber = '0'+datenumber; }
-
-                    var getSuffixDate = getSuffix3(datenumber);
-                    
-                    var datenumberSuffix = datenumber+getSuffixDate;
-                    var roomnumber = parsed[0].booking_room; 
-                    var comlpetedate = parsed[0].booking_date;
-
-                    $('#bookingDate').attr('timeslot',timeslot);
-                    $('#bookingDate').attr('timeslotfull',timeslotfull);
-                    $('#bookingDate').attr('dayname',getBookingDay);
-                    $('#bookingDate').attr('datenumber', datenumber);
-                    $('#bookingDate').attr('roomnumber',roomnumber);
-                    $('#bookingDate').attr('comlpetedate', comlpetedate);
-                    var setHtml = getBookingDay + ' ' + datenumberSuffix + ' ' + monthname + ', ' + bookingyear + ' ' + getFullTime;
-                    $('#bookingDate').html(setHtml);
-                  }
-                  else
-                  {
-                    $('.bookNowDiv').addClass('hide');
-                    $('.btn-bookNow, .next-saveDiv').removeClass('hide');
-                  }
-                  
-                  
-              }, 1000);
-              
-              
-              
+    $(document).on('click','.calendarLoad .roomBooking', function (e) {
  
-              
-              $('.leadDeailContainer').addClass('hide');
-              $('.newLead').removeClass('maxHeightHide');
-              $('.dashboard-header').addClass('hide');
-              $('.basicInfo div.relative span, .additional-details div.relative span:first-child').css('display','inline-block');
-              $('.addressContainer, .additional-details').show();
-              $('.btn-nextDetails').addClass('hide');
-              $('.btn-saveDetails').removeClass('hide');
-              if(parsed[0].user_booking_date == '1')
-              {
-                $('.bookNowDiv').removeClass('hide'); 
-              }
-              else
-              {
-                $('.next-saveDiv, .btn-bookNow').removeClass('hide');
-              }    
-              $('.calendarWeeklyDate').attr('bookingDate', parsed[0].booking_date); 
-            }
-        });            
-});
+        $('.newLead').addClass('inEditMode');
+        
+        var getLeadId = $(this).attr('lead-id');    
+        EditLead(getLeadId);
+
+                   
+    });
+
+    
+    function EditLead(getLeadId)
+    {
+
+      $.ajax({
+                type: "GET",
+                url: "/dashboard/ajaxGetLeadDetailForLeadPage",
+                data: {leadId:getLeadId},
+                success: function (data) {
+                  var parsed = '';
+                  try
+                  {
+                    parsed = JSON.parse(data);                  
+                  }
+                  catch(e)
+                  {                  
+                   return false;                    
+                  }
+                  showMainLoading();
+                  var html = "";
+                 
+                  // Get User Color
+                  var getThisUserId = parsed[0].assign_to_UserId;
+                  $.ajax({
+
+                    type: "GET",
+                    url: "/dashboard/ajaxGetUserColor",
+                    data: {user_id : getThisUserId},
+                    success: function (data) {
+                      var parsed = '';          
+                      try{                           
+                        parsed = JSON.parse(data);              
+                      }                 
+                      catch(e)                
+                      {                  
+                        return false;                  
+                      }
+                      
+                      window.userColor = '#'+parsed["0"].color;
+                      
+                    }
+                  });
+                  
+                  //Setting Lead Id
+                  
+                  $('.thisLeadId').attr('leadId',parsed[0].id);
+                  
+                  // Basic Info Fields
+                  // Title
+                  $('.basicInfo .title .selected-text').attr('value',parsed[0].title);
+                  $('.basicInfo .title .selected-text span').html(parsed[0].title);
+                  // Gender
+                  $('.basicInfo .Gender .selected-text').attr('value',parsed[0].gender);
+                  $('.basicInfo .Gender .selected-text span').html(parsed[0].gender);
+                  // First Name Last Name Phone & Email
+                  $('.basicInfo .firstname').val(parsed[0].first_name);
+                  $('.basicInfo .lastname').val(parsed[0].last_name);
+                  $('.basicInfo .phonenumber').val(parsed[0].phone_number);
+                  $('#email').val(parsed[0].email);
+                  $('#onlyReferral').val(parsed[0].only_referral);
+                  $('#fullAddress').val(parsed[0].full_address);
+                  
+                  // Address Fields
+                  $('.stateDiv .dropdown.State .dropdownOptions li a[value="'+parsed[0].State+'"]').trigger('click');
+                  // Additional Detail Fields
+
+                  $('.additional-details .dropdown.product .dropdownOptions li a[value="'+parsed[0].product+'"]').trigger('click');
+
+                  
+
+                  // Referral method
+                  
+                  if(parsed[0].referral != "Google" && parsed[0].referral != "Word of mouth" && parsed[0].referral != "Previous client" && parsed[0].referral != "Walk In" && parsed[0].referral != "Facebook" && parsed[0].referral != "Instagram")
+                  { 
+                    $('#referralDropdownOther').val(parsed[0].referral);
+                    $('#referralDropdownOther').closest('.relative').removeClass('hide'); 
+                    $('.additional-details .dropdown.referral .dropdownOptions li a[value="Other"]').trigger('click');
+                  }
+                  else
+                  {
+                    $('#referralDropdownOther').closest('.relative').addClass('hide'); 
+                    $('.additional-details .dropdown.referral .dropdownOptions li a[value="'+parsed[0].referral+'"]').trigger('click');
+                  }
+
+                  $('.additional-details .instructions').val(parsed[0].special_instructions);
+                  $('.additional-details .ReferenceProduct').val(parsed[0].reference_product);
+
+                  $('.additional-details .dropdown.budget .dropdownOptions li a[value="'+parsed[0].budget+'"]').click();
+                  $('.additional-details .dropdown.budget .dropdownOptions').hide();
+
+                  $('#BudgetText').val(parsed[0].budget);
+                  $('#BudgetText').focusin();
+                  $('#BudgetText').focusout();
+
+                  // Preferred method
+                  if(parsed[0].contact_method != "Phone/Email" && parsed[0].contact_method != "Phone" && parsed[0].contact_method != "Email")
+                  { 
+                    $('#perferrefDropdownOther').val(parsed[0].contact_method);
+                    $('#perferrefDropdownOther').closest('.relative').removeClass('hide'); 
+                    $('.dropdown.preferredMethod .dropdownOptions li a[value="Other"]').trigger('click');
+                  }
+                  else
+                  {
+                    $('#perferrefDropdownOther').closest('.relative').addClass('hide'); 
+                    $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
+                  }
+                  
+                  // Communication method
+                  $('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+parsed[0].communication_method+'"]').trigger('click');
+
+                  $('.additional-details .requirements').val(parsed[0].specify_requirements);
+                   
+                  $('.initialScreen').removeClass('hideshow');
+                   
+                   
+                   $('#countryName').attr('value',parsed[0].country);
+                   if(parsed[0].country == 'Australia')
+                   {
+                    $('.stateDiv').removeClass('hide');
+                   }
+                   else
+                   {
+                    $('.stateDiv').addClass('hide');
+                   }
+                   //GetCountriesList();
+                   $('#combobox').html('');
+                   $('#combobox').html(window.comboboxList);
+                   $(function() {
+                      $("#combobox").combobox({
+                          selected: function(event, ui) {
+                              $('#log').text('selected ' + $("#combobox").val());
+                          }
+                      });
+                      $("#combobox").next().next('.ui-combobox').remove();
+                      
+                      //$("#combobox").closest(".ui-widget").find("input, button").prop("disabled", true);
+                  });
+                   $('.ui-state-default, .ui-autocomplete-input').val(parsed[0].country);
+                  setTimeout(function(){ 
+                      
+                      $('.additional-details .dropdown.assignToDiv .dropdownOptions li a[id="'+parsed[0].assign_to_UserId+'"]').click();
+                      $('.additional-details .dropdown.assignToDiv .dropdownOptions').hide();
+                      $('.additional-details .dropdown.assignToDiv .dropdownOptions .btn-skip2').click();
+                      
+                      // Check to see is user is other than super user and hiding assign to 
+                                        
+                      if(window.adminUser == true)
+                      {
+                        $('#BudgetText').closest('div.relative').removeAttr('readonly'); 
+                        $('.hideBudget').addClass('hide');
+                        
+                        if(parsed[0].reson_skip_next_in_line != "")
+                        {
+                            $('.assignToDiv').closest('div.relative').removeClass('hide');
+                            $('.otherReasonDiv').removeClass('hide');
+                            $('.otherReasonDiv a.selected-text').attr('value',parsed[0].reson_skip_next_in_line);
+                            $('.otherReasonDiv a.selected-text span').html(parsed[0].reson_skip_next_in_line);
+                        }
+                       }
+                      else
+                      { 
+                        $('#BudgetText').closest('div.relative').attr('readonly','readonly');
+                        $('.assignToDiv').closest('div.relative').addClass('hide');
+                        $('.otherReasonDiv').addClass('hide');
+                        $('.hideBudget').removeClass('hide');
+                       }
+
+                      // Booking Calendar
+                      
+                      //var getAmPm = parsed[0].booking_timezone;
+                      var getFullDate = parsed[0].booking_date;
+                      var getAssigneeId = parsed[0].assign_to_UserId;
+                      var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                      var getDayName = new Date(getFullDate);
+                      var getDay = weekday[getDayName.getDay()];
+
+                      var d = new Date(getFullDate);
+                      var getOnlyDate = d.getDate();
+                      // Get month name
+                      var getMonth = d.getMonth() + 1;
+                      // Get Current Month Dates
+                      var m_names = ['January', 'February', 'March', 
+                                       'April', 'May', 'June', 'July', 
+                                       'August', 'September', 'October', 'November', 'December'];
+                      //month name
+                      var getMonth = m_names[d.getMonth()];
+                      var getCurrentDate = d.getDate();
+                      
+                        
+                      $('.suggestedDate').html('');
+                      //$('.questionView').removeClass('hide');
+                      $('.btn-saveBooking').addClass('saveNow');
+                      // destroy calendar
+                      $('#calendar2').fullCalendar("destroy");
+
+                      $('.next-saveDiv').addClass('one-half-pad-top');
+
+                      
+                      $('#bookingDate').addClass('nowCanSave');
+                      if(parsed[0].user_booking_date == '0'){
+
+                        
+                        $('.btn-bookNow open, .bookNowMain').addClass('hide');
+                        $('.savedBooking, .next-saveDiv').removeClass('hide');
+                        var getThisDate = parsed[0].booking_date;
+                        loadWeeklyDates(getThisDate);
+                        $('.btn-bookNow').addClass('hide');
+
+                        var monthname = $('#bookingDate').attr('monthNameEdit');
+                        var bookingyear = $('#bookingDate').attr('bookingyear');
+                        var monthnumber = $('#bookingDate').attr('monthnumber');
+                        var timeslot = parsed[0].booking_time;
+                        var getFullTime = getTimeSlotFull(timeslot);
+                        var timeslotfull = getFullTime;
+                        var getBookingDay = getDay;
+                        var datenumber = getCurrentDate;
+                        if(datenumber < 10)
+                          { datenumber = '0'+datenumber; }
+
+                        var getSuffixDate = getSuffix3(datenumber);
+                        
+                        var datenumberSuffix = datenumber+getSuffixDate;
+                        var roomnumber = parsed[0].booking_room; 
+                        var comlpetedate = parsed[0].booking_date;
+
+                        $('#bookingDate').attr('timeslot',timeslot);
+                        $('#bookingDate').attr('timeslotfull',timeslotfull);
+                        $('#bookingDate').attr('dayname',getBookingDay);
+                        $('#bookingDate').attr('datenumber', datenumber);
+                        $('#bookingDate').attr('roomnumber',roomnumber);
+                        $('#bookingDate').attr('comlpetedate', comlpetedate);
+                        var setHtml = getBookingDay + ' ' + datenumberSuffix + ' ' + monthname + ', ' + bookingyear + ' ' + getFullTime;
+                        $('#bookingDate').html(setHtml);
+                      }
+                      else
+                      {
+                        $('.bookNowDiv').addClass('hide');
+                        $('.btn-bookNow, .next-saveDiv').removeClass('hide');
+                      }
+                      
+                      
+                  }, 1000);
+                  
+
+                  $('.leadDeailContainer').addClass('hide');
+                  $('.newLead').removeClass('maxHeightHide');
+                  $('.dashboard-header').addClass('hide');
+                  $('.basicInfo div.relative span, .additional-details div.relative span:first-child').css('display','inline-block');
+                  $('.addressContainer, .additional-details').show();
+                  $('.btn-nextDetails').addClass('hide');
+                  $('.btn-saveDetails').removeClass('hide');
+                  if(parsed[0].user_booking_date == '1')
+                  {
+                    $('.bookNowDiv').removeClass('hide'); 
+                  }
+                  else
+                  {
+                    $('.next-saveDiv, .btn-bookNow').removeClass('hide');
+                  }    
+                  $('.calendarWeeklyDate').attr('bookingDate', parsed[0].booking_date); 
+                  $('.newLead').removeClass('hide');
+                  $('.calendarLoad').addClass('hide');
+                }
+            }); 
+    }
+
+
+    
 /* ------------------ End Edit Detail ------------------------*/
 /* ------------------ End Edit Detail ------------------------*/
 /* ------------------ End Edit Detail ------------------------*/
@@ -3738,203 +3760,6 @@ setTimeout(function(){
 /*--------------------- --Load Question View Calender Start ------- */
 /*------------------------------------------------------------------*/
 
-
-    //function loadQuestionViewcalnder(getDay, getFullDate, getOnlyDate, getAssigneeId, getAmPm)
-    /*function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate)
-    { 
-
-           //var data =  {booking_date : getFullDate , day : getDay, assigneeId : getAssigneeId, booking_timezone : getAmPm}
-           debugger
-           var data =  {booking_date : getWeeklyDate , assign_UserId : getAssigneeId}
-           // Check if Timezone is AM or PM
-          /*
-          if(getAmPm == "AM")
-          { 
-            $('.PM-heading').addClass('hide'); 
-            $('.AM-heading').removeClass('hide'); 
-            $('#calendar2').addClass('amHeight');
-            $('#calendar2').removeClass('pmHeight');
-          }
-          else
-          { 
-            $('.AM-heading').addClass('hide'); 
-            $('.PM-heading').removeClass('hide'); 
-            $('#calendar2').addClass('pmHeight');
-            $('#calendar2').removeClass('amHeight');
-          
-          }*/
-            // Get 
-          /* $.ajax({
-                
-                type: "GET",
-                url: "dashboard/ajaxGetDataForCustomViewCalender",
-                data: data,
-                success: function (data) {
-                  console.log(data);
-                  // Convert Json into Array
-
-                var parsed = '';
-
-
-                try{
-
-                parsed = JSON.parse(data);
-
-                }
-
-                catch(e)
-
-                {
-
-                return false;                  
-                }   
-                 var arr = [];
-                  
-                  for(var x in parsed){
-                    arr.push(parsed[x]);
-                  }
-
-                  console.log(arr);
-
-                  var myArray = [];
-                  var getArrayLength = arr[0].length;
-                  var count = 0;
-
-                  // if there is no data
-
-                  if(arr.length == 1)
-                  { 
-
-                    for (var i = 0; i < getArrayLength; i++) {
-                        var startDate = arr[0][i];              
-                        addingArrayForElse(myArray, startDate, getAmPm)  
-                    }// End For loop
-
-                  }// End If statement
-                  else
-                  {
-                    // Reverse Date Array 
-                    arr[0].reverse();
-
-                    var count1 = 0
-                    
-                    for (var i = 0; i < getArrayLength; i++) {
-                      var count2 = 1
-                      var startDate = arr[0][i];
-
-                      if(arr[count2])
-                      {
-                        if( arr[0][i] == arr[count2].date ) 
-                        {
-                          if(arr[count2].status == null)
-                          {
-                            // 8 - 9 AM
-                            addingArray(myArray, startDate, count2, arr, getAmPm)
-                            continue;
-                          }
-                          else
-                          {
-                            addingLeaveArray(myArray, startDate, getAmPm)
-                            continue;
-                            console.log('annual leave');
-                          }
-                        }
-                      }
-                      count2++
-                      if(arr[count2])
-                      {
-                        if(arr[0][i] == arr[count2].date)
-                        {
-                          if(arr[count2].status == null)
-                          {
-                            addingArray(myArray, startDate, count2, arr, getAmPm)
-                            continue;
-                          }
-                          else
-                          {
-                            addingLeaveArray(myArray, startDate, getAmPm)
-                            continue;
-                            console.log('annual leave');
-                          }
-                        }
-                        
-                      }
-                      count2++
-                      if(arr[count2])
-                      {
-                        if(arr[0][i] == arr[count2].date)
-                        {
-                          if(arr[count2].status == null)
-                          {
-                            addingArray(myArray, startDate, count2, arr, getAmPm)
-                            continue;
-                          }
-                          else
-                          {
-                            addingLeaveArray(myArray, startDate, getAmPm)
-                            continue;
-                            console.log('annual leave');
-                          }
-                        }
-                        
-                      }
-                      count2++
-                      if(arr[count2])
-                      {
-                        if(arr[0][i] == arr[count2].date)
-                        {
-                          if(arr[count2].status == null)
-                          {
-                            addingArray(myArray, startDate, count2, arr, getAmPm)
-                            continue;
-                          }
-                          else
-                          {
-                            addingLeaveArray(myArray, startDate, getAmPm)
-                            continue;
-                            console.log('annual leave');
-                          }
-                        }
-                        
-                      }
-                      count2++
-                      if(arr[count2])
-                      {
-                        if(arr[0][i] == arr[count2].date)
-                        {
-                          if(arr[count2].status == null)
-                          {
-                            addingArray(myArray, startDate, count2, arr, getAmPm)
-                            continue;
-                          }
-                          else
-                          {
-                            addingLeaveArray(myArray, startDate, getAmPm)
-                            continue;
-                            console.log('annual leave');
-                          }
-                        }
-                        
-                      }
-                      else
-                        {
-                          addingArrayForElse(myArray, startDate, getAmPm)
-                          continue;
-                        }
-                      }
-                      
-                  }// End Else Statement
-                   
-                  window.questionViewCalendar = myArray;
-                  setTimeout(function(){ 
-                    loadCalendar2(getDay, getFullDate, getOnlyDate);
-                  }, 1000);
-                   
-
-            }*/
-            
-        /*});
-    }*/
 
 
     function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate)
@@ -3949,7 +3774,7 @@ setTimeout(function(){
                 data: data,
                 success: function (data) {
                 // Convert Json into Array
-                debugger
+
                 var parsed = '';
                 try{
                   parsed = JSON.parse(data);
@@ -4149,7 +3974,7 @@ setTimeout(function(){
                                 setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="45" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
                               setThisHtml +='</div>';
 
-                              setThisHtml +='<div class="roomBooking '+roomNumber+'" style="height:' + height1 + '; top:'+ positionTop +'">';
+                              setThisHtml +='<div class="roomBooking '+roomNumber+'" lead-id="'+getAllRooms[i].id+'" style="height:' + height1 + '; top:'+ positionTop +'">';
                                 setThisHtml +='<p class=" fs-11 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>'+getAllRooms[i].assignto_shortcode+'</span></p>';
                                 setThisHtml +='<div class="full align-left half-pad-left lh-16 fs-11 one-pad-top relative">';
                                   setThisHtml +='<p><i class="icon-diamond fs-11 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].product_shortcode+'</span></p>';
@@ -6279,7 +6104,7 @@ $(document).on('click','#dateRange', function (e) {
 
 
 $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
-  debugger
+
   console.log(picker.startDate.format('YYYY-MM-DD'));
   console.log(picker.endDate.format('YYYY-MM-DD'));
 });
@@ -6292,7 +6117,7 @@ function loadAddNewLeaveCalendar(){
      $(".leaveCalendar").multiDatesPicker({
        minDate: 0,
        onSelect:function(data, event){
-        debugger
+        
         var getValues = [];
         var checkValue = $('#dateRange').val();
         var checkCounter = 0

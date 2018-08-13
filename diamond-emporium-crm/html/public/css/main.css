@@ -612,6 +612,10 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
 
+.calendarLoad{ background: white; padding: 24px 25px 24px 60px; }
+.calendarLoad .addBookingLink{opacity: 0 !important;}
+.calendarLoad .cancelNewBooking,.calendarLoad .saveNewBooking {display: none;}
+.calendarLoad .roomBooking{cursor: pointer;}
 .NewCalendarContainer{ width: 1580px; }
 .calendarHead { background-color: #e7f5fd; line-height: 34px; padding: 22px 0; border: 1px solid #dfdfdf; }
 .weeklyDates { color: #444c63; margin: 0 auto; width: 380px; text-align: center; padding-top: 2px; height: 34px; position: relative;}
