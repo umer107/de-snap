@@ -132,6 +132,7 @@ echo '<div class="relative pull-left gap-right pad-right">';
 
              echo '</li>';
         echo '</ul>';
+        echo '<label class="opacity0 titleError">Please select title</label>';
     echo '</div>';
 
     // -----------------------------------------------------------------
@@ -156,6 +157,7 @@ echo '<div class="relative pull-left gap-right pad-right">';
 
              echo '</li>';
         echo '</ul>';
+        echo '<label class="opacity0 genderError">Please select gender</label>';
     echo '</div>';
     echo '</div>';
 
@@ -163,25 +165,25 @@ echo '<div class="relative pull-left gap-right pad-right">';
     // -----------------------------------------------------------------
 
     // FirstName
-    echo '<div class="relative pull-left"><span style="display: none">*First name</span>'.$this->formRow($form->get("first_name")).'<label class="opacity0">Only "-" and alphabets are allowed</label></div>';
+    echo '<div class="relative pull-left"><span style="display: none">*First name</span>'.$this->formRow($form->get("first_name")).'<label class="opacity0 firstError">Only "-" and alphabets are allowed</label><label class="opacity0 requiredError">Please select first name</label></div>';
 
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
 
     // LastName
-    echo '<div class="relative pull-left"><span style="display: none">*Last name</span>'.$this->formRow($form->get("last_name")).'<label class="opacity0">Only "-" and alphabets are allowed</label></div>';
+    echo '<div class="relative pull-left"><span style="display: none">*Last name</span>'.$this->formRow($form->get("last_name")).'<label class="opacity0 firstError">Only "-" and alphabets are allowed</label><label class="opacity0 requiredError">Please select last name</label></div>';
     
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
 
     // Phone
-    echo '<div class="relative pull-left"><span style="display: none">*Phone number*</span>'.$this->formRow($form->get("phone_number")).'<label class="opacity0">Please enter a valid phone number</label></div>';
+    echo '<div class="relative pull-left"><span style="display: none">*Phone number*</span>'.$this->formRow($form->get("phone_number")).'<label class="opacity0 firstError">Please enter a valid phone number</label><label class="opacity0 requiredError">Please select phone number</label></div>';
 
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
 
     // email
-    echo '<div class="relative pull-left"><label class="opacity0 error emailexists">Record not found</label><span style="display: none" class="text-top">*Email</span><a href="javascript:;" class="availability absolute">availability</a>'.$this->formRow($form->get("email")).'<label class="opacity0 error ">Please enter a valid email</label></div>';
+    echo '<div class="relative pull-left"><label class="opacity0 error emailexists">Record not found</label><span style="display: none" class="text-top">*Email</span><a href="javascript:;" class="availability absolute">availability</a>'.$this->formRow($form->get("email")).'<label class="opacity0 error ">Please enter a valid email</label><label class="opacity0 requiredError">Please select email</label></div>';
 
     // Assignee Name
     //echo '<div class="selectedAgent relative pull-left" di>
@@ -196,7 +198,8 @@ echo '<div class="relative pull-left gap-right pad-right">';
 
     
     // Country List
-    echo '<div class="relative full pull-left initialScreen hideshow one-half-pad-top">';
+    //echo '<div class="relative full pull-left initialScreen hideshow one-half-pad-top">';
+    echo '<div class="relative full pull-left initialScreen  one-half-pad-top">';
     echo '<div id="countryName" class="hide" value="Australia"></div>
           
          <div class="relative pull-left countryDiv">
@@ -330,7 +333,7 @@ echo '</div>';
 
 //Additional Detail
 //Product
-echo '<div class="additional-details full fs-14 pad-top" style="display:none">';
+echo '<div class="additional-details full fs-14 pad-top">';
 
 echo '<h2 class="fs-24 color-green robotolight double-pad-bottom double-pad-top"> Enter additional details ';
 
@@ -579,15 +582,15 @@ echo '</div>';
 
 // .additional-details Div End
 
-echo '<h2 class="fs-24 color-green robotolight double-pad-top hide bookingHeading pull-left"> Booking </h2>';
+echo '<h2 class="fs-24 color-green robotolight double-pad-top hide bookingHeading pull-left hide"> Calendar </h2>';
 
       
       
 
     // next-saveDiv Start
-    echo'<div class="next-saveDiv full hide">';
-        echo '<h2 class="fs-24 color-green robotolight double-pad-bottom showOnNewBooking"> Booking </h2>';
-        echo '  <a href="javascript:;" class="btn-blue fs-14 button bg-white btn-bookNow open lh-34 align-center robotomedium hide pull-left gap-bottom">Book Now</a>';
+    echo'<div class="next-saveDiv full hide one-half-pad-top">';
+        echo '<h2 class="fs-24 color-green robotolight double-pad-bottom showOnNewBooking hide"> Booking </h2>';
+        echo '  <a href="javascript:;" class="btn-blue fs-14 button bg-white btn-bookNow open lh-34 align-center robotomedium pull-left gap-bottom hide">Book Now</a>';
         
         echo '<div class="pull-left fs-14 hide savedBooking">
                 <span id="bookingDate" class="double-pad-right pull-left lh-34"></span>
@@ -595,11 +598,11 @@ echo '<h2 class="fs-24 color-green robotolight double-pad-top hide bookingHeadin
                 <span class="pull-left  lh-34 double-pad-left half-gap-left pointer cancelBookedbooking">Cancel Booking</span>
             </div>';
             echo '<label class="pull-left pad-left lh-34 opacity0 color-red bookingError transition-ease-02 robotomedium">Please select a booking date</label>';
-        echo '<div class="next-options pull-right triple-pad-right">';
+        echo '<div class="next-options pull-right triple-pad-right hide">';
             
-            echo '<a href="javascript:;" class="btn-green fs-14 button bg-white btn-nextDetails lh-34 align-center robotomedium">Next</a>';
-            echo '<a href="javascript:;" class="btn-green fs-14 button bg-white btn-saveDetails lh-34 align-center robotomedium hide"><input name="submit" type="submit" class="d-b full-width" id="submitbutton" value="Save"></a>'; 
-            echo '<label class="fs-10 relative bottom-3">or press <span class="color-darkGray robotomedium">ENTER</span></label>';
+            echo '<a href="javascript:;" class="btn-green fs-14 button bg-white btn-nextDetails lh-34 align-center robotomedium hide">Next</a>';
+            echo '<a href="javascript:;" class="btn-green fs-14 button bg-white btn-saveDetails lh-34 align-center robotomedium "><input name="submit" type="submit" class="d-b full-width" id="submitbutton" value="Save"></a>'; 
+            //echo '<label class="fs-10 relative bottom-3">or press <span class="color-darkGray robotomedium">ENTER</span></label>';
             echo '<a href="javascript:;" class="fs-14  btn-cancel bg-white robotomedium gap-right">Cancel</a>';
             
         echo '</div>';

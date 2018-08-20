@@ -60,12 +60,13 @@ a.btn-nextDetails, a.btn-saveDetails{  width: 102px;  margin-right: 5px; }
 a.btn-disableSave{  width: 102px;  margin-right: 5px; color: #a5a5a5; }
 a.btn-saveDetails input{background: none; border: none; line-height: 31px; text-align: center; cursor: pointer; width: 100px;}
 .btn-bookNow, .btn-saveBooking{  width: 162px; margin-right: 5px; }
-a.btn-cancel{ color: #5D5D5D; padding-left: 50px; }
+a.btn-cancel{ color: #5D5D5D; padding-left: 30px; }
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { background-color: rgb(255, 255, 255) !important; background-image: none; color: #5d5d5d; }
 .other-explain a{}
 .dropdown li a.submitOther{width: 120px; overflow: hidden; border: 1px solid #DFDFDF; color: #27AD09; margin: 0 auto; margin-top: 21px; margin-bottom: 0;}
 .showMessage { position: fixed; width: 100%; text-align: center; left: 0; top: -65px; right: 0; z-index: 100; background: #29629a; color: white; padding: 22px; font-size: 15px; transition: all .5s ease;}
 .showMessage.top0{top:0;}
+.showMessage.topShow{top:64px;}
 .showMessage div{  }
 .bookNowMain{}
 .coverAreaBooking{ position: absolute; left: 0; right: 0; top: 0; height: 100%; z-index: 1; }
@@ -109,7 +110,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { bac
 
 /* user dp Dropdown Start */
 
-.userDropdown{ width: 233px; height: 202px; border: 1px solid #DFDFDF; top: 60px; left: -28px; cursor: pointer}
+.userDropdown{ width: 233px; height: 202px; border: 1px solid #DFDFDF; top: 55px; left: -28px; cursor: pointer}
 .userDropdown div{ height: 40px; line-height: 40px; vertical-align: middle; cursor: pointer;}
 .userDropdown div:hover{ background: #4778A8;}
 .userDropdown div:hover p{color:#ffffff; font-family: robotobold; }
@@ -124,7 +125,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { bac
 
 /* absebce Dropdown Start */
 
-.absebceDropdown{ max-height: 425px; overflow: auto; width: 233px; border: 1px solid #DFDFDF; top: 54px; right: -51px; cursor: pointer}
+.absebceDropdown{ max-height: 425px; overflow: auto; width: 233px; border: 1px solid #DFDFDF; top: 55px; right: -39px; cursor: pointer}
 .absebceDropdown > div{ height: 60px; line-height: 60px; vertical-align: middle; cursor: pointer;}
 /*
 .absebceDropdown > div:hover{ background: #4778A8;}
@@ -433,7 +434,7 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 .leavesDetail .details.lightgreen{ border-color: #d9ead3; }
 .leavesDetail .details.darkgreen{ border-color: #27ad09; }
 .leavesDetail .details.blue{ border-color: #7499bd; }
-.leavesDetail .details.gray{ border-color: #c6c6c6; col }
+.leavesDetail .details.gray{ border-color: #c6c6c6;  }
 .leavesDetail .details span{display: block;}
 .leavesDetail .details span:first-child{ font-family: robotomedium; font-size: 12px; }
 .leavesDetail .details span:last-child{ font-family: robotoregular; font-size: 13px; }

@@ -890,11 +890,17 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 ));
                 
                //Filter Data Based On  Assign_Us_UserId
-               if(!empty($filter['assign_UserId']))
+               if($filter['assign_UserId'] != null)
                {
+
+                if(!empty($filter['assign_UserId']))
+                  {
                    $lead_assigni_leave = $filter['assign_UserId'];                   
                    $select_leave->where(array('l.Leave_UserId = ?' =>  $lead_assigni_leave));
-               }
+                  }
+
+               }       
+               
                 
                //Filter The Data Of Current Week
                if(!empty($filter['booking_date']))
@@ -907,13 +913,15 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                $data_leave = $this->executeQuery($select_leave);                     
                $result_leave = $data_leave->toArray();
 
-               
-               foreach($result_leave as $items_leave)
+               if($filter['assign_UserId'] != null)
                {
-                   
-                   $booking_date_add_leave = $items_leave['Leave_StartDate'];
-                   $leave_user_id = $items_leave['Leave_UserId'];
-                   $template_array[$booking_date_add_leave]['100'] = $items_leave;
+                 foreach($result_leave as $items_leave)
+                 {
+                     
+                     $booking_date_add_leave = $items_leave['Leave_StartDate'];
+                     $leave_user_id = $items_leave['Leave_UserId'];
+                     $template_array[$booking_date_add_leave]['100'] = $items_leave;
+                 }
                }
                
               /******************************CustomAddLeaveEnd************************************/
@@ -967,22 +975,22 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         $day = "Monday";
                         break;
                     case "Tue":
-                        $day = "Monday";
+                        $day = "Tuesday";
                         break;
                     case "Wed":
-                        $day = "Monday";
+                        $day = "Wednesday";
                         break;
                     case "Thu":
-                        $day = "Monday";
+                        $day = "Thursday";
                         break;
                     case "Fri":
-                        $day = "Monday";
+                        $day = "Friday";
                         break;
                     case "Sat":
-                        $day = "Monday";
+                        $day = "Saturday";
                         break;
                     case "Sun":
-                        $day = "Monday";
+                        $day = "Sunday";
                         break;
                     default :
                         $day = "SomeIssueOccured";
