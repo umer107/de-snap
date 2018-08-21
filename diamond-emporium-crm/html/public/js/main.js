@@ -923,7 +923,7 @@ $(document).ready(function () {
 
     // Validating Email and opening next screen buttons
     $(document).on('keyup', '.basicInfo input.checkEmailCount', function () {
-        $('.requiredError').addClass('opacity0');
+        $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         $('.emailexists').addClass('opacity0');
         var getValue = $(this).val().length;
         var getemail = $(this).val();
@@ -966,6 +966,7 @@ $(document).ready(function () {
     // Email Check
 
     $(document).on('click', '.availability', function () {
+        $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         var getemail = $('#email').val();
         var getValue = $('#email').val().length;
 
@@ -1672,6 +1673,7 @@ $(document).on('click','.daysSlider label.room3', function (e) {
 
 // Add new Booking popup
 $(document).on('click','.addBookingLink', function (e) {
+    $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
     window.validState = true;
     validation();
     if(window.validState == false )
@@ -3041,7 +3043,7 @@ setTimeout(function(){
     });
     
     $(document).on('click','#submitbutton', function (e) {
-        
+        $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         var title = $('.dropdown.title a.selected-text').attr('value');
         var gender = $('.dropdown.Gender a.selected-text').attr('value');
         var firstname = $('.firstname').val();
