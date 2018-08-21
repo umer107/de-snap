@@ -54,17 +54,17 @@ class DashboardController extends AbstractActionController
              $sm = $this->getServiceLocator();
              $identity = $sm->get('AuthService')->getIdentity();
              $request = $this->getRequest();
-	     $lead_owner = $identity['user_id'];	
+	           $lead_owner = $identity['user_id'];	
              $lead_owner_name = $identity['first_name'] . ' ' . $identity['last_name'];
              
              if($request->isPost()){
                             
-		$posts = $request->getPost()->toArray();
+		            $posts = $request->getPost()->toArray();
                
                 $posts['lead_owner_name'] =  $lead_owner_name;
                 $posts['lead_owner'] = $lead_owner;
                 $objUserTable = $sm->get('SaveDashboard\Model\SaveDashboardTable');     
-		$userid = $identity['user_id'];	
+	              $userid = $identity['user_id'];	
                 $objUserTable->saveDashboard($posts);
                 }
 	      
@@ -87,7 +87,7 @@ class DashboardController extends AbstractActionController
     {
                   try{
                       $sm = $this->getServiceLocator();
-		      $identity = $sm->get('AuthService')->getIdentity();
+		                  $identity = $sm->get('AuthService')->getIdentity();
                       $config = $this->getServiceLocator()->get('Config');
                       $params = $this->getRequest()->getQuery()->toArray();
                       $objUserTable = $sm->get('Leave\Model\LeaveTable');
@@ -123,7 +123,7 @@ class DashboardController extends AbstractActionController
     {
                   try{
                       $sm = $this->getServiceLocator();
-		      $identity = $sm->get('AuthService')->getIdentity();
+		                  $identity = $sm->get('AuthService')->getIdentity();
                       $config = $this->getServiceLocator()->get('Config');
                       $params = $this->getRequest()->getQuery()->toArray();
                       $objUserTable = $sm->get('Leave\Model\LeaveTable');
@@ -258,7 +258,7 @@ class DashboardController extends AbstractActionController
             
               if($request->isPost()){
                  $post = $request->getPost()->toArray();                                 		
-		 $objUserTable = $sm->get('SaveDashboard\Model\SaveDashboardTable');
+		             $objUserTable = $sm->get('SaveDashboard\Model\SaveDashboardTable');
                     
                  if($post['lead_status'] == 'Closed / Lost')
                  {
@@ -339,16 +339,16 @@ class DashboardController extends AbstractActionController
    public function  GetNextInLineAction()
    {
        try {
-                      $sm = $this->getServiceLocator();
-		      $identity = $sm->get('AuthService')->getIdentity();
-                      $config = $this->getServiceLocator()->get('Config');
-                      $params = $this->getRequest()->getQuery()->toArray();
-                      $objUserTable = $sm->get('Leave\Model\LeaveTable');
-                      $leadsArr = $objUserTable->fetchUserNextInLine($params);
-                     
-                      echo json_encode($leadsArr);
-                      
-                      exit;
+              $sm = $this->getServiceLocator();
+              $identity = $sm->get('AuthService')->getIdentity();
+              $config = $this->getServiceLocator()->get('Config');
+              $params = $this->getRequest()->getQuery()->toArray();
+              $objUserTable = $sm->get('Leave\Model\LeaveTable');
+              $leadsArr = $objUserTable->fetchUserNextInLine($params);
+             
+              echo json_encode($leadsArr);
+              
+              exit;
                  
            
        }catch (Exception $e) {
@@ -359,10 +359,10 @@ class DashboardController extends AbstractActionController
    public function ajaxGetUserLoginDetailAction()
    {
        try {
-                      $sm = $this->getServiceLocator();
-		      $identity = $sm->get('AuthService')->getIdentity();                      
-                      echo json_encode($identity);
-                      exit;
+              $sm = $this->getServiceLocator();
+              $identity = $sm->get('AuthService')->getIdentity();                      
+              echo json_encode($identity);
+              exit;
                  
            
        }catch (Exception $e) {
@@ -375,7 +375,7 @@ class DashboardController extends AbstractActionController
    {
        try {
                       $sm = $this->getServiceLocator();
-		      $identity = $sm->get('AuthService')->getIdentity();
+		                  $identity = $sm->get('AuthService')->getIdentity();
                       $config = $this->getServiceLocator()->get('Config');
                       $params = $this->getRequest()->getQuery()->toArray();
                       $objUserTable = $sm->get('Leave\Model\LeaveTable');

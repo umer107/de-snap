@@ -1681,6 +1681,9 @@ $(document).on('click','.addBookingLink', function (e) {
     $(this).addClass('thisClicked');
     $(this).closest('.labelContainer').addClass('thisLabelClicked');
     var getRoomNumber = $(this).closest('.labelContainer').attr('roomnumber');
+    var timeStart = $(this).attr('bookingstart');
+
+    var getTimeAllowed = checkTimeAllowed(timeStart);
     var p = $(this)
     var offset = p.offset();
     var getOffsetTop = offset.top;
@@ -1707,14 +1710,16 @@ $(document).on('click','.addBookingLink', function (e) {
     var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
           setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">Duration</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
           setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
-            setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
-              setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="75" value="75 minutes">75 minutes</a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="90" value="90 minutes">90 minutes</a></li>';
-              setDropdown += '</ul></li>';
-            setDropdown += '</ul>';
+          //var getMinuteList = getMinutesList(getTimeAllowed);
+          //setDropdown += getMinuteList;
+          setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
+          setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
+          setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
+          setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
+          setDropdown += '<li><a href="javascript:;" getDuration="75" value="75 minutes">75 minutes</a></li>';
+          setDropdown += '<li><a href="javascript:;" getDuration="90" value="90 minutes">90 minutes</a></li>';
+          setDropdown += '</ul></li>';
+        setDropdown += '</ul>';
 
     var setHtml = "";
     var setHtml = '<div class="addBookingContainer roomsContainer">';
@@ -1776,6 +1781,138 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('.NewCalendarContainer').addClass('hide');
     
 });
+
+
+// Check how many bookings are left there
+  
+  function checkTimeAllowed(timeStart)
+  {
+    
+    
+    var timeStartFrom = 0
+    var checkRoom = 0
+
+    if(timeStart == '0')
+    {timeStartFrom = 0}
+    else if(timeStart == '15')
+    {timeStartFrom = 1}
+    else if(timeStart == '30')
+    {timeStartFrom = 2}
+    else
+    {timeStartFrom = 3}
+
+    var positionTop = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').attr('topPosition');
+
+    if(positionTop == '15px')
+    { 
+      checkRoom++;
+    }
+    else if(positionTop == '31px')
+    { 
+      checkRoom++;
+      checkRoom++;
+    }
+    else if(positionTop == '47px')
+    { 
+      checkRoom++;
+      checkRoom++;
+      checkRoom++;
+    }
+    else 
+    {
+      checkRoom = 0;
+    }
+
+    var getRoom = parseInt(timeStartFrom);
+    
+    var positionTop2 = $('a.addBookingLink.thisClicked').closest('.daysContentSlider').next('.daysContentSlider').find('.roomBooking').attr('topPosition');
+    if(checkRoom == 0)
+    {
+      if(timeStart == '0')
+      {checkRoom = 4;}
+      else if(timeStart == '15')
+      {checkRoom = 3;}
+      else if(timeStart == '30')
+      {checkRoom = 2;}
+      else
+      {checkRoom = 1;}
+    }
+
+    if(positionTop2 == '15px')
+    { 
+      checkRoom+= 1;
+    }
+    else if(positionTop2 == '31px')
+    { 
+      checkRoom+= 2;
+    }
+    else if(positionTop2 == '47px')
+    { 
+      checkRoom+= 3;
+    }
+    positionTop
+
+    if(positionTop2 == undefined || positionTop2 == null)
+    {
+      checkRoom = checkRoom - getRoom;
+      if(positionTop == undefined || positionTop == null)
+      {
+        checkRoom = 6;
+      }
+    }
+
+    return checkRoom
+    
+
+    debugger;
+  }
+
+
+  function getMinutesList(getTimeAllowed)
+  {
+    var setDropdown = "";
+    if(getTimeAllowed == 6)
+    {
+        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="75" value="75 minutes">75 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="90" value="90 minutes">90 minutes</a></li>';
+    }
+    else if(getTimeAllowed == 5)
+    {
+        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="75" value="75 minutes">75 minutes</a></li>';
+    }
+    else if(getTimeAllowed == 4)
+    {
+        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
+    }
+    else if(getTimeAllowed == 3)
+    {
+        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
+    }
+    else if(getTimeAllowed == 2)
+    {
+        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
+    }
+    else
+    {
+        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
+    }
+    return setDropdown;
+  }
+            
 
   function geDateValues(getSelectedDate)
   {
@@ -2884,7 +3021,8 @@ setTimeout(function(){
     // Cancel New Booking
     $(document).on('click','.cancelNewBooking', function (e) {
       $('.next-saveDiv, .next-options, .btn-bookNow').removeClass('hide');
-
+      $('.savedBooking').addClass('hide');
+      
       $('.NewCalendarContainer').addClass('hide');
       additionalDetailsExpand();
     });
@@ -3680,7 +3818,7 @@ setTimeout(function(){
                                 setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="45" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
                               setThisHtml +='</div>';
 
-                              setThisHtml +='<div class="roomBooking '+roomNumber+'" lead-id="'+getAllRooms[i].id+'" style="height:' + height1 + '; top:'+ positionTop +'">';
+                              setThisHtml +='<div class="roomBooking '+roomNumber+'" lead-id="'+getAllRooms[i].id+'" topPosition="'+positionTop+'" style="height:' + height1 + '; top:'+ positionTop +'">';
                                 setThisHtml +='<p class=" fs-11 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>'+getAllRooms[i].assignto_shortcode+'</span></p>';
                                 setThisHtml +='<div class="full align-left half-pad-left lh-16 fs-11 one-pad-top relative">';
                                   setThisHtml +='<p><i class="icon-diamond fs-11 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].product_shortcode+'</span></p>';
@@ -5027,22 +5165,15 @@ function SetLeaveContent(getMonth,getYear) {
           data: {month : getMonth , year : getYear},
           success: function (data) {
 
-var leavesData= '';
-
-                   
-try{
-                         
-leavesData= JSON.parse(data);
-                   
-}
-                   
-catch(e)
-                   
-{
-          
-$('.all-Leaves-Content .loading').hide(100);             
-return false;                  
-}
+            var leavesData= '';               
+            try{
+              leavesData= JSON.parse(data);
+            }           
+            catch(e)
+            {
+              $('.all-Leaves-Content .loading').hide(100);             
+              return false;                  
+            }
 
               setTimeout(function(){
                 $('.leaveContent').html(window.leavesContentList);
