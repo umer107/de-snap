@@ -3562,7 +3562,7 @@ setTimeout(function(){
 
 
           // Checking if Agent selected is on leave
-
+          $(".daysContent").removeClass('agentOnLeave').attr('title',"");
           var data2 =  {booking_date : getWeeklyDate , assign_UserId : getAssigneeId}
           if(getAssigneeId == undefined || getAssigneeId == null)
           {
