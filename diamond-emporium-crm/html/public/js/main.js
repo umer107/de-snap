@@ -1805,6 +1805,11 @@ $(document).on('click','.savePopupBooking', function (e) {
         checkRoom = 6;
         return checkRoom;
       }
+      if(positionTop == "0px")
+      {
+        checkRoom = 6;
+        return checkRoom;
+      }
     }
 
     if(timeStart == '0')
@@ -1816,7 +1821,6 @@ $(document).on('click','.savePopupBooking', function (e) {
     else
     {timeStartFrom = 3}
 
-    var positionTop = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').attr('topPosition');
 
     if(positionTop == '15px')
     { 
@@ -6315,8 +6319,9 @@ $(document).on('click','.leadUserName', function (e) {
                html += "<p><label>Lead Status:</label><label>" + parsed[0].lead_status + " </label></p> ";
                if(parsed[0].user_booking_date == '0')
                {
-                  var getBookingTime = getTimeSlotFull(parsed[0].booking_time);
-                  html += "<p><label>Booking Time:</label><label>" + getBookingTime + " </label></p> ";
+                  var getBookingSlot = getTimeSlotFull(parsed[0].booking_time);
+                  var getStartingTime = getBookingTime(parsed[0].booking_time, parsed[0].bookingstart );
+                  html += "<p><label>Booking Time:</label><label>" + getStartingTime + " </label></p> ";
                   html += "<p><label>Booking Duarion:</label><label>" + parsed[0].durationTime + " mints </label></p> ";
                   html += "<p><label>Booking Date:</label><label>" + parsed[0].booking_date + " </label></p> ";
                }
@@ -6400,6 +6405,41 @@ function getTimeSlotFull(getTime) {
   { return "4:00 PM - 5:00 PM" }
   else
   { return "5:00 PM - 6:00 PM" }
+    
+}
+
+function getBookingTime(getTime, bookingStart, Duation) {
+  var time = '';
+  if(getTime == "8-9")
+  { time =  "8:" }
+  else if(getTime == "9-10")
+  { time =  "9:" }
+  else if(getTime == "10-11")
+  { time =  "10:" }
+  else if(getTime == "11-12")
+  { time =  "11:" }
+  else if(getTime == "12-1")
+  { time =  "12:" }
+  else if(getTime == "1-2")
+  { time =  "1:" }
+  else if(getTime == "2-3")
+  { time =  "2:" }
+  else if(getTime == "3-4")
+  { time =  "3:" }
+  else if(getTime == "4-5")
+  { time =  "4:" }
+  else
+  { time =  "5:" }
+  
+  if(bookingStart == "0")
+    { time = time + '00' }
+  else if(bookingStart == "15") 
+    { time = time + '15' }
+  else if(bookingStart == "30")
+    { time = time + '30' }
+  else
+    { time = time + '45' }
+  return time
     
 }
 
