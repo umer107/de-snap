@@ -2186,8 +2186,13 @@ setTimeout(function(){
 
             if(getEmail == '')
             { 
-              $('#email').closest('.relative').find('.requiredError').removeClass('opacity0'); 
+              $('#email').closest('.relative').find('.requiredError').removeClass('opacity0');
             }
+            else if(!isValidEmailAddress(getEmail))
+              {
+                $('.emailexists').addClass('opacity0');
+                $('#email').next('label').removeClass('opacity0');
+              }
 
             if(getProduct == 'All')
             { $('.producterror').removeClass('opacity0'); }
@@ -2221,7 +2226,19 @@ setTimeout(function(){
         }
         else
           { 
-            window.validState = true;
+              if(isValidEmailAddress(getEmail))
+              {
+                window.validState = true;
+              }
+              else
+              {
+                $('.emailexists').addClass('opacity0');
+                $('#email').next('label').removeClass('opacity0');
+                $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                window.validState = false;
+                return false;
+              }
+            
           }
 
         //else if($('.btn-bookNow').hasClass('canOpen'))
@@ -3129,7 +3146,12 @@ setTimeout(function(){
 
             if(getEmail == '')
             { 
-              $('#email').closest('.relative').find('.requiredError').removeClass('opacity0'); 
+              $('#email').closest('.relative').find('.requiredError').removeClass('opacity0');
+            }
+            else if(!isValidEmailAddress(getEmail))
+            {
+              $('.emailexists').addClass('opacity0');
+              $('#email').next('label').removeClass('opacity0');
             }
 
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
@@ -3138,7 +3160,18 @@ setTimeout(function(){
         }
         else
           { 
-            window.validState = true;
+              if(isValidEmailAddress(getEmail))
+              {
+                window.validState = true;
+              }
+              else
+              {
+                $('.emailexists').addClass('opacity0');
+                $('#email').next('label').removeClass('opacity0');
+                $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                window.validState = false;
+                return false;
+              }
           }
 
       
