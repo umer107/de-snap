@@ -246,6 +246,28 @@ class DashboardController extends AbstractActionController
             \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
         }
     }
+    //Start CheckUserIsOnLeave
+    public function ajaxCheckUserIsOnLeaveAction()
+    {
+        
+        try{
+            
+            $sm = $this->getServiceLocator();
+            $identity = $sm->get('AuthService')->getIdentity();
+            $config = $this->getServiceLocator()->get('Config');
+            $params = $this->getRequest()->getQuery()->toArray();
+            $leadsRes = $this->getServiceLocator()->get('Leave\Model\LeaveTable');
+            $calArr = $leadsRes->fetchUserOnLeave($params);
+            echo json_encode($calArr);
+            exit;
+            
+        }catch (Exception $e) {
+            \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+        }
+        
+        
+    }
+    //End
     
    //End ajaxGetUserLeavesAction
     public function  ajaxUpdateleadStatusAction()

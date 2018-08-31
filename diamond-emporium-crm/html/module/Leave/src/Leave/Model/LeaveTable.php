@@ -868,7 +868,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                $booking_date_add = $item_group['booking_date'];
                $booking_time_add = $item_group['booking_time'];
                $booking_room_add = $item_group['booking_room'];
-               $template_array[$booking_date_add][$booking_time_add][$booking_room_add] = $item_group;
+               $id = $item_group['id'];
+               $template_array[$booking_date_add][$booking_time_add][$booking_room_add][$id] = $item_group;
                         
 
              }
@@ -1555,6 +1556,110 @@ public function fetchLeadRecord($filter= null)
   
    } 
    
+   
+   public  function fetchUserOnLeave($filter = null)
+   {
+     $start_date = $filter['start_date'];
+     $end_date = $filter['end_date'];
+     $user_id = $filter['assign_UserId'];
+     if(isset($user_id))
+     {
+       if(!isset($end_date))
+       {
+         $select_leaves = new \Zend\Db\Sql\Select();
+         $select_leaves->from('de_leaves')->columns(array('Leave_id'));
+         $select_leaves = new \Zend\Db\Sql\Select();
+         $select_leaves->from(array('l' => 'de_leaves'))
+           ->columns(array(
+              'user_id' =>'Leave_UserId' , 'Leave_StartDate', 'status' => 'Leave_reason',  'UserFullName' => 'Leave_AssignUserName' 
+         ));
+         
+         if(isset($start_date))
+         {             
+             $select_leaves->where(array('l.Leave_StartDate = ?' =>  $start_date));
+         }
+         
+         $select_leaves->where(array('l.Leave_UserId = ?' =>  $user_id));
+         
+         $data_leaves = $this->executeQuery($select_leaves);            
+         $result_leave = $data_leaves->toArray();
+         
+       
+         $array_count = count($result_leave);
+         $total_days = array();
+         $num_days = floor((strtotime($start_date)-strtotime($start_date))/(60*60*24));
+         for ($i=0; $i<= $num_days; $i++)
+          {
+           $total_days[] = date('Y-m-d', strtotime($start_date . "+ $i days"));
+          }
+             
+         $template_array = array();
+         foreach($total_days as $items)
+         {
+          $template_array[$items]['isOnLeave'] = 1;
+         }
+             
+         return $template_array;
+     
+       }
+      
+       
+       if(isset($start_date))
+       {
+           
+           if(isset($end_date))
+           {
+               
+               
+             $select = new \Zend\Db\Sql\Select();
+             $select->from('de_leaves')->columns(array('Leave_id'));
+             $select = new \Zend\Db\Sql\Select();
+             $select->from(array('l' => 'de_leaves'))
+                ->columns(array(
+              'user_id' =>'Leave_UserId' , 'Leave_StartDate', 'status' => 'Leave_reason',  'UserFullName' => 'Leave_AssignUserName' 
+             ));
+         
+             
+             if(isset($start_date)&& isset($end_date))
+             {
+               $select->where->between('l.Leave_StartDate', $start_date, $end_date);
+             }
+             if($user_id)
+             {
+                $select->where(array('l.Leave_UserId = ?' =>  $user_id));                 
+             }
+            
+             $data_leaves = $this->executeQuery($select);            
+             $result_leave = $data_leaves->toArray();
+               
+             
+             
+             $total_days = array();
+             $num_days = floor((strtotime($end_date)-strtotime($start_date))/(60*60*24));
+             for ($i=0; $i<= $num_days; $i++)
+             {
+                 $total_days[] = date('Y-m-d', strtotime($start_date . "+ $i days"));
+             }
+             
+             $template_array = array();
+             foreach($total_days as $items)
+             {
+                $template_array[$items]['isOnLeave'] = 1;
+               
+             }
+             
+             return $template_array;
+               
+           }
+           
+       }
+       
+         
+         
+         
+     }
+       
+   }
 
    public function  fetchUserColor($filter = null)
    {
