@@ -106,6 +106,16 @@ return array(
                             ),
                         ),
                     ),
+             'ajaxCheckUserIsOnLeave' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxCheckUserIsOnLeave',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxCheckUserIsOnLeave',
+                            ),
+                        ),
+                    ),  
             'ajaxGetCheckUserEmail' => array(
                         'type' => 'Segment',
                         'options' => array(
