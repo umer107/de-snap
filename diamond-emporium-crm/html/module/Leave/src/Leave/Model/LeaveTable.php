@@ -718,7 +718,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                $data = $this->executeQuery($select);                     
                $result = $data->toArray();
                
-               
+              
                /****Group-Data Start****/
                 $groups = array();
                 
@@ -827,6 +827,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                      }
                  }
              }
+
              //return $template_array;
             //-------------------------------------------------------------------------------------//
             //-------------------------------End Template Area-------------------------------------//
@@ -868,13 +869,13 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                $booking_date_add = $item_group['booking_date'];
                $booking_time_add = $item_group['booking_time'];
                $booking_room_add = $item_group['booking_room'];
-               $id = $item_group['id'];
-               $template_array[$booking_date_add][$booking_time_add][$booking_room_add][$id] = $item_group;
-                        
+               $user_tekp = $item_group['id'];
+               $template_array[$booking_date_add][$booking_time_add][$booking_room_add][$user_tekp] = $item_group;
+                       
 
              }
              
-             
+    
              
              /******************************CustomMergeArray************************************/
              

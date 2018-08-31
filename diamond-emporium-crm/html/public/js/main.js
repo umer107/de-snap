@@ -3057,6 +3057,17 @@ setTimeout(function(){
           }
         
           count;
+          if(count > 0)
+          {
+            var setMessage ='User is on leave on';
+            $('.showMessage div').html(setMessage);
+            $('.showMessage').addClass('topShow');
+              setTimeout(function(){ 
+                $('.showMessage').removeClass('topShow');
+            }, 5000); 
+            
+          }
+          
         }
       }); 
     }
