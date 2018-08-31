@@ -2606,7 +2606,7 @@ setTimeout(function(){
         // Check if Leave use dropdown
         if(el.closest('.dropdown').hasClass('assignToDivLeave'))
         {   
-            debugger
+            
             $('.assignToDivLeave a.selected-text').attr('asigneeId-value',getAsignee_Id);
 
             var startDate = $("#dateRange").attr('startDate');
@@ -2624,7 +2624,7 @@ setTimeout(function(){
     // Check if use is on Leave
     window.datechange = 0;
     $(document).on('change','#dateRange' ,function(){
-        debugger
+        
         window.datechange++;
         if(window.datechange > 1)
         {
@@ -3035,11 +3035,28 @@ setTimeout(function(){
         var leaveData =  {start_date : startDate ,end_date : endDate , assign_UserId : Id}
       }
       $.ajax({
-        type: "POST",
-        url: "/dashboard/ajaxAddDashboard",
+        type: "GET",
+        url: "/dashboard/ajaxCheckUserIsOnLeave",
         data: leaveData, 
         success: function (data) {
-           debugger
+          debugger
+          var parsed = '';          
+          try{                           
+            parsed = JSON.parse(data);              
+          }                 
+          catch(e)                
+          {                  
+            return false;                  
+          }
+          var count = 0;    
+          if (parsed != null)
+          {
+            $.each(parsed, function(key, value){
+              count++
+            });
+          }
+        
+          count;
         }
       }); 
     }
@@ -5099,7 +5116,7 @@ $(document).on('click','.btn-saveDetailsLeave', function (e) {
             url: "/leave/ajaxSaveLeaves",
             data: model,
             success: function (data) {
-
+              debugger
             }
           });    
         
