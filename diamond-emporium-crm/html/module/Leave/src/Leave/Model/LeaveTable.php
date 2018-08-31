@@ -1586,12 +1586,16 @@ public function fetchLeadRecord($filter= null)
          
        
          $array_count = count($result_leave);
-         $total_days = array();
-         $num_days = floor((strtotime($start_date)-strtotime($start_date))/(60*60*24));
-         for ($i=0; $i<= $num_days; $i++)
-          {
-           $total_days[] = date('Y-m-d', strtotime($start_date . "+ $i days"));
-          }
+         
+         if($array_count > 0)
+         {
+           $total_days = array();
+           $num_days = floor((strtotime($start_date)-strtotime($start_date))/(60*60*24));
+           for ($i=0; $i<= $num_days; $i++)
+            {
+             $total_days[] = date('Y-m-d', strtotime($start_date . "+ $i days"));
+            }
+         }
              
          $template_array = array();
          foreach($total_days as $items)
@@ -1633,13 +1637,17 @@ public function fetchLeadRecord($filter= null)
              $result_leave = $data_leaves->toArray();
                
              
-             
-             $total_days = array();
-             $num_days = floor((strtotime($end_date)-strtotime($start_date))/(60*60*24));
-             for ($i=0; $i<= $num_days; $i++)
+             $array_count = count($result_leave);
+             if($array_count > 0)
              {
-                 $total_days[] = date('Y-m-d', strtotime($start_date . "+ $i days"));
+                $total_days = array();
+                $num_days = floor((strtotime($end_date)-strtotime($start_date))/(60*60*24));
+                for ($i=0; $i<= $num_days; $i++)
+                    {
+                        $total_days[] = date('Y-m-d', strtotime($start_date . "+ $i days"));
+                    }
              }
+            
              
              $template_array = array();
              foreach($total_days as $items)
