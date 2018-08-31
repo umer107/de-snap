@@ -2186,8 +2186,13 @@ setTimeout(function(){
 
             if(getEmail == '')
             { 
-              $('#email').closest('.relative').find('.requiredError').removeClass('opacity0'); 
+              $('#email').closest('.relative').find('.requiredError').removeClass('opacity0');
             }
+            else if(!isValidEmailAddress(getEmail))
+              {
+                $('.emailexists').addClass('opacity0');
+                $('#email').next('label').removeClass('opacity0');
+              }
 
             if(getProduct == 'All')
             { $('.producterror').removeClass('opacity0'); }
@@ -2221,7 +2226,19 @@ setTimeout(function(){
         }
         else
           { 
-            window.validState = true;
+              if(isValidEmailAddress(getEmail))
+              {
+                window.validState = true;
+              }
+              else
+              {
+                $('.emailexists').addClass('opacity0');
+                $('#email').next('label').removeClass('opacity0');
+                $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                window.validState = false;
+                return false;
+              }
+            
           }
 
         //else if($('.btn-bookNow').hasClass('canOpen'))
@@ -2589,9 +2606,38 @@ setTimeout(function(){
         // Check if Leave use dropdown
         if(el.closest('.dropdown').hasClass('assignToDivLeave'))
         {   
+            debugger
             $('.assignToDivLeave a.selected-text').attr('asigneeId-value',getAsignee_Id);
+
+            var startDate = $("#dateRange").attr('startDate');
+            var endDate = $("#dateRange").attr('endDate');
+            if(startDate == endDate)
+            {
+              endDate = '';
+            }
+            var Id = $(".assignToDivLeave a.selected-text").attr('asigneeId-value');
+            ifUserOnLeave(startDate,endDate,Id);
         }
             
+    });// End
+    
+    // Check if use is on Leave
+    window.datechange = 0;
+    $(document).on('change','#dateRange' ,function(){
+        debugger
+        window.datechange++;
+        if(window.datechange > 1)
+        {
+            var startDate = $("#dateRange").attr('startDate');
+            var endDate = $("#dateRange").attr('endDate');
+            if(startDate == endDate)
+            {
+              endDate = '';
+            }
+            var Id = $(".assignToDivLeave a.selected-text").attr('asigneeId-value');
+            ifUserOnLeave(startDate,endDate,Id); 
+        }
+
     });// End
 
     // Select dropdown for Assign To Div
@@ -2977,6 +3023,20 @@ setTimeout(function(){
         el.next('.AdditionaldrodownList').slideToggle(300);
     });// End
 
+
+    function ifUserOnLeave(startDate,endDate,Id)
+    {
+      var leaveData =  {start_date : startDate ,end_date : endDate , assign_UserId : Id}
+      $.ajax({
+        type: "POST",
+        url: "/dashboard/ajaxAddDashboard",
+        data: leaveData, 
+        success: function (data) {
+           debugger
+        }
+      }); 
+    }
+
     // Submit Form
 
     function getValuesFromForm()
@@ -3129,7 +3189,12 @@ setTimeout(function(){
 
             if(getEmail == '')
             { 
-              $('#email').closest('.relative').find('.requiredError').removeClass('opacity0'); 
+              $('#email').closest('.relative').find('.requiredError').removeClass('opacity0');
+            }
+            else if(!isValidEmailAddress(getEmail))
+            {
+              $('.emailexists').addClass('opacity0');
+              $('#email').next('label').removeClass('opacity0');
             }
 
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
@@ -3138,7 +3203,18 @@ setTimeout(function(){
         }
         else
           { 
-            window.validState = true;
+              if(isValidEmailAddress(getEmail))
+              {
+                window.validState = true;
+              }
+              else
+              {
+                $('.emailexists').addClass('opacity0');
+                $('#email').next('label').removeClass('opacity0');
+                $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                window.validState = false;
+                return false;
+              }
           }
 
       
@@ -3517,7 +3593,7 @@ setTimeout(function(){
                       else
                       {
                         $('.bookNowDiv').addClass('hide');
-                        $('.btn-bookNow, .next-saveDiv').removeClass('hide');
+                        //$('.btn-bookNow, .next-saveDiv').removeClass('hide');
                       }
                       
                       
@@ -3562,8 +3638,12 @@ setTimeout(function(){
 
 
           // Checking if Agent selected is on leave
+          
           $(".daysContent").removeClass('agentOnLeave').attr('title',"");
           var data2 =  {booking_date : getWeeklyDate , assign_UserId : getAssigneeId}
+
+          //var data2 =  {start_date : startDate , end_date : endDate , assign_UserId : getAssigneeId}
+
           if(getAssigneeId == undefined || getAssigneeId == null)
           {
             console.log('yes');
@@ -3784,7 +3864,7 @@ setTimeout(function(){
                           var getRoom = getAllRooms[i];
                           
 
-                          if(getRoom == "")
+                          if(getRoom == "" || getRoom == null)
                           {
                             //window.userColor = '#D3D3D3';
                             setThisHtml +='<label class="labelContainer '+positionLeft+'" roomNumber="'+i+'">';
@@ -3796,6 +3876,7 @@ setTimeout(function(){
                           }
                           else
                           {
+                            
                             //window.userColor = '#'+getAllRooms[i].booking_color;
                             var getDurationTime = getAllRooms[i].durationTime;
                             var getBookingstartTime = getAllRooms[i].bookingstart;
@@ -4956,7 +5037,7 @@ $(document).on('click','.btn-cancelLeave', function (e) {
             endDate : $("#dateRange").attr('endDate'),
             AssignUs : $("#assign_us_Dropdown2").text(),
             Reason : $("#Reasons").text(),
-            Id : $(".assignToDivLeave a.selected-text").attr('asigneeId-value'),
+            Id : $(".assignToDivLeave a.selected-text").attr('asigneeId-value'), 
             
         };
         
