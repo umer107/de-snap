@@ -870,7 +870,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                $booking_time_add = $item_group['booking_time'];
                $booking_room_add = $item_group['booking_room'];
                $user_tekp = $item_group['id'];
-               $template_array[$booking_date_add][$booking_time_add][$booking_room_add][$user_tekp] = $item_group;
+               $template_array[$booking_date_add][$booking_time_add][$booking_room_add][$user_tekp]= $item_group;
                        
 
              }

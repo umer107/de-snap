@@ -2622,21 +2622,17 @@ setTimeout(function(){
     });// End
     
     // Check if use is on Leave
-    window.datechange = 0;
+
     $(document).on('change','#dateRange' ,function(){
         
-        window.datechange++;
-        if(window.datechange > 1)
+        var startDate = $("#dateRange").attr('startDate');
+        var endDate = $("#dateRange").attr('endDate');
+        if(startDate == endDate)
         {
-            var startDate = $("#dateRange").attr('startDate');
-            var endDate = $("#dateRange").attr('endDate');
-            if(startDate == endDate)
-            {
-              endDate = '';
-            }
-            var Id = $(".assignToDivLeave a.selected-text").attr('asigneeId-value');
-            ifUserOnLeave(startDate,endDate,Id); 
+          endDate = '';
         }
+        var Id = $(".assignToDivLeave a.selected-text").attr('asigneeId-value');
+        ifUserOnLeave(startDate,endDate,Id); 
 
     });// End
 
@@ -3026,6 +3022,10 @@ setTimeout(function(){
 
     function ifUserOnLeave(startDate,endDate,Id)
     {
+      debugger
+      if(startDate == null)
+        { return false; }
+      var userName = $('ul.assignToDivLeave a.selected-text').attr('value');
       if(endDate == '')
       {
         var leaveData =  {start_date : startDate , assign_UserId : Id}
@@ -3059,13 +3059,26 @@ setTimeout(function(){
           count;
           if(count > 0)
           {
-            var setMessage ='User is on leave on';
+            if(count == 1)
+            {
+              var setMessage = userName + ' is already on leave!';
+
+            }
+            else
+            {
+              var setMessage = userName + ' is already on leave in these days!';
+            }
+            
             $('.showMessage div').html(setMessage);
             $('.showMessage').addClass('topShow');
               setTimeout(function(){ 
                 $('.showMessage').removeClass('topShow');
             }, 5000); 
-            
+            $('.btn-saveDetailsLeave').addClass('hide');
+          }
+          else
+          {
+            $('.btn-saveDetailsLeave').removeClass('hide');
           }
           
         }
@@ -6023,8 +6036,9 @@ $(window).load(function(){
 function loadLeaveCalendar(){
     $(function () {
       var getTodayDate = moment(); //Get the current date
-      getTodayDate.format("YYYY-MM-DD"); 
+      getFullDate = moment(getTodayDate).subtract(0, 'M').format('YYYY-MM-DD');
       $('input[name="daterange"]').daterangepicker({
+
           minDate:getTodayDate,
           startDate: getTodayDate, 
           locale: {
@@ -6032,7 +6046,7 @@ function loadLeaveCalendar(){
           }
       }, function (start, end, label) {
       });
-      $('input[name="daterange"]').val('');
+      $('input[name="daterange"]').val(getFullDate).attr('startdate',getFullDate);
       $('input[name="daterange"]').on('apply.daterangepicker', function (ev, picker) {
           var startDate = picker.startDate;
           var endDate = picker.endDate;  
