@@ -3026,7 +3026,14 @@ setTimeout(function(){
 
     function ifUserOnLeave(startDate,endDate,Id)
     {
-      var leaveData =  {start_date : startDate ,end_date : endDate , assign_UserId : Id}
+      if(endDate == '')
+      {
+        var leaveData =  {start_date : startDate , assign_UserId : Id}
+      }
+      else
+      {
+        var leaveData =  {start_date : startDate ,end_date : endDate , assign_UserId : Id}
+      }
       $.ajax({
         type: "POST",
         url: "/dashboard/ajaxAddDashboard",
