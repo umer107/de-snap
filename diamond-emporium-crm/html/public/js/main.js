@@ -1871,7 +1871,43 @@ $(document).on('click','.savePopupBooking', function (e) {
     
     var positionTop = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').attr('topPosition');
     var positionTop2 = $('a.addBookingLink.thisClicked').closest('.daysContentSlider').next('.daysContentSlider').find('.labelContainer[roomnumber="'+ getRoomNumber +'"]').find('.roomBooking').attr('topPosition');
+    var getRoomsLength = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').length;
+    if(getRoomsLength > 1)
+    {
+      positionTopSub1 = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').next('.roomBooking').attr('topPosition');
+      positionTopSub2 = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').next('.roomBooking').next('.roomBooking').attr('topPosition');
+      
+      // If popup starts at 15
+      if(timeStart == '15')
+      {
+        if(positionTopSub1 == '31px')
+        {
+          checkRoom = 1;
+          return checkRoom;
+        }
+        else if( positionTopSub1 == '47px')
+        {
+          checkRoom = 2;
+          return checkRoom;
+        }
+      }
 
+      // If popup starts at 30
+      if(timeStart == '30')
+      {
+        if( positionTopSub1 == '47px')
+        {
+          checkRoom = 1;
+          return checkRoom;
+        }
+      }
+
+      if(timeStart == '15' || timeStart == '30' || timeStart == '45')
+      {
+
+      }
+
+    }
 
     var timeStartFrom = 0
     var checkRoom = 0
@@ -3108,6 +3144,8 @@ setTimeout(function(){
 
     function ifUserOnLeave(startDate,endDate,Id)
     {
+      if(Id == null)
+        {return false}
       var getUser = $('.assignToDivLeave a.selected-text').attr('value');
       if(endDate == '')
       {
@@ -5227,7 +5265,7 @@ $(document).on('click','.btn-saveDetailsLeave', function (e) {
           }
           return false;
         }
-        
+        debugger
         //AjaxCallSaveLeadsOnSaveClick--Start
          
          var model = getValuesFromLeaveForm();
@@ -5238,35 +5276,35 @@ $(document).on('click','.btn-saveDetailsLeave', function (e) {
             url: "/leave/ajaxSaveLeaves",
             data: model,
             success: function (data) {
-              debugger
+              //AjaxCallSaveLeadsOnSaveClick--End
+        
+                loadLeads();
+
+                //Setting header changes
+                
+                
+                $('.dashboardContainer').addClass('hide');
+                // New Leade New Leave Start
+                $('.newactions a, .middleTabs a').removeClass('active');
+                $('.new-Lead').addClass('hide');
+                $('.new-Leave').removeClass('hide');
+                // New Leade New Leave End
+                $('.leaveTab').addClass('active');
+                $('.newLead').addClass('maxHeightHide');
+                $('.dashboard-header').removeClass('hide');
+                $('.newLeaveContainer').hide();
+                $('.leadsContainer').addClass('hide');
+                $('.leavesContainer').removeClass('hide');
+                $('.calendarLeave').addClass('maxHeightHide');
+                //Reset New Leave Page
+                $('.newLeaveContainer').html(window.newLeaveHtml);
+                loadAddNewLeaveCalendar();
+                SetLeaveContent(window.startingMonth,window.startingYear);
+                loadLeaveCalendar();
             }
           });    
         
-        //AjaxCallSaveLeadsOnSaveClick--End
         
-        loadLeads();
-
-        //Setting header changes
-        
-        
-        $('.dashboardContainer').addClass('hide');
-        // New Leade New Leave Start
-        $('.newactions a, .middleTabs a').removeClass('active');
-        $('.new-Lead').addClass('hide');
-        $('.new-Leave').removeClass('hide');
-        // New Leade New Leave End
-        $('.leaveTab').addClass('active');
-        $('.newLead').addClass('maxHeightHide');
-        $('.dashboard-header').removeClass('hide');
-        $('.newLeaveContainer').hide();
-        $('.leadsContainer').addClass('hide');
-        $('.leavesContainer').removeClass('hide');
-        $('.calendarLeave').addClass('maxHeightHide');
-        //Reset New Leave Page
-        $('.newLeaveContainer').html(window.newLeaveHtml);
-        loadAddNewLeaveCalendar();
-        SetLeaveContent(window.startingMonth,window.startingYear);
-        loadLeaveCalendar();
 })
 
 /*---------------------------------------------*/
