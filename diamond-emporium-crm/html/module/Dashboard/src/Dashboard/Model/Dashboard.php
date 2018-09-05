@@ -72,8 +72,8 @@ class DashboardForm extends Form
 	$this->add($reference_product);
                 
         
-    $specify_requirements = new \Zend\Form\Element\Text('specify_requirements');
-	$specify_requirements->setAttributes(array('id' => 'specify_requirements', 'type'  => 'text',  'placeholder' => 'specify_requirements', 'type'  => 'text', 'class' => 'requirements', 'maxlength' => 64));
+    $specify_requirements = new \Zend\Form\Element\Textarea('specify_requirements');
+	$specify_requirements->setAttributes(array('id' => 'specify_requirements', 'type'  => 'textarea',  'placeholder' => 'specify_requirements', 'type'  => 'text', 'class' => 'requirements', 'maxlength' => 64));
 	$this->add($specify_requirements);
        
         $this->add(array(

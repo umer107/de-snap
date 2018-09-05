@@ -965,8 +965,9 @@ $(document).ready(function () {
     
     // Email Check
 
-    $(document).on('click', '.availability', function () {
-        $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
+    $("#email").on("blur",  function() { 
+
+      $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         var getemail = $('#email').val();
         var getValue = $('#email').val().length;
 
@@ -1029,15 +1030,34 @@ $(document).ready(function () {
                     $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
                   }
                   $('.topBar').trigger('click');
+                  $('.redCross').addClass('hide');
+                  $('.redGreen').removeClass('hide');
+
                   
+                  var setMessage = 'Record available!';
+                  $('.showMessage div').html(setMessage);
+                  $('.showMessage').addClass('topShow').addClass('green');
+                    setTimeout(function(){ 
+                      $('.showMessage').removeClass('topShow').removeClass('green');
+                  }, 5000);
                   
                 }
                 else
                 {
-                  $('.emailexists').removeClass('opacity0');
+                  //$('.emailexists').removeClass('opacity0');
                   
-                  setTimeout(function(){ $('.emailexists').addClass('opacity0'); },3000);
+                  //setTimeout(function(){ $('.emailexists').addClass('opacity0'); },3000);
+                  $('.redCross').removeClass('hide');
+                  $('.redGreen').addClass('hide');
+
+                  var setMessage = 'Record not available!';
+                  $('.showMessage div').html(setMessage);
+                  $('.showMessage').addClass('topShow');
+                    setTimeout(function(){ 
+                      $('.showMessage').removeClass('topShow');
+                  }, 5000); 
                 }
+
                 setTimeout(function(){ $('.showloading').hide(); }, 500);
                 
                 
@@ -1046,13 +1066,19 @@ $(document).ready(function () {
 
         }
         else {
+            $('.redCross, .redGreen').addClass('hide');
             $('.emailexists').addClass('opacity0');
             $('#email').next('label').removeClass('opacity0');
+            
         }
 
-     
 
-    });// End
+    });
+
+
+    //$(document).on('click', '.availability', function () {
+      
+    //});// End
 
 /* ----------------------------------------------------*/
     
@@ -1673,6 +1699,7 @@ $(document).on('click','.daysSlider label.room3', function (e) {
 
 // Add new Booking popup
 $(document).on('click','.addBookingLink', function (e) {
+    var el = $(this);
     $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
     window.validState = true;
     validation();
@@ -1685,7 +1712,7 @@ $(document).on('click','.addBookingLink', function (e) {
     var getRoomNumber = $(this).closest('.labelContainer').attr('roomnumber');
     var timeStart = $(this).attr('bookingstart');
 
-    var getTimeAllowed = checkTimeAllowed(timeStart, getRoomNumber);
+    var getTimeAllowed = checkTimeAllowed(timeStart, getRoomNumber, el);
     var p = $(this)
     var offset = p.offset();
     var getOffsetTop = offset.top;
@@ -1727,10 +1754,10 @@ $(document).on('click','.addBookingLink', function (e) {
     var setHtml = "";
     var setHtml = '<div class="addBookingContainer roomsContainer">';
       setHtml += '<div class="roomBooking">';
-        setHtml += '<p class=" fs-12 headBar" style="background-color:'+window.userColor+'"><span class="ellipsis">'+getName+'</span><span>'+getUserSC+'</span></p>';
-          setHtml += '<div class="full align-left half-pad-left lh-18 one-pad-top relative">';
-            setHtml += '<p><i class="icon-diamond fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
-            setHtml += '<p><i class="icon-dollar fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
+        setHtml += '<p class="fs-11 headBar" style="background-color:'+window.userColor+'"><span class="ellipsis">'+getName+'</span><span>'+getUserSC+'</span></p>';
+          setHtml += '<div class="full align-left half-pad-left lh-16 fs-11 one-pad-top relative">';
+            setHtml += '<p><i class="icon-diamond fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
+            setHtml += '<p><i class="icon-dollar fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
             
             setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">Starting at ' +StartingHour+':'+bookingTimeStart+'</span></p>';
             setHtml += '<p class="bookingTiming pull-left"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i></p>';
@@ -1753,6 +1780,7 @@ $(document).on('click','.addBookingLink', function (e) {
 // Save new Booking popup
 $(document).on('click','.savePopupBooking', function (e) {
 
+    $('.roomBooking.newlyAdded').remove();
     var selectHtml = $('.addBookingPopup .addBookingContainer').html();
     var getDayName = $('.addBookingLink.thisClicked').closest('.daysCalendar').attr('dayname');
     var getDateNumber = $('.addBookingLink.thisClicked').closest('.daysContent').attr('datenumber');
@@ -1760,10 +1788,60 @@ $(document).on('click','.savePopupBooking', function (e) {
     var getDuration = $('.dropdown.durationTime').find('a.selected-text').attr('getduration');
     var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
     
+    var setHeight = '';
+    if(getDuration == "15")
+    {
+      setHeight = '16px';
+    }
+    else if(getDuration == "30")
+    {
+      setHeight = '33px';
+    }
+    else if(getDuration == "45")
+    {
+      setHeight = '49px';
+    }
+    else if(getDuration == "60")
+    {
+      setHeight = '64px';
+    }
+    else if(getDuration == "75")
+    {
+      setHeight = '81px';
+    }
+    else if(getDuration == "90")
+    {
+      setHeight = '98px';
+    }
+
+    var setTop = ''; 
+    if(bookingTimeStart == "0")
+    {
+      setTop = '0px';
+    }
+    else if(bookingTimeStart == "15")
+    {
+      setTop = '15px';
+    }
+    else if(bookingTimeStart == "30")
+    {
+      setTop = '31px';
+    }
+    else if(bookingTimeStart == "45")
+    {
+      setTop = '47px';
+    }
 
     $('#bookingDate').attr('dayName', getDayName);
     $('#bookingDate').attr('datenumber', getDateNumber);
-    $('.addBookingLink.thisClicked').closest('label').html(selectHtml);
+    $('.addBookingLink.thisClicked').closest('label').append(selectHtml);
+    $('.thisLabelClicked .roomBooking').css('height',setHeight).addClass('newlyAdded');
+    $('.thisLabelClicked .roomBooking').css('top',setTop);
+    $('.thisLabelClicked .roomBooking').find('.transparentBG').css('height',setHeight);
+    $('.thisLabelClicked .roomBooking').find('.bookingTiming, .durationTime, p.full').addClass('hide');
+    
+    
+    
     $('.addBookingPopup').html('');
     $('.addBookingPopup').addClass('hide');
     $('#bookingDate').attr('durationTime', getDuration);
@@ -1777,18 +1855,18 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('.btn-bookNow').addClass('hide');
     $('.savedBooking').removeClass('hide');
     $('.bookingViewIcon').addClass('hide');
-    $('.bookingHeading').removeClass('hide');
-    $('.showOnNewBooking').addClass('hide');
-    $('.next-options').removeClass('hide');
+    //$('.bookingHeading').removeClass('hide');
+    //$('.showOnNewBooking').addClass('hide');
+    //$('.next-options').removeClass('hide');
     geDateValues(getSelectedDate);    
-    $('.NewCalendarContainer').addClass('hide');
+    //$('.NewCalendarContainer').addClass('hide');
     
 });
 
 
 // Check how many bookings are left there
   
-  function checkTimeAllowed(timeStart, getRoomNumber)
+  function checkTimeAllowed(timeStart, getRoomNumber, el)
   {
     
     var positionTop = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').attr('topPosition');
@@ -2307,12 +2385,14 @@ setTimeout(function(){
 
     // Book Now Calendar Close
     $(document).on('click', '.cancelBookedbooking', function () {
-      
-        $('.suggestedDate').html('');
-        $('#bookingDate').removeClass('nowCanSave');
-        $('.btn-bookNow').removeClass('hide');
-        $('.showOnNewBooking').removeClass('hide');
-        cancelBookedBookingAction();
+        
+        $('.roomBooking.newlyAdded').remove();
+        $('.savedBooking').addClass('hide');
+        //$('.suggestedDate').html('');
+        //$('#bookingDate').removeClass('nowCanSave');
+        //$('.btn-bookNow').removeClass('hide');
+        //$('.showOnNewBooking').removeClass('hide');
+        //cancelBookedBookingAction();
     });
 
     /*------------------------------------------------*/
@@ -2412,7 +2492,9 @@ setTimeout(function(){
             }
     });// End
 
-
+    $("#specify_requirements").on('change', function(event){
+        $(this).closest('.relative').find('span').show();
+    });
 
     // Select dropdown value
     
@@ -2439,7 +2521,7 @@ setTimeout(function(){
         { 
           var checkTime = $(this).find('a').attr('getDuration');
           el.closest('.dropdown').find('a.selected-text').attr('getDuration', checkTime); 
-          $('#perferrefDropdownOther').closest('.relative').removeClass('hide');
+          //$('#perferrefDropdownOther').closest('.relative').removeClass('hide');
 
         }
 
@@ -2622,17 +2704,21 @@ setTimeout(function(){
     });// End
     
     // Check if use is on Leave
-
+    window.datechange = 0;
     $(document).on('change','#dateRange' ,function(){
         
-        var startDate = $("#dateRange").attr('startDate');
-        var endDate = $("#dateRange").attr('endDate');
-        if(startDate == endDate)
+        window.datechange++;
+        if(window.datechange > 1)
         {
-          endDate = '';
+            var startDate = $("#dateRange").attr('startDate');
+            var endDate = $("#dateRange").attr('endDate');
+            if(startDate == endDate)
+            {
+              endDate = '';
+            }
+            var Id = $(".assignToDivLeave a.selected-text").attr('asigneeId-value');
+            ifUserOnLeave(startDate,endDate,Id); 
         }
-        var Id = $(".assignToDivLeave a.selected-text").attr('asigneeId-value');
-        ifUserOnLeave(startDate,endDate,Id); 
 
     });// End
 
@@ -3022,10 +3108,7 @@ setTimeout(function(){
 
     function ifUserOnLeave(startDate,endDate,Id)
     {
-      debugger
-      if(startDate == null)
-        { return false; }
-      var userName = $('ul.assignToDivLeave a.selected-text').attr('value');
+      var getUser = $('.assignToDivLeave a.selected-text').attr('value');
       if(endDate == '')
       {
         var leaveData =  {start_date : startDate , assign_UserId : Id}
@@ -3061,13 +3144,13 @@ setTimeout(function(){
           {
             if(count == 1)
             {
-              var setMessage = userName + ' is already on leave!';
-
+              var setMessage = getUser + ' is on leave on';
             }
             else
             {
-              var setMessage = userName + ' is already on leave in these days!';
+              var setMessage = getUser + ' is on leave in these days';
             }
+
             
             $('.showMessage div').html(setMessage);
             $('.showMessage').addClass('topShow');
@@ -3147,11 +3230,11 @@ setTimeout(function(){
     });
     // Cancel New Booking
     $(document).on('click','.cancelNewBooking', function (e) {
-      $('.next-saveDiv, .next-options, .btn-bookNow').removeClass('hide');
-      $('.savedBooking').addClass('hide');
-      
-      $('.NewCalendarContainer').addClass('hide');
-      additionalDetailsExpand();
+      $('.btn-cancel').trigger('click');
+      //$('.next-saveDiv, .next-options, .btn-bookNow').removeClass('hide');
+      //$('.savedBooking').addClass('hide');
+      //$('.NewCalendarContainer').addClass('hide');
+      //additionalDetailsExpand();
     });
     
     $(document).on('click','#submitbutton', function (e) {
@@ -3311,7 +3394,7 @@ setTimeout(function(){
           $('.additional-details').slideDown(300);  
           $('.btn-nextDetails').addClass('hide');
           $('.btn-saveDetails, .btn-bookNow').removeClass('hide');
-          $('.next-saveDiv').addClass('one-half-pad-top');
+          //$('.next-saveDiv').addClass('one-half-pad-top');
           $('.newLead').removeClass('opened');
           $('#calendar').fullCalendar("destroy");
           $('.btn-cancel').removeClass('gap-right').addClass('triple-gap-right');
@@ -3599,7 +3682,7 @@ setTimeout(function(){
                       // destroy calendar
                       $('#calendar2').fullCalendar("destroy");
 
-                      $('.next-saveDiv').addClass('one-half-pad-top');
+                      //$('.next-saveDiv').addClass('one-half-pad-top');
 
                       
                       $('#bookingDate').addClass('nowCanSave');
@@ -3926,8 +4009,26 @@ setTimeout(function(){
                           {
                             
                             //window.userColor = '#'+getAllRooms[i].booking_color;
-                            var getDurationTime = getAllRooms[i].durationTime;
-                            var getBookingstartTime = getAllRooms[i].bookingstart;
+                            
+                            // Seeting booking Html
+                            // setThisHtml +='<label class="labelContainer '+positionLeft+'" roomNumber="'+i+'" duration="'+getDurationTime+'" bookingstart="'+getAllRooms[i][Key].bookingstart+'"   >';
+                            
+                            setThisHtml +='<label class="labelContainer '+positionLeft+'" roomNumber="'+i+'" >';
+
+                            setThisHtml +='<div class="addBookingLinkContent">';
+                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="0" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="15" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="30" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                            setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="45" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
+                            setThisHtml +='</div>';
+
+
+                            var Key = 0;
+                            $.each(getAllRooms[i], function(key, value){
+                              
+                            
+                            var getDurationTime = getAllRooms[i][key].durationTime;
+                            var getBookingstartTime = getAllRooms[i][key].bookingstart;
                             var height1 = '';
                             var height2 = '';
                             var positionTop = '';
@@ -3942,38 +4043,35 @@ setTimeout(function(){
                               else{ height1 = '97px'; height2 = '81px'; }
                               
                             }
-                            if(getBookingstartTime != null)
-                            {
-                              if(getBookingstartTime == '0') { positionTop = '0px'; }
-                              else if(getBookingstartTime == '15') { positionTop = '15px';}
-                              else if(getBookingstartTime == '30') { positionTop = '31px';}
-                              else if(getBookingstartTime == '45') { positionTop = '47px';}
-                            }
-
-                            var setBackgroundColor = "style='background-color:"+getAllRooms[i].color+"'";
-                            var setBackgroundColorHeight = 'style="background-color:'+getAllRooms[i].color+'; height:'+height2+'"';
-                            var Color = "style='color:"+getAllRooms[i].color+"'";
-                            
+                                                
                             // Setting New Booking Link Loop newBookingLink
 
-                            // Seeting booking Html
-                            setThisHtml +='<label class="labelContainer '+positionLeft+'" roomNumber="'+i+'"  duration="'+getDurationTime+'"    bookingstart="'+getAllRooms[i].bookingstart+'"   >';
+                              // room booking
+                              if(getBookingstartTime != null)
+                              {
+                                if(getBookingstartTime == '0') { positionTop = '0px'; }
+                                else if(getBookingstartTime == '15') { positionTop = '15px';}
+                                else if(getBookingstartTime == '30') { positionTop = '31px';}
+                                else if(getBookingstartTime == '45') { positionTop = '47px';}
+                              }
 
-                              setThisHtml +='<div class="addBookingLinkContent">';
-                                setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="0" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
-                                setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="15" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
-                                setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="30" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
-                                setThisHtml +='<p class="newBookingBorder"><a class="addBookingLink" bookingStart="45" href="javascript:;"><i class="icon-addBookingLinkNew fs-12"></i></a></p>';
-                              setThisHtml +='</div>';
+                              var setBackgroundColor = "style='background-color:"+getAllRooms[i][key].color+"'";
+                              var setBackgroundColorHeight = 'style="background-color:'+getAllRooms[i][key].color+'; height:'+height2+'"';
+                              var Color = "style='color:"+getAllRooms[i][key].color+"'";
 
-                              setThisHtml +='<div class="roomBooking '+roomNumber+'" lead-id="'+getAllRooms[i].id+'" topPosition="'+positionTop+'" style="height:' + height1 + '; top:'+ positionTop +'">';
-                                setThisHtml +='<p class=" fs-11 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i].first_name + ' ' + getAllRooms[i].last_name + '</span><span>'+getAllRooms[i].assignto_shortcode+'</span></p>';
+                                setThisHtml +='<div class="roomBooking '+roomNumber+'" lead-id="'+getAllRooms[i][key].id+'" topPosition="'+positionTop+'" style="height:' + height1 + '; top:'+ positionTop +'">';
+                                setThisHtml +='<p class=" fs-11 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i][key].first_name + ' ' + getAllRooms[i][key].last_name + '</span><span>'+getAllRooms[i][key].assignto_shortcode+'</span></p>';
                                 setThisHtml +='<div class="full align-left half-pad-left lh-16 fs-11 one-pad-top relative">';
-                                  setThisHtml +='<p><i class="icon-diamond fs-11 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].product_shortcode+'</span></p>';
-                                  setThisHtml +='<p><i class="icon-dollar fs-11 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i].budget+'</span></p>';
+                                  setThisHtml +='<p><i class="icon-diamond fs-11 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i][key].product_shortcode+'</span></p>';
+                                  setThisHtml +='<p><i class="icon-dollar fs-11 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i][key].budget+'</span></p>';
                                   setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColorHeight+' style="height:'+ height2 +'"></div>';
                                 setThisHtml +='</div>';
                               setThisHtml +='</div>';
+
+                              });
+
+
+                              
 
                             setThisHtml +='</label>';
                           }
@@ -6036,9 +6134,8 @@ $(window).load(function(){
 function loadLeaveCalendar(){
     $(function () {
       var getTodayDate = moment(); //Get the current date
-      getFullDate = moment(getTodayDate).subtract(0, 'M').format('YYYY-MM-DD');
+      getTodayDate.format("YYYY-MM-DD"); 
       $('input[name="daterange"]').daterangepicker({
-
           minDate:getTodayDate,
           startDate: getTodayDate, 
           locale: {
@@ -6046,7 +6143,8 @@ function loadLeaveCalendar(){
           }
       }, function (start, end, label) {
       });
-      $('input[name="daterange"]').val(getFullDate).attr('startdate',getFullDate);
+      var getTodaysDate = moment(getTodayDate).add(0, 'M').format('YYYY-MM-DD');
+      $('input[name="daterange"]').val(getTodaysDate).attr('startdate',getTodaysDate);
       $('input[name="daterange"]').on('apply.daterangepicker', function (ev, picker) {
           var startDate = picker.startDate;
           var endDate = picker.endDate;  
@@ -6436,7 +6534,7 @@ $(document).on('click','.leadUserName', function (e) {
                   html += "<p><label>State:</label><label>" + parsed[0].State + " </label></p> ";
                }
                html += "<p><label>Full Address:</label><label>" + parsed[0].full_address + " </label></p> ";
-               html += "<p><label>Communication Method:</label><label>" + parsed[0].communication_method + " </label></p> ";
+               html += "<p><label>Lead Source:</label><label>" + parsed[0].communication_method + " </label></p> ";
                html += "<p><label>Preferred method of contact:</label><label>" + parsed[0].contact_method + " </label></p> ";
                html += "<p><label>Product:</label><label>" + parsed[0].product + " </label></p> ";
                html += "<p><label>How did they hear about us?:</label><label>" + parsed[0].referral + " </label></p> ";
@@ -6810,9 +6908,11 @@ function getBookingTime(getTime, bookingStart, Duation) {
                  var table = $('#datatable').DataTable( {"lengthChange": false,});
                   $('.customerList input').attr('placeholder', 'Type to search...');
                   $('#datatable tbody').on( 'click', 'tr', function () {
+                    debugger
                     var getVal = $(this).find('td').attr('value');
                     $('#onlyReferral').val(getVal);
                     $('.showLookups').slideUp();
+                    $('#onlyReferral').closest('.relative').find('span').show();
                     setTimeout(function(){ $('.showLookups').addClass('hide'); }, 500);
                   });
         

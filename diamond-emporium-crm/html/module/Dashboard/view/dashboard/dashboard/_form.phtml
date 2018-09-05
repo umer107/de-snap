@@ -183,7 +183,7 @@ echo '<div class="relative pull-left gap-right pad-right">';
     // -----------------------------------------------------------------
 
     // email
-    echo '<div class="relative pull-left"><label class="opacity0 error emailexists">Record not found</label><span style="display: none" class="text-top">*Email</span><a href="javascript:;" class="availability absolute">availability</a>'.$this->formRow($form->get("email")).'<label class="opacity0 error ">Please enter a valid email</label><label class="opacity0 requiredError">Please select email</label></div>';
+    echo '<div class="relative pull-left"><label class="opacity0 error emailexists">Record not found</label><span style="display: none" class="text-top">*Email</span><a href="javascript:;" class="availability absolute"><img class="redCross hide" src="/images/redCross.png")/><img class="redGreen hide" src="/images/greenTick.png")/></a>'.$this->formRow($form->get("email")).'<label class="opacity0 error ">Please enter a valid email</label><label class="opacity0 requiredError">Please select email</label></div>';
 
     // Assignee Name
     //echo '<div class="selectedAgent relative pull-left" di>
@@ -253,10 +253,10 @@ echo '<div class="relative pull-left gap-right pad-right">';
     //Communication Method
     
     echo '<div class="relative pull-left">';
-      echo '<span style="display: none" class="text-top">Communication Method </span>';
+      echo '<span style="display: none" class="text-top">Lead Source </span>';
       echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 CommunicationMethod">';
             echo '<li>';
-             echo '   <a href="javascript:;" class="selected-text d-b" value="All"><span id ="CommunicationMethod" class="d-i-b">Communication Method</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
+             echo '   <a href="javascript:;" class="selected-text d-b" value="All"><span id ="CommunicationMethod" class="d-i-b">Lead Source</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>';
             echo '</li>';
             echo '<li>';
              // echo $this->formRow($title);
@@ -353,6 +353,8 @@ echo '<div class="full additionalDiv">';
 
 // Product
 
+echo '<div class="relative pull-left leftPanelInfo">';
+
 echo '<div class="relative pull-left">';
   echo '<span style="display: none" class="text-top">*Product</span>';
   echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280 product">';
@@ -429,25 +431,8 @@ echo '<div class="relative pull-left">';
         </div>';
 
 
-    // -----------------------------------------------------------------      
-    // -----------------------------------------------------------------
+   
 
-   //specify_requirements  
-     echo '<div class="relative pull-left">';
-          echo '<span style="display: none" class="text-top">What they are looking for</span>';
-            echo $this->formRow($form->get("specify_requirements"));
-        echo '</div>'; 
-
-
-    // -----------------------------------------------------------------
-    // -----------------------------------------------------------------
-
-    //Special Istruction
-    echo '<div class="relative pull-left">';
-        echo '<span style="display: none" class="text-top">Special instructions</span>';
-            echo $this->formRow($form->get("special_instructions"));
-        
-    echo '</div>';
 
 
     // -----------------------------------------------------------------
@@ -504,7 +489,7 @@ echo '<div class="relative pull-left">';
 
     // Reason
 
-        echo '<div class="relative pull-left hide otherReasonDiv">';
+        echo '<div class="relative pull-left hide otherReasonDiv" style="display:none">';
             echo '<span style="display: none" class="text-top">Reason to skip next in line </span>';
             echo '<ul class="dropdown bg-white d-i-b pull-left relative wd-280">';
                     echo '<li>';
@@ -527,17 +512,26 @@ echo '<div class="relative pull-left">';
 
        
 
-    
-
-
-
-
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
-
     //ReferenceProduct
 
     echo '<div class="relative pull-left"><span style="display: none" class="text-top">Reference product</span><input autocomplete="off" type="text" name="ReferenceProduct" id="referrenceDropdown" class="ReferenceProduct" placeholder="Reference product" maxlength="30" value=""><span style="display: none">Reference product</span></div>';
+
+    // -----------------------------------------------------------------
+    // -----------------------------------------------------------------
+
+
+    //Special Istruction
+    echo '<div class="relative pull-left">';
+        echo '<span style="display: none" class="text-top">Special instructions</span>';
+            echo $this->formRow($form->get("special_instructions"));
+        
+    echo '</div>';
+
+
+
+
 
 
     
@@ -576,28 +570,47 @@ echo '<div class="relative pull-left">';
                 echo '</ul>';
         echo '</div>';
 
+echo '</div>';
+
+// -----------------------------------------------------------------      
+// -----------------------------------------------------------------
+
+echo '<div class="relative pull-left rightPanelInfo">';
+    
+
+
+   //specify_requirements  
+     echo '<div class="relative pull-left">';
+          echo '<span style="display: none" class="text-top">What they are looking for</span>';
+          echo '<textarea  name="specify_requirements" id="specify_requirements" autocomplete="off" placeholder="What they are looking for" class="requirements" maxlength="660"></textarea>';
+          //echo $this->formRow($form->get("specify_requirements"));
+     echo '</div>'; 
+
+
+echo '</div>';
+
 
 echo '</div>';
 echo '</div>';
 
 // .additional-details Div End
 
-echo '<h2 class="fs-24 color-green robotolight double-pad-top hide bookingHeading pull-left hide"> Calendar </h2>';
+echo '<h2 class="fs-24 color-green robotolight  hide bookingHeading pull-left hide"> Calendar </h2>';
 
       
       
 
     // next-saveDiv Start
-    echo'<div class="next-saveDiv full hide one-half-pad-top">';
-        echo '<h2 class="fs-24 color-green robotolight double-pad-bottom showOnNewBooking hide"> Booking </h2>';
+    echo'<div class="next-saveDiv full">';
+        echo '<h2 class="fs-24 color-green robotolight showOnNewBooking"> Calendar </h2>';
         echo '  <a href="javascript:;" class="btn-blue fs-14 button bg-white btn-bookNow open lh-34 align-center robotomedium pull-left gap-bottom hide">Book Now</a>';
         
-        echo '<div class="pull-left fs-14 hide savedBooking">
+        echo '<div class="pull-left fs-14 hide savedBooking double-gap-top">
                 <span id="bookingDate" class="double-pad-right pull-left lh-34"></span>
-                <a class="btn-blue button editBooking  pull-left wd-102" href="javascript:;">Edit</a> 
+                <a class="btn-blue button editBooking  pull-left wd-102" href="javascript:;" style="display:none">Edit</a> 
                 <span class="pull-left  lh-34 double-pad-left half-gap-left pointer cancelBookedbooking">Cancel Booking</span>
             </div>';
-            echo '<label class="pull-left pad-left lh-34 opacity0 color-red bookingError transition-ease-02 robotomedium">Please select a booking date</label>';
+            echo '<label class="hide pull-left pad-left lh-34 opacity0 color-red bookingError transition-ease-02 robotomedium">Please select a booking date</label>';
         echo '<div class="next-options pull-right triple-pad-right hide">';
             
             echo '<a href="javascript:;" class="btn-green fs-14 button bg-white btn-nextDetails lh-34 align-center robotomedium hide">Next</a>';

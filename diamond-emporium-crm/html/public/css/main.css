@@ -64,10 +64,11 @@ a.btn-cancel{ color: #5D5D5D; padding-left: 30px; }
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { background-color: rgb(255, 255, 255) !important; background-image: none; color: #5d5d5d; }
 .other-explain a{}
 .dropdown li a.submitOther{width: 120px; overflow: hidden; border: 1px solid #DFDFDF; color: #27AD09; margin: 0 auto; margin-top: 21px; margin-bottom: 0;}
-.showMessage { position: fixed; width: 100%; text-align: center; left: 0; top: -65px; right: 0; z-index: 100; background: #29629a; color: white; padding: 22px; font-size: 15px; transition: all .5s ease;}
+.showMessage { position: fixed; width: 100%; text-align: center; left: 0; top: -65px; right: 0; z-index: 100; /*background: #29629a;*/ background: #FF0000; color: white; padding: 22px; font-size: 15px; transition: all .5s ease;}
 .showMessage.top0{top:0;}
 .showMessage.topShow{top:64px;}
 .showMessage div{  }
+.showMessage.green{background: #27AD09}
 .bookNowMain{}
 .coverAreaBooking{ position: absolute; left: 0; right: 0; top: 0; height: 100%; z-index: 1; }
 /*-----------------------------------------*/
@@ -183,7 +184,23 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 /* Additional Details Start */
 
 .additional-details input { background: white; border:1px solid white; border-bottom: 1px solid #DFDFDF; width: 281px; line-height: 28px; position: relative; margin-bottom: 34px; margin-right: 34px;}
-.additional-details input.instructions { /*width: 601px; */}
+.additional-details textarea {background: white;
+    border: 1px solid #DFDFDF;
+    border-radius: 0;
+    width: 596px;
+    position: relative;
+    resize: none;
+    padding: 1px 10px;
+    font-weight: 100;
+    font-size: 14px;
+    color: #5d5d5d;
+    height: 157px;
+    outline: 0 none;
+    box-shadow: none;
+    overflow: hidden;
+    margin-top: 7px;
+    line-height: 19px; }
+.additional-details input.instructions { width: 909px; }
 .additional-details input.requirements { /*width: 1538px;*/ }
 .additional-details ul.dropdown { margin-right: 34px;margin-bottom: 36px;}
 .additional-details span.text-top{ letter-spacing: 1px; color: #A5A5A5; font-size: 10px; position: absolute; top: -9px; left :1px; z-index: 1 }
@@ -191,6 +208,10 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 .instructions::placeholder { color: #E0353D; }
 .instructions:-ms-input-placeholder { color: #E0353D; } 
 .instructions::-ms-input-placeholder { color: #E0353D; }
+
+.leftPanelInfo{ width: 944px; }
+.rightPanelInfo{   }
+.additional-details .rightPanelInfo input{ width: 597px; margin-right: 0; }
 /* Additional Details End */
 
 /*-----------------------------------------------*/
@@ -236,7 +257,8 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 .hideBudget { position: absolute; top: -8px; left: 0; width: 100%; height: 60px;}
 .selectReason, .selectReason2 { position: absolute; color: red; font-size: 12px; display: block; text-align: center; width: 100%; top: -12px; }
 .lookup{ z-index: 1; background: #0E79BB; color: white; font-size: 10px; padding: 2px 5px; border-radius: 4px; top: 5px; right: 35px; }
-.availability{ z-index: 1; background: #0E79BB; color: white; font-size: 10px; padding: 2px 5px; border-radius: 4px; top: 25px; right: 35px; }
+.availability{ z-index: 1;  top: 25px; right: 35px; }
+.availability img{ width: 14px; }
 .showLookups { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
 .LookupBG{ position: fixed; background: black; opacity: .5; left: 0; right: 0; width: 100%; height: 100%; z-index: 10; }
 .showLookupsInner {width: 640px; margin: 0 auto; background: white; position: relative; z-index: 11; margin-top: 20px }
@@ -617,7 +639,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .calendarLoad .addBookingLink{opacity: 0 !important;}
 .calendarLoad .cancelNewBooking,.calendarLoad .saveNewBooking {display: none;}
 .calendarLoad .roomBooking{cursor: pointer;}
-.NewCalendarContainer{ width: 1580px; padding-bottom: 110px; }
+.NewCalendarContainer{ width: 1580px; padding-bottom: 155px; }
 .calendarHead { background-color: #e7f5fd; line-height: 34px; padding: 22px 0; border: 1px solid #dfdfdf; }
 .weeklyDates { color: #444c63; margin: 0 auto; width: 380px; text-align: center; padding-top: 2px; height: 34px; position: relative;}
 /*.weeklyDates span { position: relative; top: -2px; }*/
@@ -709,7 +731,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .roomsContainer .roomBooking.green p i{color: #25a20b}
 .roomsContainer .roomBooking.red p i{color: #ee4860}
 .roomsContainer .roomBooking.blue p i{color: #009cd7}
-.roomsContainer .roomBooking { border-bottom: 1px solid #dfdfdf; height: 61px; width: 100%; position: relative; z-index: 1; background: white; overflow: hidden;}
+.roomsContainer .roomBooking { border-bottom: 1px solid #dfdfdf; height: 61px; width: 100%; position: absolute; z-index: 1; background: white; overflow: hidden;}
 .roomsContainer .roomBooking p.headBar{ color: white; line-height: 15px; height: 15px; text-align: left; padding-left: 4px; }
 .roomsContainer .roomBooking p.headBar span:first-child { width: 82px; float: left; border-right: 1px solid white; }
 .roomsContainer .roomBooking p.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; }
