@@ -3182,11 +3182,11 @@ setTimeout(function(){
           {
             if(count == 1)
             {
-              var setMessage = getUser + ' is on leave on';
+              var setMessage = getUser + ' is on leave!';
             }
             else
             {
-              var setMessage = getUser + ' is on leave in these days';
+              var setMessage = getUser + ' is on leave in these days!';
             }
 
             
