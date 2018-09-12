@@ -1696,15 +1696,33 @@ $(document).on('click','.daysSlider label.room3', function (e) {
 });
 
 /*====================================================*/
+// New Calendar Dates Scroll Filter
+$(document).on('click','.borderBottom i.icon-downarrow', function (e) {
+    if($(this).closest('.borderBottom').find('.newbookingdropdown').hasClass('hide'))
+    {
+      $('.newbookingdropdown').addClass('hide');
+      $(this).closest('.borderBottom').find('.newbookingdropdown').removeClass('hide');
+    }
+    else
+    {
+      $(this).closest('.borderBottom').find('.newbookingdropdown').addClass('hide');
+    }
+    
+});
+
+/*====================================================*/
 
 // Add new Booking popup
 $(document).on('click','.addBookingLink', function (e) {
+  
     var el = $(this);
     $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
     window.validState = true;
     validation();
     if(window.validState == false )
     { return false }
+
+
     $('.addBookingLink').removeClass('thisClicked');
     $('.labelContainer').removeClass('thisLabelClicked');
     $(this).addClass('thisClicked');
@@ -1712,7 +1730,7 @@ $(document).on('click','.addBookingLink', function (e) {
     var getRoomNumber = $(this).closest('.labelContainer').attr('roomnumber');
     var timeStart = $(this).attr('bookingstart');
 
-    var getTimeAllowed = checkTimeAllowed(timeStart, getRoomNumber, el);
+    //var getTimeAllowed = checkTimeAllowed(timeStart, getRoomNumber, el);
     var p = $(this)
     var offset = p.offset();
     var getOffsetTop = offset.top;
@@ -1722,8 +1740,16 @@ $(document).on('click','.addBookingLink', function (e) {
     
     var getBudget = $('.dropdown.budget').find('a.selected-text').attr('value');
     var getTime = $(this).closest('.daysContentSlider').attr('time');
+    var getDate = $(this).closest('.daysContent').attr('fulldate');
     
+    var getMonth = moment(getDate).format('MMM');
+    var getYear = moment(getDate).format('YY');
+    var getDay = moment(getDate).format('DD');
+    var setDate = getDay + '-' + getMonth + '-' + getYear + '  Room ';
+
     var getTimeSlots = getTimeSlot(getTime);
+    var appointmentTypes = getAppointmentTypes();
+    var salesRep = getSalesRep();
     $('#bookingDate').attr('timeSlot', getTimeSlots);
     $('#bookingDate').attr('timeSlotFull', getTime);
 
@@ -1736,34 +1762,45 @@ $(document).on('click','.addBookingLink', function (e) {
     var StartingHour = $('.addBookingLink.thisClicked').closest('.daysContentSlider').attr('startingtime');
 
 
-    var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
-          setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">Duration</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
-          setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
-          var getMinuteList = getMinutesList(getTimeAllowed);
-          setDropdown += getMinuteList;
-          //setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
-          //setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
-          //setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
-          //setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
-          //setDropdown += '<li><a href="javascript:;" getDuration="75" value="75 minutes">75 minutes</a></li>';
-          //setDropdown += '<li><a href="javascript:;" getDuration="90" value="90 minutes">90 minutes</a></li>';
-
-          setDropdown += '</ul></li>';
-        setDropdown += '</ul>';
+    //var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
+    //      setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">Duration</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
+    //     setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
+    //      var getMinuteList = getMinutesList(getTimeAllowed);
+    //      setDropdown += getMinuteList;
+    //      setDropdown += '</ul></li>';
+    //    setDropdown += '</ul>';
 
     var setHtml = "";
     var setHtml = '<div class="addBookingContainer roomsContainer">';
       setHtml += '<div class="roomBooking">';
-        setHtml += '<p class="fs-11 headBar" style="background-color:'+window.userColor+'"><span class="ellipsis">'+getName+'</span><span>'+getUserSC+'</span></p>';
-          setHtml += '<div class="full align-left half-pad-left lh-16 fs-11 one-pad-top relative">';
-            setHtml += '<p><i class="icon-diamond fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
-            setHtml += '<p><i class="icon-dollar fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
-            
-            setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">Starting at ' +StartingHour+':'+bookingTimeStart+'</span></p>';
-            setHtml += '<p class="bookingTiming pull-left"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i></p>';
-            setHtml += setDropdown;
-            setHtml += '<p class="full"><a class="savePopupBooking" href="JavaScript:;" style="color:'+window.userColor+'">OK</a></p>';
+        setHtml += '<div class="fs-11 headBar" style="background-color:'+window.userColor+'"><p class="newApp">New appointment</p><p class="bookingmade hide"><span class="ellipsis">'+getName+'</span><span>'+getUserSC+'</span></p><div class="appDetails hide"></div></div>';
+          
+
+          setHtml += '<div class="full align-left half-pad-left lh-16 fs-11 one-pad-top relative contentarea pad-bottom">';
+            setHtml += '<div class="appointmentTypes half-pad-top">' + appointmentTypes + '</div>';
+            setHtml += '<div class="newBookingDetail hide">';
+
+              // Time Date Room
+              setHtml += '<p class="half-pad-top half-pad-bottom hideOnCalenar"> <i class="icon-leave fs-12" style="color:'+window.userColor +'"></i> ' + setDate + getRoomNumber + '</p>';
+              // Duration
+              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom newBookingDuration hideOnCalenar"> <span class="subheading">Duration</span> 1.5 Hours</div>';
+              // Product Name
+              setHtml += '<p class="productShortCode hide"><i class="icon-diamond fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
+              // Customer Name
+              setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading">Customer Name</span> <span class="customerName ellipsis">Customer Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
+              // Sales Rep
+              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading">Sales Rep</span><span class="salesRepName">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" /></div></div>';
+
+              //setHtml += '<p><i class="icon-dollar fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
+              
+              //setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">Starting at ' +StartingHour+':'+bookingTimeStart+'</span></p>';
+              //setHtml += '<p class="bookingTiming pull-left"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i></p>';
+              //setHtml += setDropdown;
+
+              setHtml += '<p class="full"><a class="savePopupBooking" href="JavaScript:;">Save</a></p>';
+            setHtml += '</div>';
           setHtml += '<div class="transparentBG absolute" style="background-color:'+window.userColor+'"></div>';
+
         setHtml += '</div>';
       setHtml += '</div>';
     setHtml += '</div>';
@@ -1776,6 +1813,7 @@ $(document).on('click','.addBookingLink', function (e) {
 
 });
 
+
 /*====================================================*/
 // Save new Booking popup
 $(document).on('click','.savePopupBooking', function (e) {
@@ -1785,7 +1823,9 @@ $(document).on('click','.savePopupBooking', function (e) {
     var getDayName = $('.addBookingLink.thisClicked').closest('.daysCalendar').attr('dayname');
     var getDateNumber = $('.addBookingLink.thisClicked').closest('.daysContent').attr('datenumber');
     var getSelectedDate = $('.addBookingLink.thisClicked').closest('.daysContent').attr('fulldate');
-    var getDuration = $('.dropdown.durationTime').find('a.selected-text').attr('getduration');
+    //var getDuration = $('.dropdown.durationTime').find('a.selected-text').attr('getduration');
+    var getDuration = $('.newBookingDuration .subheading').attr('value');
+    
     var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
     
     var setHeight = '';
@@ -1855,8 +1895,8 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('.btn-bookNow').addClass('hide');
     $('.savedBooking').removeClass('hide');
     $('.bookingViewIcon').addClass('hide');
-    //$('.bookingHeading').removeClass('hide');
-    //$('.showOnNewBooking').addClass('hide');
+    $('.appDetails,.newApp, .hideOnCalenar').addClass('hide');
+    $('.bookingmade, .productShortCode').removeClass('hide');
     //$('.next-options').removeClass('hide');
     geDateValues(getSelectedDate);    
     //$('.NewCalendarContainer').addClass('hide');
@@ -2046,6 +2086,41 @@ $(document).on('click','.savePopupBooking', function (e) {
     return setDropdown;
   }
             
+  function getAppointmentTypes()
+  {
+
+      var setDropdown = "";
+      var setDropdown = '<ul class="dropdown d-i-b pull-left relative appointmentType z-index9 bookingPopup">';
+            setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value=""><span id="appointmentType" class="d-i-b" style="display: inline-block;">Sales Rep Type</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i></a></li>';
+            setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
+
+                setDropdown += '<li><a href="javascript:;" getDuration="1.5" value="Engagement Ring" shortcode="ER"> <i class="icon-diamond fs-12"></i> Engagement Ring</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="1" value="Wedding Band" shortcode="WB"> <i class="icon-diamond fs-12"></i> Wedding Band</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Resize" shortcode="R"><i class="icon-diamond fs-12"></i> Resize</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Collection" shortcode="RC"><i class="icon-diamond fs-12"></i> Ring Collection</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Drop Off" shortcode="RDO"><i class="icon-diamond fs-12 "></i> Ring Drop Off</a></li>';
+
+              setDropdown += '</ul></li>';
+        setDropdown += '</ul>';
+        return setDropdown;
+  }
+  function getSalesRep()
+  {
+    var setDropdown = "";
+      var setDropdown = '<ul class="dropdown d-i-b pull-left relative SalesRep z-index9 bookingPopup">';
+            setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value=""><span id="SalesRep" class="d-i-b" style="display: inline-block;">Select Type</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i></a></li>';
+            setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
+
+                setDropdown += '<li><a href="javascript:;" getDuration="1.5" value="Engagement Ring" shortcode="ER"> <i class="icon-diamond fs-12"></i> Engagement Ring</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="1" value="Wedding Band" shortcode="WB"> <i class="icon-diamond fs-12"></i> Wedding Band</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="45" value="Resize" shortcode="R"><i class="icon-diamond fs-12"></i> Resize</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="60" value="Ring Collection" shortcode="RC"><i class="icon-diamond fs-12"></i> Ring Collection</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="75" value="Ring Drop Off" shortcode="RDO"><i class="icon-diamond fs-12 "></i> Ring Drop Off</a></li>';
+
+              setDropdown += '</ul></li>';
+        setDropdown += '</ul>';
+        return setDropdown;
+  }
 
   function geDateValues(getSelectedDate)
   {
@@ -2552,14 +2627,40 @@ setTimeout(function(){
 
 
 
-        //If Preferred method
+        //If Duation time new booking popup
         if(el.closest('.dropdown').hasClass('durationTime'))
         { 
           var checkTime = $(this).find('a').attr('getDuration');
           el.closest('.dropdown').find('a.selected-text').attr('getDuration', checkTime); 
-          //$('#perferrefDropdownOther').closest('.relative').removeClass('hide');
-
         }
+
+        if(el.closest('.dropdown').hasClass('appointmentType'))
+        { 
+          var getShortCode = $(this).find('a').attr('shortcode');
+          var getappDuaration = $(this).find('a').attr('getduration');
+          
+          el.closest('.appointmentTypes').addClass('hide'); 
+          el.closest('.appointmentTypes').next('.newBookingDetail').removeClass('hide'); 
+          $('.addBookingPopup .newApp').addClass('hide'); 
+          $('.addBookingPopup .appDetails .ellipsis').html(getValue);
+          
+          $('.addBookingPopup .productShortCode span').html(getShortCode);
+          var getCurentDropdown = el.closest('.appointmentTypes').html();
+          //el.closest('.appointmentTypes').remove();
+          $('.addBookingPopup .appDetails').html(getCurentDropdown);
+          $('.addBookingPopup .appDetails').removeClass('hide'); 
+          $('.headBar .dropdownOptions').hide();
+          var setPopupHtml = '';
+          if(getappDuaration == '1.5')
+          {  setPopupHtml += '<span class="subheading" value="90">Duration</span> 1.5 Hours'; }
+          else if (getappDuaration == '1')
+          { setPopupHtml += '<span class="subheading" value="60">Duration</span> 1 Hours'; }
+          else
+          { setPopupHtml += '<span class="subheading" value="30">Duration</span> 0.5 Hours'; }
+          $('.newBookingDuration')
+
+          $('.newBookingDuration').html(setPopupHtml);
+        } 
 
         //If Preferred method
         if(el.closest('.dropdown').hasClass('preferredMethod'))
@@ -6933,7 +7034,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
                   return false;                  
                 }
                 var htmlDate = "";
-
+                
 
                 for (var i = 0; i < parsed.length; i++) {
                   htmlDate += "<tr>";
@@ -6946,14 +7047,16 @@ function getBookingTime(getTime, bookingStart, Duation) {
                  var table = $('#datatable').DataTable( {"lengthChange": false,});
                   $('.customerList input').attr('placeholder', 'Type to search...');
                   $('#datatable tbody').on( 'click', 'tr', function () {
-                    debugger
+                    
                     var getVal = $(this).find('td').attr('value');
                     $('#onlyReferral').val(getVal);
                     $('.showLookups').slideUp();
                     $('#onlyReferral').closest('.relative').find('span').show();
                     setTimeout(function(){ $('.showLookups').addClass('hide'); }, 500);
                   });
-        
+                  
+                  window.list = parsed;
+                  
 
             }
 
@@ -6964,8 +7067,55 @@ function getBookingTime(getTime, bookingStart, Duation) {
     
 
    });
-
   
+
+$(document).on('click', '.customerresult a', function () { 
+      var value = $(this).html();
+      
+      $(this).closest('.borderBottom').find('.customerName').html(value);
+      $('#customerRepSelect').addClass('hide');
+      
+    });// End
+
+  $(document).on('keyup', '#newbookingdropdown', function () {
+      var getValue = $(this).val();
+      var getLength = getValue.length;
+      var arr = [];
+      if(getLength > 1)
+      {
+        var parsed = window.list;
+
+        for (var i = 0; i < parsed.length; i++) {
+            
+            var result = parsed[i].user_name
+             if (result.indexOf(getValue) > -1) {
+               arr.push(result);
+             }
+             else {
+             }
+
+            //htmlDate += "<td value='"+ parsed[i].user_name +"'>" + parsed[i].user_name +"</td>";
+
+          }
+      }
+      var parsed2 = arr;
+      var setHtml = '';
+        for (var i = 0; i < parsed2.length; i++) {
+          setHtml += "<a class='full'>"+ parsed2[i] +"</a>";
+        }
+
+        if(parsed2.length > 0)
+        {
+          $(".customerresult").html(setHtml);
+        }
+        else
+        {
+          $(".customerresult").html(' ');
+        }
+        
+    });// End
+
+
    /*------------------------------------------------------------------*/
    /*---------------------Stop GetCountries Ajax List------------------------ */
    /*------------------------------------------------------------------*/

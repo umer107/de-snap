@@ -735,11 +735,16 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .roomsContainer .roomBooking p.headBar{ color: white; line-height: 15px; height: 15px; text-align: left; padding-left: 4px; }
 .roomsContainer .roomBooking p.headBar span:first-child { width: 82px; float: left; border-right: 1px solid white; }
 .roomsContainer .roomBooking p.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; }
+.addBookingPopup .roomBooking p.newApp{line-height: 15px; font-size: 10px; }
+.roomsContainer .roomBooking div.headBar{ color: white; line-height: 15px; height: 15px; text-align: left; padding-left: 4px; }
+.roomsContainer .roomBooking div.headBar span:first-child { width: 82px; float: left; border-right: 1px solid white;line-height: 15px; }
+.roomsContainer .roomBooking div.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; line-height: 15px;}
+.appointmentTypes{ display: inline-block; border-bottom: 2px solid #9b9b9b; padding-bottom: 4px; }
 .addBookingLink { position: absolute; left: 2px; top: 0px; opacity: 0 }
 .daysContentSlider label p:hover .addBookingLink { opacity: 1 }
 .sundayContent { background: #f6f6f6; width: 113px; height: 640px; }
 .addBookingLinkContent{    position: absolute; left: 0; top: 0px; height: 64px; right: 0; z-index: 0; }
-.addBookingPopup .roomsContainer .roomBooking{ border-bottom: none; overflow: initial;}
+.addBookingPopup .roomsContainer .roomBooking{ border-bottom: none; overflow: initial; }
 .tempContainer{ width: 122px; }
 .roomBooking p{position: relative; z-index: 1}
 
@@ -747,24 +752,64 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .roomsContainer:not(.addBookingContainer) .roomBooking div.half-pad-left p span.half-pad-left{padding-left: 0; }
 
 .transparentBG{ width: 100%; height: 39px; left: 0; top: 0; opacity: .3; }
-.addBookingContainer{ float: left; width: 124px; height: 138px;}
+.addBookingContainer{ float: left; width: 124px; /*height: 138px;*/}
 /*.addBookingPopup{ left: 0; right: 0; top:0; width: 100%; height: 100%; z-index: 1;}*/
 .addBookingPopup{ z-index: 1;}
-.addBookingPopup .roomBooking{ height: 100%;}
-.addBookingPopup .transparentBG{ height: 152px; }
+.addBookingPopup .roomBooking{ height: auto;}
+
 .addBookingPopup .roomBooking p.headBar span:first-child { width: 92px; }
-.addBookingPopup .roomBooking p a.savePopupBooking{ margin: 6px 0 0 22px; font-size: 14px; width: 71px; height: 25px; border-radius: 17.5px; background-color: #ffffff; border: solid 1px #d8d8d8; display: inline-block; text-align: center; line-height: 24px;}
-.addBookingPopup .transparentBG{ height: 123px; }
-.dropdown.durationTime li a.selected-text span{ width: 78px; }
-.dropdown.durationTime{ height: 18px; line-height: 18px; width: 98px;}
-.dropdown.durationTime li a { color: #5D5D5D; text-align: left; font-size: 12px; border: none;    padding-left: 5px; }
-.dropdown.durationTime .selected-text i{ background-size: 11px 7px; background: none; width: 10px; margin-top: 5px; }
-.dropdown.durationTime .dropdownOptions{ top: 20px; width: 94px; left: 4px; padding: 0px 0; }
-.dropdown.durationTime li ul li { line-height: 24px; height: 24px; text-align: left; cursor: pointer; }
-.addBookingPopup .roomBooking p{ line-height: 20px;}
-.dropdown.durationTime li ul li:hover{ background-color: white;}
-.dropdown.durationTime li ul li:hover a{color: #5D5D5D;    font-weight: bold; }
-.roomBooking span.half-pad-left{ padding-left: 2px;}
+.addBookingPopup .roomBooking p a.savePopupBooking{ margin: 6px 0 0 22px; font-size: 14px; width: 71px; height: 25px; border-radius: 17.5px; background-color: #ffffff; color: #2abf01; display: inline-block; text-align: center; line-height: 24px;}
+.addBookingPopup .transparentBG{ height: 193px; display: none }
+div.headbar{background-color: #cfcfcf; }
+.addBookingPopup .contentarea{background-color: #cfcfcf;}
+.borderBottom{ cursor: pointer; border-bottom: solid 1px #9b9b9b; margin-bottom: 9px; width: 112px; display: inline-block; position: relative; }
+.borderBottom i.icon-downarrow{ position: absolute; right: 1px; bottom: 7px; }
+.dropdown.bookingPopup li a.selected-text span{ width: 97px;padding-right: 3px; }
+.dropdown.bookingPopup{ height: 18px; line-height: 18px; width: 112px;}
+.dropdown.bookingPopup li a{ color: #5D5D5D; text-align: left; font-size: 12px; border: none; }
+.dropdown.bookingPopup .selected-text i{ background-size: 11px 7px; background: none; width: 12px; margin-top: 5px; }
+.dropdown.bookingPopup .dropdownOptions{ top: 20px; width: 162px; left: -25px; padding: 0px 0; }
+.dropdown.bookingPopup li ul li{ line-height: 24px; height: 24px; text-align: left; cursor: pointer; }
+.dropdown.appointmentType li ul li a i{ color: #f58a49; position: relative; right:3px; top: 1px; font-size:12px:  }
+.addBookingPopup .roomBooking p{ line-height: 20px; }
+.addBookingPopup .roomBooking div span.subheading{ position: absolute; line-height: 10px; top: -4px; font-size: 8px; }
+.dropdown.bookingPopup li ul li:hover{ background-color: white; }
+.dropdown.bookingPopup li ul li:hover a{ color: #5D5D5D; font-weight: bold; }
+.roomBooking span.half-pad-left{ padding-left: 2px; }
+.newBookingDetail{ position: relative;z-index: 1 }
+.newbookingdropdown{     width: 162px;
+    position: absolute;
+    height: 190px;
+    background-color: #ffffff;
+    border: solid 1px #dedede;
+    left: -25px;
+    z-index: 4;}
+.newbookingdropdown input{
+	width: 139px;
+    height: 21px;
+    line-height: 21px;
+    border-radius: 10.5px;
+    background-color: #f8f8f8;
+    margin: 10px 0 6px 11px;
+    border: none;
+    font-size: 10px;
+    text-align: left;
+    padding: 0 10px; }
+.newbookingdropdown#salesRepSelect{height: 224px; width: 227px; left: -60px;}	
+.newbookingdropdown#salesRepSelect input {width: 204px;}								
+.appDetails .dropdown.bookingPopup{    height: 15px;
+    line-height: 15;}
+.appDetails .dropdown.bookingPopup li a{display: inline;
+    font-size: 10px;}
+.appDetails #appointmentType{ width: 97px; border-right: 0 none; color: white;}
+.appDetails .bookingPopup .selected-text i{ color: white; margin-top: 2px;}
+#customerRepSelect{}
+#customerRepSelect div{    padding-left: 14px; height: 151px; overflow: auto; }
+#customerRepSelect div a{    font-size: 12px;
+    color: #5d5d5d;
+    line-height: 2;}
+    .customerName{    width: 102px;
+    display: inline-block;}		
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
