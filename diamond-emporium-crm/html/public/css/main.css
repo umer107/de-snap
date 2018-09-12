@@ -804,12 +804,17 @@ div.headbar{background-color: #cfcfcf; }
 .appDetails #appointmentType{ width: 97px; border-right: 0 none; color: white;}
 .appDetails .bookingPopup .selected-text i{ color: white; margin-top: 2px;}
 #customerRepSelect{}
-#customerRepSelect div{    padding-left: 14px; height: 151px; overflow: auto; }
-#customerRepSelect div a{    font-size: 12px;
-    color: #5d5d5d;
-    line-height: 2;}
-    .customerName{    width: 102px;
-    display: inline-block;}		
+#customerRepSelect div{ padding-left: 14px; height: 151px; overflow: auto; }
+#customerRepSelect div a{ font-size: 12px; color: #5d5d5d; line-height: 2;}
+#salesRepSelect div.pickAgentresult{ padding-left: 14px; height: 184px; overflow: auto; }
+#salesRepSelect div.pickAgentresult img{ border-radius: 50%; height: 30px; width: 30px; float: left; } 
+#salesRepSelect div.pickAgentresult a{ font-size: 12px; float: left; line-height: 30px; padding-left: 13px; color: #5d5d5d; }
+
+#salesRepSelect div.pickAgentresult2{ padding-left: 14px; height: 184px; overflow: auto; }
+#salesRepSelect div.pickAgentresult2 img{ border-radius: 50%; height: 30px; width: 30px; float: left; } 
+#salesRepSelect div.pickAgentresult2 a{ font-size: 12px; float: left; line-height: 30px; padding-left: 13px; color: #5d5d5d; } 
+
+.customerName{    width: 102px; display: inline-block;}		
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/

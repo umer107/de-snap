@@ -1714,7 +1714,7 @@ $(document).on('click','.borderBottom i.icon-downarrow', function (e) {
 
 // Add new Booking popup
 $(document).on('click','.addBookingLink', function (e) {
-  
+    
     var el = $(this);
     $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
     window.validState = true;
@@ -1787,9 +1787,9 @@ $(document).on('click','.addBookingLink', function (e) {
               // Product Name
               setHtml += '<p class="productShortCode hide"><i class="icon-diamond fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
               // Customer Name
-              setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading">Customer Name</span> <span class="customerName ellipsis">Customer Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
+              setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading">Customer Name</span> <span class="customerName ellipsis">Customer Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
               // Sales Rep
-              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading">Sales Rep</span><span class="salesRepName">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" /></div></div>';
+              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading">Sales Rep</span><span class="salesRepName">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
 
               //setHtml += '<p><i class="icon-dollar fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
               
@@ -1809,6 +1809,8 @@ $(document).on('click','.addBookingLink', function (e) {
     var container = "<div class='tempContainer fixed' style='top:"+getOffsetTop+"px ; left:"+getOffsetLeft+"px'>" + setHtml + "</div>";
     //$(this).after(container);
     $('.addBookingPopup').html(container).removeClass('hide');
+    $('.pickAgentresult2').html(window.pickAgentresult2);
+    
 
 
 });
@@ -7069,13 +7071,15 @@ function getBookingTime(getTime, bookingStart, Duation) {
    });
   
 
-$(document).on('click', '.customerresult a', function () { 
+  $(document).on('click', '.customerresult a', function () { 
       var value = $(this).html();
       
       $(this).closest('.borderBottom').find('.customerName').html(value);
       $('#customerRepSelect').addClass('hide');
       
     });// End
+
+
 
   $(document).on('keyup', '#newbookingdropdown', function () {
       var getValue = $(this).val();
@@ -7091,11 +7095,7 @@ $(document).on('click', '.customerresult a', function () {
              if (result.indexOf(getValue) > -1) {
                arr.push(result);
              }
-             else {
-             }
-
-            //htmlDate += "<td value='"+ parsed[i].user_name +"'>" + parsed[i].user_name +"</td>";
-
+             else {}
           }
       }
       var parsed2 = arr;
@@ -7115,6 +7115,110 @@ $(document).on('click', '.customerresult a', function () {
         
     });// End
 
+  function pickUpAgents (){
+    $.ajax({
+            type: "GET",
+            url: "/dashboard/ajaxGetDataListofSalesRep", 
+            data: {},
+            success: function (data) {
+                var getData = data;                
+                var parsed = '';               
+                try{
+                  parsed = JSON.parse(data);                  
+                }           
+                catch(e)
+                {                   
+                  return false;                  
+                }
+                
+                window.pickupAgentlist = parsed;
+                var setHtml = '';
+                for (var i = 0; i < parsed.length; i++) {
+                
+                var getUserimage = parsed[i].image;
+                if(getUserimage == null)
+                {
+                  getUserimage = 'sampleUser.png';
+                }
+
+                setHtml +="<div class='full gap-bottom' userid='"+parsed[i].user_id+"' username='"+parsed[i].name+"'>";
+                setHtml += "<img src='/profile_image/"+getUserimage+"' />";      
+                setHtml += "<a class=''>"+ parsed[i].name +"</a>";
+                setHtml +="</div>";
+              }
+              window.pickAgentresult2 = setHtml
+            }
+
+        });
+
+  }
+  pickUpAgents ();
+
+
+  $(document).on('keyup', '#newbookingdropdown', function () {
+      var getValue = $(this).val();
+      var getLength = getValue.length;
+      if(getLength == 0)
+      {
+        $(".pickAgentresult").addClass('hide');
+        $(".pickAgentresult2").removeClass('hide');
+        return false;
+      }
+      else
+      {
+        $(".pickAgentresult2").addClass('hide');
+        $(".pickAgentresult").removeClass('hide');
+      }
+      var arr = [];
+      if(getLength > 1)
+      {
+        var parsed = pickupAgentlist;
+
+        for (var i = 0; i < parsed.length; i++) {
+            
+            var result = parsed[i].name
+             if (result.indexOf(getValue) > -1) {
+               arr.push(parsed[i]);
+             }
+             else {}
+           }
+      }
+      var parsed2 = arr;
+      var setHtml = '';
+        for (var i = 0; i < parsed2.length; i++) {
+          //[5].image
+          var getUserimage = parsed2[i].image;
+          if(getUserimage == null)
+          {
+            getUserimage = 'sampleUser.png';
+          }
+
+          setHtml +="<div class='full gap-bottom' userid='"+parsed2[i].user_id+"' username='"+parsed2[i].name+"'>";
+          setHtml += "<img src='/profile_image/"+getUserimage+"' />";      
+          setHtml += "<a class=''>"+ parsed2[i].name +"</a>";
+          setHtml +="</div>";
+        }
+
+        if(parsed2.length > 0)
+        {
+          $(".pickAgentresult").html(setHtml);
+        }
+        else
+        {
+          $(".pickAgentresult").html(' ');
+        }
+        
+    });// End
+
+
+  // Select Pick up Assignee on click
+  $(document).on('click', '.pickAgentresult div, .pickAgentresult2 div', function () { 
+    var value = $(this).attr('username');
+    
+    $(this).closest('.borderBottom').find('.salesRepName').html(value);
+    $('#salesRepSelect').addClass('hide');
+    
+  });// End
 
    /*------------------------------------------------------------------*/
    /*---------------------Stop GetCountries Ajax List------------------------ */
