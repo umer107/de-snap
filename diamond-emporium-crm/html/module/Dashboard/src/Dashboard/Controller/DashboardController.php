@@ -16,7 +16,6 @@ class DashboardController extends AbstractActionController
 {
     protected $dashboardTable;
 
-       
     public function indexAction()
     {
   
@@ -45,8 +44,6 @@ class DashboardController extends AbstractActionController
        
     }
 
-
-    
     public function ajaxAddDashboardAction()
     {
           try{
@@ -78,10 +75,6 @@ class DashboardController extends AbstractActionController
         
      
     }
-
-
-      
-
 
     public function ajaxGetUserBasedOnBudgetAction()
     {
@@ -184,9 +177,7 @@ class DashboardController extends AbstractActionController
 			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
 	}
     }
-    
-    
-    
+
     //ajaxQuestionViewCalender
     public function  ajaxGetDataForQuestionViewCalenderAction()
     {
@@ -206,6 +197,23 @@ class DashboardController extends AbstractActionController
         }
     }
     
+    //Start ListofSalesRepo
+    public function  ajaxGetDataListofSalesRepAction()
+    {
+        try {
+            $sm = $this->getServiceLocator();
+            $identity = $sm->get('AuthService')->getIdentity();
+            $config = $this->getServiceLocator()->get('Config');
+            $params = $this->getRequest()->getQuery()->toArray();         
+            $leadsRes = $this->getServiceLocator()->get('Leave\Model\LeaveTable');          
+            $calArr = $leadsRes->fetchListOfSalesRepo($params);
+            echo json_encode($calArr);        
+            exit;
+            
+        } catch (Exception $e) {
+            \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+        }
+    }
     //Start --> Ajax-Custom-View-Calender
     public function  ajaxGetDataForCustomViewCalenderAction()
     {
@@ -226,7 +234,6 @@ class DashboardController extends AbstractActionController
         }
     }
     //End --> Ajax-Custom-View-Calender
-
     //Start ajaxGetUserLeavesAction
     public function  ajaxGetUserLeavesAction()
     {
@@ -267,8 +274,7 @@ class DashboardController extends AbstractActionController
         
         
     }
-    //End
-    
+    //End 
    //End ajaxGetUserLeavesAction
     public function  ajaxUpdateleadStatusAction()
     {
@@ -307,9 +313,6 @@ class DashboardController extends AbstractActionController
             \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
         }
     }
-
-
-    
    public  function ajaxGetTeamStatusAction()
    {
        try {
@@ -334,7 +337,6 @@ class DashboardController extends AbstractActionController
             \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
         }
    }
-
    //GetLeadDetailOnLeadClick
    public function  ajaxGetLeadDetailForLeadPageAction()
    {
@@ -356,7 +358,6 @@ class DashboardController extends AbstractActionController
        
        
    }
-
    //GetNextInLine
    public function  GetNextInLineAction()
    {
@@ -376,8 +377,7 @@ class DashboardController extends AbstractActionController
        }catch (Exception $e) {
             \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
         }
-   }
-           
+   }       
    public function ajaxGetUserLoginDetailAction()
    {
        try {
@@ -391,8 +391,7 @@ class DashboardController extends AbstractActionController
             \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
         }
        
-   }
-   
+   }  
     public function ajaxGetCountriesListAction()
    {
        try {
@@ -413,7 +412,6 @@ class DashboardController extends AbstractActionController
         }
        
    }
-
    public function addAction()
     {
         $form = new DashboardForm();
@@ -433,7 +431,6 @@ class DashboardController extends AbstractActionController
         }
         return array('form' => $form);
     }
-
     public function editAction()
     {
 
@@ -462,7 +459,6 @@ class DashboardController extends AbstractActionController
             'form' => $form,
         );
     }
-
     public function deleteAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
@@ -486,9 +482,7 @@ class DashboardController extends AbstractActionController
             'id'    => $id,
             'dashboard' => $this->getDashboardTable()->getDashboard($id)
         );
-    }
-
-   
+    }   
     public function getDashboardTable()
     {
         if (!$this->dashboardTable) {
