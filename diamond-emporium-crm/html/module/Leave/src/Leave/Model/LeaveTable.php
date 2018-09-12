@@ -1302,6 +1302,37 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
            }
        }
+       
+       //FetchSales
+       public function fetchListOfSalesRepo($filter = null)
+       {
+           
+           try{
+                    
+               $fullname = new \Zend\Db\Sql\Expression(
+                    'CONCAT(u.first_name, \' \', u.last_name)'
+               );               
+             
+               $select = new \Zend\Db\Sql\Select();
+               $select->from(array('r' => 'de_roles'))
+                    ->columns(array('role_id','role_name'))
+                    ->join(array('u' => 'de_users'), 'r.role_id = u.role_id', array('user_id','name' => $fullname,'image'), 'left');  
+              
+              $role_id = 6;
+              if($role_id == 6){              
+                $select->where(array('r.role_id = ?' => $role_id)); 
+              }
+              $data = $this->executeQuery($select);                                          
+              $result = $data->toArray();
+              return $result;
+              
+           }catch(\Exception $e){
+             \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+          }
+           
+       }
+
+
        //FetchUserEmail
        public function fetchUserEmail($filter = null)
        {

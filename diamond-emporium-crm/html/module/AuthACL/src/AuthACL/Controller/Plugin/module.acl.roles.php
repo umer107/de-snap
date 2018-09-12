@@ -184,6 +184,7 @@ $resources = array(
     'Dashboard\Controller\Dashboard::ajaxGetCheckUserEmail',
     'Dashboard\Controller\Dashboard::ajaxGetUserLeaves',
     'Dashboard\Controller\Dashboard::ajaxCheckUserIsOnLeave',
+    'Dashboard\Controller\Dashboard::ajaxGetDataListofSalesRep',
     
 
 	);
