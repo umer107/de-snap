@@ -116,6 +116,16 @@ return array(
                             ),
                         ),
                     ),  
+            'ajaxGetDataListofSalesRep' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetDataListofSalesRep',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetDataListofSalesRep',
+                            ),
+                        ),
+                    ),
             'ajaxGetCheckUserEmail' => array(
                         'type' => 'Segment',
                         'options' => array(
