@@ -1698,6 +1698,8 @@ $(document).on('click','.daysSlider label.room3', function (e) {
 /*====================================================*/
 // New Calendar Dates Scroll Filter
 $(document).on('click','.borderBottom i.icon-downarrow', function (e) {
+    $(".pickAgentresult").html(' ').addClass('hide');
+    $(".pickAgentresult2").removeClass('hide');
     if($(this).closest('.borderBottom').find('.newbookingdropdown').hasClass('hide'))
     {
       $('.newbookingdropdown').addClass('hide');
@@ -1730,7 +1732,8 @@ $(document).on('click','.addBookingLink', function (e) {
     var getRoomNumber = $(this).closest('.labelContainer').attr('roomnumber');
     var timeStart = $(this).attr('bookingstart');
 
-    //var getTimeAllowed = checkTimeAllowed(timeStart, getRoomNumber, el);
+    var getTimeAllowed = checkTimeAllowed(timeStart, getRoomNumber, el);
+    window.getTimeAllowed = getTimeAllowed;
     var p = $(this)
     var offset = p.offset();
     var getOffsetTop = offset.top;
@@ -1787,9 +1790,9 @@ $(document).on('click','.addBookingLink', function (e) {
               // Product Name
               setHtml += '<p class="productShortCode hide"><i class="icon-diamond fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
               // Customer Name
-              setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading">Customer Name</span> <span class="customerName ellipsis">Customer Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
+              setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading hide">Customer Name</span> <span class="customerName ellipsis">Customer Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
               // Sales Rep
-              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading">Sales Rep</span><span class="salesRepName">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
+              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
 
               //setHtml += '<p><i class="icon-dollar fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
               
@@ -2611,6 +2614,8 @@ setTimeout(function(){
 
     // Select dropdown value
     
+    
+
     $(document).on('click','ul.dropdownOptions li:not(.assignToDiv ul.dropdownOptions li)',function(){
 
         var el = $(this); 
@@ -2640,6 +2645,30 @@ setTimeout(function(){
         { 
           var getShortCode = $(this).find('a').attr('shortcode');
           var getappDuaration = $(this).find('a').attr('getduration');
+
+          var setMessage = 'Meeting room not available. Please select some other room!';
+
+          if(getappDuaration == '1.5')
+          { 
+            if(window.getTimeAllowed < 6)
+            {
+              showBookingError(setMessage);
+            }  
+          }
+          else if (getappDuaration == '1')
+          { 
+            if(window.getTimeAllowed < 4)
+            {
+              showBookingError(setMessage);
+            } 
+          }
+          else
+          { 
+            if(window.getTimeAllowed < 2)
+            {
+              showBookingError(setMessage);
+            } 
+          }
           
           el.closest('.appointmentTypes').addClass('hide'); 
           el.closest('.appointmentTypes').next('.newBookingDetail').removeClass('hide'); 
@@ -2842,6 +2871,19 @@ setTimeout(function(){
             
     });// End
     
+
+    function showBookingError(setMessage)
+    {
+      $('.showMessage div').html(setMessage);
+      $('.showMessage').addClass('topShow');
+        setTimeout(function(){ 
+          $('.showMessage').removeClass('topShow');
+      }, 5000); 
+      $('.addBookingPopup').html('');
+      $('.addBookingPopup').addClass('hide');
+      return false;
+    }
+
     // Check if use is on Leave
     window.datechange = 0;
     $(document).on('change','#dateRange' ,function(){
@@ -7075,6 +7117,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
       var value = $(this).html();
       
       $(this).closest('.borderBottom').find('.customerName').html(value);
+      $(this).closest('.borderBottom').find('.subheading').removeClass('hide');
       $('#customerRepSelect').addClass('hide');
       
     });// End
@@ -7213,10 +7256,62 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
   // Select Pick up Assignee on click
   $(document).on('click', '.pickAgentresult div, .pickAgentresult2 div', function () { 
-    var value = $(this).attr('username');
+    var $el = $(this);
+    var value = $el.attr('username');
+    var Id = $el.attr('userid');
+    var startDate = $('.addBookingLink.thisClicked').closest('.daysContent').attr('fulldate');
+
+    //-----------
+
+      var leaveData =  {start_date : startDate , assign_UserId : Id}
+
+
+      $.ajax({
+        type: "GET",
+        url: "/dashboard/ajaxCheckUserIsOnLeave",
+        data: leaveData, 
+        success: function (data) {
+          debugger
+          var parsed = '';          
+          try{                           
+            parsed = JSON.parse(data);              
+          }                 
+          catch(e)                
+          {                  
+            return false;                  
+          }
+          debugger
+          var count = 0;    
+          if (parsed != null)
+          {
+            $.each(parsed, function(key, value){
+              count++
+            });
+          }
+          var setMessage = value + ' is on leave!';
+
+          if(count > 0)
+          {
+            $('.showMessage div').html(setMessage);
+            $('.showMessage').addClass('topShow');
+              setTimeout(function(){ 
+                $('.showMessage').removeClass('topShow');
+            }, 5000);
+            return false; 
+          }
+          else
+          {
+            $el.closest('.borderBottom').find('.salesRepName').html(value);
+            $el.closest('.borderBottom').find('.subheading').removeClass('hide');
+            $('#salesRepSelect').addClass('hide');
+          }
+        }
+      }); 
+
+    //-----------
+
+
     
-    $(this).closest('.borderBottom').find('.salesRepName').html(value);
-    $('#salesRepSelect').addClass('hide');
     
   });// End
 
