@@ -1,0 +1,1 @@
+ALTER TABLE `de_userdetail` ADD `customerName` VARCHAR(50) NULL AFTER `bookingstart`, ADD `salesRepName` VARCHAR(50) NULL AFTER `customerName`;
