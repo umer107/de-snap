@@ -3403,6 +3403,8 @@ setTimeout(function(){
             booking_room : $('#bookingDate').attr('roomnumber'),
             durationTime : $('#bookingDate').attr('durationTime'),
             bookingstart : $('#bookingDate').attr('bookingstart'),
+            customerName : $('#bookingDate').attr('customerName'),
+            salesRepName : $('#bookingDate').attr('salesRepName'),
             //booking_duration: $('.durationSelection a').filter('.active').attr('value'),
             color : window.userColor
            
