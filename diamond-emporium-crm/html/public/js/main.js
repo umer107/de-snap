@@ -1697,7 +1697,7 @@ $(document).on('click','.daysSlider label.room3', function (e) {
 
 /*====================================================*/
 // New Calendar Dates Scroll Filter
-$(document).on('click','.borderBottom i.icon-downarrow', function (e) {
+$(document).on('click','.borderBottom i.icon-downarrow, .customerName, .salesRepName', function (e) {
     $(".pickAgentresult").html(' ').addClass('hide');
     $(".pickAgentresult2").removeClass('hide');
     if($(this).closest('.borderBottom').find('.newbookingdropdown').hasClass('hide'))
@@ -1790,9 +1790,9 @@ $(document).on('click','.addBookingLink', function (e) {
               // Product Name
               setHtml += '<p class="productShortCode hide"><i class="icon-diamond fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
               // Customer Name
-              setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading hide">Customer Name</span> <span class="customerName ellipsis" value="">Customer Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
+              setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading hide">Customer Name</span> <span class="customerName  display-block ellipsis" value="">Customer Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
               // Sales Rep
-              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName" value="">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
+              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName display-block" value="">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
 
               //setHtml += '<p><i class="icon-dollar fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
               
