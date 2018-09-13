@@ -770,7 +770,7 @@ div.headbar{background-color: #cfcfcf; }
 .dropdown.bookingPopup .selected-text i{ background-size: 11px 7px; background: none; width: 12px; margin-top: 5px; }
 .dropdown.bookingPopup .dropdownOptions{ top: 20px; width: 162px; left: -25px; padding: 0px 0; }
 .dropdown.bookingPopup li ul li{ line-height: 24px; height: 24px; text-align: left; cursor: pointer; }
-.dropdown.appointmentType li ul li a i{ color: #f58a49; position: relative; right:3px; top: 1px; font-size:12px:  }
+.dropdown.appointmentType li ul li a i{ color: #f58a49; position: relative; right:3px; top: 3px; font-size:12px:  }
 .addBookingPopup .roomBooking p{ line-height: 20px; }
 .addBookingPopup .roomBooking div span.subheading{ position: absolute; line-height: 10px; top: -4px; font-size: 8px; }
 .dropdown.bookingPopup li ul li:hover{ background-color: white; }

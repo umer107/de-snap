@@ -1790,9 +1790,9 @@ $(document).on('click','.addBookingLink', function (e) {
               // Product Name
               setHtml += '<p class="productShortCode hide"><i class="icon-diamond fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
               // Customer Name
-              setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading hide">Customer Name</span> <span class="customerName ellipsis">Customer Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
+              setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading hide">Customer Name</span> <span class="customerName ellipsis" value="">Customer Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
               // Sales Rep
-              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
+              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName" value="">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
 
               //setHtml += '<p><i class="icon-dollar fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
               
@@ -1832,7 +1832,9 @@ $(document).on('click','.savePopupBooking', function (e) {
     var getDuration = $('.newBookingDuration .subheading').attr('value');
     
     var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
-    
+    var customerName = $('.customerName').attr('value');
+    var pickUpAgent = $('.salesRepName').attr('value');
+    console.log(customerName + ' - ' + pickUpAgent);
     var setHeight = '';
     if(getDuration == "15")
     {
@@ -1879,6 +1881,8 @@ $(document).on('click','.savePopupBooking', function (e) {
 
     $('#bookingDate').attr('dayName', getDayName);
     $('#bookingDate').attr('datenumber', getDateNumber);
+    $('#bookingDate').attr('customerName', customerName);
+    $('#bookingDate').attr('salesRepName', pickUpAgent);
     $('.addBookingLink.thisClicked').closest('label').append(selectHtml);
     $('.thisLabelClicked .roomBooking').css('height',setHeight).addClass('newlyAdded');
     $('.thisLabelClicked .roomBooking').css('top',setTop);
@@ -3305,7 +3309,7 @@ setTimeout(function(){
         url: "/dashboard/ajaxCheckUserIsOnLeave",
         data: leaveData, 
         success: function (data) {
-          debugger
+          
           var parsed = '';          
           try{                           
             parsed = JSON.parse(data);              
@@ -5410,7 +5414,7 @@ $(document).on('click','.btn-saveDetailsLeave', function (e) {
           }
           return false;
         }
-        debugger
+        
         //AjaxCallSaveLeadsOnSaveClick--Start
          
          var model = getValuesFromLeaveForm();
@@ -7116,7 +7120,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
   $(document).on('click', '.customerresult a', function () { 
       var value = $(this).html();
       
-      $(this).closest('.borderBottom').find('.customerName').html(value);
+      $(this).closest('.borderBottom').find('.customerName').html(value).attr('value',value);
       $(this).closest('.borderBottom').find('.subheading').removeClass('hide');
       $('#customerRepSelect').addClass('hide');
       
@@ -7271,7 +7275,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
         url: "/dashboard/ajaxCheckUserIsOnLeave",
         data: leaveData, 
         success: function (data) {
-          debugger
+          
           var parsed = '';          
           try{                           
             parsed = JSON.parse(data);              
@@ -7280,7 +7284,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
           {                  
             return false;                  
           }
-          debugger
+          
           var count = 0;    
           if (parsed != null)
           {
@@ -7301,7 +7305,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
           }
           else
           {
-            $el.closest('.borderBottom').find('.salesRepName').html(value);
+            $el.closest('.borderBottom').find('.salesRepName').html(value).attr('value',value);
             $el.closest('.borderBottom').find('.subheading').removeClass('hide');
             $('#salesRepSelect').addClass('hide');
           }
