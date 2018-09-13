@@ -6741,6 +6741,8 @@ $(document).on('click','.leadUserName', function (e) {
                   html += "<p><label>Booking Time:</label><label>" + getStartingTime + " </label></p> ";
                   html += "<p><label>Booking Duarion:</label><label>" + parsed[0].durationTime + " mints </label></p> ";
                   html += "<p><label>Booking Date:</label><label>" + parsed[0].booking_date + " </label></p> ";
+                  html += "<p><label>Customer Name:</label><label>" + parsed[0].customerName + " </label></p> ";
+                  html += "<p><label>Sales Rep for pickup:</label><label>" + parsed[0].salesRepName + " </label></p> ";
                }
                
                 $('.leadDeailInnerContainer div').html(html);
