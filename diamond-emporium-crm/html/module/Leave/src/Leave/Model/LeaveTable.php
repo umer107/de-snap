@@ -1485,7 +1485,7 @@ public function fetchLeadRecord($filter= null)
       $select = new \Zend\Db\Sql\Select();
       $select->from(array('l' => 'de_userdetail'))
            ->columns(array(
-              'id','title','gender','first_name', 'last_name', 'phone_number', 'email','country', 'full_address' ,'communication_method','product_shortcode','user_booking_date','State','product', 'referral', 'only_referral' ,'special_instructions','budget','reference_product', 'contact_method', 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_room','durationTime','bookingstart'           
+              'id','title','gender','first_name', 'last_name', 'phone_number', 'email','country', 'full_address' ,'communication_method','product_shortcode','user_booking_date','State','product', 'referral', 'only_referral' ,'special_instructions','budget','reference_product', 'contact_method', 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_room','durationTime','bookingstart','customerName','salesRepName'          
            ));
                         
                       
