@@ -1721,7 +1721,7 @@ public function fetchLeadRecord($filter= null)
        
        if(empty(($color)))
        {
-           $result[0]['color'] = 'D3D3D3';
+           $result[0]['color'] = '9b9b9b';
        }
        
        return $result;

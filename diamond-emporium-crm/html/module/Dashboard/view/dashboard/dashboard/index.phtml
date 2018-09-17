@@ -38,7 +38,7 @@
             <?php
                 $form = $this->form;
                 $form->setAttribute('action', $this->url('dashboard', array('action' => 'index')));
-                echo $this->partial('dashboard/dashboard/_form.phtml', array(
+                echo $this->partial('dashboard/dashboard/_form.phtml', array( 
                     'form' =>$form,
                 ));
             ?>

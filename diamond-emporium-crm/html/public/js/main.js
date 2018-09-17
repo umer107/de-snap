@@ -1716,7 +1716,7 @@ $(document).on('click','.borderBottom i.icon-downarrow, .customerName, .salesRep
 
 // Add new Booking popup
 $(document).on('click','.addBookingLink', function (e) {
-    
+    //$('section.rightCol').addClass('hidden');
     var el = $(this);
     $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
     window.validState = true;
@@ -1788,7 +1788,7 @@ $(document).on('click','.addBookingLink', function (e) {
               // Duration
               setHtml += '<div class="half-pad-top half-pad-bottom borderBottom newBookingDuration hideOnCalenar"> <span class="subheading">Duration</span> 1.5 Hours</div>';
               // Product Name
-              setHtml += '<p class="productShortCode hide"><i class="icon-diamond fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
+              setHtml += '<p class="productShortCode hide"><i class="icon-diamond fs-11" style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
               // Customer Name
               setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading hide">Customer Name</span> <span class="customerName  display-block ellipsis" value="">Customer Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
               // Sales Rep
@@ -1809,7 +1809,8 @@ $(document).on('click','.addBookingLink', function (e) {
     setHtml += '</div>';
 
 
-    var container = "<div class='tempContainer fixed' style='top:"+getOffsetTop+"px ; left:"+getOffsetLeft+"px'>" + setHtml + "</div>";
+    //var container = "<div class='tempContainer fixed' style='top:"+getOffsetTop+"px ; left:"+getOffsetLeft+"px'>" + setHtml + "</div>";
+    var container = "<div class='popupBackground'></div><div class='tempContainer fixed' style='top:"+getOffsetTop+"px ; left:"+getOffsetLeft+"px'>" + setHtml + "</div>";
     //$(this).after(container);
     $('.addBookingPopup').html(container).removeClass('hide');
     $('.pickAgentresult2').html(window.pickAgentresult2);
@@ -2100,7 +2101,7 @@ $(document).on('click','.savePopupBooking', function (e) {
 
       var setDropdown = "";
       var setDropdown = '<ul class="dropdown d-i-b pull-left relative appointmentType z-index9 bookingPopup">';
-            setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value=""><span id="appointmentType" class="d-i-b" style="display: inline-block;">Sales Rep Type</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i></a></li>';
+            setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value=""><span id="appointmentType" class="d-i-b" style="display: inline-block;">Select type</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i></a></li>';
             setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
 
                 setDropdown += '<li><a href="javascript:;" getDuration="1.5" value="Engagement Ring" shortcode="ER"> <i class="icon-diamond fs-12"></i> Engagement Ring</a></li>';
@@ -2174,6 +2175,7 @@ $(document).on('click','.savePopupBooking', function (e) {
 $('section.rightCol').on('scroll', function(event){
       $('.addBookingPopup').html('');
       $('.addBookingPopup').addClass('hide');
+      //$('section.rightCol').removeClass('hidden');
   });// End
 
 
@@ -2185,6 +2187,7 @@ $('section.rightCol').on('scroll', function(event){
             {
               $('.addBookingPopup').html('');
               $('.addBookingPopup').addClass('hide');
+              //$('section.rightCol').removeClass('hidden');
             }
     });// End
 
@@ -2679,7 +2682,7 @@ setTimeout(function(){
           $('.addBookingPopup .newApp').addClass('hide'); 
           $('.addBookingPopup .appDetails .ellipsis').html(getValue);
           
-          $('.addBookingPopup .productShortCode span').html(getShortCode);
+          // $('.addBookingPopup .productShortCode span').html(getShortCode);
           var getCurentDropdown = el.closest('.appointmentTypes').html();
           //el.closest('.appointmentTypes').remove();
           $('.addBookingPopup .appDetails').html(getCurentDropdown);
@@ -3549,25 +3552,28 @@ setTimeout(function(){
             $('.rings a').removeClass('active');
             $('.rings a:last-child').addClass('active');
             loadLeads();
+            //Setting header changes
+
+            showMainLoading();
+            $('.newLeaveContainer').hide();
+            $('.newLead').addClass('maxHeightHide');
+            $('.dashboardContainer').addClass('hide');
+            $('.leavesContainer').addClass('hide');
+            $('.leadsContainer').removeClass('hide');
+            $('.new-Lead').removeClass('active');
+            $('.dashboard-header').removeClass('hide');
+
+            //Reset New lead form
+            $('.newLead').html(window.getNewLeadAll);
+            $('.newLead').removeClass('inEditMode');
+            return false;
+
         }
       });    
+      return false;
       //End Ajax Call
 
-      //Setting header changes
-
-      showMainLoading();
-      $('.newLeaveContainer').hide();
-      $('.newLead').addClass('maxHeightHide');
-      $('.dashboardContainer').addClass('hide');
-      $('.leavesContainer').addClass('hide');
-      $('.leadsContainer').removeClass('hide');
-      $('.new-Lead').removeClass('active');
-      $('.dashboard-header').removeClass('hide');
-
-      //Reset New lead form
-      $('.newLead').html(window.getNewLeadAll);
-      $('.newLead').removeClass('inEditMode');
-      return false;
+      
       //$("#dashboard").submit();
 
     });
@@ -7317,17 +7323,10 @@ function getBookingTime(getTime, bookingStart, Duation) {
       }); 
 
     //-----------
-
-
-    
     
   });// End
 
    /*------------------------------------------------------------------*/
    /*---------------------Stop GetCountries Ajax List------------------------ */
    /*------------------------------------------------------------------*/
-    
-    
-        
-        
     
