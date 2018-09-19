@@ -1464,10 +1464,46 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
     }
      }
 
+     
+     public function  fetchCheckLeadEmail($filter= null)
+     {
+            try {
+                
+                $id = $filter['leadId'];
+                $email_check = $filter['email'];
+                $select = new \Zend\Db\Sql\Select();
+                $select->from(array('l' => 'de_userdetail'))
+                     ->columns(array(
+                       'id','email'
+                      ));
+                $select->where(array('l.id = ?' =>  $id));
+                $data = $this->executeQuery($select);               
+                $result = $data->toArray();
+                $result_count = count($result);
+                
+                $template_array = array();
+                foreach($result as $items)
+                 { 
+                    if($items['email'] ==  $email_check)
+                     {
+                       $template_array[$items['id']]['response'] = 1;                           
+                     }
+                     else
+                     {
+                      $template_array[$items['id']]['response'] = 0;             
+                     }
+                     
+                    
+                 }
+                return $template_array;
+              
+                
+            }catch(\Exception $e){
+                \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+            }
+     }
 
-
-
-public function fetchLeadRecord($filter= null)
+     public function fetchLeadRecord($filter= null)
        {
            
            $select = new \Zend\Db\Sql\Select();

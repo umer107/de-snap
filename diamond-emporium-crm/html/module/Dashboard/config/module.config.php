@@ -95,7 +95,17 @@ return array(
                                 'action'     => 'ajaxGetDataforCalender',
                             ),
                         ),
-                    ),            
+                    ),
+              'checkLeadEmail' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'checkLeadEmail',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'checkLeadEmail',
+                            ),
+                        ),
+                    ),
              'ajaxGetUserLeaves' => array(
                         'type' => 'Segment',
                         'options' => array(
