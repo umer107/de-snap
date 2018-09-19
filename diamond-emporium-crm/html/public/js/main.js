@@ -729,7 +729,7 @@ $(document).ready(function () {
         {   
             //alert("Lunch15");
             
-            $('.userDropdown div[value="menuLunch"]').trigger('click');
+            $('.userDropdown div[value="menuLunch"] img[data-value="15"]').trigger('click');
             $('.userDropdown').removeClass('loadingContent');
             $('.user-dp-Dropdown').removeClass('hide');
             $('.menuLunch .displayPicture img').attr('src','/images/lunch15.svg');
@@ -758,7 +758,7 @@ $(document).ready(function () {
          else if(parseResult.user_status === "Lunch30")
         {
             //alert("Lunch30");
-            $('.userDropdown div[value="menuLunch"]').trigger('click');
+            $('.userDropdown div[value="menuLunch"] img[data-value="30"]').trigger('click');
             $('.userDropdown').removeClass('loadingContent');
             $('.user-dp-Dropdown').removeClass('hide');
             $('.menuLunch .displayPicture img').attr('src','/images/lunch30.svg');
@@ -766,57 +766,57 @@ $(document).ready(function () {
              setInterval(function(){
               //alert("Available");
                 $.ajax({
-              type: "POST",
-              url: "/ajaxuserstatusupdate",
-              data: {
+                  type: "POST",
+                  url: "/ajaxuserstatusupdate",
+                  data: {
+                      
+                  status: 'Available'
                   
-              status: 'Available'
-              
-              },
-             success: function(data) {
-                 
-            $('.userDropdown div[value="menuAvailable"]').trigger('click');
-            $('.userDropdown').removeClass('loadingContent');
-            $('.user-dp-Dropdown').removeClass('hide');
-                 
-             }
-            });
-          }, 1800000);
+                  },
+                 success: function(data) {
+                     
+                $('.userDropdown div[value="menuAvailable"]').trigger('click');
+                $('.userDropdown').removeClass('loadingContent');
+                $('.user-dp-Dropdown').removeClass('hide');
+                     
+                 }
+                });
+              }, 1800000);
           
         }
          else if(parseResult.user_status === "Lunch45")
         {
             //alert("Lunch45");
-            $('.userDropdown div[value="menuLunch"]').trigger('click');
+            $('.userDropdown div[value="menuLunch"] img[data-value="45"]').trigger('click');
             $('.userDropdown').removeClass('loadingContent');
             $('.user-dp-Dropdown').removeClass('hide');
-            $('.menuLunch .displayPicture img').attr('src','/images/lunch145.svg');
+            $('.menuLunch .displayPicture img').attr('src','/images/lunch45.svg');
            
             setInterval(function(){
               //alert("Available");
                 $.ajax({
-              type: "POST",
-              url: "/ajaxuserstatusupdate",
-              data: {
-                  
-              status: 'Available'
-              
-              },
-             success: function(data) {
-                 
-            $('.userDropdown div[value="menuAvailable"]').trigger('click');
-            $('.userDropdown').removeClass('loadingContent');
-            $('.user-dp-Dropdown').removeClass('hide');
-                 
-             }
-            });
-          }, 2700000);
+                    type: "POST",
+                    url: "/ajaxuserstatusupdate",
+                    data: {
+                        
+                    status: 'Available'
+                    
+                    },
+                   success: function(data) {
+                       
+                  $('.userDropdown div[value="menuAvailable"]').trigger('click');
+                  $('.userDropdown').removeClass('loadingContent');
+                  $('.user-dp-Dropdown').removeClass('hide');
+                       
+                   }
+                  });
+                }, 2700000);
            
         }
          else if(parseResult.user_status === "Lunch60")
         {
             //alert("Lunch60");
-            $('.userDropdown div[value="menuLunch"]').trigger('click');
+            $('.userDropdown div[value="menuLunch"] img[data-value="60"]').trigger('click');
             $('.userDropdown').removeClass('loadingContent');
             $('.user-dp-Dropdown').removeClass('hide');
             $('.menuLunch .displayPicture img').attr('src','/images/lunch60.svg');
@@ -824,22 +824,22 @@ $(document).ready(function () {
            setInterval(function(){
               //alert("Available");
                 $.ajax({
-              type: "POST",
-              url: "/ajaxuserstatusupdate",
-              data: {
+                  type: "POST",
+                  url: "/ajaxuserstatusupdate",
+                  data: {
+                      
+                  status: 'Available'
                   
-              status: 'Available'
-              
-              },
-             success: function(data) {
-                 
-            $('.userDropdown div[value="menuAvailable"]').trigger('click');
-            $('.userDropdown').removeClass('loadingContent');
-            $('.user-dp-Dropdown').removeClass('hide');
-                 
-             }
-            });
-          }, 3600000);
+                  },
+                 success: function(data) {
+                     
+                $('.userDropdown div[value="menuAvailable"]').trigger('click');
+                $('.userDropdown').removeClass('loadingContent');
+                $('.user-dp-Dropdown').removeClass('hide');
+                     
+                 }
+                });
+              }, 3600000);
 
         }
         else if(parseResult.user_status === "Workshop")
