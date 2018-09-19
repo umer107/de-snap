@@ -816,7 +816,7 @@ $(document).ready(function () {
          else if(parseResult.user_status === "Lunch60")
         {
             //alert("Lunch60");
-            $('.userDropdown div[value="menuLunch"] img[data-value="60"]').trigger('click');
+            $('.userDropdown div[value="menuLunch"] img[data-value="30"]').trigger('click');
             $('.userDropdown').removeClass('loadingContent');
             $('.user-dp-Dropdown').removeClass('hide');
             $('.menuLunch .displayPicture img').attr('src','/images/lunch60.svg');
@@ -970,7 +970,7 @@ $(document).ready(function () {
       $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         var getemail = $('#email').val();
         var getValue = $('#email').val().length;
-
+        var getLeadId =  $('.thisLeadId').attr('leadid');
         if ($.trim(getemail).length == 0) {
             $('.emailexists').addClass('opacity0');
             $('#email').next('label').removeClass('opacity0');
@@ -979,7 +979,7 @@ $(document).ready(function () {
             $('#email').next('label').addClass('opacity0');
             
              $.ajax({
-              type: "POST",
+              type: "GET",
               url: "/dashboard/ajaxGetCheckUserEmail?email="+getemail,
               //data: {'email' : email},
               success: function (data) 
@@ -993,75 +993,67 @@ $(document).ready(function () {
                 {                  
                   return false;                  
                 }
-                if(parsed.length == 1)
+
+                if(getLeadId != "")
+                {
+                    var data = {leadId : getLeadId , email : getemail}
+                    $.ajax({
+                      type: "GET",
+                      url: "/dashboard/checkLeadEmail?email="+getemail+"&leadId="+getLeadId,
+                      success: function (data) {
+                        var parsed2 = '';          
+                        try{                           
+                          parsed2 = JSON.parse(data);              
+                        }                 
+                        catch(e)                
+                        {                  
+                          return false;                  
+                        }
+                        var getResponse = parsed2[getLeadId].response;
+                        if(getResponse == 1)
+                        {
+                          $('.redCross').addClass('hide');
+                          $('.emailexists').html('Email Available!').addClass('green');
+                          window.emailexists = false;
+                        }
+                        else
+                        {
+                          if(parsed.length == 1)
+                            {
+                              
+                              $('.topBar').trigger('click');
+                              $('.redCross').removeClass('hide');
+                              $('.redGreen').addClass('hide');
+                              $('.emailexists').html('Email Already Exists!').removeClass('opacity0').removeClass('green');
+                              window.emailexists = true;
+                            }
+                            else
+                            {
+                              $('.redCross').addClass('hide');
+                              $('.redGreen').removeClass('hide');
+                              $('.emailexists').html('Email Available!').removeClass('opacity0').addClass('green');
+                              window.emailexists = false;
+                            }  
+                        }
+                      }
+                    });
+                }
+                else if(parsed.length == 1)
                 {
                   
-                  //$('.firstname').val(parsed["0"].first_name);
-                  //$('.lastname').val(parsed["0"].last_name);
-                  //$('.phonenumber').val(parsed["0"].phone_number);
-                  //$('.phonenumber').val(parsed["0"].phone_number);
-                  //$('#fullAddress').val(parsed["0"].full_address);
-                  //$('.basicInfo span').show();
-                  //$('.dropdown.title .dropdownOptions li a[value="'+parsed[0].title+'"]').trigger('click');
-                  //$('.countryDiv input').val(parsed["0"].country);
-                  //var getCountry = parsed["0"].country;
-                  
-                  //if(getCountry == "Australia")
-                  //{ 
-                  //  $('.dropdown.State .dropdownOptions li a[value="'+parsed[0].State+'"]').trigger('click');
-                  //  $('.stateDiv').removeClass('hide');
-                  //}
-                  //else
-                  //{ 
-                  //  $('.stateDiv').addClass('hide'); 
-                  //}
-                  //$('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+parsed[0].communication_method+'"]').trigger('click');
-
-                  // Preferred method
-                  //if(parsed[0].contact_method != "Phone/Email" && parsed[0].contact_method != "Phone" && parsed[0].contact_method != "Email")
-                  //{ 
-                  //  $('#perferrefDropdownOther').val(parsed[0].contact_method);
-                  //  $('#perferrefDropdownOther').closest('.relative').removeClass('hide'); 
-                  // $('.dropdown.preferredMethod .dropdownOptions li a[value="Other"]').trigger('click');
-                  //}
-                  //else
-                  //{
-                  //  $('#perferrefDropdownOther').closest('.relative').addClass('hide'); 
-                  //  $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
-                  //}
                   $('.topBar').trigger('click');
                   $('.redCross').removeClass('hide');
                   $('.redGreen').addClass('hide');
                   $('.emailexists').html('Email Already Exists!').removeClass('opacity0').removeClass('green');
-                  
-                  //var setMessage = 'Record available!';
-                  //$('.showMessage div').html(setMessage);
-                  //$('.showMessage').addClass('topShow').addClass('green');
-                  //  setTimeout(function(){ 
-                  //    $('.showMessage').removeClass('topShow').removeClass('green');
-                  //}, 5000);
-                  
                 }
                 else
                 {
-                  //$('.emailexists').removeClass('opacity0');
-                  
-                  //setTimeout(function(){ $('.emailexists').addClass('opacity0'); },3000);
                   $('.redCross').addClass('hide');
                   $('.redGreen').removeClass('hide');
                   $('.emailexists').html('Email Available!').removeClass('opacity0').addClass('green');
 
-                  //var setMessage = 'Record not available!';
-                  //$('.showMessage div').html(setMessage);
-                  //$('.showMessage').addClass('topShow');
-                  //  setTimeout(function(){ 
-                  //    $('.showMessage').removeClass('topShow');
-                  //}, 5000); 
-                }
-
-                //setTimeout(function(){ $('.showloading').hide(); }, 500);
-                
-                
+                }        
+              
               }
             }); 
 
@@ -2433,7 +2425,16 @@ setTimeout(function(){
                 var getLeadId =  $('.thisLeadId').attr('leadid');
                 if(getLeadId != "")
                 {
-                  window.validState = true;
+                  if(window.emailexists == true)
+                  {
+                    $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                    window.validState = false;
+                  }
+                  else
+                  {
+                    window.validState = true;  
+                  }
+                  
                 }
                 else
                 {
@@ -3547,18 +3548,19 @@ setTimeout(function(){
               if(isValidEmailAddress(getEmail))
               { 
                 var getLeadId =  $('.thisLeadId').attr('leadid');
+                debugger
                 if(getLeadId != "")
                 {
-                  var data = {leadId : getLeadId , email : getEmail}
-                  $.ajax({
-                    type: "POST",
-                    url: "/dashboard/checkLeadEmail",
-                    data: data, 
-                    success: function (data) {
-
-                    }
-                  });
-                  window.validState = true;
+                  if(window.emailexists == true)
+                  {
+                    $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                    window.validState = false;
+                    return false;
+                  }
+                  else
+                  {
+                    window.validState = true;  
+                  }
                 }
                 else
                 {
