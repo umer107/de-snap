@@ -774,7 +774,7 @@ div.headbar{background-color: #cfcfcf; }
 .dropdown.bookingPopup .selected-text i{ background-size: 11px 7px; background: none; width: 12px; margin-top: 5px; }
 .dropdown.bookingPopup .dropdownOptions{ top: 20px; width: 162px; left: -25px; padding: 0px 0; }
 .dropdown.bookingPopup li ul li{ line-height: 24px; height: 24px; text-align: left; cursor: pointer; }
-.dropdown.appointmentType li ul li a i{ color: #f58a49; position: relative; right:3px; top: 3px; font-size:12px:  }
+.dropdown.appointmentType li ul li a i{ color: #f58a49; position: relative; right:3px; top: 6px; font-size:12px:  }
 .addBookingPopup .roomBooking p{ line-height: 20px; }
 .addBookingPopup .roomBooking div span.subheading{ position: absolute; line-height: 10px; top: -4px; font-size: 8px; }
 .dropdown.bookingPopup li ul li:hover{ background-color: white; }
@@ -804,7 +804,7 @@ div.headbar{background-color: #cfcfcf; }
 .appDetails .dropdown.bookingPopup{    height: 15px;
     line-height: 15;}
 .appDetails .dropdown.bookingPopup li a{display: inline;
-    font-size: 10px;}
+    font-size: 10px; position: relative;}
 .appDetails #appointmentType{ width: 97px; border-right: 0 none; color: white;}
 .appDetails .bookingPopup .selected-text i{ color: white; margin-top: 2px;}
 #customerRepSelect{}
@@ -819,6 +819,11 @@ div.headbar{background-color: #cfcfcf; }
 #salesRepSelect div.pickAgentresult2 a{ font-size: 12px; float: left; line-height: 30px; padding-left: 13px; color: #5d5d5d; } 
 
 .customerName{    width: 102px; display: inline-block;}		
+.appointmentType.dropdown li ul li a span.hourSlot{ position: absolute; color: #9b9b9b; font-size: 8px; left: 37px; top: 13px; width: auto !important;}
+.appointmentType.dropdown.bookingPopup li ul li{ line-height: 36px; height: 36px;}
+.appointmentType.dropdown.bookingPopup .dropdownOptions{ padding: 0 0px 8px 0;}
+.appointmentType.dropdown.bookingPopup li a{position: relative;}
+.appDetails .dropdown.bookingPopup li ul li a{font-size: 12px;}
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
