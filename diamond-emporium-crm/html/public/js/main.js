@@ -984,7 +984,7 @@ $(document).ready(function () {
               //data: {'email' : email},
               success: function (data) 
               {
-                $('.showloading').show();
+                //$('.showloading').show();
                 var parsed = '';          
                 try{                           
                   parsed = JSON.parse(data);              
@@ -996,50 +996,50 @@ $(document).ready(function () {
                 if(parsed.length == 1)
                 {
                   
-                  $('.firstname').val(parsed["0"].first_name);
-                  $('.lastname').val(parsed["0"].last_name);
-                  $('.phonenumber').val(parsed["0"].phone_number);
-                  $('.phonenumber').val(parsed["0"].phone_number);
-                  $('#fullAddress').val(parsed["0"].full_address);
-                  $('.basicInfo span').show();
-                  $('.dropdown.title .dropdownOptions li a[value="'+parsed[0].title+'"]').trigger('click');
-                  $('.countryDiv input').val(parsed["0"].country);
-                  var getCountry = parsed["0"].country;
+                  //$('.firstname').val(parsed["0"].first_name);
+                  //$('.lastname').val(parsed["0"].last_name);
+                  //$('.phonenumber').val(parsed["0"].phone_number);
+                  //$('.phonenumber').val(parsed["0"].phone_number);
+                  //$('#fullAddress').val(parsed["0"].full_address);
+                  //$('.basicInfo span').show();
+                  //$('.dropdown.title .dropdownOptions li a[value="'+parsed[0].title+'"]').trigger('click');
+                  //$('.countryDiv input').val(parsed["0"].country);
+                  //var getCountry = parsed["0"].country;
                   
-                  if(getCountry == "Australia")
-                  { 
-                    $('.dropdown.State .dropdownOptions li a[value="'+parsed[0].State+'"]').trigger('click');
-                    $('.stateDiv').removeClass('hide');
-                  }
-                  else
-                  { 
-                    $('.stateDiv').addClass('hide'); 
-                  }
-                  $('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+parsed[0].communication_method+'"]').trigger('click');
+                  //if(getCountry == "Australia")
+                  //{ 
+                  //  $('.dropdown.State .dropdownOptions li a[value="'+parsed[0].State+'"]').trigger('click');
+                  //  $('.stateDiv').removeClass('hide');
+                  //}
+                  //else
+                  //{ 
+                  //  $('.stateDiv').addClass('hide'); 
+                  //}
+                  //$('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+parsed[0].communication_method+'"]').trigger('click');
 
                   // Preferred method
-                  if(parsed[0].contact_method != "Phone/Email" && parsed[0].contact_method != "Phone" && parsed[0].contact_method != "Email")
-                  { 
-                    $('#perferrefDropdownOther').val(parsed[0].contact_method);
-                    $('#perferrefDropdownOther').closest('.relative').removeClass('hide'); 
-                    $('.dropdown.preferredMethod .dropdownOptions li a[value="Other"]').trigger('click');
-                  }
-                  else
-                  {
-                    $('#perferrefDropdownOther').closest('.relative').addClass('hide'); 
-                    $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
-                  }
+                  //if(parsed[0].contact_method != "Phone/Email" && parsed[0].contact_method != "Phone" && parsed[0].contact_method != "Email")
+                  //{ 
+                  //  $('#perferrefDropdownOther').val(parsed[0].contact_method);
+                  //  $('#perferrefDropdownOther').closest('.relative').removeClass('hide'); 
+                  // $('.dropdown.preferredMethod .dropdownOptions li a[value="Other"]').trigger('click');
+                  //}
+                  //else
+                  //{
+                  //  $('#perferrefDropdownOther').closest('.relative').addClass('hide'); 
+                  //  $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
+                  //}
                   $('.topBar').trigger('click');
-                  $('.redCross').addClass('hide');
-                  $('.redGreen').removeClass('hide');
-
+                  $('.redCross').removeClass('hide');
+                  $('.redGreen').addClass('hide');
+                  $('.emailexists').html('Email Already Exists!').removeClass('opacity0').removeClass('green');
                   
-                  var setMessage = 'Record available!';
-                  $('.showMessage div').html(setMessage);
-                  $('.showMessage').addClass('topShow').addClass('green');
-                    setTimeout(function(){ 
-                      $('.showMessage').removeClass('topShow').removeClass('green');
-                  }, 5000);
+                  //var setMessage = 'Record available!';
+                  //$('.showMessage div').html(setMessage);
+                  //$('.showMessage').addClass('topShow').addClass('green');
+                  //  setTimeout(function(){ 
+                  //    $('.showMessage').removeClass('topShow').removeClass('green');
+                  //}, 5000);
                   
                 }
                 else
@@ -1047,18 +1047,19 @@ $(document).ready(function () {
                   //$('.emailexists').removeClass('opacity0');
                   
                   //setTimeout(function(){ $('.emailexists').addClass('opacity0'); },3000);
-                  $('.redCross').removeClass('hide');
-                  $('.redGreen').addClass('hide');
+                  $('.redCross').addClass('hide');
+                  $('.redGreen').removeClass('hide');
+                  $('.emailexists').html('Email Available!').removeClass('opacity0').addClass('green');
 
-                  var setMessage = 'Record not available!';
-                  $('.showMessage div').html(setMessage);
-                  $('.showMessage').addClass('topShow');
-                    setTimeout(function(){ 
-                      $('.showMessage').removeClass('topShow');
-                  }, 5000); 
+                  //var setMessage = 'Record not available!';
+                  //$('.showMessage div').html(setMessage);
+                  //$('.showMessage').addClass('topShow');
+                  //  setTimeout(function(){ 
+                  //    $('.showMessage').removeClass('topShow');
+                  //}, 5000); 
                 }
 
-                setTimeout(function(){ $('.showloading').hide(); }, 500);
+                //setTimeout(function(){ $('.showloading').hide(); }, 500);
                 
                 
               }
@@ -2428,8 +2429,25 @@ setTimeout(function(){
         else
           { 
               if(isValidEmailAddress(getEmail))
-              {
-                window.validState = true;
+              { 
+                var getLeadId =  $('.thisLeadId').attr('leadid');
+                if(getLeadId != "")
+                {
+                  window.validState = true;
+                }
+                else
+                {
+                  if($('.emailexists').hasClass('green'))
+                  {
+                    window.validState = true;
+                  }
+                  else
+                  {
+                    $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                    window.validState = false;
+                    return false;
+                  }
+                }
               }
               else
               {
@@ -2439,7 +2457,7 @@ setTimeout(function(){
                 window.validState = false;
                 return false;
               }
-            
+              
           }
 
         //else if($('.btn-bookNow').hasClass('canOpen'))
@@ -3527,8 +3545,34 @@ setTimeout(function(){
         else
           { 
               if(isValidEmailAddress(getEmail))
-              {
-                window.validState = true;
+              { 
+                var getLeadId =  $('.thisLeadId').attr('leadid');
+                if(getLeadId != "")
+                {
+                  var data = {leadId : getLeadId , email : getEmail}
+                  $.ajax({
+                    type: "POST",
+                    url: "/dashboard/checkLeadEmail",
+                    data: data, 
+                    success: function (data) {
+
+                    }
+                  });
+                  window.validState = true;
+                }
+                else
+                {
+                  if($('.emailexists').hasClass('green'))
+                  {
+                    window.validState = true;
+                  }
+                  else
+                  {
+                    $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                    window.validState = false;
+                    return false;
+                  }
+                }
               }
               else
               {
@@ -3538,6 +3582,7 @@ setTimeout(function(){
                 window.validState = false;
                 return false;
               }
+              
           }
 
       
@@ -3611,8 +3656,13 @@ setTimeout(function(){
           return e.which !== 13;
     });
     
-    $("form").keypress(function(e) {
-      if (e.which == 13) {
+    $("form").not("#specify_requirements").keypress(function(e) {
+      if(e.originalEvent.path[0].className == "requirements") 
+      {
+        console.log('enter pressed');
+        return true;
+      }
+      else if (e.which == 13) {
         return false;
       }
     });
@@ -5365,6 +5415,20 @@ $(document).on('click','.btn-cancelLeave', function (e) {
         $('.calendarLeave').addClass('maxHeightHide');
         //Reset New Leave Page
         $('.newLeaveContainer').html(window.newLeaveHtml);
+
+        var getTodayDate = moment(); //Get the current date
+        getTodayDate.format("YYYY-MM-DD"); 
+          $('input[name="daterange"]').daterangepicker({
+              minDate:getTodayDate,
+              startDate: getTodayDate, 
+              locale: {
+                  format: 'YYYY-MM-DD'
+              }
+          }, function (start, end, label) {
+        });
+        var getTodaysDate = moment(getTodayDate).add(0, 'M').format('YYYY-MM-DD');
+        $('input[name="daterange"]').val(getTodaysDate).attr('startdate',getTodaysDate);
+
 });
 
 //Function GetValues From the SaveLeads

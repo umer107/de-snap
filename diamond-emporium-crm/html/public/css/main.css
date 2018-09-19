@@ -197,7 +197,7 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
     height: 157px;
     outline: 0 none;
     box-shadow: none;
-    overflow: hidden;
+    overflow: auto;
     margin-top: 7px;
     line-height: 19px; }
 .additional-details input.instructions { width: 909px; }
@@ -273,6 +273,7 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 .showloading{ position: absolute; z-index: 100; left: 0; right: 0; width: 100%; top: 0; bottom: 0; height: 100%; background: #f1f2f1; text-align: center; }
 .showloading img{max-width: 500px; position: absolute; top: 50%; transform: translateY(-50%); text-align: center; margin: 0 auto; left: 0; right: 0;}
 .emailexists{ position: absolute; }
+.emailexists.green{ color: #27AD09; }
 /*Calendar View*/
 .fc th, .fc td, .fc hr, .fc thead, .fc tbody, .fc-row { border-color: transparent !important; background: transparent !important;}
 .fc tbody .fc-row .fc-content-skeleton tbody tr:last-child td { padding-bottom: 0em;}
