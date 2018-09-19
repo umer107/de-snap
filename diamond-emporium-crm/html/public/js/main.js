@@ -729,7 +729,7 @@ $(document).ready(function () {
         {   
             //alert("Lunch15");
             
-            $('.userDropdown div[value="menuLunch"]').trigger('click');
+            $('.userDropdown div[value="menuLunch"] img[data-value="15"]').trigger('click');
             $('.userDropdown').removeClass('loadingContent');
             $('.user-dp-Dropdown').removeClass('hide');
             $('.menuLunch .displayPicture img').attr('src','/images/lunch15.svg');
@@ -758,7 +758,7 @@ $(document).ready(function () {
          else if(parseResult.user_status === "Lunch30")
         {
             //alert("Lunch30");
-            $('.userDropdown div[value="menuLunch"]').trigger('click');
+            $('.userDropdown div[value="menuLunch"] img[data-value="30"]').trigger('click');
             $('.userDropdown').removeClass('loadingContent');
             $('.user-dp-Dropdown').removeClass('hide');
             $('.menuLunch .displayPicture img').attr('src','/images/lunch30.svg');
@@ -766,57 +766,57 @@ $(document).ready(function () {
              setInterval(function(){
               //alert("Available");
                 $.ajax({
-              type: "POST",
-              url: "/ajaxuserstatusupdate",
-              data: {
+                  type: "POST",
+                  url: "/ajaxuserstatusupdate",
+                  data: {
+                      
+                  status: 'Available'
                   
-              status: 'Available'
-              
-              },
-             success: function(data) {
-                 
-            $('.userDropdown div[value="menuAvailable"]').trigger('click');
-            $('.userDropdown').removeClass('loadingContent');
-            $('.user-dp-Dropdown').removeClass('hide');
-                 
-             }
-            });
-          }, 1800000);
+                  },
+                 success: function(data) {
+                     
+                $('.userDropdown div[value="menuAvailable"]').trigger('click');
+                $('.userDropdown').removeClass('loadingContent');
+                $('.user-dp-Dropdown').removeClass('hide');
+                     
+                 }
+                });
+              }, 1800000);
           
         }
          else if(parseResult.user_status === "Lunch45")
         {
             //alert("Lunch45");
-            $('.userDropdown div[value="menuLunch"]').trigger('click');
+            $('.userDropdown div[value="menuLunch"] img[data-value="45"]').trigger('click');
             $('.userDropdown').removeClass('loadingContent');
             $('.user-dp-Dropdown').removeClass('hide');
-            $('.menuLunch .displayPicture img').attr('src','/images/lunch145.svg');
+            $('.menuLunch .displayPicture img').attr('src','/images/lunch45.svg');
            
             setInterval(function(){
               //alert("Available");
                 $.ajax({
-              type: "POST",
-              url: "/ajaxuserstatusupdate",
-              data: {
-                  
-              status: 'Available'
-              
-              },
-             success: function(data) {
-                 
-            $('.userDropdown div[value="menuAvailable"]').trigger('click');
-            $('.userDropdown').removeClass('loadingContent');
-            $('.user-dp-Dropdown').removeClass('hide');
-                 
-             }
-            });
-          }, 2700000);
+                    type: "POST",
+                    url: "/ajaxuserstatusupdate",
+                    data: {
+                        
+                    status: 'Available'
+                    
+                    },
+                   success: function(data) {
+                       
+                  $('.userDropdown div[value="menuAvailable"]').trigger('click');
+                  $('.userDropdown').removeClass('loadingContent');
+                  $('.user-dp-Dropdown').removeClass('hide');
+                       
+                   }
+                  });
+                }, 2700000);
            
         }
          else if(parseResult.user_status === "Lunch60")
         {
             //alert("Lunch60");
-            $('.userDropdown div[value="menuLunch"]').trigger('click');
+            $('.userDropdown div[value="menuLunch"] img[data-value="60"]').trigger('click');
             $('.userDropdown').removeClass('loadingContent');
             $('.user-dp-Dropdown').removeClass('hide');
             $('.menuLunch .displayPicture img').attr('src','/images/lunch60.svg');
@@ -824,22 +824,22 @@ $(document).ready(function () {
            setInterval(function(){
               //alert("Available");
                 $.ajax({
-              type: "POST",
-              url: "/ajaxuserstatusupdate",
-              data: {
+                  type: "POST",
+                  url: "/ajaxuserstatusupdate",
+                  data: {
+                      
+                  status: 'Available'
                   
-              status: 'Available'
-              
-              },
-             success: function(data) {
-                 
-            $('.userDropdown div[value="menuAvailable"]').trigger('click');
-            $('.userDropdown').removeClass('loadingContent');
-            $('.user-dp-Dropdown').removeClass('hide');
-                 
-             }
-            });
-          }, 3600000);
+                  },
+                 success: function(data) {
+                     
+                $('.userDropdown div[value="menuAvailable"]').trigger('click');
+                $('.userDropdown').removeClass('loadingContent');
+                $('.user-dp-Dropdown').removeClass('hide');
+                     
+                 }
+                });
+              }, 3600000);
 
         }
         else if(parseResult.user_status === "Workshop")
@@ -984,7 +984,7 @@ $(document).ready(function () {
               //data: {'email' : email},
               success: function (data) 
               {
-                $('.showloading').show();
+                //$('.showloading').show();
                 var parsed = '';          
                 try{                           
                   parsed = JSON.parse(data);              
@@ -996,50 +996,50 @@ $(document).ready(function () {
                 if(parsed.length == 1)
                 {
                   
-                  $('.firstname').val(parsed["0"].first_name);
-                  $('.lastname').val(parsed["0"].last_name);
-                  $('.phonenumber').val(parsed["0"].phone_number);
-                  $('.phonenumber').val(parsed["0"].phone_number);
-                  $('#fullAddress').val(parsed["0"].full_address);
-                  $('.basicInfo span').show();
-                  $('.dropdown.title .dropdownOptions li a[value="'+parsed[0].title+'"]').trigger('click');
-                  $('.countryDiv input').val(parsed["0"].country);
-                  var getCountry = parsed["0"].country;
+                  //$('.firstname').val(parsed["0"].first_name);
+                  //$('.lastname').val(parsed["0"].last_name);
+                  //$('.phonenumber').val(parsed["0"].phone_number);
+                  //$('.phonenumber').val(parsed["0"].phone_number);
+                  //$('#fullAddress').val(parsed["0"].full_address);
+                  //$('.basicInfo span').show();
+                  //$('.dropdown.title .dropdownOptions li a[value="'+parsed[0].title+'"]').trigger('click');
+                  //$('.countryDiv input').val(parsed["0"].country);
+                  //var getCountry = parsed["0"].country;
                   
-                  if(getCountry == "Australia")
-                  { 
-                    $('.dropdown.State .dropdownOptions li a[value="'+parsed[0].State+'"]').trigger('click');
-                    $('.stateDiv').removeClass('hide');
-                  }
-                  else
-                  { 
-                    $('.stateDiv').addClass('hide'); 
-                  }
-                  $('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+parsed[0].communication_method+'"]').trigger('click');
+                  //if(getCountry == "Australia")
+                  //{ 
+                  //  $('.dropdown.State .dropdownOptions li a[value="'+parsed[0].State+'"]').trigger('click');
+                  //  $('.stateDiv').removeClass('hide');
+                  //}
+                  //else
+                  //{ 
+                  //  $('.stateDiv').addClass('hide'); 
+                  //}
+                  //$('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+parsed[0].communication_method+'"]').trigger('click');
 
                   // Preferred method
-                  if(parsed[0].contact_method != "Phone/Email" && parsed[0].contact_method != "Phone" && parsed[0].contact_method != "Email")
-                  { 
-                    $('#perferrefDropdownOther').val(parsed[0].contact_method);
-                    $('#perferrefDropdownOther').closest('.relative').removeClass('hide'); 
-                    $('.dropdown.preferredMethod .dropdownOptions li a[value="Other"]').trigger('click');
-                  }
-                  else
-                  {
-                    $('#perferrefDropdownOther').closest('.relative').addClass('hide'); 
-                    $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
-                  }
+                  //if(parsed[0].contact_method != "Phone/Email" && parsed[0].contact_method != "Phone" && parsed[0].contact_method != "Email")
+                  //{ 
+                  //  $('#perferrefDropdownOther').val(parsed[0].contact_method);
+                  //  $('#perferrefDropdownOther').closest('.relative').removeClass('hide'); 
+                  // $('.dropdown.preferredMethod .dropdownOptions li a[value="Other"]').trigger('click');
+                  //}
+                  //else
+                  //{
+                  //  $('#perferrefDropdownOther').closest('.relative').addClass('hide'); 
+                  //  $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
+                  //}
                   $('.topBar').trigger('click');
-                  $('.redCross').addClass('hide');
-                  $('.redGreen').removeClass('hide');
-
+                  $('.redCross').removeClass('hide');
+                  $('.redGreen').addClass('hide');
+                  $('.emailexists').html('Email Already Exists!').removeClass('opacity0').removeClass('green');
                   
-                  var setMessage = 'Record available!';
-                  $('.showMessage div').html(setMessage);
-                  $('.showMessage').addClass('topShow').addClass('green');
-                    setTimeout(function(){ 
-                      $('.showMessage').removeClass('topShow').removeClass('green');
-                  }, 5000);
+                  //var setMessage = 'Record available!';
+                  //$('.showMessage div').html(setMessage);
+                  //$('.showMessage').addClass('topShow').addClass('green');
+                  //  setTimeout(function(){ 
+                  //    $('.showMessage').removeClass('topShow').removeClass('green');
+                  //}, 5000);
                   
                 }
                 else
@@ -1047,18 +1047,19 @@ $(document).ready(function () {
                   //$('.emailexists').removeClass('opacity0');
                   
                   //setTimeout(function(){ $('.emailexists').addClass('opacity0'); },3000);
-                  $('.redCross').removeClass('hide');
-                  $('.redGreen').addClass('hide');
+                  $('.redCross').addClass('hide');
+                  $('.redGreen').removeClass('hide');
+                  $('.emailexists').html('Email Available!').removeClass('opacity0').addClass('green');
 
-                  var setMessage = 'Record not available!';
-                  $('.showMessage div').html(setMessage);
-                  $('.showMessage').addClass('topShow');
-                    setTimeout(function(){ 
-                      $('.showMessage').removeClass('topShow');
-                  }, 5000); 
+                  //var setMessage = 'Record not available!';
+                  //$('.showMessage div').html(setMessage);
+                  //$('.showMessage').addClass('topShow');
+                  //  setTimeout(function(){ 
+                  //    $('.showMessage').removeClass('topShow');
+                  //}, 5000); 
                 }
 
-                setTimeout(function(){ $('.showloading').hide(); }, 500);
+                //setTimeout(function(){ $('.showloading').hide(); }, 500);
                 
                 
               }
@@ -1716,7 +1717,7 @@ $(document).on('click','.borderBottom i.icon-downarrow, .customerName, .salesRep
 
 // Add new Booking popup
 $(document).on('click','.addBookingLink', function (e) {
-    
+    //$('section.rightCol').addClass('hidden');
     var el = $(this);
     $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
     window.validState = true;
@@ -1788,7 +1789,7 @@ $(document).on('click','.addBookingLink', function (e) {
               // Duration
               setHtml += '<div class="half-pad-top half-pad-bottom borderBottom newBookingDuration hideOnCalenar"> <span class="subheading">Duration</span> 1.5 Hours</div>';
               // Product Name
-              setHtml += '<p class="productShortCode hide"><i class="icon-diamond fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
+              setHtml += '<p class="productShortCode hide"><i class="icon-diamond fs-11" style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
               // Customer Name
               setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading hide">Customer Name</span> <span class="customerName  display-block ellipsis" value="">Customer Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
               // Sales Rep
@@ -1809,7 +1810,8 @@ $(document).on('click','.addBookingLink', function (e) {
     setHtml += '</div>';
 
 
-    var container = "<div class='tempContainer fixed' style='top:"+getOffsetTop+"px ; left:"+getOffsetLeft+"px'>" + setHtml + "</div>";
+    //var container = "<div class='tempContainer fixed' style='top:"+getOffsetTop+"px ; left:"+getOffsetLeft+"px'>" + setHtml + "</div>";
+    var container = "<div class='popupBackground'></div><div class='tempContainer fixed' style='top:"+getOffsetTop+"px ; left:"+getOffsetLeft+"px'>" + setHtml + "</div>";
     //$(this).after(container);
     $('.addBookingPopup').html(container).removeClass('hide');
     $('.pickAgentresult2').html(window.pickAgentresult2);
@@ -2100,14 +2102,14 @@ $(document).on('click','.savePopupBooking', function (e) {
 
       var setDropdown = "";
       var setDropdown = '<ul class="dropdown d-i-b pull-left relative appointmentType z-index9 bookingPopup">';
-            setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value=""><span id="appointmentType" class="d-i-b" style="display: inline-block;">Sales Rep Type</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i></a></li>';
+            setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value=""><span id="appointmentType" class="d-i-b" style="display: inline-block;">Select type</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i></a></li>';
             setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
 
-                setDropdown += '<li><a href="javascript:;" getDuration="1.5" value="Engagement Ring" shortcode="ER"> <i class="icon-diamond fs-12"></i> Engagement Ring</a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="1" value="Wedding Band" shortcode="WB"> <i class="icon-diamond fs-12"></i> Wedding Band</a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Resize" shortcode="R"><i class="icon-diamond fs-12"></i> Resize</a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Collection" shortcode="RC"><i class="icon-diamond fs-12"></i> Ring Collection</a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Drop Off" shortcode="RDO"><i class="icon-diamond fs-12 "></i> Ring Drop Off</a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="1.5" value="Engagement Ring" shortcode="ER"> <i class="icon-diamond fs-12"></i> Engagement Ring<span class="hourSlot">1.5 hours</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="1" value="Wedding Band" shortcode="WB"> <i class="icon-diamond fs-12"></i> Wedding Band<span class="hourSlot">1 hour</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Resize" shortcode="R"><i class="icon-diamond fs-12"></i> Resize<span class="hourSlot">0.5 hour</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Collection" shortcode="RC"><i class="icon-diamond fs-12"></i> Ring Collection<span class="hourSlot">0.5 hour</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Drop Off" shortcode="RDO"><i class="icon-diamond fs-12 "></i> Ring Drop Off<span class="hourSlot">0.5 hour</span></a></li>';
 
               setDropdown += '</ul></li>';
         setDropdown += '</ul>';
@@ -2174,6 +2176,7 @@ $(document).on('click','.savePopupBooking', function (e) {
 $('section.rightCol').on('scroll', function(event){
       $('.addBookingPopup').html('');
       $('.addBookingPopup').addClass('hide');
+      //$('section.rightCol').removeClass('hidden');
   });// End
 
 
@@ -2185,6 +2188,7 @@ $('section.rightCol').on('scroll', function(event){
             {
               $('.addBookingPopup').html('');
               $('.addBookingPopup').addClass('hide');
+              //$('section.rightCol').removeClass('hidden');
             }
     });// End
 
@@ -2425,8 +2429,25 @@ setTimeout(function(){
         else
           { 
               if(isValidEmailAddress(getEmail))
-              {
-                window.validState = true;
+              { 
+                var getLeadId =  $('.thisLeadId').attr('leadid');
+                if(getLeadId != "")
+                {
+                  window.validState = true;
+                }
+                else
+                {
+                  if($('.emailexists').hasClass('green'))
+                  {
+                    window.validState = true;
+                  }
+                  else
+                  {
+                    $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                    window.validState = false;
+                    return false;
+                  }
+                }
               }
               else
               {
@@ -2436,7 +2457,7 @@ setTimeout(function(){
                 window.validState = false;
                 return false;
               }
-            
+              
           }
 
         //else if($('.btn-bookNow').hasClass('canOpen'))
@@ -2679,7 +2700,7 @@ setTimeout(function(){
           $('.addBookingPopup .newApp').addClass('hide'); 
           $('.addBookingPopup .appDetails .ellipsis').html(getValue);
           
-          $('.addBookingPopup .productShortCode span').html(getShortCode);
+          // $('.addBookingPopup .productShortCode span').html(getShortCode);
           var getCurentDropdown = el.closest('.appointmentTypes').html();
           //el.closest('.appointmentTypes').remove();
           $('.addBookingPopup .appDetails').html(getCurentDropdown);
@@ -3524,8 +3545,34 @@ setTimeout(function(){
         else
           { 
               if(isValidEmailAddress(getEmail))
-              {
-                window.validState = true;
+              { 
+                var getLeadId =  $('.thisLeadId').attr('leadid');
+                if(getLeadId != "")
+                {
+                  var data = {leadId : getLeadId , email : getEmail}
+                  $.ajax({
+                    type: "POST",
+                    url: "/dashboard/checkLeadEmail",
+                    data: data, 
+                    success: function (data) {
+
+                    }
+                  });
+                  window.validState = true;
+                }
+                else
+                {
+                  if($('.emailexists').hasClass('green'))
+                  {
+                    window.validState = true;
+                  }
+                  else
+                  {
+                    $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                    window.validState = false;
+                    return false;
+                  }
+                }
               }
               else
               {
@@ -3535,6 +3582,7 @@ setTimeout(function(){
                 window.validState = false;
                 return false;
               }
+              
           }
 
       
@@ -3549,25 +3597,28 @@ setTimeout(function(){
             $('.rings a').removeClass('active');
             $('.rings a:last-child').addClass('active');
             loadLeads();
+            //Setting header changes
+
+            showMainLoading();
+            $('.newLeaveContainer').hide();
+            $('.newLead').addClass('maxHeightHide');
+            $('.dashboardContainer').addClass('hide');
+            $('.leavesContainer').addClass('hide');
+            $('.leadsContainer').removeClass('hide');
+            $('.new-Lead').removeClass('active');
+            $('.dashboard-header').removeClass('hide');
+
+            //Reset New lead form
+            $('.newLead').html(window.getNewLeadAll);
+            $('.newLead').removeClass('inEditMode');
+            return false;
+
         }
       });    
+      return false;
       //End Ajax Call
 
-      //Setting header changes
-
-      showMainLoading();
-      $('.newLeaveContainer').hide();
-      $('.newLead').addClass('maxHeightHide');
-      $('.dashboardContainer').addClass('hide');
-      $('.leavesContainer').addClass('hide');
-      $('.leadsContainer').removeClass('hide');
-      $('.new-Lead').removeClass('active');
-      $('.dashboard-header').removeClass('hide');
-
-      //Reset New lead form
-      $('.newLead').html(window.getNewLeadAll);
-      $('.newLead').removeClass('inEditMode');
-      return false;
+      
       //$("#dashboard").submit();
 
     });
@@ -3605,8 +3656,13 @@ setTimeout(function(){
           return e.which !== 13;
     });
     
-    $("form").keypress(function(e) {
-      if (e.which == 13) {
+    $("form").not("#specify_requirements").keypress(function(e) {
+      if(e.originalEvent.path[0].className == "requirements") 
+      {
+        console.log('enter pressed');
+        return true;
+      }
+      else if (e.which == 13) {
         return false;
       }
     });
@@ -5359,6 +5415,20 @@ $(document).on('click','.btn-cancelLeave', function (e) {
         $('.calendarLeave').addClass('maxHeightHide');
         //Reset New Leave Page
         $('.newLeaveContainer').html(window.newLeaveHtml);
+
+        var getTodayDate = moment(); //Get the current date
+        getTodayDate.format("YYYY-MM-DD"); 
+          $('input[name="daterange"]').daterangepicker({
+              minDate:getTodayDate,
+              startDate: getTodayDate, 
+              locale: {
+                  format: 'YYYY-MM-DD'
+              }
+          }, function (start, end, label) {
+        });
+        var getTodaysDate = moment(getTodayDate).add(0, 'M').format('YYYY-MM-DD');
+        $('input[name="daterange"]').val(getTodaysDate).attr('startdate',getTodaysDate);
+
 });
 
 //Function GetValues From the SaveLeads
@@ -6741,6 +6811,8 @@ $(document).on('click','.leadUserName', function (e) {
                   html += "<p><label>Booking Time:</label><label>" + getStartingTime + " </label></p> ";
                   html += "<p><label>Booking Duarion:</label><label>" + parsed[0].durationTime + " mints </label></p> ";
                   html += "<p><label>Booking Date:</label><label>" + parsed[0].booking_date + " </label></p> ";
+                  html += "<p><label>Customer Name:</label><label>" + parsed[0].customerName + " </label></p> ";
+                  html += "<p><label>Sales Rep for pickup:</label><label>" + parsed[0].salesRepName + " </label></p> ";
                }
                
                 $('.leadDeailInnerContainer div').html(html);
@@ -7315,17 +7387,10 @@ function getBookingTime(getTime, bookingStart, Duation) {
       }); 
 
     //-----------
-
-
-    
     
   });// End
 
    /*------------------------------------------------------------------*/
    /*---------------------Stop GetCountries Ajax List------------------------ */
    /*------------------------------------------------------------------*/
-    
-    
-        
-        
     

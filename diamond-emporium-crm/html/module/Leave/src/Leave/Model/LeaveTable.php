@@ -1757,7 +1757,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
        
        if(empty(($color)))
        {
-           $result[0]['color'] = 'D3D3D3';
+           $result[0]['color'] = '9b9b9b';
        }
        
        return $result;

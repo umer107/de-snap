@@ -197,7 +197,7 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
     height: 157px;
     outline: 0 none;
     box-shadow: none;
-    overflow: hidden;
+    overflow: auto;
     margin-top: 7px;
     line-height: 19px; }
 .additional-details input.instructions { width: 909px; }
@@ -273,6 +273,7 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 .showloading{ position: absolute; z-index: 100; left: 0; right: 0; width: 100%; top: 0; bottom: 0; height: 100%; background: #f1f2f1; text-align: center; }
 .showloading img{max-width: 500px; position: absolute; top: 50%; transform: translateY(-50%); text-align: center; margin: 0 auto; left: 0; right: 0;}
 .emailexists{ position: absolute; }
+.emailexists.green{ color: #27AD09; }
 /*Calendar View*/
 .fc th, .fc td, .fc hr, .fc thead, .fc tbody, .fc-row { border-color: transparent !important; background: transparent !important;}
 .fc tbody .fc-row .fc-content-skeleton tbody tr:last-child td { padding-bottom: 0em;}
@@ -404,7 +405,8 @@ ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5
 /* ----------------------------------------------------------------- */
 
 /* Start Dashboard Header */
-.dashboard-header{ padding-top: 28px; padding-bottom: 28px; }
+.leadsContainer, .leavesContainer, .newLeaveContainer, .newLead, .leadDeailContainer{width: 1662px;}
+.dashboard-header{ padding-top: 28px; padding-bottom: 28px; width: 1662px; position: relative; }
 .dashboard-header .newactions{ left: 0;}
 .dashboard-header a.tabs{ margin: 0 9px; display: inline-block; width: 149px; height: 50px; text-align: center; font-family: robotomedium; font-size:14px; border:1px solid #dfdfdf; background: white; line-height: 50px; border-radius: 28px; }
 .dashboard-header .middleTabs{ display: inline-block; text-align: center; width: 100%; }
@@ -639,7 +641,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .calendarLoad .addBookingLink{opacity: 0 !important;}
 .calendarLoad .cancelNewBooking,.calendarLoad .saveNewBooking {display: none;}
 .calendarLoad .roomBooking{cursor: pointer;}
-.NewCalendarContainer{ width: 1580px; padding-bottom: 155px; }
+.NewCalendarContainer{ width: 1580px; padding-bottom: 280px; }
 .calendarHead { background-color: #e7f5fd; line-height: 34px; padding: 22px 0; border: 1px solid #dfdfdf; }
 .weeklyDates { color: #444c63; margin: 0 auto; width: 380px; text-align: center; padding-top: 2px; height: 34px; position: relative;}
 /*.weeklyDates span { position: relative; top: -2px; }*/
@@ -686,6 +688,8 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .daysContent.pastdate {background: #a6a6a6;}
 .daysContent.pastdate .addBookingLink{opacity:0 !important; display: none;} 
 .daysContent.pastdate .daysContentSlider label{cursor: no-drop;}
+/*.popupBackground { position: fixed; left: 0; top: 0; background: black; width: 100%; height: 100%; opacity: .5; }
+section.rightCol.hidden{overflow: hidden;}*/
 
 /*
 .daysContent.agentOnLeave {background: #fd3a31;}
@@ -770,7 +774,7 @@ div.headbar{background-color: #cfcfcf; }
 .dropdown.bookingPopup .selected-text i{ background-size: 11px 7px; background: none; width: 12px; margin-top: 5px; }
 .dropdown.bookingPopup .dropdownOptions{ top: 20px; width: 162px; left: -25px; padding: 0px 0; }
 .dropdown.bookingPopup li ul li{ line-height: 24px; height: 24px; text-align: left; cursor: pointer; }
-.dropdown.appointmentType li ul li a i{ color: #f58a49; position: relative; right:3px; top: 3px; font-size:12px:  }
+.dropdown.appointmentType li ul li a i{ color: #f58a49; position: relative; right:3px; top: 6px; font-size:12px:  }
 .addBookingPopup .roomBooking p{ line-height: 20px; }
 .addBookingPopup .roomBooking div span.subheading{ position: absolute; line-height: 10px; top: -4px; font-size: 8px; }
 .dropdown.bookingPopup li ul li:hover{ background-color: white; }
@@ -800,7 +804,7 @@ div.headbar{background-color: #cfcfcf; }
 .appDetails .dropdown.bookingPopup{    height: 15px;
     line-height: 15;}
 .appDetails .dropdown.bookingPopup li a{display: inline;
-    font-size: 10px;}
+    font-size: 10px; position: relative;}
 .appDetails #appointmentType{ width: 97px; border-right: 0 none; color: white;}
 .appDetails .bookingPopup .selected-text i{ color: white; margin-top: 2px;}
 #customerRepSelect{}
@@ -815,6 +819,11 @@ div.headbar{background-color: #cfcfcf; }
 #salesRepSelect div.pickAgentresult2 a{ font-size: 12px; float: left; line-height: 30px; padding-left: 13px; color: #5d5d5d; } 
 
 .customerName{    width: 102px; display: inline-block;}		
+.appointmentType.dropdown li ul li a span.hourSlot{ position: absolute; color: #9b9b9b; font-size: 8px; left: 37px; top: 13px; width: auto !important;}
+.appointmentType.dropdown.bookingPopup li ul li{ line-height: 36px; height: 36px;}
+.appointmentType.dropdown.bookingPopup .dropdownOptions{ padding: 0 0px 8px 0;}
+.appointmentType.dropdown.bookingPopup li a{position: relative;}
+.appDetails .dropdown.bookingPopup li ul li a{font-size: 12px;}
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
