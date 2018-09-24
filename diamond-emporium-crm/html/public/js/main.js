@@ -1736,6 +1736,7 @@ $(document).on('click','.addBookingLink', function (e) {
     
     var getBudget = $('.dropdown.budget').find('a.selected-text').attr('value');
     var getTime = $(this).closest('.daysContentSlider').attr('time');
+    var getTime2 = $(this).closest('.daysContentSlider').attr('startingtime');
     var getDate = $(this).closest('.daysContent').attr('fulldate');
     
     var getMonth = moment(getDate).format('MMM');
@@ -1748,6 +1749,7 @@ $(document).on('click','.addBookingLink', function (e) {
     var salesRep = getSalesRep();
     $('#bookingDate').attr('timeSlot', getTimeSlots);
     $('#bookingDate').attr('timeSlotFull', getTime);
+    $('#bookingDate').attr('StartingTimeOnly', getTime2);
 
     var getName = $('#first_name').val() + ' ' + $('#last_name').val();
     var getProductSC = $('.dropdown.product').find('a.selected-text').attr('shortcode');
@@ -1824,10 +1826,12 @@ $(document).on('click','.savePopupBooking', function (e) {
     var getSelectedDate = $('.addBookingLink.thisClicked').closest('.daysContent').attr('fulldate');
     //var getDuration = $('.dropdown.durationTime').find('a.selected-text').attr('getduration');
     var getDuration = $('.newBookingDuration .subheading').attr('value');
-    
     var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
+    var StartingTimeOnly = $('#bookingDate').attr('StartingTimeOnly');
+    bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly);
     var customerName = $('.customerName').attr('value');
     var pickUpAgent = $('.salesRepName').attr('value');
+
     console.log(customerName + ' - ' + pickUpAgent);
     var setHeight = '';
     if(getDuration == "15")
@@ -1907,6 +1911,39 @@ $(document).on('click','.savePopupBooking', function (e) {
 });
 
 
+function bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly)
+  {
+    var duration = parseInt(getDuration);
+    var bookingTime = parseInt(bookingTimeStart);
+    var StartingTime = parseInt(StartingTimeOnly);
+    var TotalDuration = bookingTime + duration;
+    var setTime = StartingTimeOnly + ":00";
+    // Starting Time
+
+    var StartTime =  moment.utc(setTime,'hh:mm').add(bookingTime,'minutes').format('hh:mm');
+    var EndTime =  moment.utc(setTime,'hh:mm').add(TotalDuration,'minutes').format('hh:mm');
+    var getHour = EndTime.substr(0, 2);
+    getHour = parseInt(getHour);
+
+    // Starting Am Pm
+    var startTimeAmPm = "PM";
+    if(StartingTime < 12 && StartingTime > 7)
+    {
+      startTimeAmPm = "AM";
+    }
+
+    // Ending Am Pm
+    var endingTimeAmPm = "PM";
+    if(getHour < 12 && getHour > 7)
+    {
+      endingTimeAmPm = "AM";
+    }
+   
+    
+    var setTime = StartTime + ' ' + startTimeAmPm + ' - ' + EndTime + ' ' + endingTimeAmPm;
+    $('#bookingDate').attr('updatedTime', setTime);
+  
+  }
 // Check how many bookings are left there
   
   function checkTimeAllowed(timeStart, getRoomNumber, el)
@@ -2041,7 +2078,6 @@ $(document).on('click','.savePopupBooking', function (e) {
     
   }
 
-
   function getMinutesList(getTimeAllowed)
   {
 
@@ -2157,8 +2193,8 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('#bookingDate').attr('ComlpeteDate', getComlpeteDate);
 
     
-
-    var setHtml = getDay + ' ' + getDateSuffix + ' ' + monthShortName + ', ' + getYear + ' ' + getTimeFull;
+    var updatedTime = $('#bookingDate').attr('updatedTime');
+    var setHtml = getDay + ' ' + getDateSuffix + ' ' + monthShortName + ', ' + getYear + ' ' + updatedTime;
     $('#bookingDate').html(setHtml); 
   }
 
@@ -3965,7 +4001,12 @@ setTimeout(function(){
                         $('#bookingDate').attr('datenumber', datenumber);
                         $('#bookingDate').attr('roomnumber',roomnumber);
                         $('#bookingDate').attr('comlpetedate', comlpetedate);
-                        var setHtml = getBookingDay + ' ' + datenumberSuffix + ' ' + monthname + ', ' + bookingyear + ' ' + getFullTime;
+                        debugger
+                        
+                        var getStartingHour = getTime(parsed[0].booking_time);
+                        bookingTimeDuration(parsed[0].durationTime, parsed[0].bookingstart, getStartingHour);
+                        var getUpdatedTimeFull = $('#bookingDate').attr('updatedTime');
+                        var setHtml = getBookingDay + ' ' + datenumberSuffix + ' ' + monthname + ', ' + bookingyear + ' ' + getUpdatedTimeFull;
                         $('#bookingDate').html(setHtml);
                       }
                       else
