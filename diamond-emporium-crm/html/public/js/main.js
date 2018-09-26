@@ -3650,7 +3650,7 @@ setTimeout(function(){
             $('.newLead').html(window.getNewLeadAll);
             $('.newLead').removeClass('inEditMode');
             return false;
-
+            
         }
       });    
       return false;
@@ -3773,6 +3773,12 @@ setTimeout(function(){
     
     function EditLead(getLeadId)
     {
+
+        var getAssigneeId = window.selectedAssigneeId;
+        startCalendarLoading();
+        var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
+        
+        loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
 
       $.ajax({
                 type: "GET",
@@ -4001,7 +4007,7 @@ setTimeout(function(){
                         $('#bookingDate').attr('datenumber', datenumber);
                         $('#bookingDate').attr('roomnumber',roomnumber);
                         $('#bookingDate').attr('comlpetedate', comlpetedate);
-                        debugger
+                        
                         
                         var getStartingHour = getTime(parsed[0].booking_time);
                         bookingTimeDuration(parsed[0].durationTime, parsed[0].bookingstart, getStartingHour);
@@ -4012,7 +4018,7 @@ setTimeout(function(){
                       else
                       {
                         $('.bookNowDiv').addClass('hide');
-                        //$('.btn-bookNow, .next-saveDiv').removeClass('hide');
+                        //$('.btn-bookNow, .next-saveDiv').removeClass('hide'); 
                       }
                       
                       
@@ -5079,13 +5085,7 @@ setTimeout(function(){
         var loadingHtml = '<div class="loading fullHeight align-center absolute z-index99 full top-0  left-0" style=""><img src="/images/loading.gif"></div>';
         $('.NewCalendarContainer').append(loadingHtml);
     }
-    function endCalendarLoading()
-    {
-        
-        setTimeout(function(){ 
-          $('.NewCalendarContainer').find('.loading').remove();
-        }, 500);
-    }
+    
 }); // Ending Document ready
 
 // Getting agents List
@@ -5417,6 +5417,7 @@ $(document).on('click','.newactions a', function (e) {
         $('.dashboard-header').addClass('hide');
         $('.leadDeailContainer').addClass('hide');
         $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
+        endCalendarLoading();
     }
     else
     {
@@ -5434,6 +5435,14 @@ $(document).on('click','.newactions a', function (e) {
 
 });
 
+function endCalendarLoading()
+    {
+        
+        setTimeout(function(){ 
+          $('.NewCalendarContainer').find('.loading').remove();
+        }, 500);
+    }
+    
 /*---------------------------------------------*/
 /*---------------------------------------------*/
 /*---------------------------------------------*/
