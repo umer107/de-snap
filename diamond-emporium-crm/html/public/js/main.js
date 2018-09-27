@@ -928,14 +928,14 @@ $(document).ready(function () {
         var getValue = $(this).val().length;
         var getemail = $(this).val();
         if ($.trim(getemail).length == 0) {
-            $(this).next('label').addClass('opacity0');
+            $(this).next('label').next('label').addClass('opacity0');
         }
         else if (isValidEmailAddress(getemail)) {
-            $(this).next('label').addClass('opacity0');
+            $(this).next('label').next('label').addClass('opacity0');
             validateBasicInfo();
         }
         else {
-            $(this).next('label').removeClass('opacity0');
+            $(this).next('label').next('label').removeClass('opacity0');
         }
 
     });// End
@@ -973,10 +973,10 @@ $(document).ready(function () {
         var getLeadId =  $('.thisLeadId').attr('leadid');
         if ($.trim(getemail).length == 0) {
             $('.emailexists').addClass('opacity0');
-            $('#email').next('label').removeClass('opacity0');
+            $('#email').next('label').next('label').addClass('opacity0');
         }
         else if (isValidEmailAddress(getemail)) {
-            $('#email').next('label').addClass('opacity0');
+            $('#email').next('label').next('label').addClass('opacity0');
             
              $.ajax({
               type: "GET",
@@ -1061,7 +1061,7 @@ $(document).ready(function () {
         else {
             $('.redCross, .redGreen').addClass('hide');
             $('.emailexists').addClass('opacity0');
-            $('#email').next('label').removeClass('opacity0');
+            $('#email').next('label').next('label').removeClass('opacity0');
             
         }
 
@@ -2421,7 +2421,7 @@ setTimeout(function(){
             else if(!isValidEmailAddress(getEmail))
               {
                 $('.emailexists').addClass('opacity0');
-                $('#email').next('label').removeClass('opacity0');
+                $('#email').next('label').next('label').removeClass('opacity0');
               }
 
             if(getProduct == 'All')
@@ -2489,7 +2489,7 @@ setTimeout(function(){
               else
               {
                 $('.emailexists').addClass('opacity0');
-                $('#email').next('label').removeClass('opacity0');
+                $('#email').next('label').next('label').removeClass('opacity0');
                 $(".rightCol").animate({ scrollTop: 0 }, "slow");
                 window.validState = false;
                 return false;
@@ -3572,7 +3572,7 @@ setTimeout(function(){
             else if(!isValidEmailAddress(getEmail))
             {
               $('.emailexists').addClass('opacity0');
-              $('#email').next('label').removeClass('opacity0');
+              $('#email').next('label').next('label').removeClass('opacity0');
             }
 
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
@@ -3615,7 +3615,7 @@ setTimeout(function(){
               else
               {
                 $('.emailexists').addClass('opacity0');
-                $('#email').next('label').removeClass('opacity0');
+                $('#email').next('label').next('label').removeClass('opacity0');
                 $(".rightCol").animate({ scrollTop: 0 }, "slow");
                 window.validState = false;
                 return false;
