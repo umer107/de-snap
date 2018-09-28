@@ -1110,6 +1110,7 @@ $(document).ready(function () {
         var setHtml = "<div class='NewCalendarContainer full relative'>";
         setHtml += getHtml;
         setHtml += "</div>";
+        setHtml += "<div class='hide fixed addBookingPopup'></div>";
         $('.calendarLoad').html(setHtml);
         $('.calendarLoad .bookingHeading').addClass('hide');
         $('.calendarLoad').removeClass('hide');
@@ -1715,9 +1716,14 @@ $(document).on('click','.addBookingLink', function (e) {
     $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
     window.validState = true;
     validation();
-    if(window.validState == false )
-    { return false }
-
+    var validationCheck = el.closest('.calendarLoad').hasClass('full');
+    if(validationCheck == false)
+    {
+        if(window.validState == false )
+        { return false }
+    }
+    
+    
 
     $('.addBookingLink').removeClass('thisClicked');
     $('.labelContainer').removeClass('thisLabelClicked');
@@ -3466,6 +3472,7 @@ setTimeout(function(){
             salesRepName : $('#bookingDate').attr('salesRepName'),
             //booking_duration: $('.durationSelection a').filter('.active').attr('value'),
             color : window.userColor
+            // appointmentType : false,
            
         };
         
@@ -3475,6 +3482,9 @@ setTimeout(function(){
     // Save New Booking
     $(document).on('click','.saveNewBooking', function (e) {
       $('#submitbutton').trigger('click');
+      var checkIfAppointment = $(this).closest('.calendarLoad').hasClass('full');
+      console.log(check);
+      window.appointmentType = checkIfAppointment;
     });
     // Cancel New Booking
     $(document).on('click','.cancelNewBooking', function (e) {
@@ -3626,7 +3636,10 @@ setTimeout(function(){
 
       
       var data = getValuesFromForm();
-
+      if(window.appointmentType == trigger)
+      {
+        //data.appointmentType = true;
+      }
       //Ajax Call
       $.ajax({
         type: "POST",
@@ -3763,10 +3776,10 @@ setTimeout(function(){
 
     $(document).on('click','.calendarLoad .roomBooking', function (e) {
  
-        $('.newLead').addClass('inEditMode');
+        //$('.newLead').addClass('inEditMode');
         
-        var getLeadId = $(this).attr('lead-id');    
-        EditLead(getLeadId);
+        //var getLeadId = $(this).attr('lead-id');    
+        //EditLead(getLeadId);
 
                    
     });
