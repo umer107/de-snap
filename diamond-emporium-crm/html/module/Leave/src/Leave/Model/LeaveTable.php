@@ -508,8 +508,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                          }
                          //End Working With Calender
                          
-                       
-                         
+                          $filter_lead_Appointment = 0;
+                          $select->where(array('l.AppointmentType = ?' =>  $filter_lead_Appointment));
                         //Start Sorting
                          $select->order('id Desc');
                         //End Sorting
