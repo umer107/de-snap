@@ -638,7 +638,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 /*------------------ New Calendar ---------------------*/
 
 .calendarLoad{ background: white; padding: 24px 25px 24px 60px; }
-.calendarLoad .addBookingLink{opacity: 0 !important;}
+.calendarLoad .addBookingLink{}
 .calendarLoad .cancelNewBooking,.calendarLoad .saveNewBooking {display: none;}
 .calendarLoad .roomBooking{cursor: pointer;}
 .NewCalendarContainer{ width: 1580px; padding-bottom: 280px; }
@@ -740,7 +740,7 @@ section.rightCol.hidden{overflow: hidden;}*/
 .roomsContainer .roomBooking p.headBar span:first-child { width: 82px; float: left; border-right: 1px solid white; }
 .roomsContainer .roomBooking p.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; }
 .addBookingPopup .roomBooking p.newApp{line-height: 15px; font-size: 10px; }
-.roomsContainer .roomBooking div.headBar{ color: white; line-height: 15px; height: 15px; text-align: left; padding-left: 4px; }
+.roomsContainer .roomBooking div.headBar{ background-color: #9b9b9b; color: white; line-height: 15px; height: 15px; text-align: left; padding-left: 4px; }
 .roomsContainer .roomBooking div.headBar span:first-child { width: 82px; float: left; border-right: 1px solid white;line-height: 15px; }
 .roomsContainer .roomBooking div.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; line-height: 15px;}
 .appointmentTypes{ display: inline-block; border-bottom: 2px solid #9b9b9b; padding-bottom: 4px; }
