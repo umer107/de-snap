@@ -3947,8 +3947,8 @@ setTimeout(function(){
             {
               showMainLoading();
               var getAssigneeId = window.selectedAssigneeId;
-              var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
-        
+              var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
+              debugger
               loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
             }
             else
