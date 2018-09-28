@@ -165,6 +165,22 @@ class DashboardController extends AbstractActionController
           \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
       }
     }
+    //ajaxGetCustomerByNameAction
+    public function  ajaxGetCustomerByNameAction()
+    {
+        
+        try {
+            $config = $this->getServiceLocator()->get('Config');
+            $params = $this->getRequest()->getQuery()->toArray();         
+            $leadsTable = $this->getServiceLocator()->get('Leave\Model\LeaveTable');
+            $leadsArr = $leadsTable->fetchCustomerNameData();
+            echo json_encode($leadsArr);
+	    exit;
+        } catch(Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+	}
+        
+    }
     
     //AjaxGetUserColor
     

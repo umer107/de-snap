@@ -175,6 +175,16 @@ return array(
                                 'action'     => 'ajaxGetDataForQuestionViewCalender',
                             ),
                         ),
+                    ),            
+             'ajaxGetCustomerByName' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetCustomerByName',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetCustomerByName',
+                            ),
+                        ),
                     ),
              'ajaxUpdateleadStatus' => array(
                         'type' => 'Segment',
