@@ -3471,8 +3471,8 @@ setTimeout(function(){
             customerName : $('#bookingDate').attr('customerName'),
             salesRepName : $('#bookingDate').attr('salesRepName'),
             //booking_duration: $('.durationSelection a').filter('.active').attr('value'),
-            color : window.userColor
-            // appointmentType : false,
+            color : window.userColor,
+            AppointmentType : false,
            
         };
         
@@ -3483,7 +3483,7 @@ setTimeout(function(){
     $(document).on('click','.saveNewBooking', function (e) {
       $('#submitbutton').trigger('click');
       var checkIfAppointment = $(this).closest('.calendarLoad').hasClass('full');
-      console.log(check);
+      console.log(checkIfAppointment);
       window.appointmentType = checkIfAppointment;
     });
     // Cancel New Booking
@@ -3636,9 +3636,9 @@ setTimeout(function(){
 
       
       var data = getValuesFromForm();
-      if(window.appointmentType == trigger)
+      if(window.AppointmentType == true)
       {
-        //data.appointmentType = true;
+        data.AppointmentType = true;
       }
       //Ajax Call
       $.ajax({
