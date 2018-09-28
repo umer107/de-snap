@@ -1842,7 +1842,10 @@ $(document).on('click','.savePopupBooking', function (e) {
     var el = $(this);
     var customerName = el.closest('.newBookingDetail').find('.customerName').attr('value');
     var pickUpAgent = el.closest('.newBookingDetail').find('.salesRepName').attr('value');
+    var pickUpAgentId = el.closest('.newBookingDetail').find('.salesRepName').attr('userId');
     $('#assign_us_Dropdown').closest('a.selected-text').attr('value',pickUpAgent);
+    $('#assign_us_Dropdown').html(pickUpAgent);
+    $(".assignToDiv a.selected-text").attr("assigneid", pickUpAgentId);
     if(customerName == "" || pickUpAgent == "")
     {
       return false;
@@ -2740,7 +2743,7 @@ setTimeout(function(){
             //    $('.add-address').slideUp();
             //    $('.addressContainer').slideDown(300);
             //}
-            debugger
+            
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
             window.validState = false;
             return false;
@@ -2754,7 +2757,7 @@ setTimeout(function(){
                 {
                   if(window.emailexists == true)
                   {
-                    debugger
+                    
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                   }
@@ -2772,7 +2775,7 @@ setTimeout(function(){
                   }
                   else
                   {
-                    debugger
+                    
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -2783,7 +2786,7 @@ setTimeout(function(){
               {
                 $('.emailexists').addClass('opacity0');
                 $('#email').next('label').next('label').removeClass('opacity0');
-                debugger
+                
                 $(".rightCol").animate({ scrollTop: 0 }, "slow");
                 window.validState = false;
                 return false;
@@ -3872,7 +3875,7 @@ setTimeout(function(){
               $('.emailexists').addClass('opacity0');
               $('#email').next('label').next('label').removeClass('opacity0');
             }
-            debugger
+            
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
             window.validState = false;
             return false;
@@ -3882,12 +3885,12 @@ setTimeout(function(){
               if(isValidEmailAddress(getEmail))
               { 
                 var getLeadId =  $('.thisLeadId').attr('leadid');
-                debugger
+                
                 if(getLeadId != "")
                 {
                   if(window.emailexists == true)
                   {
-                    debugger
+                    
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -3905,7 +3908,7 @@ setTimeout(function(){
                   }
                   else
                   {
-                    debugger
+                    
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -3916,7 +3919,7 @@ setTimeout(function(){
               {
                 $('.emailexists').addClass('opacity0');
                 $('#email').next('label').next('label').removeClass('opacity0');
-                debugger
+                
                 $(".rightCol").animate({ scrollTop: 0 }, "slow");
                 window.validState = false;
                 return false;
@@ -3936,23 +3939,36 @@ setTimeout(function(){
         url: "/dashboard/ajaxAddDashboard",
         data: data, 
         success: function (data) {
-            $('.rings a').removeClass('active');
-            $('.rings a:last-child').addClass('active');
-            loadLeads();
-            //Setting header changes
+            if(window.AppointmentType == 1)
+            {
+              showMainLoading();
+              var getAssigneeId = window.selectedAssigneeId;
+              var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
+        
+              loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
+              endMainLoading();
+            }
+            else
+            {
+              $('.rings a').removeClass('active');
+              $('.rings a:last-child').addClass('active');
+              loadLeads();
+              //Setting header changes
 
-            showMainLoading();
-            $('.newLeaveContainer').hide();
-            $('.newLead').addClass('maxHeightHide');
-            $('.dashboardContainer').addClass('hide');
-            $('.leavesContainer').addClass('hide');
-            $('.leadsContainer').removeClass('hide');
-            $('.new-Lead').removeClass('active');
-            $('.dashboard-header').removeClass('hide');
+              showMainLoading();
+              $('.newLeaveContainer').hide();
+              $('.newLead').addClass('maxHeightHide');
+              $('.dashboardContainer').addClass('hide');
+              $('.leavesContainer').addClass('hide');
+              $('.leadsContainer').removeClass('hide');
+              $('.new-Lead').removeClass('active');
+              $('.dashboard-header').removeClass('hide');
 
-            //Reset New lead form
-            $('.newLead').html(window.getNewLeadAll);
-            $('.newLead').removeClass('inEditMode');
+              //Reset New lead form
+              $('.newLead').html(window.getNewLeadAll);
+              $('.newLead').removeClass('inEditMode');
+            }
+          
             return false;
             
         }
@@ -7749,6 +7765,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
           else
           {
             $el.closest('.borderBottom').find('.salesRepName').html(value).attr('value',value);
+            $el.closest('.borderBottom').find('.salesRepName').attr('userId',Id);
             $el.closest('.borderBottom').find('.subheading').removeClass('hide');
             $el.closest('.borderBottom').find('.newbookingdropdown').addClass('hide');
             //$('#salesRepSelect').addClass('hide');

@@ -135,7 +135,7 @@ class SaveDashboardTable
 	    $data['create_date'] = date('Y-m-d H:i:s');     
             $leadId = $data['lead_id'];
             unset($data['lead_id']);
-            if(empty($leadId))
+            if(empty($leadId) || $data['AppointmentType'] == 1)
              {
               $data['lead_status'] = 'Open';
            
