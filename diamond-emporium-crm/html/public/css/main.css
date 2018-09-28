@@ -756,7 +756,7 @@ section.rightCol.hidden{overflow: hidden;}*/
 .roomsContainer:not(.addBookingContainer) .roomBooking div.half-pad-left{ padding-left: 2px; }
 .roomsContainer:not(.addBookingContainer) .roomBooking div.half-pad-left p span.half-pad-left{padding-left: 0; }
 
-.transparentBG{ width: 100%; height: 39px; left: 0; top: 0; opacity: .3; }
+.transparentBG{background-color: #9b9b9b; width: 100%; height: 39px; left: 0; top: 0; opacity: .3; }
 .addBookingContainer{ float: left; width: 124px; /*height: 138px;*/}
 /*.addBookingPopup{ left: 0; right: 0; top:0; width: 100%; height: 100%; z-index: 1;}*/
 .addBookingPopup{ z-index: 1;}

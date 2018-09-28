@@ -1711,6 +1711,17 @@ $(document).on('click','.borderBottom i.icon-downarrow, .customerName, .salesRep
 
 // Add new Booking popup
 $(document).on('click','.addBookingLink', function (e) {
+    var checkIfAppointment = $(this).closest('.calendarLoad').hasClass('full');
+    console.log(checkIfAppointment);
+    if(checkIfAppointment)
+    {
+      window.AppointmentType = 1;
+    }
+    else
+    {
+      window.AppointmentType = 0;
+    }
+
     //$('section.rightCol').addClass('hidden');
     var el = $(this);
     $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
@@ -1816,7 +1827,9 @@ $(document).on('click','.addBookingLink', function (e) {
     //$(this).after(container);
     $('.addBookingPopup').html(container).removeClass('hide');
     $('.pickAgentresult2').html(window.pickAgentresult2);
-    
+    $('body').stop();
+    $(window).unbind('scroll');
+    return false;
 
 
 });
@@ -1825,7 +1838,7 @@ $(document).on('click','.addBookingLink', function (e) {
 /*====================================================*/
 // Save new Booking popup
 $(document).on('click','.savePopupBooking', function (e) {
-
+    var el = $(this);
     $('.roomBooking.newlyAdded').remove();
     var selectHtml = $('.addBookingPopup .addBookingContainer').html();
     var getDayName = $('.addBookingLink.thisClicked').closest('.daysCalendar').attr('dayname');
@@ -1836,9 +1849,9 @@ $(document).on('click','.savePopupBooking', function (e) {
     var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
     var StartingTimeOnly = $('#bookingDate').attr('StartingTimeOnly');
     bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly);
-    var customerName = $('.customerName').attr('value');
-    var pickUpAgent = $('.salesRepName').attr('value');
-
+    var customerName = el.closest('.newBookingDetail').find('.customerName').attr('value');
+    var pickUpAgent = el.closest('.newBookingDetail').find('.salesRepName').attr('value');
+    var selectedProduct = el.closest('.roomBooking').find('.dropdown.appointmentType').find('a.selected-text').attr('shortCode');
     console.log(customerName + ' - ' + pickUpAgent);
     var setHeight = '';
     if(getDuration == "15")
@@ -1902,14 +1915,25 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('#bookingDate').attr('bookingStart', bookingTimeStart);
 
     // Apply new booking made
-    
+    if(window.AppointmentType == 1)
+    {
+      $('.appointmentTypes').addClass('hide');
+      $('.newBookingDetail').removeClass('hide');
+      var setCustomerName = '<span class="ellipsis">'+customerName+'</span><span></span>';
+      $('.bookingmade').html(setCustomerName);      
+    }
+    else
+    {
+      
+    }
+    $('.appDetails,.newApp, .hideOnCalenar').addClass('hide');
     $('.next-saveDiv').removeClass('hide');
     $('.bookNowDiv').addClass('hide');
     additionalDetailsExpand();
     $('.btn-bookNow').addClass('hide');
     $('.savedBooking').removeClass('hide');
     $('.bookingViewIcon').addClass('hide');
-    $('.appDetails,.newApp, .hideOnCalenar').addClass('hide');
+    
     $('.bookingmade, .productShortCode').removeClass('hide');
     //$('.next-options').removeClass('hide');
     geDateValues(getSelectedDate);    
@@ -2456,7 +2480,7 @@ setTimeout(function(){
             //    $('.add-address').slideUp();
             //    $('.addressContainer').slideDown(300);
             //}
-            
+            debugger
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
             window.validState = false;
             return false;
@@ -2470,6 +2494,7 @@ setTimeout(function(){
                 {
                   if(window.emailexists == true)
                   {
+                    debugger
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                   }
@@ -2487,6 +2512,7 @@ setTimeout(function(){
                   }
                   else
                   {
+                    debugger
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -2497,6 +2523,7 @@ setTimeout(function(){
               {
                 $('.emailexists').addClass('opacity0');
                 $('#email').next('label').next('label').removeClass('opacity0');
+                debugger
                 $(".rightCol").animate({ scrollTop: 0 }, "slow");
                 window.validState = false;
                 return false;
@@ -2744,7 +2771,7 @@ setTimeout(function(){
           $('.addBookingPopup .newApp').addClass('hide'); 
           $('.addBookingPopup .appDetails .ellipsis').html(getValue);
           
-          // $('.addBookingPopup .productShortCode span').html(getShortCode);
+           $('.addBookingPopup .productShortCode span').html(getShortCode);
           var getCurentDropdown = el.closest('.appointmentTypes').html();
           //el.closest('.appointmentTypes').remove();
           $('.addBookingPopup .appDetails').html(getCurentDropdown);
@@ -3482,16 +3509,7 @@ setTimeout(function(){
     // Save New Booking
     $(document).on('click','.saveNewBooking', function (e) {
       $('#submitbutton').trigger('click');
-      var checkIfAppointment = $(this).closest('.calendarLoad').hasClass('full');
-      console.log(checkIfAppointment);
-      if(checkIfAppointment)
-      {
-        window.appointmentType = 1;
-      }
-      else
-      {
-        window.appointmentType = 0;
-      }
+      
 
       
     });
@@ -3594,7 +3612,7 @@ setTimeout(function(){
               $('.emailexists').addClass('opacity0');
               $('#email').next('label').next('label').removeClass('opacity0');
             }
-
+            debugger
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
             window.validState = false;
             return false;
@@ -3609,6 +3627,7 @@ setTimeout(function(){
                 {
                   if(window.emailexists == true)
                   {
+                    debugger
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -3626,6 +3645,7 @@ setTimeout(function(){
                   }
                   else
                   {
+                    debugger
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -3636,6 +3656,7 @@ setTimeout(function(){
               {
                 $('.emailexists').addClass('opacity0');
                 $('#email').next('label').next('label').removeClass('opacity0');
+                debugger
                 $(".rightCol").animate({ scrollTop: 0 }, "slow");
                 window.validState = false;
                 return false;
@@ -7271,7 +7292,8 @@ function getBookingTime(getTime, bookingStart, Duation) {
       
       $(this).closest('.borderBottom').find('.customerName').html(value).attr('value',value);
       $(this).closest('.borderBottom').find('.subheading').removeClass('hide');
-      $('#customerRepSelect').addClass('hide');
+      $(this).closest('.borderBottom').find('.newbookingdropdown').addClass('hide');
+      //$('#customerRepSelect').addClass('hide'); 
       
     });// End
 
@@ -7456,7 +7478,8 @@ function getBookingTime(getTime, bookingStart, Duation) {
           {
             $el.closest('.borderBottom').find('.salesRepName').html(value).attr('value',value);
             $el.closest('.borderBottom').find('.subheading').removeClass('hide');
-            $('#salesRepSelect').addClass('hide');
+            $el.closest('.borderBottom').find('.newbookingdropdown').addClass('hide');
+            //$('#salesRepSelect').addClass('hide');
           }
         }
       }); 
