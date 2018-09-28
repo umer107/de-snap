@@ -1711,6 +1711,11 @@ $(document).on('click','.borderBottom i.icon-downarrow, .customerName, .salesRep
 
 // Add new Booking popup
 $(document).on('click','.addBookingLink', function (e) {
+
+    var el = $(this);
+    $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
+    window.validState = true;
+
     var checkIfAppointment = $(this).closest('.calendarLoad').hasClass('full');
     console.log(checkIfAppointment);
     if(checkIfAppointment)
@@ -1720,13 +1725,12 @@ $(document).on('click','.addBookingLink', function (e) {
     else
     {
       window.AppointmentType = 0;
+      validation();
     }
 
     //$('section.rightCol').addClass('hidden');
-    var el = $(this);
-    $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
-    window.validState = true;
-    validation();
+    
+    
     var validationCheck = el.closest('.calendarLoad').hasClass('full');
     if(validationCheck == false)
     {
@@ -1827,8 +1831,8 @@ $(document).on('click','.addBookingLink', function (e) {
     //$(this).after(container);
     $('.addBookingPopup').html(container).removeClass('hide');
     $('.pickAgentresult2').html(window.pickAgentresult2);
-    $('body').stop();
-    $(window).unbind('scroll');
+
+
     return false;
 
 
@@ -2483,12 +2487,12 @@ $('section.rightCol').on('scroll', function(event){
                         var roomnumber = parsed[0].booking_room; 
                         var comlpetedate = parsed[0].booking_date;
 
-                        $('#bookingDate').attr('timeslot',timeslot);
-                        $('#bookingDate').attr('timeslotfull',timeslotfull);
-                        $('#bookingDate').attr('dayname',getBookingDay);
-                        $('#bookingDate').attr('datenumber', datenumber);
-                        $('#bookingDate').attr('roomnumber',roomnumber);
-                        $('#bookingDate').attr('comlpetedate', comlpetedate);
+                        //$('#bookingDate').attr('timeslot',timeslot);
+                        //$('#bookingDate').attr('timeslotfull',timeslotfull);
+                        //$('#bookingDate').attr('dayname',getBookingDay);
+                        //$('#bookingDate').attr('datenumber', datenumber);
+                        //$('#bookingDate').attr('roomnumber',roomnumber);
+                        //$('#bookingDate').attr('comlpetedate', comlpetedate);
                         
                         
                         var getStartingHour = getTime(parsed[0].booking_time);
@@ -2743,7 +2747,7 @@ setTimeout(function(){
             //    $('.add-address').slideUp();
             //    $('.addressContainer').slideDown(300);
             //}
-            
+            debugger
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
             window.validState = false;
             return false;
@@ -2757,7 +2761,7 @@ setTimeout(function(){
                 {
                   if(window.emailexists == true)
                   {
-                    
+                    debugger
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                   }
@@ -2775,7 +2779,7 @@ setTimeout(function(){
                   }
                   else
                   {
-                    
+                    debugger
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -2786,7 +2790,7 @@ setTimeout(function(){
               {
                 $('.emailexists').addClass('opacity0');
                 $('#email').next('label').next('label').removeClass('opacity0');
-                
+                debugger
                 $(".rightCol").animate({ scrollTop: 0 }, "slow");
                 window.validState = false;
                 return false;
@@ -3875,7 +3879,7 @@ setTimeout(function(){
               $('.emailexists').addClass('opacity0');
               $('#email').next('label').next('label').removeClass('opacity0');
             }
-            
+            debugger
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
             window.validState = false;
             return false;
@@ -3890,7 +3894,7 @@ setTimeout(function(){
                 {
                   if(window.emailexists == true)
                   {
-                    
+                    debugger
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -3908,7 +3912,7 @@ setTimeout(function(){
                   }
                   else
                   {
-                    
+                    debugger
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -3919,7 +3923,7 @@ setTimeout(function(){
               {
                 $('.emailexists').addClass('opacity0');
                 $('#email').next('label').next('label').removeClass('opacity0');
-                
+                debugger
                 $(".rightCol").animate({ scrollTop: 0 }, "slow");
                 window.validState = false;
                 return false;
@@ -3946,7 +3950,6 @@ setTimeout(function(){
               var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
         
               loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
-              endMainLoading();
             }
             else
             {
