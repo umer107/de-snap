@@ -1789,6 +1789,30 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
        
    }
 
+   //
+      public function  fetchCustomerNameData()
+   {
+               try{
+		
+                $fullname = new \Zend\Db\Sql\Expression(
+                 'CONCAT(u.first_name, \' \', u.last_name)'
+                );    
+                $select = new \Zend\Db\Sql\Select(); 
+                $select->from(array('u' => 'de_userdetail')) ->columns(array( 'id','user_name' => $fullname));    
+                $select->order("id desc");
+                $data = $this->executeQuery($select);      
+                $result = $data->toArray(); 
+       
+                return $result;
+             
+           
+                    
+		}catch(\Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+		}
+       
+       
+   }
    public function fetchUserNextInLine($filter = null)
    {
        //-----------------------------------------------UserList------------------------------------// 
