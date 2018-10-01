@@ -1916,14 +1916,13 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('#bookingDate').attr('datenumber', getDateNumber);
     $('#bookingDate').attr('customerName', customerName);
     $('#bookingDate').attr('salesRepName', pickUpAgent);
+
     $('.addBookingLink.thisClicked').closest('label').append(selectHtml);
-    $('.thisLabelClicked .roomBooking').css('height',setHeight).addClass('newlyAdded');
-    $('.thisLabelClicked .roomBooking').css('top',setTop);
-    $('.thisLabelClicked .roomBooking').find('.transparentBG').css('height',setHeight);
-    $('.thisLabelClicked .roomBooking').find('.bookingTiming, .durationTime, p.full').addClass('hide');
-    
-    
-    
+    $('.thisLabelClicked .roomBooking:last-child').css('height',setHeight).addClass('newlyAdded');
+    $('.thisLabelClicked .roomBooking:last-child').css('top',setTop);
+    $('.thisLabelClicked .roomBooking:last-child').find('.transparentBG').css('height',setHeight);
+    $('.thisLabelClicked .roomBooking:last-child').find('.bookingTiming, .durationTime, p.full').addClass('hide');
+
     $('.addBookingPopup').html('');
     $('.addBookingPopup').addClass('hide');
     $('#bookingDate').attr('durationTime', getDuration);
