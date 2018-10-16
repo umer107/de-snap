@@ -195,7 +195,18 @@ return array(
                                 'action'     => 'ajaxUpdateleadStatus',
                             ),
                         ),
-                    ),            
+                    ),     
+                    
+              'ajaxGetDataForSearch' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetDataForSearch',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetDataForSearch',
+                            ),
+                        ),
+                    ),
              'ajaxGetDataForCustomViewCalender' => array(
                         'type' => 'Segment',
                         'options' => array(

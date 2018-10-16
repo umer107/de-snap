@@ -7623,6 +7623,29 @@ function getBookingTime(getTime, bookingStart, Duation) {
         
     });// End
 
+
+    function getSearchData()
+    {
+          $.ajax({
+            type: "GET",
+            url: "/dashboard/ajaxGetDataForSearch", 
+            data: {},
+            success: function (data) {
+                var getData = data;                
+                var parsed = '';               
+                try{
+                  parsed = JSON.parse(data);                  
+                }           
+                catch(e)
+                {                   
+                  return false;                  
+                }
+                
+              
+            }
+
+        });
+    }
   function pickUpAgents (){
     $.ajax({
             type: "GET",
