@@ -187,7 +187,7 @@ $resources = array(
     'Dashboard\Controller\Dashboard::ajaxGetDataListofSalesRep',
     'Dashboard\Controller\Dashboard::checkLeadEmail',
     'Dashboard\Controller\Dashboard::ajaxGetCustomerByName',
-    
+    'Dashboard\Controller\Dashboard::ajaxGetDataForSearch',
 
 	);
 
