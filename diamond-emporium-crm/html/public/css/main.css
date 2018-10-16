@@ -74,6 +74,9 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { bac
 /*-----------------------------------------*/
 
 /*Dropdown Css Start*/
+.searchArea{}
+.searchArea input{height: 32px; width: 600px; border-radius: 30px; border: solid 1px #dfdfdf; }
+.searchArea i{color:#2c76ae}
 .wd-280{width:280px;} 
 .dropdown{  height: 30px; line-height: 30px; }
 .dropdown li a{color:#5D5D5D; text-align:left; font-size:14px; display:block; border: 1px solid white; border-bottom: 1px solid #DFDFDF; overflow: auto;}
@@ -742,6 +745,8 @@ section.rightCol.hidden{overflow: hidden;}*/
 .roomsContainer .roomBooking p.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; }
 .addBookingPopup .roomBooking p.newApp{line-height: 15px; font-size: 10px; }
 .roomsContainer .roomBooking div.headBar{ background-color: #9b9b9b; color: white; line-height: 15px; height: 15px; text-align: left; padding-left: 4px; }
+.calendarLoad .roomsContainer .roomBooking div.headBar{background-color: #9b9b9b !important;}
+.calendarLoad .newBookingDetail i.icon-leave{color: #5d5d5d !important;}
 .roomsContainer .roomBooking div.headBar span:first-child { width: 82px; float: left; border-right: 1px solid white;line-height: 15px; }
 .roomsContainer .roomBooking div.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; line-height: 15px;}
 .appointmentTypes{ display: inline-block; border-bottom: 2px solid #9b9b9b; padding-bottom: 4px; }

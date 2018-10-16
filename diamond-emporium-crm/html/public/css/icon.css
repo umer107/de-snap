@@ -9,6 +9,7 @@
   font-style: normal;
 }
 
+
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
@@ -24,6 +25,54 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-search:before {
+  content: "\e90d";
+}
+.icon-crown:before {
+  content: "\e90e";
+}
+.icon-engRing:before {
+  content: "\e90f";
+}
+.icon-crown2:before {
+  content: "\e910";
+}
+.icon-weddingBrand:before {
+  content: "\e911";
+}
+.icon-watch:before {
+  content: "\e912";
+}
+.icon-dressRings:before {
+  content: "\e913";
+}
+.icon-necklace:before {
+  content: "\e914";
+}
+.icon-bracelet:before {
+  content: "\e915";
+}
+.icon-bracelets:before {
+  content: "\e916";
+}
+.icon-necklaces:before {
+  content: "\e917";
+}
+.icon-fill-21:before {
+  content: "\e918";
+}
+.icon-fill-23:before {
+  content: "\e919";
+}
+.icon-looseDiamond:before {
+  content: "\e91a";
+}
+.icon-earrings:before {
+  content: "\e91b";
+}
+.icon-pendant:before {
+  content: "\e91c";
+}
 .icon-calendar:before {
   content: "\e90c";
 }
@@ -46,11 +95,9 @@
 }
 .icon-calendarClose:before {
   content: "\e906";
-  color: #127abb;
 }
 .icon-close:before {
   content: "\e905";
-  color: #2b639a;
 }
 .icon-dashboard:before {
   content: "\e900";
