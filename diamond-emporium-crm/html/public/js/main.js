@@ -7624,6 +7624,43 @@ function getBookingTime(getTime, bookingStart, Duation) {
     });// End
 
 
+    $(document).on('keyup', '.searchField', function () {
+      var getValue = $('.searchField').val();
+      var getLength = getValue.length;
+      var arr = [];
+      if(getLength > 1)
+      {
+        var parsed = window.searchData;
+
+        for (var i = 0; i < parsed.length; i++) {
+            
+            var name = parsed[i].name;
+             if (name.indexOf(getValue) > -1) {
+               arr.push(parsed[i]);
+             }
+             else {}
+          }
+      }
+      var filteredArray = arr;
+      var setHtml = '';
+        for (var i = 0; i < filteredArray.length; i++) 
+        {
+          setHtml += "<div class='resultFields full' leadId='"+ filteredArray[i].id +"'>"+ filteredArray[i].name +"</div>";
+        }
+
+        if(filteredArray.length > 0)
+        {
+          $("#searchResults").html(setHtml);
+        }
+        else
+        {
+          $("#searchResults").html(' ');
+        }
+        
+    });// End
+
+
+
     function getSearchData()
     {
           $.ajax({
@@ -7640,12 +7677,14 @@ function getBookingTime(getTime, bookingStart, Duation) {
                 {                   
                   return false;                  
                 }
-                
+
+                window.searchData = parsed;
               
             }
 
         });
     }
+    getSearchData()
   function pickUpAgents (){
     $.ajax({
             type: "GET",
