@@ -7635,7 +7635,9 @@ function getBookingTime(getTime, bookingStart, Duation) {
         for (var i = 0; i < parsed.length; i++) {
             
             var name = parsed[i].name;
-             if (name.indexOf(getValue) > -1) {
+            var email = parsed[i].email;
+            var phone = parsed[i].phone_number;
+             if (name.indexOf(getValue) > -1 || email.indexOf(getValue) > -1 || phone.indexOf(getValue) > -1) {
                arr.push(parsed[i]);
              }
              else {}
@@ -7645,7 +7647,24 @@ function getBookingTime(getTime, bookingStart, Duation) {
       var setHtml = '';
         for (var i = 0; i < filteredArray.length; i++) 
         {
-          setHtml += "<div class='resultFields full' leadId='"+ filteredArray[i].id +"'>"+ filteredArray[i].name +"</div>";
+          var bookingDate = filteredArray[i].booking_date;                              // Booking Date
+          var formattedDate = moment(bookingDate).add(0, 'M').format('DD.MM.YYYY');     // Formatted Date
+          var productName = filteredArray[i].product;                                   // Product Name
+          var productIconName = productIcons(productName);                              // Get Icon
+
+          setHtml += "<div class='resultFields full pointer' leadId='"+ filteredArray[i].id +"'>";
+            setHtml += "<span class='d-i-b wd-67 v-a-t align-center'><i class='"+productIconName+ " fs-36 color-darkBlue'></i></span>";
+            setHtml += "<div class='searchContent d-i-b v-a-t half-pad-top'>";
+              setHtml += "<h1 class='fs-15 lh-22'>"+filteredArray[i].name+"</h1>"; // Name
+              setHtml += "<div>";
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Created</label><span>"+formattedDate+"</span></div>"; // Created
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Product</label><span>"+filteredArray[i].product+"</span></div>"; // Product
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Mobile</label><span>"+filteredArray[i].phone_number+"</span></div>"; // Mobile
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Email</label><span>"+filteredArray[i].email+"</span></div>"; // Email
+              setHtml += "</div>";
+            setHtml += "</div>";
+          setHtml += "</div>";
+
         }
 
         if(filteredArray.length > 0)
@@ -7659,7 +7678,21 @@ function getBookingTime(getTime, bookingStart, Duation) {
         
     });// End
 
-
+    function productIcons(productName)
+    {
+      var iconName = "";
+      if(productName == "Engagement Ring")
+      {
+        iconName = 'icon-engRing';
+      }
+      else if(productName == "Earrings")
+      {
+        iconName = 'icon-earrings';
+      }
+      else
+      { iconName = 'icon-diamond' }
+      return iconName;
+    }
 
     function getSearchData()
     {
