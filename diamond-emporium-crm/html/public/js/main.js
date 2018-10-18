@@ -1780,6 +1780,8 @@ $(document).on('click','.addBookingLink', function (e) {
     $('#bookingDate').attr('StartingTimeOnly', getTime2);
 
     var getName = $('#first_name').val() + ' ' + $('#last_name').val();
+    var getSalesRepName = $('#assign_us_Dropdown').html();
+    
     var getProductSC = $('.dropdown.product').find('a.selected-text').attr('shortcode');
     var getUserSC = $('.dropdown.assignToDiv').find('a.selected-text').attr('shortcode');
     var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
@@ -1788,13 +1790,13 @@ $(document).on('click','.addBookingLink', function (e) {
     var StartingHour = $('.addBookingLink.thisClicked').closest('.daysContentSlider').attr('startingtime');
 
 
-    //var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
-    //      setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">Duration</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
-    //     setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
-    //      var getMinuteList = getMinutesList(getTimeAllowed);
-    //      setDropdown += getMinuteList;
-    //      setDropdown += '</ul></li>';
-    //    setDropdown += '</ul>';
+    var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
+          setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">Duration</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
+         setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
+          var getMinuteList = getMinutesList(getTimeAllowed);
+          setDropdown += getMinuteList;
+          setDropdown += '</ul></li>';
+        setDropdown += '</ul>';
 
     var setHtml = "";
     var setHtml = '<div class="addBookingContainer roomsContainer">';
@@ -1803,20 +1805,36 @@ $(document).on('click','.addBookingLink', function (e) {
           
 
           setHtml += '<div class="full align-left half-pad-left lh-16 fs-11 one-pad-top relative contentarea pad-bottom">';
-            setHtml += '<div class="appointmentTypes half-pad-top">' + appointmentTypes + '</div>';
-            setHtml += '<div class="newBookingDetail hide">';
 
-              // Time Date Room
-              setHtml += '<p class="half-pad-top half-pad-bottom hideOnCalenar"> <i class="icon-leave fs-12" style="color:'+window.userColor +'"></i> ' + setDate + getRoomNumber + '</p>';
-              // Duration
-              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom newBookingDuration hideOnCalenar"> <span class="subheading">Duration</span> 1.5 Hours</div>';
+              if(window.AppointmentType == 1) // Room Manager
+              {
+                setHtml += '<div class="appointmentTypes half-pad-top">' + appointmentTypes + '</div>';
+                setHtml += '<div class="newBookingDetail hide">';   
+                // Time Date Room
+                setHtml += '<p class="half-pad-top half-pad-bottom hideOnCalenar"> <i class="icon-leave fs-12" style="color:'+window.userColor +'"></i> ' + setDate + getRoomNumber + '</p>';  
+                // Duration
+                setHtml += '<div class="half-pad-top half-pad-bottom borderBottom newBookingDuration hideOnCalenar"> <span class="subheading" value="90">Duration</span> 1.5 Hours</div>';  
+                // Customer Name
+                setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading hide">Name</span> <span class="customerName  display-block ellipsis" value="">Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
+                // Sales Rep
+                setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName display-block" value="">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
+              }
+              else // New Lead
+              {
+                setHtml += '<div class="appointmentTypes half-pad-top hide">' + appointmentTypes + '</div>';
+                setHtml += '<div class="newBookingDetail ">';
+                // Time Date Room
+                setHtml += '<p class="half-pad-top half-pad-bottom hideOnCalenar"> <i class="icon-leave fs-12" style="color:'+window.userColor +'"></i> ' + setDate + getRoomNumber + '</p>';
+                setHtml += "<div class='half-pad-top borderBottom hideOnCalenar'> <span class='subheading'>Duration</span>" +  setDropdown + "</div>";
+                // Customer Name
+                setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading">Name</span> <p class="two-pad-bottom"><i class="icon-user fs-11" style="color:'+window.userColor+'"></i> <span class="d-i-b">'+getName+'</span></p></div>';
+                // Sales Rep
+                setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading">Sales Rep</span> <p class="two-pad-bottom"><i class="icon-user fs-11" style="color:'+window.userColor+'"></i> <span class="d-i-b">'+getSalesRepName+'</span></p></div>';
+              }
+              
               // Product Name
               setHtml += '<p class="productShortCode hide"><i class="icon-diamond fs-11" style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
-              // Customer Name
-              setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading hide">Name</span> <span class="customerName  display-block ellipsis" value="">Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
-              // Sales Rep
-              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName display-block" value="">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
-
+              
               //setHtml += '<p><i class="icon-dollar fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
               
               //setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">Starting at ' +StartingHour+':'+bookingTimeStart+'</span></p>';

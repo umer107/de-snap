@@ -805,6 +805,11 @@ div.headbar{background-color: #cfcfcf; }
 .dropdown.bookingPopup li ul li:hover a{ color: #5D5D5D; font-weight: bold; }
 .roomBooking span.half-pad-left{ padding-left: 2px; }
 .newBookingDetail{ position: relative;z-index: 1 }
+.dropdown.durationTime{ width: 114px; height: 24px; line-height: 24px; }
+.dropdown.durationTime li a.selected-text span{ width: 88px; padding-right: 0; }
+.dropdown.durationTime li .dropdownOptions{ width: 122px; left: -5px; top: 24px; }
+.dropdown.durationTime li a { border: 0 none; font-size: 11px; }
+.dropdown.durationTime .selected-text i{ margin-top: 8px; background: none; }
 .newbookingdropdown{     width: 162px;
     position: absolute;
     height: 190px;
@@ -812,6 +817,7 @@ div.headbar{background-color: #cfcfcf; }
     border: solid 1px #dedede;
     left: -25px;
     z-index: 4;}
+
 .newbookingdropdown input{
 	width: 139px;
     height: 21px;
