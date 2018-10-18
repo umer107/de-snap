@@ -6,7 +6,7 @@
 *{ transition: background .2s ease, color .1s ease;}
 .newLead { }
 .newLead .innerContainer { margin-top: 40px; padding: 24px 25px 24px 60px; }
-.formfields input { font-size: 14px !important; background: white; border: white; border-bottom: 1px solid #DFDFDF; width: 278px; line-height: 28px; position: relative; margin-top: 21px; margin-right: 36px;}
+.formfields input { font-size: 14px !important; background: white; border: white; border-bottom: 1px solid #DFDFDF; width: 278px; height: 31px;line-height: 28px; position: relative; margin-top: 21px; margin-right: 36px;}
 .formfields span { letter-spacing: 1px; z-index: 1; color:#A5A5A5; font-size:10px; position:absolute; top: 9px; left: 0;min-width: 100px;}
 .formfields span.ui-combobox{ top: 0;}
 .formfields span.ui-combobox button{ display: block; position: absolute;right: 20px; top: 20px;}
@@ -80,15 +80,16 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { bac
 .searchArea{}
 .searchArea input{height: 32px; width: 600px; border-radius: 30px; border: solid 1px #dfdfdf;z-index: 11; }
 .searchArea i{color:#2c76ae; z-index: 12;}
-#searchResults{ border: solid 1px #dfdfdf; width: 600px; background: white; top: 18px; z-index: 10; }
+#searchResults{ border: solid 1px #dfdfdf; width: 600px; background: white; top: 18px; z-index: 10; max-height: 350px; overflow: auto; }
 .resultFields{ height: 69px; border-bottom: solid 1px #dfdfdf;} 
 .resultFields:first-child{ margin-top: 13px;  } 
 .resultFields i{ line-height: 68px; color: #2c76ae; } 
-.searchContent{ width: 521px; }
+.searchContent{ width: 88%; }
 .searchContent h1{ color: #262329; }
 .searchContent label{ font-weight: 500; width: 46px;}
 .searchContent span{ color: #262329; }
-.wd-67{ width: 67px; }
+.wd-67{ width: 11%; }
+
 /* Search Bar End */
 
 .wd-280{width:280px;} 
@@ -194,13 +195,16 @@ ul.assignToDiv.dropdown li ul li a label:first-child{ opacity: 0; }
 ul.assignToDiv.dropdown li ul li:first-child a label { opacity: 1;}
 ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5; font-size:10px; font-family: robotoregular; }
 .initialScreen.hideshow { display: none; }
+input[type=text]::-ms-clear, .ui-combobox input::-ms-clear {
+    display: none;
+}
 /*Assign To Dropdown End*/
 
 /*------------------------------------------------*/
 
 /* Additional Details Start */
 
-.additional-details input { background: white; border:1px solid white; border-bottom: 1px solid #DFDFDF; width: 281px; line-height: 28px; position: relative; margin-bottom: 34px; margin-right: 34px;}
+.additional-details input { background: white; border:1px solid white; border-bottom: 1px solid #DFDFDF; width: 281px; line-height: 28px;height: 32px; position: relative; margin-bottom: 34px; margin-right: 34px;}
 .additional-details textarea {background: white;
     border: 1px solid #DFDFDF;
     border-radius: 0;

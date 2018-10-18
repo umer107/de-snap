@@ -969,8 +969,14 @@ $(document).ready(function () {
 
       $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         var getemail = $('#email').val();
+        var popuplatedemail = $('#email').hasClass('popuplatedemail');
+        if(popuplatedemail == true)
+          { var getLeadId =  $('#email').attr('leadId');  }
+        else
+          { var getLeadId =  $('.thisLeadId').attr('leadid');  }
+        
         var getValue = $('#email').val().length;
-        var getLeadId =  $('.thisLeadId').attr('leadid');
+        
         if ($.trim(getemail).length == 0) {
             $('.emailexists').addClass('opacity0');
             $('#email').next('label').next('label').addClass('opacity0');
@@ -994,7 +1000,7 @@ $(document).ready(function () {
                   return false;                  
                 }
 
-                if(getLeadId != "")
+                if(getLeadId != "" || popuplatedemail == true)
                 {
                     var data = {leadId : getLeadId , email : getemail}
                     $.ajax({
@@ -1018,7 +1024,7 @@ $(document).ready(function () {
                         }
                         else
                         {
-                          if(parsed.length == 1)
+                          if(parsed.length > 0)
                             {
                               
                               $('.topBar').trigger('click');
@@ -1038,7 +1044,7 @@ $(document).ready(function () {
                       }
                     });
                 }
-                else if(parsed.length == 1)
+                else if(parsed.length > 0)
                 {
                   
                   $('.topBar').trigger('click');
@@ -1717,7 +1723,7 @@ $(document).on('click','.addBookingLink', function (e) {
     window.validState = true;
 
     var checkIfAppointment = $(this).closest('.calendarLoad').hasClass('full');
-    console.log(checkIfAppointment);
+    //console.log(checkIfAppointment);
     if(checkIfAppointment)
     {
       window.AppointmentType = 1;
@@ -1867,7 +1873,7 @@ $(document).on('click','.savePopupBooking', function (e) {
     bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly);
     
     var selectedProduct = el.closest('.roomBooking').find('.dropdown.appointmentType').find('a.selected-text').attr('shortCode');
-    console.log(customerName + ' - ' + pickUpAgent);
+    //console.log(customerName + ' - ' + pickUpAgent);
     var setHeight = '';
     if(getDuration == "15")
     {
@@ -2746,7 +2752,7 @@ setTimeout(function(){
             //    $('.add-address').slideUp();
             //    $('.addressContainer').slideDown(300);
             //}
-            debugger
+            
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
             window.validState = false;
             return false;
@@ -2756,11 +2762,12 @@ setTimeout(function(){
               if(isValidEmailAddress(getEmail))
               { 
                 var getLeadId =  $('.thisLeadId').attr('leadid');
-                if(getLeadId != "")
+                var popuplatedemail = $('#email').hasClass('popuplatedemail');
+                if(getLeadId != "" || popuplatedemail == true )
                 {
                   if(window.emailexists == true)
                   {
-                    debugger
+                    
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                   }
@@ -2778,7 +2785,7 @@ setTimeout(function(){
                   }
                   else
                   {
-                    debugger
+                    
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -2789,7 +2796,7 @@ setTimeout(function(){
               {
                 $('.emailexists').addClass('opacity0');
                 $('#email').next('label').next('label').removeClass('opacity0');
-                debugger
+                
                 $(".rightCol").animate({ scrollTop: 0 }, "slow");
                 window.validState = false;
                 return false;
@@ -3878,7 +3885,7 @@ setTimeout(function(){
               $('.emailexists').addClass('opacity0');
               $('#email').next('label').next('label').removeClass('opacity0');
             }
-            debugger
+            
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
             window.validState = false;
             return false;
@@ -3888,12 +3895,12 @@ setTimeout(function(){
               if(isValidEmailAddress(getEmail))
               { 
                 var getLeadId =  $('.thisLeadId').attr('leadid');
-                
-                if(getLeadId != "")
+                var popuplatedemail = $('#email').hasClass('popuplatedemail');
+                if(getLeadId != "" || popuplatedemail == true )
                 {
                   if(window.emailexists == true)
                   {
-                    debugger
+                    
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -3911,7 +3918,7 @@ setTimeout(function(){
                   }
                   else
                   {
-                    debugger
+                    
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -3922,7 +3929,7 @@ setTimeout(function(){
               {
                 $('.emailexists').addClass('opacity0');
                 $('#email').next('label').next('label').removeClass('opacity0');
-                debugger
+                
                 $(".rightCol").animate({ scrollTop: 0 }, "slow");
                 window.validState = false;
                 return false;
@@ -3936,6 +3943,7 @@ setTimeout(function(){
       {
         data.AppointmentType = 1;
       }
+
       //Ajax Call
       $.ajax({
         type: "POST",
@@ -3947,7 +3955,7 @@ setTimeout(function(){
               showMainLoading();
               var getAssigneeId = window.selectedAssigneeId;
               var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
-              debugger
+              
               loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
             }
             else
@@ -3970,7 +3978,7 @@ setTimeout(function(){
               $('.newLead').html(window.getNewLeadAll);
               $('.newLead').removeClass('inEditMode');
             }
-          
+            getSearchData()
             return false;
             
         }
@@ -4019,7 +4027,7 @@ setTimeout(function(){
     $("form").not("#specify_requirements").keypress(function(e) {
       if(e.originalEvent.path[0].className == "requirements") 
       {
-        console.log('enter pressed');
+        //console.log('enter pressed');
         return true;
       }
       else if (e.which == 13) {
@@ -4042,7 +4050,8 @@ setTimeout(function(){
 
         //Reset New lead form
         $('.newLead').html(window.getNewLeadAll);
-        
+        $('.emailexists').addClass('opacity0').removeClass('green');
+        $('.redCross, redGreen').addClass('hide');
     });
 
 
@@ -4393,7 +4402,7 @@ setTimeout(function(){
 
           if(getAssigneeId == undefined || getAssigneeId == null)
           {
-            console.log('yes');
+            //console.log('yes');
           }
           else
           {
@@ -6811,8 +6820,8 @@ $(document).on('click','#dateRange', function (e) {
 
 $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
 
-  console.log(picker.startDate.format('YYYY-MM-DD'));
-  console.log(picker.endDate.format('YYYY-MM-DD'));
+  //console.log(picker.startDate.format('YYYY-MM-DD'));
+  //console.log(picker.endDate.format('YYYY-MM-DD'));
 });
 
 
@@ -7359,8 +7368,8 @@ function getBookingTime(getTime, bookingStart, Duation) {
         return suffix;
     }
 
-    /*------------------------------------------------------------------*/
-   /*---------------------Start GetCountries Ajax List------------------------ */
+   /*------------------------------------------------------------------*/
+   /*--------------------Start GetCountries Ajax List----------------- */
    /*------------------------------------------------------------------*/
    
     
@@ -7579,11 +7588,8 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
     });
     
-
    });
   
-
-
 
   $(document).on('keyup', '#newbookingdropdown', function () {
       var getValue = $(this).val();
@@ -7624,7 +7630,52 @@ function getBookingTime(getTime, bookingStart, Duation) {
     });// End
 
 
-    $(document).on('keyup', '.searchField', function () {
+
+   /*------------------------------------------------------------------*/
+   /*---------------------- Start Search Area Code ------------------- */
+   /*------------------------------------------------------------------*/
+
+
+    // Search Record Selection
+    $(document).on('click', '.resultFields', function () {
+      var el = $(this);
+      var getName = el.find('h1').html();
+      var getRecord = el.attr('dataobj');
+      window.selectedRecord = getRecord
+      var parsedRecord = JSON.parse(getRecord);
+      var chek = parsedRecord;
+      $("#searchResults").html(' ');
+      $('.searchField').val(getName);
+
+      // Populating Records
+
+      $('.dropdown.title .dropdownOptions li a[value="'+parsedRecord.title+'"]').trigger('click');              // title gender   
+      $('.basicInfo .firstname').val(parsedRecord.first_name);                                                  // first name   
+      $('.basicInfo .lastname').val(parsedRecord.last_name);                                                    // last name
+      $('.basicInfo .phonenumber').val(parsedRecord.phone_number);                                              // phone
+      $('#email').val(parsedRecord.email);                                                                      // email
+      $('#email').addClass('popuplatedemail');
+      $('#email').attr('leadId',parsedRecord.id);                                                                  // email
+      $('#fullAddress').val(parsedRecord.full_address);                                                         // address
+      $('#countryName').attr('value',parsedRecord.country);                                                     // country
+      $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(parsedRecord.country);         // country
+      $('.stateDiv .dropdown.State .dropdownOptions li a[value="'+parsedRecord.State+'"]').trigger('click');    // state
+       if(parsedRecord.country == 'Australia')                                                                  // state
+       {
+        $('.stateDiv').removeClass('hide');
+       }
+       else
+       {
+        $('.stateDiv').addClass('hide');
+       }
+       $('.emailexists').addClass('opacity0').removeClass('green');
+       $('.redCross, .redGreen').addClass('hide');
+       showMainLoading();
+    });
+
+
+    // Search Autocomplete
+    $(document).on('click', '.searchArea .icon-search', function () {
       var getValue = $('.searchField').val();
       var getLength = getValue.length;
       var arr = [];
@@ -7651,16 +7702,17 @@ function getBookingTime(getTime, bookingStart, Duation) {
           var formattedDate = moment(bookingDate).add(0, 'M').format('DD.MM.YYYY');     // Formatted Date
           var productName = filteredArray[i].product;                                   // Product Name
           var productIconName = productIcons(productName);                              // Get Icon
-
-          setHtml += "<div class='resultFields full pointer' leadId='"+ filteredArray[i].id +"'>";
+          var getFullObj = JSON.stringify(filteredArray[i]);
+          
+          setHtml += "<div class='resultFields full pointer' dataObj='"+getFullObj+"' leadId='"+ filteredArray[i].id +"'>";
             setHtml += "<span class='d-i-b wd-67 v-a-t align-center'><i class='"+productIconName+ " fs-36 color-darkBlue'></i></span>";
             setHtml += "<div class='searchContent d-i-b v-a-t half-pad-top'>";
               setHtml += "<h1 class='fs-15 lh-22'>"+filteredArray[i].name+"</h1>"; // Name
               setHtml += "<div>";
-                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Created</label><span>"+formattedDate+"</span></div>"; // Created
-                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Product</label><span>"+filteredArray[i].product+"</span></div>"; // Product
-                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Mobile</label><span>"+filteredArray[i].phone_number+"</span></div>"; // Mobile
-                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Email</label><span>"+filteredArray[i].email+"</span></div>"; // Email
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Created:</label><span>"+formattedDate+"</span></div>"; // Created
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Product:</label><span>"+filteredArray[i].product+"</span></div>"; // Product
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Mobile:</label><span>"+filteredArray[i].phone_number+"</span></div>"; // Mobile
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Email:</label><span>"+filteredArray[i].email+"</span></div>"; // Email
               setHtml += "</div>";
             setHtml += "</div>";
           setHtml += "</div>";
@@ -7678,6 +7730,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
         
     });// End
 
+    // Get product icons for search autocomplete
     function productIcons(productName)
     {
       var iconName = "";
@@ -7689,11 +7742,48 @@ function getBookingTime(getTime, bookingStart, Duation) {
       {
         iconName = 'icon-earrings';
       }
+      else if(productName == "Bracelet")
+      {
+        iconName = 'icon-bracelet';
+      }
+      else if(productName == "Wedding Band")
+      {
+        iconName = 'icon-weddingBrand';
+      }
+      else if(productName == "Eternity Band")
+      {
+        iconName = 'icon-bracelets';
+      }
+      else if(productName == "Loose Diamond")
+      {
+        iconName = 'icon-necklaces';
+      }
+      else if(productName == "Dress Rings")
+      {
+        iconName = 'icon-dressRings';
+      }
+      else if(productName == "Pendant")
+      {
+        iconName = 'icon-necklaces';
+      }
+      else if(productName == "Timepiece")
+      {
+        iconName = 'icon-watch';
+      }
+      else if(productName == "Custom Jewellery")
+      {
+        iconName = 'icon-necklaces';
+      }
+      else if(productName == "Loose Gemstone")
+      {
+        iconName = 'icon-necklaces';
+      }
       else
       { iconName = 'icon-diamond' }
       return iconName;
     }
 
+    // Get all lead record for search autocomplete
     function getSearchData()
     {
           $.ajax({
@@ -7718,6 +7808,25 @@ function getBookingTime(getTime, bookingStart, Duation) {
         });
     }
     getSearchData()
+
+
+    $(document).on('click', function(event){
+      var container = $(".searchContainer");
+      if (!container.is(event.target) &&            
+          container.has(event.target).length === 0)
+          {
+              $("#searchResults").html(' ');
+          }
+      
+  });// End
+
+
+   /*------------------------------------------------------------------*/
+   /*----------------------- End Search Area Code -------------------- */
+   /*------------------------------------------------------------------*/
+
+
+
   function pickUpAgents (){
     $.ajax({
             type: "GET",
