@@ -1791,7 +1791,7 @@ $(document).on('click','.addBookingLink', function (e) {
 
 
     var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
-          setDropdown += '<li><a href="javascript:;" class="selected-text d-b"getDuration="1" getDuration2="60" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">Duration</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
+          setDropdown += '<li><a href="javascript:;" class="selected-text d-b"getDuration=".25" getDuration2="15" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">15 minutes</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
          setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
           var getMinuteList = getMinutesList(getTimeAllowed);
           setDropdown += getMinuteList;
@@ -1819,8 +1819,10 @@ $(document).on('click','.addBookingLink', function (e) {
                 setHtml += '<p class="half-pad-top half-pad-bottom hideOnCalenar"> <i class="icon-leave fs-12" style="color:'+window.userColor +'"></i> ' + setDate + getRoomNumber + '</p>';  
                 // Duration
                 setHtml += '<div class="half-pad-top half-pad-bottom borderBottom newBookingDuration hideOnCalenar"> <span class="subheading" value="90">Duration</span> 1.5 Hours</div>';  
+                // Customer Name Other
+                setHtml += '<div class="half-pad-top borderBottom hideOnCalenar customerNameOther half-gap-right hide"> <span class="subheading ">Name</span> <input type="text" placeholder="Name" class="customerName2 full half-gap-bottom half-gap-top fs-10 lh-14"/></div>';
                 // Customer Name
-                setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading hide">Name</span> <span class="customerName  display-block ellipsis" value="">Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
+                setHtml += '<div class="half-pad-top borderBottom hideOnCalenar customerNamedefault"> <span class="subheading hide">Name</span> <span class="customerName  display-block ellipsis" value="">Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
                 // Sales Rep
                 setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName display-block" value="">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
               }
@@ -1873,9 +1875,17 @@ $(document).on('click','.addBookingLink', function (e) {
 $(document).on('click','.savePopupBooking', function (e) {
 
     var el = $(this);
-    var customerName = el.closest('.newBookingDetail').find('.customerName').attr('value');
-    var pickUpAgent = el.closest('.newBookingDetail').find('.salesRepName').attr('value');
-    var pickUpAgentId = el.closest('.newBookingDetail').find('.salesRepName').attr('userId');
+    if(window.other == true)
+    {
+      var customerName = el.closest('.calendarLoad .newBookingDetail').find('.customerName2').attr('value');
+    }
+    else
+    {
+      var customerName = el.closest('.calendarLoad .newBookingDetail').find('.customerName').attr('value');  
+    }
+    
+    var pickUpAgent = el.closest('.calendarLoad .newBookingDetail').find('.salesRepName').attr('value');
+    var pickUpAgentId = el.closest('.calendarLoad .newBookingDetail').find('.salesRepName').attr('userId');
     $('#assign_us_Dropdown').closest('a.selected-text').attr('value',pickUpAgent);
     $('#assign_us_Dropdown').html(pickUpAgent);
     $(".assignToDiv a.selected-text").attr("assigneid", pickUpAgentId);
@@ -3073,9 +3083,13 @@ setTimeout(function(){
           $('.calendarLoad .appDetails .dropdown.appointmentType a.selected-text').attr('getduration', getDuration);
           $('.calendarLoad .newBookingDuration .subheading').attr('value', getDuration2);
           var setDurationHtml = '<span class="subheading" value="'+getDuration2+'">Duration</span> '+getDuration+' Hours';
+
+          $('.customerNameOther').removeClass('hide');
+          $('.customerNamedefault').addClass('hide');
           $('.calendarLoad .newBookingDuration').html(setDurationHtml);
             setTimeout(function(){ 
               $('.calendarLoad .appDetails .dropdown.appointmentType ul.dropdownOptions').css('height', '226px');
+              window.other =  true;
           }, 500);
         }
     });
@@ -3113,11 +3127,16 @@ setTimeout(function(){
 
         if(el.closest('.dropdown').hasClass('appointmentType'))
         { 
+
           if(getValue == "other")
           {
+
             $('.appointmentTypesOther').removeClass('hide');
             $('.newBookingDetail').addClass('hide');
+            $('.customerNameOther').removeClass('hide');
+            $('.customerNamedefault').addClass('hide');
             window.other = true;
+
             return false;
           }
           else
@@ -3125,6 +3144,9 @@ setTimeout(function(){
               window.other = false;
               $('.appointmentTypesOther').addClass('hide');
               $('.newBookingDetail').removeClass('hide');
+              $('.customerNamedefault').removeClass('hide');
+              $('.customerNameOther').addClass('hide');
+
             }
           var getShortCode = $(this).find('a').attr('shortcode');
           var getappDuaration = $(this).find('a').attr('getduration');

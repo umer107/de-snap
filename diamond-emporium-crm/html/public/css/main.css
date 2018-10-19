@@ -801,7 +801,8 @@ div.headbar{background-color: #cfcfcf; }
 .dropdown.bookingPopup .selected-text i{ background-size: 11px 7px; background: none; width: 12px; margin-top: 5px; }
 .dropdown.bookingPopup .dropdownOptions{ top: 20px; width: 162px; left: -25px; padding: 0px 0; }
 .dropdown.bookingPopup li ul li{ line-height: 24px; height: 24px; text-align: left; cursor: pointer; }
-.dropdown.appointmentType li ul li a i{ color: #f58a49; position: relative; right:7px; top: 6px; font-size:12px;width: 12px; display: inline-block; }
+.dropdown.appointmentType li ul li a i{ color: #f58a49; position: relative; right:9px; top: 7px; font-size:14px;width: 12px; display: inline-block; }
+.appointmentType.dropdown.bookingPopup li ul li:last-child i{opacity:0}
 .addBookingPopup .roomBooking p{ line-height: 20px; }
 .addBookingPopup .roomBooking div span.subheading{ position: absolute; line-height: 10px; top: -4px; font-size: 8px; }
 .dropdown.bookingPopup li ul li:hover{ background-color: white; }
@@ -812,6 +813,7 @@ div.headbar{background-color: #cfcfcf; }
 .dropdown.durationTime li a.selected-text span{ width: 88px; padding-right: 0; }
 .dropdown.durationTime li .dropdownOptions{ width: 122px; left: -5px; top: 24px; }
 .dropdown.durationTime li a { border: 0 none; font-size: 11px; }
+.customerNameOther input{ background: #cfcfcf; border: none; }
 .dropdown.durationTime .selected-text i{ margin-top: 8px; background: none; }
 .newbookingdropdown{     width: 162px;
     position: absolute;
