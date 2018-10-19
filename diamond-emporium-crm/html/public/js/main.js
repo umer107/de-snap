@@ -2429,7 +2429,7 @@ $('section.rightCol').on('scroll', function(event){
                   $('#stateDropdown').closest('a.selected-text').attr('value',parsed[0].State);
                   // Additional Detail Fields
                   // Product
-                  if(window.other = true)
+                  if(window.other == true)
                   {
                     var getName = $('.calendarLoad .appointmentType a.selected-text').attr('value');
                     $("#productDropdown").html(getName);
@@ -3089,6 +3089,7 @@ setTimeout(function(){
           $('.calendarLoad .newBookingDuration').html(setDurationHtml);
             setTimeout(function(){ 
               $('.calendarLoad .appDetails .dropdown.appointmentType ul.dropdownOptions').css('height', '226px');
+              debugger
               window.other =  true;
           }, 500);
         }
@@ -3135,6 +3136,7 @@ setTimeout(function(){
             $('.newBookingDetail').addClass('hide');
             $('.customerNameOther').removeClass('hide');
             $('.customerNamedefault').addClass('hide');
+            debugger
             window.other = true;
 
             return false;
