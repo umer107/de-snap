@@ -1791,7 +1791,7 @@ $(document).on('click','.addBookingLink', function (e) {
 
 
     var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
-          setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">Duration</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
+          setDropdown += '<li><a href="javascript:;" class="selected-text d-b"getDuration="1" getDuration2="60" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">Duration</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
          setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
           var getMinuteList = getMinutesList(getTimeAllowed);
           setDropdown += getMinuteList;
@@ -1809,7 +1809,12 @@ $(document).on('click','.addBookingLink', function (e) {
               if(window.AppointmentType == 1) // Room Manager
               {
                 setHtml += '<div class="appointmentTypes half-pad-top">' + appointmentTypes + '</div>';
-                setHtml += '<div class="newBookingDetail hide">';   
+                setHtml += '<div class="appointmentTypesOther half-pad-top hide">';
+                  setHtml += "<div class='half-pad-top borderBottom hideOnCalenar'><span class='subheading'>Duration*</span>" +  setDropdown + "</div>";
+                  setHtml += "<div class='half-pad-top hideOnCalenar otherProduct half-gap-right relative'> <span class='subheading'>Product Name*</span><input type='text' placeholder='Enter Product Name' id='otherProductInput' class='full half-gap-top fs-10 lh-16 half-pad-right half-pad-left otherProductInput' value='' /></div>";
+                  setHtml += "<div class='half-pad-top hideOnCalenar half-gap-right'><a href='JavaScript:;' class='addproduct bg-green color-white fs-10 full align-center gap-top lh-22'>Add Product</a></div>";
+                setHtml += '</div>';
+                setHtml += '<div class="newBookingDetail hide full">';   
                 // Time Date Room
                 setHtml += '<p class="half-pad-top half-pad-bottom hideOnCalenar"> <i class="icon-leave fs-12" style="color:'+window.userColor +'"></i> ' + setDate + getRoomNumber + '</p>';  
                 // Duration
@@ -1874,24 +1879,55 @@ $(document).on('click','.savePopupBooking', function (e) {
     $('#assign_us_Dropdown').closest('a.selected-text').attr('value',pickUpAgent);
     $('#assign_us_Dropdown').html(pickUpAgent);
     $(".assignToDiv a.selected-text").attr("assigneid", pickUpAgentId);
-    if(customerName == "" || pickUpAgent == "")
-    {
-      return false;
-    }
     
+    if(window.AppointmentType == 1) // Room Manager
+      {
+        var getDuration = $('.calendarLoad .addBookingPopup .newBookingDuration .subheading').attr('value');
+        if(customerName == "" || pickUpAgent == "")
+        {
+          return false;
+        }
+        // Get shortcode 
+
+        var res = pickUpAgent.split(" ");
+        var firstNameWord = res[0];
+        var middleNameWord = res[1];
+        var lastsNameWord = res[2];
+        var firstLetterFirstName = firstNameWord.charAt(0);
+        var middleLetterFirstName = '';
+        var lastLetterFirstName = '';
+
+        if(middleNameWord != null){ middleLetterFirstName = middleNameWord.charAt(0); }
+        if(lastsNameWord != null){ lastLetterFirstName = lastsNameWord.charAt(0); }
+
+        if(lastsNameWord != null)
+        {
+          var shortCode = firstLetterFirstName+middleLetterFirstName+lastLetterFirstName;
+        }
+        else
+        {
+          var shortCode = firstLetterFirstName+middleLetterFirstName;
+        }
+      }
+      else
+      {
+        var getDuration = $('.addBookingPopup .dropdown.durationTime').find('a.selected-text').attr('getduration2');
+      }
     $('.roomBooking.newlyAdded').remove();
     var selectHtml = $('.addBookingPopup .addBookingContainer').html();
     var getDayName = $('.addBookingLink.thisClicked').closest('.daysCalendar').attr('dayname');
     var getDateNumber = $('.addBookingLink.thisClicked').closest('.daysContent').attr('datenumber');
     var getSelectedDate = $('.addBookingLink.thisClicked').closest('.daysContent').attr('fulldate');
     //var getDuration = $('.dropdown.durationTime').find('a.selected-text').attr('getduration');
-    var getDuration = $('.newBookingDuration .subheading').attr('value');
     var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
     var StartingTimeOnly = $('#bookingDate').attr('StartingTimeOnly');
     bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly);
     
     var selectedProduct = el.closest('.roomBooking').find('.dropdown.appointmentType').find('a.selected-text').attr('shortCode');
     //console.log(customerName + ' - ' + pickUpAgent);
+
+    
+
     var setHeight = '';
     if(getDuration == "15")
     {
@@ -1957,7 +1993,7 @@ $(document).on('click','.savePopupBooking', function (e) {
     {
       $('.appointmentTypes').addClass('hide');
       $('.newBookingDetail').removeClass('hide');
-      var setCustomerName = '<span class="ellipsis">'+customerName+'</span><span></span>';
+      var setCustomerName = '<span class="ellipsis">'+customerName+'</span><span>'+shortCode+'</span>';
       $('.bookingmade').html(setCustomerName);      
     }
     else
@@ -2154,42 +2190,42 @@ function bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly)
     
     if(getTimeAllowed == 1)
     {
-        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="0.25" getDuration2="15" value="15 minutes">15 minutes</a></li>';
     }
     else if(getTimeAllowed == 2)
     {
-        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.25" getDuration2="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.5" getDuration2="30" value="30 minutes">30 minutes</a></li>';
     }
     else if(getTimeAllowed == 3)
     {
-        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.25" getDuration2="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.5" getDuration2="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.75" getDuration2="45" value="45 minutes">45 minutes</a></li>';
     }
     else if(getTimeAllowed == 4)
     {
-        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.25" getDuration2="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.5" getDuration2="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.75" getDuration2="45" value="45 minutes">45 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="1" getDuration2="60" value="60 minutes">60 minutes</a></li>';
     }
     else if(getTimeAllowed == 5)
     {
-        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="75" value="75 minutes">75 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.25" getDuration2="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.5" getDuration2="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.75" getDuration2="45" value="45 minutes">45 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="1" getDuration2="60" value="60 minutes">60 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="1.25" getDuration2="75" value="75 minutes">75 minutes</a></li>';
     }
     else
     {
-        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="75" value="75 minutes">75 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="90" value="90 minutes">90 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.25" getDuration2="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.5" getDuration2="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.75" getDuration2="45" value="45 minutes">45 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="1" getDuration2="60" value="60 minutes">60 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="1.25" getDuration2="75" value="75 minutes">75 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="1.5" getDuration2="90" value="90 minutes">90 minutes</a></li>';
     }
     return setDropdown;
   }
@@ -2202,11 +2238,12 @@ function bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly)
             setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value=""><span id="appointmentType" class="d-i-b" style="display: inline-block;">Select type</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i></a></li>';
             setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
 
-                setDropdown += '<li><a href="javascript:;" getDuration="1.5" value="Engagement Ring" shortcode="ER"> <i class="icon-diamond fs-12"></i> Engagement Ring<span class="hourSlot">1.5 hours</span></a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="1" value="Wedding Band" shortcode="WB"> <i class="icon-diamond fs-12"></i> Wedding Band<span class="hourSlot">1 hour</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="1.5" value="Engagement Ring" shortcode="ER"> <i class="icon-engRing fs-12"></i> Engagement Ring<span class="hourSlot">1.5 hours</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="1" value="Wedding Band" shortcode="WB"> <i class="icon-weddingBrand fs-12"></i> Wedding Band<span class="hourSlot">1 hour</span></a></li>';
                 setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Resize" shortcode="R"><i class="icon-diamond fs-12"></i> Resize<span class="hourSlot">0.5 hour</span></a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Collection" shortcode="RC"><i class="icon-diamond fs-12"></i> Ring Collection<span class="hourSlot">0.5 hour</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Collection" shortcode="RC"><i class="icon-dressRings fs-12"></i> Ring Collection<span class="hourSlot">0.5 hour</span></a></li>';
                 setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Drop Off" shortcode="RDO"><i class="icon-diamond fs-12 "></i> Ring Drop Off<span class="hourSlot">0.5 hour</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0" value="other" shortcode=""><i class="icon-diamond fs-12 "></i> Other <span class="hourSlot"></span></a></li>';
 
               setDropdown += '</ul></li>';
         setDropdown += '</ul>';
@@ -2302,6 +2339,8 @@ $('section.rightCol').on('scroll', function(event){
       $(this).closest('.borderBottom').find('.customerName').html(value).attr('value',value);
       $(this).closest('.borderBottom').find('.subheading').removeClass('hide');
       $(this).closest('.borderBottom').find('.newbookingdropdown').addClass('hide');
+      
+
       //$('#customerRepSelect').addClass('hide'); 
       
     });// End
@@ -2379,8 +2418,19 @@ $('section.rightCol').on('scroll', function(event){
                   $("#stateDropdown").html(parsed[0].State);
                   $('#stateDropdown').closest('a.selected-text').attr('value',parsed[0].State);
                   // Additional Detail Fields
-                  $("#productDropdown").html(parsed[0].product);
-                  $('#productDropdown').closest('a.selected-text').attr('value',parsed[0].product);
+                  // Product
+                  if(window.other = true)
+                  {
+                    var getName = $('.calendarLoad .appointmentType a.selected-text').attr('value');
+                    $("#productDropdown").html(getName);
+                    $('#productDropdown').closest('a.selected-text').attr('value',getName);
+                  }
+                  else
+                  {
+                    $("#productDropdown").html(parsed[0].product);
+                    $('#productDropdown').closest('a.selected-text').attr('value',parsed[0].product);
+                  }
+                  
                   
 
                   
@@ -2999,12 +3049,43 @@ setTimeout(function(){
         $(this).closest('.relative').find('span').show();
     });
 
+    // Add other product
+
+    $(document).on('keyup', '#otherProductInput', function () {
+      var getValue = $(this).val();
+      $(this).attr('data-input',getValue);
+    });// End
+
+    $(document).on('click','.addproduct', function() {
+        debugger;
+        var getProduct = $('.calendarLoad .addBookingPopup #otherProductInput').val();
+        var getDuration = $('.calendarLoad .addBookingPopup .appointmentTypesOther a.selected-text').attr('getduration');
+        var getDuration2 = $('.calendarLoad .addBookingPopup .appointmentTypesOther a.selected-text').attr('getduration2');
+        if(getProduct == '')
+        {
+          return false;
+        }
+        else
+        {
+          $('.calendarLoad .appointmentTypes ul.dropdownOptions li:first-child').trigger('click');
+          $('.calendarLoad .appDetails .dropdown.appointmentType a.selected-text span').html(getProduct);
+          $('.calendarLoad .appDetails .dropdown.appointmentType a.selected-text').attr('value', getProduct);
+          $('.calendarLoad .appDetails .dropdown.appointmentType a.selected-text').attr('getduration', getDuration);
+          $('.calendarLoad .newBookingDuration .subheading').attr('value', getDuration2);
+          var setDurationHtml = '<span class="subheading" value="'+getDuration2+'">Duration</span> '+getDuration+' Hours';
+          $('.calendarLoad .newBookingDuration').html(setDurationHtml);
+            setTimeout(function(){ 
+              $('.calendarLoad .appDetails .dropdown.appointmentType ul.dropdownOptions').css('height', '226px');
+          }, 500);
+        }
+    });
+
     // Select dropdown value
     
     
 
     $(document).on('click','ul.dropdownOptions li:not(.assignToDiv ul.dropdownOptions li)',function(){
-
+        window.other = false;
         var el = $(this); 
         
         var getValue = $(this).find('a').attr('value');
@@ -3025,14 +3106,28 @@ setTimeout(function(){
         if(el.closest('.dropdown').hasClass('durationTime'))
         { 
           var checkTime = $(this).find('a').attr('getDuration');
+          var checkTime2 = $(this).find('a').attr('getDuration2');
           el.closest('.dropdown').find('a.selected-text').attr('getDuration', checkTime); 
+          el.closest('.dropdown').find('a.selected-text').attr('getDuration2', checkTime2); 
         }
 
         if(el.closest('.dropdown').hasClass('appointmentType'))
         { 
+          if(getValue == "other")
+          {
+            $('.appointmentTypesOther').removeClass('hide');
+            $('.newBookingDetail').addClass('hide');
+            window.other = true;
+            return false;
+          }
+          else
+            {
+              window.other = false;
+              $('.appointmentTypesOther').addClass('hide');
+              $('.newBookingDetail').removeClass('hide');
+            }
           var getShortCode = $(this).find('a').attr('shortcode');
           var getappDuaration = $(this).find('a').attr('getduration');
-
           var setMessage = 'Meeting room not available. Please select some other room!';
 
           if(getappDuaration == '1.5')
@@ -3058,7 +3153,7 @@ setTimeout(function(){
           }
           
           el.closest('.appointmentTypes').addClass('hide'); 
-          el.closest('.appointmentTypes').next('.newBookingDetail').removeClass('hide'); 
+          el.closest('.appointmentTypes').next().next('.newBookingDetail').removeClass('hide'); 
           $('.addBookingPopup .newApp').addClass('hide'); 
           $('.addBookingPopup .appDetails .ellipsis').html(getValue);
           
@@ -4122,7 +4217,7 @@ setTimeout(function(){
     
     function EditLead(getLeadId)
     {
-
+        $('.searchArea').addClass('hide');
         var getAssigneeId = window.selectedAssigneeId;
         startCalendarLoading();
         var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
@@ -4190,8 +4285,10 @@ setTimeout(function(){
                   // Address Fields
                   $('.stateDiv .dropdown.State .dropdownOptions li a[value="'+parsed[0].State+'"]').trigger('click');
                   // Additional Detail Fields
-
-                  $('.additional-details .dropdown.product .dropdownOptions li a[value="'+parsed[0].product+'"]').trigger('click');
+                  $("#productDropdown").html(parsed[0].product);
+                  $('#productDropdown').closest('a.selected-text').attr('value',parsed[0].product);
+                  $('#productDropdown').closest('a.selected-text').attr('shortcode',parsed[0].product_shortcode);
+                  //$('.additional-details .dropdown.product .dropdownOptions li a[value="'+parsed[0].product+'"]').trigger('click');
 
                   
 
@@ -5758,6 +5855,7 @@ $(document).on('click','.newactions a', function (e) {
 
     if($(this).hasClass('new-Lead'))
     {   
+        $('.searchArea').removeClass('hide');
         $('.newLeaveContainer').hide();
         $('.leadsContainer').addClass('hide');
         $('.leavesContainer').addClass('hide');
@@ -5766,6 +5864,7 @@ $(document).on('click','.newactions a', function (e) {
         $('.dashboard-header').addClass('hide');
         $('.leadDeailContainer').addClass('hide');
         $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
+
         endCalendarLoading();
     }
     else
@@ -7622,7 +7721,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
             
             var result = parsed[i].user_name;
             var result2 = parsed[i].id;
-             if (result.indexOf(getValue) > -1) {
+             if (result.toLowerCase().indexOf("ral") === -1) {
                arr.push(result);
                arr2.push(result2);
              }
@@ -7870,7 +7969,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
                 {
                   getUserimage = 'sampleUser.png';
                 }
-
+                
                 setHtml +="<div class='full gap-bottom' userid='"+parsed[i].user_id+"' username='"+parsed[i].name+"'>";
                 setHtml += "<img src='/profile_image/"+getUserimage+"' />";      
                 setHtml += "<a class=''>"+ parsed[i].name +"</a>";
