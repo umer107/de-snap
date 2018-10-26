@@ -6,7 +6,7 @@
 *{ transition: background .2s ease, color .1s ease;}
 .newLead { }
 .newLead .innerContainer { margin-top: 40px; padding: 24px 25px 24px 60px; }
-.formfields input { font-size: 14px !important; background: white; border: white; border-bottom: 1px solid #DFDFDF; width: 278px; line-height: 28px; position: relative; margin-top: 21px; margin-right: 36px;}
+.formfields input { font-size: 14px !important; background: white; border: white; border-bottom: 1px solid #DFDFDF; width: 278px; height: 31px;line-height: 28px; position: relative; margin-top: 21px; margin-right: 36px;}
 .formfields span { letter-spacing: 1px; z-index: 1; color:#A5A5A5; font-size:10px; position:absolute; top: 9px; left: 0;min-width: 100px;}
 .formfields span.ui-combobox{ top: 0;}
 .formfields span.ui-combobox button{ display: block; position: absolute;right: 20px; top: 20px;}
@@ -74,6 +74,24 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { bac
 /*-----------------------------------------*/
 
 /*Dropdown Css Start*/
+
+/* Search Bar Start */
+
+.searchArea{}
+.searchArea input{height: 32px; width: 600px; border-radius: 30px; border: solid 1px #dfdfdf;z-index: 11; }
+.searchArea i{color:#2c76ae; z-index: 12;}
+#searchResults{ border: solid 1px #dfdfdf; width: 600px; background: white; top: 18px; z-index: 10; max-height: 350px; overflow: auto; }
+.resultFields{ height: 69px; border-bottom: solid 1px #dfdfdf;} 
+.resultFields:first-child{ margin-top: 13px;  } 
+.resultFields i{ line-height: 68px; color: #2c76ae; } 
+.searchContent{ width: 88%; }
+.searchContent h1{ color: #262329; }
+.searchContent label{ font-weight: 500; width: 46px;}
+.searchContent span{ color: #262329; }
+.wd-67{ width: 11%; }
+
+/* Search Bar End */
+
 .wd-280{width:280px;} 
 .dropdown{  height: 30px; line-height: 30px; }
 .dropdown li a{color:#5D5D5D; text-align:left; font-size:14px; display:block; border: 1px solid white; border-bottom: 1px solid #DFDFDF; overflow: auto;}
@@ -177,13 +195,16 @@ ul.assignToDiv.dropdown li ul li a label:first-child{ opacity: 0; }
 ul.assignToDiv.dropdown li ul li:first-child a label { opacity: 1;}
 ul.assignToDiv.dropdown li ul li:first-child a label:first-child { color:#a5a5a5; font-size:10px; font-family: robotoregular; }
 .initialScreen.hideshow { display: none; }
+input[type=text]::-ms-clear, .ui-combobox input::-ms-clear {
+    display: none;
+}
 /*Assign To Dropdown End*/
 
 /*------------------------------------------------*/
 
 /* Additional Details Start */
 
-.additional-details input { background: white; border:1px solid white; border-bottom: 1px solid #DFDFDF; width: 281px; line-height: 28px; position: relative; margin-bottom: 34px; margin-right: 34px;}
+.additional-details input { background: white; border:1px solid white; border-bottom: 1px solid #DFDFDF; width: 281px; line-height: 28px;height: 32px; position: relative; margin-bottom: 34px; margin-right: 34px;}
 .additional-details textarea {background: white;
     border: 1px solid #DFDFDF;
     border-radius: 0;
@@ -742,9 +763,11 @@ section.rightCol.hidden{overflow: hidden;}*/
 .roomsContainer .roomBooking p.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; }
 .addBookingPopup .roomBooking p.newApp{line-height: 15px; font-size: 10px; }
 .roomsContainer .roomBooking div.headBar{ background-color: #9b9b9b; color: white; line-height: 15px; height: 15px; text-align: left; padding-left: 4px; }
+.calendarLoad .roomsContainer .roomBooking div.headBar{background-color: #9b9b9b !important;}
+.calendarLoad .newBookingDetail i.icon-leave{color: #5d5d5d !important;}
 .roomsContainer .roomBooking div.headBar span:first-child { width: 82px; float: left; border-right: 1px solid white;line-height: 15px; }
 .roomsContainer .roomBooking div.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; line-height: 15px;}
-.appointmentTypes{ display: inline-block; border-bottom: 2px solid #9b9b9b; padding-bottom: 4px; }
+.appointmentTypes{ position:relative; z-index: 11; display: inline-block; border-bottom: 2px solid #9b9b9b; padding-bottom: 4px; }
 .addBookingLink { position: absolute; left: 2px; top: 0px; opacity: 0 }
 .daysContentSlider label p:hover .addBookingLink { opacity: 1 }
 .sundayContent { background: #f6f6f6; width: 113px; height: 640px; }
@@ -769,19 +792,29 @@ div.headbar{background-color: #cfcfcf; }
 .addBookingPopup .contentarea{background-color: #cfcfcf;}
 .borderBottom{ cursor: pointer; border-bottom: solid 1px #9b9b9b; margin-bottom: 9px; width: 112px; display: inline-block; position: relative; }
 .borderBottom i.icon-downarrow{ position: absolute; right: 1px; bottom: 7px; }
+.otherProduct input{ border: none; }
+.appointmentTypesOther .borderBottom { border-bottom: solid 2px #9b9b9b;}
+.addproduct:hover{opacity: .9}
 .dropdown.bookingPopup li a.selected-text span{ width: 97px;padding-right: 3px; }
 .dropdown.bookingPopup{ height: 18px; line-height: 18px; width: 112px;}
 .dropdown.bookingPopup li a{ color: #5D5D5D; text-align: left; font-size: 12px; border: none; }
 .dropdown.bookingPopup .selected-text i{ background-size: 11px 7px; background: none; width: 12px; margin-top: 5px; }
 .dropdown.bookingPopup .dropdownOptions{ top: 20px; width: 162px; left: -25px; padding: 0px 0; }
 .dropdown.bookingPopup li ul li{ line-height: 24px; height: 24px; text-align: left; cursor: pointer; }
-.dropdown.appointmentType li ul li a i{ color: #f58a49; position: relative; right:3px; top: 6px; font-size:12px:  }
+.dropdown.appointmentType li ul li a i{ color: #f58a49; position: relative; right:9px; top: 7px; font-size:14px;width: 12px; display: inline-block; }
+.appointmentType.dropdown.bookingPopup li ul li:last-child i{opacity:0}
 .addBookingPopup .roomBooking p{ line-height: 20px; }
 .addBookingPopup .roomBooking div span.subheading{ position: absolute; line-height: 10px; top: -4px; font-size: 8px; }
 .dropdown.bookingPopup li ul li:hover{ background-color: white; }
 .dropdown.bookingPopup li ul li:hover a{ color: #5D5D5D; font-weight: bold; }
 .roomBooking span.half-pad-left{ padding-left: 2px; }
 .newBookingDetail{ position: relative;z-index: 1 }
+.dropdown.durationTime{ width: 114px; height: 24px; line-height: 24px; }
+.dropdown.durationTime li a.selected-text span{ width: 88px; padding-right: 0; }
+.dropdown.durationTime li .dropdownOptions{ width: 122px; left: -5px; top: 24px; }
+.dropdown.durationTime li a { border: 0 none; font-size: 11px; }
+.customerNameOther input{ background: #cfcfcf; border: none; }
+.dropdown.durationTime .selected-text i{ margin-top: 8px; background: none; }
 .newbookingdropdown{     width: 162px;
     position: absolute;
     height: 190px;
@@ -789,6 +822,7 @@ div.headbar{background-color: #cfcfcf; }
     border: solid 1px #dedede;
     left: -25px;
     z-index: 4;}
+
 .newbookingdropdown input{
 	width: 139px;
     height: 21px;

@@ -969,8 +969,14 @@ $(document).ready(function () {
 
       $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         var getemail = $('#email').val();
+        var popuplatedemail = $('#email').hasClass('popuplatedemail');
+        if(popuplatedemail == true)
+          { var getLeadId =  $('#email').attr('leadId');  }
+        else
+          { var getLeadId =  $('.thisLeadId').attr('leadid');  }
+        
         var getValue = $('#email').val().length;
-        var getLeadId =  $('.thisLeadId').attr('leadid');
+        
         if ($.trim(getemail).length == 0) {
             $('.emailexists').addClass('opacity0');
             $('#email').next('label').next('label').addClass('opacity0');
@@ -994,7 +1000,7 @@ $(document).ready(function () {
                   return false;                  
                 }
 
-                if(getLeadId != "")
+                if(getLeadId != "" || popuplatedemail == true)
                 {
                     var data = {leadId : getLeadId , email : getemail}
                     $.ajax({
@@ -1018,7 +1024,7 @@ $(document).ready(function () {
                         }
                         else
                         {
-                          if(parsed.length == 1)
+                          if(parsed.length > 0)
                             {
                               
                               $('.topBar').trigger('click');
@@ -1038,7 +1044,7 @@ $(document).ready(function () {
                       }
                     });
                 }
-                else if(parsed.length == 1)
+                else if(parsed.length > 0)
                 {
                   
                   $('.topBar').trigger('click');
@@ -1717,7 +1723,7 @@ $(document).on('click','.addBookingLink', function (e) {
     window.validState = true;
 
     var checkIfAppointment = $(this).closest('.calendarLoad').hasClass('full');
-    console.log(checkIfAppointment);
+    //console.log(checkIfAppointment);
     if(checkIfAppointment)
     {
       window.AppointmentType = 1;
@@ -1774,6 +1780,8 @@ $(document).on('click','.addBookingLink', function (e) {
     $('#bookingDate').attr('StartingTimeOnly', getTime2);
 
     var getName = $('#first_name').val() + ' ' + $('#last_name').val();
+    var getSalesRepName = $('#assign_us_Dropdown').html();
+    
     var getProductSC = $('.dropdown.product').find('a.selected-text').attr('shortcode');
     var getUserSC = $('.dropdown.assignToDiv').find('a.selected-text').attr('shortcode');
     var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
@@ -1782,13 +1790,13 @@ $(document).on('click','.addBookingLink', function (e) {
     var StartingHour = $('.addBookingLink.thisClicked').closest('.daysContentSlider').attr('startingtime');
 
 
-    //var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
-    //      setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">Duration</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
-    //     setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
-    //      var getMinuteList = getMinutesList(getTimeAllowed);
-    //      setDropdown += getMinuteList;
-    //      setDropdown += '</ul></li>';
-    //    setDropdown += '</ul>';
+    var setDropdown = '<ul class="dropdown d-i-b pull-left relative durationTime z-index9">';
+          setDropdown += '<li><a href="javascript:;" class="selected-text d-b"getDuration=".25" getDuration2="15" value="15 minutes"><span id="durationTime" class="d-i-b" style="display: inline-block;">15 minutes</span><i class="icon-downarrow fs-9 pull-right d-i-b "></i></a></li>';
+         setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
+          var getMinuteList = getMinutesList(getTimeAllowed);
+          setDropdown += getMinuteList;
+          setDropdown += '</ul></li>';
+        setDropdown += '</ul>';
 
     var setHtml = "";
     var setHtml = '<div class="addBookingContainer roomsContainer">';
@@ -1797,20 +1805,43 @@ $(document).on('click','.addBookingLink', function (e) {
           
 
           setHtml += '<div class="full align-left half-pad-left lh-16 fs-11 one-pad-top relative contentarea pad-bottom">';
-            setHtml += '<div class="appointmentTypes half-pad-top">' + appointmentTypes + '</div>';
-            setHtml += '<div class="newBookingDetail hide">';
 
-              // Time Date Room
-              setHtml += '<p class="half-pad-top half-pad-bottom hideOnCalenar"> <i class="icon-leave fs-12" style="color:'+window.userColor +'"></i> ' + setDate + getRoomNumber + '</p>';
-              // Duration
-              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom newBookingDuration hideOnCalenar"> <span class="subheading">Duration</span> 1.5 Hours</div>';
+              if(window.AppointmentType == 1) // Room Manager
+              {
+                setHtml += '<div class="appointmentTypes half-pad-top">' + appointmentTypes + '</div>';
+                setHtml += '<div class="appointmentTypesOther half-pad-top hide">';
+                  setHtml += "<div class='half-pad-top borderBottom hideOnCalenar'><span class='subheading'>Duration*</span>" +  setDropdown + "</div>";
+                  setHtml += "<div class='half-pad-top hideOnCalenar otherProduct half-gap-right relative'> <span class='subheading'>Product Name*</span><input type='text' placeholder='Enter Product Name' id='otherProductInput' class='full half-gap-top fs-10 lh-16 half-pad-right half-pad-left otherProductInput' value='' /></div>";
+                  setHtml += "<div class='half-pad-top hideOnCalenar half-gap-right'><a href='JavaScript:;' class='addproduct bg-green color-white fs-10 full align-center gap-top lh-22'>Add Product</a></div>";
+                setHtml += '</div>';
+                setHtml += '<div class="newBookingDetail hide full">';   
+                // Time Date Room
+                setHtml += '<p class="half-pad-top half-pad-bottom hideOnCalenar"> <i class="icon-leave fs-12" style="color:'+window.userColor +'"></i> ' + setDate + getRoomNumber + '</p>';  
+                // Duration
+                setHtml += '<div class="half-pad-top half-pad-bottom borderBottom newBookingDuration hideOnCalenar"> <span class="subheading" value="90">Duration</span> 1.5 Hours</div>';  
+                // Customer Name Other
+                setHtml += '<div class="half-pad-top borderBottom hideOnCalenar customerNameOther half-gap-right hide"> <span class="subheading ">Name</span> <input type="text" placeholder="Name" class="customerName2 full half-gap-bottom half-gap-top fs-10 lh-14"/></div>';
+                // Customer Name
+                setHtml += '<div class="half-pad-top borderBottom hideOnCalenar customerNamedefault"> <span class="subheading hide">Name</span> <span class="customerName  display-block ellipsis" value="">Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
+                // Sales Rep
+                setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName display-block" value="">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
+              }
+              else // New Lead
+              {
+                setHtml += '<div class="appointmentTypes half-pad-top hide">' + appointmentTypes + '</div>';
+                setHtml += '<div class="newBookingDetail ">';
+                // Time Date Room
+                setHtml += '<p class="half-pad-top half-pad-bottom hideOnCalenar"> <i class="icon-leave fs-12" style="color:'+window.userColor +'"></i> ' + setDate + getRoomNumber + '</p>';
+                setHtml += "<div class='half-pad-top borderBottom hideOnCalenar'> <span class='subheading'>Duration</span>" +  setDropdown + "</div>";
+                // Customer Name
+                setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading">Name</span> <p class="two-pad-bottom"><i class="icon-user fs-11" style="color:'+window.userColor+'"></i> <span class="d-i-b">'+getName+'</span></p></div>';
+                // Sales Rep
+                setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading">Sales Rep</span> <p class="two-pad-bottom"><i class="icon-user fs-11" style="color:'+window.userColor+'"></i> <span class="d-i-b">'+getSalesRepName+'</span></p></div>';
+              }
+              
               // Product Name
               setHtml += '<p class="productShortCode hide"><i class="icon-diamond fs-11" style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getProductSC+'</span></p>';
-              // Customer Name
-              setHtml += '<div class="half-pad-top borderBottom hideOnCalenar"> <span class="subheading hide">Name</span> <span class="customerName  display-block ellipsis" value="">Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
-              // Sales Rep
-              setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName display-block" value="">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
-
+              
               //setHtml += '<p><i class="icon-dollar fs-11 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">'+getBudget+'</span></p>';
               
               //setHtml += '<p class="bookingTiming"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i> <span class=" d-i-b half-pad-left">Starting at ' +StartingHour+':'+bookingTimeStart+'</span></p>';
@@ -1844,30 +1875,69 @@ $(document).on('click','.addBookingLink', function (e) {
 $(document).on('click','.savePopupBooking', function (e) {
 
     var el = $(this);
-    var customerName = el.closest('.newBookingDetail').find('.customerName').attr('value');
-    var pickUpAgent = el.closest('.newBookingDetail').find('.salesRepName').attr('value');
-    var pickUpAgentId = el.closest('.newBookingDetail').find('.salesRepName').attr('userId');
+    if(window.other == true)
+    {
+      var customerName = el.closest('.calendarLoad .newBookingDetail').find('.customerName2').attr('value');
+    }
+    else
+    {
+      var customerName = el.closest('.calendarLoad .newBookingDetail').find('.customerName').attr('value');  
+    }
+    
+    var pickUpAgent = el.closest('.calendarLoad .newBookingDetail').find('.salesRepName').attr('value');
+    var pickUpAgentId = el.closest('.calendarLoad .newBookingDetail').find('.salesRepName').attr('userId');
     $('#assign_us_Dropdown').closest('a.selected-text').attr('value',pickUpAgent);
     $('#assign_us_Dropdown').html(pickUpAgent);
     $(".assignToDiv a.selected-text").attr("assigneid", pickUpAgentId);
-    if(customerName == "" || pickUpAgent == "")
-    {
-      return false;
-    }
     
+    if(window.AppointmentType == 1) // Room Manager
+      {
+        var getDuration = $('.calendarLoad .addBookingPopup .newBookingDuration .subheading').attr('value');
+        if(customerName == "" || pickUpAgent == "")
+        {
+          return false;
+        }
+        // Get shortcode 
+
+        var res = pickUpAgent.split(" ");
+        var firstNameWord = res[0];
+        var middleNameWord = res[1];
+        var lastsNameWord = res[2];
+        var firstLetterFirstName = firstNameWord.charAt(0);
+        var middleLetterFirstName = '';
+        var lastLetterFirstName = '';
+
+        if(middleNameWord != null){ middleLetterFirstName = middleNameWord.charAt(0); }
+        if(lastsNameWord != null){ lastLetterFirstName = lastsNameWord.charAt(0); }
+
+        if(lastsNameWord != null)
+        {
+          var shortCode = firstLetterFirstName+middleLetterFirstName+lastLetterFirstName;
+        }
+        else
+        {
+          var shortCode = firstLetterFirstName+middleLetterFirstName;
+        }
+      }
+      else
+      {
+        var getDuration = $('.addBookingPopup .dropdown.durationTime').find('a.selected-text').attr('getduration2');
+      }
     $('.roomBooking.newlyAdded').remove();
     var selectHtml = $('.addBookingPopup .addBookingContainer').html();
     var getDayName = $('.addBookingLink.thisClicked').closest('.daysCalendar').attr('dayname');
     var getDateNumber = $('.addBookingLink.thisClicked').closest('.daysContent').attr('datenumber');
     var getSelectedDate = $('.addBookingLink.thisClicked').closest('.daysContent').attr('fulldate');
     //var getDuration = $('.dropdown.durationTime').find('a.selected-text').attr('getduration');
-    var getDuration = $('.newBookingDuration .subheading').attr('value');
     var bookingTimeStart = $('.addBookingLink.thisClicked').attr('bookingstart');
     var StartingTimeOnly = $('#bookingDate').attr('StartingTimeOnly');
     bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly);
     
     var selectedProduct = el.closest('.roomBooking').find('.dropdown.appointmentType').find('a.selected-text').attr('shortCode');
-    console.log(customerName + ' - ' + pickUpAgent);
+    //console.log(customerName + ' - ' + pickUpAgent);
+
+    
+
     var setHeight = '';
     if(getDuration == "15")
     {
@@ -1933,7 +2003,7 @@ $(document).on('click','.savePopupBooking', function (e) {
     {
       $('.appointmentTypes').addClass('hide');
       $('.newBookingDetail').removeClass('hide');
-      var setCustomerName = '<span class="ellipsis">'+customerName+'</span><span></span>';
+      var setCustomerName = '<span class="ellipsis">'+customerName+'</span><span>'+shortCode+'</span>';
       $('.bookingmade').html(setCustomerName);      
     }
     else
@@ -2130,42 +2200,42 @@ function bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly)
     
     if(getTimeAllowed == 1)
     {
-        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getDuration="0.25" getDuration2="15" value="15 minutes">15 minutes</a></li>';
     }
     else if(getTimeAllowed == 2)
     {
-        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.25" getDuration2="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.5" getDuration2="30" value="30 minutes">30 minutes</a></li>';
     }
     else if(getTimeAllowed == 3)
     {
-        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.25" getDuration2="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.5" getDuration2="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.75" getDuration2="45" value="45 minutes">45 minutes</a></li>';
     }
     else if(getTimeAllowed == 4)
     {
-        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.25" getDuration2="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.5" getDuration2="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.75" getDuration2="45" value="45 minutes">45 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="1" getDuration2="60" value="60 minutes">60 minutes</a></li>';
     }
     else if(getTimeAllowed == 5)
     {
-        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="75" value="75 minutes">75 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.25" getDuration2="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.5" getDuration2="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.75" getDuration2="45" value="45 minutes">45 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="1" getDuration2="60" value="60 minutes">60 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="1.25" getDuration2="75" value="75 minutes">75 minutes</a></li>';
     }
     else
     {
-        setDropdown += '<li><a href="javascript:;" getDuration="15" value="15 minutes">15 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="30" value="30 minutes">30 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="45" value="45 minutes">45 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="60" value="60 minutes">60 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="75" value="75 minutes">75 minutes</a></li>';
-        setDropdown += '<li><a href="javascript:;" getDuration="90" value="90 minutes">90 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.25" getDuration2="15" value="15 minutes">15 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.5" getDuration2="30" value="30 minutes">30 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="0.75" getDuration2="45" value="45 minutes">45 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="1" getDuration2="60" value="60 minutes">60 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="1.25" getDuration2="75" value="75 minutes">75 minutes</a></li>';
+        setDropdown += '<li><a href="javascript:;" getduration="1.5" getDuration2="90" value="90 minutes">90 minutes</a></li>';
     }
     return setDropdown;
   }
@@ -2178,11 +2248,12 @@ function bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly)
             setDropdown += '<li><a href="javascript:;" class="selected-text d-b" getDuration="60" value=""><span id="appointmentType" class="d-i-b" style="display: inline-block;">Select type</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i></a></li>';
             setDropdown += '<li><ul class="dropdownOptions bg-white absolute full-width" style="display: none;">';
 
-                setDropdown += '<li><a href="javascript:;" getDuration="1.5" value="Engagement Ring" shortcode="ER"> <i class="icon-diamond fs-12"></i> Engagement Ring<span class="hourSlot">1.5 hours</span></a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="1" value="Wedding Band" shortcode="WB"> <i class="icon-diamond fs-12"></i> Wedding Band<span class="hourSlot">1 hour</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="1.5" value="Engagement Ring" shortcode="ER"> <i class="icon-engRing fs-12"></i> Engagement Ring<span class="hourSlot">1.5 hours</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="1" value="Wedding Band" shortcode="WB"> <i class="icon-weddingBrand fs-12"></i> Wedding Band<span class="hourSlot">1 hour</span></a></li>';
                 setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Resize" shortcode="R"><i class="icon-diamond fs-12"></i> Resize<span class="hourSlot">0.5 hour</span></a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Collection" shortcode="RC"><i class="icon-diamond fs-12"></i> Ring Collection<span class="hourSlot">0.5 hour</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Collection" shortcode="RC"><i class="icon-dressRings fs-12"></i> Ring Collection<span class="hourSlot">0.5 hour</span></a></li>';
                 setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Drop Off" shortcode="RDO"><i class="icon-diamond fs-12 "></i> Ring Drop Off<span class="hourSlot">0.5 hour</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0" value="other" shortcode=""><i class="icon-diamond fs-12 "></i> Other <span class="hourSlot"></span></a></li>';
 
               setDropdown += '</ul></li>';
         setDropdown += '</ul>';
@@ -2278,6 +2349,8 @@ $('section.rightCol').on('scroll', function(event){
       $(this).closest('.borderBottom').find('.customerName').html(value).attr('value',value);
       $(this).closest('.borderBottom').find('.subheading').removeClass('hide');
       $(this).closest('.borderBottom').find('.newbookingdropdown').addClass('hide');
+      
+
       //$('#customerRepSelect').addClass('hide'); 
       
     });// End
@@ -2355,8 +2428,19 @@ $('section.rightCol').on('scroll', function(event){
                   $("#stateDropdown").html(parsed[0].State);
                   $('#stateDropdown').closest('a.selected-text').attr('value',parsed[0].State);
                   // Additional Detail Fields
-                  $("#productDropdown").html(parsed[0].product);
-                  $('#productDropdown').closest('a.selected-text').attr('value',parsed[0].product);
+                  // Product
+                  if(window.other == true)
+                  {
+                    var getName = $('.calendarLoad .appointmentType a.selected-text').attr('value');
+                    $("#productDropdown").html(getName);
+                    $('#productDropdown').closest('a.selected-text').attr('value',getName);
+                  }
+                  else
+                  {
+                    $("#productDropdown").html(parsed[0].product);
+                    $('#productDropdown').closest('a.selected-text').attr('value',parsed[0].product);
+                  }
+                  
                   
 
                   
@@ -2746,7 +2830,7 @@ setTimeout(function(){
             //    $('.add-address').slideUp();
             //    $('.addressContainer').slideDown(300);
             //}
-            debugger
+            
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
             window.validState = false;
             return false;
@@ -2756,11 +2840,12 @@ setTimeout(function(){
               if(isValidEmailAddress(getEmail))
               { 
                 var getLeadId =  $('.thisLeadId').attr('leadid');
-                if(getLeadId != "")
+                var popuplatedemail = $('#email').hasClass('popuplatedemail');
+                if(getLeadId != "" || popuplatedemail == true )
                 {
                   if(window.emailexists == true)
                   {
-                    debugger
+                    
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                   }
@@ -2778,7 +2863,7 @@ setTimeout(function(){
                   }
                   else
                   {
-                    debugger
+                    
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -2789,24 +2874,13 @@ setTimeout(function(){
               {
                 $('.emailexists').addClass('opacity0');
                 $('#email').next('label').next('label').removeClass('opacity0');
-                debugger
+                
                 $(".rightCol").animate({ scrollTop: 0 }, "slow");
                 window.validState = false;
                 return false;
               }
               
           }
-
-        //else if($('.btn-bookNow').hasClass('canOpen'))
-        //{
-            //additionalDetailsMinimize();
-            //$('.icMinimize').addClass('hide');
-            //$('.icExpand').removeClass('hide');
-            //$('.next-saveDiv').addClass('hide');
-            ////$('.bookNowDiv').removeClass('hide');
-            //$('.NewCalendarContainer').removeClass('hide').addClass('openNow');
-            //suggestedDate();
-        //}
 
     }
 
@@ -2849,7 +2923,6 @@ setTimeout(function(){
     // Book Now Calendar Close
     $(document).on('click', '.cancelBooking', function () {
         $('.next-saveDiv').removeClass('hide');
-        //$('.bookNowDiv').addClass('hide');
         $('.NewCalendarContainer').addClass('hide');
         additionalDetailsExpand();
         $('.savedBooking').addClass('hide');
@@ -2866,11 +2939,6 @@ setTimeout(function(){
         
         $('.roomBooking.newlyAdded').remove();
         $('.savedBooking').addClass('hide');
-        //$('.suggestedDate').html('');
-        //$('#bookingDate').removeClass('nowCanSave');
-        //$('.btn-bookNow').removeClass('hide');
-        //$('.showOnNewBooking').removeClass('hide');
-        //cancelBookedBookingAction();
     });
 
     /*------------------------------------------------*/
@@ -2878,7 +2946,6 @@ setTimeout(function(){
     // Book Now Calendar Close
     $(document).on('click', '.editBooking', function () {
         $('.next-saveDiv').addClass('hide');
-        //$('.bookNowDiv').removeClass('hide');
         additionalDetailsMinimize();
         $('.savedBooking').removeClass('hide');
         $('.btn-bookNow').addClass('hide');
@@ -2974,12 +3041,48 @@ setTimeout(function(){
         $(this).closest('.relative').find('span').show();
     });
 
+    // Add other product
+
+    $(document).on('keyup', '#otherProductInput', function () {
+      var getValue = $(this).val();
+      $(this).attr('data-input',getValue);
+    });// End
+
+    $(document).on('click','.addproduct', function() {
+        debugger;
+        var getProduct = $('.calendarLoad .addBookingPopup #otherProductInput').val();
+        var getDuration = $('.calendarLoad .addBookingPopup .appointmentTypesOther a.selected-text').attr('getduration');
+        var getDuration2 = $('.calendarLoad .addBookingPopup .appointmentTypesOther a.selected-text').attr('getduration2');
+        if(getProduct == '')
+        {
+          return false;
+        }
+        else
+        {
+          $('.calendarLoad .appointmentTypes ul.dropdownOptions li:first-child').trigger('click');
+          $('.calendarLoad .appDetails .dropdown.appointmentType a.selected-text span').html(getProduct);
+          $('.calendarLoad .appDetails .dropdown.appointmentType a.selected-text').attr('value', getProduct);
+          $('.calendarLoad .appDetails .dropdown.appointmentType a.selected-text').attr('getduration', getDuration);
+          $('.calendarLoad .newBookingDuration .subheading').attr('value', getDuration2);
+          var setDurationHtml = '<span class="subheading" value="'+getDuration2+'">Duration</span> '+getDuration+' Hours';
+
+          $('.customerNameOther').removeClass('hide');
+          $('.customerNamedefault').addClass('hide');
+          $('.calendarLoad .newBookingDuration').html(setDurationHtml);
+            setTimeout(function(){ 
+              $('.calendarLoad .appDetails .dropdown.appointmentType ul.dropdownOptions').css('height', '226px');
+              debugger
+              window.other =  true;
+          }, 500);
+        }
+    });
+
     // Select dropdown value
     
     
 
     $(document).on('click','ul.dropdownOptions li:not(.assignToDiv ul.dropdownOptions li)',function(){
-
+        window.other = false;
         var el = $(this); 
         
         var getValue = $(this).find('a').attr('value');
@@ -3000,14 +3103,37 @@ setTimeout(function(){
         if(el.closest('.dropdown').hasClass('durationTime'))
         { 
           var checkTime = $(this).find('a').attr('getDuration');
+          var checkTime2 = $(this).find('a').attr('getDuration2');
           el.closest('.dropdown').find('a.selected-text').attr('getDuration', checkTime); 
+          el.closest('.dropdown').find('a.selected-text').attr('getDuration2', checkTime2); 
         }
 
         if(el.closest('.dropdown').hasClass('appointmentType'))
         { 
+
+          if(getValue == "other")
+          {
+
+            $('.appointmentTypesOther').removeClass('hide');
+            $('.newBookingDetail').addClass('hide');
+            $('.customerNameOther').removeClass('hide');
+            $('.customerNamedefault').addClass('hide');
+            debugger
+            window.other = true;
+
+            return false;
+          }
+          else
+            {
+              window.other = false;
+              $('.appointmentTypesOther').addClass('hide');
+              $('.newBookingDetail').removeClass('hide');
+              $('.customerNamedefault').removeClass('hide');
+              $('.customerNameOther').addClass('hide');
+
+            }
           var getShortCode = $(this).find('a').attr('shortcode');
           var getappDuaration = $(this).find('a').attr('getduration');
-
           var setMessage = 'Meeting room not available. Please select some other room!';
 
           if(getappDuaration == '1.5')
@@ -3033,7 +3159,7 @@ setTimeout(function(){
           }
           
           el.closest('.appointmentTypes').addClass('hide'); 
-          el.closest('.appointmentTypes').next('.newBookingDetail').removeClass('hide'); 
+          el.closest('.appointmentTypes').next().next('.newBookingDetail').removeClass('hide'); 
           $('.addBookingPopup .newApp').addClass('hide'); 
           $('.addBookingPopup .appDetails .ellipsis').html(getValue);
           
@@ -3878,7 +4004,7 @@ setTimeout(function(){
               $('.emailexists').addClass('opacity0');
               $('#email').next('label').next('label').removeClass('opacity0');
             }
-            debugger
+            
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
             window.validState = false;
             return false;
@@ -3888,12 +4014,12 @@ setTimeout(function(){
               if(isValidEmailAddress(getEmail))
               { 
                 var getLeadId =  $('.thisLeadId').attr('leadid');
-                
-                if(getLeadId != "")
+                var popuplatedemail = $('#email').hasClass('popuplatedemail');
+                if(getLeadId != "" || popuplatedemail == true )
                 {
                   if(window.emailexists == true)
                   {
-                    debugger
+                    
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -3911,7 +4037,7 @@ setTimeout(function(){
                   }
                   else
                   {
-                    debugger
+                    
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
                     return false;
@@ -3922,7 +4048,7 @@ setTimeout(function(){
               {
                 $('.emailexists').addClass('opacity0');
                 $('#email').next('label').next('label').removeClass('opacity0');
-                debugger
+                
                 $(".rightCol").animate({ scrollTop: 0 }, "slow");
                 window.validState = false;
                 return false;
@@ -3936,6 +4062,7 @@ setTimeout(function(){
       {
         data.AppointmentType = 1;
       }
+
       //Ajax Call
       $.ajax({
         type: "POST",
@@ -3947,7 +4074,7 @@ setTimeout(function(){
               showMainLoading();
               var getAssigneeId = window.selectedAssigneeId;
               var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
-              debugger
+              
               loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
             }
             else
@@ -3970,7 +4097,7 @@ setTimeout(function(){
               $('.newLead').html(window.getNewLeadAll);
               $('.newLead').removeClass('inEditMode');
             }
-          
+            getSearchData()
             return false;
             
         }
@@ -4019,7 +4146,7 @@ setTimeout(function(){
     $("form").not("#specify_requirements").keypress(function(e) {
       if(e.originalEvent.path[0].className == "requirements") 
       {
-        console.log('enter pressed');
+        //console.log('enter pressed');
         return true;
       }
       else if (e.which == 13) {
@@ -4042,7 +4169,8 @@ setTimeout(function(){
 
         //Reset New lead form
         $('.newLead').html(window.getNewLeadAll);
-        
+        $('.emailexists').addClass('opacity0').removeClass('green');
+        $('.redCross, redGreen').addClass('hide');
     });
 
 
@@ -4095,7 +4223,7 @@ setTimeout(function(){
     
     function EditLead(getLeadId)
     {
-
+        $('.searchArea').addClass('hide');
         var getAssigneeId = window.selectedAssigneeId;
         startCalendarLoading();
         var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
@@ -4163,8 +4291,10 @@ setTimeout(function(){
                   // Address Fields
                   $('.stateDiv .dropdown.State .dropdownOptions li a[value="'+parsed[0].State+'"]').trigger('click');
                   // Additional Detail Fields
-
-                  $('.additional-details .dropdown.product .dropdownOptions li a[value="'+parsed[0].product+'"]').trigger('click');
+                  $("#productDropdown").html(parsed[0].product);
+                  $('#productDropdown').closest('a.selected-text').attr('value',parsed[0].product);
+                  $('#productDropdown').closest('a.selected-text').attr('shortcode',parsed[0].product_shortcode);
+                  //$('.additional-details .dropdown.product .dropdownOptions li a[value="'+parsed[0].product+'"]').trigger('click');
 
                   
 
@@ -4340,7 +4470,6 @@ setTimeout(function(){
                       else
                       {
                         $('.bookNowDiv').addClass('hide');
-                        //$('.btn-bookNow, .next-saveDiv').removeClass('hide'); 
                       }
                       
                       
@@ -4389,11 +4518,9 @@ setTimeout(function(){
           $(".daysContent").removeClass('agentOnLeave').attr('title',"");
           var data2 =  {booking_date : getWeeklyDate , assign_UserId : getAssigneeId}
 
-          //var data2 =  {start_date : startDate , end_date : endDate , assign_UserId : getAssigneeId}
-
           if(getAssigneeId == undefined || getAssigneeId == null)
           {
-            console.log('yes');
+            //console.log('yes');
           }
           else
           {
@@ -5731,6 +5858,7 @@ $(document).on('click','.newactions a', function (e) {
 
     if($(this).hasClass('new-Lead'))
     {   
+        $('.searchArea').removeClass('hide');
         $('.newLeaveContainer').hide();
         $('.leadsContainer').addClass('hide');
         $('.leavesContainer').addClass('hide');
@@ -5739,6 +5867,7 @@ $(document).on('click','.newactions a', function (e) {
         $('.dashboard-header').addClass('hide');
         $('.leadDeailContainer').addClass('hide');
         $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
+
         endCalendarLoading();
     }
     else
@@ -6811,8 +6940,8 @@ $(document).on('click','#dateRange', function (e) {
 
 $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
 
-  console.log(picker.startDate.format('YYYY-MM-DD'));
-  console.log(picker.endDate.format('YYYY-MM-DD'));
+  //console.log(picker.startDate.format('YYYY-MM-DD'));
+  //console.log(picker.endDate.format('YYYY-MM-DD'));
 });
 
 
@@ -7359,8 +7488,8 @@ function getBookingTime(getTime, bookingStart, Duation) {
         return suffix;
     }
 
-    /*------------------------------------------------------------------*/
-   /*---------------------Start GetCountries Ajax List------------------------ */
+   /*------------------------------------------------------------------*/
+   /*--------------------Start GetCountries Ajax List----------------- */
    /*------------------------------------------------------------------*/
    
     
@@ -7579,11 +7708,8 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
     });
     
-
    });
   
-
-
 
   $(document).on('keyup', '#newbookingdropdown', function () {
       var getValue = $(this).val();
@@ -7598,7 +7724,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
             
             var result = parsed[i].user_name;
             var result2 = parsed[i].id;
-             if (result.indexOf(getValue) > -1) {
+             if (result.toLowerCase().indexOf("ral") === -1) {
                arr.push(result);
                arr2.push(result2);
              }
@@ -7624,13 +7750,166 @@ function getBookingTime(getTime, bookingStart, Duation) {
     });// End
 
 
-    function getSearchData(Email , PhoneNumber , Name)
+
+   /*------------------------------------------------------------------*/
+   /*---------------------- Start Search Area Code ------------------- */
+   /*------------------------------------------------------------------*/
+
+
+    // Search Record Selection
+    $(document).on('click', '.resultFields', function () {
+      var el = $(this);
+      var getName = el.find('h1').html();
+      var getRecord = el.attr('dataobj');
+      window.selectedRecord = getRecord
+      var parsedRecord = JSON.parse(getRecord);
+      var chek = parsedRecord;
+      $("#searchResults").html(' ');
+      $('.searchField').val(getName);
+
+      // Populating Records
+
+      $('.dropdown.title .dropdownOptions li a[value="'+parsedRecord.title+'"]').trigger('click');              // title gender   
+      $('.basicInfo .firstname').val(parsedRecord.first_name);                                                  // first name   
+      $('.basicInfo .lastname').val(parsedRecord.last_name);                                                    // last name
+      $('.basicInfo .phonenumber').val(parsedRecord.phone_number);                                              // phone
+      $('#email').val(parsedRecord.email);                                                                      // email
+      $('#email').addClass('popuplatedemail');
+      $('#email').attr('leadId',parsedRecord.id);                                                                  // email
+      $('#fullAddress').val(parsedRecord.full_address);                                                         // address
+      $('#countryName').attr('value',parsedRecord.country);                                                     // country
+      $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(parsedRecord.country);         // country
+      $('.stateDiv .dropdown.State .dropdownOptions li a[value="'+parsedRecord.State+'"]').trigger('click');    // state
+       if(parsedRecord.country == 'Australia')                                                                  // state
+       {
+        $('.stateDiv').removeClass('hide');
+       }
+       else
+       {
+        $('.stateDiv').addClass('hide');
+       }
+       $('.emailexists').addClass('opacity0').removeClass('green');
+       $('.redCross, .redGreen').addClass('hide');
+       showMainLoading();
+    });
+
+
+    // Search Autocomplete
+    $(document).on('click', '.searchArea .icon-search', function () {
+      var getValue = $('.searchField').val();
+      var getLength = getValue.length;
+      var arr = [];
+      if(getLength > 1)
+      {
+        var parsed = window.searchData;
+
+        for (var i = 0; i < parsed.length; i++) {
+            
+            var name = parsed[i].name;
+            var email = parsed[i].email;
+            var phone = parsed[i].phone_number;
+             if (name.indexOf(getValue) > -1 || email.indexOf(getValue) > -1 || phone.indexOf(getValue) > -1) {
+               arr.push(parsed[i]);
+             }
+             else {}
+          }
+      }
+      var filteredArray = arr;
+      var setHtml = '';
+        for (var i = 0; i < filteredArray.length; i++) 
+        {
+          var bookingDate = filteredArray[i].booking_date;                              // Booking Date
+          var formattedDate = moment(bookingDate).add(0, 'M').format('DD.MM.YYYY');     // Formatted Date
+          var productName = filteredArray[i].product;                                   // Product Name
+          var productIconName = productIcons(productName);                              // Get Icon
+          var getFullObj = JSON.stringify(filteredArray[i]);
+          
+          setHtml += "<div class='resultFields full pointer' dataObj='"+getFullObj+"' leadId='"+ filteredArray[i].id +"'>";
+            setHtml += "<span class='d-i-b wd-67 v-a-t align-center'><i class='"+productIconName+ " fs-36 color-darkBlue'></i></span>";
+            setHtml += "<div class='searchContent d-i-b v-a-t half-pad-top'>";
+              setHtml += "<h1 class='fs-15 lh-22'>"+filteredArray[i].name+"</h1>"; // Name
+              setHtml += "<div>";
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Created:</label><span>"+formattedDate+"</span></div>"; // Created
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Product:</label><span>"+filteredArray[i].product+"</span></div>"; // Product
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Mobile:</label><span>"+filteredArray[i].phone_number+"</span></div>"; // Mobile
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Email:</label><span>"+filteredArray[i].email+"</span></div>"; // Email
+              setHtml += "</div>";
+            setHtml += "</div>";
+          setHtml += "</div>";
+
+        }
+
+        if(filteredArray.length > 0)
+        {
+          $("#searchResults").html(setHtml);
+        }
+        else
+        {
+          $("#searchResults").html(' ');
+        }
+        
+    });// End
+
+    // Get product icons for search autocomplete
+    function productIcons(productName)
     {
-          var searchData =  {email : Email , phone_number : PhoneNumber , name :Name}
+      var iconName = "";
+      if(productName == "Engagement Ring")
+      {
+        iconName = 'icon-engRing';
+      }
+      else if(productName == "Earrings")
+      {
+        iconName = 'icon-earrings';
+      }
+      else if(productName == "Bracelet")
+      {
+        iconName = 'icon-bracelet';
+      }
+      else if(productName == "Wedding Band")
+      {
+        iconName = 'icon-weddingBrand';
+      }
+      else if(productName == "Eternity Band")
+      {
+        iconName = 'icon-bracelets';
+      }
+      else if(productName == "Loose Diamond")
+      {
+        iconName = 'icon-necklaces';
+      }
+      else if(productName == "Dress Rings")
+      {
+        iconName = 'icon-dressRings';
+      }
+      else if(productName == "Pendant")
+      {
+        iconName = 'icon-necklaces';
+      }
+      else if(productName == "Timepiece")
+      {
+        iconName = 'icon-watch';
+      }
+      else if(productName == "Custom Jewellery")
+      {
+        iconName = 'icon-necklaces';
+      }
+      else if(productName == "Loose Gemstone")
+      {
+        iconName = 'icon-necklaces';
+      }
+      else
+      { iconName = 'icon-diamond' }
+      return iconName;
+    }
+
+    // Get all lead record for search autocomplete
+    function getSearchData()
+    {
           $.ajax({
             type: "GET",
             url: "/dashboard/ajaxGetDataForSearch", 
-            data: searchData,
+            data: {},
             success: function (data) {
                 var getData = data;                
                 var parsed = '';               
@@ -7641,12 +7920,33 @@ function getBookingTime(getTime, bookingStart, Duation) {
                 {                   
                   return false;                  
                 }
-                
+
+                window.searchData = parsed;
               
             }
 
         });
     }
+    getSearchData()
+
+
+    $(document).on('click', function(event){
+      var container = $(".searchContainer");
+      if (!container.is(event.target) &&            
+          container.has(event.target).length === 0)
+          {
+              $("#searchResults").html(' ');
+          }
+      
+  });// End
+
+
+   /*------------------------------------------------------------------*/
+   /*----------------------- End Search Area Code -------------------- */
+   /*------------------------------------------------------------------*/
+
+
+
   function pickUpAgents (){
     $.ajax({
             type: "GET",
@@ -7672,7 +7972,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
                 {
                   getUserimage = 'sampleUser.png';
                 }
-
+                
                 setHtml +="<div class='full gap-bottom' userid='"+parsed[i].user_id+"' username='"+parsed[i].name+"'>";
                 setHtml += "<img src='/profile_image/"+getUserimage+"' />";      
                 setHtml += "<a class=''>"+ parsed[i].name +"</a>";

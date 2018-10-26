@@ -195,7 +195,7 @@ body{color: #5d5d5d}
 .two-pad-right{padding-right: 2px}
 .three-pad-right{padding-right: 3px}
 /* Colors and borders -------------------------------------------------- */
-
+.color-darkBlue {color:#2c76ae}
 .color-blue{color:#0763bb;}
 .color-darkBlue{color: #4778a8;}
 .bg-blue{background-color:#0763bb;}
