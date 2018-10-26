@@ -2744,7 +2744,8 @@ setTimeout(function(){
   // Save and Book Information
 
   $(document).on('click', '.savenBookBtn', function (){
-      validation();
+      window.saveAndBook = true;
+      $('#submitbutton').trigger('click');
       if(window.validState == true)
       {
         $(".hideOnSavenBook").addClass('hide');
@@ -2758,6 +2759,7 @@ setTimeout(function(){
 /*--------------------------------------------------*/
   //  Only Save Information
   $(document).on('click', '.onlySaveBtn', function (){
+      window.saveAndBook = false;
       $('#submitbutton').trigger('click');
   });// End
 
@@ -3986,11 +3988,10 @@ setTimeout(function(){
   
     // Save New Booking
     $(document).on('click','.saveNewBooking', function (e) {
+      window.saveAndBook = false;
       $('#submitbutton').trigger('click');
-      
-
-      
     });
+
     // Cancel New Booking
     $(document).on('click','.cancelNewBooking', function (e) {
       $('.btn-cancel').trigger('click');
@@ -4155,6 +4156,14 @@ setTimeout(function(){
         url: "/dashboard/ajaxAddDashboard",
         data: data, 
         success: function (data) {
+            var parsed = '';          
+            try{                           
+              parsed = JSON.parse(data);              
+            }                 
+            catch(e)                
+            {                  
+              return false;                  
+            }
             if(window.AppointmentType == 1)
             {
               showMainLoading();
@@ -4218,6 +4227,7 @@ setTimeout(function(){
       if($('.additional-details').hasClass('opened'))
       {
         if (e.which == 13) {
+          window.saveAndBook = false;
           $('#submitbutton').trigger('click');
           return e.which !== 13;
         }
