@@ -558,7 +558,58 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                       }
                         //EndArrayGrouped Based on Id
 
-      return $groups;
+                      
+                      //________________________Get all Users Data___________________________________//
+                                         
+                        
+                    //FullName  From Table "de_users"
+                    $sales_users = 6;
+                    $fullname = new \Zend\Db\Sql\Expression('CONCAT(u.first_name, \' \', u.last_name)');
+
+                    $select_users = new \Zend\Db\Sql\Select();
+                    $select_users->from(array('u' => 'de_users'))
+                                 ->columns(array('user_id' , 'role_id' , 'fullname' => $fullname , 'lead_owner_image' => 'image' ));
+                    $select_users->where(array('u.role_id = ?' =>  $sales_users));
+                    $data1 = $this->executeQuery($select_users);
+                    $result1 = $data1->toArray();
+                    
+                     $groups1 = array();
+                     foreach ($result1 as $item125) {
+
+                         
+                         $key = $item125['user_id'];
+                         $keyName = $item125['fullname'];                      
+                         $groups1[$keyName]['idOfUser'] = $key;
+                         $groups1[$keyName]['agentName'] = $keyName;
+
+                         if (isset($groups1[agentName])) 
+                         {
+                            $groups1[$keyName]['items'][] = $item125;
+                            $groups1[$keyName]['count'] += 1;
+                             
+                         } 
+                         else 
+                         {
+
+                             $groups1[$keyName] = array(
+                              'items' => array($item125),
+                              'count' => 0,
+                             );
+
+                         }
+
+                      }
+                    
+                    
+                    
+                    //______________________________________________________________
+                    
+                    
+           $array_merge_dashboard = array();   
+           $array_merge_dashboard = array_merge($groups1,$groups);
+            return $array_merge_dashboard;                           
+            //return $groups;
+          //return $groups1;
                          
             } catch (\Exception $ex) {
                 \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );

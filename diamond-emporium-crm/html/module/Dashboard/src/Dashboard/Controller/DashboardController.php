@@ -62,9 +62,9 @@ class DashboardController extends AbstractActionController
                 $posts['lead_owner'] = $lead_owner;
                 $objUserTable = $sm->get('SaveDashboard\Model\SaveDashboardTable');     
 	              $userid = $identity['user_id'];	
-                $objUserTable->saveDashboard($posts);
+                $leadsArr = $objUserTable->saveDashboard($posts);
                 }
-	      
+	        echo json_encode($leadsArr);
                 exit;
       }
 

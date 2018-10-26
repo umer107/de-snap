@@ -195,7 +195,10 @@ class SaveDashboardTable
             return " Room Full Pleae Find Another Nearby Hotel";
              }*/
          
-           return $this->tableGateway->insert($data);
+           //return $this->tableGateway->insert($data);
+           $this->tableGateway->insert($data);
+           $insertedId = $this->tableGateway ->getLastInsertValue();
+           return $insertedId;
    
            }       
         
