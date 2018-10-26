@@ -106,7 +106,7 @@ $selectGender = array(
 
 //
 echo $this->form()->openTag($form);
-echo $this->formHidden($form->get('id')).'<div class="full basicInfo formfields color-darkGray initialScreen fs-14">';
+echo $this->formHidden($form->get('id')).'<div class="full basicInfo formfields color-darkGray initialScreen fs-14 hideOnSavenBook">';
     
    // -----------------------------------------------------------------
    // -----------------------------------------------------------------
@@ -183,7 +183,7 @@ echo '<div class="relative pull-left gap-right pad-right">';
     // -----------------------------------------------------------------
 
     // email
-    echo '<div class="relative pull-left"><span style="display: none" class="text-top">*Email</span>'.$this->formRow($form->get("email")).'<label class="opacity0 error emailexists">Record not found</label><label class="opacity0 error ">Please enter a valid email</label><a href="javascript:;" class="availability absolute"><img class="redCross hide" src="/images/redCross.png")/><img class="redGreen hide" src="/images/greenTick.png"/></a><label class="opacity0 requiredError">Please select email</label></div>';
+    echo '<div class="relative pull-left emailDiv"><span style="display: none" class="text-top">*Email</span>'.$this->formRow($form->get("email")).'<label class="opacity0 error emailexists">Record not found</label><label class="opacity0 error ">Please enter a valid email</label><a href="javascript:;" class="availability absolute"><img class="redCross hide" src="/images/redCross.png")/><img class="redGreen hide" src="/images/greenTick.png"/></a><label class="opacity0 requiredError">Please select email</label></div>';
 
     // Assignee Name
     //echo '<div class="selectedAgent relative pull-left" di>
@@ -333,7 +333,7 @@ echo '</div>';
 
 //Additional Detail
 //Product
-echo '<div class="additional-details full fs-14 pad-top">';
+echo '<div class="additional-details full fs-14 pad-top hideOnSavenBook">';
 
 echo '<h2 class="fs-24 color-green robotolight double-pad-bottom double-pad-top"> Enter additional details ';
 
@@ -591,14 +591,24 @@ echo '</div>';
 
 
 echo '</div>';
+
+    echo '<div class="savenBookOptions pull-right triple-pad-right">';
+        
+        echo '<a href="javascript:;" class="wd-160 fs-14 button savenBookBtn lh-34 align-center robotomedium button btn-blue">Save and Book</a>'; 
+        echo '<a href="javascript:;" class="wd-102 btn-green fs-14 button bg-white onlySaveBtn lh-34 align-center robotomedium thirtyfive-gapLeft">Save</a>'; 
+            //echo '<label class="fs-10 relative bottom-3">or press <span class="color-darkGray robotomedium">ENTER</span></label>';
+        echo '<a href="javascript:;" class="fs-14 onlyCancelBtn bg-white robotomedium gap-right color-gray10 thirtyfive-gapLeft">Cancel</a>';
+        
+    echo '</div>';
+
 echo '</div>';
 
 // .additional-details Div End
+// .calendar Show On Book Div End
 
-echo '<h2 class="fs-24 color-green robotolight  hide bookingHeading pull-left hide"> Room Manager </h2>';
+echo '<div class="calendarShowOnBook hide">'; // 
 
-      
-      
+    echo '<h2 class="fs-24 color-green robotolight  hide bookingHeading pull-left hide"> Room Manager </h2>';
 
     // next-saveDiv Start
     echo'<div class="next-saveDiv full">';
@@ -624,9 +634,9 @@ echo '<h2 class="fs-24 color-green robotolight  hide bookingHeading pull-left hi
 
     // bookNowDiv Start
 
-
-    echo $this->partial('dashboard/dashboard/bookingView.phtml');
-
+    
+        echo $this->partial('dashboard/dashboard/bookingView.phtml');
+    echo '</div>'; // next-saveDiv End
     // Adding Booking Div
     echo $this->partial('dashboard/dashboard/calendarView.phtml');
 

@@ -924,7 +924,7 @@ $(document).ready(function () {
     // Validating Email and opening next screen buttons
     $(document).on('keyup', '.basicInfo input.checkEmailCount', function () {
         $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
-        $('.emailexists').addClass('opacity0');
+        $('.emailexists, .emailDiv .requiredError').addClass('opacity0');
         var getValue = $(this).val().length;
         var getemail = $(this).val();
         if ($.trim(getemail).length == 0) {
@@ -2737,7 +2737,93 @@ setTimeout(function(){
     suggestedDate();
 
 /*--------------------------------------------------*/
+/*--------------------------------------------------*/
+/*--------------------------------------------------*/
+
+
+  // Save and Book Information
+
+  $(document).on('click', '.savenBookBtn', function (){
+      validation();
+      if(window.validState == true)
+      {
+        $(".hideOnSavenBook").addClass('hide');
+        $(".calendarShowOnBook").removeClass('hide');  
+      }
+      
+  });// End
+
+/*--------------------------------------------------*/
+/*--------------------------------------------------*/
+/*--------------------------------------------------*/
+  //  Only Save Information
+  $(document).on('click', '.onlySaveBtn', function (){
+      $('#submitbutton').trigger('click');
+  });// End
+
+/*--------------------------------------------------*/
+/*--------------------------------------------------*/
+/*--------------------------------------------------*/
+
+  //  Canlcel Booking Popup
+
+  $(document).on('click', '.onlyCancelBtn', function (){
+      var checkIfFieldsHasSomeValue = false;
+      
+      
+      $('.firstname, .lastname, .phonenumber, .checkEmailCount, #fullAddress, #onlyReferral, #specify_requirements, #ReferenceProduct, #referrenceDropdown, .instructions').each(function() {
+        var checkValue = $(this).val();
+        if (checkValue != '') {
+          checkIfFieldsHasSomeValue = true;
+        }
+      });
+      
+      $('.formfields a.selected-text, .additional-details a.selected-text' ).each(function() {
+        var checkValue = $(this).attr('value');
+        if (checkValue != 'All') {
+          if (checkValue != 'Reason') {
+            checkIfFieldsHasSomeValue = true;
+          }
+        }
+      });
+
+      if(checkIfFieldsHasSomeValue)
+      {
+        $('.ShowPopup').addClass('topShow');
+      }
+
+
+  });// End
+
+/*--------------------------------------------------*/
+/*--------------------------------------------------*/
+/*--------------------------------------------------*/
+
+  //  Cancel Booking
+  $(document).on('click', '.NoCancelBooking', function (){
+      $('.ShowPopup').removeClass('topShow');
+  });// End
+
+/*--------------------------------------------------*/
+/*--------------------------------------------------*/
+/*--------------------------------------------------*/
+
+
+  //  Cancel Booking
+  $(document).on('click', '.yesCancelBooking', function (){
+
+     $('.ShowPopup').removeClass('topShow');
+     $('.basicInfo').html(window.getBasicInfo);
+     $('.additional-details').html(window.getAdditionalInfo);
+
+  });// End
+
+/*--------------------------------------------------*/
+/*--------------------------------------------------*/
+/*--------------------------------------------------*/
+
     // Validation
+
 
     function validation()
     {
@@ -4211,12 +4297,6 @@ setTimeout(function(){
     });
 
     $(document).on('click','.calendarLoad .roomBooking', function (e) {
- 
-        //$('.newLead').addClass('inEditMode');
-        
-        //var getLeadId = $(this).attr('lead-id');    
-        //EditLead(getLeadId);
-
                    
     });
 
@@ -4224,6 +4304,8 @@ setTimeout(function(){
     function EditLead(getLeadId)
     {
         $('.searchArea').addClass('hide');
+        $(".calendarShowOnBook").removeClass('hide'); 
+        $(".savenBookOptions, .cancelNewBooking").addClass('hide');
         var getAssigneeId = window.selectedAssigneeId;
         startCalendarLoading();
         var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate');
@@ -5545,6 +5627,9 @@ setTimeout(function(){
 
     window.GetAdditionalDetails = $('.additional-details').html();
     window.getNewLeadAll = $('.newLead').html();
+    window.getBasicInfo = $('.basicInfo').html();
+    window.getAdditionalInfo = $('.additional-details').html();
+    console.log('html created');
     //$('.loadAgents ul.dropdownOptions').html(dropdownList);
     
 }, 4000);
@@ -8104,6 +8189,6 @@ function getBookingTime(getTime, bookingStart, Duation) {
   });// End
 
    /*------------------------------------------------------------------*/
-   /*---------------------Stop GetCountries Ajax List------------------------ */
+   /*------------------- Stop GetCountries Ajax List ----------------- */
    /*------------------------------------------------------------------*/
-    
+

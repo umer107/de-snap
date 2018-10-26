@@ -320,6 +320,7 @@ body img{max-width:100%}
 .no-gap-bottom{margin-bottom:0;}
 .no-gap-left{margin-left:0;}
 .no-gap-right{margin-right:0;}
+.thirtyfive-gapLeft{margin-left:35px;}
 .no-border, .no-border:before, .no-border:after{border:none !important;}
 .no-border-top{border-top:none;}
 .no-border-bottom{border-bottom:none;}
@@ -330,6 +331,7 @@ body img{max-width:100%}
 .no-pad-bottom{padding-bottom:0;}
 .no-pad-left{padding-left:0;}
 .no-pad-right{padding-right:0;}
+
 /*General*/
 .opacity9 { opacity:.9}
 .opacity8 { opacity:.8}
@@ -423,6 +425,7 @@ body img{max-width:100%}
 .color-orange{color:#F9962D;}
 .color-blue{color:#0E79BB;}
 .color-red{color:#E0353D;}
+.color-gray10{color: #838383}
 .border-green { border: 1px solid #27AD09; }
 .border-orange { border: 1px solid #FF752F; }
 .wd-68{width:68px;}
@@ -433,4 +436,3 @@ body img{max-width:100%}
 .wd-24{width:24px;}
 .wd-22{width:24px;}
 .wd-102{width:102px;}
-/* Wasif A css start here */
