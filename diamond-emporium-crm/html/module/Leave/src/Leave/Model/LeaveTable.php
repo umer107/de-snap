@@ -579,11 +579,22 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                          
                          $key = $item125['user_id'];
                          $keyName = $item125['fullname'];                      
-                         $groups1[$keyName]['idOfUser'] = $key;
-                         $groups1[$keyName]['agentName'] = $keyName;
+                         $groups1[$keyName]['idOfUser'] = $keyName;
+                         $groups1[$keyName]['agentName'] = "";
+                         $keyImage = $item125['lead_owner_image'];
+                         if($keyImage == null)
+                         {
+                            $groups1[$keyName]['agentImage'] = 'empty';
+                         }
+                         else
+                         {
+                            $groups1[$keyName]['agentImage'] = $keyImage;
+                         }
+                         
 
                          if (isset($groups1[agentName])) 
                          {
+                             
                             $groups1[$keyName]['items'][] = $item125;
                             $groups1[$keyName]['count'] += 1;
                              
@@ -591,10 +602,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                          else 
                          {
 
-                             $groups1[$keyName] = array(
-                              'items' => array($item125),
-                              'count' => 0,
-                             );
+                             $groups1[$keyName]['items'][] = $item125;
+                             $groups1[$keyName]['count'] = 0;
 
                          }
 
