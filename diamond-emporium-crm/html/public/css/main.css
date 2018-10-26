@@ -54,8 +54,10 @@
 .button{border: 1px solid #DFDFDF; height: 34px; display: inline-block; border-radius: 18px; line-height: 34px; text-align: center;}
 .btn-green{ color: #27AD09;}
 .btn-blue{ color: #0E79BB;}
+.btn-red{ color: #E0353D;}
 .button.btn-green:hover{color: white; background:#27AD09;}
 .button.btn-blue:hover{color: white; background:#0E79BB;}
+.button.btn-red:hover{color: white; background:#E0353D;}
 a.btn-nextDetails, a.btn-saveDetails{  width: 102px;  margin-right: 5px; }
 a.btn-disableSave{  width: 102px;  margin-right: 5px; color: #a5a5a5; }
 a.btn-saveDetails input{background: none; border: none; line-height: 31px; text-align: center; cursor: pointer; width: 100px;}
@@ -69,6 +71,14 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { bac
 .showMessage.topShow{top:64px;}
 .showMessage div{  }
 .showMessage.green{background: #27AD09}
+
+.ShowPopup { width: 420px; top: -152px; z-index: 100;  padding: 22px; border:1px solid #DFDFDF;}
+.ShowPopup.top0{top:0;}
+.ShowPopup.topShow{top:64px;}
+.ShowPopup div{  }
+.ShowPopup.green{background: #27AD09}
+.ShowPopup a{}
+
 .bookNowMain{}
 .coverAreaBooking{ position: absolute; left: 0; right: 0; top: 0; height: 100%; z-index: 1; }
 /*-----------------------------------------*/
@@ -281,8 +291,8 @@ input[type=text]::-ms-clear, .ui-combobox input::-ms-clear {
 .availability{ z-index: 1;  top: 25px; right: 35px; }
 .availability img{ width: 14px; }
 .showLookups { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
-.LookupBG{ position: fixed; background: black; opacity: .5; left: 0; right: 0; width: 100%; height: 100%; z-index: 10; }
-.showLookupsInner {width: 640px; margin: 0 auto; background: white; position: relative; z-index: 11; margin-top: 20px }
+.LookupBG{ position: fixed; background: black; opacity: .5; left: 0; right: 0; width: 100%; height: 100%; z-index: 11; }
+.showLookupsInner {width: 640px; margin: 0 auto; background: white; position: relative; z-index: 12; margin-top: 20px }
 .customerHeading { background: #29629a; color: white; line-height: 32px; padding: 0 20px; position: relative; }
 .customerHeading span{ float: right; font-weight: bold; font-size: 15px; position: absolute; right: 10px; top: 8px; width: 16px; text-align: center; height: 16px; line-height: 12px; cursor: pointer; }
 .customerList { padding: 20px; line-height: 25px; position: relative; }
@@ -492,7 +502,7 @@ a.btn-saveDetailsLeave{ width: 102px;  margin-right: 5px; }
 .btn-cancelLeave{ color: #5D5D5D; padding-left: 50px; }
 #ui-datepicker-div{}
 .calendarLeave{ left: -24px; top: 45px; }
-
+.savenBookOptions{margin-top: 64px;}
 /*Assign To New Leave Dropdown Start*/
 
 ul.assignToDivLeave.dropdown li ul li{ height: 64px; line-height: 64px; }
@@ -815,31 +825,13 @@ div.headbar{background-color: #cfcfcf; }
 .dropdown.durationTime li a { border: 0 none; font-size: 11px; }
 .customerNameOther input{ background: #cfcfcf; border: none; }
 .dropdown.durationTime .selected-text i{ margin-top: 8px; background: none; }
-.newbookingdropdown{     width: 162px;
-    position: absolute;
-    height: 190px;
-    background-color: #ffffff;
-    border: solid 1px #dedede;
-    left: -25px;
-    z-index: 4;}
+.newbookingdropdown{ width: 162px; position: absolute; height: 190px; background-color: #ffffff; border: solid 1px #dedede; left: -25px; z-index: 4; }
 
-.newbookingdropdown input{
-	width: 139px;
-    height: 21px;
-    line-height: 21px;
-    border-radius: 10.5px;
-    background-color: #f8f8f8;
-    margin: 10px 0 6px 11px;
-    border: none;
-    font-size: 10px;
-    text-align: left;
-    padding: 0 10px; }
+.newbookingdropdown input{ width: 139px; height: 21px; line-height: 21px; border-radius: 10.5px; background-color: #f8f8f8; margin: 10px 0 6px 11px; border: none; font-size: 10px; text-align: left; padding: 0 10px; }
 .newbookingdropdown#salesRepSelect{height: 224px; width: 227px; left: -60px;}	
 .newbookingdropdown#salesRepSelect input {width: 204px;}								
-.appDetails .dropdown.bookingPopup{    height: 15px;
-    line-height: 15;}
-.appDetails .dropdown.bookingPopup li a{display: inline;
-    font-size: 10px; position: relative;}
+.appDetails .dropdown.bookingPopup{ height: 15px;line-height: 15; }
+.appDetails .dropdown.bookingPopup li a{display: inline; font-size: 10px; position: relative;}
 .appDetails #appointmentType{ width: 97px; border-right: 0 none; color: white;}
 .appDetails .bookingPopup .selected-text i{ color: white; margin-top: 2px;}
 #customerRepSelect{}
