@@ -6809,7 +6809,7 @@ function loadLeads(){
                         {
                             setHtml += '<div class="full">';
                         }
-                        
+                        var SalesRepName
                         setHtml += '<div class="agentImg-container"><img alt="Profile image" class="ProfileImg" src="/profile_image/'+ getUserimage  +'" /></div>';
                         setHtml += '<label class="robotolight fs-18  full one-half-gap-top">'+ leads[i].idOfUser  +'</label>';
                         setHtml += '</div>';
@@ -6819,25 +6819,26 @@ function loadLeads(){
                         var statusClosed = 0;
                         var statusDealClosed = 0;
                         var statusAll = 0;
+                        if(leads[i].count != 0)
+                        {
+                          for (var j = 0; j < leads[i].items.length; j++) {
 
-                        for (var j = 0; j < leads[i].items.length; j++) {
+                              statusAll++
+                              if(leads[i].items[j].lead_status == "Closed")
+                                  {
+                                     statusClosed++
+                                  }
+                                  else if(leads[i].items[j].lead_status == "Deal closed")
+                                  {
+                                      statusDealClosed++
+                                  }
+                                  else
+                                  {
+                                      statusOpen++
+                                  }
 
-                            statusAll++
-                            if(leads[i].items[j].lead_status == "Closed")
-                                {
-                                   statusClosed++
-                                }
-                                else if(leads[i].items[j].lead_status == "Deal closed")
-                                {
-                                    statusDealClosed++
-                                }
-                                else
-                                {
-                                    statusOpen++
-                                }
-
+                          }
                         }
-
                         setHtml += '<div class="full fs-14 robotomedium half-pad-top">';
                         setHtml += '<label class="display-inline-block border-count-white">'+statusOpen+'</label>';
                         setHtml += '<label class="display-inline-block border-count-green hide">'+statusDealClosed+'</label>';
@@ -6846,15 +6847,17 @@ function loadLeads(){
                         setHtml += '</div>';
                         
                         // Setting Agent Leads
-
-                        setHtml += '<div class="full triple-pad-left triple-pad-right triple-pad-top triple-pad-bottom "><ul class="lead-list full lh-38">';
-                        
-                        // Adding next inline lead
-                        if(getSmallestNumber == leads[i].count && l == 1)
+                        if(leads[i].count != 0)
                         {
-                            //setHtml += '<li class="bg-nextline">Next in line <img alt="Profile image" src="/images/ic_addplus.png"></li>';
-                            //l++;
-                        }
+
+                          setHtml += '<div class="full triple-pad-left triple-pad-right triple-pad-top triple-pad-bottom "><ul class="lead-list full lh-38">';
+                        
+                          // Adding next inline lead
+                          if(getSmallestNumber == leads[i].count && l == 1)
+                          {
+                              //setHtml += '<li class="bg-nextline">Next in line <img alt="Profile image" src="/images/ic_addplus.png"></li>';
+                              //l++;
+                          }
                         
                             // Loop for leads
                             var status = '';
@@ -6909,7 +6912,10 @@ function loadLeads(){
 
                             }
 
-                        setHtml += '</ul></div>';
+                          setHtml += '</ul></div>';
+
+                        }
+                        
 
                         //Ending Outer Container
                         setHtml += '</div></div>';
