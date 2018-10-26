@@ -217,10 +217,15 @@ class SaveDashboardTable
                $data['user_booking_date'] = 0;
              } 
              if($where){
-                  return $this->tableGateway->update($data, $where);
+                        
+                   //return $this->tableGateway->update($data, $where);
+                    $this->tableGateway->update($data, $where);
+                    return 0;
              } 
              else{
-                  return $this->tableGateway->update($data, array('id' => $leadId));
+                  //return $this->tableGateway->update($data, array('id' => $leadId));
+                    $this->tableGateway->update($data, array('id' => $leadId));
+                    return 0;
              }
          }
          

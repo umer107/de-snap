@@ -965,7 +965,7 @@ $(document).ready(function () {
     
     // Email Check
 
-    $("#email").on("blur",  function() { 
+    $(".checkEmailCount").on("blur",  function() { 
 
       $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         var getemail = $('#email').val();
@@ -2716,6 +2716,11 @@ setTimeout(function(){
 /*---------------------------------------------*/
 /*---------------------------------------------*/
 
+    // Trigger Calendar
+
+    $(document).on('click', '.triggerCalendar', function () {
+        suggestedDate();
+    });
 
     $(document).on('click', '.durationSelection a, .timeSelection a, .daySelection a, .weekSelection a', function () {
         if($('.durationSelection a').hasClass('active') && $('.timeSelection a').hasClass('active'))
@@ -3994,7 +3999,25 @@ setTimeout(function(){
 
     // Cancel New Booking
     $(document).on('click','.cancelNewBooking', function (e) {
-      $('.btn-cancel').trigger('click');
+      $('.rings a').removeClass('active');
+      $('.rings a:last-child').addClass('active');
+      loadLeads();
+      //Setting header changes
+
+      showMainLoading();
+      $('.newLeaveContainer').hide();
+      $('.newLead').addClass('maxHeightHide');
+      $('.dashboardContainer').addClass('hide');
+      $('.leavesContainer').addClass('hide');
+      $('.leadsContainer').removeClass('hide');
+      $('.new-Lead').removeClass('active');
+      $('.dashboard-header').removeClass('hide');
+
+      //Reset New lead form
+      $('.newLead').html(window.getNewLeadAll);
+      $('.newLead').removeClass('inEditMode');
+
+      //$('.btn-cancel').trigger('click');
       //$('.next-saveDiv, .next-options, .btn-bookNow').removeClass('hide');
       //$('.savedBooking').addClass('hide');
       //$('.NewCalendarContainer').addClass('hide');
@@ -4164,6 +4187,13 @@ setTimeout(function(){
             {                  
               return false;                  
             }
+
+            if(parsed != 0)
+            {
+              $('.thisLeadId').attr('leadId',parsed);
+              return false;
+            }
+            
             if(window.AppointmentType == 1)
             {
               showMainLoading();
@@ -5953,6 +5983,7 @@ $(document).on('click','.newactions a', function (e) {
 
     if($(this).hasClass('new-Lead'))
     {   
+        $('.triggerCalendar').trigger('click');
         $('.searchArea').removeClass('hide');
         $('.newLeaveContainer').hide();
         $('.leadsContainer').addClass('hide');
@@ -5964,6 +5995,7 @@ $(document).on('click','.newactions a', function (e) {
         $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
 
         endCalendarLoading();
+
     }
     else
     {
