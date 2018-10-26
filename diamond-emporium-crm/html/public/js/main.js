@@ -7624,12 +7624,13 @@ function getBookingTime(getTime, bookingStart, Duation) {
     });// End
 
 
-    function getSearchData()
+    function getSearchData(Email , PhoneNumber , Name)
     {
+          var searchData =  {email : Email , phone_number : PhoneNumber , name :Name}
           $.ajax({
             type: "GET",
             url: "/dashboard/ajaxGetDataForSearch", 
-            data: {},
+            data: searchData,
             success: function (data) {
                 var getData = data;                
                 var parsed = '';               
