@@ -3991,7 +3991,8 @@ setTimeout(function(){
             State : $("#stateDropdown").text(),
             full_address : $("#fullAddress").val(),
             communication_method : $("#CommunicationMethod").text(),
-            contact_method : preferredMethodVal       
+            contact_method : preferredMethodVal,
+            isBooked : false      
            
         };
         
@@ -4216,7 +4217,18 @@ setTimeout(function(){
 
       if(window.AppointmentType == 1)
       {
-        data.AppointmentType = 1;
+        data.isBooked = true;
+      }
+      else
+      {
+        if(dataAppointment.bookingstart == null)
+        {
+          data.isBooked = false;
+        }
+        else
+        {
+          data.isBooked = true;
+        }
       }
 
       //Ajax Call Saving Lead
@@ -4236,11 +4248,6 @@ setTimeout(function(){
               return false;                  
             }
 
-            if(window.saveAndBook == true)
-            {
-              return false;
-            }
-
             // Ajax Call Saving Appointment
             dataAppointment.lead_id = parsed;
             $.ajax({
@@ -4249,45 +4256,35 @@ setTimeout(function(){
               data: dataAppointment, 
               success: function (data2) {
 
-
-                  if(window.saveAndBook == true)
+                  if(window.AppointmentType == 1)
                   {
-                    return false;
+                    showMainLoading();
+                    var getAssigneeId = window.selectedAssigneeId;
+                    var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
+                    
+                    loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
                   }
                   else
                   {
+                    $('.rings a').removeClass('active');
+                    $('.rings a:last-child').addClass('active');
+                    loadLeads();
+                    //Setting header changes
 
-                    if(window.AppointmentType == 1)
-                    {
-                      showMainLoading();
-                      var getAssigneeId = window.selectedAssigneeId;
-                      var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
-                      
-                      loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
-                      getSearchData()
-                      return false;
-                    }
-                    else
-                    {
-                      $('.rings a').removeClass('active');
-                      $('.rings a:last-child').addClass('active');
-                      loadLeads();
-                      //Setting header changes
+                    showMainLoading();
+                    $('.newLeaveContainer').hide();
+                    $('.newLead').addClass('maxHeightHide');
+                    $('.dashboardContainer').addClass('hide');
+                    $('.leavesContainer').addClass('hide');
+                    $('.leadsContainer').removeClass('hide');
+                    $('.new-Lead').removeClass('active');
+                    $('.dashboard-header').removeClass('hide');
 
-                      showMainLoading();
-                      $('.newLeaveContainer').hide();
-                      $('.newLead').addClass('maxHeightHide');
-                      $('.dashboardContainer').addClass('hide');
-                      $('.leavesContainer').addClass('hide');
-                      $('.leadsContainer').removeClass('hide');
-                      $('.new-Lead').removeClass('active');
-                      $('.dashboard-header').removeClass('hide');
-
-                      //Reset New lead form
-                      $('.newLead').html(window.getNewLeadAll);
-                      $('.newLead').removeClass('inEditMode');
-                    }
+                    //Reset New lead form
+                    $('.newLead').html(window.getNewLeadAll);
+                    $('.newLead').removeClass('inEditMode');
                   }
+                  
                   getSearchData()
                   return false;
               }
