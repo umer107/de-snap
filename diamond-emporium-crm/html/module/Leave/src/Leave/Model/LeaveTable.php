@@ -1906,8 +1906,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $select = new \Zend\Db\Sql\Select(); 
                 $select->from(array('u' => 'de_userdetail')) ->columns(array( 'id','user_name' => $fullname));    
                 $select->order("id desc");
-                $filter_lead_Appointment1 = 0;
-                $select->where(array('u.AppointmentType= ?' => $filter_lead_Appointment1 ));
+                //$filter_lead_Appointment1 = 0;
+                //$select->where(array('u.AppointmentType= ?' => $filter_lead_Appointment1 ));
                 $data = $this->executeQuery($select);      
                 $result = $data->toArray(); 
        
