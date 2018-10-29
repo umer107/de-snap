@@ -2424,7 +2424,7 @@ $('section.rightCol').on('scroll', function(event){
                   
                   //Setting Lead Id
                   
-                  $('.thisLeadId').attr('leadId',parsed[0].id);
+                  //$('.thisLeadId').attr('leadId',parsed[0].id);
                   
                   // Basic Info Fields
                   // Title
@@ -2974,10 +2974,17 @@ setTimeout(function(){
                   }
                   else
                   {
+                    if(window.AppointmentType == 1)
+                    {
+                      window.validState = true;
+                    }
+                    else
+                    {
+                      $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                      window.validState = false;
+                      return false;
+                    }
                     
-                    $(".rightCol").animate({ scrollTop: 0 }, "slow");
-                    window.validState = false;
-                    return false;
                   }
                 }
               }
@@ -3983,13 +3990,23 @@ setTimeout(function(){
             country : $('#countryName').attr('value'),
             State : $("#stateDropdown").text(),
             full_address : $("#fullAddress").val(),
-            //Street : $("#street").val(),
             communication_method : $("#CommunicationMethod").text(),
-            contact_method : preferredMethodVal,  
+            contact_method : preferredMethodVal       
+           
+        };
+        
+    }
+    function getValuesFromFormAppointment()
+    {
+        var referralMethod = $("#referralDropdown").text();
+        var referralMethodOther = $("#referralDropdownOther").val();
+        var referralMethodVal = '';
+        if ( referralMethod == "Other"){ referralMethodVal = referralMethodOther; }
+        else { referralMethodVal = referralMethod; }
+        return {
             product : $("#productDropdown").text(),            
             referral : referralMethodVal,
             only_referral : $("#onlyReferral").val(),
-
             specify_requirements : $("#specify_requirements").val(), 
             special_instructions : $("[name= 'special_instructions']").val(),
             budget : $('#budgetDropdown').closest('a.selected-text').attr('value'),           
@@ -3999,16 +4016,13 @@ setTimeout(function(){
             assign_id : $(".assignToDiv a.selected-text").attr("assigneid"),                 
             booking_date : $("#bookingDate").attr("ComlpeteDate"),
             booking_time : $("#bookingDate").attr("timeslot"),
-            //booking_timezone : $("#bookingDate").attr("timezone"),                   
             booking_room : $('#bookingDate').attr('roomnumber'),
             durationTime : $('#bookingDate').attr('durationTime'),
             bookingstart : $('#bookingDate').attr('bookingstart'),
             customerName : $('#bookingDate').attr('customerName'),
             salesRepName : $('#bookingDate').attr('salesRepName'),
-            //booking_duration: $('.durationSelection a').filter('.active').attr('value'),
             color : window.userColor,
-            AppointmentType : 0,
-           
+            AppointmentType : 0
         };
         
     }
@@ -4170,10 +4184,17 @@ setTimeout(function(){
                   }
                   else
                   {
+                    if(window.AppointmentType == 1)
+                    {
+                      window.validState = true;
+                    }
+                    else
+                    {
+                      $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                      window.validState = false;
+                      return false;
+                    }
                     
-                    $(".rightCol").animate({ scrollTop: 0 }, "slow");
-                    window.validState = false;
-                    return false;
                   }
                 }
               }
@@ -4191,17 +4212,21 @@ setTimeout(function(){
 
       
       var data = getValuesFromForm();
+      var dataAppointment = getValuesFromFormAppointment();
+
       if(window.AppointmentType == 1)
       {
         data.AppointmentType = 1;
       }
 
-      //Ajax Call
+      //Ajax Call Saving Lead
       $.ajax({
         type: "POST",
         url: "/dashboard/ajaxAddDashboard",
+        //url: "/dashboard/ajaxSaveAppointment",
         data: data, 
         success: function (data) {
+
             var parsed = '';          
             try{                           
               parsed = JSON.parse(data);              
@@ -4211,55 +4236,90 @@ setTimeout(function(){
               return false;                  
             }
 
-            if(parsed != 0)
+            if(window.saveAndBook == true)
             {
-              if(window.AppointmentType == 1)
-              {
-                showMainLoading();
-                var getAssigneeId = window.selectedAssigneeId;
-                var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
-                
-                loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
-                getSearchData()
-                return false;
-              }
-              else
-              {
-                $('.thisLeadId').attr('leadId',parsed);
-                return false;
-              }
+              return false;
             }
+
+            // Ajax Call Saving Appointment
+            dataAppointment.lead_id = parsed;
+            $.ajax({
+              type: "POST",
+              url: "/dashboard/ajaxSaveAppointment",
+              data: dataAppointment, 
+              success: function (data2) {
+
+
+                  if(window.saveAndBook == true)
+                  {
+                    return false;
+                  }
+                  else
+                  {
+
+                    if(window.AppointmentType == 1)
+                    {
+                      showMainLoading();
+                      var getAssigneeId = window.selectedAssigneeId;
+                      var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
+                      
+                      loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
+                      getSearchData()
+                      return false;
+                    }
+                    else
+                    {
+                      $('.rings a').removeClass('active');
+                      $('.rings a:last-child').addClass('active');
+                      loadLeads();
+                      //Setting header changes
+
+                      showMainLoading();
+                      $('.newLeaveContainer').hide();
+                      $('.newLead').addClass('maxHeightHide');
+                      $('.dashboardContainer').addClass('hide');
+                      $('.leavesContainer').addClass('hide');
+                      $('.leadsContainer').removeClass('hide');
+                      $('.new-Lead').removeClass('active');
+                      $('.dashboard-header').removeClass('hide');
+
+                      //Reset New lead form
+                      $('.newLead').html(window.getNewLeadAll);
+                      $('.newLead').removeClass('inEditMode');
+                    }
+                  }
+                  getSearchData()
+                  return false;
+              }
+            });
             
-            if(window.AppointmentType == 1)
-            {
-              showMainLoading();
-              var getAssigneeId = window.selectedAssigneeId;
-              var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
+            //if(parsed != 0)
+            // {
+            //  if(window.AppointmentType == 1)
+            //  {
+                
+            //  }
+            //  else
+            //  {
+            //    $('.thisLeadId').attr('leadId',parsed);
+            //    return false;
+            //  }
+            //}
+            
+            //if(window.AppointmentType == 1)
+            // {
+            //   showMainLoading();
+            //   var getAssigneeId = window.selectedAssigneeId;
+            //   var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
               
-              loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
-            }
-            else
-            {
-              $('.rings a').removeClass('active');
-              $('.rings a:last-child').addClass('active');
-              loadLeads();
-              //Setting header changes
-
-              showMainLoading();
-              $('.newLeaveContainer').hide();
-              $('.newLead').addClass('maxHeightHide');
-              $('.dashboardContainer').addClass('hide');
-              $('.leavesContainer').addClass('hide');
-              $('.leadsContainer').removeClass('hide');
-              $('.new-Lead').removeClass('active');
-              $('.dashboard-header').removeClass('hide');
-
-              //Reset New lead form
-              $('.newLead').html(window.getNewLeadAll);
-              $('.newLead').removeClass('inEditMode');
-            }
-            getSearchData()
-            return false;
+            //   loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
+            //}
+            //else
+            // {
+              
+            //}
+            
+            
             
         }
       });    
