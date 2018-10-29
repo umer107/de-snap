@@ -768,12 +768,12 @@ section.rightCol.hidden{overflow: hidden;}*/
 .roomsContainer .roomBooking.red p i{color: #ee4860}
 .roomsContainer .roomBooking.blue p i{color: #009cd7}
 .roomsContainer .roomBooking { border-bottom: 1px solid #dfdfdf; height: 61px; width: 100%; position: absolute; z-index: 1; background: white; overflow: hidden;}
-.roomsContainer .roomBooking p.headBar{ color: white; line-height: 15px; height: 15px; text-align: left; padding-left: 4px; }
+.roomsContainer .roomBooking p.headBar{ background-color: #9b9b9b; color: white; line-height: 15px; height: 15px; text-align: left; padding-left: 4px; }
 .roomsContainer .roomBooking p.headBar span:first-child { width: 82px; float: left; border-right: 1px solid white; }
 .roomsContainer .roomBooking p.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; }
 .addBookingPopup .roomBooking p.newApp{line-height: 15px; font-size: 10px; }
 .roomsContainer .roomBooking div.headBar{ background-color: #9b9b9b; color: white; line-height: 15px; height: 15px; text-align: left; padding-left: 4px; }
-.calendarLoad .roomsContainer .roomBooking div.headBar{background-color: #9b9b9b !important;}
+.calendarLoad .roomsContainer .roomBooking div.headBar{background-color: #9b9b9b}
 .calendarLoad .newBookingDetail i.icon-leave{color: #5d5d5d !important;}
 .roomsContainer .roomBooking div.headBar span:first-child { width: 82px; float: left; border-right: 1px solid white;line-height: 15px; }
 .roomsContainer .roomBooking div.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; line-height: 15px;}
@@ -785,7 +785,8 @@ section.rightCol.hidden{overflow: hidden;}*/
 .addBookingPopup .roomsContainer .roomBooking{ border-bottom: none; overflow: initial; }
 .tempContainer{ width: 122px; }
 .roomBooking p{position: relative; z-index: 1}
-
+.roomBooking p.productShortCode span.ellipsis{width: 90px;}
+.roomBooking p.productShortCode i{ font-size: 11px; position: relative; bottom: 3px; font-weight: 600}
 .roomsContainer:not(.addBookingContainer) .roomBooking div.half-pad-left{ padding-left: 2px; }
 .roomsContainer:not(.addBookingContainer) .roomBooking div.half-pad-left p span.half-pad-left{padding-left: 0; }
 
@@ -811,7 +812,8 @@ div.headbar{background-color: #cfcfcf; }
 .dropdown.bookingPopup .selected-text i{ background-size: 11px 7px; background: none; width: 12px; margin-top: 5px; }
 .dropdown.bookingPopup .dropdownOptions{ top: 20px; width: 162px; left: -25px; padding: 0px 0; }
 .dropdown.bookingPopup li ul li{ line-height: 24px; height: 24px; text-align: left; cursor: pointer; }
-.dropdown.appointmentType li ul li a i{ font-weight: 600; color: #f58a49; position: relative; right:9px; top: 7px; font-size:14px;width: 12px; display: inline-block; font-weight: bold }
+.dropdown.appointmentType li ul li a{ padding-left: 13px; }
+.dropdown.appointmentType li ul li a i{ right: 5px; text-align: center; font-weight: 600; color: #f58a49; position: relative; top: 7px; font-size:14px;width: 22px; display: inline-block; font-weight: bold }
 .appointmentType.dropdown.bookingPopup li ul li:last-child i{ opacity:0 }
 .addBookingPopup .roomBooking p{ line-height: 20px; }
 .addBookingPopup .roomBooking div span.subheading{ position: absolute; line-height: 10px; top: -4px; font-size: 8px; }
