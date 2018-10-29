@@ -2250,10 +2250,10 @@ function bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly)
 
                 setDropdown += '<li><a href="javascript:;" getDuration="1.5" value="Engagement Ring" shortcode="ER"> <i class="icon-engRing fs-12"></i> Engagement Ring<span class="hourSlot">1.5 hours</span></a></li>';
                 setDropdown += '<li><a href="javascript:;" getDuration="1" value="Wedding Band" shortcode="WB"> <i class="icon-weddingBrand fs-12"></i> Wedding Band<span class="hourSlot">1 hour</span></a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Resize" shortcode="R"><i class="icon-diamond fs-12"></i> Resize<span class="hourSlot">0.5 hour</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Resize" shortcode="R"><i class="icon-resize fs-12"></i> Resize<span class="hourSlot">0.5 hour</span></a></li>';
                 setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Collection" shortcode="RC"><i class="icon-dressRings fs-12"></i> Ring Collection<span class="hourSlot">0.5 hour</span></a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Drop Off" shortcode="RDO"><i class="icon-diamond fs-12 "></i> Ring Drop Off<span class="hourSlot">0.5 hour</span></a></li>';
-                setDropdown += '<li><a href="javascript:;" getDuration="0" value="other" shortcode=""><i class="icon-diamond fs-12 "></i> Other <span class="hourSlot"></span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0.5" value="Ring Drop Off" shortcode="RDO"><i class="icon-drop-off fs-12 "></i> Ring Drop Off<span class="hourSlot">0.5 hour</span></a></li>';
+                setDropdown += '<li><a href="javascript:;" getDuration="0" value="other" shortcode=""><i class="icon-other fs-12 "></i> Other <span class="hourSlot"></span></a></li>';
 
               setDropdown += '</ul></li>';
         setDropdown += '</ul>';

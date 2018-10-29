@@ -25,6 +25,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-resize:before {
+  content: "\e91d";
+}
+.icon-drop-off:before {
+  content: "\e91e";
+}
+.icon-other:before {
+  content: "\e91f";
+}
 .icon-search:before {
   content: "\e90d";
 }
