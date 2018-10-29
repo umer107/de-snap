@@ -653,19 +653,19 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
         {
              try {                
                 //Fetch Only those Records Where Appointment type = 0
-                $appointmentType = 0;
+                //$appointmentType = 0;
                 $select = new \Zend\Db\Sql\Select();
                 $fullname = new \Zend\Db\Sql\Expression('CONCAT(u.first_name, \' \', u.last_name)');
                 $select->from(array('u' => 'de_userdetail'))
                      ->columns(array(
-                       'id','title' , 'gender', 'first_name', 'last_name' , 'name' => $fullname , 'phone_number' , 'email' , 'country' ,'State' ,'full_address', 'communication_method' , 'product' , 'product_shortcode' , 'referral' , 'only_referral' , 'special_instructions' , 'budget' , 'reference_product' , 'contact_method' , 'assign_to' , 'assignto_shortcode' , 'assign_to_UserId' , 'reson_skip_next_in_line' , 'specify_requirements' , 'lead_status' , 'lead_owner' , 'lead_owner_name' , 'create_date' , 'lead_close_date' , 'booking_date' , 'booking_time' , 'booking_room' , 'user_booking_date' ,'color' , 'durationTime' ,'bookingstart'  
+                       'id','title' , 'gender', 'first_name', 'last_name' , 'name' => $fullname , 'phone_number' , 'email' , 'country' ,'State' ,'full_address', 'communication_method' 
                       ));
               
                 //AppointmentType
-                if(isset($appointmentType))
+                /*if(isset($appointmentType))
                 {
                   $select->where(array('u.AppointmentType= ?' => $appointmentType));   
-                }
+                }*/
                 //Email
                 if(isset($filter['email']))
                 {
