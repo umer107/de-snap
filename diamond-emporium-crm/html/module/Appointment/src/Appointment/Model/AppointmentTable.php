@@ -1,10 +1,10 @@
 <?php
-namespace SaveDashboard\Model;
+namespace Appointment\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 
 
-class SaveDashboardTable
+class AppointmentTable
 {
 	protected $tableGateway;
 	
@@ -298,6 +298,116 @@ class SaveDashboardTable
 		}
     }
     
+       public function saveAppointments($data , $where = null)
+        {
+        try
+        {
+          /*Product Short Code*/            
+            $product_name = explode(" ", $data['product']);           
+            $lastname_product = array_pop($product_name);
+            $firstname_product = implode(" ", $product_name);
+            $first_letter = $firstname_product[0];
+            $last_letter = $lastname_product[0];
+            $product_shortcode = $first_letter.$last_letter;
+            $data['product_shortcode'] = $product_shortcode;
+          /*Product Short Code*/
+            
+          /*AssignUsUserShortCode*/
+            $assigni_name = explode(" ", $data['assign_to']);
+            $total_assigni_count = count($assigni_name);
+            if($total_assigni_count >= 1 && $total_assigni_count <  2)
+            {
+               $firstname_assigni = $assigni_name[0];
+               $first_letter_assigni_name = $firstname_assigni[0];
+               $assign_shortcode = $first_letter_assigni_name;
+               $data['assignto_shortcode'] = $first_letter_assigni_name;
+               
+            }
+            else if($total_assigni_count >=1  && $total_assigni_count < 3)
+            {
+               $firstname_assigni = $assigni_name[0];
+               $lastname_assigni =  $assigni_name[1];
+               $first_letter_assigni_name = $firstname_assigni[0];
+               $last_letter_assigni_name =  $lastname_assigni[0];
+               $assign_shortcode = $first_letter_assigni_name.$last_letter_assigni_name;
+                $data['assignto_shortcode'] = $assign_shortcode;
+               
+            }
+            else if($total_assigni_count >=1  && $total_assigni_count < 4)
+            {
+               $firstname_assigni = $assigni_name[0];
+               $middle_assigni =  $assigni_name[1];
+               $lastname_assigni =  $assigni_name[2];
+               $first_letter_assigni_name = $firstname_assigni[0];
+               $middle_assigni_letter_assigni_name =  $middle_assigni[0];
+               $last_letter_assigni_name = $lastname_assigni[0];
+               $assign_shortcode = $first_letter_assigni_name.$middle_assigni_letter_assigni_name.$last_letter_assigni_name;
+               $data['assignto_shortcode'] = $assign_shortcode;
+            }
+          /*AssignUsUserShortCode*/
+            $AssignInUserId = $data['assign_id'];
+            unset($data['assign_id']);
+            $data['assign_to_UserId'] = $AssignInUserId;
+	    $data['create_date'] = date('Y-m-d H:i:s');     
+            $leadId = $data['lead_id'];
+            //unset($data['lead_id']);
+          
+            if(!empty($leadId) || $data['AppointmentType'] == 1)
+             {
+              $data['lead_status'] = 'Open';
+           
+              if(empty($data['booking_room']))
+               {
+               if(empty($data['booking_date']))
+               {
+                   unset($data['booking_room']);
+                   $data['booking_date'] = date('Y-m-d'); 
+                   $data['user_booking_date'] = 1;
+               }
+               }
+           else
+           {
+               $data['user_booking_date'] = 0;
+           }
+          
+           $this->tableGateway->insert($data);
+           $insertedId = $this->tableGateway ->getLastInsertValue();
+           return $insertedId;
+   
+           }       
+        
+          else {
+              
+             if(empty($data['booking_room']))
+             {
+               if(empty($data['booking_date']))
+               {
+                   unset($data['booking_room']);
+                   $data['booking_date'] = date('Y-m-d'); 
+                   $data['user_booking_date'] = 1;
+               }
+             }
+            else{
+               $data['user_booking_date'] = 0;
+             } 
+             if($where){
+                        
+                   //return $this->tableGateway->update($data, $where);
+                    $this->tableGateway->update($data, $where);
+                    return 0;
+             } 
+             else{
+                  //return $this->tableGateway->update($data, array('id' => $leadId));
+                    $this->tableGateway->update($data, array('id' => $leadId));
+                    return 0;
+             }
+         }
+         
+        }
+     	 catch(\Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+		}
+    }
 
    
 //***************************************CoreFunction*****************************************//    

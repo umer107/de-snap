@@ -51,7 +51,7 @@ class DashboardController extends AbstractActionController
              $sm = $this->getServiceLocator();
              $identity = $sm->get('AuthService')->getIdentity();
              $request = $this->getRequest();
-	           $lead_owner = $identity['user_id'];	
+	     $lead_owner = $identity['user_id'];	
              $lead_owner_name = $identity['first_name'] . ' ' . $identity['last_name'];
              
              if($request->isPost()){
@@ -62,7 +62,8 @@ class DashboardController extends AbstractActionController
                 $posts['lead_owner'] = $lead_owner;
                 $objUserTable = $sm->get('SaveDashboard\Model\SaveDashboardTable');     
 	              $userid = $identity['user_id'];	
-                $leadsArr = $objUserTable->saveDashboard($posts);
+                //$leadsArr = $objUserTable->saveDashboard($posts);
+                $leadsArr = $objUserTable->saveLead($posts);
                 }
 	        echo json_encode($leadsArr);
                 exit;
@@ -75,7 +76,40 @@ class DashboardController extends AbstractActionController
         
      
     }
+    //
+        public function ajaxSaveAppointmentAction()
+    {
+          try{
+      
+             $sm = $this->getServiceLocator();
+             $identity = $sm->get('AuthService')->getIdentity();
+             $request = $this->getRequest();
+	     $lead_owner = $identity['user_id'];	
+             $lead_owner_name = $identity['first_name'] . ' ' . $identity['last_name'];
+             
+             if($request->isPost()){
+                            
+		            $posts = $request->getPost()->toArray();
+               
+                $posts['lead_owner_name'] =  $lead_owner_name;
+                $posts['lead_owner'] = $lead_owner;
+                $objUserTable = $sm->get('Appointment\Model\AppointmentTable');     
+	        $userid = $identity['user_id'];	
+                $leadsArr = $objUserTable->saveAppointments($posts);
+                
+                }
+	        echo json_encode($leadsArr);
+                exit;
+      }
 
+      catch (Exception $e)
+      {
+          \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+      }
+        
+     
+    }
+    //
     public function ajaxGetUserBasedOnBudgetAction()
     {
                   try{

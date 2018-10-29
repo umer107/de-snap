@@ -188,6 +188,9 @@ $resources = array(
     'Dashboard\Controller\Dashboard::checkLeadEmail',
     'Dashboard\Controller\Dashboard::ajaxGetCustomerByName',
     'Dashboard\Controller\Dashboard::ajaxGetDataForSearch',
+    'Dashboard\Controller\Dashboard::ajaxSaveAppointment',
+    'Appointment\Controller\Appointment::index',
+   
 
 	);
 

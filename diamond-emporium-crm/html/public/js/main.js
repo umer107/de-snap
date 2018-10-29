@@ -2869,7 +2869,8 @@ setTimeout(function(){
         
         
         //if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All' || checkCountry == false)
-        if(title == 'All' || gender == 'All' || firstname == '' || lastname == '' || getPhone == '' || getEmail == '' || getProduct == 'All' || getBudget == 'All' || getAgent == 'All' || checkCountry == false)
+        //if(title == 'All' || gender == 'All' || firstname == '' || lastname == '' || getPhone == '' || getEmail == '' || getProduct == 'All' || getBudget == 'All' || getAgent == 'All' || checkCountry == false)
+        if(title == 'All' || gender == 'All' || firstname == '' || lastname == '' || getPhone == '' || getEmail == '' || checkCountry == false)
         {
           //requiredError
           
@@ -2898,18 +2899,18 @@ setTimeout(function(){
                 $('#email').next('label').next('label').removeClass('opacity0');
               }
 
-            if(getProduct == 'All')
-            { $('.producterror').removeClass('opacity0'); }
+            /*if(getProduct == 'All')
+            { $('.producterror').removeClass('opacity0'); }*/
             
             if(getReferral == 'All')
             { //$('.referralerror').removeClass('opacity0'); 
             }
 
-            if(getBudget == 'All')
-            { $('.budgeterror').removeClass('opacity0'); }
+            /*if(getBudget == 'All')
+            { $('.budgeterror').removeClass('opacity0'); }*/
 
-            if(getAgent == 'All')
-            { $('.agenterror').removeClass('opacity0'); }
+            /*if(getAgent == 'All')
+            { $('.agenterror').removeClass('opacity0'); }*/
 
             if(checkCountry == false)
             { 
@@ -3963,6 +3964,62 @@ setTimeout(function(){
             //Street : $("#street").val(),
             communication_method : $("#CommunicationMethod").text(),
             contact_method : preferredMethodVal,  
+            //product : $("#productDropdown").text(),            
+            //referral : referralMethodVal,
+            //only_referral : $("#onlyReferral").val(),
+
+            //specify_requirements : $("#specify_requirements").val(), 
+            //special_instructions : $("[name= 'special_instructions']").val(),
+            //budget : $('#budgetDropdown').closest('a.selected-text').attr('value'),           
+            //reson_skip_next_in_line : $("#skip_reason_dropdown").text(),
+            //reference_product : $("#referrenceDropdown").val(),
+            //assign_to : $("#assign_us_Dropdown").text(),
+            //assign_id : $(".assignToDiv a.selected-text").attr("assigneid"),                 
+            //booking_date : $("#bookingDate").attr("ComlpeteDate"),
+            //booking_time : $("#bookingDate").attr("timeslot"),
+            //booking_timezone : $("#bookingDate").attr("timezone"),                   
+            //booking_room : $('#bookingDate').attr('roomnumber'),
+            //durationTime : $('#bookingDate').attr('durationTime'),
+            //bookingstart : $('#bookingDate').attr('bookingstart'),
+            //customerName : $('#bookingDate').attr('customerName'),
+            //salesRepName : $('#bookingDate').attr('salesRepName'),
+            //booking_duration: $('.durationSelection a').filter('.active').attr('value'),
+            //color : window.userColor,
+            //AppointmentType : 0,
+           
+        };
+        
+    }
+
+      function getValuesFromFormAppointments()
+    {
+        var preferredMethod = $("#perferrefDropdown").text();
+        var preferredMethodOther = $("#perferrefDropdownOther").val();
+        var preferredMethodVal = '';
+        if ( preferredMethod == "Other"){ preferredMethodVal = preferredMethodOther; }
+        else { preferredMethodVal = preferredMethod; }
+
+        var referralMethod = $("#referralDropdown").text();
+        var referralMethodOther = $("#referralDropdownOther").val();
+        var referralMethodVal = '';
+        if ( referralMethod == "Other"){ referralMethodVal = referralMethodOther; }
+        else { referralMethodVal = referralMethod; }
+
+        return {
+          
+            //lead_id : $('.thisLeadId').attr('leadId'),
+            //title : $('.title a.selected-text').attr('value'),
+            //gender : $('.Gender a.selected-text').attr('value'),  
+            //first_name : $("#first_name").val(),
+            //last_name : $("#last_name").val(),
+            //phone_number : $("#phonenumber").val(),
+            //email : $("#email").val(),
+            //country : $('#countryName').attr('value'),
+            //State : $("#stateDropdown").text(),
+            //full_address : $("#fullAddress").val(),
+            //Street : $("#street").val(),
+            //communication_method : $("#CommunicationMethod").text(),
+            //contact_method : preferredMethodVal,  
             product : $("#productDropdown").text(),            
             referral : referralMethodVal,
             only_referral : $("#onlyReferral").val(),
@@ -3989,8 +4046,6 @@ setTimeout(function(){
         };
         
     }
-
-  
     // Save New Booking
     $(document).on('click','.saveNewBooking', function (e) {
       window.saveAndBook = false;
@@ -4059,8 +4114,8 @@ setTimeout(function(){
         }
 
 
-
-        if(title == 'All' || gender == 'All' || firstname == '' || lastname == '' || getPhone == '' || getEmail == '' || getProduct == 'All' || getBudget == 'All' || getAgent == 'All' || checkCountry == false)
+        //if(title == 'All' || gender == 'All' || firstname == '' || lastname == '' || getPhone == '' || getEmail == '' || getProduct == 'All' || getBudget == 'All' || getAgent == 'All' || checkCountry == false)
+        if(title == 'All' || gender == 'All' || firstname == '' || lastname == '' || getPhone == '' || getEmail == '' || checkCountry == false)
         {
           //requiredError
           
@@ -4079,18 +4134,18 @@ setTimeout(function(){
             if(getPhone == '')
             {$('#phonenumber').closest('.relative').find('.requiredError').removeClass('opacity0');}
 
-            if(getProduct == 'All')
-            { $('.producterror').removeClass('opacity0'); }
+            /*if(getProduct == 'All')
+            { $('.producterror').removeClass('opacity0'); }*/
             
             if(getReferral == 'All')
             { //$('.referralerror').removeClass('opacity0'); 
             }
 
-            if(getBudget == 'All')
-            { $('.budgeterror').removeClass('opacity0'); }
+            /*if(getBudget == 'All')
+            { $('.budgeterror').removeClass('opacity0'); }*/
 
-            if(getAgent == 'All')
-            { $('.agenterror').removeClass('opacity0'); }
+            /*if(getAgent == 'All')
+            { $('.agenterror').removeClass('opacity0'); }*/
 
             if(checkCountry == false)
             { 
@@ -4179,9 +4234,11 @@ setTimeout(function(){
         url: "/dashboard/ajaxAddDashboard",
         data: data, 
         success: function (data) {
+            debugger;
             var parsed = '';          
             try{                           
-              parsed = JSON.parse(data);              
+              parsed = JSON.parse(data);     
+             
             }                 
             catch(e)                
             {                  
@@ -4190,6 +4247,33 @@ setTimeout(function(){
 
             if(parsed != 0)
             {
+              var datasend = getValuesFromFormAppointments();
+              datasend.lead_id = parsed;
+              // Ajax Call
+              $.ajax({
+
+                    type: "POST",
+                    url: "/dashboard/ajaxSaveAppointment",
+                    data: datasend,
+                    success: function (data) {
+                      var parsed = '';          
+                      try{                           
+                        parsed = JSON.parse(data);              
+                      }                 
+                      catch(e)                
+                      {                  
+                        return false;                  
+                      }
+                      
+                      window.userColor = '#'+parsed["0"].color;
+                      
+                    }
+                  });
+
+
+                
+              //End Ajax CAll
+              
               $('.thisLeadId').attr('leadId',parsed);
               return false;
             }

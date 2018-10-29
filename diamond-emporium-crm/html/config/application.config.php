@@ -15,7 +15,8 @@ return array(
 		'AuthACL',
 		'Leave',
 		'Dashboard',
- 'SaveDashboard',
+                'SaveDashboard',
+                'Appointment',
     ),
 
     // These are various options for the listeners attached to the ModuleManager
