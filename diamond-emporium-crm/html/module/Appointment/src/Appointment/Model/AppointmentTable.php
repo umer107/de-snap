@@ -371,7 +371,7 @@ class AppointmentTable
                $data['user_booking_date'] = 0;
            }
            
-          $data['isFirstBooked'] = ; 
+           $data['isFirstBooked'] = 0; 
            $this->tableGateway->insert($data);
            $insertedId = $this->tableGateway ->getLastInsertValue();
            return $insertedId;
@@ -429,7 +429,7 @@ class AppointmentTable
             }
          }
          
-        }
+        
      	 catch(\Exception $e){
 			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
 		}
