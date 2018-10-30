@@ -4024,7 +4024,7 @@ setTimeout(function(){
             color : window.userColor,
             AppointmentType : 0,
             isBooked : 0,
-            appointment_id: 0 
+            appointment_id: $('#appointmentId').attr('appointmentId')
         };
         
     }
@@ -4256,34 +4256,49 @@ setTimeout(function(){
               url: "/dashboard/ajaxSaveAppointment",
               data: dataAppointment, 
               success: function (data2) {
-
-                  if(window.AppointmentType == 1)
+                  var parsed2 = '';          
+                  try{                           
+                    parsed2 = JSON.parse(data2);              
+                  }                 
+                  catch(e)                
+                  {                  
+                    return false;                  
+                  }
+                  if(window.saveAndBook == true)
                   {
-                    showMainLoading();
-                    var getAssigneeId = window.selectedAssigneeId;
-                    var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
-                    
-                    loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
+                    $('#appointmentId').attr('appointmentId',parsed2)
+                    return false;
                   }
                   else
                   {
-                    $('.rings a').removeClass('active');
-                    $('.rings a:last-child').addClass('active');
-                    loadLeads();
-                    //Setting header changes
+                    if(window.AppointmentType == 1)
+                    {
+                      showMainLoading();
+                      var getAssigneeId = window.selectedAssigneeId;
+                      var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
+                      
+                      loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
+                    }
+                    else
+                    {
+                      $('.rings a').removeClass('active');
+                      $('.rings a:last-child').addClass('active');
+                      loadLeads();
+                      //Setting header changes
 
-                    showMainLoading();
-                    $('.newLeaveContainer').hide();
-                    $('.newLead').addClass('maxHeightHide');
-                    $('.dashboardContainer').addClass('hide');
-                    $('.leavesContainer').addClass('hide');
-                    $('.leadsContainer').removeClass('hide');
-                    $('.new-Lead').removeClass('active');
-                    $('.dashboard-header').removeClass('hide');
+                      showMainLoading();
+                      $('.newLeaveContainer').hide();
+                      $('.newLead').addClass('maxHeightHide');
+                      $('.dashboardContainer').addClass('hide');
+                      $('.leavesContainer').addClass('hide');
+                      $('.leadsContainer').removeClass('hide');
+                      $('.new-Lead').removeClass('active');
+                      $('.dashboard-header').removeClass('hide');
 
-                    //Reset New lead form
-                    $('.newLead').html(window.getNewLeadAll);
-                    $('.newLead').removeClass('inEditMode');
+                      //Reset New lead form
+                      $('.newLead').html(window.getNewLeadAll);
+                      $('.newLead').removeClass('inEditMode');
+                    }
                   }
                   
                   getSearchData()
@@ -7927,7 +7942,8 @@ function getBookingTime(getTime, bookingStart, Duation) {
                 {                   
                   return false;                  
                 }
-                window.list = parsed; 
+                window.list = parsed;
+                console.log(parsed); 
             }
         });
 
