@@ -209,62 +209,8 @@ $(document).ready(function () {
       GetTeamStatus(); 
     }, 300000);
 
-    // Validate Budget 
-    $(document).on('keyup', '#BudgetText', function () { 
-        var el = $(this);
-        var BudgetNumber = el.val();
-        if(BudgetNumber == '')
-        {
-          $('.budgetForError').html(' ').addClass('opacity0');
-          return false;
-        }
-        else if(!validateNumber(BudgetNumber))
-        {
-          $('.budgetForError').html('Only numbers are allowed').removeClass('opacity0');
-        }
-        else
-        {
-          $('.budgetForError').html(' ').addClass('opacity0');
-        }
 
-    });// End
 
-    // Calling Sales person next in line
-    $(document).on('blur', '#BudgetText', function () { 
-        
-        var el = $(this);
-        var userBudget = el.val();
-        var userBudgetValue = el.val();
-        userBudget = parseInt(userBudget);
-        if(userBudget > 0 && userBudget < 2000)
-        {
-          $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
-          //el.focus();
-          $('#BudgetText').addClass('itHasError');
-        }
-        else if(userBudget == 0)
-        {
-          $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
-          //el.focus();
-          $('#BudgetText').addClass('itHasError');
-        }
-        else if(userBudgetValue == '')
-        {
-          $('.budgetForError').html('Budget should not be less than 2000$').removeClass('opacity0');
-          //el.focus();
-          $('#BudgetText').addClass('itHasError');
-        }
-        else
-        {
-          GetNextInLine(userBudget);
-          if($('.dropdownheightSet').hasClass('hide')) 
-            { 
-                $('.dropdownheightSet').hide().removeClass('hide'); 
-            }
-            $('#BudgetText').removeClass('itHasError');
-        }
-
-    });// End
 
     function GetNextInLine(userBudget) {
        
@@ -965,16 +911,20 @@ $(document).ready(function () {
     
     // Email Check
 
-    $(".checkEmailCount").on("blur",  function() { 
+    $(".checkEmailCount").on("focusout",  function() { 
 
       $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         var getemail = $('#email').val();
         var popuplatedemail = $('#email').hasClass('popuplatedemail');
         if(popuplatedemail == true)
-          { var getLeadId =  $('#email').attr('leadId');  }
+          { 
+            var getLeadId =  $('#email').attr('leadId');  
+          }
         else
-          { var getLeadId =  $('.thisLeadId').attr('leadid');  }
-        
+          { 
+            var getLeadId =  $('.thisLeadId').attr('leadid');  
+          }
+
         var getValue = $('#email').val().length;
         
         if ($.trim(getemail).length == 0) {
@@ -2860,18 +2810,12 @@ setTimeout(function(){
         var getPhone = $('#phonenumber').val();
         var getEmail = $('#email').val();
         var getState = $('#stateDropdown').closest('a.selected-text').attr('value');
-
         var getProduct = $('#productDropdown').closest('a.selected-text').attr('value');
         var getReferral = $('#referralDropdown').closest('a.selected-text').attr('value');
         var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
-        //var getBudget = $('#BudgetText').val();
         var getAgent = $('#assign_us_Dropdown').closest('a.selected-text').attr('value');
         var getCountry = $('#countryName').attr('value');
-        
         var getCity = $('#cityValue').val();
-        
-        
-
         var checkCountry = true;
         if(getCountry == 'Australia')
         {
@@ -2885,11 +2829,8 @@ setTimeout(function(){
             }
         }
         
-        
-        //if(getProduct == 'All' || getReferral == 'All' || getBudget == 'All' || getAgent == 'All' || checkCountry == false)
         if(title == 'All' || gender == 'All' || firstname == '' || lastname == '' || getPhone == '' || getEmail == '' || getProduct == 'All' || getBudget == 'All' || getAgent == 'All' || checkCountry == false)
         {
-          //requiredError
           
             if(title == 'All')
             {$('.titleError').removeClass('opacity0');}
@@ -2919,9 +2860,6 @@ setTimeout(function(){
             if(getProduct == 'All')
             { $('.producterror').removeClass('opacity0'); }
             
-            if(getReferral == 'All')
-            { //$('.referralerror').removeClass('opacity0'); 
-            }
 
             if(getBudget == 'All')
             { $('.budgeterror').removeClass('opacity0'); }
@@ -2932,15 +2870,7 @@ setTimeout(function(){
             if(checkCountry == false)
             { 
                 $('.stateerror').removeClass('opacity0'); 
-                $('.add-address').slideUp();
-                $('.addressContainer').slideDown(300);
             }
-            //if(getCity == 'All')
-            //{ 
-            //    $('.cityerror').removeClass('opacity0'); 
-            //    $('.add-address').slideUp();
-            //    $('.addressContainer').slideDown(300);
-            //}
             
             $(".rightCol").animate({ scrollTop: 0 }, "slow");
             window.validState = false;
@@ -2959,6 +2889,7 @@ setTimeout(function(){
                     
                     $(".rightCol").animate({ scrollTop: 0 }, "slow");
                     window.validState = false;
+                    return false;
                   }
                   else
                   {
@@ -3992,7 +3923,9 @@ setTimeout(function(){
             full_address : $("#fullAddress").val(),
             communication_method : $("#CommunicationMethod").text(),
             contact_method : preferredMethodVal,
-            assign_id : $(".assignToDiv a.selected-text").attr("assigneid")
+            assign_id : $(".assignToDiv a.selected-text").attr("assigneid"),
+            udget : $('#budgetDropdown').closest('a.selected-text').attr('value'), 
+            referral : referralMethodVal
         };
         
     }
@@ -4056,293 +3989,117 @@ setTimeout(function(){
       $('.newLead').html(window.getNewLeadAll);
       $('.newLead').removeClass('inEditMode');
 
-      //$('.btn-cancel').trigger('click');
-      //$('.next-saveDiv, .next-options, .btn-bookNow').removeClass('hide');
-      //$('.savedBooking').addClass('hide');
-      //$('.NewCalendarContainer').addClass('hide');
-      //additionalDetailsExpand();
     });
     
+    /* ==================================================== */
+    /* ==================== Save Form ===================== */
+    /* ==================================================== */
+
     $(document).on('click','#submitbutton', function (e) {
         $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
-        var title = $('.dropdown.title a.selected-text').attr('value');
-        var gender = $('.dropdown.Gender a.selected-text').attr('value');
-        var firstname = $('.firstname').val();
-        var lastname = $('.lastname').val();
-        var getPhone = $('#phonenumber').val();
-        var getEmail = $('#email').val();
-        var getState = $('#stateDropdown').closest('a.selected-text').attr('value');
-
-        var getProduct = $('#productDropdown').closest('a.selected-text').attr('value');
-        var getReferral = $('#referralDropdown').closest('a.selected-text').attr('value');
-        var getBudget = $('#budgetDropdown').closest('a.selected-text').attr('value');
-        //var getBudget = $('#BudgetText').val();
-        var getAgent = $('#assign_us_Dropdown').closest('a.selected-text').attr('value');
-        var getCountry = $('#countryName').attr('value');
-        var getCity = $('#cityValue').val();
-
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
-        
-        
-        var checkCountry = true;
-        if(getCountry == 'Australia')
+        validation();
+      
+        var data = getValuesFromForm();
+        var dataAppointment = getValuesFromFormAppointment();
+
+        if(window.AppointmentType == 1)
         {
-            if(getState == 'All')
-            {
-              checkCountry = false
-            }
-            else
-            {
-              checkCountry = true
-            }
-        }
-
-
-
-        if(title == 'All' || gender == 'All' || firstname == '' || lastname == '' || getPhone == '' || getEmail == '' || getProduct == 'All' || getBudget == 'All' || getAgent == 'All' || checkCountry == false)
-        {
-          //requiredError
-          
-            if(title == 'All')
-            {$('.titleError').removeClass('opacity0');}
-
-            if(gender == 'All')
-            {$('.genderError').removeClass('opacity0');}
-
-            if(firstname == '')
-            {$('.firstname').closest('.relative').find('.requiredError').removeClass('opacity0');}
-
-            if(lastname == '')
-            {$('.lastname').closest('.relative').find('.requiredError').removeClass('opacity0');}
-
-            if(getPhone == '')
-            {$('#phonenumber').closest('.relative').find('.requiredError').removeClass('opacity0');}
-
-            if(getProduct == 'All')
-            { $('.producterror').removeClass('opacity0'); }
-            
-            if(getReferral == 'All')
-            { //$('.referralerror').removeClass('opacity0'); 
-            }
-
-            if(getBudget == 'All')
-            { $('.budgeterror').removeClass('opacity0'); }
-
-            if(getAgent == 'All')
-            { $('.agenterror').removeClass('opacity0'); }
-
-            if(checkCountry == false)
-            { 
-                $('.stateerror').removeClass('opacity0'); 
-                $('.add-address').slideUp();
-                $('.addressContainer').slideDown(300);
-            }
-            //if(getCity == 'All')
-            //{ 
-            //    $('.cityerror').removeClass('opacity0'); 
-            //    $('.add-address').slideUp();
-            //    $('.addressContainer').slideDown(300);
-            //}
-
-            if(getEmail == '')
-            { 
-              $('#email').closest('.relative').find('.requiredError').removeClass('opacity0');
-            }
-            else if(!isValidEmailAddress(getEmail))
-            {
-              $('.emailexists').addClass('opacity0');
-              $('#email').next('label').next('label').removeClass('opacity0');
-            }
-            
-            $(".rightCol").animate({ scrollTop: 0 }, "slow");
-            window.validState = false;
-            return false;
+          dataAppointment.isBooked = 1;
         }
         else
-          { 
-              if(isValidEmailAddress(getEmail))
-              { 
-                var getLeadId =  $('.thisLeadId').attr('leadid');
-                var popuplatedemail = $('#email').hasClass('popuplatedemail');
-                if(getLeadId != "" || popuplatedemail == true )
-                {
-                  if(window.emailexists == true)
-                  {
-                    
-                    $(".rightCol").animate({ scrollTop: 0 }, "slow");
-                    window.validState = false;
-                    return false;
-                  }
-                  else
-                  {
-                    window.validState = true;  
-                  }
-                }
-                else
-                {
-                  if($('.emailexists').hasClass('green'))
-                  {
-                    window.validState = true;
-                  }
-                  else
-                  {
-                    if(window.AppointmentType == 1)
-                    {
-                      window.validState = true;
+        {
+          if(dataAppointment.bookingstart == null)
+          {
+            dataAppointment.isBooked = 0;
+          }
+          else
+          {
+            dataAppointment.isBooked = 0;
+          }
+        }
+
+        //Ajax Call Saving Lead
+        $.ajax({
+          type: "POST",
+          url: "/dashboard/ajaxAddDashboard",
+          data: data, 
+          success: function (data) {
+
+              var parsed = '';          
+              try{                           
+                parsed = JSON.parse(data);              
+              }                 
+              catch(e)                
+              {                  
+                return false;                  
+              }
+
+              // Ajax Call Saving Appointment
+              dataAppointment.lead_id = parsed;
+              $.ajax({
+                type: "POST",
+                url: "/dashboard/ajaxSaveAppointment",
+                data: dataAppointment, 
+                success: function (data2) {
+                    var parsed2 = '';          
+                    try{                           
+                      parsed2 = JSON.parse(data2);              
+                    }                 
+                    catch(e)                
+                    {                  
+                      return false;                  
                     }
-                    else
+                    if(window.saveAndBook == true)
                     {
-                      $(".rightCol").animate({ scrollTop: 0 }, "slow");
-                      window.validState = false;
+                      $('#appointmentId').attr('appointmentId',parsed2)
                       return false;
                     }
-                    
-                  }
-                }
-              }
-              else
-              {
-                $('.emailexists').addClass('opacity0');
-                $('#email').next('label').next('label').removeClass('opacity0');
-                
-                $(".rightCol").animate({ scrollTop: 0 }, "slow");
-                window.validState = false;
-                return false;
-              }
-              
-          }
-
-      
-      var data = getValuesFromForm();
-      var dataAppointment = getValuesFromFormAppointment();
-
-      if(window.AppointmentType == 1)
-      {
-        dataAppointment.isBooked = 1;
-      }
-      else
-      {
-        if(dataAppointment.bookingstart == null)
-        {
-          dataAppointment.isBooked = 0;
-        }
-        else
-        {
-          dataAppointment.isBooked = 0;
-        }
-      }
-
-      //Ajax Call Saving Lead
-      $.ajax({
-        type: "POST",
-        url: "/dashboard/ajaxAddDashboard",
-        //url: "/dashboard/ajaxSaveAppointment",
-        data: data, 
-        success: function (data) {
-
-            var parsed = '';          
-            try{                           
-              parsed = JSON.parse(data);              
-            }                 
-            catch(e)                
-            {                  
-              return false;                  
-            }
-
-            // Ajax Call Saving Appointment
-            dataAppointment.lead_id = parsed;
-            $.ajax({
-              type: "POST",
-              url: "/dashboard/ajaxSaveAppointment",
-              data: dataAppointment, 
-              success: function (data2) {
-                  var parsed2 = '';          
-                  try{                           
-                    parsed2 = JSON.parse(data2);              
-                  }                 
-                  catch(e)                
-                  {                  
-                    return false;                  
-                  }
-                  if(window.saveAndBook == true)
-                  {
-                    $('#appointmentId').attr('appointmentId',parsed2)
-                    return false;
-                  }
-                  else
-                  {
-                    if(window.AppointmentType == 1)
-                    {
-                      showMainLoading();
-                      var getAssigneeId = window.selectedAssigneeId;
-                      var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
-                      
-                      loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
-                    }
                     else
                     {
-                      $('.rings a').removeClass('active');
-                      $('.rings a:last-child').addClass('active');
-                      loadLeads();
-                      //Setting header changes
+                      if(window.AppointmentType == 1)
+                      {
+                        showMainLoading();
+                        var getAssigneeId = window.selectedAssigneeId;
+                        var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
+                        
+                        loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
+                      }
+                      else
+                      {
+                        $('.rings a').removeClass('active');
+                        $('.rings a:last-child').addClass('active');
+                        loadLeads();
+                        //Setting header changes
 
-                      showMainLoading();
-                      $('.newLeaveContainer').hide();
-                      $('.newLead').addClass('maxHeightHide');
-                      $('.dashboardContainer').addClass('hide');
-                      $('.leavesContainer').addClass('hide');
-                      $('.leadsContainer').removeClass('hide');
-                      $('.new-Lead').removeClass('active');
-                      $('.dashboard-header').removeClass('hide');
+                        showMainLoading();
+                        $('.newLeaveContainer').hide();
+                        $('.newLead').addClass('maxHeightHide');
+                        $('.dashboardContainer').addClass('hide');
+                        $('.leavesContainer').addClass('hide');
+                        $('.leadsContainer').removeClass('hide');
+                        $('.new-Lead').removeClass('active');
+                        $('.dashboard-header').removeClass('hide');
 
-                      //Reset New lead form
-                      $('.newLead').html(window.getNewLeadAll);
-                      $('.newLead').removeClass('inEditMode');
+                        //Reset New lead form
+                        $('.newLead').html(window.getNewLeadAll);
+                        $('.newLead').removeClass('inEditMode');
+                      }
                     }
-                  }
-                  
-                  getSearchData()
-                  return false;
-              }
-            });
-            
-            //if(parsed != 0)
-            // {
-            //  if(window.AppointmentType == 1)
-            //  {
-                
-            //  }
-            //  else
-            //  {
-            //    $('.thisLeadId').attr('leadId',parsed);
-            //    return false;
-            //  }
-            //}
-            
-            //if(window.AppointmentType == 1)
-            // {
-            //   showMainLoading();
-            //   var getAssigneeId = window.selectedAssigneeId;
-            //   var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
-              
-            //   loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
-            //}
-            //else
-            // {
-              
-            //}
-            
-            
-            
-        }
-      });    
-      return false;
-      //End Ajax Call
+                    getSearchData()
+                    return false;
+                }
+              });
+          }
+        });    
+        return false;
+        //End Ajax Call
 
-      
-      //$("#dashboard").submit();
+      });
+    /* ==================================================== */
+    /* ================== End Save Form =================== */
+    /* ==================================================== */
 
-    });
 
     $('.newLead').click(function(){
       //alert('a');

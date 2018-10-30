@@ -652,7 +652,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .submitDates:hover, .submitDatesCloseLead:hover{background-color:#29629a; color:#fff}
 .mainLoader{position: fixed; width: 100%; z-index: 100; background: #f1f2f1; height: 100%; left: 0; right: 0; top: 0; bottom: 0;}
 .mainLoader img{ max-width: 500px; position: absolute; top: 50%; transform: translateY(-50%); text-align: center; margin: 0 auto; left: 0; right: 0;}
-.rings a{ background-color: white; border: 1px solid #dfdfdf; border-radius: 30px; color: #7499bd; display: inline-block; line-height: 24px; margin: 0 1px; text-align: center; min-width: 94px; padding: 0 4px;}
+.rings a{    font-size: 13px; background-color: white; border: 1px solid #dfdfdf; border-radius: 30px; color: #7499bd; display: inline-block; line-height: 24px; margin: 2px 1px 0 1px; text-align: center; min-width: 94px; padding: 0 4px;}
 .bookingRooms a{ margin: 0 5px; background-color: white; border: 1px solid #dfdfdf; border-radius: 30px; color: #7499bd; display: inline-block; line-height: 25px; text-align: center; min-width: 89px; padding: 0 4px;}
 .rings a.active, .rings a:hover,.bookingRooms a.active, .bookingRooms a:hover { background: #29629a; color: white; }
 /* End leaves Container */
