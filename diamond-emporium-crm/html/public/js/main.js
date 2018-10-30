@@ -4363,7 +4363,7 @@ setTimeout(function(){
                   }
                   else
                   {
-                    $('.next-saveDiv, .btn-bookNow').removeClass('hide');
+                    $('.next-saveDiv').removeClass('hide');
                   }    
                   $('.calendarWeeklyDate').attr('bookingDate', parsed[0].booking_date); 
                   $('.newLead').removeClass('hide');
@@ -4382,7 +4382,10 @@ setTimeout(function(){
 /*--------------------- --Load Question View Calender Start ------- */
 /*------------------------------------------------------------------*/
 
-
+    function myFunction()
+    {
+      alert('ok');
+    }
     function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate)
     { 
 
