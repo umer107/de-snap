@@ -3789,7 +3789,12 @@ setTimeout(function(){
             assign_id : $(".assignToDiv a.selected-text").attr("assigneid"),
             assign_to : $("#assign_us_Dropdown").text(),
             budget : $('#budgetDropdown').closest('a.selected-text').attr('value'), 
-            referral : referralMethodVal
+            referral : referralMethodVal,
+            product : $("#productDropdown").text(),  
+            reference_product : $("#referrenceDropdown").val(),
+            only_referral : $("#onlyReferral").val(),
+            specify_requirements : $("#specify_requirements").val(), 
+            special_instructions : $("[name= 'special_instructions']").val()
         };
         
     }
