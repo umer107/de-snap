@@ -3992,8 +3992,7 @@ setTimeout(function(){
             full_address : $("#fullAddress").val(),
             communication_method : $("#CommunicationMethod").text(),
             contact_method : preferredMethodVal,
-            isBooked : false      
-           
+            assign_id : $(".assignToDiv a.selected-text").attr("assigneid")
         };
         
     }
@@ -4023,7 +4022,8 @@ setTimeout(function(){
             customerName : $('#bookingDate').attr('customerName'),
             salesRepName : $('#bookingDate').attr('salesRepName'),
             color : window.userColor,
-            AppointmentType : 0
+            AppointmentType : 0,
+            isBooked : false 
         };
         
     }
