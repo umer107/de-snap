@@ -3862,7 +3862,7 @@ setTimeout(function(){
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
         validation();
       
-        var data = getValuesFromForm();
+        var dataLead = getValuesFromForm();
         var dataAppointment = getValuesFromFormAppointment();
 
         if(window.AppointmentType == 1)
@@ -3885,7 +3885,7 @@ setTimeout(function(){
         $.ajax({
           type: "POST",
           url: "/dashboard/ajaxAddDashboard",
-          data: data, 
+          data: dataLead, 
           success: function (data) {
 
               var parsed = '';          
