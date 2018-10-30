@@ -3914,7 +3914,7 @@ setTimeout(function(){
                     }
                     if(window.saveAndBook == true)
                     {
-                      $('#appointmentId').attr('appointmentId',parsed2)
+                      $('#appointmentId').attr('appointmentId',parsed2.insertedId)
                       return false;
                     }
                     else
@@ -3929,6 +3929,20 @@ setTimeout(function(){
                       }
                       else
                       {
+                        if(parsed2.insertedId == 0)
+                        {
+                          var updatedBooking =  { lead_id : parsed2.lead_id , booking_date : parsed2.booking_date }
+                          $.ajax({
+                            type: "POST",
+                            url: "/dashboard/ajaxAddDashboard",
+                            data: updatedBooking, 
+                            success: function (data3) {
+                              var checkData = data3;
+                            }
+                          }); 
+                        }
+                        
+
                         $('.rings a').removeClass('active');
                         $('.rings a:last-child').addClass('active');
                         loadLeads();
