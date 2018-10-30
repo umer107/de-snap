@@ -424,8 +424,8 @@ class AppointmentTable
                         
                    //return $this->tableGateway->update($data, $where);
                     $this->tableGateway->update($data, $where);
-                    $returnArray['lead_id'] = $date['lead_id'];
-                    $returnArray['booking_date'] = $date['booking_date'];
+                    $returnArray['lead_id'] = $data['lead_id'];
+                    $returnArray['booking_date'] = $data['booking_date'];
                     $returnArray['insertedId'] = 0;
                     return returnArray;
              } 
