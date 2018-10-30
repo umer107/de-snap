@@ -417,7 +417,7 @@ class DashboardController extends AbstractActionController
             $leadsTable = $this->getServiceLocator()->get('Leave\Model\LeaveTable');
             $leadsArr = $leadsTable->fetchLeadRecord($params);
             echo json_encode($leadsArr);
-      exit;
+            exit;
             
                     
            

@@ -312,13 +312,30 @@ class SaveDashboardTable
                           
                     $this->tableGateway->update($data, $where);
                     return 0;
-                } 
-                else{
+                 } 
+                 else{
                     
                     $this->tableGateway->update($data, array('id' => $leadId));
                     return 0;
-               }
+                 }
+               
+                
                      
+                 }
+                 
+                 //Update All
+                      $AssignInUserId = $data['assign_id'];
+                      unset($data['assign_id']);
+                      $data['assign_to_UserId'] = $AssignInUserId;
+                 if($where){
+                          
+                    $this->tableGateway->update($data, $where);
+                    return 0;
+                 } 
+                 else{
+                    
+                    $this->tableGateway->update($data, array('id' => $leadId));
+                    return 0;
                  }
                  
                 

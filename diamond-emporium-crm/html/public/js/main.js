@@ -4145,8 +4145,8 @@ setTimeout(function(){
                   
                   //Setting Lead Id
                   
-                  //$('.thisLeadId').attr('leadId',parsed.id);
-                  $('#email').addClass('popuplatedemail');
+                  $('.thisLeadId').attr('leadId',parsed.id);
+                  //$('#email').addClass('popuplatedemail');
                   $("#appointmentId").attr('appointmentid',parsed.appointment_id)
                   
                   // Basic Info Fields
