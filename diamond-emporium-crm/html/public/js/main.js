@@ -919,7 +919,8 @@ $(document).ready(function () {
 
     $(".checkEmailCount").on("focusout",  function() { 
 
-      $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
+      $('#email').next().addClass('opacity0').next().next('.requiredError').addClass('opacity0');
+
         var getemail = $('#email').val();
         var popuplatedemail = $('#email').hasClass('popuplatedemail');
         if(popuplatedemail == true)
@@ -3786,6 +3787,7 @@ setTimeout(function(){
             communication_method : $("#CommunicationMethod").text(),
             contact_method : preferredMethodVal,
             assign_id : $(".assignToDiv a.selected-text").attr("assigneid"),
+            assign_to : $("#assign_us_Dropdown").text(),
             budget : $('#budgetDropdown').closest('a.selected-text').attr('value'), 
             referral : referralMethodVal
         };
@@ -3861,7 +3863,10 @@ setTimeout(function(){
         $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
         validation();
-      
+        if(window.validState == false)
+        {
+          return false;
+        }
         var dataLead = getValuesFromForm();
         var dataAppointment = getValuesFromFormAppointment();
 
@@ -6648,12 +6653,12 @@ function loadLeads(){
 
                                 // Setting Status
                                 var newArray = leads[j].items;
-                                var newArray2 = leads[j].items[i].create_date;
-                                newArray.sort(function(a, b) {
-                                    var textA = a.create_date;
-                                    var textB = b.create_date;
-                                    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-                                });
+                                //var newArray2 = leads[j].items[i].create_date;
+                                //newArray.sort(function(a, b) {
+                                //    var textA = a.create_date;
+                                //    var textB = b.create_date;
+                                //    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+                                //});
 
                                 //[""0""].items[""0""].create_date
 
@@ -6687,22 +6692,20 @@ function loadLeads(){
                                 {  referral = '/images/ic_other.png'  }
 
                                 // Binding Set Html Leads
-                                var initialBooking = leads[i].items[j].isFirstBooked;
-                                if(initialBooking == 0)
+                                
+                                if(leads[i].items[j].lead_status == "Open")
                                 {
-                                  if(leads[i].items[j].lead_status == "Open")
-                                  {
-                                     var getLeadPopup = $('#closeLead').html();
-                                     
-                                     setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Close</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';
-                                  }
-                                  else
-                                  {
-                                     var getLeadPopup = $('#closeLead').html();
-                                     
-                                     setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Open</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';                                  
-                                  }
+                                   var getLeadPopup = $('#closeLead').html();
+                                   
+                                   setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Close</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';
                                 }
+                                else
+                                {
+                                   var getLeadPopup = $('#closeLead').html();
+                                   
+                                   setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Open</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';                                  
+                                }
+                                
                                 
 
                             }
