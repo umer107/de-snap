@@ -794,13 +794,16 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $select = new \Zend\Db\Sql\Select();
                 $select->from('de_userdetail')->columns(array('id'));
                 $select = new \Zend\Db\Sql\Select();
-                $select->from(array('l' => 'de_userdetail'))
+                /*$select->from(array('l' => 'de_userdetail'))
                       ->columns(array(
                 'id','title' , 'gender' , 'first_name' , 'last_name' , 'phone_number' , 'email' , 'country' ,'State' ,'full_address', 'communication_method' , 'product' , 'product_shortcode' , 'referral' , 'only_referral' , 'special_instructions' , 'budget' , 'reference_product' , 'contact_method' , 'assign_to' , 'assignto_shortcode' , 'assign_to_UserId' , 'reson_skip_next_in_line' , 'specify_requirements' , 'lead_status' , 'lead_owner' , 'lead_owner_name' , 'create_date' , 'lead_close_date' , 'booking_date' , 'booking_time' , 'booking_room' , 'user_booking_date' ,'color' , 'durationTime' ,'bookingstart'  
                 ))
-                ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('booking_color' => 'color'), 'left');    
+                ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('booking_color' => 'color'), 'left');    */
               
-               
+               $select->from(array('l' => 'de_appointments'))
+                       ->columns(array('appointment_id','lead_id' , 'product' , 'product_shortcode' , 'referral' , 'only_referral' , 'special_instructions' , 'budget' , 'reference_product'  , 'assign_to' , 'assignto_shortcode' , 'assign_to_UserId' , 'reson_skip_next_in_line' , 'specify_requirements' , 'lead_status' , 'lead_owner' , 'lead_owner_name' , 'create_date' , 'lead_close_date' , 'booking_date' , 'booking_time' , 'booking_room' , 'user_booking_date' ,'color' , 'durationTime' ,'bookingstart'))      
+                       ->join(array('la' => 'de_userdetail'), 'l.lead_id = la.id', array('id' , 'title' , 'gender' , 'first_name', 'last_name', 'phone_number', 'email', 'country', 'State', 'full_address','communication_method', 'contact_method'), 'left')
+                       ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('booking_color' => 'color'), 'left');
                //Filter The Data Of Current Week
                if(!empty($filter['booking_date']))
                {                  

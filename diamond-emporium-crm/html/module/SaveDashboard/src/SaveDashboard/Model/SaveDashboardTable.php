@@ -277,7 +277,7 @@ class SaveDashboardTable
                  }
                  else
                  {
-                     
+                      $data['lead_status'] = 'Open';
                       $AssignInUserId = $data['assign_id'];
                       unset($data['assign_id']);
                       $data['assign_to_UserId'] = $AssignInUserId;
