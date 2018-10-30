@@ -352,9 +352,9 @@ class AppointmentTable
             $leadId = $data['lead_id'];
             //unset($data['lead_id']);
           
-            if(!empty($leadId) && $data['isBooked'] == 1)
+             if(!empty($leadId) && empty($data['appointment_id']))
              {
-              $data['lead_status'] = 'Open';
+               $data['lead_status'] = 'Open';
            
               if(empty($data['booking_room']))
                {
@@ -378,6 +378,9 @@ class AppointmentTable
         
           else {
               
+            if(!empty($leadId) && !empty($data['appointment_id']))
+            {
+             $app = $data['appointment_id'];
              if(empty($data['booking_room']))
              {
                if(empty($data['booking_date']))
@@ -398,9 +401,11 @@ class AppointmentTable
              } 
              else{
                   //return $this->tableGateway->update($data, array('id' => $leadId));
-                    $this->tableGateway->update($data, array('id' => $leadId));
+                    $this->tableGateway->update($data, array('appointment_id' => $app));
                     return 0;
              }
+                
+            }
          }
          
         }
