@@ -342,9 +342,10 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                        
                   $select = new \Zend\Db\Sql\Select();
                   $select->from(array('l' => 'de_userdetail'))
-                        ->columns(array('id','title','gender','first_name', 'last_name', 'phone_number', 'email', 'country','communication_method', 'contact_method'))         
-                        ->join(array('a' => 'de_appointments'), 'l.id = a.lead_id', array('user_booking_date','product', 'referral','special_instructions','budget','reference_product','lead_owner_fullname' => 'lead_owner_name', 'assign_to','reson_skip_next_in_line','lead_status','lead_owner','create_date','booking_date','isFirstBooked'), 'left')
-                        ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('lead_owner_image' => 'image' ), 'left');;
+                        ->columns(array('id','title','gender','first_name', 'last_name', 'phone_number', 'email', 'country','communication_method', 'contact_method','referral','budget','lead_status','assign_to_UserId'))
+                        ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('lead_owner_image' => 'image' ), 'left');
+                        
+                        //->join(array('a' => 'de_appointments'), 'l.id = a.lead_id', array('user_booking_date','product', 'referral','special_instructions','budget','reference_product','lead_owner_fullname' => 'lead_owner_name', 'assign_to','reson_skip_next_in_line','lead_status','lead_owner','create_date','booking_date','isFirstBooked'), 'left')
                   //Start-Filter-Parameter-From-User
                    $value = $filter['budget'];
                    $lead_status = $filter['lead_status'];
@@ -368,43 +369,43 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                      $start_budget = 0;
                      $end_budget = 0;
                     if($filter['budget'] == '$2,000 - $4,999'){                                                  
-                       $select->where(array('a.budget = ?' =>  $filter['budget']));
+                       $select->where(array('l.budget = ?' =>  $filter['budget']));
                       }
                     else if($filter['budget'] == '$5,000 - $9,999')
                       {
-                        $select->where(array('a.budget = ?' =>  $filter['budget']));
+                        $select->where(array('l.budget = ?' =>  $filter['budget']));
                       }
                       else if($filter['budget'] == '$10,000 - $19,999')
                        {
-                         $select->where(array('a.budget = ?' =>  $filter['budget']));
+                         $select->where(array('l.budget = ?' =>  $filter['budget']));
                        }
                             else if($filter['budget'] == '$20,000 - $34,999')
                             {
-                               $select->where(array('a.budget = ?' =>  $filter['budget']));
+                               $select->where(array('l.budget = ?' =>  $filter['budget']));
                             }
                             else if($filter['budget'] == '$35,000 - $49,999')
                             {
-                              $select->where(array('a.budget = ?' =>  $filter['budget'])); 
+                              $select->where(array('l.budget = ?' =>  $filter['budget'])); 
                             }
                             else if($filter['budget'] == '$50,000 - $74,999')
                             {
-                              $select->where(array('a.budget = ?' =>  $filter['budget']));
+                              $select->where(array('l.budget = ?' =>  $filter['budget']));
                             }
                             else if($filter['budget'] == '$75,000 - $99,999')
                             {
-                              $select->where(array('a.budget = ?' =>  $filter['budget']));
+                              $select->where(array('l.budget = ?' =>  $filter['budget']));
                             }    
                             else if($filter['budget'] == '$100,000+')
                             {
-                              $select->where(array('a.budget = ?' =>  $filter['budget']));
+                              $select->where(array('l.budget = ?' =>  $filter['budget']));
                             }
                             //$select->where(array('l.budget = ?' =>  $value));
       }
                         if(!empty($filter['lead_status'])) {
-        $select->where(array('a.lead_status = ?' =>  $lead_status));
+        $select->where(array('l.lead_status = ?' =>  $lead_status));
       }
                         if(!empty($filter['referral'])) {
-        $select->where(array('a.referral = ?' =>  $referral));
+        $select->where(array('l.referral = ?' =>  $referral));
       }                       
                         //Start Working With Calender
                          if($filter['booking_date'] == 'All')
@@ -418,13 +419,13 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                           
                            if(!empty($filter['booking_date'])) {
                                
-                           $select->where->between('a.booking_date', $start_date, $end_date);
+                           $select->where->between('l.booking_date', $start_date, $end_date);
                            
                            }
                          }
                          else if(!empty($filter['booking_date'])) {
                                   
-        $select->where(array('a.booking_date = ?' =>  $booking_date));
+        $select->where(array('l.booking_date = ?' =>  $booking_date));
                 
                                 
                               }
@@ -436,7 +437,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                              $filter['booking_date'] = $today_booking_date;
                              if(!empty($filter['booking_date'])) {
                                   
-        $select->where(array('a.booking_date = ?' =>  $filter['booking_date']));
+        $select->where(array('l.booking_date = ?' =>  $filter['booking_date']));
                 
                                 
                               }
@@ -448,7 +449,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                              $filter['booking_date'] = $yesterday_booking_date;
                              if(!empty($filter['booking_date'])) {
                                   
-        $select->where(array('a.booking_date = ?' =>  $filter['booking_date']));
+        $select->where(array('l.booking_date = ?' =>  $filter['booking_date']));
                 
                                 
                               }
@@ -459,7 +460,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                            $end_date = date("Y-m-d",strtotime("sunday this week"));
                           
                            if(!empty($filter['booking_date'])) {
-                           $select->where->between('a.booking_date', $start_date, $end_date);
+                           $select->where->between('l.booking_date', $start_date, $end_date);
                            }
                            
                           
@@ -501,15 +502,15 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                              $end_date = date('Y-m-d', strtotime( $end_date1 ));
                              if(!empty($filter['booking_date'])) {
                                  
-                             $select->where->between('a.booking_date', $start_date, $end_date);
+                             $select->where->between('l.booking_date', $start_date, $end_date);
                              
                              
                              }
                          }
                          //End Working With Calender
                          
-                          $filter_lead_Appointment = 0;
-                          $select->where(array('a.AppointmentType = ?' =>  $filter_lead_Appointment));
+                          //$filter_lead_Appointment = 0;
+                          //$select->where(array('a.AppointmentType = ?' =>  $filter_lead_Appointment));
                           //Start Sorting
                           $select->order('id Desc');
                           //End Sorting

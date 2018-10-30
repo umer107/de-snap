@@ -3924,7 +3924,7 @@ setTimeout(function(){
             communication_method : $("#CommunicationMethod").text(),
             contact_method : preferredMethodVal,
             assign_id : $(".assignToDiv a.selected-text").attr("assigneid"),
-            udget : $('#budgetDropdown').closest('a.selected-text').attr('value'), 
+            budget : $('#budgetDropdown').closest('a.selected-text').attr('value'), 
             referral : referralMethodVal
         };
         
