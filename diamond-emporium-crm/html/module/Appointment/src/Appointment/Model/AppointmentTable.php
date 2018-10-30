@@ -352,7 +352,7 @@ class AppointmentTable
             $leadId = $data['lead_id'];
             //unset($data['lead_id']);
           
-            if(!empty($leadId) || $data['AppointmentType'] == 1)
+            if(!empty($leadId) && $data['isBooked'] == 1)
              {
               $data['lead_status'] = 'Open';
            
