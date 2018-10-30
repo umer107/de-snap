@@ -291,13 +291,12 @@ class SaveDashboardTable
             else
             {
                 if($where){
-                        
-                   //return $this->tableGateway->update($data, $where);
+                          
                     $this->tableGateway->update($data, $where);
                     return 0;
                 } 
                 else{
-                  //return $this->tableGateway->update($data, array('id' => $leadId));
+                    
                     $this->tableGateway->update($data, array('id' => $leadId));
                     return 0;
                }

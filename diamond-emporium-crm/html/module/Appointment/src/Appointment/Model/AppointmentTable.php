@@ -354,6 +354,7 @@ class AppointmentTable
           
              if(!empty($leadId) && empty($data['appointment_id']))
              {
+               unset($data['appointment_id']);
                $data['lead_status'] = 'Open';
            
               if(empty($data['booking_room']))
@@ -378,7 +379,7 @@ class AppointmentTable
         
           else {
               
-            if(!empty($leadId) && !empty($data['appointment_id']))
+            if(!empty($leadId))
             {
              $app = $data['appointment_id'];
              if(empty($data['booking_room']))
