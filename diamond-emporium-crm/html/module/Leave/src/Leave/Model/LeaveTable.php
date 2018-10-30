@@ -401,13 +401,13 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                               $select->where(array('l.budget = ?' =>  $filter['budget']));
                             }
                             //$select->where(array('l.budget = ?' =>  $value));
-      }
-                        if(!empty($filter['lead_status'])) {
-        $select->where(array('l.lead_status = ?' =>  $lead_status));
-      }
-                        if(!empty($filter['referral'])) {
-        $select->where(array('l.referral = ?' =>  $referral));
-      }                       
+                            }
+                            if(!empty($filter['lead_status'])) {
+                              $select->where(array('l.lead_status = ?' =>  $lead_status));
+                            }
+                                              if(!empty($filter['referral'])) {
+                              $select->where(array('l.referral = ?' =>  $referral));
+                            }                       
                         //Start Working With Calender
                          if($filter['booking_date'] == 'All')
                          {

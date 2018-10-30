@@ -4384,7 +4384,7 @@ setTimeout(function(){
 
     function myFunction()
     {
-      alert('ok');
+      //alert('ok');
     }
     function loadQuestionViewcalnder(getAssigneeId, getWeeklyDate)
     { 
@@ -7170,8 +7170,8 @@ $(document).on('click','.leadUserName', function (e) {
               }
             
                 // Append Agent list into agent dropdown
-                $('.editDetails').attr('lead-id',parsed[0].id)
-                if(parsed[0].lead_status == "Closed")
+                $('.editDetails').attr('lead-id',parsed.id)
+                if(parsed.lead_status == "Closed")
                 {
                     $('.editDetails').addClass('disabled');
                 }
@@ -7181,36 +7181,36 @@ $(document).on('click','.leadUserName', function (e) {
                 }
                 var html = "";
                
-               html += "<p><label>Title:</label><label>" + parsed[0].title + "</label></p> ";
-               html += "<p><label>Gender:</label><label>" + parsed[0].gender + "</label></p> ";
-               html += "<p><label>First Name:</label><label>" + parsed[0].first_name.replace(/'/g, '"') + "</label></p> ";
-               html += "<p><label>Last Name:</label><label>" + parsed[0].last_name + " </label></p> ";
-               html += "<p><label>Phone Number:</label><label>" + parsed[0].phone_number + " </label></p> ";
-               html += "<p><label>Email:</label><label>" + parsed[0].email + " </label></p> ";
-               html += "<p><label>Country:</label><label>" + parsed[0].country + " </label></p> ";
-               if(parsed[0].country == 'Australia')
+               html += "<p><label>Title:</label><label>" + parsed.title + "</label></p> ";
+               html += "<p><label>Gender:</label><label>" + parsed.gender + "</label></p> ";
+               html += "<p><label>First Name:</label><label>" + parsed.first_name.replace(/'/g, '"') + "</label></p> ";
+               html += "<p><label>Last Name:</label><label>" + parsed.last_name + " </label></p> ";
+               html += "<p><label>Phone Number:</label><label>" + parsed.phone_number + " </label></p> ";
+               html += "<p><label>Email:</label><label>" + parsed.email + " </label></p> ";
+               html += "<p><label>Country:</label><label>" + parsed.country + " </label></p> ";
+               if(parsed.country == 'Australia')
                {
-                  html += "<p><label>State:</label><label>" + parsed[0].State + " </label></p> ";
+                  html += "<p><label>State:</label><label>" + parsed.State + " </label></p> ";
                }
-               html += "<p><label>Full Address:</label><label>" + parsed[0].full_address + " </label></p> ";
-               html += "<p><label>Lead Source:</label><label>" + parsed[0].communication_method + " </label></p> ";
-               html += "<p><label>Preferred method of contact:</label><label>" + parsed[0].contact_method + " </label></p> ";
-               html += "<p><label>Product:</label><label>" + parsed[0].product + " </label></p> ";
-               html += "<p><label>How did they hear about us?:</label><label>" + parsed[0].referral + " </label></p> ";
-               html += "<p><label>Referral:</label><label>" + parsed[0].only_referral + " </label></p> ";
-               html += "<p><label>What they are looking for:</label><label>" + parsed[0].specify_requirements + " </label></p> ";
-               html += "<p><label>Special Instructions:</label><label>" + parsed[0].special_instructions + " </label></p> ";
-               html += "<p><label>Budget:</label><label>" + parsed[0].budget + " </label></p> ";
-               html += "<p><label>Assign To:</label><label>" + parsed[0].assign_to + " </label></p> ";
-               html += "<p><label>Reference Product:</label><label>" + parsed[0].reference_product + " </label></p> ";
-               html += "<p><label>Lead Status:</label><label>" + parsed[0].lead_status + " </label></p> ";
-               if(parsed[0].user_booking_date == '0')
+               html += "<p><label>Full Address:</label><label>" + parsed.full_address + " </label></p> ";
+               html += "<p><label>Lead Source:</label><label>" + parsed.communication_method + " </label></p> ";
+               html += "<p><label>Preferred method of contact:</label><label>" + parsed.contact_method + " </label></p> ";
+               html += "<p><label>Product:</label><label>" + parsed.product + " </label></p> ";
+               html += "<p><label>How did they hear about us?:</label><label>" + parsed.referral + " </label></p> ";
+               html += "<p><label>Referral:</label><label>" + parsed.only_referral + " </label></p> ";
+               html += "<p><label>What they are looking for:</label><label>" + parsed.specify_requirements + " </label></p> ";
+               html += "<p><label>Special Instructions:</label><label>" + parsed.special_instructions + " </label></p> ";
+               html += "<p><label>Budget:</label><label>" + parsed.budget + " </label></p> ";
+               html += "<p><label>Assign To:</label><label>" + parsed.assign_to + " </label></p> ";
+               html += "<p><label>Reference Product:</label><label>" + parsed.reference_product + " </label></p> ";
+               html += "<p><label>Lead Status:</label><label>" + parsed.lead_status + " </label></p> ";
+               if(parsed.user_booking_date == '0')
                {
-                  var getBookingSlot = getTimeSlotFull(parsed[0].booking_time);
-                  var getStartingTime = getBookingTime(parsed[0].booking_time, parsed[0].bookingstart );
+                  var getBookingSlot = getTimeSlotFull(parsed.booking_time);
+                  var getStartingTime = getBookingTime(parsed.booking_time, parsed.bookingstart );
                   html += "<p><label>Booking Time:</label><label>" + getStartingTime + " </label></p> ";
-                  html += "<p><label>Booking Duarion:</label><label>" + parsed[0].durationTime + " mints </label></p> ";
-                  html += "<p><label>Booking Date:</label><label>" + parsed[0].booking_date + " </label></p> ";
+                  html += "<p><label>Booking Duration:</label><label>" + parsed.durationTime + " mints </label></p> ";
+                  html += "<p><label>Booking Date:</label><label>" + parsed.booking_date + " </label></p> ";
                }
                
                 $('.leadDeailInnerContainer div').html(html);
