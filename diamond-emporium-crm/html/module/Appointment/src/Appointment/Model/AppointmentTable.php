@@ -385,7 +385,7 @@ class AppointmentTable
                    $select = new \Zend\Db\Sql\Select();
                    $select->from(array('u' => 'de_appointments'))
                     ->columns(array('appointment_id','lead_id'));
-                    $select->where(array('u.lead_id = ?' =>  $leadId);
+                   $select->where(array('u.lead_id = ?' =>  $leadId));
                     $exec_data = $this->executeQuery($select);
                     $counter = count($exec_data);
                     if($counter == 1)
