@@ -290,6 +290,8 @@ class SaveDashboardTable
             }
             else
             {
+                $leadId = $data['lead_id'];
+                unset($data['lead_id']);
                 if($where){
                           
                     $this->tableGateway->update($data, $where);

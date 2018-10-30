@@ -332,7 +332,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
         {
             try {
                 
-                  $select = new \Zend\Db\Sql\Select();
+                      $select = new \Zend\Db\Sql\Select();
                   $select->from('de_userdetail')->columns(array('id'));                        
                         
                   //FullName  From Table "de_users"
