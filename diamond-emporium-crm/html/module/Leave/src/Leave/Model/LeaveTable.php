@@ -1629,23 +1629,31 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         $image = new \Zend\Db\Sql\Expression(
         'u.image'
       );
-      $select = new \Zend\Db\Sql\Select();
+      /*$select = new \Zend\Db\Sql\Select();
       $select->from(array('l' => 'de_userdetail'))
            ->columns(array(
               'id','title','gender','first_name', 'last_name', 'phone_number', 'email','country', 'full_address' ,'communication_method','product_shortcode','user_booking_date','State','product', 'referral', 'only_referral' ,'special_instructions','budget','reference_product', 'contact_method', 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_room','durationTime','bookingstart','customerName','salesRepName'          
-           ));
+           ));*/
+                        
+      $select = new \Zend\Db\Sql\Select();
+                  $select->from(array('l' => 'de_userdetail'))
+                        ->columns(array('id','title','gender','first_name', 'last_name', 'phone_number', 'email', 'country','communication_method', 'contact_method'))         
+                        ->join(array('a' => 'de_appointments'), 'l.id = a.lead_id', array('appointment_id','user_booking_date','product', 'referral','special_instructions','budget','reference_product','lead_owner_fullname' => 'lead_owner_name', 'assign_to','reson_skip_next_in_line','lead_status','lead_owner','create_date','booking_date','isFirstBooked'), 'left');
                         
                       
                         $value = $filter['leadId'];    
                         if(!empty($filter['leadId'])) {
-        $select->where(array('l.id = ?' =>  $value));
-      }
+                              $select->where(array('l.id = ?' =>  $value));
+                             }
                         
                         $data = $this->executeQuery($select);                     
-                        
-                         $result = $data->toArray();
+                        $select->order("l.create_date desc");
+                        $result = $data->toArray();
+                        foreach ($result as $item)
+                        {
+                            return $result[0];
+                        }
                          
-                         return $result;
                         
        }
 
