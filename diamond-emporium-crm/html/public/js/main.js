@@ -1858,7 +1858,7 @@ $(document).on('click','.savePopupBooking', function (e) {
     //$('.next-options').removeClass('hide');
     geDateValues(getSelectedDate);    
     //$('.NewCalendarContainer').addClass('hide');
-    window.userColor = '';
+    
 });
 
 
