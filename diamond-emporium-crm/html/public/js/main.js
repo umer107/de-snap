@@ -4122,103 +4122,102 @@ setTimeout(function(){
                   var html = "";
                  
                   // Get User Color
-                  var getThisUserId = parsed[0].assign_to_UserId;
+                  var getThisUserId = parsed.assign_to_UserId;
                   $.ajax({
 
                     type: "GET",
                     url: "/dashboard/ajaxGetUserColor",
                     data: {user_id : getThisUserId},
                     success: function (data) {
-                      var parsed = '';          
+                      var parsed2 = '';          
                       try{                           
-                        parsed = JSON.parse(data);              
+                        parsed2 = JSON.parse(data);              
                       }                 
                       catch(e)                
                       {                  
                         return false;                  
                       }
                       
-                      window.userColor = '#'+parsed["0"].color;
+                      window.userColor = '#'+parsed2["0"].color;
                       
                     }
                   });
                   
                   //Setting Lead Id
                   
-                  $('.thisLeadId').attr('leadId',parsed[0].id);
+                  //$('.thisLeadId').attr('leadId',parsed.id);
+                  $('#email').addClass('popuplatedemail');
+                  $("#appointmentId").attr('appointmentid',parsed.appointment_id)
                   
                   // Basic Info Fields
                   // Title
-                  $('.basicInfo .title .selected-text').attr('value',parsed[0].title);
-                  $('.basicInfo .title .selected-text span').html(parsed[0].title);
+                  $('.basicInfo .title .selected-text').attr('value',parsed.title);
+                  $('.basicInfo .title .selected-text span').html(parsed.title);
                   // Gender
-                  $('.basicInfo .Gender .selected-text').attr('value',parsed[0].gender);
-                  $('.basicInfo .Gender .selected-text span').html(parsed[0].gender);
+                  $('.basicInfo .Gender .selected-text').attr('value',parsed.gender);
+                  $('.basicInfo .Gender .selected-text span').html(parsed.gender);
                   // First Name Last Name Phone & Email
-                  $('.basicInfo .firstname').val(parsed[0].first_name);
-                  $('.basicInfo .lastname').val(parsed[0].last_name);
-                  $('.basicInfo .phonenumber').val(parsed[0].phone_number);
-                  $('#email').val(parsed[0].email);
-                  $('#onlyReferral').val(parsed[0].only_referral);
-                  $('#fullAddress').val(parsed[0].full_address);
+                  $('.basicInfo .firstname').val(parsed.first_name);
+                  $('.basicInfo .lastname').val(parsed.last_name);
+                  $('.basicInfo .phonenumber').val(parsed.phone_number);
+                  $('#email').val(parsed.email);
+                  $('#onlyReferral').val(parsed.only_referral);
+                  $('#fullAddress').val(parsed.full_address);
                   
                   // Address Fields
-                  $('.stateDiv .dropdown.State .dropdownOptions li a[value="'+parsed[0].State+'"]').trigger('click');
+                  $('.stateDiv .dropdown.State .dropdownOptions li a[value="'+parsed.State+'"]').trigger('click');
                   // Additional Detail Fields
-                  $("#productDropdown").html(parsed[0].product);
-                  $('#productDropdown').closest('a.selected-text').attr('value',parsed[0].product);
-                  $('#productDropdown').closest('a.selected-text').attr('shortcode',parsed[0].product_shortcode);
-                  //$('.additional-details .dropdown.product .dropdownOptions li a[value="'+parsed[0].product+'"]').trigger('click');
-
-                  
+                  $("#productDropdown").html(parsed.product);
+                  $('#productDropdown').closest('a.selected-text').attr('value',parsed.product);
+                  $('#productDropdown').closest('a.selected-text').attr('shortcode',parsed.product_shortcode);
 
                   // Referral method
                   
-                  if(parsed[0].referral != "Google" && parsed[0].referral != "Word of mouth" && parsed[0].referral != "Previous client" && parsed[0].referral != "Walk In" && parsed[0].referral != "Facebook" && parsed[0].referral != "Instagram")
+                  if(parsed.referral != "Google" && parsed.referral != "Word of mouth" && parsed.referral != "Previous client" && parsed.referral != "Walk In" && parsed.referral != "Facebook" && parsed.referral != "Instagram")
                   { 
-                    $('#referralDropdownOther').val(parsed[0].referral);
+                    $('#referralDropdownOther').val(parsed.referral);
                     $('#referralDropdownOther').closest('.relative').removeClass('hide'); 
                     $('.additional-details .dropdown.referral .dropdownOptions li a[value="Other"]').trigger('click');
                   }
                   else
                   {
                     $('#referralDropdownOther').closest('.relative').addClass('hide'); 
-                    $('.additional-details .dropdown.referral .dropdownOptions li a[value="'+parsed[0].referral+'"]').trigger('click');
+                    $('.additional-details .dropdown.referral .dropdownOptions li a[value="'+parsed.referral+'"]').trigger('click');
                   }
 
-                  $('.additional-details .instructions').val(parsed[0].special_instructions);
-                  $('.additional-details .ReferenceProduct').val(parsed[0].reference_product);
+                  $('.additional-details .instructions').val(parsed.special_instructions);
+                  $('.additional-details .ReferenceProduct').val(parsed.reference_product);
 
-                  $('.additional-details .dropdown.budget .dropdownOptions li a[value="'+parsed[0].budget+'"]').click();
+                  $('.additional-details .dropdown.budget .dropdownOptions li a[value="'+parsed.budget+'"]').click();
                   $('.additional-details .dropdown.budget .dropdownOptions').hide();
 
-                  $('#BudgetText').val(parsed[0].budget);
+                  $('#BudgetText').val(parsed.budget);
                   $('#BudgetText').focusin();
                   $('#BudgetText').focusout();
 
                   // Preferred method
-                  if(parsed[0].contact_method != "Phone/Email" && parsed[0].contact_method != "Phone" && parsed[0].contact_method != "Email")
+                  if(parsed.contact_method != "Phone/Email" && parsed.contact_method != "Phone" && parsed.contact_method != "Email")
                   { 
-                    $('#perferrefDropdownOther').val(parsed[0].contact_method);
+                    $('#perferrefDropdownOther').val(parsed.contact_method);
                     $('#perferrefDropdownOther').closest('.relative').removeClass('hide'); 
                     $('.dropdown.preferredMethod .dropdownOptions li a[value="Other"]').trigger('click');
                   }
                   else
                   {
                     $('#perferrefDropdownOther').closest('.relative').addClass('hide'); 
-                    $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed[0].contact_method+'"]').trigger('click');
+                    $('.dropdown.preferredMethod .dropdownOptions li a[value="'+parsed.contact_method+'"]').trigger('click');
                   }
                   
                   // Communication method
-                  $('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+parsed[0].communication_method+'"]').trigger('click');
+                  $('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+parsed.communication_method+'"]').trigger('click');
 
-                  $('.additional-details .requirements').val(parsed[0].specify_requirements);
+                  $('.additional-details .requirements').val(parsed.specify_requirements);
                    
                   $('.initialScreen').removeClass('hideshow');
                    
                    
-                   $('#countryName').attr('value',parsed[0].country);
-                   if(parsed[0].country == 'Australia')
+                   $('#countryName').attr('value',parsed.country);
+                   if(parsed.country == 'Australia')
                    {
                     $('.stateDiv').removeClass('hide');
                    }
@@ -4239,10 +4238,10 @@ setTimeout(function(){
                       
                       //$("#combobox").closest(".ui-widget").find("input, button").prop("disabled", true);
                   });
-                   $('.ui-state-default, .ui-autocomplete-input').val(parsed[0].country);
+                   $('.ui-state-default, .ui-autocomplete-input').val(parsed.country);
                   setTimeout(function(){ 
                       
-                      $('.additional-details .dropdown.assignToDiv .dropdownOptions li a[id="'+parsed[0].assign_to_UserId+'"]').click();
+                      $('.additional-details .dropdown.assignToDiv .dropdownOptions li a[id="'+parsed.assign_to_UserId+'"]').click();
                       $('.additional-details .dropdown.assignToDiv .dropdownOptions').hide();
                       $('.additional-details .dropdown.assignToDiv .dropdownOptions .btn-skip2').click();
                       
@@ -4253,12 +4252,12 @@ setTimeout(function(){
                         $('#BudgetText').closest('div.relative').removeAttr('readonly'); 
                         $('.hideBudget').addClass('hide');
                         
-                        if(parsed[0].reson_skip_next_in_line != "")
+                        if(parsed.reson_skip_next_in_line != "")
                         {
                             $('.assignToDiv').closest('div.relative').removeClass('hide');
                             $('.otherReasonDiv').removeClass('hide');
-                            $('.otherReasonDiv a.selected-text').attr('value',parsed[0].reson_skip_next_in_line);
-                            $('.otherReasonDiv a.selected-text span').html(parsed[0].reson_skip_next_in_line);
+                            $('.otherReasonDiv a.selected-text').attr('value',parsed.reson_skip_next_in_line);
+                            $('.otherReasonDiv a.selected-text span').html(parsed.reson_skip_next_in_line);
                         }
                        }
                       else
@@ -4272,8 +4271,8 @@ setTimeout(function(){
                       // Booking Calendar
                       
                       //var getAmPm = parsed[0].booking_timezone;
-                      var getFullDate = parsed[0].booking_date;
-                      var getAssigneeId = parsed[0].assign_to_UserId;
+                      var getFullDate = parsed.booking_date;
+                      var getAssigneeId = parsed.assign_to_UserId;
                       var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
                       var getDayName = new Date(getFullDate);
                       var getDay = weekday[getDayName.getDay()];
@@ -4301,50 +4300,47 @@ setTimeout(function(){
 
                       
                       $('#bookingDate').addClass('nowCanSave');
-                      if(parsed[0].user_booking_date == '0'){
+                      
+                      $('.btn-bookNow open, .bookNowMain').addClass('hide');
+                      $('.savedBooking, .next-saveDiv').removeClass('hide');
+                      var getThisDate = parsed.booking_date;
+                      loadWeeklyDates(getThisDate);
+                      $('.btn-bookNow').addClass('hide');
 
-                        
-                        $('.btn-bookNow open, .bookNowMain').addClass('hide');
-                        $('.savedBooking, .next-saveDiv').removeClass('hide');
-                        var getThisDate = parsed[0].booking_date;
-                        loadWeeklyDates(getThisDate);
-                        $('.btn-bookNow').addClass('hide');
+                      var monthname = $('#bookingDate').attr('monthNameEdit');
+                      var bookingyear = $('#bookingDate').attr('bookingyear');
+                      var monthnumber = $('#bookingDate').attr('monthnumber');
+                      var timeslot = parsed.booking_time;
+                      var getFullTime = getTimeSlotFull(timeslot);
+                      var timeslotfull = getFullTime;
+                      var getBookingDay = getDay;
+                      var datenumber = getCurrentDate;
+                      if(datenumber < 10)
+                        { datenumber = '0'+datenumber; }
 
-                        var monthname = $('#bookingDate').attr('monthNameEdit');
-                        var bookingyear = $('#bookingDate').attr('bookingyear');
-                        var monthnumber = $('#bookingDate').attr('monthnumber');
-                        var timeslot = parsed[0].booking_time;
-                        var getFullTime = getTimeSlotFull(timeslot);
-                        var timeslotfull = getFullTime;
-                        var getBookingDay = getDay;
-                        var datenumber = getCurrentDate;
-                        if(datenumber < 10)
-                          { datenumber = '0'+datenumber; }
+                      var getSuffixDate = getSuffix3(datenumber);
+                      
+                      var datenumberSuffix = datenumber+getSuffixDate;
+                      var roomnumber = parsed.booking_room; 
+                      var comlpetedate = parsed.booking_date;
 
-                        var getSuffixDate = getSuffix3(datenumber);
-                        
-                        var datenumberSuffix = datenumber+getSuffixDate;
-                        var roomnumber = parsed[0].booking_room; 
-                        var comlpetedate = parsed[0].booking_date;
-
-                        $('#bookingDate').attr('timeslot',timeslot);
-                        $('#bookingDate').attr('timeslotfull',timeslotfull);
-                        $('#bookingDate').attr('dayname',getBookingDay);
-                        $('#bookingDate').attr('datenumber', datenumber);
-                        $('#bookingDate').attr('roomnumber',roomnumber);
-                        $('#bookingDate').attr('comlpetedate', comlpetedate);
-                        
-                        
-                        var getStartingHour = getTime(parsed[0].booking_time);
-                        bookingTimeDuration(parsed[0].durationTime, parsed[0].bookingstart, getStartingHour);
-                        var getUpdatedTimeFull = $('#bookingDate').attr('updatedTime');
-                        var setHtml = getBookingDay + ' ' + datenumberSuffix + ' ' + monthname + ', ' + bookingyear + ' ' + getUpdatedTimeFull;
-                        $('#bookingDate').html(setHtml);
-                      }
-                      else
-                      {
-                        $('.bookNowDiv').addClass('hide');
-                      }
+                      $('#bookingDate').attr('timeslot',timeslot);
+                      $('#bookingDate').attr('timeslotfull',timeslotfull);
+                      $('#bookingDate').attr('dayname',getBookingDay);
+                      $('#bookingDate').attr('datenumber', datenumber);
+                      $('#bookingDate').attr('roomnumber',roomnumber);
+                      $('#bookingDate').attr('comlpetedate', comlpetedate);
+                      $('#bookingDate').attr('bookingstart', parsed.bookingstart);
+                      $('#bookingDate').attr('durationtime', parsed.durationTime);
+                      
+                      
+                      
+                      var getStartingHour = getTime(parsed.booking_time);
+                      bookingTimeDuration(parsed.durationTime, parsed.bookingstart, getStartingHour);
+                      var getUpdatedTimeFull = $('#bookingDate').attr('updatedTime');
+                      var setHtml = getBookingDay + ' ' + datenumberSuffix + ' ' + monthname + ', ' + bookingyear + ' ' + getUpdatedTimeFull;
+                      $('#bookingDate').html(setHtml);
+                      
                       
                       
                   }, 1000);
@@ -4357,7 +4353,7 @@ setTimeout(function(){
                   $('.addressContainer, .additional-details').show();
                   $('.btn-nextDetails').addClass('hide');
                   $('.btn-saveDetails').removeClass('hide');
-                  if(parsed[0].user_booking_date == '1')
+                  if(parsed.user_booking_date == '1')
                   {
                     $('.bookNowDiv').removeClass('hide'); 
                   }
@@ -4365,7 +4361,7 @@ setTimeout(function(){
                   {
                     $('.next-saveDiv').removeClass('hide');
                   }    
-                  $('.calendarWeeklyDate').attr('bookingDate', parsed[0].booking_date); 
+                  $('.calendarWeeklyDate').attr('bookingDate', parsed.booking_date); 
                   $('.newLead').removeClass('hide');
                   $('.calendarLoad').addClass('hide');
                 }
