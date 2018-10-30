@@ -855,7 +855,7 @@ $(document).ready(function () {
         else if (isValidNames(getName)) {
             $(this).next('label.firstError').addClass('opacity0');
             $(this).removeClass('hasError');
-            validateBasicInfo();
+            //validateBasicInfo();
         }
         else {
             $(this).next('label.firstError').removeClass('opacity0');
@@ -863,28 +863,6 @@ $(document).ready(function () {
         }
     });// End
 
-/* ----------------------------------------------------*/
-/* ----------------------------------------------------*/
-/* ----------------------------------------------------*/
-
-    // Validating Email and opening next screen buttons
-    $(document).on('keyup', '.basicInfo input.checkEmailCount', function () {
-        $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
-        $('.emailexists, .emailDiv .requiredError').addClass('opacity0');
-        var getValue = $(this).val().length;
-        var getemail = $(this).val();
-        if ($.trim(getemail).length == 0) {
-            $(this).next('label').next('label').addClass('opacity0');
-        }
-        else if (isValidEmailAddress(getemail)) {
-            $(this).next('label').next('label').addClass('opacity0');
-            validateBasicInfo();
-        }
-        else {
-            $(this).next('label').next('label').removeClass('opacity0');
-        }
-
-    });// End
 
 /* ----------------------------------------------------*/
 /* ----------------------------------------------------*/
@@ -903,11 +881,39 @@ $(document).ready(function () {
         else
             {
                 $(this).next('label.firstError').addClass('opacity0');
-                validateBasicInfo();
             }
     });// End
 
+
+
 /* ----------------------------------------------------*/
+/* ----------------------------------------------------*/
+/* ----------------------------------------------------*/
+
+  // Validating Email and opening next screen buttons
+  $(document).on('keyup', '.basicInfo input.checkEmailCounts', function () {
+      $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
+      $('.emailexists, .emailDiv .requiredError').addClass('opacity0');
+      var getValue = $(this).val().length;
+      var getemail = $(this).val();
+      if ($.trim(getemail).length == 0) {
+          $(this).next('label').next('label').addClass('opacity0');
+      }
+      else if (isValidEmailAddress(getemail)) {
+          $(this).next('label').next('label').addClass('opacity0');
+          //validateBasicInfo();
+      }
+      else {
+          $(this).next('label').next('label').removeClass('opacity0');
+      }
+
+  });// End
+
+
+/* ----------------------------------------------------*/
+/* ----------------------------------------------------*/
+/* ----------------------------------------------------*/
+
     
     // Email Check
 
@@ -917,13 +923,13 @@ $(document).ready(function () {
         var getemail = $('#email').val();
         var popuplatedemail = $('#email').hasClass('popuplatedemail');
         if(popuplatedemail == true)
-          { 
-            var getLeadId =  $('#email').attr('leadId');  
-          }
+        { 
+          var getLeadId =  $('#email').attr('leadId');  
+        }
         else
-          { 
-            var getLeadId =  $('.thisLeadId').attr('leadid');  
-          }
+        { 
+          var getLeadId =  $('.thisLeadId').attr('leadid');  
+        }
 
         var getValue = $('#email').val().length;
         
@@ -1025,9 +1031,6 @@ $(document).ready(function () {
     });
 
 
-    //$(document).on('click', '.availability', function () {
-      
-    //});// End
 
 /* ----------------------------------------------------*/
     
@@ -1157,142 +1160,6 @@ $(document).ready(function () {
         }
     });
     
-    // Time selection for Calendar 1
-
-    var calendar1Events13 = [
-                {
-                        title: '8:00 - 9:00',
-                        start: '2017-09-01',
-                        className: 'calendarRed'
-                    },
-                    {
-                        title: '9:00 - 10:00',
-                        start: '2017-09-01',
-                        className: 'calendarRed'
-                    },
-                    {
-                        title: '10:00 - 11:00',
-                        start: '2017-09-01',
-                        className: 'calendarRed'
-                    },
-                    {
-                        title: '11:00 - 12:00',
-                        start: '2017-09-01',
-                        className: 'calendarRed'
-                    },
-                    //
-                    {
-                        title: '8:00 - 9:00',
-                        start: '2017-09-02',
-                        className: 'calendarRed'
-                    },
-                    {
-                        title: '9:00 - 10:00',
-                        start: '2017-09-02',
-                        className: 'calendarRed'
-                    },
-                    {
-                        title: '10:00 - 11:00',
-                        start: '2017-09-02',
-                        className: 'calendarRed'
-                    },
-                    {
-                        title: '11:00 - 12:00',
-                        start: '2017-09-02',
-                        className: 'calendarRed'
-                    },
-                    //
-                    {
-                        title: '8:00 - 9:00',
-                        start: '2017-09-04',
-                        className: 'calendarRed'
-                    },
-                    {
-                        title: '9:00 - 10:00',
-                        start: '2017-09-04',
-                        className: 'calendarRed'
-                    },
-                    {
-                        title: '10:00 - 11:00',
-                        start: '2017-09-04',
-                        className: 'calendarRed'
-                    },
-                    {
-                        title: '11:00 - 12:00',
-                        start: '2017-09-04',
-                        className: 'calendarOrange'
-                    },
-                    //
-
-                    {
-                        title: '8:00 - 9:00',
-                        start: '2017-09-05',
-                        className: 'calendarRed'
-                    },
-                    {
-                        title: '9:00 - 10:00',
-                        start: '2017-09-05',
-                        className: 'calendarGreen'
-                    },
-                    {
-                        title: 'Appointment',
-                        start: '2017-09-05',
-                        className: 'appointment'
-                    },
-                    {
-                        title: '11:00 - 12:00',
-                        start: '2017-09-05',
-                        className: 'calendarOrange'
-                    },
-                    //
-                    {
-                        title: 'Annual leave',
-                        start: '2017-09-06',
-                        className: 'leave'
-                    },
-                    {
-                        title: 'Annual leave',
-                        start: '2017-09-06',
-                        className: 'leave'
-                    },
-                    {
-                        title: 'Annual leave',
-                        start: '2017-09-06',
-                        className: 'leave'
-                    },
-                    {
-                        title: 'Annual leave',
-                        start: '2017-09-06',
-                        className: 'leave'
-                    },
-                    //
-                    {
-                        title: '8:00 - 9:00',
-                        start: '2017-09-08',
-                        className: 'calendarRed'
-                    },
-                    {
-                        title: '9:00 - 10:00',
-                        start: '2017-09-08',
-                        className: 'calendarGreen'
-                    },
-                    {
-                        title: '10:00 - 11:00',
-                        start: '2017-09-08',
-                        className: 'calendarGrey'
-                    },
-                    {
-                        title: '11:00 - 12:00',
-                        start: '2017-09-08',
-                        className: 'calendarOrange'
-                    },
-                    //
-                    {
-                        title: 'Annual leave',
-                        start: '2017-09-16',
-                        className: 'leave'
-                    }
-            ]
 
     $(document).on('click', '.timeSelection_Cl1 a', function () {
         $("#calendar").fullCalendar('removeEvents'); 
@@ -3161,7 +3028,7 @@ setTimeout(function(){
         if(el.closest('.dropdown').hasClass('appointmentType'))
         { 
           
-          debugger
+          
           if(getValue == "other")
           {
 
@@ -3348,7 +3215,7 @@ setTimeout(function(){
         // Check if it is Title
         if(el.closest('.dropdown').hasClass('title'))
         {
-          validateBasicInfo();
+          //validateBasicInfo();
         }
         if(el.closest('.dropdown').hasClass('country'))
         {
@@ -3357,16 +3224,11 @@ setTimeout(function(){
         // Check if it is gender
         if(el.closest('.dropdown').hasClass('Gender'))
         {
-          validateBasicInfo();
+          //validateBasicInfo();
         }
         // Check if State dropdown
         if(el.closest('.dropdown').hasClass('State'))
         {   
-            //$('.cityList li').addClass('hide');
-            //$('.'+getValue).removeClass('hide');
-            //$('.City .selected-text').attr('value','All');
-            //$('#cityDropdown').html('City');
-            //$('.stateerror').addClass('opacity0');
         }
 
         // Check if City dropdown
@@ -5576,9 +5438,7 @@ function validateBasicInfo() {
         var getGender = $('.Gender a.selected-text').attr('value');
         var getEmailValue = $('.email').val().length;
         var getemail = $('.email').val();
-        //if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue > 0 && getEmailValue > 0)
         if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue > 0 && getEmailValue > 0 && getTitle != 'All' && getGender != 'All')
-        //if(getFirstNameValue > 0 && getLastNameValue > 0 && getPhoneValue && getTitle != 'All' && getGender != 'All')
         {   
 
             if($('.firstname').hasClass('hasError') || $('.lastname').hasClass('hasError'))
@@ -5587,9 +5447,6 @@ function validateBasicInfo() {
             else if(validatePhone(getPhone)) { 
                 if($('.additional-details').is(':hidden'))
                 {
-                    //$('.add-address').hide();
-                    //$('.add-address').slideDown(300);
-                    //GetCountriesList();
                     $('#combobox').html('');
                     $('#combobox').html(window.comboboxList);
                     $(function() {
@@ -5638,7 +5495,6 @@ function isValidEmailAddress(emailAddress) {
 
 // Validating Phone Number
 function validatePhone(PhoneNumber) {
-    //var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
     var filter = /^[0-9  + ]+$/
     if (filter.test(PhoneNumber)) {
         return true;
@@ -7728,6 +7584,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
   $(document).on('keyup', '#newbookingdropdown', function () {
       var getValue = $(this).val();
+      getValue = getValue.toLowerCase();
       var getLength = getValue.length;
       var arr = [];
       var arr2 = [];
@@ -7738,8 +7595,9 @@ function getBookingTime(getTime, bookingStart, Duation) {
         for (var i = 0; i < parsed.length; i++) {
             
             var result = parsed[i].user_name;
+            var resultNew = result.toLowerCase();
             var result2 = parsed[i].id;
-             if (result.toLowerCase().indexOf("ral") === -1) {
+             if (resultNew.indexOf(getValue) > -1) {
                arr.push(result);
                arr2.push(result2);
              }
