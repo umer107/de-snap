@@ -370,13 +370,13 @@ class AppointmentTable
            {
                $data['user_booking_date'] = 0;
            }
-          $returnArray = array();
+           $returnArray = array();
            $data['isFirstBooked'] = 0; 
            $this->tableGateway->insert($data);
            $insertedId = $this->tableGateway ->getLastInsertValue();
-           returnArray['lead_id'] = 0;
-           returnArray['booking_date'] = '';
-           returnArray['insertedId'] = $insertedId;
+           $returnArray['lead_id'] = 0;
+           $returnArray['booking_date'] = '';
+           $returnArray['insertedId'] = $insertedId;
            return $returnArray;
            //return $insertedId;
 
@@ -424,17 +424,17 @@ class AppointmentTable
                         
                    //return $this->tableGateway->update($data, $where);
                     $this->tableGateway->update($data, $where);
-                    returnArray['lead_id'] = $date['lead_id'];
-                    returnArray['booking_date'] = $date['booking_date'];
-                    returnArray['insertedId'] = 0;
+                    $returnArray['lead_id'] = $date['lead_id'];
+                    $returnArray['booking_date'] = $date['booking_date'];
+                    $returnArray['insertedId'] = 0;
                     return returnArray;
              } 
              else{
                   //return $this->tableGateway->update($data, array('id' => $leadId));
                     $this->tableGateway->update($data, array('appointment_id' => $app));
-                     returnArray['lead_id'] = $date['lead_id'];
-                     returnArray['booking_date'] = $date['booking_date'];
-                     returnArray['insertedId'] = 0;
+                     $returnArray['lead_id'] = $date['lead_id'];
+                     $returnArray['booking_date'] = $date['booking_date'];
+                     $returnArray['insertedId'] = 0;
                      return returnArray;
              }
                 
