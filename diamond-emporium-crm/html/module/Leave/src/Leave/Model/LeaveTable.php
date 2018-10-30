@@ -346,6 +346,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         //->join(array('a' => 'de_appointments'), 'l.id = a.lead_id', array('user_booking_date','product', 'referral','special_instructions','budget','reference_product','lead_owner_fullname' => 'lead_owner_name', 'assign_to','reson_skip_next_in_line','lead_status','lead_owner','create_date','booking_date','isFirstBooked'), 'left')
                         ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('lead_owner_image' => 'image' ), 'left');;
                   //Start-Filter-Parameter-From-User
+                        
+                   $select->where->isNotNull('l.booking_date');   
                    $value = $filter['budget'];
                    $lead_status = $filter['lead_status'];
                    $referral = $filter['referral'];
