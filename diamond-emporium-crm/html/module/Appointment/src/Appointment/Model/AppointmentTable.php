@@ -348,7 +348,7 @@ class AppointmentTable
             $AssignInUserId = $data['assign_id'];
             unset($data['assign_id']);
             $data['assign_to_UserId'] = $AssignInUserId;
-	    $data['create_date'] = date('Y-m-d H:i:s');     
+	          $data['create_date'] = date('Y-m-d H:i:s');     
             $leadId = $data['lead_id'];
             //unset($data['lead_id']);
           
@@ -370,7 +370,8 @@ class AppointmentTable
            {
                $data['user_booking_date'] = 0;
            }
-          
+           
+           
            $this->tableGateway->insert($data);
            $insertedId = $this->tableGateway ->getLastInsertValue();
            return $insertedId;
@@ -381,6 +382,22 @@ class AppointmentTable
               
             if(!empty($leadId))
             {
+                   $select = new \Zend\Db\Sql\Select();
+                   $select->from(array('u' => 'de_appointments'))
+                    ->columns(array('appointment_id','lead_id'));
+                    $select->where(array('u.lead_id = ?' =>  $leadId);
+                    $exec_data = $this->executeQuery($select);
+                    $counter = count($exec_data);
+                    if($counter == 1)
+                    {
+                        $data['isFirstBooked'] = 0; 
+
+                    }
+                    else
+                    {
+                         $data['isFirstBooked'] = 1; 
+                    }
+           
              $app = $data['appointment_id'];
              if(empty($data['booking_room']))
              {
