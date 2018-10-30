@@ -371,7 +371,7 @@ class AppointmentTable
                $data['user_booking_date'] = 0;
            }
            
-           
+          $data['isFirstBooked'] = ; 
            $this->tableGateway->insert($data);
            $insertedId = $this->tableGateway ->getLastInsertValue();
            return $insertedId;
@@ -388,9 +388,12 @@ class AppointmentTable
                    $select->where(array('u.lead_id = ?' =>  $leadId));
                     $exec_data = $this->executeQuery($select);
                     $counter = count($exec_data);
+                    $result = $exec_data->toArray();
                     if($counter == 1)
                     {
+                    
                         $data['isFirstBooked'] = 0; 
+                      }
 
                     }
                     else

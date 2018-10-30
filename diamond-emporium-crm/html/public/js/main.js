@@ -2480,7 +2480,7 @@ $('section.rightCol').on('scroll', function(event){
                   $('.additional-details .instructions').val(parsed[0].special_instructions);
                   $('.additional-details .ReferenceProduct').val(parsed[0].reference_product);
 
-                  $('#budgetDropdown').closest('a.selected-text').attr('value',parsed[0].budget)
+                  $('#budgetDropdown').closest('a.selected-text').attr('value',parsed[0].budget);
 
                   $('#BudgetText').val(parsed[0].budget);
                   
@@ -6919,13 +6919,16 @@ function loadLeads(){
                     $('.leadsContainer .loading').hide();
                     return false;
                   }
-                  
+                
                     var leads = [];
                     for(var x in parsed){
                       leads.push(parsed[x]);
                     }
+                    
+                    
 
                     // Bind Array into Html
+
                     var setHtml = '';
                     
                     // Check for which user has less leads
@@ -6941,6 +6944,7 @@ function loadLeads(){
                     var l = 1;
                     var a = 0;
                     for (var i = 0; i < leads.length; i++) {
+
                         a++
                         // Setting Outer Container
                         setHtml += '<div class="one-fourth one-half-pad-left one-half-pad-right"><div class="full">';
@@ -7016,6 +7020,15 @@ function loadLeads(){
                             for (var j = 0; j < leads[i].items.length; j++) {
 
                                 // Setting Status
+                                var newArray = leads[j].items;
+                                var newArray2 = leads[j].items[i].create_date;
+                                newArray.sort(function(a, b) {
+                                    var textA = a.create_date;
+                                    var textB = b.create_date;
+                                    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+                                });
+
+                                //[""0""].items[""0""].create_date
 
                                 if(leads[i].items[j].lead_status == "Closed")
                                 {
@@ -7048,7 +7061,7 @@ function loadLeads(){
 
                                 // Binding Set Html Leads
                                 var initialBooking = leads[i].items[j].isFirstBooked;
-                                if(initialBooking == 1)
+                                if(initialBooking == 0)
                                 {
                                   if(leads[i].items[j].lead_status == "Open")
                                   {
