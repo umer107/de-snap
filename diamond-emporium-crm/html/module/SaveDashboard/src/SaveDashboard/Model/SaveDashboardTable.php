@@ -277,6 +277,7 @@ class SaveDashboardTable
                  }
                  else
                  {
+                     
                       $AssignInUserId = $data['assign_id'];
                       unset($data['assign_id']);
                       $data['assign_to_UserId'] = $AssignInUserId;
@@ -290,9 +291,24 @@ class SaveDashboardTable
             }
             else
             {
+                $item_result = '';
                 $leadId = $data['lead_id'];
                 unset($data['lead_id']);
-                if($where){
+                $select = new \Zend\Db\Sql\Select();
+		$select->from(array('u' => 'de_userdetail'))
+			->columns(array('id','booking_date'));
+                 $select->where(array('u.id = ?' =>  $leadId));
+                 $exec_data = $this->executeQuery($select);
+                 $result = $exec_data->toArray();                 
+                 $counter = count($exec_data);
+                 
+                 foreach ($result as $item)
+                 {
+                     $item_result = $item['booking_date'];
+                 }
+                 if($item_result == null )
+                 {
+                    if($where){
                           
                     $this->tableGateway->update($data, $where);
                     return 0;
@@ -302,6 +318,11 @@ class SaveDashboardTable
                     $this->tableGateway->update($data, array('id' => $leadId));
                     return 0;
                }
+                     
+                 }
+                 
+                
+              
                
                
             }
