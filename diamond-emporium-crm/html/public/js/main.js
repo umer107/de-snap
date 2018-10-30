@@ -4023,8 +4023,8 @@ setTimeout(function(){
             salesRepName : $('#bookingDate').attr('salesRepName'),
             color : window.userColor,
             AppointmentType : 0,
-            isBooked : false,
-            appointment_id: '' 
+            isBooked : 0,
+            appointment_id: 0 
         };
         
     }
@@ -4218,17 +4218,17 @@ setTimeout(function(){
 
       if(window.AppointmentType == 1)
       {
-        dataAppointment.isBooked = true;
+        dataAppointment.isBooked = 1;
       }
       else
       {
         if(dataAppointment.bookingstart == null)
         {
-          dataAppointment.isBooked = false;
+          dataAppointment.isBooked = 0;
         }
         else
         {
-          dataAppointment.isBooked = true;
+          dataAppointment.isBooked = 0;
         }
       }
 
