@@ -277,15 +277,30 @@ class SaveDashboardTable
                  }
                  else
                  {
-                     $this->tableGateway->insert($data);
-                     $insertedId = $this->tableGateway ->getLastInsertValue();
-                     return $insertedId;
+                      $AssignInUserId = $data['assign_id'];
+                      unset($data['assign_id']);
+                      $data['assign_to_UserId'] = $AssignInUserId;
+                      $data['create_date'] = date('Y-m-d H:i:s');   
+                      $this->tableGateway->insert($data);
+                      $insertedId = $this->tableGateway ->getLastInsertValue();
+                      return $insertedId;
                      
                  }
                
             }
             else
             {
+                if($where){
+                        
+                   //return $this->tableGateway->update($data, $where);
+                    $this->tableGateway->update($data, $where);
+                    return 0;
+                } 
+                else{
+                  //return $this->tableGateway->update($data, array('id' => $leadId));
+                    $this->tableGateway->update($data, array('id' => $leadId));
+                    return 0;
+               }
                
                
             }
