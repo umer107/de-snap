@@ -2222,7 +2222,7 @@ $('section.rightCol').on('scroll', function(event){
                   var html = "";
                  
                   // Get User Color
-                  var getThisUserId = parsed[0].assign_to_UserId;
+                  var getThisUserId = parsed.assign_to_UserId;
                   $.ajax({
 
                     type: "GET",
@@ -2249,23 +2249,23 @@ $('section.rightCol').on('scroll', function(event){
                   
                   // Basic Info Fields
                   // Title
-                  $('.basicInfo .title .selected-text').attr('value',parsed[0].title);
-                  $('.basicInfo .title .selected-text span').html(parsed[0].title);
+                  $('.basicInfo .title .selected-text').attr('value',parsed.title);
+                  $('.basicInfo .title .selected-text span').html(parsed.title);
                   // Gender
-                  $('.basicInfo .Gender .selected-text').attr('value',parsed[0].gender);
-                  $('.basicInfo .Gender .selected-text span').html(parsed[0].gender);
+                  $('.basicInfo .Gender .selected-text').attr('value',parsed.gender);
+                  $('.basicInfo .Gender .selected-text span').html(parsed.gender);
                   // First Name Last Name Phone & Email
-                  $('.basicInfo .firstname').val(parsed[0].first_name);
-                  $('.basicInfo .lastname').val(parsed[0].last_name);
-                  $('.basicInfo .phonenumber').val(parsed[0].phone_number);
-                  $('#email').val(parsed[0].email);
-                  $('#onlyReferral').val(parsed[0].only_referral);
-                  $('#fullAddress').val(parsed[0].full_address);
+                  $('.basicInfo .firstname').val(parsed.first_name);
+                  $('.basicInfo .lastname').val(parsed.last_name);
+                  $('.basicInfo .phonenumber').val(parsed.phone_number);
+                  $('#email').val(parsed.email);
+                  $('#onlyReferral').val(parsed.only_referral);
+                  $('#fullAddress').val(parsed.full_address);
                   
                   // Address Fields
                   
-                  $("#stateDropdown").html(parsed[0].State);
-                  $('#stateDropdown').closest('a.selected-text').attr('value',parsed[0].State);
+                  $("#stateDropdown").html(parsed.State);
+                  $('#stateDropdown').closest('a.selected-text').attr('value',parsed.State);
                   // Additional Detail Fields
                   // Product
                   if(window.other == true)
@@ -2276,8 +2276,8 @@ $('section.rightCol').on('scroll', function(event){
                   }
                   else
                   {
-                    $("#productDropdown").html(parsed[0].product);
-                    $('#productDropdown').closest('a.selected-text').attr('value',parsed[0].product);
+                    $("#productDropdown").html(parsed.product);
+                    $('#productDropdown').closest('a.selected-text').attr('value',parsed.product);
                   }
                   
                   
@@ -2285,30 +2285,30 @@ $('section.rightCol').on('scroll', function(event){
                   
 
                   // Referral method
-                  var referralMethod = parsed[0].referral;
+                  var referralMethod = parsed.referral;
                   var referralMethodOther = $("#referralDropdownOther").val();
                   var referralMethodVal = '';
                   if ( referralMethod == "Other")
                     { 
-                      $("#referralDropdownOther").val(parsed[0].referral);
+                      $("#referralDropdownOther").val(parsed.referral);
                     }
                   else { 
-                    $("#referralDropdown").html(parsed[0].referral);
-                    $('#referralDropdown').closest('a.selected-text').attr('value',parsed[0].referral);
+                    $("#referralDropdown").html(parsed.referral);
+                    $('#referralDropdown').closest('a.selected-text').attr('value',parsed.referral);
  
                   }
 
-                  $('.additional-details .instructions').val(parsed[0].special_instructions);
-                  $('.additional-details .ReferenceProduct').val(parsed[0].reference_product);
+                  $('.additional-details .instructions').val(parsed.special_instructions);
+                  $('.additional-details .ReferenceProduct').val(parsed.reference_product);
 
-                  $('#budgetDropdown').closest('a.selected-text').attr('value',parsed[0].budget);
+                  $('#budgetDropdown').closest('a.selected-text').attr('value',parsed.budget);
 
-                  $('#BudgetText').val(parsed[0].budget);
+                  $('#BudgetText').val(parsed.budget);
                   
 
                   // Preferred method
-                  var contactMethod = parsed[0].contact_method
-                  if(parsed[0].contact_method != "Phone/Email" && parsed[0].contact_method != "Phone" && parsed[0].contact_method != "Email")
+                  var contactMethod = parsed.contact_method
+                  if(parsed.contact_method != "Phone/Email" && parsed.contact_method != "Phone" && parsed.contact_method != "Email")
                   { 
                     $('#perferrefDropdownOther').html(contactMethod);
                   }
@@ -2318,15 +2318,15 @@ $('section.rightCol').on('scroll', function(event){
                   }
                   
                   // Communication method
-                  $("#CommunicationMethod").html(parsed[0].communication_method);
+                  $("#CommunicationMethod").html(parsed.communication_method);
 
-                  $('.additional-details .requirements').val(parsed[0].specify_requirements);
+                  $('.additional-details .requirements').val(parsed.specify_requirements);
                    
                   $('.initialScreen').removeClass('hideshow');
                    
                    
-                   $('#countryName').attr('value',parsed[0].country);
-                   if(parsed[0].country == 'Australia')
+                   $('#countryName').attr('value',parsed.country);
+                   if(parsed.country == 'Australia')
                    {
                     $('.stateDiv').removeClass('hide');
                    }
@@ -2347,15 +2347,15 @@ $('section.rightCol').on('scroll', function(event){
                       
                       //$("#combobox").closest(".ui-widget").find("input, button").prop("disabled", true);
                   });
-                   $('.ui-state-default, .ui-autocomplete-input').val(parsed[0].country);
+                   $('.ui-state-default, .ui-autocomplete-input').val(parsed.country);
                   setTimeout(function(){ 
                       
 
                       // Booking Calendar
                       
                       //var getAmPm = parsed[0].booking_timezone;
-                      var getFullDate = parsed[0].booking_date;
-                      var getAssigneeId = parsed[0].assign_to_UserId;
+                      var getFullDate = parsed.booking_date;
+                      var getAssigneeId = parsed.assign_to_UserId;
                       var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
                       var getDayName = new Date(getFullDate);
                       var getDay = weekday[getDayName.getDay()];
@@ -2383,19 +2383,19 @@ $('section.rightCol').on('scroll', function(event){
 
                       
                       $('#bookingDate').addClass('nowCanSave');
-                      if(parsed[0].user_booking_date == '0'){
+                      if(parsed.user_booking_date == '0'){
 
                         
                         
                         
-                        var getThisDate = parsed[0].booking_date;
+                        var getThisDate = parsed.booking_date;
                         loadWeeklyDates(getThisDate);
                         
 
                         var monthname = $('#bookingDate').attr('monthNameEdit');
                         var bookingyear = $('#bookingDate').attr('bookingyear');
                         var monthnumber = $('#bookingDate').attr('monthnumber');
-                        var timeslot = parsed[0].booking_time;
+                        var timeslot = parsed.booking_time;
                         var getFullTime = getTimeSlotFull(timeslot);
                         var timeslotfull = getFullTime;
                         var getBookingDay = getDay;
@@ -2406,8 +2406,8 @@ $('section.rightCol').on('scroll', function(event){
                         var getSuffixDate = getSuffix3(datenumber);
                         
                         var datenumberSuffix = datenumber+getSuffixDate;
-                        var roomnumber = parsed[0].booking_room; 
-                        var comlpetedate = parsed[0].booking_date;
+                        var roomnumber = parsed.booking_room; 
+                        var comlpetedate = parsed.booking_date;
 
                         //$('#bookingDate').attr('timeslot',timeslot);
                         //$('#bookingDate').attr('timeslotfull',timeslotfull);
@@ -2417,8 +2417,8 @@ $('section.rightCol').on('scroll', function(event){
                         //$('#bookingDate').attr('comlpetedate', comlpetedate);
                         
                         
-                        var getStartingHour = getTime(parsed[0].booking_time);
-                        bookingTimeDuration(parsed[0].durationTime, parsed[0].bookingstart, getStartingHour);
+                        var getStartingHour = getTime(parsed.booking_time);
+                        bookingTimeDuration(parsed.durationTime, parsed.bookingstart, getStartingHour);
                         var getUpdatedTimeFull = $('#bookingDate').attr('updatedTime');
                         var setHtml = getBookingDay + ' ' + datenumberSuffix + ' ' + monthname + ', ' + bookingyear + ' ' + getUpdatedTimeFull;
                         $('#bookingDate').html(setHtml);
@@ -2433,7 +2433,7 @@ $('section.rightCol').on('scroll', function(event){
                   
 
                       
-                  $('.calendarWeeklyDate').attr('bookingDate', parsed[0].booking_date); 
+                  $('.calendarWeeklyDate').attr('bookingDate', parsed.booking_date); 
                   
                 }
             }); 
