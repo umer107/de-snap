@@ -294,7 +294,7 @@ class SaveDashboardTable
                 $item_result = '';
                 $leadId = $data['lead_id'];
                 unset($data['lead_id']);
-                $select = new \Zend\Db\Sql\Select();
+               /* $select = new \Zend\Db\Sql\Select();
 		$select->from(array('u' => 'de_userdetail'))
 			->columns(array('id','booking_date'));
                  $select->where(array('u.id = ?' =>  $leadId));
@@ -321,7 +321,7 @@ class SaveDashboardTable
                
                 
                      
-                 }
+                 }*/
                  
                  //Update All
                       $AssignInUserId = $data['assign_id'];
@@ -352,7 +352,62 @@ class SaveDashboardTable
 		}
     }
     
-
+       //UPdate  Lead
+        public function updateLeadFirstItempt($data , $where = null)
+        {
+        try
+        {
+            
+           if(!empty($data['lead_id']))
+           {
+               
+                $item_result = '';
+                $leadId = $data['lead_id'];
+                unset($data['lead_id']);
+                $select = new \Zend\Db\Sql\Select();
+		$select->from(array('u' => 'de_userdetail'))
+			->columns(array('id','booking_date'));
+                 $select->where(array('u.id = ?' =>  $leadId));
+                 $exec_data = $this->executeQuery($select);
+                 $result = $exec_data->toArray();                 
+                 $counter = count($exec_data);
+                 
+                 foreach ($result as $item)
+                 {
+                     $item_result = $item['booking_date'];
+                 }
+                 if($item_result == null )
+                 {
+                    if($where){
+                          
+                    $this->tableGateway->update($data, $where);
+                    return 0;
+                 } 
+                 else{
+                    
+                    $this->tableGateway->update($data, array('id' => $leadId));
+                    return 0;
+                 }
+               
+                
+                     
+                 }
+           }
+         
+                 
+                
+              
+               
+               
+            }
+          
+   
+         
+         
+     	 catch(\Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+		}
+    }
    
 //***************************************CoreFunction*****************************************//    
 
