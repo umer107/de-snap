@@ -5731,6 +5731,13 @@ $(document).on('click','.middleTabs a', function (e) {
 /*---------------------------------------------*/
 /*---------------------------------------------*/
 
+$(document).on('click','.nextInlinePerson', function (e) {
+  $(".newactions a").removeClass('active');
+  $(".newactions a.new-Lead").trigger('click');
+  $('.newactions a.new-Lead').addClass('active');
+});
+
+
 //create new lead and leave
 
 $(document).on('click','.newactions a', function (e) {
@@ -6598,11 +6605,7 @@ function loadLeads(){
                     // Check for which user has less leads
                     
                     var getLeadsLength = [];
-                    for (var i = 0; i < leads.length; i++) {
-                        
-                        getLeadsLength.push(leads[i].count);
-                    }
-                    var getSmallestNumber =  Math.min.apply(null, getLeadsLength);
+                   
 
                     var k = 1;
                     var l = 1;
@@ -6671,58 +6674,62 @@ function loadLeads(){
                         if(leads[i].count != 0)
                         {
 
-                          setHtml += '<div class="full triple-pad-left triple-pad-right triple-pad-top triple-pad-bottom "><ul class="lead-list full lh-38">';
-                        
-                          // Adding next inline lead
-                          if(getSmallestNumber == leads[i].count && l == 1)
+                        setHtml += '<div class="full triple-pad-left triple-pad-right triple-pad-top triple-pad-bottom "><ul class="lead-list full lh-38">';
+                      
+                        // Adding next inline lead
+
+                          // Loop for leads
+                          var status = '';
+                          var referral = '';
+
+                          // Incase for Normal Lead flow
+                          for (var j = 0; j < leads[i].items.length; j++) 
                           {
-                              //setHtml += '<li class="bg-nextline">Next in line <img alt="Profile image" src="/images/ic_addplus.png"></li>';
-                              //l++;
+
+                              // Setting Status
+                              var newArray = leads[j].items;
+                              if(leads[i].items[j].lead_status == "Closed")
+                              { status = 'bg-red1'; }
+                              else if(leads[i].items[j].lead_status == "Deal closed")
+                              { status = 'bg-green1'; }
+                              else
+                              { status = 'bg-white'; }
+                              // Setting refferal
+                              if(leads[i].items[j].referral == "Google")
+                              {  referral = '/images/ic-google.png'  }
+                              else if(leads[i].items[j].referral == "Word of mouth")
+                              {  referral = '/images/ic_wordMouth.png'  }
+                              else if(leads[i].items[j].referral == "Previous client")
+                              {  referral = '/images/ic_pClient.png'  }
+                              else if(leads[i].items[j].referral == "Walk In")
+                              {  referral = '/images/ic_walkIn.png'  }
+                              else if(leads[i].items[j].referral == "Facebook")
+                              {  referral = '/images/ic_facebook.png'  }
+                              else if(leads[i].items[j].referral == "Instagram")
+                              {  referral = '/images/ic_insta.png'  }
+                              else
+                              {  referral = '/images/ic_other.png'  }
+                              // Binding Set Html Leads
+
+                              if(getSmallestNumber == leads[i].count && nextInLineCounter == 0)
+                              {
+                                  setHtml += '<li class="relative nextInlinePerson"><div class="ellipsis color-green">Next In Line</div> <img class="referralImage" alt="" src="/images/ic_addplus.png" /></li>';
+                                  nextInLineCounter++
+                              }
+
+                              if(leads[i].items[j].lead_status == "Open")
+                              {
+                                 var getLeadPopup = $('#closeLead').html();
+                                 setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Close</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';
+                              }
+                              else
+                              {
+                                 var getLeadPopup = $('#closeLead').html();
+                                 setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Open</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';                                  
+                              }
                           }
-                        
-                            // Loop for leads
-                            var status = '';
-                            var referral = '';
-
-                            // Incase for Normal Lead flow
-                            for (var j = 0; j < leads[i].items.length; j++) 
-                            {
-
-                                // Setting Status
-                                var newArray = leads[j].items;
-                                if(leads[i].items[j].lead_status == "Closed")
-                                { status = 'bg-red1'; }
-                                else if(leads[i].items[j].lead_status == "Deal closed")
-                                { status = 'bg-green1'; }
-                                else
-                                { status = 'bg-white'; }
-                                // Setting refferal
-                                if(leads[i].items[j].referral == "Google")
-                                {  referral = '/images/ic-google.png'  }
-                                else if(leads[i].items[j].referral == "Word of mouth")
-                                {  referral = '/images/ic_wordMouth.png'  }
-                                else if(leads[i].items[j].referral == "Previous client")
-                                {  referral = '/images/ic_pClient.png'  }
-                                else if(leads[i].items[j].referral == "Walk In")
-                                {  referral = '/images/ic_walkIn.png'  }
-                                else if(leads[i].items[j].referral == "Facebook")
-                                {  referral = '/images/ic_facebook.png'  }
-                                else if(leads[i].items[j].referral == "Instagram")
-                                {  referral = '/images/ic_insta.png'  }
-                                else
-                                {  referral = '/images/ic_other.png'  }
-                                // Binding Set Html Leads
-                                if(leads[i].items[j].lead_status == "Open")
-                                {
-                                   var getLeadPopup = $('#closeLead').html();
-                                   setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Close</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';
-                                }
-                                else
-                                {
-                                   var getLeadPopup = $('#closeLead').html();
-                                   setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Open</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';                                  
-                                }
-                            }
+                          
+                            
 
                           setHtml += '</ul></div>';
 
@@ -6733,7 +6740,7 @@ function loadLeads(){
                           {
                             setHtml += '<div class="full triple-pad-left triple-pad-right triple-pad-top triple-pad-bottom "><ul class="lead-list full lh-38">';
                         
-                            setHtml += '<li class="relative userLeadId nextInlinePerson"><div class="leadUserName ellipsis color-green">Next In Line</div> <img class="referralImage" alt="" src="/images/ic_addplus.png" /></li>';
+                            setHtml += '<li class="relative nextInlinePerson"><div class="ellipsis color-green">Next In Line</div> <img class="referralImage" alt="" src="/images/ic_addplus.png" /></li>';
                                   
                             setHtml += '</ul></div>';
                           }
