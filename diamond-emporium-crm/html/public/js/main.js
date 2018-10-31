@@ -4082,13 +4082,8 @@ setTimeout(function(){
           return e.which !== 13;
     });
     
-    $("form").not("#specify_requirements").keypress(function(e) {
-      if(e.originalEvent.path[0].className == "requirements") 
-      {
-        //console.log('enter pressed');
-        return true;
-      }
-      else if (e.which == 13) {
+    $("form[type=text]").keypress(function(e) {
+      if (e.which == 13) {
         return false;
       }
     });
