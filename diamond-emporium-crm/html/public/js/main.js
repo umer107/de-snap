@@ -3389,8 +3389,10 @@ setTimeout(function(){
     // Additional Agent dropdown Selection 
 
 
-    $(document).on('click','.countryDiv .icon-dropdown' ,function(){
+    $(document).on('click','.countryDiv .icon-dropdown' ,function(e){
         $('.formfields span.ui-combobox button').trigger('click');
+        e.preventDefault();
+        return false;
     });// End
 
     // Additional Agent dropdown Selection 
