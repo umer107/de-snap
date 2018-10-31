@@ -3915,10 +3915,18 @@ setTimeout(function(){
               if(parsed != '0')
               {
                 dataAppointment.lead_id = parsed;
+<<<<<<< Updated upstream
                 dataLead.lead_id = parsed;
                 $('.thisLeadId').attr('leadid', parsed);
               }
 
+=======
+                dataLead.lead_id = parsed; 
+                $('.thisLeadId').attr('leadid', parsed);
+              }
+
+              
+>>>>>>> Stashed changes
               $.ajax({
                 type: "POST",
                 url: "/dashboard/ajaxSaveAppointment",
@@ -3980,7 +3988,11 @@ setTimeout(function(){
                         //Reset New lead form
                         $('.newLead').html(window.getNewLeadAll);
                         $('.newLead').removeClass('inEditMode');
+<<<<<<< Updated upstream
                         $('.thisLeadId').attr('leadid', '');    
+=======
+                        $('.thisLeadId').attr('leadid', '');
+>>>>>>> Stashed changes
                         $('#appointmentId').attr('appointmentId','0')
                       }
                     }

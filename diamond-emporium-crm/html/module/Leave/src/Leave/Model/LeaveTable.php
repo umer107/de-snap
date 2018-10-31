@@ -1644,7 +1644,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         $value = $filter['leadId'];    
                         if(!empty($filter['leadId'])) {
                               $select->where(array('l.id = ?' =>  $value));
-                             }
+                        }
                         
                         $data = $this->executeQuery($select);                     
                         $select->order("l.create_date desc");

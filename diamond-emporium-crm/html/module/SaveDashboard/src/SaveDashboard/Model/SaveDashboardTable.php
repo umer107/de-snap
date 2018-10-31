@@ -294,6 +294,7 @@ class SaveDashboardTable
                 $item_result = '';
                 $leadId = $data['lead_id'];
                 unset($data['lead_id']);
+                
                /* $select = new \Zend\Db\Sql\Select();
 		$select->from(array('u' => 'de_userdetail'))
 			->columns(array('id','booking_date'));
