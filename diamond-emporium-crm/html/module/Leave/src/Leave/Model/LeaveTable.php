@@ -662,7 +662,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                      ->columns(array(
                        'id','title' , 'gender', 'first_name', 'last_name' , 'name' => $fullname , 'phone_number' , 'email' , 'country' ,'State' ,'full_address', 'communication_method' 
                       ));
-              
+                $select->where->isNotNull('u.booking_date'); 
                 //AppointmentType
                 /*if(isset($appointmentType))
                 {
@@ -801,7 +801,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('booking_color' => 'color'), 'left');    */
               
                $select->from(array('l' => 'de_appointments'))
-                       ->columns(array('appointment_id','lead_id' , 'product' , 'product_shortcode' , 'referral' , 'only_referral' , 'special_instructions' , 'budget' , 'reference_product'  , 'assign_to' , 'assignto_shortcode' , 'assign_to_UserId' , 'reson_skip_next_in_line' , 'specify_requirements' , 'lead_status' , 'lead_owner' , 'lead_owner_name' , 'create_date' , 'lead_close_date' , 'booking_date' , 'booking_time' , 'booking_room' , 'user_booking_date' ,'color' , 'durationTime' ,'bookingstart'))      
+                       ->columns(array('appointment_id','lead_id', 'fullName' , 'product' , 'product_shortcode' , 'referral' , 'only_referral' , 'special_instructions' , 'budget' , 'reference_product'  , 'assign_to' , 'assignto_shortcode' , 'assign_to_UserId' , 'reson_skip_next_in_line' , 'specify_requirements' , 'lead_status' , 'lead_owner' , 'lead_owner_name' , 'create_date' , 'lead_close_date' , 'booking_date' , 'booking_time' , 'booking_room' , 'user_booking_date' ,'color' , 'durationTime' ,'bookingstart'))      
                        ->join(array('la' => 'de_userdetail'), 'l.lead_id = la.id', array('id' , 'title' , 'gender' , 'first_name', 'last_name', 'phone_number', 'email', 'country', 'State', 'full_address','communication_method', 'contact_method'), 'left')
                        ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('booking_color' => 'color'), 'left');
                //Filter The Data Of Current Week
@@ -1917,7 +1917,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                  'CONCAT(u.first_name, \' \', u.last_name)'
                 );    
                 $select = new \Zend\Db\Sql\Select(); 
-                $select->from(array('u' => 'de_userdetail')) ->columns(array( 'id','user_name' => $fullname));    
+                $select->from(array('u' => 'de_userdetail')) ->columns(array( 'id','user_name' => $fullname , 'booking_date')); 
+                $select->where->isNotNull('u.booking_date');    
                 $select->order("id desc");
                 //$filter_lead_Appointment1 = 0;
                 //$select->where(array('u.AppointmentType= ?' => $filter_lead_Appointment1 ));

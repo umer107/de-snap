@@ -1067,6 +1067,7 @@ $(document).ready(function () {
     // Calendar Button
 
     $(document).on('click', '.mainMenu a.calendarLink', function () {
+        getCustomerByName();
         $('.dashboard-header, .leadsContainer, .leadDeailContainer, .newLead, .leavesContainer, .newLeaveContainer').addClass('hide');
 
         var getHtml = $('.NewCalendarContainer').html();
@@ -3836,12 +3837,58 @@ setTimeout(function(){
         };
         
     }
+    function getValuesOtherAppointment()
+    {
+        return {
+            product : $("#productDropdown").text(),            
+            budget : $('#budgetDropdown').closest('a.selected-text').attr('value'),
+            assign_to : $("#assign_us_Dropdown").text(),
+            assign_id : $(".assignToDiv a.selected-text").attr("assigneid"),                 
+            booking_date : $("#bookingDate").attr("ComlpeteDate"),
+            booking_time : $("#bookingDate").attr("timeslot"),
+            booking_room : $('#bookingDate').attr('roomnumber'),
+            durationTime : $('#bookingDate').attr('durationTime'),
+            bookingstart : $('#bookingDate').attr('bookingstart'),
+            fullName : $('#bookingDate').attr('customerName'),
+            salesRepName : $('#bookingDate').attr('salesRepName'),
+            color : '#9b9b9b',
+            isBooked : 0,
+            appointment_id: 0,
+            lead_id : 90000
+        };
+        
+    }
 
   
     // Save New Booking
     $(document).on('click','.saveNewBooking', function (e) {
+      var check = window.other;
       window.saveAndBook = false;
-      $('#submitbutton').trigger('click');
+      if(window.other == true)
+      {  
+        var otherappointment = getValuesOtherAppointment(); 
+        $.ajax({
+          type: "POST",
+          url: "/dashboard/ajaxSaveAppointment",
+          data: otherappointment, 
+          success: function (data) {
+            var checkData = data;
+            showMainLoading();
+            var getAssigneeId = window.selectedAssigneeId;
+            var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
+            loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
+          }
+        });  
+      }
+      else
+      {   
+        $('#submitbutton').trigger('click');
+      }
+      setTimeout(function(){ 
+        $('.basicInfo').html(window.getBasicInfo);
+        $('.additional-details').html(window.getAdditionalInfo);
+      }, 1000); 
+
     });
 
     // Cancel New Booking
@@ -4688,12 +4735,25 @@ setTimeout(function(){
                               var setBackgroundColor = "style='background-color:"+getAllRooms[i][key].color+"'";
                               var setBackgroundColorHeight = 'style="background-color:'+getAllRooms[i][key].color+'; height:'+height2+'"';
                               var Color = "style='color:"+getAllRooms[i][key].color+"'";
-
+                                var checkOtherLead = getAllRooms[i][key].lead_id;
+                                var thisIsOther =  false;
+                                if(checkOtherLead == '90000')
+                                {
+                                  thisIsOther =  true;
+                                }
+                                var personBookingName = getAllRooms[i][key].first_name + ' ' + getAllRooms[i][key].last_name;
+                                if(thisIsOther == true)
+                                {
+                                  personBookingName = getAllRooms[i][key].fullName;
+                                }
                                 setThisHtml +='<div class="roomBooking '+roomNumber+'" lead-id="'+getAllRooms[i][key].id+'" topPosition="'+positionTop+'" style="height:' + height1 + '; top:'+ positionTop +'">';
-                                setThisHtml +='<p class=" fs-11 headBar" '+setBackgroundColor+'><span class="ellipsis">'+getAllRooms[i][key].first_name + ' ' + getAllRooms[i][key].last_name + '</span><span>'+getAllRooms[i][key].assignto_shortcode+'</span></p>';
+                                setThisHtml +='<p class=" fs-11 headBar" '+setBackgroundColor+'><span class="ellipsis">' + personBookingName + '</span><span>'+getAllRooms[i][key].assignto_shortcode+'</span></p>';
                                 setThisHtml +='<div class="full align-left half-pad-left lh-16 fs-11 one-pad-top relative">';
                                   setThisHtml +='<p><i class="icon-diamond fs-11 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i][key].product_shortcode+'</span></p>';
-                                  setThisHtml +='<p><i class="icon-dollar fs-11 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i][key].budget+'</span></p>';
+                                  if(thisIsOther == false)
+                                  {
+                                    setThisHtml +='<p><i class="icon-dollar fs-11 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i][key].budget+'</span></p>';
+                                  }
                                   setThisHtml +='<div class="transparentBG absolute" '+setBackgroundColorHeight+' style="height:'+ height2 +'"></div>';
                                 setThisHtml +='</div>';
                               setThisHtml +='</div>';
@@ -7633,6 +7693,28 @@ function getBookingTime(getTime, bookingStart, Duation) {
     
    });
   
+  
+  function getCustomerByName()
+  {
+    $.ajax({
+            type: "GET",
+            url: "/dashboard/ajaxGetCustomerByName", 
+            data: {},
+            success: function (data) {
+                var getData = data;                
+                var parsed = '';               
+                try{
+                  parsed = JSON.parse(data);                  
+                }           
+                catch(e)
+                {                   
+                  return false;                  
+                }
+                window.list = parsed;
+                console.log(parsed); 
+            }
+        });
+  }
 
   $(document).on('keyup', '#newbookingdropdown', function () {
       var getValue = $(this).val();
