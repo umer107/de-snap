@@ -9,11 +9,13 @@ $(document).ready(function () {
 /*------------------------------------------------------------------*/
     
 
+  $("#email").attr('onfocusout','onFocusOuts()');
   var countries = [
      { value: 'Andorra', data: 'AD' },
      // ...
      { value: 'Zimbabwe', data: 'ZZ' }
   ];
+
 
   $('#aaautocomplete').autocomplete({
       lookup: countries,
@@ -917,7 +919,7 @@ $(document).ready(function () {
     
     // Email Check
 
-    $(".checkEmailCount").on("focusout",  function() { 
+    $(".checkEmailCountss").on("focusout",  function() { 
 
       $('#email').next().addClass('opacity0').next().next('.requiredError').addClass('opacity0');
 
@@ -1030,6 +1032,7 @@ $(document).ready(function () {
 
 
     });
+
 
 
 
@@ -3826,7 +3829,8 @@ setTimeout(function(){
             color : window.userColor,
             AppointmentType : 0,
             isBooked : 0,
-            appointment_id: $('#appointmentId').attr('appointmentId')
+            appointment_id: $('#appointmentId').attr('appointmentId'),
+            lead_id : $('.thisLeadId').attr('leadId')
         };
         
     }
@@ -7996,6 +8000,119 @@ function getBookingTime(getTime, bookingStart, Duation) {
     //-----------
     
   });// End
+
+
+    
+    function onFocusOuts() {
+      $('#email').next().addClass('opacity0').next().next('.requiredError').addClass('opacity0');
+
+        var getemail = $('#email').val();
+        var popuplatedemail = $('#email').hasClass('popuplatedemail');
+        if(popuplatedemail == true)
+        { 
+          var getLeadId =  $('#email').attr('leadId');  
+        }
+        else
+        { 
+          var getLeadId =  $('.thisLeadId').attr('leadid');  
+        }
+
+        var getValue = $('#email').val().length;
+        
+        if ($.trim(getemail).length == 0) {
+            $('.emailexists').addClass('opacity0');
+            $('#email').next('label').next('label').addClass('opacity0');
+        }
+        else if (isValidEmailAddress(getemail)) {
+            $('#email').next('label').next('label').addClass('opacity0');
+            
+             $.ajax({
+              type: "GET",
+              url: "/dashboard/ajaxGetCheckUserEmail?email="+getemail,
+              //data: {'email' : email},
+              success: function (data) 
+              {
+                //$('.showloading').show();
+                var parsed = '';          
+                try{                           
+                  parsed = JSON.parse(data);              
+                }                 
+                catch(e)                
+                {                  
+                  return false;                  
+                }
+
+                if(getLeadId != "" || popuplatedemail == true)
+                {
+                    var data = {leadId : getLeadId , email : getemail}
+                    $.ajax({
+                      type: "GET",
+                      url: "/dashboard/checkLeadEmail?email="+getemail+"&leadId="+getLeadId,
+                      success: function (data) {
+                        var parsed2 = '';          
+                        try{                           
+                          parsed2 = JSON.parse(data);              
+                        }                 
+                        catch(e)                
+                        {                  
+                          return false;                  
+                        }
+                        var getResponse = parsed2[getLeadId].response;
+                        if(getResponse == 1)
+                        {
+                          $('.redCross').addClass('hide');
+                          $('.emailexists').html('Email Available!').addClass('green');
+                          window.emailexists = false;
+                        }
+                        else
+                        {
+                          if(parsed.length > 0)
+                            {
+                              
+                              $('.topBar').trigger('click');
+                              $('.redCross').removeClass('hide');
+                              $('.redGreen').addClass('hide');
+                              $('.emailexists').html('Email Already Exists!').removeClass('opacity0').removeClass('green');
+                              window.emailexists = true;
+                            }
+                            else
+                            {
+                              $('.redCross').addClass('hide');
+                              $('.redGreen').removeClass('hide');
+                              $('.emailexists').html('Email Available!').removeClass('opacity0').addClass('green');
+                              window.emailexists = false;
+                            }  
+                        }
+                      }
+                    });
+                }
+                else if(parsed.length > 0)
+                {
+                  
+                  $('.topBar').trigger('click');
+                  $('.redCross').removeClass('hide');
+                  $('.redGreen').addClass('hide');
+                  $('.emailexists').html('Email Already Exists!').removeClass('opacity0').removeClass('green');
+                }
+                else
+                {
+                  $('.redCross').addClass('hide');
+                  $('.redGreen').removeClass('hide');
+                  $('.emailexists').html('Email Available!').removeClass('opacity0').addClass('green');
+
+                }        
+              
+              }
+            }); 
+
+        }
+        else {
+            $('.redCross, .redGreen').addClass('hide');
+            $('.emailexists').addClass('opacity0');
+            $('#email').next('label').next('label').removeClass('opacity0');
+            
+        }
+    }
 
    /*------------------------------------------------------------------*/
    /*------------------- Stop GetCountries Ajax List ----------------- */
