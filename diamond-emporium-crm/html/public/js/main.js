@@ -1671,7 +1671,7 @@ $(document).on('click','.addBookingLink', function (e) {
               //setHtml += '<p class="bookingTiming pull-left"><i class="icon-clock fs-12 " style="color:'+window.userColor+'"></i></p>';
               //setHtml += setDropdown;
 
-              setHtml += '<p class="full"><a class="savePopupBooking" href="JavaScript:;">Save</a></p>';
+              setHtml += '<p class="full"><label class="saveBookingError hide">Please fill all fields!</label><a class="savePopupBooking" href="JavaScript:;">Save</a></p>';
             setHtml += '</div>';
           setHtml += '<div class="transparentBG absolute" style="background-color:'+window.userColor+'"></div>';
 
@@ -1718,7 +1718,16 @@ $(document).on('click','.savePopupBooking', function (e) {
         var getDuration = $('.calendarLoad .addBookingPopup .newBookingDuration .subheading').attr('value');
         if(customerName == "" || pickUpAgent == "")
         {
+
+          $('.saveBookingError').removeClass('hide');
+          setTimeout(function(){ 
+              $('.saveBookingError').addClass('hide');
+          }, 3000);
           return false;
+        }
+        else
+        {
+          
         }
         // Get shortcode 
 
