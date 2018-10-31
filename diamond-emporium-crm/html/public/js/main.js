@@ -3944,7 +3944,7 @@ setTimeout(function(){
                           var updatedBooking =  { lead_id : parsed2.lead_id , booking_date : parsed2.booking_date }
                           $.ajax({
                             type: "POST",
-                            url: "/dashboard/ajaxAddDashboard",
+                            url: "/dashboard/ajaxUpdateDashboard",
                             data: updatedBooking, 
                             success: function (data3) {
                               var checkData = data3;
