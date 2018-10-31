@@ -3912,7 +3912,13 @@ setTimeout(function(){
               }
 
               // Ajax Call Saving Appointment
-              dataAppointment.lead_id = parsed;
+              if(parsed != '0')
+              {
+                dataAppointment.lead_id = parsed;
+                dataLead.lead_id = parsed;
+                $('.thisLeadId').attr('leadid', parsed);
+              }
+
               $.ajax({
                 type: "POST",
                 url: "/dashboard/ajaxSaveAppointment",
@@ -3974,6 +3980,8 @@ setTimeout(function(){
                         //Reset New lead form
                         $('.newLead').html(window.getNewLeadAll);
                         $('.newLead').removeClass('inEditMode');
+                        $('.thisLeadId').attr('leadid', '');    
+                        $('#appointmentId').attr('appointmentId','0')
                       }
                     }
                     getSearchData()
@@ -6565,7 +6573,23 @@ function loadLeads(){
                       leads.push(parsed[x]);
                     }
                     
+                    leads.sort(function(a, b) {
+                        var textA = a.idOfUser;
+                        var textB = b.idOfUser;
+                        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+                    });
+
+                    // Get Smaller lead count number
+                
+                    var makeList = [];
+                    for(i=0; i < leads.length; i++)
+                    {
+                        makeList.push(leads[i].count);
+                    }
                     
+                    var getSmallestNumber =  Math.min.apply(null, makeList);
+                    var repititionCheck = 1000000000000;
+                    var repititionCheckAdded = 1000000000000;
 
                     // Bind Array into Html
 
@@ -6583,6 +6607,7 @@ function loadLeads(){
                     var k = 1;
                     var l = 1;
                     var a = 0;
+                    var nextInLineCounter = 0;
                     for (var i = 0; i < leads.length; i++) {
 
                         a++
@@ -6642,6 +6667,7 @@ function loadLeads(){
                         setHtml += '</div>';
                         
                         // Setting Agent Leads
+
                         if(leads[i].count != 0)
                         {
 
@@ -6657,33 +6683,20 @@ function loadLeads(){
                             // Loop for leads
                             var status = '';
                             var referral = '';
-                            for (var j = 0; j < leads[i].items.length; j++) {
+
+                            // Incase for Normal Lead flow
+                            for (var j = 0; j < leads[i].items.length; j++) 
+                            {
 
                                 // Setting Status
                                 var newArray = leads[j].items;
-                                //var newArray2 = leads[j].items[i].create_date;
-                                //newArray.sort(function(a, b) {
-                                //    var textA = a.create_date;
-                                //    var textB = b.create_date;
-                                //    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-                                //});
-
-                                //[""0""].items[""0""].create_date
-
                                 if(leads[i].items[j].lead_status == "Closed")
-                                {
-                                   status = 'bg-red1';
-                                }
+                                { status = 'bg-red1'; }
                                 else if(leads[i].items[j].lead_status == "Deal closed")
-                                {
-                                    status = 'bg-green1';
-                                }
+                                { status = 'bg-green1'; }
                                 else
-                                {
-                                    status = 'bg-white';
-                                }
+                                { status = 'bg-white'; }
                                 // Setting refferal
-
                                 if(leads[i].items[j].referral == "Google")
                                 {  referral = '/images/ic-google.png'  }
                                 else if(leads[i].items[j].referral == "Word of mouth")
@@ -6698,30 +6711,35 @@ function loadLeads(){
                                 {  referral = '/images/ic_insta.png'  }
                                 else
                                 {  referral = '/images/ic_other.png'  }
-
                                 // Binding Set Html Leads
-                                
                                 if(leads[i].items[j].lead_status == "Open")
                                 {
                                    var getLeadPopup = $('#closeLead').html();
-                                   
                                    setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Close</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';
                                 }
                                 else
                                 {
                                    var getLeadPopup = $('#closeLead').html();
-                                   
                                    setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Open</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';                                  
                                 }
-                                
-                                
-
                             }
 
                           setHtml += '</ul></div>';
 
                         }
+                        else
+                        {
+                          if(nextInLineCounter == 0)
+                          {
+                            setHtml += '<div class="full triple-pad-left triple-pad-right triple-pad-top triple-pad-bottom "><ul class="lead-list full lh-38">';
                         
+                            setHtml += '<li class="relative userLeadId nextInlinePerson"><div class="leadUserName ellipsis color-green">Next In Line</div> <img class="referralImage" alt="" src="/images/ic_addplus.png" /></li>';
+                                  
+                            setHtml += '</ul></div>';
+                          }
+                          nextInLineCounter++
+
+                        }
 
                         //Ending Outer Container
                         setHtml += '</div></div>';

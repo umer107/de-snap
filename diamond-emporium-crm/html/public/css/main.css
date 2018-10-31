@@ -608,6 +608,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .subTopText{ position: relative; font-size: 10px; top: -3px;}
 .btn.btn-large { font-size: 14px; line-height: 50px; width: 150px; }
 .lead-list li { color: #5d5d5d; font-size: 14px; margin-top: 11px; }
+.lead-list li.nextInlinePerson{border:1px dotted #27ad09;}
 .lead-list li:first-child { margin-top: 1px; }
 .lead-list li img { float: right; position: absolute; right: 10px; top: 9px; }
 .agentImg-container{ text-align: center; width: 100%; height: 76px; }
