@@ -1720,9 +1720,9 @@ $(document).on('click','.savePopupBooking', function (e) {
         {
 
           $('.saveBookingError').removeClass('hide');
-          setTimeout(function(){ 
-              $('.saveBookingError').addClass('hide');
-          }, 3000);
+          // setTimeout(function(){ 
+          //     $('.saveBookingError').addClass('hide');
+          // }, 3000);
           return false;
         }
         else
@@ -2188,6 +2188,7 @@ $('section.rightCol').on('scroll', function(event){
 
   $(document).on('click', '.customerresult a', function () { 
 
+      $('.saveBookingError').addClass('hide');
       var value = $(this).html();
       var getLeadId = $(this).attr('leadid');
 
@@ -3023,8 +3024,8 @@ setTimeout(function(){
         
         el.closest('.dropdown').find('a.selected-text span').html(getValue);
         el.closest('.dropdown').find('a.selected-text').attr('value', getValue);
-        el.closest('.dropdown').find('ul.dropdownOptions').slideToggle(150);
-        el.closest('.dropdown').prev('span.text-top').slideDown(150);
+        el.closest('.dropdown').find('ul.dropdownOptions').slideToggle(50);
+        el.closest('.dropdown').prev('span.text-top').slideDown(50);
         el.closest('.dropdown').next('select').find('option').attr('value',getValue);
         el.closest('.dropdown').next('label').addClass('opacity0');
 
@@ -3409,6 +3410,8 @@ setTimeout(function(){
 
 
     $(document).on('click','.Additionaldrodown p' ,function(){
+         $('.selectReason, .selectReason2').addClass('opacity0');
+
         var el = $(this);
         $('.Additionaldrodown p').removeClass('activeReason');
         el.addClass('activeReason');
@@ -3434,18 +3437,16 @@ setTimeout(function(){
         if( checkDefaultValue == "Reasons" )
         {
           $('.selectReason').removeClass('opacity0');
-          setTimeout(function(){ 
-            $('.selectReason').addClass('opacity0');
-          }, 3000);
           return false;
         }
-        if( inputValue == "" && checkDefaultValue == "Reasons")
+        if( inputValue == "" && checkDefaultValue == "Other")
         {
           $('.selectReason2').removeClass('opacity0');
-          setTimeout(function(){ 
-            $('.selectReason2').addClass('opacity0');
-          }, 3000);
           return false;
+        }
+        else
+        {
+          $('.selectReason2').addClass('opacity0');
         }
         
         
@@ -3697,6 +3698,7 @@ setTimeout(function(){
         $('.assignToDiv .otherSelection').hide();
         el.closest('.dropdownOptions').find('li').removeClass('hide');
         $('ul.assignToDiv .dropdownOptions').addClass('dropdownheightSet');
+        $('.selectReason, .selectReason2').addClass('opacity0');
     });// End
 
     // Additional Agent other selection
@@ -4232,9 +4234,11 @@ setTimeout(function(){
                   // Address Fields
                   $('.stateDiv .dropdown.State .dropdownOptions li a[value="'+parsed.State+'"]').trigger('click');
                   // Additional Detail Fields
-                  $("#productDropdown").html(parsed.product);
-                  $('#productDropdown').closest('a.selected-text').attr('value',parsed.product);
-                  $('#productDropdown').closest('a.selected-text').attr('shortcode',parsed.product_shortcode);
+                  //$("#productDropdown").html(parsed.product);
+                  //$('#productDropdown').closest('a.selected-text').attr('value',parsed.product);
+                  //$('#productDropdown').closest('a.selected-text').attr('shortcode',parsed.product_shortcode);
+
+                  $('.dropdown.dropdown .dropdownOptions li a[value="'+parsed.product+'"]').click();
 
                   // Referral method
                   
@@ -4429,6 +4433,7 @@ setTimeout(function(){
                   $('.calendarWeeklyDate').attr('bookingDate', parsed.booking_date); 
                   $('.newLead').removeClass('hide');
                   $('.calendarLoad').addClass('hide');
+                  $('ul.dropdownOptions').hide();
                 }
             }); 
     }
@@ -7720,45 +7725,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
         });
   }
 
-  $(document).on('keyup', '#newbookingdropdown', function () {
-      var getValue = $(this).val();
-      getValue = getValue.toLowerCase();
-      var getLength = getValue.length;
-      var arr = [];
-      var arr2 = [];
-      if(getLength > 1)
-      {
-        var parsed = window.list;
 
-        for (var i = 0; i < parsed.length; i++) {
-            
-            var result = parsed[i].user_name;
-            var resultNew = result.toLowerCase();
-            var result2 = parsed[i].id;
-             if (resultNew.indexOf(getValue) > -1) {
-               arr.push(result);
-               arr2.push(result2);
-             }
-             else {}
-          }
-      }
-      var parsed2 = arr;
-      var parsed3 = arr2;
-      var setHtml = '';
-        for (var i = 0; i < parsed2.length; i++) {
-          setHtml += "<a class='full' leadId='"+ parsed3[i] +"'>"+ parsed2[i] +"</a>";
-        }
-
-        if(parsed2.length > 0)
-        {
-          $(".customerresult").html(setHtml);
-        }
-        else
-        {
-          $(".customerresult").html(' ');
-        }
-        
-    });// End
 
 
 
@@ -7808,17 +7775,21 @@ function getBookingTime(getTime, bookingStart, Duation) {
     // Search Autocomplete
     $(document).on('click', '.searchArea .icon-search', function () {
       var getValue = $('.searchField').val();
+      getValue = getValue.toLowerCase();
       var getLength = getValue.length;
       var arr = [];
-      if(getLength > 1)
+      if(getLength > 0)
       {
         var parsed = window.searchData;
 
         for (var i = 0; i < parsed.length; i++) {
             
             var name = parsed[i].name;
+            name = name.toLowerCase();
             var email = parsed[i].email;
+            email = email.toLowerCase();
             var phone = parsed[i].phone_number;
+            phone = phone.toLowerCase();
              if (name.indexOf(getValue) > -1 || email.indexOf(getValue) > -1 || phone.indexOf(getValue) > -1) {
                arr.push(parsed[i]);
              }
@@ -7998,8 +7969,49 @@ function getBookingTime(getTime, bookingStart, Duation) {
   pickUpAgents ();
 
 
-  $(document).on('keyup', '#newbookingdropdown', function () {
+    $(document).on('keyup', '.addBookingPopup #customerRepSelect input', function () {
       var getValue = $(this).val();
+      getValue = getValue.toLowerCase();
+      var getLength = getValue.length;
+      var arr = [];
+      var arr2 = [];
+      if(getLength > 0)
+      {
+        var parsed = window.list;
+
+        for (var i = 0; i < parsed.length; i++) {
+            
+            var result = parsed[i].user_name;
+            var resultNew = result.toLowerCase();
+            var result2 = parsed[i].id;
+             if (resultNew.indexOf(getValue) > -1) {
+               arr.push(result);
+               arr2.push(result2);
+             }
+             else {}
+          }
+      }
+      var parsed2 = arr;
+      var parsed3 = arr2;
+      var setHtml = '';
+        for (var i = 0; i < parsed2.length; i++) {
+          setHtml += "<a class='full' leadId='"+ parsed3[i] +"'>"+ parsed2[i] +"</a>";
+        }
+
+        if(parsed2.length > 0)
+        {
+          $(".customerresult").html(setHtml);
+        }
+        else
+        {
+          $(".customerresult").html(' ');
+        }
+        
+    });// End
+
+  $(document).on('keyup', '.addBookingPopup #salesRepSelect input', function () {
+      var getValue = $(this).val();
+      getValue = getValue.toLowerCase();
       var getLength = getValue.length;
       if(getLength == 0)
       {
@@ -8013,14 +8025,15 @@ function getBookingTime(getTime, bookingStart, Duation) {
         $(".pickAgentresult").removeClass('hide');
       }
       var arr = [];
-      if(getLength > 1)
+      if(getLength > 0)
       {
         var parsed = pickupAgentlist;
 
         for (var i = 0; i < parsed.length; i++) {
             
-            var result = parsed[i].name
-             if (result.indexOf(getValue) > -1) {
+            var result = parsed[i].name;
+            var resultNew = result.toLowerCase();
+             if (resultNew.indexOf(getValue) > -1) {
                arr.push(parsed[i]);
              }
              else {}
@@ -8056,6 +8069,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
   // Select Pick up Assignee on click
   $(document).on('click', '.pickAgentresult div, .pickAgentresult2 div', function () { 
+    $('.saveBookingError').addClass('hide');
     var $el = $(this);
     var value = $el.attr('username');
     var Id = $el.attr('userid');
@@ -8135,6 +8149,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
         if ($.trim(getemail).length == 0) {
             $('.emailexists').addClass('opacity0');
             $('#email').next('label').next('label').addClass('opacity0');
+            $('.redCross, .redGreen').addClass('hide');
         }
         else if (isValidEmailAddress(getemail)) {
             $('#email').next('label').next('label').addClass('opacity0');
@@ -8175,6 +8190,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
                         {
                           $('.redCross').addClass('hide');
                           $('.emailexists').html('Email Available!').addClass('green');
+                          $('.emailexists').addClass('opacity0');
                           window.emailexists = false;
                         }
                         else
@@ -8193,6 +8209,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
                               $('.redCross').addClass('hide');
                               $('.redGreen').removeClass('hide');
                               $('.emailexists').html('Email Available!').removeClass('opacity0').addClass('green');
+                              $('.emailexists').addClass('opacity0');
                               window.emailexists = false;
                             }  
                         }
@@ -8206,12 +8223,14 @@ function getBookingTime(getTime, bookingStart, Duation) {
                   $('.redCross').removeClass('hide');
                   $('.redGreen').addClass('hide');
                   $('.emailexists').html('Email Already Exists!').removeClass('opacity0').removeClass('green');
+                  $('.requiredError').addClass('opacity0');
                 }
                 else
                 {
                   $('.redCross').addClass('hide');
                   $('.redGreen').removeClass('hide');
                   $('.emailexists').html('Email Available!').removeClass('opacity0').addClass('green');
+                  $('.requiredError').addClass('opacity0');
 
                 }        
               
@@ -8221,7 +8240,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
         }
         else {
             $('.redCross, .redGreen').addClass('hide');
-            $('.emailexists').addClass('opacity0');
+            $('.emailexists, .requiredError').addClass('opacity0');
             $('#email').next('label').next('label').removeClass('opacity0');
             
         }
