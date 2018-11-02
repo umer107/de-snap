@@ -660,7 +660,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $fullname = new \Zend\Db\Sql\Expression('CONCAT(u.first_name, \' \', u.last_name)');
                 $select->from(array('u' => 'de_userdetail'))
                      ->columns(array(
-                       'id','title' , 'gender', 'first_name', 'last_name' , 'name' => $fullname , 'phone_number' , 'email' , 'country' ,'State' ,'full_address', 'communication_method' 
+                       'id','title','product' , 'gender', 'first_name', 'last_name' , 'name' => $fullname , 'phone_number' , 'email' , 'country' ,'State' ,'full_address', 'communication_method' 
                       ));
                 $select->where->isNotNull('u.booking_date'); 
                 //AppointmentType
