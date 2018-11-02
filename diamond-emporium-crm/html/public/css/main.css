@@ -669,7 +669,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
 
-.calendarLoad{ background: white; padding: 24px 25px 24px 60px; }
+.calendarLoad{ background: white; padding: 24px 25px 24px 60px;    width: 1662px; }
 .calendarLoad .addBookingLink{}
 /*.calendarLoad .cancelNewBooking,.calendarLoad .saveNewBooking {display: none;}*/
 .calendarLoad .cancelNewBooking{display: none;}
@@ -779,6 +779,7 @@ section.rightCol.hidden{overflow: hidden;}*/
 .roomsContainer .roomBooking div.headBar span:first-child { width: 82px; float: left; border-right: 1px solid white;line-height: 15px; }
 .roomsContainer .roomBooking div.headBar span:last-child { float: left; width: 26px; overflow: hidden; text-align: center; line-height: 15px;}
 .appointmentTypes{ position:relative; z-index: 11; display: inline-block; border-bottom: 2px solid #9b9b9b; padding-bottom: 4px; }
+.appointmentTypesOther{ position:relative; z-index: 1; }
 .addBookingLink { position: absolute; left: 2px; top: 0px; opacity: 0 }
 .daysContentSlider label p:hover .addBookingLink { opacity: 1 }
 .sundayContent { background: #f6f6f6; width: 113px; height: 640px; }
