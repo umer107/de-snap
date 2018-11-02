@@ -608,7 +608,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .subTopText{ position: relative; font-size: 10px; top: -3px;}
 .btn.btn-large { font-size: 14px; line-height: 50px; width: 150px; }
 .lead-list li { color: #5d5d5d; font-size: 14px; margin-top: 11px; }
-.lead-list li.nextInlinePerson{border:1px dotted #27ad09; cursor: pointer;}
+.lead-list li.nextInlinePerson{display: none; border:1px dotted #27ad09; cursor: pointer;}
 .lead-list li:first-child { margin-top: 1px; }
 .lead-list li img { float: right; position: absolute; right: 10px; top: 9px; }
 .agentImg-container{ text-align: center; width: 100%; height: 76px; }
@@ -669,6 +669,10 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 /*------------------ New Calendar ---------------------*/
 /*------------------ New Calendar ---------------------*/
 
+.roomsContainer .labelContainer[roomnumber='1']{}
+.roomsContainer .labelContainer[roomnumber='2']{}
+.roomsContainer .labelContainer[roomnumber='3']{}
+.roomsContainer .labelContainer[roomnumber='4']{}
 .calendarLoad{ background: white; padding: 24px 25px 24px 60px;    width: 1662px; }
 .calendarLoad .addBookingLink{}
 /*.calendarLoad .cancelNewBooking,.calendarLoad .saveNewBooking {display: none;}*/
