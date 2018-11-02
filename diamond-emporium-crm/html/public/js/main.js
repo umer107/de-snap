@@ -7858,7 +7858,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
       }
       else if(productName == "Loose Diamond")
       {
-        iconName = 'icon-necklaces';
+        iconName = 'icon-diamond';
       }
       else if(productName == "Dress Rings")
       {
