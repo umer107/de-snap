@@ -1697,7 +1697,8 @@ $(document).on('click','.addBookingLink', function (e) {
 /*====================================================*/
 // Save new Booking popup
 $(document).on('click','.savePopupBooking', function (e) {
-
+    $('.saveNewBookingForNewLead').removeClass('hide');
+    $('.cancelNewBooking').removeClass('withoutSave');
     var el = $(this);
     if(window.other == true)
     {
@@ -2257,7 +2258,7 @@ $('section.rightCol').on('scroll', function(event){
                   
                   //Setting Lead Id
                   
-                  //$('.thisLeadId').attr('leadId',parsed[0].id);
+                  $('.thisLeadId').attr('leadId',parsed.id);
                   
                   // Basic Info Fields
                   // Title
@@ -2291,11 +2292,7 @@ $('section.rightCol').on('scroll', function(event){
                     $("#productDropdown").html(parsed.product);
                     $('#productDropdown').closest('a.selected-text').attr('value',parsed.product);
                   }
-                  
-                  
-
-                  
-
+                
                   // Referral method
                   var referralMethod = parsed.referral;
                   var referralMethodOther = $("#referralDropdownOther").val();
@@ -3933,6 +3930,7 @@ setTimeout(function(){
         $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
         var inEditMode = $('.newLead').hasClass('inEditMode');
+        var AppointmentBySearch = $('#email').hasClass('popuplatedemail');
         validation();
         if(window.validState == false)
         {
@@ -3941,156 +3939,85 @@ setTimeout(function(){
         var dataLead = getValuesFromForm();
         var dataAppointment = getValuesFromFormAppointment();
 
-        if(window.AppointmentType == 1)
+        if(window.saveAndBook == true && AppointmentBySearch == false) // Incase of Save and Book From New Lead
         {
-          dataAppointment.isBooked = 1;
-        }
-        else
-        {
-          if(dataAppointment.bookingstart == null)
-          {
-            dataAppointment.isBooked = 0;
-          }
-          else
-          {
-            dataAppointment.isBooked = 0;
-          }
-        }
-
-        if(window.saveAndBook == true) // Incase of Save and Book
-        {
-
               $.ajax({
                 type: "POST",
                 url: "/dashboard/ajaxAddDashboard",
                 data: dataLead, 
                 success: function (data) { // returs lead Id
-
                     var parsed = '';          
-                    try{                           
-                      parsed = JSON.parse(data);              
-                    }                 
+                    try{ parsed = JSON.parse(data); }                 
                     catch(e)                
-                    {                  
-                      return false;                  
-                    }
-                    // Ajax Call Saving Appointment
+                    { return false; }
                     dataAppointment.lead_id = parsed;
                     dataLead.lead_id = parsed;
                     $('.thisLeadId').attr('leadid', parsed);
-
-                    $.ajax({
-                      type: "POST",
-                      url: "/dashboard/ajaxSaveAppointment",  // returs Appointment Id
-                      data: dataAppointment, 
-                      success: function (data2) {
-                          var parsed2 = '';          
-                          try{                           
-                            parsed2 = JSON.parse(data2);              
-                          }                 
-                          catch(e)                
-                          {                  
-                            return false;                  
-                          }
-                          $('#appointmentId').attr('appointmentId',parsed2.insertedId)
-                          return false;
-                          getSearchData()
-                      }
-                    });
+                    getSearchData();
+                    return false;
                 }
             });  
         }
-        else if(inEditMode)
+        else if(window.saveAndBook == true && AppointmentBySearch == true)  // Incase of Save and Book From Search New Lead 
+        {
+          $(".hideOnSavenBook").addClass('hide');
+          $(".calendarShowOnBook").removeClass('hide');  
+        }
+        else if(window.AppointmentType == 1)  // Incase of Appointment From Room Manager
+        {
+            $.ajax({
+                type: "POST",
+                url: "/dashboard/ajaxSaveAppointment",
+                data: dataAppointment, 
+                success: function (data2) {
+                    var parsed2 = '';          
+                    try{  parsed2 = JSON.parse(data2); }                 
+                    catch(e)                
+                    { return false; }     
+                    showMainLoading();
+                    var getAssigneeId = window.selectedAssigneeId;
+                    var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
+                    loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
+                    $('.thisLeadId').attr('leadId','');
+                    getSearchData()
+                    return false;
+                }
+              });
+        }
+        else if(inEditMode) // Incase of Edit Lead
         {
               $.ajax({
                 type: "POST",
                 url: "/dashboard/ajaxAddDashboard",
                 data: dataLead, 
                 success: function (data) {
-
                     var parsed = '';          
-                    try{                           
-                      parsed = JSON.parse(data);              
-                    }                 
-                    catch(e)                
-                    {                  
-                      return false;                  
-                    }
-
-                    // Ajax Call Saving Appointment
-                    if(parsed != '0')
-                    {
-                      dataAppointment.lead_id = parsed;
-                      dataLead.lead_id = parsed;
-                      $('.thisLeadId').attr('leadid', parsed);
-                    }
-
+                    try
+                    { parsed = JSON.parse(data); }                 
+                    catch(e) { return false; }
                     $.ajax({
                       type: "POST",
                       url: "/dashboard/ajaxSaveAppointment",
                       data: dataAppointment, 
                       success: function (data2) {
                           var parsed2 = '';          
-                          try{                           
-                            parsed2 = JSON.parse(data2);              
-                          }                 
+                          try{ parsed2 = JSON.parse(data2); }                 
                           catch(e)                
-                          {                  
-                            return false;                  
-                          }
-                          if(window.saveAndBook == true)
+                          { return false; }
+                          if(parsed2.insertedId == 0)
                           {
-                            $('#appointmentId').attr('appointmentId',parsed2.insertedId)
-                            return false;
+                            var updatedBooking =  { lead_id : parsed2.lead_id , booking_date : parsed2.booking_date }
+                            $.ajax({
+                              type: "POST",
+                              url: "/dashboard/ajaxUpdateDashboard",
+                              data: updatedBooking, 
+                              success: function (data3) {
+                                var checkData = data3;
+                              }
+                            }); 
                           }
-                          else
-                          {
-                            if(window.AppointmentType == 1)
-                            {
-                              showMainLoading();
-                              var getAssigneeId = window.selectedAssigneeId;
-                              var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
-                              
-                              loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
-                            }
-                            else
-                            {
-                              if(parsed2.insertedId == 0)
-                              {
-                                  var updatedBooking =  { lead_id : parsed2.lead_id , booking_date : parsed2.booking_date }
-                                  $.ajax({
-                                    type: "POST",
-                                    url: "/dashboard/ajaxUpdateDashboard",
-                                    data: updatedBooking, 
-                                    success: function (data3) {
-                                      var checkData = data3;
-                                    }
-                                  }); 
-                                }
-                              
-
-                              $('.rings a').removeClass('active');
-                              $('.rings a:last-child').addClass('active');
-                              loadLeads();
-                              //Setting header changes
-
-                              showMainLoading();
-                              $('.newLeaveContainer').hide();
-                              $('.newLead').addClass('maxHeightHide');
-                              $('.dashboardContainer').addClass('hide');
-                              $('.leavesContainer').addClass('hide');
-                              $('.leadsContainer').removeClass('hide');
-                              $('.new-Lead').removeClass('active');
-                              $('.dashboard-header').removeClass('hide');
-
-                              //Reset New lead form
-                              $('.newLead').html(window.getNewLeadAll);
-                              $('.newLead').removeClass('inEditMode');
-                              $('.thisLeadId').attr('leadid', '');    
-                              $('#appointmentId').attr('appointmentId','0')
-                            }
-                          }
-                          getSearchData()
+                          loadMainDashboardAfterSaveLead();
+                          $('.thisLeadId').attr('leadId','');
                           return false;
                       }
                     });
@@ -4099,85 +4026,109 @@ setTimeout(function(){
         }
         else
         {
-
-              $.ajax({
+            if(dataAppointment.lead_id == "") // Incase of Saved lead only from New Lead Form
+            {
+                $.ajax({
                     type: "POST",
-                    url: "/dashboard/ajaxSaveAppointment",
-                    data: dataAppointment, 
-                    success: function (data2) {
-                        var parsed2 = '';          
-                        try{                           
-                          parsed2 = JSON.parse(data2);              
-                        }                 
+                    url: "/dashboard/ajaxAddDashboard",
+                    data: dataLead, 
+                    success: function (data) { // returs lead Id
+                        var parsed = '';          
+                        try{ parsed = JSON.parse(data); }                 
                         catch(e)                
-                        {                  
-                          return false;                  
-                        }
-                        if(window.saveAndBook == true)
-                        {
-                          $('#appointmentId').attr('appointmentId',parsed2.insertedId)
-                          return false;
-                        }
-                        else
-                        {
-                          if(window.AppointmentType == 1)
-                          {
-                            showMainLoading();
-                            var getAssigneeId = window.selectedAssigneeId;
-                            var getWeeklyDate = $('.calendarLoad .calendarWeeklyDate').attr('startdate');
-                            
-                            loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
-                          }
-                          else
-                          {
-                            if(parsed2.insertedId == 0)
-                            {
-                              var updatedBooking =  { lead_id : parsed2.lead_id , booking_date : parsed2.booking_date }
-                              $.ajax({
-                                type: "POST",
-                                url: "/dashboard/ajaxUpdateDashboard",
-                                data: updatedBooking, 
-                                success: function (data3) {
-                                  var checkData = data3;
-                                }
-                              }); 
-                            }
-                            
-
-                            $('.rings a').removeClass('active');
-                            $('.rings a:last-child').addClass('active');
-                            loadLeads();
-                            //Setting header changes
-
-                            showMainLoading();
-                            $('.newLeaveContainer').hide();
-                            $('.newLead').addClass('maxHeightHide');
-                            $('.dashboardContainer').addClass('hide');
-                            $('.leavesContainer').addClass('hide');
-                            $('.leadsContainer').removeClass('hide');
-                            $('.new-Lead').removeClass('active');
-                            $('.dashboard-header').removeClass('hide');
-
-                            //Reset New lead form
-                            $('.newLead').html(window.getNewLeadAll);
-                            $('.newLead').removeClass('inEditMode');
-                            $('.thisLeadId').attr('leadid', '');    
-                            $('#appointmentId').attr('appointmentId','0')
-                          }
-                        }
-                        getSearchData()
+                        { return false; }
+                        loadMainDashboardAfterSaveLead();
+                        $('.thisLeadId').attr('leadId','');
                         return false;
                     }
-                  });
+                }); 
+            }
+            else if(AppointmentBySearch == true) // Update Lead which comes from Book And Save
+            {
+                $.ajax({  
+                type: "POST",
+                url: "/dashboard/ajaxSaveAppointment",
+                data: dataAppointment, 
+                success: function (data2) {
+                    var parsed2 = '';          
+                    try{                           
+                      parsed2 = JSON.parse(data2);              
+                    }                 
+                    catch(e)                
+                    {                  
+                      return false;                  
+                    }
 
+                    loadMainDashboardAfterSaveLead();
+                    $('.thisLeadId').attr('leadId','');
+                    return false;      
+                }
+              });
+            }
+            else  // Update Lead which comes from Save Only
+            {
+                $.ajax({  
+                type: "POST",
+                url: "/dashboard/ajaxSaveAppointment",
+                data: dataAppointment, 
+                success: function (data2) {
+                    var parsed2 = '';          
+                    try{                           
+                      parsed2 = JSON.parse(data2);              
+                    }                 
+                    catch(e)                
+                    {                  
+                      return false;                  
+                    }      
+                    if(parsed2.insertedId == 0)
+                    {
+                        var updatedBooking =  { lead_id : parsed2.lead_id , booking_date : parsed2.booking_date }
+                        $.ajax({
+                          type: "POST",
+                          url: "/dashboard/ajaxUpdateDashboard",
+                          data: updatedBooking, 
+                          success: function (data3) {
+                            var checkData = data3;
+                          }
+                        }); 
+                      }
+                    loadMainDashboardAfterSaveLead();
+                    $('.thisLeadId').attr('leadId','');
+                    return false;  
+                }
+              });
+            }
         }
-
-        //Ajax Call Saving Lead
+      
+      //Ajax Call Saving Lead
           
-        return false;
-        //End Ajax Call
+      return false;
+      //End Ajax Call
 
-      });
+    });
+
+    function loadMainDashboardAfterSaveLead()
+    {
+      $('.rings a').removeClass('active');
+      $('.rings a:last-child').addClass('active');
+      loadLeads();
+      //Setting header changes
+      showMainLoading();
+      $('.newLeaveContainer').hide();
+      $('.newLead').addClass('maxHeightHide');
+      $('.dashboardContainer').addClass('hide');
+      $('.leavesContainer').addClass('hide');
+      $('.leadsContainer').removeClass('hide');
+      $('.new-Lead').removeClass('active');
+      $('.dashboard-header').removeClass('hide');
+      //Reset New lead form
+      $('.newLead').html(window.getNewLeadAll);
+      $('.newLead').removeClass('inEditMode');
+      $('.thisLeadId').attr('leadid', '');    
+      $('#appointmentId').attr('appointmentId','0');
+      getSearchData();
+    }
+
     /* ==================================================== */
     /* ================== End Save Form =================== */
     /* ==================================================== */
@@ -7877,7 +7828,8 @@ function getBookingTime(getTime, bookingStart, Duation) {
       $('.basicInfo .phonenumber').val(parsedRecord.phone_number);                                              // phone
       $('#email').val(parsedRecord.email);                                                                      // email
       $('#email').addClass('popuplatedemail');
-      $('#email').attr('leadId',parsedRecord.id);                                                                  // email
+      $('#email').attr('leadId',parsedRecord.id);                                                               // email
+      $('.thisLeadId').attr('leadid',parsedRecord.id);                                                          // email
       $('#fullAddress').val(parsedRecord.full_address);                                                         // address
       $('#countryName').attr('value',parsedRecord.country);                                                     // country
       $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(parsedRecord.country);         // country

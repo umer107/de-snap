@@ -703,6 +703,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 }
 .saveNewBooking{ right: 60px; top:24px; }
 .cancelNewBooking{ right: 188px; top:24px; }
+.cancelNewBooking.withoutSave{ right: 60px;}
 .saveNewBooking a, .cancelNewBooking a{ width: 120px; } 
 #NewCalendar{}
 .NewCalendar{border-left: 1px solid #dfdfdf; border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; }
