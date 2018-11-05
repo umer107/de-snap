@@ -1639,8 +1639,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         
       $select = new \Zend\Db\Sql\Select();
                   $select->from(array('l' => 'de_userdetail'))
-                        ->columns(array('id','title','gender','first_name', 'last_name', 'phone_number', 'email', 'country','communication_method', 'contact_method','State','full_address'))         
-                        ->join(array('a' => 'de_appointments'), 'l.id = a.lead_id', array('appointment_id','lead_id','product','referral','only_referral', 'special_instructions','budget','reference_product','assign_to','lead_owner_fullname' => 'lead_owner_name','reson_skip_next_in_line','lead_status','lead_owner','create_date','booking_date','specify_requirements','booking_time','booking_room','durationTime','bookingstart','assign_to_UserId'), 'left');
+                        ->columns(array('id','title','gender','first_name', 'last_name', 'phone_number', 'email', 'country','communication_method', 'contact_method','State','full_address','product','referral','only_referral', 'special_instructions','budget','reference_product','assign_to','lead_owner_fullname' => 'lead_owner_name','reson_skip_next_in_line','lead_status','lead_owner','create_date','assign_to_UserId'))         
+                        ->join(array('a' => 'de_appointments'), 'l.id = a.lead_id', array('appointment_id','lead_id','booking_date','specify_requirements','booking_time','booking_room','durationTime','bookingstart'), 'left');
                         
                       
                         $value = $filter['leadId'];    
