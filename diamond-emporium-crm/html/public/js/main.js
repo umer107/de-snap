@@ -7768,6 +7768,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
        }
        $('.emailexists').addClass('opacity0').removeClass('green');
        $('.redCross, .redGreen').addClass('hide');
+       $('.basicInfo .requiredError, .emailDiv .requiredError, .firstError, .emailexists, .emailDiv .error ').addClass('opacity0');
        showMainLoading();
     });
 
@@ -7795,6 +7796,10 @@ function getBookingTime(getTime, bookingStart, Duation) {
              }
              else {}
           }
+      }
+      else
+      {
+        return false;
       }
       var filteredArray = arr;
       var setHtml = '';
