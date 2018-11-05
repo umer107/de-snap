@@ -4051,13 +4051,8 @@ setTimeout(function(){
                 data: dataAppointment, 
                 success: function (data2) {
                     var parsed2 = '';          
-                    try{                           
-                      parsed2 = JSON.parse(data2);              
-                    }                 
-                    catch(e)                
-                    {                  
-                      return false;                  
-                    }
+                    try{ parsed2 = JSON.parse(data2); }                 
+                    catch(e) { return false; }
 
                     loadMainDashboardAfterSaveLead();
                     $('.thisLeadId').attr('leadId','');
@@ -4073,13 +4068,8 @@ setTimeout(function(){
                 data: dataAppointment, 
                 success: function (data2) {
                     var parsed2 = '';          
-                    try{                           
-                      parsed2 = JSON.parse(data2);              
-                    }                 
-                    catch(e)                
-                    {                  
-                      return false;                  
-                    }      
+                    try{ parsed2 = JSON.parse(data2); }                 
+                    catch(e) { return false; }     
                     if(parsed2.insertedId == 0)
                     {
                         var updatedBooking =  { lead_id : parsed2.lead_id , booking_date : parsed2.booking_date }
