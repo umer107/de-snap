@@ -357,68 +357,20 @@ class AppointmentTable
                unset($data['appointment_id']);
                $data['lead_status'] = 'Open';
            
-              if(empty($data['booking_room']))
-               {
-               if(empty($data['booking_date']))
-               {
-                   unset($data['booking_room']);
-                   $data['booking_date'] = date('Y-m-d'); 
-                   $data['user_booking_date'] = 1;
-               }
-               }
-           else
-           {
-               $data['user_booking_date'] = 0;
-           }
-           $returnArray = array();
-           $data['isFirstBooked'] = 0; 
-           $this->tableGateway->insert($data);
-           $insertedId = $this->tableGateway ->getLastInsertValue();
-           $returnArray['lead_id'] = 0;
-           $returnArray['booking_date'] = '';
-           $returnArray['insertedId'] = $insertedId;
-           return $returnArray;
-           //return $insertedId;
+              
+                $returnArray = array();              
+                $this->tableGateway->insert($data);
+                $insertedId = $this->tableGateway ->getLastInsertValue();
+                $returnArray['lead_id'] = $data['lead_id'];
+                $returnArray['booking_date'] = $data['booking_date'];
+                $returnArray['insertedId'] = $insertedId;
+                return $returnArray;
 
-   
            }       
         
           else {
-              
-            if(!empty($leadId))
-            {
-                   $select = new \Zend\Db\Sql\Select();
-                   $select->from(array('u' => 'de_appointments'))
-                    ->columns(array('appointment_id','lead_id'));
-                   $select->where(array('u.lead_id = ?' =>  $leadId));
-                    $exec_data = $this->executeQuery($select);
-                    $counter = count($exec_data);
-                    $result = $exec_data->toArray();
-                    if($counter == 1)
-                    {
-                    
-                        $data['isFirstBooked'] = 0; 
-                      }
 
-                    }
-                    else
-                    {
-                         $data['isFirstBooked'] = 1; 
-                    }
-           
              $app = $data['appointment_id'];
-             if(empty($data['booking_room']))
-             {
-               if(empty($data['booking_date']))
-               {
-                   unset($data['booking_room']);
-                   $data['booking_date'] = date('Y-m-d'); 
-                   $data['user_booking_date'] = 1;
-               }
-             }
-            else{
-               $data['user_booking_date'] = 0;
-             } 
              $returnArray = array();
              if($where){
                         
@@ -430,7 +382,6 @@ class AppointmentTable
                     return $returnArray;
              } 
              else{
-                  //return $this->tableGateway->update($data, array('id' => $leadId));
                     $this->tableGateway->update($data, array('appointment_id' => $app));
                      $returnArray['lead_id'] = $data['lead_id'];
                      $returnArray['booking_date'] = $data['booking_date'];
