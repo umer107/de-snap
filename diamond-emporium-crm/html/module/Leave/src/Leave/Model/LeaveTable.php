@@ -1649,7 +1649,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         }
                         
                         $data = $this->executeQuery($select);                     
-                        $select->order("l.create_date asc");
+                        $select->order("a.create_date asc");
                         $result = $data->toArray();
                         foreach ($result as $item)
                         {
