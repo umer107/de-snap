@@ -653,7 +653,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
         
         public  function fetchSearchReacord($filter = null)
         {
-             try {                
+             try {      
+                 $other_leadId = 90000;
                 //Fetch Only those Records Where Appointment type = 0
                 //$appointmentType = 0;
                 $select = new \Zend\Db\Sql\Select();
@@ -662,7 +663,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                      ->columns(array(
                        'id','title','product' , 'gender', 'first_name', 'last_name' , 'name' => $fullname , 'phone_number' , 'email' , 'country' ,'State' ,'full_address', 'communication_method', 'create_date'
                       ));
-                $select->where->isNotNull('u.booking_date'); 
+                $select->where->notEqualTo('u.id', $other_leadId);
+                //$select->where->isNotNull('u.booking_date'); 
                 //AppointmentType
                 /*if(isset($appointmentType))
                 {
@@ -1912,13 +1914,14 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
       public function  fetchCustomerNameData()
    {
                try{
-		
+		$other_leadId = 90000;
                 $fullname = new \Zend\Db\Sql\Expression(
                  'CONCAT(u.first_name, \' \', u.last_name)'
                 );    
                 $select = new \Zend\Db\Sql\Select(); 
                 $select->from(array('u' => 'de_userdetail')) ->columns(array( 'id','user_name' => $fullname , 'booking_date')); 
-                $select->where->isNotNull('u.booking_date');    
+                $select->where->notEqualTo('u.id', $other_leadId);
+                //$select->where->isNotNull('u.booking_date');    
                 $select->order("id desc");
                 //$filter_lead_Appointment1 = 0;
                 //$select->where(array('u.AppointmentType= ?' => $filter_lead_Appointment1 ));
