@@ -660,7 +660,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $fullname = new \Zend\Db\Sql\Expression('CONCAT(u.first_name, \' \', u.last_name)');
                 $select->from(array('u' => 'de_userdetail'))
                      ->columns(array(
-                       'id','title','product' , 'gender', 'first_name', 'last_name' , 'name' => $fullname , 'phone_number' , 'email' , 'country' ,'State' ,'full_address', 'communication_method' 
+                       'id','title','product' , 'gender', 'first_name', 'last_name' , 'name' => $fullname , 'phone_number' , 'email' , 'country' ,'State' ,'full_address', 'communication_method', 'create_date'
                       ));
                 $select->where->isNotNull('u.booking_date'); 
                 //AppointmentType
@@ -1617,8 +1617,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
      public function fetchLeadRecord($filter= null)
        {
            
-           $select = new \Zend\Db\Sql\Select();
-      $select->from('de_userdetail')->columns(array('id'));
+        $select = new \Zend\Db\Sql\Select();
+        $select->from('de_userdetail')->columns(array('id'));
                         
                         
                         //FullName  From Table "de_users"
@@ -1647,7 +1647,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         }
                         
                         $data = $this->executeQuery($select);                     
-                        $select->order("l.create_date desc");
+                        $select->order("l.create_date asc");
                         $result = $data->toArray();
                         foreach ($result as $item)
                         {
