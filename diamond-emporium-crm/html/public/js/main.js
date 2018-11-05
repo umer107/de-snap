@@ -4045,20 +4045,39 @@ setTimeout(function(){
             }
             else if(AppointmentBySearch == true) // Update Lead which comes from Book And Save
             {
-                $.ajax({  
-                type: "POST",
-                url: "/dashboard/ajaxSaveAppointment",
-                data: dataAppointment, 
-                success: function (data2) {
-                    var parsed2 = '';          
-                    try{ parsed2 = JSON.parse(data2); }                 
-                    catch(e) { return false; }
 
-                    loadMainDashboardAfterSaveLead();
-                    $('.thisLeadId').attr('leadId','');
-                    return false;      
-                }
-              });
+             $.ajax({
+                  type: "POST",
+                  url: "/dashboard/ajaxAddDashboard",
+                  data: dataLead, 
+                  success: function (data) { // returs lead Id
+                      var parsed = '';          
+                      try{ parsed = JSON.parse(data); }                 
+                      catch(e)                
+                      { return false; }
+                      loadMainDashboardAfterSaveLead();
+                      $('.thisLeadId').attr('leadId','');
+                      return false;  
+                  }
+              }); 
+             
+              if(dataAppointment.booking_date != null)
+              {
+                $.ajax({  
+                  type: "POST",
+                  url: "/dashboard/ajaxSaveAppointment",
+                  data: dataAppointment, 
+                  success: function (data2) {
+                      var parsed2 = '';          
+                      try{ parsed2 = JSON.parse(data2); }                 
+                      catch(e) { return false; }
+
+                      loadMainDashboardAfterSaveLead();
+                      $('.thisLeadId').attr('leadId','');
+                      return false;      
+                  }
+                });
+              }
             }
             else  // Update Lead which comes from Save Only
             {
@@ -4070,21 +4089,21 @@ setTimeout(function(){
                     var parsed2 = '';          
                     try{ parsed2 = JSON.parse(data2); }                 
                     catch(e) { return false; }     
-                    if(parsed2.insertedId == 0)
-                    {
-                        var updatedBooking =  { lead_id : parsed2.lead_id , booking_date : parsed2.booking_date }
-                        $.ajax({
-                          type: "POST",
-                          url: "/dashboard/ajaxUpdateDashboard",
-                          data: updatedBooking, 
-                          success: function (data3) {
-                            var checkData = data3;
-                          }
-                        }); 
+
+                    var updatedBooking =  { lead_id : parsed2.lead_id , booking_date : parsed2.booking_date }
+                    $.ajax({
+                      type: "POST",
+                      url: "/dashboard/ajaxUpdateDashboard",
+                      data: updatedBooking, 
+                      success: function (data3) {
+                        var checkData = data3;
+                        loadMainDashboardAfterSaveLead();
+                        $('.thisLeadId').attr('leadId','');
+                        return false;
                       }
-                    loadMainDashboardAfterSaveLead();
-                    $('.thisLeadId').attr('leadId','');
-                    return false;  
+                    }); 
+                      
+                      
                 }
               });
             }
@@ -4214,7 +4233,7 @@ setTimeout(function(){
     $(document).on('click','.editDetails:not(.disabled)', function (e) {
 
         $('.newLead').addClass('inEditMode');
-        
+        $('.saveNewBookingForNewLead').removeClass('hide');
         var getLeadId = $(this).attr('lead-id');    
         EditLead(getLeadId)
                    
