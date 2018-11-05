@@ -3955,6 +3955,13 @@ setTimeout(function(){
           }
         }
 
+        if(window.saveAndBook == true)
+        {
+        }
+        else
+        {
+
+        }
         //Ajax Call Saving Lead
         $.ajax({
           type: "POST",
