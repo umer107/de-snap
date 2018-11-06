@@ -701,6 +701,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
     display: grid;
     top: 9px;
 }
+.overflowHidden{overflow: hidden !important;}
 .saveNewBooking{ right: 60px; top:24px; }
 .cancelNewBooking{ right: 188px; top:24px; }
 .cancelNewBooking.withoutSave{ right: 60px;}
