@@ -1447,19 +1447,20 @@ window.todayDate2 = todaysDate2
 
 $(document).on('click','.bookingRooms a', function (e) {
 
+    //showMainCalendarLoading();
     var getValue = $(this).attr('value');
     $('.bookingRooms a').removeClass('active');
     $(this).addClass('active');
-
+  
     if(getValue == "All Rooms")
     {
       $('.roomFour, .roomThree, .roomTwo, .roomOne').removeClass('hide');
     }
     else if(getValue == "Room 1")
     {
+      //$('.daysSlider label.room3 img').trigger('click');
       $('.roomFour, .roomThree, .roomTwo').addClass('hide');
       $('.roomOne').removeClass('hide');
-      //$('.daysSlider label.room3 img').trigger('click');
     }
     else if(getValue == "Room 2")
     {
@@ -1479,8 +1480,6 @@ $(document).on('click','.bookingRooms a', function (e) {
       $('.roomFour').removeClass('hide');
       //$('.daysSlider label.room2 img').trigger('click');
     }
-
-    
 });
 
 /*====================================================*/
@@ -6378,6 +6377,14 @@ function showMainLoading(){
     setTimeout(function(){ 
         $('.mainLoader').fadeOut(300);
     }, 2500);
+}
+
+// Show main loading
+function showMainCalendarLoading(){
+    $('.mainLoader').show();
+    setTimeout(function(){ 
+        $('.mainLoader').fadeOut(300);
+    }, 1000);
 }
 
 /*---------------------------------------------*/
