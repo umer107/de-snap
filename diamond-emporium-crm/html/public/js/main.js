@@ -7004,7 +7004,7 @@ function loadLeaveCalendar(){
           }
       }, function (start, end, label) {
       });
-      var getTodaysDate = moment(getTodayDate).add(0, 'M').format('YYYY-MM-DD');
+      var getTodaysDate = moment(getTodayDate).add(0, 'M').format('DD-MM-YYYY');
       $('input[name="daterange"]').val(getTodaysDate).attr('startdate',getTodaysDate);
       $('input[name="daterange"]').on('apply.daterangepicker', function (ev, picker) {
           var startDate = picker.startDate;
