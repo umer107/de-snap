@@ -7883,12 +7883,21 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
 
     // Search Autocomplete
+    $(document).on('keyup', '.searchField', function () {
+        mainSearch()
+    });// End
+
     $(document).on('click', '.searchArea .icon-search', function () {
+        mainSearch()
+    });// End
+
+    function mainSearch()
+    {
       var getValue = $('.searchField').val();
       getValue = getValue.toLowerCase();
       var getLength = getValue.length;
       var arr = [];
-      if(getLength > 0)
+      if(getLength > 2)
       {
         var parsed = window.searchData;
 
@@ -7908,6 +7917,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
       }
       else
       {
+        $("#searchResults").html(' ');
         return false;
       }
       var filteredArray = arr;
@@ -7943,8 +7953,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
         {
           $("#searchResults").html('<span class="double-gap-top padded full bold">No record found. Please create new lead.</span> ');
         }
-        
-    });// End
+    }
 
     // Get product icons for search autocomplete
     function productIcons(productName)
