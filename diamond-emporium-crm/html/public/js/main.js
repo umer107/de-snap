@@ -1455,29 +1455,35 @@ $(document).on('click','.bookingRooms a', function (e) {
     if(getValue == "All Rooms")
     {
       $('.roomFour, .roomThree, .roomTwo, .roomOne').removeClass('hide');
+      $('.roomsContainer').removeClass('scrolled');
     }
     else if(getValue == "Room 1")
     {
       //$('.daysSlider label.room3 img').trigger('click');
+
       $('.roomFour, .roomThree, .roomTwo').addClass('hide');
       $('.roomOne').removeClass('hide');
+      $('.roomsContainer').removeClass('scrolled');
     }
     else if(getValue == "Room 2")
     {
       $('.roomFour, .roomThree, .roomOne').addClass('hide');
       $('.roomTwo').removeClass('hide');
+      $('.roomsContainer').removeClass('scrolled');
       //$('.daysSlider label.room3 img').trigger('click');
     }
     else if(getValue == "Room 3")
     {
       $('.roomFour, .roomTwo, .roomOne').addClass('hide');
       $('.roomThree').removeClass('hide');
+       $('.roomsContainer').addClass('scrolled');
       //$('.daysSlider label.room2 img').trigger('click');
     }
     else
     {
       $('.roomThree, .roomTwo, .roomOne').addClass('hide');
       $('.roomFour').removeClass('hide');
+       $('.roomsContainer').addClass('scrolled');
       //$('.daysSlider label.room2 img').trigger('click');
     }
 });
@@ -1545,6 +1551,8 @@ $(document).on('click','.borderBottom i.icon-downarrow, .customerName, .salesRep
 
 // Add new Booking popup
 $(document).on('click','.addBookingLink', function (e) {
+
+    window.userColor = '';
 
     $('.rightCol').addClass('overflowHidden');
     var el = $(this);
