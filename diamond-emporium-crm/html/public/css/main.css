@@ -494,7 +494,7 @@ input[type=text]::-ms-clear, .ui-combobox input::-ms-clear {
 .leavesDetail .details span:first-child{ font-family: robotomedium; font-size: 12px; }
 .leavesDetail .details span:last-child{ font-family: robotoregular; font-size: 13px; }
 .absenseTooltip{ position: relative;top: -3px; z-index: 120; font-size: 13px; font-family: robotomedium; color:#7499bd; text-align: center; cursor: pointer; line-height: 1  }
-.tooltipContainer{ border-radius: 2px; position: absolute; z-index: 120; background: white; width: 224px; box-shadow: 1px 1px 19px #a5a5a5; padding: 6px 0 1px 0; top: 143px; left: 1px;}
+.tooltipContainer{ z-index: 121; border-radius: 2px; position: absolute; background: white; width: 224px; box-shadow: 1px 1px 19px #a5a5a5; padding: 6px 0 1px 0; top: 143px; left: 1px;}
 .tooltipContainer img{ position: absolute; top: -22px; width: 224px; left: 0px; max-width: 224px; }
 .tooltipHeight{ max-height: 257px; overflow: auto; }
 .leaveNext-options label{color:#A5A5A5;}
@@ -701,6 +701,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
     display: grid;
     top: 9px;
 }
+.overflowHidden{overflow: hidden !important;}
 .saveNewBooking{ right: 60px; top:24px; }
 .cancelNewBooking{ right: 188px; top:24px; }
 .cancelNewBooking.withoutSave{ right: 60px;}

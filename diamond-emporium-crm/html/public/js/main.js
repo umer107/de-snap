@@ -1067,6 +1067,7 @@ $(document).ready(function () {
     // Calendar Button
 
     $(document).on('click', '.mainMenu a.calendarLink', function () {
+
         getCustomerByName();
         $('.dashboard-header, .leadsContainer, .leadDeailContainer, .newLead, .leavesContainer, .newLeaveContainer').addClass('hide');
 
@@ -1080,6 +1081,7 @@ $(document).ready(function () {
         $('.calendarLoad').removeClass('hide');
         $('.newLead').removeClass('inEditMode');
         suggestedDate();
+        $('.all-rooms').trigger('click');
 
     });// End
 
@@ -1445,36 +1447,45 @@ window.todayDate2 = todaysDate2
 
 $(document).on('click','.bookingRooms a', function (e) {
 
+    //showMainCalendarLoading();
     var getValue = $(this).attr('value');
     $('.bookingRooms a').removeClass('active');
     $(this).addClass('active');
-
+  
     if(getValue == "All Rooms")
     {
       $('.roomFour, .roomThree, .roomTwo, .roomOne').removeClass('hide');
+      $('.roomsContainer').removeClass('scrolled');
     }
     else if(getValue == "Room 1")
     {
+      //$('.daysSlider label.room3 img').trigger('click');
+
       $('.roomFour, .roomThree, .roomTwo').addClass('hide');
       $('.roomOne').removeClass('hide');
+      $('.roomsContainer').removeClass('scrolled');
     }
     else if(getValue == "Room 2")
     {
       $('.roomFour, .roomThree, .roomOne').addClass('hide');
       $('.roomTwo').removeClass('hide');
+      $('.roomsContainer').removeClass('scrolled');
+      //$('.daysSlider label.room3 img').trigger('click');
     }
     else if(getValue == "Room 3")
     {
       $('.roomFour, .roomTwo, .roomOne').addClass('hide');
       $('.roomThree').removeClass('hide');
+       $('.roomsContainer').addClass('scrolled');
+      //$('.daysSlider label.room2 img').trigger('click');
     }
     else
     {
       $('.roomThree, .roomTwo, .roomOne').addClass('hide');
       $('.roomFour').removeClass('hide');
+       $('.roomsContainer').addClass('scrolled');
+      //$('.daysSlider label.room2 img').trigger('click');
     }
-
-    
 });
 
 /*====================================================*/
@@ -1541,6 +1552,9 @@ $(document).on('click','.borderBottom i.icon-downarrow, .customerName, .salesRep
 // Add new Booking popup
 $(document).on('click','.addBookingLink', function (e) {
 
+    window.userColor = '';
+
+    $('.rightCol').addClass('overflowHidden');
     var el = $(this);
     $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
     window.validState = true;
@@ -1685,7 +1699,7 @@ $(document).on('click','.addBookingLink', function (e) {
     var container = "<div class='popupBackground'></div><div class='tempContainer fixed' style='top:"+getOffsetTop+"px ; left:"+getOffsetLeft+"px'>" + setHtml + "</div>";
     //$(this).after(container);
     $('.addBookingPopup').html(container).removeClass('hide');
-    $('.pickAgentresult2').html(window.pickAgentresult2);
+    //$('.pickAgentresult2').html(window.pickAgentresult2);
 
 
     return false;
@@ -1697,6 +1711,7 @@ $(document).on('click','.addBookingLink', function (e) {
 /*====================================================*/
 // Save new Booking popup
 $(document).on('click','.savePopupBooking', function (e) {
+    $('.rightCol').removeClass('overflowHidden');
     $('.saveNewBookingForNewLead').removeClass('hide');
     $('.cancelNewBooking').removeClass('withoutSave');
     var el = $(this);
@@ -2171,6 +2186,7 @@ function bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly)
 $('section.rightCol').on('scroll', function(event){
       $('.addBookingPopup').html('');
       $('.addBookingPopup').addClass('hide');
+      $('.rightCol').removeClass('overflowHidden');
       //$('section.rightCol').removeClass('hidden');
   });// End
 
@@ -2181,9 +2197,9 @@ $('section.rightCol').on('scroll', function(event){
         if (!container.is(event.target) &&            
             container.has(event.target).length === 0)
             {
+              $('.rightCol').removeClass('overflowHidden');
               $('.addBookingPopup').html('');
               $('.addBookingPopup').addClass('hide');
-              //$('section.rightCol').removeClass('hidden');
             }
     });// End
 
@@ -4060,7 +4076,7 @@ setTimeout(function(){
                       return false;  
                   }
               }); 
-             
+
               if(dataAppointment.booking_date != null)
               {
                 $.ajax({  
@@ -5913,6 +5929,8 @@ $(document).on('click','.newactions a', function (e) {
         $('.leadDeailContainer').addClass('hide');
         $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
         $('.newLead').removeClass('inEditMode');
+        $(".hideOnSavenBook").removeClass('hide'); 
+        $(".calendarShowOnBook").addClass('hide');
         endCalendarLoading();
 
     }
@@ -6039,6 +6057,10 @@ $(document).on('click','.btn-saveDetailsLeave', function (e) {
         //AjaxCallSaveLeadsOnSaveClick--Start
          
          var model = getValuesFromLeaveForm();
+         if(model.endDate == null)
+         {
+          model.endDate = model.startDate;
+         }
 
          $.ajax({
 
@@ -6363,6 +6385,14 @@ function showMainLoading(){
     setTimeout(function(){ 
         $('.mainLoader').fadeOut(300);
     }, 2500);
+}
+
+// Show main loading
+function showMainCalendarLoading(){
+    $('.mainLoader').show();
+    setTimeout(function(){ 
+        $('.mainLoader').fadeOut(300);
+    }, 1000);
 }
 
 /*---------------------------------------------*/
@@ -6982,7 +7012,7 @@ function loadLeaveCalendar(){
           }
       }, function (start, end, label) {
       });
-      var getTodaysDate = moment(getTodayDate).add(0, 'M').format('YYYY-MM-DD');
+      var getTodaysDate = moment(getTodayDate).add(0, 'M').format('DD-MM-YYYY');
       $('input[name="daterange"]').val(getTodaysDate).attr('startdate',getTodaysDate);
       $('input[name="daterange"]').on('apply.daterangepicker', function (ev, picker) {
           var startDate = picker.startDate;
@@ -7854,17 +7884,28 @@ function getBookingTime(getTime, bookingStart, Duation) {
        $('.emailexists').addClass('opacity0').removeClass('green');
        $('.redCross, .redGreen').addClass('hide');
        $('.basicInfo .requiredError, .emailDiv .requiredError, .firstError, .emailexists, .emailDiv .error ').addClass('opacity0');
+       //$('.dropdown.product .dropdownOptions li a[value="'+parsedRecord.product+'"]').trigger('click');
+       //$('.dropdown.product .dropdownOptions li a[value="'+parsedRecord.product+'"]').trigger('click');
        showMainLoading();
     });
 
 
     // Search Autocomplete
+    $(document).on('keyup', '.searchField', function () {
+        mainSearch()
+    });// End
+
     $(document).on('click', '.searchArea .icon-search', function () {
+        mainSearch()
+    });// End
+
+    function mainSearch()
+    {
       var getValue = $('.searchField').val();
       getValue = getValue.toLowerCase();
       var getLength = getValue.length;
       var arr = [];
-      if(getLength > 0)
+      if(getLength > 2)
       {
         var parsed = window.searchData;
 
@@ -7884,6 +7925,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
       }
       else
       {
+        $("#searchResults").html(' ');
         return false;
       }
       var filteredArray = arr;
@@ -7919,8 +7961,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
         {
           $("#searchResults").html('<span class="double-gap-top padded full bold">No record found. Please create new lead.</span> ');
         }
-        
-    });// End
+    }
 
     // Get product icons for search autocomplete
     function productIcons(productName)
@@ -8106,12 +8147,12 @@ function getBookingTime(getTime, bookingStart, Duation) {
       if(getLength == 0)
       {
         $(".pickAgentresult").addClass('hide');
-        $(".pickAgentresult2").removeClass('hide');
+        //$(".pickAgentresult2").removeClass('hide');
         return false;
       }
       else
       {
-        $(".pickAgentresult2").addClass('hide');
+        //$(".pickAgentresult2").addClass('hide');
         $(".pickAgentresult").removeClass('hide');
       }
       var arr = [];
