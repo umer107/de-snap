@@ -3810,29 +3810,28 @@ setTimeout(function(){
         else { referralMethodVal = referralMethod; }
 
         return {
-          
+            customer_id: 0,
             lead_id : $('.thisLeadId').attr('leadId'),
             title : $('.title a.selected-text').attr('value'),
             gender : $('.Gender a.selected-text').attr('value'),  
             first_name : $("#first_name").val(),
             last_name : $("#last_name").val(),
-            phone_number : $("#phonenumber").val(),
             email : $("#email").val(),
-            country : $('#countryName').attr('value'),
-            State : $(".dropdown.State").find('a.selected-text').attr('stateid'),
-            full_address : $("#fullAddress").val(),
-            communication_method : $("#CommunicationMethod").text(),
-            contact_method : preferredMethodVal,
-            assign_id : $(".assignToDiv a.selected-text").attr("assigneid"),
-            assign_to : $("#assign_us_Dropdown").text(),
-            budget : $('#budgetDropdown').closest('a.selected-text').attr('value'), 
-            referral : $(".dropdown.referral").find('a.selected-text').attr('howheardid'),  
-            product : $(".dropdown.product").find('a.selected-text').attr('productId'),  
+            mobile : $("#phonenumber").val(),
+            product : $(".dropdown.product").find('a.selected-text').attr('productId'), 
+            lead_budget : $('#budgetDropdown').closest('a.selected-text').attr('value'),
+            lead_source : $("#CommunicationMethod").text(),
+            how_heard : $(".dropdown.referral").find('a.selected-text').attr('howheardid'),   
+            state : $(".dropdown.State").find('a.selected-text').attr('stateid'),
+            lead_owner : $(".assignToDiv a.selected-text").attr("assigneid"),
+            looking_for : $("#specify_requirements").val(),
             reference_product : $("#referrenceDropdown").val(),
-            only_referral : $("#onlyReferral").val(),
-            specify_requirements : $("#specify_requirements").val(), 
-            special_instructions : $("[name= 'special_instructions']").val()
+            preferred_contact : preferredMethodVal
+            //only_referral : $("#onlyReferral").val(),
+             
+            //special_instructions : $("[name= 'special_instructions']").val()
         };
+
         
     }
     function getValuesFromFormAppointment()
@@ -3907,7 +3906,7 @@ setTimeout(function(){
             email : $("#email").val(),
             mobile : $("#phonenumber").val(),
             address1 : $("#fullAddress").val(),
-            State : $(".dropdown.State").find('a.selected-text').attr('stateid'),
+            state_id : $(".dropdown.State").find('a.selected-text').attr('stateid'),
             country_id : $('#countryName').attr('value'),
             source : $("#CommunicationMethod").text(),
             contact_method : preferredMethodVal
@@ -4002,27 +4001,46 @@ setTimeout(function(){
                       }                 
                       catch(e)                
                       { return false; }
-                      
+
+                      dataLead.customer_id = parsed
+                      //customer_id
+                      $.ajax({
+                          type: "POST",
+                          url: "/ajaxCreateLeadFromDashboard",
+                          data: dataLead, 
+                          success: function (data) { // returs lead Id
+                              var parsed = '';          
+                              try{
+                                  parsed = JSON.parse(data); 
+                                  console.log(parsed);
+                              }                 
+                              catch(e)                
+                              { return false; }
+                              $('.thisLeadId').attr('leadid', parsed);
+                            
+                          }
+                      });
+
                   }
               });
 
 
-              $.ajax({
-                type: "POST",
-                url: "/dashboard/ajaxAddDashboard",
-                data: dataLead, 
-                success: function (data) { // returs lead Id
-                    var parsed = '';          
-                    try{ parsed = JSON.parse(data); }                 
-                    catch(e)                
-                    { return false; }
-                    dataAppointment.lead_id = parsed;
-                    dataLead.lead_id = parsed;
-                    $('.thisLeadId').attr('leadid', parsed);
-                    getSearchData();
-                    return false;
-                }
-            });  
+            //  $.ajax({
+            //    type: "POST",
+            //    url: "/dashboard/ajaxAddDashboard",
+            //    data: dataLead, 
+            //    success: function (data) { // returs lead Id
+            //        var parsed = '';          
+            //        try{ parsed = JSON.parse(data); }                 
+            //        catch(e)                
+            //        { return false; }
+            //        dataAppointment.lead_id = parsed;
+            //        dataLead.lead_id = parsed;
+            //        $('.thisLeadId').attr('leadid', parsed);
+            //        getSearchData();
+            //        return false;
+            //    }
+            //});  
         }
         else if(window.saveAndBook == true && AppointmentBySearch == true)  // Incase of Save and Book From Search New Lead 
         {
@@ -4155,21 +4173,9 @@ setTimeout(function(){
                     var parsed2 = '';          
                     try{ parsed2 = JSON.parse(data2); }                 
                     catch(e) { return false; }     
-
-                    var updatedBooking =  { lead_id : parsed2.lead_id , booking_date : parsed2.booking_date }
-                    $.ajax({
-                      type: "POST",
-                      url: "/dashboard/ajaxUpdateDashboard",
-                      data: updatedBooking, 
-                      success: function (data3) {
-                        var checkData = data3;
-                        loadMainDashboardAfterSaveLead();
-                        $('.thisLeadId').attr('leadId','');
-                        return false;
-                      }
-                    }); 
-                      
-                      
+                    loadMainDashboardAfterSaveLead();
+                    $('.thisLeadId').attr('leadId','');
+                    return false;                      
                 }
               });
             }
