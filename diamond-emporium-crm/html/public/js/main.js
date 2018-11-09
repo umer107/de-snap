@@ -8507,25 +8507,23 @@ function howHeard() //  Get How Heard
                 {
                   setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic_facebook.png"></span> '+parsed[i].how_heard+'</a></li>';  
                 }
-                else if(parsed[i].id == 5)
-                {
-                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="Previous client"><span class="ref-Img"><img class="pull-left" src=" /images/ic_pClient.png"></span>Previous client</a></li>';  
-                }
                 else if(parsed[i].id == 8)
                 {
-                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic_insta.png"></span> '+parsed[i].how_heard+'</a></li>';  
+                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic_insta.png"></span>'+parsed[i].how_heard+'</a></li>';  
                 }
-                else if(parsed[i].id == 1)
+                else if(parsed[i].id == 11)
                 {
-                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic-google.png"></span> '+parsed[i].how_heard+'</a></li>';  
+                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic_pClient.png"></span>'+parsed[i].how_heard+'</a></li>';  
                 }
-                else
+                else if(parsed[i].id == 12)
                 {
-                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic_other.png"></span> '+parsed[i].how_heard+'</a></li>';  
+                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic_walkIn.png"></span> '+parsed[i].how_heard+'</a></li>';  
                 }
+                
 
                 
             }
+            setHtml +='<li><a href="javascript:;" howHeardId="10" value="Other"><span class="ref-Img"><img class="pull-left" src=" /images/ic_other.png"></span>Other</a></li>';  
             $('.dropdown.referral').find('ul.dropdownOptions').html(setHtml);
         }
     });  
