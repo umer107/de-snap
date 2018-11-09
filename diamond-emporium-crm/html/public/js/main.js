@@ -8439,7 +8439,6 @@ function getStates()  //  Get States
             try{ parsed = JSON.parse(data); }                 
             catch(e)                
             { return false; }
-            debugger
             var check = parsed;
             var setHtml = ""
             for (var i = 0; i < parsed.length; i++) {
@@ -8468,7 +8467,7 @@ function getProducts() //  Get Countries
             var check = parsed;
             var setHtml = ""
             for (var i = 0; i < parsed.length; i++) {
-                setHtml +='<li><a href="javascript:;" productId="'+parsed[i].id+'" value="'+parsed[i].title+'" shortcode="ER">'+parsed[i].title+'</a></li>';
+                setHtml +='<li><a href="javascript:;" productId="'+parsed[i].id+'" value="'+parsed[i].title+'" shortcode="'+parsed[i].title_shortcode+'">'+parsed[i].title+'</a></li>';
               }
             $('.dropdown.product').find('ul.dropdownOptions').html(setHtml);
         }
@@ -8476,6 +8475,32 @@ function getProducts() //  Get Countries
 }
 
 getProducts();
+
+/*------------------------------------------------------------------*/
+/*------------------------------------------------------------------*/
+
+function howHeard() //  Get How Heard
+{
+    $.ajax({
+        type: "GET",
+        url: "/dashboard/ajaxGetHowHeardList",
+        success: function (data) { 
+            var parsed = '';          
+            try{ parsed = JSON.parse(data);  }                 
+            catch(e)                
+            { return false; }
+            var check = parsed;
+            var setHtml = ""
+            for (var i = 0; i < parsed.length; i++) {
+                //setHtml +='<li><a href="javascript:;" productId="'+parsed[i].id+'" value="'+parsed[i].title+'" shortcode="'+parsed[i].title_shortcode+'">'+parsed[i].title+'</a></li>';
+                setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic-google.png"></span> '+parsed[i].how_heard+'</a></li>';
+              }
+            $('.dropdown.referral').find('ul.dropdownOptions').html(setHtml);
+        }
+    });  
+}
+
+howHeard();
 
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
