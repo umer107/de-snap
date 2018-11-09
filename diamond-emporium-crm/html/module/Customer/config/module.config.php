@@ -238,6 +238,16 @@ return array(
 							),
 						),
 					),
+                                        'ajaxcheckDuplicateEmail' => array(
+						'type' => 'Segment',
+						'options' => array(
+							'route'    => 'ajaxcheckDuplicateEmail[/:except_id]',
+							'defaults' => array(
+								'controller' => 'Customer\Controller\Index',
+								'action'     => 'ajaxcheckDuplicateEmail',
+							),
+						),
+					),
 					'checkviewexist' => array(
 						'type' => 'Segment',
 						'options' => array(
@@ -258,6 +268,16 @@ return array(
 							),
 						),
 					),
+                                        'ajaxCreateCustomerDashboard' => array(
+                                                  'type' => 'Segment',
+                                                  'options' => array(
+                                                          'route'    => 'ajaxCreateCustomerDashboard',
+                                                          'defaults' => array(
+                                                                 'controller' => 'Customer\Controller\Index',
+                                                                 'action'     => 'ajaxCreateCustomerDashboard',
+                                                                          ),
+                                                                  ),
+                                                          ),
                 ),
             ),
             'lead' => array(
@@ -454,6 +474,16 @@ return array(
                 			),
                 		),
                 	),
+                                'ajaxCreateLeadFromDashboard' => array(
+						'type' => 'Segment',
+						'options' => array(
+							'route'    => 'ajaxCreateLeadFromDashboard',
+							'defaults' => array(
+								'controller' => 'Customer\Controller\Leads',
+								'action'     => 'ajaxCreateLeadFromDashboard',
+							),
+						),
+					),
                 ),
 			),
         ),

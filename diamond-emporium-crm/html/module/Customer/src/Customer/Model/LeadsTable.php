@@ -304,5 +304,43 @@ class LeadsTable
 			'Instagram' => 'Instagram',
 		);
 	}
+        
+        public function saveLeadFromDashboard($data)
+	{
+     	try{
+            
+			$lead_id = (int) $data['lead_id'];
+			if (empty($lead_id)) {
+                            //CheckLeadExistsAgainstCustomerOrNot
+                            $select = new \Zend\Db\Sql\Select();
+                            $select->from('de_leads')->columns(array('id'));                        
+
+                            $select = new \Zend\Db\Sql\Select();
+                            $select->from(array('l' => 'de_leads'))
+                                ->columns(array('lead_id','customer_id','lead_status'));
+
+
+                            $select->where(array(
+                                  'customer_id' => $data['customer_id'],
+                                  'lead_status' => $data['lead_status']  
+                              ));
+                            $dataCounter = $this->executeQuery($select);
+                            $counter = count($dataCounter);
+
+                           if($counter > 0)
+                           {
+                            //Customer has already open lead in the system
+                               return 10;
+                           }
+            
+				$this->tableGateway->insert($data);
+				return $this->tableGateway->lastInsertValue;
+			} else {
+				return $this->tableGateway->update($data, array('lead_id' => $lead_id));
+			}
+     	}catch(\Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+		}
+     }
 
 }

@@ -8339,4 +8339,51 @@ function getBookingTime(getTime, bookingStart, Duation) {
    /*------------------------------------------------------------------*/
    /*------------------- Stop GetCountries Ajax List ----------------- */
    /*------------------------------------------------------------------*/
+   
+   
+   
+ //Lead Post Data
+function getValuesCustomers()
+    {
+        return {
+            customer_id  :4827,         
+            title : 'Mr',
+            gender : 'Female',
+            first_name : 'Hello',                 
+            last_name : 'Js',
+            email : 'hellojs@gmail.com',
+            mobile : '090078601',
+            lead_source : 'Web',
+            state : 1,
+            product: 1,
+            how_heard :1,
+            lead_owner:  37,
+            lead_budget:'$2,000 - $4,999'
+            
+                      
+        };
+        
+    }
+function InsertCustomerDataThroughjs()
+{
+    debugger;
+    var dataAppointment = getValuesCustomers();
+    $.ajax({
+                type: "POST",
+                url: "/ajaxCreateLeadFromDashboard",
+                data: dataAppointment, 
+                success: function (data) { // returs lead Id
+                    var parsed = '';          
+                    try{
+                        parsed = JSON.parse(data); 
+                        console.log(parsed);
+                    }                 
+                    catch(e)                
+                    { return false; }
+                  
+                }
+            });  
+    
+}
 
+InsertCustomerDataThroughjs();

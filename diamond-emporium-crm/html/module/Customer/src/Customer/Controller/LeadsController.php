@@ -199,7 +199,7 @@ class LeadsController extends AbstractActionController
 		}
     }
     
-    public function ajaxgetleadsAction(){
+        public function ajaxgetleadsAction(){
     	try{
 			// Write your code here
 			
@@ -311,7 +311,7 @@ class LeadsController extends AbstractActionController
 		}    	
     }
     
-    public function ajaxcustomerfromleadAction(){
+        public function ajaxcustomerfromleadAction(){
     	try {
     		$leadId = $this->getRequest()->getPost('lead_id');
 
@@ -348,7 +348,7 @@ class LeadsController extends AbstractActionController
 	    }
     }
     
-    public function leaddetailsAction(){
+        public function leaddetailsAction(){
 	    try{	    	
 	    	$id = $this->params('id');
 			$leadsTable = $this->getServiceLocator()->get('Customer\Model\LeadsTable');
@@ -461,7 +461,7 @@ class LeadsController extends AbstractActionController
 	    }
     }
     
-    public function convertleadAction(){
+        public function convertleadAction(){
 		try{	    	
 	    	$request = $this->getRequest();
 	    	$customersTable = $this->getServiceLocator()->get('Customer\Model\CustomersTable');
@@ -675,4 +675,52 @@ class LeadsController extends AbstractActionController
 			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
 		}
 	}
+        
+        
+        public function ajaxCreateLeadFromDashboardAction()
+    {
+		try{
+			// Write your code here
+			$sm = $this->getServiceLocator();
+			$identity = $sm->get('AuthService')->getIdentity();
+			
+			$request = $this->getRequest();
+			if($request->isPost()){
+				$posts = $request->getPost();
+				
+				$leadsTable = $this->getServiceLocator()->get('Customer\Model\LeadsTable');
+				$data = $posts->toArray();
+                                
+                                if(isset($data['lead_id']) && !empty($data['lead_id'])){
+					$data['updated_by'] = $identity['user_id'];
+					$data['updated_date'] = date('Y-m-d H:i:s');
+                                }else{
+                                        
+					$data['created_by'] = $identity['user_id'];
+					$data['created_date'] = date('Y-m-d H:i:s');	
+					$data['lead_status'] = 'Open';				
+				}       
+                                
+				foreach($data as $key => $value){
+					if(empty($value)){
+					    if ($key == 'lead_owner') {
+						     $data[$key] = 0;
+					    }
+					    if($key != 'lead_owner' && $key != 'mobile') {
+							unset($data[$key]);
+						}
+					}
+				}
+				echo $leadsTable->saveLeadFromDashboard($data);
+				exit;
+			}
+			
+		}catch(Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+		}
+    }
+        
+        
+        
+        
 }

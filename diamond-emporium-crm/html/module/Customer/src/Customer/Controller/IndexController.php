@@ -762,4 +762,70 @@ class IndexController extends AbstractActionController
 			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
 		}
 	}
+        
+        /**
+	 * Check Duplicate Email through Ajax Call ajaxcheckDuplicateEmailAction
+	 */
+        
+        public function ajaxcheckDuplicateEmailAction(){
+		try{
+			$except_id = $this->params('except_id');
+			$request = $this->getRequest();
+    		if($request->isPost()){
+				$posts = $request->getPost();
+				$data = $posts->toArray();
+				$where = array();
+				if($data['checkfor'] == 'email')
+					//$where = array('email' => $data['value']);
+					$where = "email = '".$data['value']."'";
+				elseif($data['checkfor'] == 'mobile')
+					//$where = array('mobile' => $data['value']);
+					$where = "mobile = '".$data['value']."'";
+					
+				if(!empty($except_id))
+					$where .= " AND id != '".$except_id."'";
+				
+				$customersTable = $this->getServiceLocator()->get('Customer\Model\CustomersTable');
+				$returnCustomerEmailCount = $customersTable->checkDuplicateEmails($where);
+                                echo $returnCustomerEmailCount;
+			}
+			
+			exit;
+    	}catch(Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+		}
+	}
+        
+        /**
+	 * Creates customer From New Dashboard/ store customer info into database de_customers Table
+	 */
+        public function ajaxCreateCustomerDashboardAction(){
+    	try{
+    		$request = $this->getRequest();
+    		if($request->isPost()){
+				$posts = $request->getPost();
+				$data = $posts->toArray();
+				
+				$sm = $this->getServiceLocator();
+				$identity = $sm->get('AuthService')->getIdentity();
+				
+				foreach($data as $key => $value){
+					if(empty($value))
+						unset($data[$key]);
+				}
+
+				$data['created_by'] = $identity['user_id'];
+				$data['created_date'] = date('Y-m-d H:i:s');
+				
+				$customersTable = $this->getServiceLocator()->get('Customer\Model\CustomersTable');
+				
+				$latestCustomerId = $customersTable->saveCustomerFromDashboard($data);
+				echo $latestCustomerId;
+			}
+    		exit;
+    	}catch(Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+		}
+    }
+
 }

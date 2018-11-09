@@ -136,7 +136,7 @@ class LeaveTable
                      unset($data['Leave_StartDate']);
                      $date = date ("Y-m-d", strtotime("+1 day", strtotime($date))); 
 	     }
-         
+             
              return "Sucess";
           }catch (\Exception $ex) {
                 \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
@@ -332,7 +332,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
         {
             try {
                 
-                      $select = new \Zend\Db\Sql\Select();
+                  $select = new \Zend\Db\Sql\Select();
                   $select->from('de_userdetail')->columns(array('id'));                        
                         
                   //FullName  From Table "de_users"
@@ -649,7 +649,73 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
             }
             
         }
+        
+        //fetchCountriesList
+        public function fetchStateList($filter = null)
+        {            
+              try {                
+                 $select = new \Zend\Db\Sql\Select();
+                 $select->from('de_states')->columns(array('id'));         
+                 
+                 $select = new \Zend\Db\Sql\Select();
+                 $select->from(array('c' => 'de_states'))
+                         ->columns(array('id','name' , 'state_code'));        
+                 $select->order('state_code Asc ');               
+                 //End-Sort-Data        
+                 $data = $this->executeQuery($select);   
+                 $result = $data->toArray();
+                 return $result;               
+                 
+            } catch (\Exception $ex) {
+                \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+            }
+            
+        }
 
+        //fetchCountriesList
+        public function fetchProductList($filter = null)
+        {            
+              try {                
+                 $select = new \Zend\Db\Sql\Select();
+                 $select->from('de_products')->columns(array('id'));         
+                 
+                 $select = new \Zend\Db\Sql\Select();
+                 $select->from(array('p' => 'de_products'))
+                         ->columns(array('id','title'));        
+                 $select->order('id Asc ');               
+                 //End-Sort-Data        
+                 $data = $this->executeQuery($select);   
+                 $result = $data->toArray();
+                 return $result;               
+                 
+            } catch (\Exception $ex) {
+                \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+            }
+            
+        }
+        
+        
+        //fetchHowHeardList
+        public function fetchHowHeardList($filter = null)
+        {            
+              try {                
+                 $select = new \Zend\Db\Sql\Select();
+                 $select->from('de_how_heard_lookup')->columns(array('id'));         
+                 
+                 $select = new \Zend\Db\Sql\Select();
+                 $select->from(array('h' => 'de_how_heard_lookup'))
+                         ->columns(array('id','how_heard'));        
+                 $select->order('id Asc ');               
+                 //End-Sort-Data        
+                 $data = $this->executeQuery($select);   
+                 $result = $data->toArray();
+                 return $result;               
+                 
+            } catch (\Exception $ex) {
+                \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+            }
+            
+        }
         
         public  function fetchSearchReacord($filter = null)
         {

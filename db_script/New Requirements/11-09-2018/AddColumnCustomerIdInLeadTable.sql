@@ -1,0 +1,1 @@
+ALTER TABLE `de_leads` ADD `customer_id` INT NULL AFTER `lead_id`;

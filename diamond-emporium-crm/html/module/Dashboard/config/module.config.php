@@ -278,6 +278,37 @@ return array(
                             ),
                         ),
                     ),
+              'ajaxGetStateList' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetStateList',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetStateList',
+                            ),
+                        ),
+                    ),
+            'ajaxGetProductsList' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetProductsList',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetProductsList',
+                            ),
+                        ),
+                    ),
+            'ajaxGetHowHeardList' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetHowHeardList',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetHowHeardList',
+                            ),
+                        ),
+                    ),
+            
             
             
         )

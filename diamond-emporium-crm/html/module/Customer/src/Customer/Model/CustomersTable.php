@@ -463,6 +463,7 @@ class CustomersTable
 			//echo $select->getSqlString();exit;
 			$counter = $this->tableGateway->selectWith($select);
 			
+                        //$count = count($counter);
 			return count($counter);
 		}catch(\Exception $e){
 			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
@@ -702,4 +703,46 @@ class CustomersTable
 			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
 		}
 	}
+        /**
+	 * Fetch count of emails for the customer
+	 * through Email Address
+	 */
+        public function checkDuplicateEmails($where){
+		try{
+			$select = new \Zend\Db\Sql\Select();
+			$select->from('de_customers')
+				   ->columns(array('id'))
+				   ->where($where);
+			//echo $select->getSqlString();exit;
+			$counter = $this->tableGateway->selectWith($select);
+			
+                        $count = count($counter);
+                        
+			return $count;
+		}catch(\Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+		}
+	}
+        
+        /**
+	 * Save Customer From Dashboard
+	 * through Email Address
+	 */
+        public function saveCustomerFromDashboard($data)
+	{
+     	try{
+			$id = (int) $data['id'];
+			if ($id == 0) {
+				$this->tableGateway->insert($data);
+				return $this->tableGateway->lastInsertValue;
+			} else {
+				return $this->tableGateway->update($data, array('id' => $id));
+			}
+     	}catch(\Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+		}
+	}
+        
+        
+        
 }

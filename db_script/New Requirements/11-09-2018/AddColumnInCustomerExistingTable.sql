@@ -1,0 +1,1 @@
+ALTER TABLE `de_customers` ADD `source` VARCHAR(25) NULL AFTER `country_id`, ADD `contact_method` VARCHAR(25) NULL AFTER `source`;

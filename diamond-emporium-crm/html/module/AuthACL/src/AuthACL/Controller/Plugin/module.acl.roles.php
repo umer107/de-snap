@@ -40,6 +40,8 @@ $resources = array(
 		'Customer\Controller\Index::upoadprofilephoto',
 		'Customer\Controller\Leads::webleads',
 		'Customer\Controller\Leads::webtoleadsuccess',
+    'Customer\Controller\Leads::ajaxCreateLeadFromDashboard',
+                'Customer\Controller\Index::ajaxCreateCustomerDashboard',
 		'Inventory\Controller\Index::index',
 		'Inventory\Controller\Index::savediamond',
 		'Inventory\Controller\Index::saveandconsigndiamond',
@@ -191,6 +193,10 @@ $resources = array(
     'Dashboard\Controller\Dashboard::ajaxSaveAppointment',
     'Dashboard\Controller\Dashboard::ajaxUpdateDashboard',
     'Appointment\Controller\Appointment::index',
+    'Customer\Controller\Index::ajaxcheckDuplicateEmail',
+    'Dashboard\Controller\Dashboard::ajaxGetStateList',    
+    'Dashboard\Controller\Dashboard::ajaxGetProductsList',
+    'Dashboard\Controller\Dashboard::ajaxGetHowHeardList',
    
 
 	);

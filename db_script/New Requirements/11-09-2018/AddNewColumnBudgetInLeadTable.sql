@@ -1,0 +1,1 @@
+ALTER TABLE `de_leads` ADD `lead_budget` VARCHAR(40) NULL AFTER `budget`;
