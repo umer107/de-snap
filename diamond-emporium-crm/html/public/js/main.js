@@ -8284,11 +8284,10 @@ function getBookingTime(getTime, bookingStart, Duation) {
         }
         else if (isValidEmailAddress(getemail)) {
             $('#email').next('label').next('label').addClass('opacity0');
-            
              $.ajax({
-              type: "GET",
-              url: "/dashboard/ajaxGetCheckUserEmail?email="+getemail,
-              //data: {'email' : email},
+              type: "POST",
+              url: "/dashboard/ajaxcheckDuplicateEmail",
+              data: {checkfor: 'email' , value : getemail},
               success: function (data) 
               {
                 //$('.showloading').show();
@@ -8407,7 +8406,6 @@ function getValuesCustomers()
     }
 function InsertCustomerDataThroughjs()
 {
-    debugger;
     var dataAppointment = getValuesCustomers();
     $.ajax({
                 type: "POST",
@@ -8428,3 +8426,29 @@ function InsertCustomerDataThroughjs()
 }
 
 InsertCustomerDataThroughjs();
+
+function getStates()
+{
+    $.ajax({
+                type: "GET",
+                url: "/dashboard/ajaxGetStateList",
+                success: function (data) { // returs lead Id
+                    var parsed = '';          
+                    try{
+                        parsed = JSON.parse(data); 
+                        console.log(parsed);
+                    }                 
+                    catch(e)                
+                    { return false; }
+                    debugger
+                    var check = parsed;
+                    var setHtml = ""
+                    for (var i = 0; i < parsed.length; i++) {
+                        setHtml +='<li><a href="javascript:;" stateId="'+parsed[i].id+'" value="'+parsed[i].state_code+'">'+parsed[i].state_code+'</a></li>';
+                      }
+                    $('.dropdown.State').find('ul.dropdownOptions').html(setHtml);
+                }
+            });  
+}
+
+getStates();
