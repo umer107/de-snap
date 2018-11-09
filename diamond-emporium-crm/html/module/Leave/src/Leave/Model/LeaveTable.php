@@ -681,7 +681,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                  
                  $select = new \Zend\Db\Sql\Select();
                  $select->from(array('p' => 'de_products'))
-                         ->columns(array('id','title'));        
+                         ->columns(array('id','title , title_shortcode'));        
                  $select->order('id Asc ');               
                  //End-Sort-Data        
                  $data = $this->executeQuery($select);   
