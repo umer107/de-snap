@@ -3258,6 +3258,8 @@ setTimeout(function(){
         // Check if State dropdown
         if(el.closest('.dropdown').hasClass('State'))
         {   
+          var getStateId = $(this).find('a').attr('stateid');   
+          el.closest('.dropdown').find('a.selected-text').attr('stateId',getStateId );
         }
 
         // Check if City dropdown
@@ -3269,9 +3271,11 @@ setTimeout(function(){
         // Check if Product dropdown
         if(el.closest('.dropdown').hasClass('product'))
         {   
-            $('.producterror').addClass('opacity0');
-            var getShortCode = $(this).find('a').attr('shortcode');
-            el.closest('.dropdown').find('a.selected-text').attr('shortcode', getShortCode);
+          var getProductId = $(this).find('a').attr('productId');   
+          el.closest('.dropdown').find('a.selected-text').attr('productId',getProductId );
+          $('.producterror').addClass('opacity0');
+          var getShortCode = $(this).find('a').attr('shortcode');
+          el.closest('.dropdown').find('a.selected-text').attr('shortcode', getShortCode);
         }
 
         // Check if Referral dropdown
@@ -3813,7 +3817,7 @@ setTimeout(function(){
             phone_number : $("#phonenumber").val(),
             email : $("#email").val(),
             country : $('#countryName').attr('value'),
-            State : $("#stateDropdown").text(),
+            State : $(".dropdown.State").find('a.selected-text').attr('stateid'),
             full_address : $("#fullAddress").val(),
             communication_method : $("#CommunicationMethod").text(),
             contact_method : preferredMethodVal,
@@ -3821,7 +3825,7 @@ setTimeout(function(){
             assign_to : $("#assign_us_Dropdown").text(),
             budget : $('#budgetDropdown').closest('a.selected-text').attr('value'), 
             referral : referralMethodVal,
-            product : $("#productDropdown").text(),  
+            product : $(".dropdown.product").find('a.selected-text').attr('productId'),  
             reference_product : $("#referrenceDropdown").val(),
             only_referral : $("#onlyReferral").val(),
             specify_requirements : $("#specify_requirements").val(), 
@@ -3880,6 +3884,31 @@ setTimeout(function(){
             isBooked : 0,
             appointment_id: 0,
             lead_id : 90000
+        };
+        
+    }
+
+    function getCustomerValues()
+    {
+        var preferredMethod = $("#perferrefDropdown").text();
+        var preferredMethodOther = $("#perferrefDropdownOther").val();
+        var preferredMethodVal = '';
+        if ( preferredMethod == "Other"){ preferredMethodVal = preferredMethodOther; }
+        else { preferredMethodVal = preferredMethod; }
+
+        return {
+            id : 0,            
+            title : $('.title a.selected-text').attr('value'),
+            gender : $('.Gender a.selected-text').attr('value'),  
+            first_name : $("#first_name").val(),
+            last_name : $("#last_name").val(),
+            email : $("#email").val(),
+            mobile : $("#phonenumber").val(),
+            address1 : $("#fullAddress").val(),
+            State : $(".dropdown.State").find('a.selected-text').attr('stateid'),
+            country_id : $('#countryName').attr('value'),
+            source : $("#CommunicationMethod").text(),
+            contact_method : preferredMethodVal
         };
         
     }
@@ -3952,11 +3981,30 @@ setTimeout(function(){
         {
           return false;
         }
+        var customerValues = getCustomerValues();
         var dataLead = getValuesFromForm();
         var dataAppointment = getValuesFromFormAppointment();
 
         if(window.saveAndBook == true && AppointmentBySearch == false) // Incase of Save and Book From New Lead
         {
+            // Creating New Customer
+            $.ajax({
+                  type: "POST",
+                  url: "/ajaxCreateCustomerDashboard",
+                  data: customerValues, 
+                  success: function (data) { // return  customerID
+                      var parsed = '';          
+                      try{
+                          parsed = JSON.parse(data); 
+                          console.log(parsed);
+                      }                 
+                      catch(e)                
+                      { return false; }
+                      
+                  }
+              });
+
+
               $.ajax({
                 type: "POST",
                 url: "/dashboard/ajaxAddDashboard",
@@ -8286,7 +8334,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
             $('#email').next('label').next('label').addClass('opacity0');
              $.ajax({
               type: "POST",
-              url: "/dashboard/ajaxcheckDuplicateEmail",
+              url: "/ajaxcheckDuplicateEmail",
               data: {checkfor: 'email' , value : getemail},
               success: function (data) 
               {
@@ -8346,7 +8394,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
                       }
                     });
                 }
-                else if(parsed.length > 0)
+                else if(parsed == 1)
                 {
                   
                   $('.topBar').trigger('click');
@@ -8380,75 +8428,54 @@ function getBookingTime(getTime, bookingStart, Duation) {
    /*------------------- Stop GetCountries Ajax List ----------------- */
    /*------------------------------------------------------------------*/
    
-   
-   
- //Lead Post Data
-function getValuesCustomers()
-    {
-        return {
-            customer_id  :4827,         
-            title : 'Mr',
-            gender : 'Female',
-            first_name : 'Hello',                 
-            last_name : 'Js',
-            email : 'hellojs@gmail.com',
-            mobile : '090078601',
-            lead_source : 'Web',
-            state : 1,
-            product: 1,
-            how_heard :1,
-            lead_owner:  37,
-            lead_budget:'$2,000 - $4,999'
-            
-                      
-        };
-        
-    }
-function InsertCustomerDataThroughjs()
-{
-    var dataAppointment = getValuesCustomers();
-    $.ajax({
-                type: "POST",
-                url: "/ajaxCreateLeadFromDashboard",
-                data: dataAppointment, 
-                success: function (data) { // returs lead Id
-                    var parsed = '';          
-                    try{
-                        parsed = JSON.parse(data); 
-                        console.log(parsed);
-                    }                 
-                    catch(e)                
-                    { return false; }
-                  
-                }
-            });  
-    
-}
 
-InsertCustomerDataThroughjs();
-
-function getStates()
+function getStates()  //  Get States
 {
     $.ajax({
-                type: "GET",
-                url: "/dashboard/ajaxGetStateList",
-                success: function (data) { // returs lead Id
-                    var parsed = '';          
-                    try{
-                        parsed = JSON.parse(data); 
-                        console.log(parsed);
-                    }                 
-                    catch(e)                
-                    { return false; }
-                    debugger
-                    var check = parsed;
-                    var setHtml = ""
-                    for (var i = 0; i < parsed.length; i++) {
-                        setHtml +='<li><a href="javascript:;" stateId="'+parsed[i].id+'" value="'+parsed[i].state_code+'">'+parsed[i].state_code+'</a></li>';
-                      }
-                    $('.dropdown.State').find('ul.dropdownOptions').html(setHtml);
-                }
-            });  
+        type: "GET",
+        url: "/dashboard/ajaxGetStateList",
+        success: function (data) { 
+            var parsed = '';          
+            try{ parsed = JSON.parse(data); }                 
+            catch(e)                
+            { return false; }
+            debugger
+            var check = parsed;
+            var setHtml = ""
+            for (var i = 0; i < parsed.length; i++) {
+                setHtml +='<li><a href="javascript:;" stateId="'+parsed[i].id+'" value="'+parsed[i].state_code+'">'+parsed[i].state_code+'</a></li>';
+              }
+            $('.dropdown.State').find('ul.dropdownOptions').html(setHtml);
+        }
+    });  
 }
 
 getStates();
+
+/*------------------------------------------------------------------*/
+/*------------------------------------------------------------------*/
+
+function getProducts() //  Get Countries
+{
+    $.ajax({
+        type: "GET",
+        url: "/dashboard/ajaxGetProductsList",
+        success: function (data) { 
+            var parsed = '';          
+            try{ parsed = JSON.parse(data);  }                 
+            catch(e)                
+            { return false; }
+            var check = parsed;
+            var setHtml = ""
+            for (var i = 0; i < parsed.length; i++) {
+                setHtml +='<li><a href="javascript:;" productId="'+parsed[i].id+'" value="'+parsed[i].title+'" shortcode="ER">'+parsed[i].title+'</a></li>';
+              }
+            $('.dropdown.product').find('ul.dropdownOptions').html(setHtml);
+        }
+    });  
+}
+
+getProducts();
+
+/*------------------------------------------------------------------*/
+/*------------------------------------------------------------------*/
