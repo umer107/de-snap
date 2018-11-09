@@ -3150,11 +3150,11 @@ setTimeout(function(){
         {   
           if(getValue == "Other")
           {
-            $('#referralDropdownOther').closest('.relative').removeClass('hide');
+            //$('#referralDropdownOther').closest('.relative').removeClass('hide');
           }
           else
           {
-            $('#referralDropdownOther').closest('.relative').addClass('hide');
+            //$('#referralDropdownOther').closest('.relative').addClass('hide');
           }
         }
 
@@ -3281,7 +3281,9 @@ setTimeout(function(){
         // Check if Referral dropdown
         if(el.closest('.dropdown').hasClass('referral'))
         {   
-            $('.referralerror').addClass('opacity0');
+          var gethowHeardtId = $(this).find('a').attr('howHeardId');   
+          el.closest('.dropdown').find('a.selected-text').attr('howHeardId',gethowHeardtId );
+          $('.referralerror').addClass('opacity0');
         }
 
         // 
@@ -3824,7 +3826,7 @@ setTimeout(function(){
             assign_id : $(".assignToDiv a.selected-text").attr("assigneid"),
             assign_to : $("#assign_us_Dropdown").text(),
             budget : $('#budgetDropdown').closest('a.selected-text').attr('value'), 
-            referral : referralMethodVal,
+            referral : $(".dropdown.referral").find('a.selected-text').attr('howheardid'),  
             product : $(".dropdown.product").find('a.selected-text').attr('productId'),  
             reference_product : $("#referrenceDropdown").val(),
             only_referral : $("#onlyReferral").val(),
@@ -8491,10 +8493,39 @@ function howHeard() //  Get How Heard
             { return false; }
             var check = parsed;
             var setHtml = ""
-            for (var i = 0; i < parsed.length; i++) {
-                //setHtml +='<li><a href="javascript:;" productId="'+parsed[i].id+'" value="'+parsed[i].title+'" shortcode="'+parsed[i].title_shortcode+'">'+parsed[i].title+'</a></li>';
-                setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic-google.png"></span> '+parsed[i].how_heard+'</a></li>';
-              }
+            for (var i = 0; i < parsed.length; i++) 
+            {
+                if(parsed[i].id == 1)
+                {
+                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic-google.png"></span> '+parsed[i].how_heard+'</a></li>';  
+                }
+                else if(parsed[i].id == 2)
+                {
+                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic_wordMouth.png"></span> '+parsed[i].how_heard+'</a></li>';  
+                }
+                else if(parsed[i].id == 3)
+                {
+                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic_facebook.png"></span> '+parsed[i].how_heard+'</a></li>';  
+                }
+                else if(parsed[i].id == 5)
+                {
+                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="Previous client"><span class="ref-Img"><img class="pull-left" src=" /images/ic_pClient.png"></span>Previous client</a></li>';  
+                }
+                else if(parsed[i].id == 8)
+                {
+                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic_insta.png"></span> '+parsed[i].how_heard+'</a></li>';  
+                }
+                else if(parsed[i].id == 1)
+                {
+                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic-google.png"></span> '+parsed[i].how_heard+'</a></li>';  
+                }
+                else
+                {
+                  setHtml +='<li><a href="javascript:;" howHeardId="'+parsed[i].id+'" value="'+parsed[i].how_heard+'"><span class="ref-Img"><img class="pull-left" src=" /images/ic_other.png"></span> '+parsed[i].how_heard+'</a></li>';  
+                }
+
+                
+            }
             $('.dropdown.referral').find('ul.dropdownOptions').html(setHtml);
         }
     });  
