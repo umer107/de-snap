@@ -207,6 +207,16 @@ return array(
                             ),
                         ),
                     ),
+             'ajaxGetCustomerById' => array(
+                              'type' => 'Segment',
+                              'options' => array(
+                                    'route'    => 'ajaxGetCustomerById',
+                                    'defaults' => array(
+                                        'controller' => 'Dashboard\Controller\Dashboard',
+                                        'action'     => 'ajaxGetCustomerById',
+                                    ),
+                                ),
+                            ),
              'ajaxGetDataForCustomViewCalender' => array(
                         'type' => 'Segment',
                         'options' => array(

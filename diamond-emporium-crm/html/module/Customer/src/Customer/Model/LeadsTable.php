@@ -313,23 +313,23 @@ class LeadsTable
 			if (empty($lead_id)) {
                             //CheckLeadExistsAgainstCustomerOrNot
                             $select = new \Zend\Db\Sql\Select();
-                            $select->from('de_leads')->columns(array('id'));                        
+                            $select->from('de_leads')->columns(array('lead_id'));                        
 
                             $select = new \Zend\Db\Sql\Select();
                             $select->from(array('l' => 'de_leads'))
                                 ->columns(array('lead_id','customer_id','lead_status'));
 
-
+                            //If Lead against Customer is open then lead will not create
                             $select->where(array(
                                   'customer_id' => $data['customer_id'],
-                                  'lead_status' => $data['lead_status']  
+                                  'lead_status' => $data['lead_status']  //open  
                               ));
                             $dataCounter = $this->executeQuery($select);
                             $counter = count($dataCounter);
 
                            if($counter > 0)
                            {
-                            //Customer has already open lead in the system
+                               //Customer has already opened lead in the system
                                return 10;
                            }
             

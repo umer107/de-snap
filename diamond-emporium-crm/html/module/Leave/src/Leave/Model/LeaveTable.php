@@ -332,22 +332,19 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
         {
             try {
                 
+                     $fullname = new \Zend\Db\Sql\Expression(
+                      'CONCAT(u.first_name, \' \', u.last_name)'
+                 );
                   $select = new \Zend\Db\Sql\Select();
-                  $select->from('de_userdetail')->columns(array('id'));                        
-                        
-                  //FullName  From Table "de_users"
-                  $fullname = new \Zend\Db\Sql\Expression('CONCAT(u.first_name, \' \', u.last_name)');
-        
-      
-                       
-                  $select = new \Zend\Db\Sql\Select();
-                  $select->from(array('l' => 'de_userdetail'))
-                        ->columns(array('id','title','gender','first_name', 'last_name', 'phone_number', 'email', 'country','communication_method', 'contact_method','referral','budget','assign_to_UserId','booking_date','lead_status','assign_to'))         
-                        //->join(array('a' => 'de_appointments'), 'l.id = a.lead_id', array('user_booking_date','product', 'referral','special_instructions','budget','reference_product','lead_owner_fullname' => 'lead_owner_name', 'assign_to','reson_skip_next_in_line','lead_status','lead_owner','create_date','booking_date','isFirstBooked'), 'left')
-                        ->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('lead_owner_image' => 'image' ), 'left');;
+                  $select->from(array('l' => 'de_leads'))
+                        ->columns(array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status','LeadCreatedDate' => 'created_date'))
+                          ->join(array('p' => 'de_products'), 'l.product = p.id', array('product' => 'id', 'product_title' => 'title' , 'title_shortcode'), 'left')   
+                          ->join(array('hh' => 'de_how_heard_lookup'), 'l.how_heard = hh.id', array('how_heard' => 'id', 'how_heard_title' => 'how_heard'), 'left')   
+                          ->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('lead_owner_image' => 'image' , 'lead_owner_fullname' => $fullname), 'left');
                   //Start-Filter-Parameter-From-User
                         
-                   $select->where->isNotNull('l.booking_date');   
+                   $select->where->isNotNull('l.customer_id');
+                  
                    $value = $filter['budget'];
                    $lead_status = $filter['lead_status'];
                    $referral = $filter['referral'];
@@ -370,43 +367,52 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                      $start_budget = 0;
                      $end_budget = 0;
                     if($filter['budget'] == '$2,000 - $4,999'){                                                  
-                       $select->where(array('l.budget = ?' =>  $filter['budget']));
+                       //$select->where(array('l.budget = ?' =>  $filter['budget']));
+                        $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                       }
                     else if($filter['budget'] == '$5,000 - $9,999')
                       {
-                        $select->where(array('l.budget = ?' =>  $filter['budget']));
+                        //$select->where(array('l.budget = ?' =>  $filter['budget']));
+                        $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                       }
                       else if($filter['budget'] == '$10,000 - $19,999')
                        {
-                         $select->where(array('l.budget = ?' =>  $filter['budget']));
+                         //$select->where(array('l.budget = ?' =>  $filter['budget']));
+                          $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                        }
                             else if($filter['budget'] == '$20,000 - $34,999')
                             {
-                               $select->where(array('l.budget = ?' =>  $filter['budget']));
+                               //$select->where(array('l.budget = ?' =>  $filter['budget']));
+                                $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                             }
                             else if($filter['budget'] == '$35,000 - $49,999')
                             {
-                              $select->where(array('l.budget = ?' =>  $filter['budget'])); 
+                              //$select->where(array('l.budget = ?' =>  $filter['budget'])); 
+                                $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                             }
                             else if($filter['budget'] == '$50,000 - $74,999')
                             {
-                              $select->where(array('l.budget = ?' =>  $filter['budget']));
+                              //$select->where(array('l.budget = ?' =>  $filter['budget']));
+                                $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                             }
                             else if($filter['budget'] == '$75,000 - $99,999')
                             {
-                              $select->where(array('l.budget = ?' =>  $filter['budget']));
+                              //$select->where(array('l.budget = ?' =>  $filter['budget']));
+                                $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                             }    
                             else if($filter['budget'] == '$100,000+')
                             {
-                              $select->where(array('l.budget = ?' =>  $filter['budget']));
+                              //$select->where(array('l.budget = ?' =>  $filter['budget']));
+                                $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                             }
                             //$select->where(array('l.budget = ?' =>  $value));
                             }
                             if(!empty($filter['lead_status'])) {
-                              $select->where(array('l.lead_status = ?' =>  $lead_status));
+                               $select->where(array('l.lead_status = ?' =>  $lead_status));
                             }
-                                              if(!empty($filter['referral'])) {
-                              $select->where(array('l.referral = ?' =>  $referral));
+                            if(!empty($filter['referral'])) {
+                               //$select->where(array('l.referral = ?' =>  $referral));
+                               $select->where(array('hh.how_heard_title = ?' =>  $referral));
                             }                       
                         //Start Working With Calender
                          if($filter['booking_date'] == 'All')
@@ -420,13 +426,14 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                           
                            if(!empty($filter['booking_date'])) {
                                
-                           $select->where->between('l.booking_date', $start_date, $end_date);
-                           
+                             //$select->where->between('l.booking_date', $start_date, $end_date);
+                             $select->where->between('l.created_date', $start_date, $end_date);
                            }
                          }
                          else if(!empty($filter['booking_date'])) {
                                   
-        $select->where(array('l.booking_date = ?' =>  $booking_date));
+                         //$select->where(array('l.booking_date = ?' =>  $booking_date));
+                            $select->where(array('l.created_date = ?' =>  $booking_date));
                 
                                 
                               }
@@ -438,7 +445,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                              $filter['booking_date'] = $today_booking_date;
                              if(!empty($filter['booking_date'])) {
                                   
-        $select->where(array('l.booking_date = ?' =>  $filter['booking_date']));
+                              //$select->where(array('l.booking_date = ?' =>  $filter['booking_date']));
+                                $select->where(array('l.created_date = ?' =>  $filter['booking_date']));
                 
                                 
                               }
@@ -450,7 +458,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                              $filter['booking_date'] = $yesterday_booking_date;
                              if(!empty($filter['booking_date'])) {
                                   
-        $select->where(array('l.booking_date = ?' =>  $filter['booking_date']));
+                            //$select->where(array('l.booking_date = ?' =>  $filter['booking_date']));
+                            $select->where(array('l.created_date = ?' =>  $filter['booking_date']));
                 
                                 
                               }
@@ -461,7 +470,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                            $end_date = date("Y-m-d",strtotime("sunday this week"));
                           
                            if(!empty($filter['booking_date'])) {
-                           $select->where->between('l.booking_date', $start_date, $end_date);
+                           //$select->where->between('l.booking_date', $start_date, $end_date);
+                            $select->where->between('l.created_date', $start_date, $end_date);
                            }
                            
                           
@@ -473,7 +483,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                           
                            if(!empty($filter['booking_date'])) {
                                
-                           $select->where->between('l.booking_date', $start_date, $end_date);
+                           //$select->where->between('l.booking_date', $start_date, $end_date);
+                           $select->where->between('l.created_date', $start_date, $end_date);
                            
                            
                            }
@@ -485,9 +496,10 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                           
                           $start_date = date('Y-01-01');
                           $end_date = date('Y-12-31');
-                        if(!empty($filter['booking_date'])) {
+                          if(!empty($filter['booking_date'])) {
                                
-                           $select->where->between('l.booking_date', $start_date, $end_date);
+                           //$select->where->between('l.booking_date', $start_date, $end_date);
+                           $select->where->between('l.created_date', $start_date, $end_date);
                            
                            
                            }
@@ -503,7 +515,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                              $end_date = date('Y-m-d', strtotime( $end_date1 ));
                              if(!empty($filter['booking_date'])) {
                                  
-                             $select->where->between('l.booking_date', $start_date, $end_date);
+                             //$select->where->between('l.booking_date', $start_date, $end_date);
+                             $select->where->between('l.created_date', $start_date, $end_date);
                              
                              
                              }
@@ -513,7 +526,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                           //$filter_lead_Appointment = 0;
                          // $select->where(array('a.AppointmentType = ?' =>  $filter_lead_Appointment));
                           //Start Sorting
-                          $select->order('id Desc');
+                          $select->order('lead_id Desc');
                           //End Sorting
                          
                          $data = $this->executeQuery($select);
@@ -522,12 +535,12 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                          $result = $data->toArray();
                          
                          
-                 //ArrayGrouped BasedOnId
+                    //ArrayGrouped BasedOnId
                      $groups = array();
                      foreach ($result as $item) {
 
-                         
-                         $key = $item['assign_to'];
+                            
+                         $key = $item['lead_owner_fullname'];
                          $keyName = $item['lead_owner_fullname'];
                          $keyImage = $item['lead_owner_image'];
                          $groups[$key]['idOfUser'] = $key;
@@ -763,8 +776,155 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
         }
                 
 
-        //
-          //GetCalenderData
+        //Fetch Customer Plus Leads
+        public  function fetchCustomerAndLeads($filter = null)
+        {
+             try {      
+                 $other_leadId = 90000;
+                
+                $select = new \Zend\Db\Sql\Select();
+                $fullname = new \Zend\Db\Sql\Expression('CONCAT(c.first_name, \' \', c.last_name)');
+                $select->from(array('c' => 'de_customers'))
+                     ->columns(array( 'id','name' => $fullname,'mobile' ,'email', 'address1' , 'email' ,'created_date',))
+                      ->join(array('l' => 'de_leads'), 'c.id = l.customer_id', array('lead_id', 'leadCustomerId' => 'customer_id' , 'productId' => 'product'), 'left')
+                      ->join(array('p' => 'de_products'), 'l.product = p.id', array('product_title' => 'title' , 'title_shortcode'), 'left')   ;
+                
+                    
+                $data = $this->executeQuery($select);               
+                $result = $data->toArray();
+                return $result;
+                 
+            } catch (\Exception $ex) {
+                \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+            }
+        }
+        //GetCustomerDetailById
+        public  function fetchCustomerById($filter = null)
+        {
+             try {      
+                $other_leadId = 90000;
+                $customer_id = $filter['customer_id'];
+                $lead_id = $filter['lead_id'];
+                $select = new \Zend\Db\Sql\Select();
+                $fullname = new \Zend\Db\Sql\Expression('CONCAT(c.first_name, \' \', c.last_name)');
+                $select->from(array('c' => 'de_customers'))
+                     ->columns(array( 'Customer_id' => 'id','CustomerTitle' =>'title','CustomerGender' =>'gender' ,'CustomerFirst_name' =>'first_name', 'CustomerLast_name' => 'last_name' , 'CustomerEmail' => 'email' , 'CustomerMobile' => 'mobile','CustomerCountry_id' => 'country_id','CustomerState_id' => 'state_id','CustomerAddress' => 'address1','CustomerSource' =>  'source','CustomerContact_method' =>'contact_method'))
+                     ->join(array('s' => 'de_states'), 'c.state_id = s.id', array('CustomerStateName' => 'name', 'CustomerStateCode' => 'state_code'), 'left')
+                     ->join(array('l' => 'de_leads'), 'c.id = l.customer_id', array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'), 'left')
+                     ->join(array('p' => 'de_products'), 'l.product = p.id', array('product' => 'id', 'product_title' => 'title' , 'title_shortcode'), 'left')   
+                     ->join(array('hh' => 'de_how_heard_lookup'), 'l.how_heard = hh.id', array('how_heard' => 'id', 'how_heard_title' => 'how_heard'), 'left')   
+                     ->join(array('op' => 'de_opportunities'), 'l.lead_id = op.lead_id', array('*'), 'left')   
+                     ->where(array('c.id = ?' => $customer_id));
+                
+               
+                if(isset($lead_id))
+                {
+                    $select->where(array('l.lead_id = ?' => $lead_id));        
+                    $select->where(array('op.user_id = ?' => $customer_id));
+                }
+               
+                $data = $this->executeQuery($select);               
+                $result = $data->toArray();
+                
+                $return_array = array();
+                foreach ($result as $key => $value)
+                {
+                   if(!empty($value['id']) && $value['opportunity_status'] == 'Open')
+                   {
+                       //Its an opportunity
+                       $return_array['Customer']['OpportunityStatus'] = 1;
+                       $return_array['Customer']['Opportunity']['OpportunityId'] = $value['id'];
+                       $return_array['Customer']['Opportunity']['OpportunityLeadId'] = $value['lead_id'];
+                       $return_array['Customer']['Opportunity']['OpportunityUserId'] = $value['user_id'];
+                       $return_array['Customer']['Opportunity']['OpportunityType'] = $value['opportunity_type'];
+                       $return_array['Customer']['Opportunity']['OpportunityName'] = $value['opportunity_name'];
+                       $return_array['Customer']['Opportunity']['OpportunityLeadSource'] = $value['lead_source'];
+                       $return_array['Customer']['Opportunity']['OpportunityReferredCustomer'] = $value['referred_by_customer'];
+                       $return_array['Customer']['Opportunity']['OpportunityReferenceProduct'] = $value['reference_product'];
+                       $return_array['Customer']['Opportunity']['OpportunityLookingFor'] = $value['looking_for'];
+                       $return_array['Customer']['Opportunity']['OpportunityPreferredContact'] = $value['preferred_contact'];
+                       $return_array['Customer']['Opportunity']['OpportunityBudget'] = $value['budget'];
+                       $return_array['Customer']['Opportunity']['OpportunityRating'] = $value['rating'];
+                       $return_array['Customer']['Opportunity']['OpportunitySpecialInstruction'] = $value['special_instructions'];
+                       $return_array['Customer']['Opportunity']['OpportunityEstimatedCloseDate'] = $value['est_close_date'];
+                       $return_array['Customer']['Opportunity']['OpportunityStatus'] = $value['opportunity_status'];
+                       $return_array['Customer']['Opportunity']['OpportunityReason'] = $value['opportunity_reason'];
+                       $return_array['Customer']['Opportunity']['OpportunityCloseDate'] = $value['opportunity_close_date'];
+                       $return_array['Customer']['Opportunity']['OpportunityRecordOwnerId'] = $value['record_owner_id'];
+                       $return_array['Customer']['Opportunity']['OpportunityCreatedDate'] = $value['created_date'];
+                       $return_array['Customer']['Opportunity']['OpportunityCreatedBy'] = $value['created_by'];
+                       $return_array['Customer']['Opportunity']['OpportunityUpdatedDate'] = $value['updated_date'];
+                       $return_array['Customer']['Opportunity']['OpportunityUpdatedBy'] = $value['updated_by'];
+                   }
+                   else{
+                       $return_array['Customer']['OpportunityStatus'] = 0;
+                       $return_array['Customer']['Opportunity'][] ='';
+                   }
+                    //Check Lead Exists Or Not
+                   if(!empty($value['Lead_id']) && $value['LeadStatus'] == 'Open' || $value['LeadStatus'] == 'To Opportunity')
+                   {
+                       //Its an opportunity
+                       $return_array['Customer']['LeadStatus'] = 1;
+                       $return_array['Customer']['Lead']['Lead_id'] = $value['Lead_id'];
+                       $return_array['Customer']['Lead']['LeadCustomerId'] = $value['LeadCustomerId'];
+                       $return_array['Customer']['Lead']['LeadTitle'] = $value['LeadTitle'];
+                       $return_array['Customer']['Lead']['LeadGender'] = $value['LeadGender'];
+                       $return_array['Customer']['Lead']['LeadFirst_name'] = $value['LeadFirst_name'];
+                       $return_array['Customer']['Lead']['LeadLast_name'] = $value['LeadLast_name'];
+                       $return_array['Customer']['Lead']['LeadEmail'] = $value['LeadEmail'];
+                       $return_array['Customer']['Lead']['LeadMobile'] = $value['LeadMobile'];
+                       $return_array['Customer']['Lead']['LeadState_id'] = $value['LeadState_id'];
+                       $return_array['Customer']['Lead']['LeadSource'] = $value['LeadSource'];
+                       $return_array['Customer']['Lead']['LeadOwnerId'] = $value['LeadOwnerId'];
+                       $return_array['Customer']['Lead']['LeadLookingFor'] = $value['LeadLookingFor'];
+                       $return_array['Customer']['Lead']['LeadReference'] = $value['LeadReference'];
+                       $return_array['Customer']['Lead']['LeadReferredbyCustomer'] = $value['LeadReferredbyCustomer'];
+                       $return_array['Customer']['Lead']['LeadPreferredContact_method'] = $value['LeadPreferredContact_method'];
+                       $return_array['Customer']['Lead']['LeadStatus'] = $value['LeadStatus'];
+                       $return_array['Customer']['Lead']['LeadProduct'] = $value['product'];
+                       $return_array['Customer']['Lead']['LeadProduct_title'] = $value['product_title'];
+                       $return_array['Customer']['Lead']['LeadProductTitle_shortcode'] = $value['title_shortcode'];
+                       $return_array['Customer']['Lead']['LeadHow_heard'] = $value['how_heard'];
+                       $return_array['Customer']['Lead']['LeadHow_heard_title'] = $value['how_heard_title'];
+                       
+                   }
+                   else{
+                       $return_array['Customer']['LeadStatus'] = 0;
+                       $return_array['Customer']['Lead'][] ='';
+                   }
+                   //Check Customer Exists Or Not
+                   if(!empty($value['Customer_id']))
+                   {
+                       //Its an opportunity
+                       $return_array['Customer']['CustomerStatus'] = 1;
+                       $return_array['Customer']['LCustomer']['Customer_id'] = $value['Customer_id'];
+                       $return_array['Customer']['LCustomer']['CustomerTitle'] = $value['CustomerTitle'];
+                       $return_array['Customer']['LCustomer']['CustomerGender'] = $value['CustomerGender'];
+                       $return_array['Customer']['LCustomer']['CustomerFirst_name'] = $value['CustomerFirst_name'];
+                       $return_array['Customer']['LCustomer']['CustomerLast_name'] = $value['CustomerLast_name'];
+                       $return_array['Customer']['LCustomer']['CustomerEmail'] = $value['CustomerEmail'];
+                       $return_array['Customer']['LCustomer']['CustomerMobile'] = $value['CustomerMobile'];
+                       $return_array['Customer']['LCustomer']['CustomerCountry_id'] = $value['CustomerCountry_id'];
+                       $return_array['Customer']['LCustomer']['CustomerState_id'] = $value['CustomerState_id'];
+                       $return_array['Customer']['LCustomer']['CustomerAddress'] = $value['CustomerAddress'];
+                       $return_array['Customer']['LCustomer']['CustomerSource'] = $value['CustomerSource'];
+                       $return_array['Customer']['LCustomer']['CustomerContact_method'] = $value['CustomerContact_method'];
+                       $return_array['Customer']['LCustomer']['CustomerStateName'] = $value['CustomerStateName'];
+                       $return_array['Customer']['LCustomer']['CustomerStateCode'] = $value['CustomerStateCode'];   
+                   }
+                   else{
+                       $return_array['Customer']['CustomerStatus'] = 0;
+                       $return_array['Customer']['LCustomer'][] ='';
+                   }
+                }
+                //return $result;
+                return $return_array;
+                 
+            } catch (\Exception $ex) {
+                \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+            }
+        }
+        //GetCalenderData
         public function  fetchCalenderData($filter = null)
         {
             
@@ -1682,46 +1842,24 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
             }
      }
 
-     public function fetchLeadRecord($filter= null)
+       public function fetchLeadRecord($filter= null)
        {
-           
-        $select = new \Zend\Db\Sql\Select();
-        $select->from('de_userdetail')->columns(array('id'));
+                $value = $filter['lead_id'];      
+                $select = new \Zend\Db\Sql\Select();
+                $select->from('de_leads')->columns(array('lead_id'));
+                       
+                $select = new \Zend\Db\Sql\Select();
+                $select->from(array('l' => 'de_leads'))
+                        ->columns(array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'))         
+                        ->join(array('c' => 'de_customers'), 'l.customer_id = c.id', array('Customer_id' => 'id','CustomerTitle' =>'title','CustomerGender' =>'gender' ,'CustomerFirst_name' =>'first_name', 'CustomerLast_name' => 'last_name' , 'CustomerEmail' => 'email' , 'CustomerMobile' => 'mobile','CustomerCountry_id' => 'country_id','CustomerState_id' => 'state_id','CustomerAddress' => 'address1','CustomerSource' =>  'source','CustomerContact_method' =>'contact_method'), 'left');
                         
-                        
-                        //FullName  From Table "de_users"
-      $fullname = new \Zend\Db\Sql\Expression(
-        'CONCAT(u.first_name, \' \', u.last_name)'
-      );
-                        //Image  From Table "de_users"
-                        $image = new \Zend\Db\Sql\Expression(
-        'u.image'
-      );
-      /*$select = new \Zend\Db\Sql\Select();
-      $select->from(array('l' => 'de_userdetail'))
-           ->columns(array(
-              'id','title','gender','first_name', 'last_name', 'phone_number', 'email','country', 'full_address' ,'communication_method','product_shortcode','user_booking_date','State','product', 'referral', 'only_referral' ,'special_instructions','budget','reference_product', 'contact_method', 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_room','durationTime','bookingstart','customerName','salesRepName'          
-           ));*/
-                        
-      $select = new \Zend\Db\Sql\Select();
-                  $select->from(array('l' => 'de_userdetail'))
-                        ->columns(array('id','title','gender','first_name', 'last_name', 'phone_number', 'email', 'country','communication_method', 'contact_method','State','full_address','product','referral','only_referral', 'special_instructions','budget','reference_product','assign_to','lead_owner_fullname' => 'lead_owner_name','reson_skip_next_in_line','lead_status','lead_owner','create_date','assign_to_UserId'))         
-                        ->join(array('a' => 'de_appointments'), 'l.id = a.lead_id', array('appointment_id','lead_id','booking_date','specify_requirements','booking_time','booking_room','durationTime','bookingstart'), 'left');
-                        
-                      
-                        $value = $filter['leadId'];    
-                        if(!empty($filter['leadId'])) {
-                              $select->where(array('l.id = ?' =>  $value));
-                        }
-                        
-                        $data = $this->executeQuery($select);                     
-                        $select->order("a.create_date asc");
-                        $result = $data->toArray();
-                        foreach ($result as $item)
-                        {
-                            return $result[0];
-                        }
-                         
+                 if(!empty($filter['lead_id'])) {
+                              $select->where(array('l.lead_id = ?' =>  $value));
+                        }      
+                          
+                 $data = $this->executeQuery($select);                     
+                 $result = $data->toArray(); 
+                 return  $result;      
                         
        }
 
