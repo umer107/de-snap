@@ -3797,10 +3797,11 @@ setTimeout(function(){
 
     function getValuesFromForm()
     {
-        var preferredMethod = $("#perferrefDropdown").text();
+        var preferredMethod = $('.dropdown.preferredMethod').find('.selected-text').attr('value');
         var preferredMethodOther = $("#perferrefDropdownOther").val();
         var preferredMethodVal = '';
         if ( preferredMethod == "Other"){ preferredMethodVal = preferredMethodOther; }
+        else if(preferredMethod = 'All'){ preferredMethodVal = '' }
         else { preferredMethodVal = preferredMethod; }
 
         var referralMethod = $("#referralDropdown").text();
@@ -3891,10 +3892,11 @@ setTimeout(function(){
 
     function getCustomerValues()
     {
-        var preferredMethod = $("#perferrefDropdown").text();
+        var preferredMethod = $('.dropdown.preferredMethod').find('.selected-text').attr('value');
         var preferredMethodOther = $("#perferrefDropdownOther").val();
         var preferredMethodVal = '';
         if ( preferredMethod == "Other"){ preferredMethodVal = preferredMethodOther; }
+        else if(preferredMethod = 'All'){ preferredMethodVal = '' }
         else { preferredMethodVal = preferredMethod; }
 
         return {
@@ -3976,7 +3978,7 @@ setTimeout(function(){
         $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
         var inEditMode = $('.newLead').hasClass('inEditMode');
-        var AppointmentBySearch = $('#email').hasClass('popuplatedemail');
+        var searchMade = $('#email').hasClass('popuplatedemail');
         validation();
         if(window.validState == false)
         {
@@ -3986,7 +3988,7 @@ setTimeout(function(){
         var dataLead = getValuesFromForm();
         var dataAppointment = getValuesFromFormAppointment();
 
-        if(window.saveAndBook == true && AppointmentBySearch == false) // Incase of Save and Book From New Lead
+        if(window.saveAndBook == true && searchMade == false) // Incase of Save and Book From New Lead
         {
             // Creating New Customer
             $.ajax({
@@ -4003,7 +4005,7 @@ setTimeout(function(){
                       { return false; }
 
                       dataLead.customer_id = parsed
-                      //customer_id
+                      // After Customer created, create a lead for that customer
                       $.ajax({
                           type: "POST",
                           url: "/ajaxCreateLeadFromDashboard",
@@ -4023,29 +4025,29 @@ setTimeout(function(){
 
                   }
               });
-
-
-            //  $.ajax({
-            //    type: "POST",
-            //    url: "/dashboard/ajaxAddDashboard",
-            //    data: dataLead, 
-            //    success: function (data) { // returs lead Id
-            //        var parsed = '';          
-            //        try{ parsed = JSON.parse(data); }                 
-            //        catch(e)                
-            //        { return false; }
-            //        dataAppointment.lead_id = parsed;
-            //        dataLead.lead_id = parsed;
-            //        $('.thisLeadId').attr('leadid', parsed);
-            //        getSearchData();
-            //        return false;
-            //    }
-            //});  
         }
-        else if(window.saveAndBook == true && AppointmentBySearch == true)  // Incase of Save and Book From Search New Lead 
+        else if(window.saveAndBook == true && searchMade == true)  // Incase of Save and Book From Search New Lead 
         {
-          $(".hideOnSavenBook").addClass('hide');
-          $(".calendarShowOnBook").removeClass('hide');  
+          $.ajax({
+                  type: "POST",
+                  url: "/ajaxCreateLeadFromDashboard",
+                  data: dataLead, 
+                  success: function (data) { // returs lead Id
+                      var parsed = '';          
+                      try{
+                          parsed = JSON.parse(data); 
+                          console.log(parsed);
+                      }                 
+                      catch(e)                
+                      { return false; }
+                      $('.thisLeadId').attr('leadid', parsed);
+                      $('#email').removeClass('popuplatedemail');
+                      $(".hideOnSavenBook").addClass('hide');
+                      $(".calendarShowOnBook").removeClass('hide'); 
+                      return false;
+                  }
+              });
+           
         }
         else if(window.AppointmentType == 1)  // Incase of Appointment From Room Manager
         {
@@ -4112,56 +4114,63 @@ setTimeout(function(){
         {
             if(dataAppointment.lead_id == "") // Incase of Saved lead only from New Lead Form
             {
-                $.ajax({
-                    type: "POST",
-                    url: "/dashboard/ajaxAddDashboard",
-                    data: dataLead, 
-                    success: function (data) { // returs lead Id
-                        var parsed = '';          
-                        try{ parsed = JSON.parse(data); }                 
-                        catch(e)                
-                        { return false; }
-                        loadMainDashboardAfterSaveLead();
-                        $('.thisLeadId').attr('leadId','');
-                        return false;
-                    }
-                }); 
-            }
-            else if(AppointmentBySearch == true) // Update Lead which comes from Book And Save
-            {
-
-             $.ajax({
+                // Creating New Customer
+            $.ajax({
                   type: "POST",
-                  url: "/dashboard/ajaxAddDashboard",
+                  url: "/ajaxCreateCustomerDashboard",
+                  data: customerValues, 
+                  success: function (data) { // return  customerID
+                      var parsed = '';          
+                      try{
+                          parsed = JSON.parse(data); 
+                          console.log(parsed);
+                      }                 
+                      catch(e)                
+                      { return false; }
+
+                      dataLead.customer_id = parsed
+                      // After Customer created, create a lead for that customer
+                      $.ajax({
+                          type: "POST",
+                          url: "/ajaxCreateLeadFromDashboard",
+                          data: dataLead, 
+                          success: function (data) { // returs lead Id
+                              var parsed = '';          
+                              try{
+                                  parsed = JSON.parse(data); 
+                                  console.log(parsed);
+                              }                 
+                              catch(e)                
+                              { return false; }
+                              loadMainDashboardAfterSaveLead();
+                              $('.thisLeadId').attr('leadId','');
+                              return false; 
+                          }
+                      });
+
+                  }
+              });
+            }
+            else if(searchMade == true) // Update Lead which comes from Book And Save
+            {
+              $.ajax({
+                  type: "POST",
+                  url: "/ajaxCreateLeadFromDashboard",
                   data: dataLead, 
                   success: function (data) { // returs lead Id
                       var parsed = '';          
-                      try{ parsed = JSON.parse(data); }                 
+                      try{
+                          parsed = JSON.parse(data); 
+                          console.log(parsed);
+                      }                 
                       catch(e)                
                       { return false; }
                       loadMainDashboardAfterSaveLead();
                       $('.thisLeadId').attr('leadId','');
-                      return false;  
+                      return false;
+                    
                   }
-              }); 
-
-              if(dataAppointment.booking_date != null)
-              {
-                $.ajax({  
-                  type: "POST",
-                  url: "/dashboard/ajaxSaveAppointment",
-                  data: dataAppointment, 
-                  success: function (data2) {
-                      var parsed2 = '';          
-                      try{ parsed2 = JSON.parse(data2); }                 
-                      catch(e) { return false; }
-
-                      loadMainDashboardAfterSaveLead();
-                      $('.thisLeadId').attr('leadId','');
-                      return false;      
-                  }
-                });
-              }
+              });
             }
             else  // Update Lead which comes from Save Only
             {
