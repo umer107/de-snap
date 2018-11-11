@@ -332,7 +332,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
         {
             try {
                 
-                     $fullname = new \Zend\Db\Sql\Expression(
+                 $fullname = new \Zend\Db\Sql\Expression(
                       'CONCAT(u.first_name, \' \', u.last_name)'
                  );
                   $select = new \Zend\Db\Sql\Select();
@@ -624,10 +624,10 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                          }
 
                       }
+          //_________________________________CheckNextInLine______________        
                     
                     
-                    
-                    //______________________________________________________________
+          //______________________________________________________________
                     
                     
            $array_merge_dashboard = array();   
@@ -821,7 +821,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 if(isset($lead_id))
                 {
                     $select->where(array('l.lead_id = ?' => $lead_id));        
-                    $select->where(array('op.user_id = ?' => $customer_id));
+                    //$select->where(array('op.user_id = ?' => $customer_id));
                 }
                
                 $data = $this->executeQuery($select);               
