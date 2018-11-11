@@ -79,6 +79,14 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { bac
 .ShowPopup.green{background: #27AD09}
 .ShowPopup a{}
 
+
+.dialogeBox{width: 420px; top: -152px; z-index: 100;  padding: 22px; border:1px solid #DFDFDF;}
+.dialogeBox.top0{top:0;}
+.dialogeBox.topShow{top:64px;}
+.dialogeBox div{  }
+.dialogeBox.green{background: #27AD09}
+.dialogeBox a{}
+
 .bookNowMain{}
 .coverAreaBooking{ position: absolute; left: 0; right: 0; top: 0; height: 100%; z-index: 1; }
 /*-----------------------------------------*/
