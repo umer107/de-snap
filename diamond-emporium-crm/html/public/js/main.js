@@ -7916,6 +7916,38 @@ function getBookingTime(getTime, bookingStart, Duation) {
     // Search Record Selection
     $(document).on('click', '.resultFields', function () {
       var el = $(this);
+      var customerId = el.attr('customerId');
+      var leadId = el.attr('leadId');
+      var resultUrl = "/dashboard/ajaxGetCustomerById?customer_id="+customerId+"&lead_id="+leadId;
+      if(leadId == '')
+        { resultUrl = "/dashboard/ajaxGetCustomerById?customer_id="+customerId; }
+      $.ajax({
+            type: "GET",
+            url: resultUrl, 
+            data: {},
+            success: function (data) {
+                var getData = data;                
+                var parsed = '';               
+                try{
+                  parsed = JSON.parse(data);                  
+                }           
+                catch(e)
+                {                   
+                  return false;                  
+                }
+                // Check If Opprtunity Exists
+                if(parsed.Customer.OpportunityStatus == '1')
+                {
+                  console.log('Its an opportunity');
+                }
+                else if(parsed.Customer.LeadStatus == '1')
+                { console.log('Its a lead'); }
+                else
+                {console.log('Its a customer');}
+                return false; 
+            }
+        });
+
       var getName = el.find('h1').html();
       var getRecord = el.attr('dataobj');
       window.selectedRecord = getRecord
@@ -7976,12 +8008,19 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
         for (var i = 0; i < parsed.length; i++) {
             
-            var name = parsed[i].name;
+            var name = parsed[i].name; 
             name = name.toLowerCase();
             var email = parsed[i].email;
-            email = email.toLowerCase();
-            var phone = parsed[i].phone_number;
-            phone = phone.toLowerCase();
+            if(email == null)
+            {email = '';}
+            else
+            {email = email.toLowerCase();}
+            var phone = parsed[i].mobile;
+            if(phone == null)
+            {phone = '';}
+            else
+            {phone = phone.toLowerCase();}
+            
              if (name.indexOf(getValue) > -1 || email.indexOf(getValue) > -1 || phone.indexOf(getValue) > -1) {
                arr.push(parsed[i]);
              }
@@ -8002,15 +8041,20 @@ function getBookingTime(getTime, bookingStart, Duation) {
           var productName = filteredArray[i].product;                                   // Product Name
           var productIconName = productIcons(productName);                              // Get Icon
           var getFullObj = JSON.stringify(filteredArray[i]);
-          
-          setHtml += "<div class='resultFields full pointer' dataObj='"+getFullObj+"' leadId='"+ filteredArray[i].id +"'>";
+          var mobileNumber = '';
+          if(filteredArray[i].mobile == null)
+            {filteredArray[i].mobile = ''}
+          if(filteredArray[i].lead_id == null)
+            {filteredArray[i].lead_id = ''}
+          setHtml += "<div class='resultFields full pointer' dataObj='"+getFullObj+"' leadId='"+ filteredArray[i].lead_id +"'  customerId='"+ filteredArray[i].id +"'>";
             setHtml += "<span class='d-i-b wd-67 v-a-t align-center'><i class='"+productIconName+ " fs-36 color-darkBlue'></i></span>";
             setHtml += "<div class='searchContent d-i-b v-a-t half-pad-top'>";
               setHtml += "<h1 class='fs-15 lh-22'>"+filteredArray[i].name+"</h1>"; // Name
               setHtml += "<div>";
                 setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Created:</label><span>"+formattedDate+"</span></div>"; // Created
-                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Product:</label><span>"+filteredArray[i].product+"</span></div>"; // Product
-                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Mobile:</label><span>"+filteredArray[i].phone_number+"</span></div>"; // Mobile
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Product:</label><span></span></div>"; // Product
+                //setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Product:</label><span>"+filteredArray[i].product+"</span></div>"; // Product
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Mobile:</label><span>"+filteredArray[i].mobile+"</span></div>"; // Mobile
                 setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Email:</label><span>"+filteredArray[i].email+"</span></div>"; // Email
               setHtml += "</div>";
             setHtml += "</div>";
