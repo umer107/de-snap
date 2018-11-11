@@ -526,7 +526,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                           //$filter_lead_Appointment = 0;
                          // $select->where(array('a.AppointmentType = ?' =>  $filter_lead_Appointment));
                           //Start Sorting
-                          $select->order('lead_id Desc');
+                          //$select->order('lead_id Desc');
+                          $select->order('lead_owner_fullname Asc');
                           //End Sorting
                          
                          $data = $this->executeQuery($select);
