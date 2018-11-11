@@ -203,7 +203,8 @@ class IndexController extends AbstractActionController
 			$priorityList = $tasksPriorityTable->fetchAll();
 			
 			foreach($tasks as $key => $value){
-				$tasks[$key]['is_overdue'] = \De\Lib::isTaskOverDue($value);
+				//$tasks[$key]['is_overdue'] = \De\Lib::isTaskOverDue($value);
+                                $tasks[$key]['is_overdue'] = IndexController::isTaskOverDue($value);
 			}
 			
 			return array('opportunitiesData' => $OpportunitiesData, 'listProducts' => $listProducts, 'recordsPerPage' => $config['recordsPerPage'],
@@ -254,6 +255,25 @@ class IndexController extends AbstractActionController
 			}
 		}catch(Exception $e){
 			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+		}
+	}
+        public static function isTaskOverDue($taskData) {
+		if(empty($taskData['due_date']) || !strtotime($taskData['due_date'])){
+			$dueDate = null;
+		}else{
+			$dueDate = $taskData['due_date'];
+			if($taskData['due_date_repeat_status'] > 1 && empty($taskData['due_date_end_on'])){
+				$dueDate = null;
+			}elseif($taskData['due_date_repeat_status'] > 1 && !empty($taskData['due_date_end_on'])){
+				$dueDate = $taskData['due_date_end_on'];
+			}
+			
+			if(empty($dueDate))
+				$isOverdue = 0;
+			else	
+				$isOverdue = strtotime($dueDate) >= strtotime(date("Y-m-d")) ? 0 : 1;
+			
+			return $isOverdue;
 		}
 	}
 }
