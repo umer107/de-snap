@@ -7943,7 +7943,10 @@ function getBookingTime(getTime, bookingStart, Duation) {
                 else if(parsed.Customer.LeadStatus == '1')
                 { console.log('Its a lead'); }
                 else
-                {console.log('Its a customer');}
+                {
+                   $('.dialogeBox').addClass('topShow');
+                  console.log('Its a customer');
+                }
                 return false; 
             }
         });
