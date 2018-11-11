@@ -2686,6 +2686,10 @@ setTimeout(function(){
      $('.ShowPopup').removeClass('topShow');
      $('.basicInfo').html(window.getBasicInfo);
      $('.additional-details').html(window.getAdditionalInfo);
+     setTimeout(function(){ 
+        $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
+    }, 500);
+     
 
   });// End
 
@@ -7938,42 +7942,47 @@ function getBookingTime(getTime, bookingStart, Duation) {
                 // Check If Opprtunity Exists
                 if(parsed.Customer.OpportunityStatus == '1')
                 {
+                  var leadId = parsed.Customer.Opportunity.OpportunityLeadId;
+                  window.location.href = '/leaddetails/'+leadId;
                   console.log('Its an opportunity');
                 }
                 else if(parsed.Customer.LeadStatus == '1')
-                { console.log('Its a lead'); }
+                { popuLateLead(parsed.Customer) }
                 else
                 {
-                   $('.dialogeBox').addClass('topShow');
+                  $('.searchField').val(parsed.Customer.Customer.CustomerFirst_name + ' ' + parsed.Customer.Customer.CustomerLast_name )
+                  $("#searchResults").html(' ');
+                  $('.dialogeBox').removeClass('hide');
                   console.log('Its a customer');
                 }
                 return false; 
             }
         });
+    });
 
-      var getName = el.find('h1').html();
-      var getRecord = el.attr('dataobj');
-      window.selectedRecord = getRecord
-      var parsedRecord = JSON.parse(getRecord);
-      var chek = parsedRecord;
-      $("#searchResults").html(' ');
-      $('.searchField').val(getName);
+    /*=====================================*/
 
+    function popuLateLead(lead)
+    {
+      debugger
       // Populating Records
-
-      $('.dropdown.title .dropdownOptions li a[value="'+parsedRecord.title+'"]').trigger('click');              // title gender   
-      $('.basicInfo .firstname').val(parsedRecord.first_name);                                                  // first name   
-      $('.basicInfo .lastname').val(parsedRecord.last_name);                                                    // last name
-      $('.basicInfo .phonenumber').val(parsedRecord.phone_number);                                              // phone
-      $('#email').val(parsedRecord.email);                                                                      // email
+      $("#searchResults").html(' ');
+      $('.dropdown.title .dropdownOptions li a[value="'+lead.Customer.CustomerTitle+'"]').trigger('click');              // title gender   
+      $('.basicInfo .firstname').val(lead.Customer.CustomerFirst_name);                                                  // first name   
+      $('.basicInfo .lastname').val(lead.Customer.CustomerLast_name);                                                    // last name
+      $('.basicInfo .phonenumber').val(lead.Customer.CustomerMobile);                                              // phone
+      $('#email').val(lead.Customer.CustomerEmail);                                                                      // email
       $('#email').addClass('popuplatedemail');
-      $('#email').attr('leadId',parsedRecord.id);                                                               // email
-      $('.thisLeadId').attr('leadid',parsedRecord.id);                                                          // email
-      $('#fullAddress').val(parsedRecord.full_address);                                                         // address
-      $('#countryName').attr('value',parsedRecord.country);                                                     // country
-      $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(parsedRecord.country);         // country
-      $('.stateDiv .dropdown.State .dropdownOptions li a[value="'+parsedRecord.State+'"]').trigger('click');    // state
-       if(parsedRecord.country == 'Australia')                                                                  // state
+      $('#email').attr('leadId',lead.Lead_id);                                                                // email
+      $('.thisLeadId').attr('leadid',lead.Lead_id); 
+      if(lead.Customer.CustomerAddress ==  null)
+      {$('#fullAddress').val('');}
+      else
+      {$('#fullAddress').val(lead.Customer.CustomerAddress);}                                     // address
+      $('#countryName').attr('value',lead.Customer.CustomerCountry_id);                                                     // country
+      $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(lead.Customer.CustomerCountry_id);         // country
+      $('.stateDiv .dropdown.State .dropdownOptions li a[stateid="'+lead.Customer.CustomerState_id+'"]').trigger('click');    // state
+       if(lead.Customer.CustomerCountry_id == 'Australia')                                                                  // state
        {
         $('.stateDiv').removeClass('hide');
        }
@@ -7984,11 +7993,53 @@ function getBookingTime(getTime, bookingStart, Duation) {
        $('.emailexists').addClass('opacity0').removeClass('green');
        $('.redCross, .redGreen').addClass('hide');
        $('.basicInfo .requiredError, .emailDiv .requiredError, .firstError, .emailexists, .emailDiv .error ').addClass('opacity0');
-       //$('.dropdown.product .dropdownOptions li a[value="'+parsedRecord.product+'"]').trigger('click');
-       //$('.dropdown.product .dropdownOptions li a[value="'+parsedRecord.product+'"]').trigger('click');
-       showMainLoading();
-    });
+       if(lead.Customer.CustomerSource != null)
+       {
+          $('.dropdown.CommunicationMethod .dropdownOptions li a[value="'+lead.Customer.CustomerSource+'"]').trigger('click');
+       }
+       if(lead.Lead.LeadPreferredContact_method != null)
+       {
+          $('.dropdown.preferredMethod .dropdownOptions li a[value="'+lead.Lead.LeadPreferredContact_method+'"]').trigger('click');
+       }
+       $('.dropdown.product .dropdownOptions li a[value="'+lead.Lead.LeadProduct_title+'"]').trigger('click');
+       $('.dropdown.referral .dropdownOptions li a[value="'+lead.Lead.LeadHow_heard_title+'"]').trigger('click');
+       if(lead.Lead.LeadReferredbyCustomer != null)
+       {
+        $('#onlyReferral').val(lead.Lead.LeadReferredbyCustomer);
+       }
+       if(lead.Lead.LeadLookingFor != null)
+       {
+        $('#specify_requirements').val(lead.Lead.LeadLookingFor);
+        $('#specify_requirements').prev('span').slideDown(150);
+       }
 
+       $('.dropdownOptions').hide();
+       $('.formfields input').each( function () {
+          if($(this).val().length > 0)
+          {
+            $(this).prev('span').slideDown(150);
+          }    
+        });// End
+
+       showMainLoading();
+    }
+
+    /*=====================================*/
+
+    // Create Customer from Search
+    $(document).on('click', '.yesCreateCustomer', function () {
+      $('.basicInfo').html(window.getBasicInfo);
+      $('.additional-details').html(window.getAdditionalInfo);
+      $('.dialogeBox').addClass('hide');
+    });// End
+
+    /*=====================================*/
+
+    // Cancel Create Customer popup
+    $(document).on('click', '.NoCancelCustomer', function () {
+      $('.dialogeBox').addClass('hide');
+      $('.searchField').val('');
+    });// End
 
     // Search Autocomplete
     $(document).on('keyup', '.searchField', function () {
