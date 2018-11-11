@@ -427,7 +427,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                            if(!empty($filter['booking_date'])) {
                                
                              //$select->where->between('l.booking_date', $start_date, $end_date);
-                             $select->where->between('l.created_date', $start_date, $end_date);
+                              $select->where->between('l.created_date', $start_date , $end_date);
                            }
                          }
                          else if(!empty($filter['booking_date'])) {
@@ -2180,21 +2180,22 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
       
       
        //-----------------------------------------------LeadList------------------------------------// 
-       $budget = $filter['budget']; 
-
+    $budget = $filter['budget']; 
+    $fullname = new \Zend\Db\Sql\Expression( 
+        'CONCAT(u.first_name, \' \', u.last_name)' 
+      ); 
     //Budget Greater than 2000 and Smaller than 5000 
     if($budget == '$2,000 - $4,999') 
      { 
               
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail->from('de_leads')->columns(array('lead_id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from(array('l' => 'de_userdetail')) 
+       $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
-               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
-       $select_detail->where(array('l.budget = ?' =>  $budget));
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+           ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
+       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2213,14 +2214,13 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
      { 
 
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail->from('de_leads')->columns(array('lead_id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from(array('l' => 'de_userdetail')) 
+       $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
-               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
-       $select_detail->where(array('l.budget = ?' =>  $budget));
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+           ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
+       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2239,14 +2239,13 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
      { 
 
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail->from('de_leads')->columns(array('lead_id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from(array('l' => 'de_userdetail')) 
+       $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
-               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
-       $select_detail->where(array('l.budget = ?' =>  $budget));
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+           ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
+       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2265,14 +2264,13 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
      { 
 
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail->from('de_leads')->columns(array('lead_id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from(array('l' => 'de_userdetail')) 
+       $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
-               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
-       $select_detail->where(array('l.budget = ?' =>  $budget));
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+           ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
+       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2291,14 +2289,13 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
      { 
 
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail->from('de_leads')->columns(array('lead_id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from(array('l' => 'de_userdetail')) 
+       $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
-               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
-       $select_detail->where(array('l.budget = ?' =>  $budget));
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+           ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
+       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2317,14 +2314,13 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
      { 
 
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail->from('de_leads')->columns(array('lead_id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from(array('l' => 'de_userdetail')) 
+       $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
-               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
-       $select_detail->where(array('l.budget = ?' =>  $budget));
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+           ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
+       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2343,14 +2339,13 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
      { 
 
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail->from('de_leads')->columns(array('lead_id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from(array('l' => 'de_userdetail')) 
+       $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
-               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
-       $select_detail->where(array('l.budget = ?' =>  $budget));
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+           ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
+       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2369,14 +2364,13 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
      { 
 
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from('de_userdetail')->columns(array('id'));        
+       $select_detail->from('de_leads')->columns(array('lead_id'));        
        $select_detail = new \Zend\Db\Sql\Select(); 
-       $select_detail->from(array('l' => 'de_userdetail')) 
+       $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              //'id','first_name', 'last_name', 'phone_number', 'email','Street','State','City','Zip', 'product', 'referral','special_instructions','budget','reference_product', 'contact_method','name' => 'assign_to','assign_to_UserId','reson_skip_next_in_line','lead_status','specify_requirements','lead_status','lead_owner','create_date','lead_close_date','booking_date','booking_time','booking_timezone','booking_room','booking_duration'            
-               'user_id'=> 'assign_to_UserId','user_name' => 'assign_to' , 'lead_assign_to' => 'assign_to_UserId'
-           ))->join(array('u' => 'de_users'), 'l.assign_to_UserId = u.user_id', array('image'), 'left');
-       $select_detail->where->where('l.budget',$budget);
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+           ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
+       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
