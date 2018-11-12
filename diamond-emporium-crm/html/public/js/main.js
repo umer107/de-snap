@@ -6712,6 +6712,8 @@ function loadLeads(){
                     // Get Smaller lead count number
                 
                     var makeList = [];
+                    var getLeadsCount = leads.length;
+
                     for(i=0; i < leads.length; i++)
                     {
                         makeList.push(leads[i].count);
@@ -6729,7 +6731,6 @@ function loadLeads(){
                     
                     var getLeadsLength = [];
                    
-
                     var k = 1;
                     var l = 1;
                     var a = 0;
