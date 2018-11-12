@@ -892,8 +892,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $return_array = array();
                 foreach ($result as $key => $value)
                 {
-                    //&& $value['user_id'] == $customer_id
-                   if(!empty($value['id']) && $value['opportunity_status'] == 'Open')
+                    //
+                   if(!empty($value['id']) && $value['opportunity_status'] == 'Open'&& $value['user_id'] == $customer_id)
                    {
                        //Its an opportunity
                        $return_array['Customer']['OpportunityStatus'] = 1;
