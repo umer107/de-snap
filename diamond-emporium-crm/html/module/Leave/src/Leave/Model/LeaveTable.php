@@ -899,24 +899,24 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                    {
                        //Its an opportunity
                        $return_array['Customer']['CustomerStatus'] = 1;
-                       $return_array['Customer']['LCustomer']['Customer_id'] = $value['Customer_id'];
-                       $return_array['Customer']['LCustomer']['CustomerTitle'] = $value['CustomerTitle'];
-                       $return_array['Customer']['LCustomer']['CustomerGender'] = $value['CustomerGender'];
-                       $return_array['Customer']['LCustomer']['CustomerFirst_name'] = $value['CustomerFirst_name'];
-                       $return_array['Customer']['LCustomer']['CustomerLast_name'] = $value['CustomerLast_name'];
-                       $return_array['Customer']['LCustomer']['CustomerEmail'] = $value['CustomerEmail'];
-                       $return_array['Customer']['LCustomer']['CustomerMobile'] = $value['CustomerMobile'];
-                       $return_array['Customer']['LCustomer']['CustomerCountry_id'] = $value['CustomerCountry_id'];
-                       $return_array['Customer']['LCustomer']['CustomerState_id'] = $value['CustomerState_id'];
-                       $return_array['Customer']['LCustomer']['CustomerAddress'] = $value['CustomerAddress'];
-                       $return_array['Customer']['LCustomer']['CustomerSource'] = $value['CustomerSource'];
-                       $return_array['Customer']['LCustomer']['CustomerContact_method'] = $value['CustomerContact_method'];
-                       $return_array['Customer']['LCustomer']['CustomerStateName'] = $value['CustomerStateName'];
-                       $return_array['Customer']['LCustomer']['CustomerStateCode'] = $value['CustomerStateCode'];   
+                       $return_array['Customer']['Customer']['Customer_id'] = $value['Customer_id'];
+                       $return_array['Customer']['Customer']['CustomerTitle'] = $value['CustomerTitle'];
+                       $return_array['Customer']['Customer']['CustomerGender'] = $value['CustomerGender'];
+                       $return_array['Customer']['Customer']['CustomerFirst_name'] = $value['CustomerFirst_name'];
+                       $return_array['Customer']['Customer']['CustomerLast_name'] = $value['CustomerLast_name'];
+                       $return_array['Customer']['Customer']['CustomerEmail'] = $value['CustomerEmail'];
+                       $return_array['Customer']['Customer']['CustomerMobile'] = $value['CustomerMobile'];
+                       $return_array['Customer']['Customer']['CustomerCountry_id'] = $value['CustomerCountry_id'];
+                       $return_array['Customer']['Customer']['CustomerState_id'] = $value['CustomerState_id'];
+                       $return_array['Customer']['Customer']['CustomerAddress'] = $value['CustomerAddress'];
+                       $return_array['Customer']['Customer']['CustomerSource'] = $value['CustomerSource'];
+                       $return_array['Customer']['Customer']['CustomerContact_method'] = $value['CustomerContact_method'];
+                       $return_array['Customer']['Customer']['CustomerStateName'] = $value['CustomerStateName'];
+                       $return_array['Customer']['Customer']['CustomerStateCode'] = $value['CustomerStateCode'];   
                    }
                    else{
                        $return_array['Customer']['CustomerStatus'] = 0;
-                       $return_array['Customer']['LCustomer'][] ='';
+                       $return_array['Customer']['Customer'][] ='';
                    }
                 }
                 //return $result;

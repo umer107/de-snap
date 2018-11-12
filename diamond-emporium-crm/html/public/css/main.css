@@ -67,27 +67,36 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { bac
 .other-explain a{}
 .dropdown li a.submitOther{width: 120px; overflow: hidden; border: 1px solid #DFDFDF; color: #27AD09; margin: 0 auto; margin-top: 21px; margin-bottom: 0;}
 .showMessage { position: fixed; width: 100%; text-align: center; left: 0; top: -65px; right: 0; z-index: 100; /*background: #29629a;*/ background: #FF0000; color: white; padding: 22px; font-size: 15px; transition: all .5s ease;}
-.showMessage.top0{top:0;}
-.showMessage.topShow{top:64px;}
+.showMessage.top0{ top:0; }
+.showMessage.topShow{ top:64px; }
 .showMessage div{  }
 .showMessage.green{background: #27AD09}
 
-.ShowPopup { width: 420px; top: -152px; z-index: 100;  padding: 22px; border:1px solid #DFDFDF;}
-.ShowPopup.top0{top:0;}
-.ShowPopup.topShow{top:64px;}
+.ShowPopup { width: 420px; top: -152px; z-index: 100;  padding: 22px; border:1px solid #DFDFDF; }
+.ShowPopup.top0{ top:0; }
+.ShowPopup.topShow{ top:64px; }
 .ShowPopup div{  }
-.ShowPopup.green{background: #27AD09}
+.ShowPopup.green { background: #27AD09 }
 .ShowPopup a{}
 
 
-.dialogeBox{width: 420px; top: -152px; z-index: 100;  padding: 22px; border:1px solid #DFDFDF;}
-.dialogeBox.top0{top:0;}
-.dialogeBox.topShow{top:64px;}
-.dialogeBox div{  }
-.dialogeBox.green{background: #27AD09}
-.dialogeBox a{}
-
-.bookNowMain{}
+.dialogeBox{ width: 100%; height: 100%; z-index: 100; padding: 22px; border: 1px solid #DFDFDF;top: 42px; }
+.dialogeBox .innerBox{ width: 420px;
+    padding: 22px;
+    border: 1px solid #DFDFDF;
+    margin: 0 auto;
+    position: relative;
+    z-index: 11; }
+.dialogeBox .dialoageOverlay{    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    background: white;
+    opacity: .5;
+    z-index: 10;}
+.dialogeBox.green{ background: #27AD09 }
 .coverAreaBooking{ position: absolute; left: 0; right: 0; top: 0; height: 100%; z-index: 1; }
 /*-----------------------------------------*/
 
