@@ -1,0 +1,1 @@
+ALTER TABLE `de_leads` CHANGE `budget` `budget` VARCHAR(70) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
