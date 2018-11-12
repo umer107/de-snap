@@ -8000,15 +8000,16 @@ function getBookingTime(getTime, bookingStart, Duation) {
     {
       showMainLoading();
       // Populating Records
+
       $("#searchResults").html(' ');
       $('#customerId').attr('customerid','0');
       $('.dropdown.title .dropdownOptions li a[value="'+lead.Customer.CustomerTitle+'"]').trigger('click');              // title gender   
       $('.basicInfo .firstname').val(lead.Customer.CustomerFirst_name);                                                  // first name   
       $('.basicInfo .lastname').val(lead.Customer.CustomerLast_name);                                                    // last name
-      $('.basicInfo .phonenumber').val(lead.Customer.CustomerMobile);                                                    // phone
+      $('.basicInfo .phonenumber').val(lead.Customer.CustomerMobile).attr('passon','true');                              // phone
       $('#email').val(lead.Customer.CustomerEmail);                                                                      // email
       $('#email').addClass('popuplatedemail');
-      $('#email').attr('leadId',lead.Lead.Lead_id);                                                                            // email
+      $('#email').attr('leadId',lead.Lead.Lead_id);                                                                      // email
       $('.thisLeadId').attr('leadid',lead.Lead.Lead_id); 
       if(lead.Customer.CustomerAddress ==  null)
       {$('#fullAddress').val('');}
@@ -8079,7 +8080,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
           $('.additional-details .dropdown.assignToDiv .dropdownOptions').hide();
           $('.additional-details .dropdown.assignToDiv .dropdownOptions .btn-skip2').click();
           $('.dropdownOptions').hide();
-       }, 500)
+       }, 1000)
 
        $('.dropdownOptions').hide();
        $('.formfields input').each( function () {
