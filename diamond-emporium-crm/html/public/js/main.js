@@ -6702,7 +6702,7 @@ function loadLeads(){
                     for(var x in parsed){
                       leads.push(parsed[x]);
                     }
-                    
+
                     leads.sort(function(a, b) {
                         var textA = a.idOfUser;
                         var textB = b.idOfUser;
@@ -6713,16 +6713,37 @@ function loadLeads(){
                 
                     var makeList = [];
                     var getLeadsCount = leads.length;
+                    getLeadsCount--;
 
                     for(i=0; i < leads.length; i++)
                     {
                         makeList.push(leads[i].count);
                     }
-                    
+                    //$.each(leads[getLeadsCount].items, function(key, value){
+
+                    //  makeList.push(value.count);
+                      //count++
+                    //});
                     var getSmallestNumber =  Math.min.apply(null, makeList);
                     var repititionCheck = 1000000000000;
                     var repititionCheckAdded = 1000000000000;
 
+                    var getNextInlineName = '';
+                    //var setnextInLine = 0;
+                    //$.each(leads[getLeadsCount].items, function(key, value){
+                    //  var checkCount = value.count;
+
+                    //  if(checkCount == getSmallestNumber)
+                    //  {
+                    //    if(setnextInLine == 0)
+                    //    {
+                    //      getNextInlineName = key;
+                    //      setnextInLine++
+                    //    }
+                        
+                    //  } 
+                      //count++
+                    //});
                     // Bind Array into Html
 
                     var setHtml = '';
