@@ -7330,7 +7330,7 @@ $(document).on('click','.btn-saveCloseLead', function (e) {
         $.ajax({
         type: "POST",
         url: "dashboard/ajaxUpdateleadStatus",
-        data: {lead_id : $lead_id , lead_status : $lead_status , lead_date : $lead_date },
+        data: {lead_statusId : $lead_id , lead_status : $lead_status , lead_close_date : $lead_date },
         success: function (data) {
             
             loadLeads(); 
@@ -7475,7 +7475,7 @@ $(document).on('click','.leadUserName', function (e) {
     $.ajax({
             type: "GET",
             url: "/dashboard/ajaxGetLeadDetailForLeadPage",
-            data: {leadId:getLeadId},
+            data: {lead_id:getLeadId},
             success: function (data) {
                 
               var parsed = '';
@@ -7501,37 +7501,29 @@ $(document).on('click','.leadUserName', function (e) {
                 }
                 var html = "";
                
-               html += "<p><label>Title:</label><label>" + parsed.title + "</label></p> ";
-               html += "<p><label>Gender:</label><label>" + parsed.gender + "</label></p> ";
-               html += "<p><label>First Name:</label><label>" + parsed.first_name.replace(/'/g, '"') + "</label></p> ";
-               html += "<p><label>Last Name:</label><label>" + parsed.last_name + " </label></p> ";
-               html += "<p><label>Phone Number:</label><label>" + parsed.phone_number + " </label></p> ";
-               html += "<p><label>Email:</label><label>" + parsed.email + " </label></p> ";
-               html += "<p><label>Country:</label><label>" + parsed.country + " </label></p> ";
-               if(parsed.country == 'Australia')
+               html += "<p><label>Title:</label><label>" + parsed[0].CustomerTitle + "</label></p> ";
+               html += "<p><label>Gender:</label><label>" + parsed[0].CustomerGender + "</label></p> ";
+               html += "<p><label>First Name:</label><label>" + parsed[0].CustomerFirst_name.replace(/'/g, '"') + "</label></p> ";
+               html += "<p><label>Last Name:</label><label>" + parsed[0].CustomerLast_name + " </label></p> ";
+               html += "<p><label>Phone Number:</label><label>" + parsed[0].CustomerMobile + " </label></p> ";
+               html += "<p><label>Email:</label><label>" + parsed[0].CustomerEmail + " </label></p> ";
+               html += "<p><label>Country:</label><label>" + parsed[0].CustomerCountry_id + " </label></p> ";
+               if(parsed[0].CustomerCountry_id == 'Australia')
                {
-                  html += "<p><label>State:</label><label>" + parsed.State + " </label></p> ";
+                  //html += "<p><label>State:</label><label>" + parsed[0].State + " </label></p> ";
                }
-               html += "<p><label>Full Address:</label><label>" + parsed.full_address + " </label></p> ";
-               html += "<p><label>Lead Source:</label><label>" + parsed.communication_method + " </label></p> ";
-               html += "<p><label>Preferred method of contact:</label><label>" + parsed.contact_method + " </label></p> ";
-               html += "<p><label>Product:</label><label>" + parsed.product + " </label></p> ";
-               html += "<p><label>How did they hear about us?:</label><label>" + parsed.referral + " </label></p> ";
-               html += "<p><label>Referral:</label><label>" + parsed.only_referral + " </label></p> ";
-               html += "<p><label>What they are looking for:</label><label>" + parsed.specify_requirements + " </label></p> ";
-               html += "<p><label>Special Instructions:</label><label>" + parsed.special_instructions + " </label></p> ";
-               html += "<p><label>Budget:</label><label>" + parsed.budget + " </label></p> ";
-               html += "<p><label>Assign To:</label><label>" + parsed.assign_to + " </label></p> ";
-               html += "<p><label>Reference Product:</label><label>" + parsed.reference_product + " </label></p> ";
-               html += "<p><label>Lead Status:</label><label>" + parsed.lead_status + " </label></p> ";
-               if(parsed.user_booking_date == '0')
-               {
-                  var getBookingSlot = getTimeSlotFull(parsed.booking_time);
-                  var getStartingTime = getBookingTime(parsed.booking_time, parsed.bookingstart );
-                  html += "<p><label>Booking Time:</label><label>" + getStartingTime + " </label></p> ";
-                  html += "<p><label>Booking Duration:</label><label>" + parsed.durationTime + " mints </label></p> ";
-                  html += "<p><label>Booking Date:</label><label>" + parsed.booking_date + " </label></p> ";
-               }
+               html += "<p><label>Full Address:</label><label>" + parsed[0].CustomerAddress + " </label></p> ";
+               html += "<p><label>Lead Source:</label><label>" + parsed[0].CustomerSource + " </label></p> ";
+               html += "<p><label>Preferred method of contact:</label><label>" + parsed[0].LeadPreferredContact_method + " </label></p> ";
+               html += "<p><label>Product:</label><label>" +  + " </label></p> ";
+               html += "<p><label>How did they hear about us?:</label><label>" +  + " </label></p> ";
+               html += "<p><label>Referral:</label><label>" +  + " </label></p> ";
+               html += "<p><label>What they are looking for:</label><label>" + parsed[0].LeadLookingFor + " </label></p> ";
+               html += "<p><label>Special Instructions:</label><label>" +  + " </label></p> ";
+               html += "<p><label>Budget:</label><label>" +  + " </label></p> ";
+               html += "<p><label>Assign To:</label><label>" +  + " </label></p> ";
+               html += "<p><label>Reference Product:</label><label>" +  + " </label></p> ";
+               html += "<p><label>Lead Status:</label><label>" + parsed[0].LeadStatus + " </label></p> ";
                
                 $('.leadDeailInnerContainer div').html(html);
                 $('.leadsContainer').addClass('hide');
