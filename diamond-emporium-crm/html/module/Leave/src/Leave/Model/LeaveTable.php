@@ -412,7 +412,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                             }
                             if(!empty($filter['referral'])) {
                                //$select->where(array('l.referral = ?' =>  $referral));
-                               $select->where(array('hh.how_heard_title = ?' =>  $referral));
+                               $select->where(array('hh.how_heard = ?' =>  $referral));
                             }                       
                         //Start Working With Calender
                          if($filter['booking_date'] == 'All')
@@ -446,7 +446,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                              if(!empty($filter['booking_date'])) {
                                   
                               //$select->where(array('l.booking_date = ?' =>  $filter['booking_date']));
-                                $select->where(array('l.created_date = ?' =>  $filter['booking_date']));
+                                //$select->where(array('l.created_date = ?' =>  $filter['booking_date']));
+                               $select->where(array('l.created_date = ?' =>  $filter['booking_date']));
                 
                                 
                               }
@@ -802,16 +803,21 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
         //GetCustomerDetailById
         public  function fetchCustomerById($filter = null)
         {
-             try {      
+             try { 
+                 
+                 $fullname = new \Zend\Db\Sql\Expression(
+                    'CONCAT(cu.first_name, \' \', cu.last_name)'
+               );  
                 $other_leadId = 90000;
                 $customer_id = $filter['customer_id'];
                 $lead_id = $filter['lead_id'];
                 $select = new \Zend\Db\Sql\Select();
-                $fullname = new \Zend\Db\Sql\Expression('CONCAT(c.first_name, \' \', c.last_name)');
+                $fullname = new \Zend\Db\Sql\Expression('CONCAT(cu.first_name, \' \', cu.last_name)');
                 $select->from(array('c' => 'de_customers'))
                      ->columns(array( 'Customer_id' => 'id','CustomerTitle' =>'title','CustomerGender' =>'gender' ,'CustomerFirst_name' =>'first_name', 'CustomerLast_name' => 'last_name' , 'CustomerEmail' => 'email' , 'CustomerMobile' => 'mobile','CustomerCountry_id' => 'country_id','CustomerState_id' => 'state_id','CustomerAddress' => 'address1','CustomerSource' =>  'source','CustomerContact_method' =>'contact_method'))
                      ->join(array('s' => 'de_states'), 'c.state_id = s.id', array('CustomerStateName' => 'name', 'CustomerStateCode' => 'state_code'), 'left')
-                     ->join(array('l' => 'de_leads'), 'c.id = l.customer_id', array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status', 'LeadBudget' => 'budget'), 'left')
+                     ->join(array('l' => 'de_leads'), 'c.id = l.customer_id', array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status', 'LeadBudget' => 'budget', 'LeadSpecialInstruction' => 'special_instructions'), 'left')
+                     ->join(array('cu' => 'de_customers'), 'l.referred_by_customer = cu.id', array('LeadCustomerName' => $fullname), 'left')   
                      ->join(array('p' => 'de_products'), 'l.product = p.id', array('product' => 'id', 'product_title' => 'title' , 'title_shortcode'), 'left')   
                      ->join(array('hh' => 'de_how_heard_lookup'), 'l.how_heard = hh.id', array('how_heard' => 'id', 'how_heard_title' => 'how_heard'), 'left')   
                      ->join(array('op' => 'de_opportunities'), 'l.lead_id = op.lead_id', array('*'), 'left')   
@@ -889,6 +895,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                        $return_array['Customer']['Lead']['LeadHow_heard'] = $value['how_heard'];
                        $return_array['Customer']['Lead']['LeadHow_heard_title'] = $value['how_heard_title'];
                        $return_array['Customer']['Lead']['LeadBudget'] = $value['LeadBudget'];
+                       $return_array['Customer']['Lead']['LeadSpecialInstructions'] = $value['LeadSpecialInstruction'];
+                       $return_array['Customer']['Lead']['LeadCustomerFullName'] = $value['LeadCustomerName'];
                        
                    }
                    else{
