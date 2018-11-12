@@ -3806,7 +3806,7 @@ setTimeout(function(){
         var preferredMethodOther = $("#perferrefDropdownOther").val();
         var preferredMethodVal = '';
         if ( preferredMethod == "Other"){ preferredMethodVal = preferredMethodOther; }
-        else if(preferredMethod = 'All'){ preferredMethodVal = '' }
+        else if(preferredMethod == 'All'){ preferredMethodVal = '' }
         else { preferredMethodVal = preferredMethod; }
 
         var referralMethod = $("#referralDropdown").text();
@@ -3832,10 +3832,9 @@ setTimeout(function(){
             lead_owner : $(".assignToDiv a.selected-text").attr("assigneid"),
             looking_for : $("#specify_requirements").val(),
             reference_product : $("#referrenceDropdown").val(),
-            preferred_contact : preferredMethodVal
-            //only_referral : $("#onlyReferral").val(),
-             
-            //special_instructions : $("[name= 'special_instructions']").val()
+            preferred_contact : preferredMethodVal,
+            referred_by_customer : $("#onlyReferral").attr('referencecustomerid'),
+            special_instructions : $("#specialinstructions").val()
         };
 
         
@@ -3984,6 +3983,8 @@ setTimeout(function(){
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
         var inEditMode = $('.newLead').hasClass('inEditMode');
         var searchMade = $('#email').hasClass('popuplatedemail');
+        var customerId = $("#customerId").attr('customerId');
+        customerId = parseInt(customerId);
         validation();
         if(window.validState == false)
         {
@@ -3992,7 +3993,9 @@ setTimeout(function(){
         var customerValues = getCustomerValues();
         var dataLead = getValuesFromForm();
         var dataAppointment = getValuesFromFormAppointment();
-
+        if(customerId != 0)
+          { dataLead.customer_id = customerId }
+        
         if(window.saveAndBook == true && searchMade == false) // Incase of Save and Book From New Lead
         {
             // Creating New Customer
@@ -4120,41 +4123,65 @@ setTimeout(function(){
             if(dataAppointment.lead_id == "") // Incase of Saved lead only from New Lead Form
             {
                 // Creating New Customer
-            $.ajax({
-                  type: "POST",
-                  url: "/ajaxCreateCustomerDashboard",
-                  data: customerValues, 
-                  success: function (data) { // return  customerID
-                      var parsed = '';          
-                      try{
-                          parsed = JSON.parse(data); 
-                          console.log(parsed);
-                      }                 
-                      catch(e)                
-                      { return false; }
+                if(customerId == 0)
+                {
+                $.ajax({
+                      type: "POST",
+                      url: "/ajaxCreateCustomerDashboard",
+                      data: customerValues, 
+                      success: function (data) { // return  customerID
+                          var parsed = '';          
+                          try{
+                              parsed = JSON.parse(data); 
+                              console.log(parsed);
+                          }                 
+                          catch(e)                
+                          { return false; }
 
-                      dataLead.customer_id = parsed
-                      // After Customer created, create a lead for that customer
-                      $.ajax({
-                          type: "POST",
-                          url: "/ajaxCreateLeadFromDashboard",
-                          data: dataLead, 
-                          success: function (data) { // returs lead Id
-                              var parsed = '';          
-                              try{
-                                  parsed = JSON.parse(data); 
-                                  console.log(parsed);
-                              }                 
-                              catch(e)                
-                              { return false; }
-                              loadMainDashboardAfterSaveLead();
-                              $('.thisLeadId').attr('leadId','');
-                              return false; 
-                          }
-                      });
+                          dataLead.customer_id = parsed
+                          // After Customer created, create a lead for that customer
+                          $.ajax({
+                              type: "POST",
+                              url: "/ajaxCreateLeadFromDashboard",
+                              data: dataLead, 
+                              success: function (data) { // returs lead Id
+                                  var parsed = '';          
+                                  try{
+                                      parsed = JSON.parse(data); 
+                                      console.log(parsed);
+                                  }                 
+                                  catch(e)                
+                                  { return false; }
+                                  loadMainDashboardAfterSaveLead();
+                                  $('.thisLeadId').attr('leadId','');
+                                  return false; 
+                              }
+                          });
 
-                  }
-              });
+                      }
+                  });
+                }
+                else
+                {
+                  $.ajax({
+                      type: "POST",
+                      url: "/ajaxCreateLeadFromDashboard",
+                      data: dataLead, 
+                      success: function (data) { // returs lead Id
+                          var parsed = '';          
+                          try{
+                              parsed = JSON.parse(data); 
+                              console.log(parsed);
+                          }                 
+                          catch(e)                
+                          { return false; }
+                          loadMainDashboardAfterSaveLead();
+                          $('.thisLeadId').attr('leadId','');
+                          return false; 
+                      }
+                  });
+                }
+
             }
             else if(searchMade == true) // Update Lead which comes from Book And Save
             {
@@ -6941,17 +6968,17 @@ function loadLeads(){
                               else
                               { status = 'bg-white'; }
                               // Setting refferal
-                              if(leads[i].items[j].referral == "Google")
+                              if(leads[i].items[j].how_heard_title == "Google")
                               {  referral = '/images/ic-google.png'  }
-                              else if(leads[i].items[j].referral == "Word of mouth")
+                              else if(leads[i].items[j].how_heard_title == "Word of mouth")
                               {  referral = '/images/ic_wordMouth.png'  }
-                              else if(leads[i].items[j].referral == "Previous client")
+                              else if(leads[i].items[j].how_heard_title == "Previous client")
                               {  referral = '/images/ic_pClient.png'  }
-                              else if(leads[i].items[j].referral == "Walk In")
+                              else if(leads[i].items[j].how_heard_title == "Walk In")
                               {  referral = '/images/ic_walkIn.png'  }
-                              else if(leads[i].items[j].referral == "Facebook")
+                              else if(leads[i].items[j].how_heard_title == "Facebook")
                               {  referral = '/images/ic_facebook.png'  }
-                              else if(leads[i].items[j].referral == "Instagram")
+                              else if(leads[i].items[j].how_heard_title == "Instagram")
                               {  referral = '/images/ic_insta.png'  }
                               else
                               {  referral = '/images/ic_other.png'  }
@@ -6966,12 +6993,12 @@ function loadLeads(){
                               if(leads[i].items[j].lead_status == "Open")
                               {
                                  var getLeadPopup = $('#closeLead').html();
-                                 setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Close</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';
+                                 setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].Lead_id+'"><p class="absolute closeLeadClick">Close</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].Lead_id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].LeadFirst_name+ ' ' +leads[i].items[j].LeadLast_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';
                               }
                               else
                               {
                                  var getLeadPopup = $('#closeLead').html();
-                                 setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Open</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';                                  
+                                 setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].Lead_id+'"><p class="absolute closeLeadClick">Open</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].Lead_id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].LeadFirst_name+ ' ' +leads[i].items[j].LeadLast_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';                                  
                               }
                           }
                           
@@ -7829,7 +7856,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
                 for (var i = 0; i < parsed.length; i++) {
                   htmlDate += "<tr>";
-                  htmlDate += "<td value='"+ parsed[i].user_name +"'>" + parsed[i].user_name +"</td>";
+                  htmlDate += "<td id='"+ parsed[i].id +"' value='"+ parsed[i].user_name +"'>" + parsed[i].user_name +"</td>";
                   htmlDate += "</tr>";
                 }
                 
@@ -7840,7 +7867,9 @@ function getBookingTime(getTime, bookingStart, Duation) {
                   $('#datatable tbody').on( 'click', 'tr', function () {
                     
                     var getVal = $(this).find('td').attr('value');
+                    var getID = $(this).find('td').attr('id');
                     $('#onlyReferral').val(getVal);
+                    $('#onlyReferral').attr('referenceCustomerId',getID);
                     $('.showLookups').slideUp();
                     $('#onlyReferral').closest('.relative').find('span').show();
                     setTimeout(function(){ $('.showLookups').addClass('hide'); }, 500);
@@ -7958,6 +7987,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
       showMainLoading();
       // Populating Records
       $("#searchResults").html(' ');
+      $('#customerId').attr('customerid','0');
       $('.dropdown.title .dropdownOptions li a[value="'+lead.Customer.CustomerTitle+'"]').trigger('click');              // title gender   
       $('.basicInfo .firstname').val(lead.Customer.CustomerFirst_name);                                                  // first name   
       $('.basicInfo .lastname').val(lead.Customer.CustomerLast_name);                                                    // last name
@@ -7985,7 +8015,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
           $('#countryName').attr('value',lead.Customer.CustomerCountry_id);
         }, 2000);
       }
-      
+
       $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(lead.Customer.CustomerCountry_id); 
       if(lead.Customer.CustomerState_id != null)                                                                            // state
       {
@@ -8039,20 +8069,22 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
     // Create Customer from Search
     $(document).on('click', '.yesCreateCustomer', function () {
+
+       $('.thisLeadId').attr('leadid','');
        $('.basicInfo').html(window.getBasicInfo);
        $('.additional-details').html(window.getAdditionalInfo);
        $('.dialogeBox').addClass('hide');
        $('.ShowPopup').removeClass('topShow');
-       
        var customer = window.createNewCustomer;
-       debugger
+       $("#customerId").attr('customerId',customer.Customer.Customer_id);
+       
        $("#searchResults").html(' ');
       $('.dropdown.title .dropdownOptions li a[value="'+customer.Customer.CustomerTitle+'"]').trigger('click');               // title gender   
       $('.basicInfo .firstname').val(customer.Customer.CustomerFirst_name);                                                   // first name   
       $('.basicInfo .lastname').val(customer.Customer.CustomerLast_name);                                                     // last name
       $('.basicInfo .phonenumber').val(customer.Customer.CustomerMobile);                                                     // phone
       $('#email').val(customer.Customer.CustomerEmail);                                                                       // email
-      $('#email').addClass('popuplatedemail'); 
+      $('#email').addClass('newcustomerLead'); 
       if(customer.Customer.CustomerAddress ==  null)
       {$('#fullAddress').val('');}
       else
@@ -8485,10 +8517,11 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
     
     function onFocusOuts() {
-      $('#email').next().addClass('opacity0').next().next('.requiredError').addClass('opacity0');
+       $('#email').next().addClass('opacity0').next().next('.requiredError').addClass('opacity0');
 
         var getemail = $('#email').val();
         var popuplatedemail = $('#email').hasClass('popuplatedemail');
+        var newcustomerLead = $('#email').hasClass('newcustomerLead');
         if(popuplatedemail == true)
         { 
           var getLeadId =  $('#email').attr('leadId');  
@@ -8523,51 +8556,12 @@ function getBookingTime(getTime, bookingStart, Duation) {
                   return false;                  
                 }
 
-                if(getLeadId != "" || popuplatedemail == true)
+                if(newcustomerLead == true || popuplatedemail == true)
                 {
-                    var data = {leadId : getLeadId , email : getemail}
-                    $.ajax({
-                      type: "GET",
-                      url: "/dashboard/checkLeadEmail?email="+getemail+"&leadId="+getLeadId,
-                      success: function (data) {
-                        var parsed2 = '';          
-                        try{                           
-                          parsed2 = JSON.parse(data);              
-                        }                 
-                        catch(e)                
-                        {                  
-                          return false;                  
-                        }
-                        var getResponse = parsed2[getLeadId].response;
-                        if(getResponse == 1)
-                        {
-                          $('.redCross').addClass('hide');
-                          $('.emailexists').html('Email Available!').addClass('green');
-                          $('.emailexists').addClass('opacity0');
-                          window.emailexists = false;
-                        }
-                        else
-                        {
-                          if(parsed.length > 0)
-                            {
-                              
-                              $('.topBar').trigger('click');
-                              $('.redCross').removeClass('hide');
-                              $('.redGreen').addClass('hide');
-                              $('.emailexists').html('Email Already Exists!').removeClass('opacity0').removeClass('green');
-                              window.emailexists = true;
-                            }
-                            else
-                            {
-                              $('.redCross').addClass('hide');
-                              $('.redGreen').removeClass('hide');
-                              $('.emailexists').html('Email Available!').removeClass('opacity0').addClass('green');
-                              $('.emailexists').addClass('opacity0');
-                              window.emailexists = false;
-                            }  
-                        }
-                      }
-                    });
+                    $('.redCross').addClass('hide');
+                    $('.emailexists').html('Email Available!').addClass('green');
+                    $('.emailexists').addClass('opacity0');
+                    window.emailexists = false;
                 }
                 else if(parsed == 1)
                 {
@@ -8621,6 +8615,7 @@ function getStates()  //  Get States
               }
             $('.dropdown.State').find('ul.dropdownOptions').html(setHtml);
             window.getBasicInfo = $('.basicInfo').html();
+            window.getNewLeadAll = $('.newLead').html();
         }
     });  
 }
@@ -8647,6 +8642,7 @@ function getProducts() //  Get Countries
               }
             $('.dropdown.product').find('ul.dropdownOptions').html(setHtml);
             window.getAdditionalInfo = $('.additional-details').html();
+            window.getNewLeadAll = $('.newLead').html();
         }
     });  
 }
@@ -8701,6 +8697,7 @@ function howHeard() //  Get How Heard
             setHtml +='<li><a href="javascript:;" howHeardId="10" value="Other"><span class="ref-Img"><img class="pull-left" src=" /images/ic_other.png"></span>Other</a></li>';  
             $('.dropdown.referral').find('ul.dropdownOptions').html(setHtml);
             window.getAdditionalInfo = $('.additional-details').html();
+            window.getNewLeadAll = $('.newLead').html();
         }
     });  
 }
