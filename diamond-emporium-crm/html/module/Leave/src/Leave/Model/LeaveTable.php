@@ -476,7 +476,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                          else if(!empty($filter['booking_date'])) {
                                   
                          //$select->where(array('l.booking_date = ?' =>  $booking_date));
-                            $select->where(array('l.created_date = ?' =>  $booking_date));
+                          $select->where(array('date(l.created_date) = ?' =>  $booking_date));
                 
                                 
                               }
@@ -490,7 +490,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                                   
                               //$select->where(array('l.booking_date = ?' =>  $filter['booking_date']));
                                 //$select->where(array('l.created_date = ?' =>  $filter['booking_date']));
-                               $select->where(array('l.created_date = ?' =>  $filter['booking_date']));
+                               $select->where(array('date(l.created_date) = ?' =>  $today_booking_date));
                 
                                 
                               }
@@ -503,7 +503,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                              if(!empty($filter['booking_date'])) {
                                   
                             //$select->where(array('l.booking_date = ?' =>  $filter['booking_date']));
-                            $select->where(array('l.created_date = ?' =>  $filter['booking_date']));
+                            $select->where(array('date(l.created_date) = ?' =>  $filter['booking_date']));
                 
                                 
                               }
@@ -679,7 +679,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
            
            
            //Start Add Next in Line in ReturnResult
-            //$array_merge_dashboard['NextInLineCalculate']['items'] = $groupsNextInLine;
+            $array_merge_dashboard['NextInLineCalculate']['items'] = $groupsNextInLine;
            
            
            //End Add Next in Line in ReturnResult
