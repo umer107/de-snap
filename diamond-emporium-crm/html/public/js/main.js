@@ -7375,6 +7375,9 @@ $(document).on('click','.leadUserName', function (e) {
                html += "<p><label>Preferred method of contact:</label><label>" + parsed[0].LeadPreferredContact_method + " </label></p> ";
 
                html += "<p><label>Product:</label><label>" + parsed[0].product_title + " </label></p> ";
+               if(parsed[0].LeadReferredCustomerName == null)
+                {parsed[0].LeadReferredCustomerName = ''}
+               html += "<p><label>Referral by customer:</label><label>" + parsed[0].LeadReferredCustomerName + " </label></p> ";
 
                if(parsed[0].how_heard_title == null)
                 {parsed[0].how_heard_title =''}
