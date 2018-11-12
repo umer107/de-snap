@@ -10,6 +10,7 @@ $(document).ready(function () {
     
 
   $("#email").attr('onfocusout','onFocusOuts()');
+  $("#phonenumber").attr('onfocusout','onFocusOutsPhone()');
   var countries = [
      { value: 'Andorra', data: 'AD' },
      // ...
@@ -873,7 +874,7 @@ $(document).ready(function () {
 
     //Validating Phone Number
     $(document).on('keyup', '.basicInfo input.phonenumber', function () {
-        $(this).closest('.relative').find('.requiredError').addClass('opacity0');
+         $('.phonefield .firstError,.phonefield .requiredError,.phonefield .phoneexists').addClass('opacity0');
         var getphone = $(this).val();
         var getphoneLength = $(this).val().length;
         if(getphone == 0)
@@ -2732,7 +2733,6 @@ setTimeout(function(){
         
         if(title == 'All' || gender == 'All' || firstname == '' || lastname == '' || getPhone == '' || getEmail == '' || getProduct == 'All' || getBudget == 'All' || getAgent == 'All' || checkCountry == false)
         {
-          
             if(title == 'All')
             {$('.titleError').removeClass('opacity0');}
 
@@ -2753,10 +2753,10 @@ setTimeout(function(){
               $('#email').closest('.relative').find('.requiredError').removeClass('opacity0');
             }
             else if(!isValidEmailAddress(getEmail))
-              {
-                $('.emailexists').addClass('opacity0');
-                $('#email').next('label').next('label').removeClass('opacity0');
-              }
+            {
+              $('.emailexists').addClass('opacity0');
+              $('#email').next('label').next('label').removeClass('opacity0');
+            }
 
             if(getProduct == 'All')
             { $('.producterror').removeClass('opacity0'); }
@@ -2783,7 +2783,7 @@ setTimeout(function(){
               { 
                 var getLeadId =  $('.thisLeadId').attr('leadid');
                 var popuplatedemail = $('#email').hasClass('popuplatedemail');
-                if(getLeadId != "" || popuplatedemail == true )
+                if(popuplatedemail == true )
                 {
                   if(window.emailexists == true)
                   {
@@ -2830,6 +2830,28 @@ setTimeout(function(){
                 return false;
               }
               
+              if(validatePhone(getPhone))
+              {
+                if($('#phonenumber').attr('passon') == 'true')
+                {
+                  $('.phonefield .firstError,.phonefield .requiredError,.phonefield .phoneexists').addClass('opacity0');
+                  window.validState = true;
+                }
+                else
+                {
+                  $('.phonefield .phoneexists').removeClass('opacity0');
+                  $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                  window.validState = false;
+                  return false;
+                }
+              }
+              else
+              {
+                $('.phonefield .firstError').removeClass('opacity0');
+                $(".rightCol").animate({ scrollTop: 0 }, "slow");
+                window.validState = false;
+                return false;
+              }
           }
 
     }
@@ -8593,6 +8615,63 @@ function getBookingTime(getTime, bookingStart, Duation) {
         }
     }
 
+
+    function onFocusOutsPhone() {
+       $('#email').next().addClass('opacity0').next().next('.requiredError').addClass('opacity0');
+
+        var getPhone = $('#phonenumber').val();
+        var popuplatedemail = $('#email').hasClass('popuplatedemail');
+        var newcustomerLead = $('#email').hasClass('newcustomerLead');
+        var getValue = $('#phonenumber').val().length;
+        //$('.phonefield .firstError')
+        //$('.phonefield .requiredError')
+
+        if ($.trim(getPhone).length == 0) {
+            $('.phonefield .firstError,.phonefield .requiredError,.phonefield .phoneexists').addClass('opacity0');
+        }
+        else if (validatePhone(getPhone)) {
+            $('.phonefield .firstError,.phonefield .requiredError,.phonefield .phoneexists').addClass('opacity0');
+             $.ajax({
+              type: "POST",
+              url: "/ajaxcheckDuplicateEmail",
+              data: {checkfor: 'mobile' , value : getPhone},
+              success: function (data) 
+              {
+                var parsed = '';          
+                try
+                {                           
+                  parsed = JSON.parse(data);              
+                }                 
+                catch(e)                
+                {                  
+                  return false;                  
+                }
+                
+                if(newcustomerLead == true || popuplatedemail == true)// Comes from Search
+                {
+                    $('#phonenumber').attr('passOn','true');
+                }
+                else if(parsed == 1) //Phone Exists
+                {
+                  $('#phonenumber').attr('passOn','false');
+                  $('.phoneexists').removeClass('opacity0');
+                }
+                else //Phone Does Not Exists
+                {
+                  $('#phonenumber').attr('passOn','true');
+                }        
+              }
+            });
+        }
+        else 
+        {
+            $('.phonefield .firstError,.phonefield .requiredError,.phonefield .phoneexists').addClass('opacity0');
+            $('.phonefield .firstError').removeClass('opacity0');
+            $('#phonenumber').attr('passOn','false');
+            
+        }
+    }
+    
    /*------------------------------------------------------------------*/
    /*------------------- Stop GetCountries Ajax List ----------------- */
    /*------------------------------------------------------------------*/

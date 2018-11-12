@@ -177,7 +177,7 @@ echo '<div class="relative pull-left gap-right pad-right">';
     // -----------------------------------------------------------------
 
     // Phone
-    echo '<div class="relative pull-left"><span style="display: none">*Phone number*</span>'.$this->formRow($form->get("phone_number")).'<label class="opacity0 firstError">Please enter a valid phone number</label><label class="opacity0 requiredError">Please enter phone number</label></div>';
+    echo '<div class="relative pull-left phonefield"><span style="display: none">*Phone number*</span>'.$this->formRow($form->get("phone_number")).'<label class="opacity0 firstError">Please enter a valid phone number</label><label class="opacity0 requiredError">Please enter phone number</label><label class="opacity0 phoneexists ">Phone number already exists</label></div>';
 
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
