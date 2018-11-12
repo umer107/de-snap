@@ -6968,17 +6968,17 @@ function loadLeads(){
                               else
                               { status = 'bg-white'; }
                               // Setting refferal
-                              if(leads[i].items[j].referral == "Google")
+                              if(leads[i].items[j].how_heard_title == "Google")
                               {  referral = '/images/ic-google.png'  }
-                              else if(leads[i].items[j].referral == "Word of mouth")
+                              else if(leads[i].items[j].how_heard_title == "Word of mouth")
                               {  referral = '/images/ic_wordMouth.png'  }
-                              else if(leads[i].items[j].referral == "Previous client")
+                              else if(leads[i].items[j].how_heard_title == "Previous client")
                               {  referral = '/images/ic_pClient.png'  }
-                              else if(leads[i].items[j].referral == "Walk In")
+                              else if(leads[i].items[j].how_heard_title == "Walk In")
                               {  referral = '/images/ic_walkIn.png'  }
-                              else if(leads[i].items[j].referral == "Facebook")
+                              else if(leads[i].items[j].how_heard_title == "Facebook")
                               {  referral = '/images/ic_facebook.png'  }
-                              else if(leads[i].items[j].referral == "Instagram")
+                              else if(leads[i].items[j].how_heard_title == "Instagram")
                               {  referral = '/images/ic_insta.png'  }
                               else
                               {  referral = '/images/ic_other.png'  }
@@ -6993,12 +6993,12 @@ function loadLeads(){
                               if(leads[i].items[j].lead_status == "Open")
                               {
                                  var getLeadPopup = $('#closeLead').html();
-                                 setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Close</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';
+                                 setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].Lead_id+'"><p class="absolute closeLeadClick">Close</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].Lead_id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].LeadFirst_name+ ' ' +leads[i].items[j].LeadLast_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';
                               }
                               else
                               {
                                  var getLeadPopup = $('#closeLead').html();
-                                 setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].id+'"><p class="absolute closeLeadClick">Open</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].first_name+ ' ' +leads[i].items[j].last_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';                                  
+                                 setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].Lead_id+'"><p class="absolute closeLeadClick">Open</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].Lead_id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].LeadFirst_name+ ' ' +leads[i].items[j].LeadLast_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';                                  
                               }
                           }
                           
