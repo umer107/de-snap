@@ -7500,29 +7500,72 @@ $(document).on('click','.leadUserName', function (e) {
                     $('.editDetails').removeClass('disabled');
                 }
                 var html = "";
-               
-               html += "<p><label>Title:</label><label>" + parsed[0].CustomerTitle + "</label></p> ";
-               html += "<p><label>Gender:</label><label>" + parsed[0].CustomerGender + "</label></p> ";
-               html += "<p><label>First Name:</label><label>" + parsed[0].CustomerFirst_name.replace(/'/g, '"') + "</label></p> ";
-               html += "<p><label>Last Name:</label><label>" + parsed[0].CustomerLast_name + " </label></p> ";
-               html += "<p><label>Phone Number:</label><label>" + parsed[0].CustomerMobile + " </label></p> ";
-               html += "<p><label>Email:</label><label>" + parsed[0].CustomerEmail + " </label></p> ";
+               if(parsed[0].LeadTitle == null)
+                {parsed[0].LeadTitle = ''}
+               html += "<p><label>Title:</label><label>" + parsed[0].LeadTitle + "</label></p> ";
+
+               if(parsed[0].LeadGender == null)
+                {parsed[0].LeadGender  = ''}
+               html += "<p><label>Gender:</label><label>" + parsed[0].LeadGender + "</label></p> ";
+
+               if(parsed[0].LeadFirst_name == null)
+               { html += "<p><label>First Name:</label><label></label></p> "; }
+               else
+               { html += "<p><label>First Name:</label><label>" + parsed[0].LeadFirst_name.replace(/'/g, '"') + "</label></p> "; }
+
+               if(parsed[0].LeadLast_name == null)
+               { html += "<p><label>First Name:</label><label></label></p> "; }
+               else
+               { html += "<p><label>First Name:</label><label>" + parsed[0].LeadLast_name.replace(/'/g, '"') + "</label></p> "; }
+
+               if(parsed[0].LeadMobile == null)
+               {parsed[0].LeadMobile = ''} 
+               html += "<p><label>Phone Number:</label><label>" + parsed[0].LeadMobile + " </label></p> ";
+
+               html += "<p><label>Email:</label><label>" + parsed[0].LeadEmail + " </label></p> ";
+
+               if(parsed[0].CustomerCountry_id == null)
+                {parsed[0].CustomerCountry_id = ''}
                html += "<p><label>Country:</label><label>" + parsed[0].CustomerCountry_id + " </label></p> ";
+
                if(parsed[0].CustomerCountry_id == 'Australia')
                {
-                  //html += "<p><label>State:</label><label>" + parsed[0].State + " </label></p> ";
+                  html += "<p><label>State:</label><label>" + parsed[0].StateShortCode + " </label></p> ";
                }
+
+               if(parsed[0].CustomerAddress == null)
+                {parsed[0].CustomerAddress = ''}
                html += "<p><label>Full Address:</label><label>" + parsed[0].CustomerAddress + " </label></p> ";
-               html += "<p><label>Lead Source:</label><label>" + parsed[0].CustomerSource + " </label></p> ";
+
+               if(parsed[0].LeadSource == null)
+                {parsed[0].LeadSource = ''}
+               html += "<p><label>Lead Source:</label><label>" + parsed[0].LeadSource + " </label></p> ";
+
+               if(parsed[0].LeadPreferredContact_method == null)
+                {parsed[0].LeadPreferredContact_method = ''}
                html += "<p><label>Preferred method of contact:</label><label>" + parsed[0].LeadPreferredContact_method + " </label></p> ";
-               html += "<p><label>Product:</label><label>" +  + " </label></p> ";
-               html += "<p><label>How did they hear about us?:</label><label>" +  + " </label></p> ";
-               html += "<p><label>Referral:</label><label>" +  + " </label></p> ";
+
+               html += "<p><label>Product:</label><label>" + parsed[0].product_title + " </label></p> ";
+
+               if(parsed[0].how_heard_title == null)
+                {parsed[0].how_heard_title =''}
+               html += "<p><label>How did they hear about us?:</label><label>" + parsed[0].how_heard_title + " </label></p> ";
+
+               html += "<p><label>Referral:</label><label>" + parsed[0].CustomerAddress + " </label></p> ";
+
+               if(parsed[0].LeadLookingFor == null)
+                {parsed[0].LeadLookingFor = ''}
                html += "<p><label>What they are looking for:</label><label>" + parsed[0].LeadLookingFor + " </label></p> ";
-               html += "<p><label>Special Instructions:</label><label>" +  + " </label></p> ";
-               html += "<p><label>Budget:</label><label>" +  + " </label></p> ";
-               html += "<p><label>Assign To:</label><label>" +  + " </label></p> ";
-               html += "<p><label>Reference Product:</label><label>" +  + " </label></p> ";
+
+               html += "<p><label>Special Instructions:</label><label>" + parsed[0].LeadSpecialInstructions + " </label></p> ";
+
+               if(parsed[0].LeadBudget == '0')
+               {html += "<p><label>Budget:</label><label></label></p> ";}
+               else
+               {html += "<p><label>Budget:</label><label>" + parsed[0].LeadBudget + " </label></p> ";}
+               
+               html += "<p><label>Assign To:</label><label></label></p> ";
+
                html += "<p><label>Lead Status:</label><label>" + parsed[0].LeadStatus + " </label></p> ";
                
                 $('.leadDeailInnerContainer div').html(html);
