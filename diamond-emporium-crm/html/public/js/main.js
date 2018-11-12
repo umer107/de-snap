@@ -8075,6 +8075,13 @@ function getBookingTime(getTime, bookingStart, Duation) {
         $('#specify_requirements').val(lead.Lead.LeadLookingFor);
         $('#specify_requirements').prev('span').slideDown(150);
        }
+       //budget
+       $('.dropdown.budget .dropdownOptions li a[value="'+lead.Lead.LeadBudget+'"]').trigger('click');
+       setTimeout(function(){ 
+          $('.additional-details .dropdown.assignToDiv .dropdownOptions li a[id="'+lead.Lead.LeadOwnerId+'"]').click();
+          $('.additional-details .dropdown.assignToDiv .dropdownOptions').hide();
+          $('.additional-details .dropdown.assignToDiv .dropdownOptions .btn-skip2').click();
+       }, 500)
 
        $('.dropdownOptions').hide();
        $('.formfields input').each( function () {
