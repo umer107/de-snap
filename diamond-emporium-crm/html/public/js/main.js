@@ -8068,12 +8068,17 @@ function getBookingTime(getTime, bookingStart, Duation) {
        $('.dropdown.referral .dropdownOptions li a[value="'+lead.Lead.LeadHow_heard_title+'"]').trigger('click');
        if(lead.Lead.LeadReferredbyCustomer != null)
        {
-        $('#onlyReferral').val(lead.Lead.LeadReferredbyCustomer);
+        $('#onlyReferral').attr('referencecustomerid',lead.Lead.LeadReferredbyCustomer);
+        $('#onlyReferral').val(lead.Lead.LeadCustomerFullName);
        }
        if(lead.Lead.LeadLookingFor != null)
        {
         $('#specify_requirements').val(lead.Lead.LeadLookingFor);
         $('#specify_requirements').prev('span').slideDown(150);
+       }
+       if(lead.Lead.LeadSpecialInstructions != null)
+       {
+        $('#specialinstructions').val(lead.Lead.LeadSpecialInstructions);
        }
        //budget
        $('.dropdown.budget .dropdownOptions li a[value="'+lead.Lead.LeadBudget+'"]').trigger('click');
@@ -8081,6 +8086,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
           $('.additional-details .dropdown.assignToDiv .dropdownOptions li a[id="'+lead.Lead.LeadOwnerId+'"]').click();
           $('.additional-details .dropdown.assignToDiv .dropdownOptions').hide();
           $('.additional-details .dropdown.assignToDiv .dropdownOptions .btn-skip2').click();
+          $('.dropdownOptions').hide();
        }, 500)
 
        $('.dropdownOptions').hide();
