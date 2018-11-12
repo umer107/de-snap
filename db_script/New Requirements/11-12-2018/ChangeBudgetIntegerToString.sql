@@ -1,0 +1,1 @@
+ALTER TABLE `de_leads` CHANGE `budget` `budget` VARCHAR(24) NOT NULL;
