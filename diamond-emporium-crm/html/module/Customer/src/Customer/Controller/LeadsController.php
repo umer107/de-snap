@@ -720,7 +720,34 @@ class LeadsController extends AbstractActionController
 		}
     }
         
-        
+        public function updateleadstatusFromDashboardAction(){
+		try{
+			$request = $this->getRequest();
+			$sm = $this->getServiceLocator();
+			$identity = $sm->get('AuthService')->getIdentity();
+			if($request->isPost()){
+				$posts = $request->getPost();
+				$data = $posts->toArray();
+				$leadsTable = $this->getServiceLocator()->get('Customer\Model\LeadsTable');
+				$finalData['lead_id'] = $data['lead_statusId'];
+				$finalData['lead_status'] = $data['lead_status'];
+				$finalData['lead_reason'] = $data['lead_reason'];
+				if($data['lead_close_date'] != ''){
+					$dateOldFormat = explode("/", $data['lead_close_date']);
+					$dateNewFormat = $dateOldFormat[2].'-'.$dateOldFormat[0].'-'.$dateOldFormat[1].' 00:00:00';
+					$finalData['lead_close_date'] = $dateNewFormat;
+				} else {
+					$finalData['lead_close_date'] = null;
+				}
+				$finalData['updated_by'] = $identity['user_id'];
+				$finalData['updated_date'] = date('Y-m-d H:i:s');
+				$LeadsData = $leadsTable->saveLead($finalData, $data['lead_statusId']);
+				echo $LeadsData; exit;
+			}
+		}catch(Exception $e){
+			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+		}
+	}
         
         
 }

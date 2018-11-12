@@ -34,6 +34,7 @@ $resources = array(
 		'Customer\Controller\Leads::ajaxoppcustomerslookup',
 		'Customer\Controller\Leads::sendmailtoleadowner',
 		'Customer\Controller\Leads::updateleadstatus',
+                'Customer\Controller\Leads::updateleadstatusFromDashboard',
     	'Customer\Controller\Index::ajaxcustomerslist',
     	'Customer\Controller\Index::createcustomer',
 		'Customer\Controller\Index::checkduplicate',
