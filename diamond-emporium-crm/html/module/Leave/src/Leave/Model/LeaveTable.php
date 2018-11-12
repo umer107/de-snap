@@ -337,7 +337,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                  );
                   $select = new \Zend\Db\Sql\Select();
                   $select->from(array('l' => 'de_leads'))
-                        ->columns(array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status','LeadCreatedDate' => 'created_date'))
+                        ->columns(array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status','LeadCreatedDate' => 'created_date','LeadBudget' => 'budget'))
                           ->join(array('p' => 'de_products'), 'l.product = p.id', array('product' => 'id', 'product_title' => 'title' , 'title_shortcode'), 'left')   
                           ->join(array('hh' => 'de_how_heard_lookup'), 'l.how_heard = hh.id', array('how_heard' => 'id', 'how_heard_title' => 'how_heard'), 'left')   
                           ->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('lead_owner_image' => 'image' , 'lead_owner_fullname' => $fullname), 'left');
@@ -367,43 +367,43 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                      $start_budget = 0;
                      $end_budget = 0;
                     if($filter['budget'] == '$2,000 - $4,999'){                                                  
-                       //$select->where(array('l.budget = ?' =>  $filter['budget']));
-                        $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
+                       $select->where(array('l.budget = ?' =>  $filter['budget']));
+                       //$select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                       }
                     else if($filter['budget'] == '$5,000 - $9,999')
                       {
-                        //$select->where(array('l.budget = ?' =>  $filter['budget']));
-                        $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
+                        $select->where(array('l.budget = ?' =>  $filter['budget']));
+                        //$select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                       }
                       else if($filter['budget'] == '$10,000 - $19,999')
                        {
-                         //$select->where(array('l.budget = ?' =>  $filter['budget']));
-                          $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
+                         $select->where(array('l.budget = ?' =>  $filter['budget']));
+                         //$select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                        }
                             else if($filter['budget'] == '$20,000 - $34,999')
                             {
-                               //$select->where(array('l.budget = ?' =>  $filter['budget']));
-                                $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
+                               $select->where(array('l.budget = ?' =>  $filter['budget']));
+                                //$select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                             }
                             else if($filter['budget'] == '$35,000 - $49,999')
                             {
-                              //$select->where(array('l.budget = ?' =>  $filter['budget'])); 
-                                $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
+                              $select->where(array('l.budget = ?' =>  $filter['budget'])); 
+                               // $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                             }
                             else if($filter['budget'] == '$50,000 - $74,999')
                             {
-                              //$select->where(array('l.budget = ?' =>  $filter['budget']));
-                                $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
+                              $select->where(array('l.budget = ?' =>  $filter['budget']));
+                               // $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                             }
                             else if($filter['budget'] == '$75,000 - $99,999')
                             {
-                              //$select->where(array('l.budget = ?' =>  $filter['budget']));
-                                $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
+                              $select->where(array('l.budget = ?' =>  $filter['budget']));
+                               // $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                             }    
                             else if($filter['budget'] == '$100,000+')
                             {
-                              //$select->where(array('l.budget = ?' =>  $filter['budget']));
-                                $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
+                              $select->where(array('l.budget = ?' =>  $filter['budget']));
+                              //  $select->where(array('l.lead_budget = ?' =>  $filter['budget']));
                             }
                             //$select->where(array('l.budget = ?' =>  $value));
                             }
@@ -1854,7 +1854,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                        
                 $select = new \Zend\Db\Sql\Select();
                 $select->from(array('l' => 'de_leads'))
-                        ->columns(array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'))         
+                        ->columns(array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status','LeadBudget' => 'budget'))         
                         ->join(array('c' => 'de_customers'), 'l.customer_id = c.id', array('Customer_id' => 'id','CustomerTitle' =>'title','CustomerGender' =>'gender' ,'CustomerFirst_name' =>'first_name', 'CustomerLast_name' => 'last_name' , 'CustomerEmail' => 'email' , 'CustomerMobile' => 'mobile','CustomerCountry_id' => 'country_id','CustomerState_id' => 'state_id','CustomerAddress' => 'address1','CustomerSource' =>  'source','CustomerContact_method' =>'contact_method'), 'left');
                         
                  if(!empty($filter['lead_id'])) {
