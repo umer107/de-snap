@@ -474,6 +474,16 @@ return array(
                 			),
                 		),
                 	),
+                    'updateleadstatusFromDashboard' => array(
+                		'type' => 'Segment',
+                		'options' => array(
+                			'route'    => 'updateleadstatusFromDashboard',
+                			'defaults' => array(
+                				'controller' => 'Customer\Controller\Leads',
+                				'action'     => 'updateleadstatusFromDashboard',
+                			),
+                		),
+                	),
                                 'ajaxCreateLeadFromDashboard' => array(
 						'type' => 'Segment',
 						'options' => array(

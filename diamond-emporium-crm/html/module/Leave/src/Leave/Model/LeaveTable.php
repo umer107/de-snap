@@ -1911,6 +1911,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
 
        public function fetchLeadRecord($filter= null)
        {
+               $fullname = new \Zend\Db\Sql\Expression(
+                    'CONCAT(cu.first_name, \' \', cu.last_name)'
+               );      
                 $value = $filter['lead_id'];      
                 $select = new \Zend\Db\Sql\Select();
                 $select->from('de_leads')->columns(array('lead_id'));
@@ -1919,6 +1922,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $select->from(array('l' => 'de_leads'))
                         ->columns(array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status','LeadBudget' => 'budget' , 'LeadSpecialInstructions' => 'special_instructions'))         
                         ->join(array('c' => 'de_customers'), 'l.customer_id = c.id', array('Customer_id' => 'id','CustomerTitle' =>'title','CustomerGender' =>'gender' ,'CustomerFirst_name' =>'first_name', 'CustomerLast_name' => 'last_name' , 'CustomerEmail' => 'email' , 'CustomerMobile' => 'mobile','CustomerCountry_id' => 'country_id','CustomerState_id' => 'state_id','CustomerAddress' => 'address1','CustomerSource' =>  'source','CustomerContact_method' =>'contact_method'), 'left')
+                        ->join(array('cu' => 'de_customers'), 'l.referred_by_customer = cu.id', array('LeadReferredCustomerName' => $fullname), 'left')   
                         ->join(array('s' => 'de_states'), 'c.state_id = s.id', array('StateName' => 'name' , 'StateShortCode' => 'state_code'), 'left')   
                         ->join(array('p' => 'de_products'), 'l.product = p.id', array('product' => 'id', 'product_title' => 'title' , 'title_shortcode'), 'left')   
                         ->join(array('hh' => 'de_how_heard_lookup'), 'l.how_heard = hh.id', array('how_heard' => 'id', 'how_heard_title' => 'how_heard'), 'left'); 
