@@ -6770,11 +6770,12 @@ function loadLeads(){
                           for (var j = 0; j < leads[i].items.length; j++) {
 
                               statusAll++
-                              if(leads[i].items[j].lead_status == "Closed")
+                              var checkStatus = leads[i].items[j].LeadStatus
+                              if(leads[i].items[j].LeadStatus == "Closed Lost")
                                   {
                                      statusClosed++
                                   }
-                                  else if(leads[i].items[j].lead_status == "Deal closed")
+                                  else if(leads[i].items[j].LeadStatus == "Deal closed")
                                   {
                                       statusDealClosed++
                                   }
@@ -6811,9 +6812,9 @@ function loadLeads(){
 
                               // Setting Status
                               var newArray = leads[j].items;
-                              if(leads[i].items[j].lead_status == "Closed")
+                              if(leads[i].items[j].LeadStatus == "Closed Lost")
                               { status = 'bg-red1'; }
-                              else if(leads[i].items[j].lead_status == "Deal closed")
+                              else if(leads[i].items[j].LeadStatus == "Deal closed")
                               { status = 'bg-green1'; }
                               else
                               { status = 'bg-white'; }
@@ -6840,7 +6841,7 @@ function loadLeads(){
                                   nextInLineCounter++
                               }
 
-                              if(leads[i].items[j].lead_status == "Open")
+                              if(leads[i].items[j].LeadStatus == "Open" || leads[i].items[j].LeadStatus == "To Opportunity")
                               {
                                  var getLeadPopup = $('#closeLead').html();
                                  setHtml += '<li class="relative userLeadId '+status+'"  userleadId="'+leads[i].items[j].Lead_id+'"><p class="absolute closeLeadClick">Close</p><div style="display:none" class="closeLeadPopup absolute full" leadId="'+ leads[i].items[j].Lead_id+'"><span class="closeLeadError opacity0 transition-ease-05 color-red">Please fill all fields</span>'+getLeadPopup+'</div><div class="leadUserName ellipsis">'+leads[i].items[j].LeadFirst_name+ ' ' +leads[i].items[j].LeadLast_name + '</div> <img class="referralImage" alt="Profile image" src="'+referral+'" /></li>';
