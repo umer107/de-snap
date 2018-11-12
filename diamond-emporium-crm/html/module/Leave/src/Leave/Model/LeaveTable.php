@@ -679,7 +679,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
            
            
            //Start Add Next in Line in ReturnResult
-            $array_merge_dashboard['NextInLineCalculate']['items'] = $groupsNextInLine;
+           $array_merge_dashboard_nextInLine = array();   
+           $array_merge_dashboard_nextInLine = array_merge($groups1,$groupsNextInLine);
+           $array_merge_dashboard['NextInLineCalculate']['items'] = $array_merge_dashboard_nextInLine;
            
            
            //End Add Next in Line in ReturnResult
