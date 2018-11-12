@@ -1,0 +1,1 @@
+ALTER TABLE `de_leads` ADD `special_instructions` VARCHAR(120) NOT NULL AFTER `preferred_contact`;

@@ -811,7 +811,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $select->from(array('c' => 'de_customers'))
                      ->columns(array( 'Customer_id' => 'id','CustomerTitle' =>'title','CustomerGender' =>'gender' ,'CustomerFirst_name' =>'first_name', 'CustomerLast_name' => 'last_name' , 'CustomerEmail' => 'email' , 'CustomerMobile' => 'mobile','CustomerCountry_id' => 'country_id','CustomerState_id' => 'state_id','CustomerAddress' => 'address1','CustomerSource' =>  'source','CustomerContact_method' =>'contact_method'))
                      ->join(array('s' => 'de_states'), 'c.state_id = s.id', array('CustomerStateName' => 'name', 'CustomerStateCode' => 'state_code'), 'left')
-                     ->join(array('l' => 'de_leads'), 'c.id = l.customer_id', array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'), 'left')
+                     ->join(array('l' => 'de_leads'), 'c.id = l.customer_id', array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status', 'LeadBudget' => 'budget'), 'left')
                      ->join(array('p' => 'de_products'), 'l.product = p.id', array('product' => 'id', 'product_title' => 'title' , 'title_shortcode'), 'left')   
                      ->join(array('hh' => 'de_how_heard_lookup'), 'l.how_heard = hh.id', array('how_heard' => 'id', 'how_heard_title' => 'how_heard'), 'left')   
                      ->join(array('op' => 'de_opportunities'), 'l.lead_id = op.lead_id', array('*'), 'left')   
@@ -888,6 +888,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                        $return_array['Customer']['Lead']['LeadProductTitle_shortcode'] = $value['title_shortcode'];
                        $return_array['Customer']['Lead']['LeadHow_heard'] = $value['how_heard'];
                        $return_array['Customer']['Lead']['LeadHow_heard_title'] = $value['how_heard_title'];
+                       $return_array['Customer']['Lead']['LeadBudget'] = $value['LeadBudget'];
                        
                    }
                    else{
