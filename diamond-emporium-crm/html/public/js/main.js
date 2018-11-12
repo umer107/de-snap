@@ -2239,7 +2239,7 @@ $('section.rightCol').on('scroll', function(event){
       $.ajax({
                 type: "GET",
                 url: "/dashboard/ajaxGetLeadDetailForLeadPage",
-                data: {leadId:getLeadId},
+                data: {lead_id:getLeadId},
                 success: function (data) {
                   var parsed = '';
                   try
@@ -2276,192 +2276,16 @@ $('section.rightCol').on('scroll', function(event){
                   
                   //Setting Lead Id
                   
-                  $('.thisLeadId').attr('leadId',parsed.id);
-                  
-                  // Basic Info Fields
-                  // Title
-                  $('.basicInfo .title .selected-text').attr('value',parsed.title);
-                  $('.basicInfo .title .selected-text span').html(parsed.title);
-                  // Gender
-                  $('.basicInfo .Gender .selected-text').attr('value',parsed.gender);
-                  $('.basicInfo .Gender .selected-text span').html(parsed.gender);
-                  // First Name Last Name Phone & Email
-                  $('.basicInfo .firstname').val(parsed.first_name);
-                  $('.basicInfo .lastname').val(parsed.last_name);
-                  $('.basicInfo .phonenumber').val(parsed.phone_number);
-                  $('#email').val(parsed.email);
-                  $('#onlyReferral').val(parsed.only_referral);
-                  $('#fullAddress').val(parsed.full_address);
-                  
-                  // Address Fields
-                  
-                  $("#stateDropdown").html(parsed.State);
-                  $('#stateDropdown').closest('a.selected-text').attr('value',parsed.State);
-                  // Additional Detail Fields
+                  $('.thisLeadId').attr('leadId',parsed[0].Lead_id);
                   // Product
-                  if(window.other == true)
-                  {
-                    var getName = $('.calendarLoad .appointmentType a.selected-text').attr('value');
-                    $("#productDropdown").html(getName);
-                    $('#productDropdown').closest('a.selected-text').attr('value',getName);
-                  }
-                  else
-                  {
-                    $("#productDropdown").html(parsed.product);
-                    $('#productDropdown').closest('a.selected-text').attr('value',parsed.product);
-                  }
-                
-                  // Referral method
-                  var referralMethod = parsed.referral;
-                  var referralMethodOther = $("#referralDropdownOther").val();
-                  var referralMethodVal = '';
-                  if ( referralMethod == "Other")
-                    { 
-                      $("#referralDropdownOther").val(parsed.referral);
-                    }
-                  else { 
-                    $("#referralDropdown").html(parsed.referral);
-                    $('#referralDropdown').closest('a.selected-text').attr('value',parsed.referral);
- 
-                  }
-
-                  $('.additional-details .instructions').val(parsed.special_instructions);
-                  $('.additional-details .ReferenceProduct').val(parsed.reference_product);
-
-                  $('#budgetDropdown').closest('a.selected-text').attr('value',parsed.budget);
-
-                  $('#BudgetText').val(parsed.budget);
-                  
-
-                  // Preferred method
-                  var contactMethod = parsed.contact_method
-                  if(parsed.contact_method != "Phone/Email" && parsed.contact_method != "Phone" && parsed.contact_method != "Email")
-                  { 
-                    $('#perferrefDropdownOther').html(contactMethod);
-                  }
-                  else
-                  {
-                    $('#perferrefDropdown').html(contactMethod);
-                  }
-                  
-                  // Communication method
-                  $("#CommunicationMethod").html(parsed.communication_method);
-
-                  $('.additional-details .requirements').val(parsed.specify_requirements);
-                   
+                  $("#productDropdown").html(parsed[0].product_title);
+                  $('#onlyReferral').val(parsed[0].LeadReferredCustomerName);
+                  $(".referral.dropdown a.selected-text").attr("value",parsed[0].how_heard_title);
+                  $('.additional-details .requirements').val(parsed[0].LeadLookingFor);
+                  $('.additional-details .instructions').val(parsed[0].LeadSpecialInstructions);
+                  $('.additional-details .ReferenceProduct').val(parsed[0].reference_product);
+                  $('#budgetDropdown').closest('a.selected-text').attr('value',parsed[0].LeadBudget);                  
                   $('.initialScreen').removeClass('hideshow');
-                   
-                   
-                   $('#countryName').attr('value',parsed.country);
-                   if(parsed.country == 'Australia')
-                   {
-                    $('.stateDiv').removeClass('hide');
-                   }
-                   else
-                   {
-                    $('.stateDiv').addClass('hide');
-                   }
-                   //GetCountriesList();
-                   $('#combobox').html('');
-                   $('#combobox').html(window.comboboxList);
-                   $(function() {
-                      $("#combobox").combobox({
-                          selected: function(event, ui) {
-                              $('#log').text('selected ' + $("#combobox").val());
-                          }
-                      });
-                      $("#combobox").next().next('.ui-combobox').remove();
-                      
-                      //$("#combobox").closest(".ui-widget").find("input, button").prop("disabled", true);
-                  });
-                   $('.ui-state-default, .ui-autocomplete-input').val(parsed.country);
-                  setTimeout(function(){ 
-                      
-
-                      // Booking Calendar
-                      
-                      //var getAmPm = parsed[0].booking_timezone;
-                      var getFullDate = parsed.booking_date;
-                      var getAssigneeId = parsed.assign_to_UserId;
-                      var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-                      var getDayName = new Date(getFullDate);
-                      var getDay = weekday[getDayName.getDay()];
-
-                      var d = new Date(getFullDate);
-                      var getOnlyDate = d.getDate();
-                      // Get month name
-                      var getMonth = d.getMonth() + 1;
-                      // Get Current Month Dates
-                      var m_names = ['January', 'February', 'March', 
-                                       'April', 'May', 'June', 'July', 
-                                       'August', 'September', 'October', 'November', 'December'];
-                      //month name
-                      var getMonth = m_names[d.getMonth()];
-                      var getCurrentDate = d.getDate();
-                      
-                        
-                      $('.suggestedDate').html('');
-                      //$('.questionView').removeClass('hide');
-                      $('.btn-saveBooking').addClass('saveNow');
-                      // destroy calendar
-                      $('#calendar2').fullCalendar("destroy");
-
-                      //$('.next-saveDiv').addClass('one-half-pad-top');
-
-                      
-                      $('#bookingDate').addClass('nowCanSave');
-                      if(parsed.user_booking_date == '0'){
-
-                        
-                        
-                        
-                        var getThisDate = parsed.booking_date;
-                        loadWeeklyDates(getThisDate);
-                        
-
-                        var monthname = $('#bookingDate').attr('monthNameEdit');
-                        var bookingyear = $('#bookingDate').attr('bookingyear');
-                        var monthnumber = $('#bookingDate').attr('monthnumber');
-                        var timeslot = parsed.booking_time;
-                        var getFullTime = getTimeSlotFull(timeslot);
-                        var timeslotfull = getFullTime;
-                        var getBookingDay = getDay;
-                        var datenumber = getCurrentDate;
-                        if(datenumber < 10)
-                          { datenumber = '0'+datenumber; }
-
-                        var getSuffixDate = getSuffix3(datenumber);
-                        
-                        var datenumberSuffix = datenumber+getSuffixDate;
-                        var roomnumber = parsed.booking_room; 
-                        var comlpetedate = parsed.booking_date;
-
-                        //$('#bookingDate').attr('timeslot',timeslot);
-                        //$('#bookingDate').attr('timeslotfull',timeslotfull);
-                        //$('#bookingDate').attr('dayname',getBookingDay);
-                        //$('#bookingDate').attr('datenumber', datenumber);
-                        //$('#bookingDate').attr('roomnumber',roomnumber);
-                        //$('#bookingDate').attr('comlpetedate', comlpetedate);
-                        
-                        
-                        var getStartingHour = getTime(parsed.booking_time);
-                        bookingTimeDuration(parsed.durationTime, parsed.bookingstart, getStartingHour);
-                        var getUpdatedTimeFull = $('#bookingDate').attr('updatedTime');
-                        var setHtml = getBookingDay + ' ' + datenumberSuffix + ' ' + monthname + ', ' + bookingyear + ' ' + getUpdatedTimeFull;
-                        $('#bookingDate').html(setHtml);
-                      }
-                      else
-                      {
-                        //$('.btn-bookNow, .next-saveDiv').removeClass('hide'); 
-                      }
-                      
-                      
-                  }, 1000);
-                  
-
-                      
-                  $('.calendarWeeklyDate').attr('bookingDate', parsed.booking_date); 
-                  
                 }
             }); 
     }
@@ -3870,7 +3694,7 @@ setTimeout(function(){
         else { referralMethodVal = referralMethod; }
         return {
             product : $("#productDropdown").text(),            
-            referral : referralMethodVal,
+            referral : $(".referral.dropdown a.selected-text").attr("value"), 
             only_referral : $("#onlyReferral").val(),
             specify_requirements : $("#specify_requirements").val(), 
             special_instructions : $("[name= 'special_instructions']").val(),
@@ -4007,10 +3831,14 @@ setTimeout(function(){
         var searchMade = $('#email').hasClass('popuplatedemail');
         var customerId = $("#customerId").attr('customerId');
         customerId = parseInt(customerId);
-        validation();
-        if(window.validState == false)
-        {
-          return false;
+        if(window.AppointmentType == 1)
+        {}
+        else{
+          validation();
+          if(window.validState == false)
+          {
+            return false;
+          }
         }
         var customerValues = getCustomerValues();
         var dataLead = getValuesFromForm();
@@ -8438,14 +8266,18 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
         for (var i = 0; i < parsed.length; i++) {
             
-            var result = parsed[i].user_name;
-            var resultNew = result.toLowerCase();
-            var result2 = parsed[i].id;
-             if (resultNew.indexOf(getValue) > -1) {
+            var result = parsed[i].LeadCustomerFullName;
+            if(result != null)
+            {
+              var resultNew = result.toLowerCase();
+              var result2 = parsed[i].Lead_id;
+              if (resultNew.indexOf(getValue) > -1) {
                arr.push(result);
                arr2.push(result2);
-             }
-             else {}
+              }
+              else {}
+            }
+            
           }
       }
       var parsed2 = arr;
