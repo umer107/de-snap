@@ -3825,7 +3825,7 @@ setTimeout(function(){
             email : $("#email").val(),
             mobile : $("#phonenumber").val(),
             product : $(".dropdown.product").find('a.selected-text').attr('productId'), 
-            lead_budget : $('#budgetDropdown').closest('a.selected-text').attr('value'),
+            budget : $('#budgetDropdown').closest('a.selected-text').attr('value'),
             lead_source : $("#CommunicationMethod").text(),
             how_heard : $(".dropdown.referral").find('a.selected-text').attr('howheardid'),   
             state : $(".dropdown.State").find('a.selected-text').attr('stateid'),
@@ -7934,9 +7934,8 @@ function getBookingTime(getTime, bookingStart, Duation) {
                 // Check If Opprtunity Exists
                 if(parsed.Customer.OpportunityStatus == '1')
                 {
-                  var leadId = parsed.Customer.Opportunity.OpportunityLeadId;
-                  window.location.href = '/leaddetails/'+leadId;
-                  console.log('Its an opportunity');
+                  var opportunityId = parsed.Customer.Opportunity.OpportunityId;
+                  window.location.href = '/opportunitydetails/'+opportunityId;
                 }
                 else if(parsed.Customer.LeadStatus == '1')
                 { popuLateLead(parsed.Customer) }
@@ -7946,7 +7945,6 @@ function getBookingTime(getTime, bookingStart, Duation) {
                   $("#searchResults").html(' ');
                   $('.dialogeBox').removeClass('hide');
                   window.createNewCustomer = parsed.Customer;
-                  console.log('Its a customer');
                 }
                 return false; 
             }
@@ -7957,7 +7955,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
     function popuLateLead(lead)
     {
-      debugger
+      showMainLoading();
       // Populating Records
       $("#searchResults").html(' ');
       $('.dropdown.title .dropdownOptions li a[value="'+lead.Customer.CustomerTitle+'"]').trigger('click');              // title gender   
@@ -7966,16 +7964,35 @@ function getBookingTime(getTime, bookingStart, Duation) {
       $('.basicInfo .phonenumber').val(lead.Customer.CustomerMobile);                                                    // phone
       $('#email').val(lead.Customer.CustomerEmail);                                                                      // email
       $('#email').addClass('popuplatedemail');
-      $('#email').attr('leadId',lead.Lead_id);                                                                            // email
-      $('.thisLeadId').attr('leadid',lead.Lead_id); 
+      $('#email').attr('leadId',lead.Lead.Lead_id);                                                                            // email
+      $('.thisLeadId').attr('leadid',lead.Lead.Lead_id); 
       if(lead.Customer.CustomerAddress ==  null)
       {$('#fullAddress').val('');}
       else
       {$('#fullAddress').val(lead.Customer.CustomerAddress);}                                                               // address
       $('#countryName').attr('value',lead.Customer.CustomerCountry_id);                                                     // country
-      $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(lead.Customer.CustomerCountry_id);         // country
-      $('.stateDiv .dropdown.State .dropdownOptions li a[stateid="'+lead.Customer.CustomerState_id+'"]').trigger('click');    // state
-       if(lead.Customer.CustomerCountry_id == 'Australia')                                                                  // state
+      if(lead.Customer.CustomerCountry_id == null)
+      {
+        setTimeout(function(){ 
+          $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
+          $('#countryName').attr('value','Australia'); 
+       }, 2000);
+      }
+      else
+      {
+        setTimeout(function(){ 
+          $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(lead.Customer.CustomerCountry_id);
+          $('#countryName').attr('value',lead.Customer.CustomerCountry_id);
+        }, 2000);
+      }
+      
+      $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(lead.Customer.CustomerCountry_id); 
+      if(lead.Customer.CustomerState_id != null)                                                                            // state
+      {
+        $('.stateDiv .dropdown.State .dropdownOptions li a[stateid="'+lead.Customer.CustomerState_id+'"]').trigger('click');
+      }        
+          // state
+       if(lead.Customer.CustomerCountry_id == 'Australia' || lead.Customer.CustomerCountry_id == null)                       // country                                                                  
        {
         $('.stateDiv').removeClass('hide');
        }
@@ -7983,6 +8000,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
        {
         $('.stateDiv').addClass('hide');
        }
+
        $('.emailexists').addClass('opacity0').removeClass('green');
        $('.redCross, .redGreen').addClass('hide');
        $('.basicInfo .requiredError, .emailDiv .requiredError, .firstError, .emailexists, .emailDiv .error ').addClass('opacity0');
@@ -8014,7 +8032,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
           }    
         });// End
 
-       showMainLoading();
+       
     }
 
     /*=====================================*/
