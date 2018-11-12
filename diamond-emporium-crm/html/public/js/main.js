@@ -57,7 +57,8 @@ $(document).ready(function () {
                 
                 setTimeout(function(){ 
                   $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
-                   }, 3000);
+                  window.getBasicInfo = $('.basicInfo').html();
+                 }, 3000);
 
                 
 
@@ -2688,7 +2689,7 @@ setTimeout(function(){
      $('.additional-details').html(window.getAdditionalInfo);
      setTimeout(function(){ 
         $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
-    }, 500);
+     }, 3000);
      
 
   });// End
@@ -3425,7 +3426,7 @@ setTimeout(function(){
 
 
     $(document).on('click','.countryDiv .icon-dropdown' ,function(e){
-        $('.formfields span.ui-combobox button').trigger('click');
+        //$('.formfields span.ui-combobox button').trigger('click');
         e.preventDefault();
         return false;
     });// End
@@ -5666,16 +5667,7 @@ setTimeout(function(){
 
 var myArray = [];
 var AgentList = []; 
-setTimeout(function(){ 
 
-    window.GetAdditionalDetails = $('.additional-details').html();
-    window.getNewLeadAll = $('.newLead').html();
-    window.getBasicInfo = $('.basicInfo').html();
-    window.getAdditionalInfo = $('.additional-details').html();
-    console.log('html created');
-    //$('.loadAgents ul.dropdownOptions').html(dropdownList);
-    
-}, 4000);
 
 
 // Expand Additional Detail Div
@@ -7953,6 +7945,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
                   $('.searchField').val(parsed.Customer.Customer.CustomerFirst_name + ' ' + parsed.Customer.Customer.CustomerLast_name )
                   $("#searchResults").html(' ');
                   $('.dialogeBox').removeClass('hide');
+                  window.createNewCustomer = parsed.Customer;
                   console.log('Its a customer');
                 }
                 return false; 
@@ -7970,15 +7963,15 @@ function getBookingTime(getTime, bookingStart, Duation) {
       $('.dropdown.title .dropdownOptions li a[value="'+lead.Customer.CustomerTitle+'"]').trigger('click');              // title gender   
       $('.basicInfo .firstname').val(lead.Customer.CustomerFirst_name);                                                  // first name   
       $('.basicInfo .lastname').val(lead.Customer.CustomerLast_name);                                                    // last name
-      $('.basicInfo .phonenumber').val(lead.Customer.CustomerMobile);                                              // phone
+      $('.basicInfo .phonenumber').val(lead.Customer.CustomerMobile);                                                    // phone
       $('#email').val(lead.Customer.CustomerEmail);                                                                      // email
       $('#email').addClass('popuplatedemail');
-      $('#email').attr('leadId',lead.Lead_id);                                                                // email
+      $('#email').attr('leadId',lead.Lead_id);                                                                            // email
       $('.thisLeadId').attr('leadid',lead.Lead_id); 
       if(lead.Customer.CustomerAddress ==  null)
       {$('#fullAddress').val('');}
       else
-      {$('#fullAddress').val(lead.Customer.CustomerAddress);}                                     // address
+      {$('#fullAddress').val(lead.Customer.CustomerAddress);}                                                               // address
       $('#countryName').attr('value',lead.Customer.CustomerCountry_id);                                                     // country
       $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(lead.Customer.CustomerCountry_id);         // country
       $('.stateDiv .dropdown.State .dropdownOptions li a[stateid="'+lead.Customer.CustomerState_id+'"]').trigger('click');    // state
@@ -8028,9 +8021,58 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
     // Create Customer from Search
     $(document).on('click', '.yesCreateCustomer', function () {
-      $('.basicInfo').html(window.getBasicInfo);
-      $('.additional-details').html(window.getAdditionalInfo);
-      $('.dialogeBox').addClass('hide');
+       $('.basicInfo').html(window.getBasicInfo);
+       $('.additional-details').html(window.getAdditionalInfo);
+       $('.dialogeBox').addClass('hide');
+       $('.ShowPopup').removeClass('topShow');
+       
+       var customer = window.createNewCustomer;
+       debugger
+       $("#searchResults").html(' ');
+      $('.dropdown.title .dropdownOptions li a[value="'+customer.Customer.CustomerTitle+'"]').trigger('click');               // title gender   
+      $('.basicInfo .firstname').val(customer.Customer.CustomerFirst_name);                                                   // first name   
+      $('.basicInfo .lastname').val(customer.Customer.CustomerLast_name);                                                     // last name
+      $('.basicInfo .phonenumber').val(customer.Customer.CustomerMobile);                                                     // phone
+      $('#email').val(customer.Customer.CustomerEmail);                                                                       // email
+      $('#email').addClass('popuplatedemail'); 
+      if(customer.Customer.CustomerAddress ==  null)
+      {$('#fullAddress').val('');}
+      else
+      {$('#fullAddress').val(customer.Customer.CustomerAddress);} 
+      if(customer.Customer.CustomerCountry_id == null)                                                                        // country
+      {
+        setTimeout(function(){ 
+          $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
+          $('#countryName').attr('value','Australia'); 
+       }, 2000);
+      }
+      else
+      {
+        setTimeout(function(){ 
+          $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(customer.Customer.CustomerCountry_id);
+          $('#countryName').attr('value',customer.Customer.CustomerCountry_id);
+        }, 2000);
+      }                                                                                                                         // address
+                                                     
+      $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(customer.Customer.CustomerCountry_id);         // country
+      $('.stateDiv .dropdown.State .dropdownOptions li a[stateid="'+customer.Customer.CustomerState_id+'"]').trigger('click');  // state
+       if(customer.Customer.CustomerCountry_id == 'Australia' ||  customer.Customer.CustomerCountry_id == null)                 // state
+       {
+        $('.stateDiv').removeClass('hide');
+       }
+       else
+       {
+        $('.stateDiv').addClass('hide');
+       }
+       $('.emailexists').addClass('opacity0').removeClass('green');
+       $('.redCross, .redGreen').addClass('hide');
+       $('.basicInfo .requiredError, .emailDiv .requiredError, .firstError, .emailexists, .emailDiv .error ').addClass('opacity0');
+       $('.formfields input').each( function () {
+          if($(this).val().length > 0)
+          {
+            $(this).prev('span').slideDown(150);
+          }    
+        });// End
     });// End
 
     /*=====================================*/
@@ -8560,6 +8602,7 @@ function getStates()  //  Get States
                 setHtml +='<li><a href="javascript:;" stateId="'+parsed[i].id+'" value="'+parsed[i].state_code+'">'+parsed[i].state_code+'</a></li>';
               }
             $('.dropdown.State').find('ul.dropdownOptions').html(setHtml);
+            window.getBasicInfo = $('.basicInfo').html();
         }
     });  
 }
@@ -8585,6 +8628,7 @@ function getProducts() //  Get Countries
                 setHtml +='<li><a href="javascript:;" productId="'+parsed[i].id+'" value="'+parsed[i].title+'" shortcode="'+parsed[i].title_shortcode+'">'+parsed[i].title+'</a></li>';
               }
             $('.dropdown.product').find('ul.dropdownOptions').html(setHtml);
+            window.getAdditionalInfo = $('.additional-details').html();
         }
     });  
 }
@@ -8638,6 +8682,7 @@ function howHeard() //  Get How Heard
             }
             setHtml +='<li><a href="javascript:;" howHeardId="10" value="Other"><span class="ref-Img"><img class="pull-left" src=" /images/ic_other.png"></span>Other</a></li>';  
             $('.dropdown.referral').find('ul.dropdownOptions').html(setHtml);
+            window.getAdditionalInfo = $('.additional-details').html();
         }
     });  
 }
@@ -8646,3 +8691,12 @@ howHeard();
 
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
+
+setTimeout(function(){ 
+
+    window.GetAdditionalDetails = $('.additional-details').html();
+    window.getNewLeadAll = $('.newLead').html();
+    window.getBasicInfo = $('.basicInfo').html();
+    window.getAdditionalInfo = $('.additional-details').html();
+    
+}, 4000);
