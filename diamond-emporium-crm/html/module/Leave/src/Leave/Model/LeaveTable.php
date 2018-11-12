@@ -407,6 +407,49 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                             }
                             //$select->where(array('l.budget = ?' =>  $value));
                             }
+                            //--------------------------------------------------------------------------------------------------//
+                            //Now Execute The Query
+                             $select->order('lead_owner_fullname Asc');
+                             $dataNextInLine = $this->executeQuery($select);
+                             $resultNextInLine = $dataNextInLine->toArray();
+                             $groupsNextInLine = array();
+                             foreach ($resultNextInLine as $itemNextInline) {
+
+
+                                  $key = $itemNextInline['lead_owner_fullname'];
+                                  $keyName = $itemNextInline['lead_owner_fullname'];
+                                  $keyImage = $itemNextInline['lead_owner_image'];
+                                  $groups[$key]['idOfUser'] = $key;
+                                  $groups[$key]['agentName'] = $keyName;
+                                  if($keyImage == null)
+                                  {
+                                     $groups[$key]['agentImage'] = 'empty';
+                                  }
+                                  else
+                                  {
+                                     $groups[$key]['agentImage'] = $keyImage;
+                                  }
+
+
+                                  if (!isset($groupsNextInLine[$key])) 
+                                  {
+                                      $groupsNextInLine[$key] = array(
+                                       'items' => array($itemNextInline),
+                                       'count' => 1,
+                                      );
+                                  } 
+                                  else 
+                                  {
+
+                                   $groupsNextInLine[$key]['items'][] = $itemNextInline;
+                                   $groupsNextInLine[$key]['count'] += 1;
+
+                                  }
+
+                               }
+                            //Execute Query End
+                            //--------------------------------------------------------------------------------------------------//
+                            
                             if(!empty($filter['lead_status'])) {
                                $select->where(array('l.lead_status = ?' =>  $lead_status));
                             }
@@ -633,6 +676,17 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                     
            $array_merge_dashboard = array();   
            $array_merge_dashboard = array_merge($groups1,$groups);
+           
+           
+           //Start Add Next in Line in ReturnResult
+            //$array_merge_dashboard['NextInLineCalculate']['items'] = $groupsNextInLine;
+           
+           
+           //End Add Next in Line in ReturnResult
+           
+           
+           
+           
             return $array_merge_dashboard;                           
             //return $groups;
           //return $groups1;
@@ -868,8 +922,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                        $return_array['Customer']['OpportunityStatus'] = 0;
                        $return_array['Customer']['Opportunity'][] ='';
                    }
-                    //Check Lead Exists Or Not
-                   if(!empty($value['Lead_id']) && $value['LeadStatus'] == 'Open' || $value['LeadStatus'] == 'To Opportunity')
+                   //Check Lead Exists Or Not
+                   // || $value['LeadStatus'] == 'To Opportunity'
+                   if(!empty($value['Lead_id']) && $value['LeadStatus'] == 'Open')
                    {
                        //Its an opportunity
                        $return_array['Customer']['LeadStatus'] = 1;
