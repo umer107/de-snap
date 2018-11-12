@@ -7329,7 +7329,7 @@ $(document).on('click','.btn-saveCloseLead', function (e) {
         $lead_date = getDatesValue;
         $.ajax({
         type: "POST",
-        url: "dashboard/ajaxUpdateleadStatus",
+        url: "dashboard/updateleadstatus",
         data: {lead_statusId : $lead_id , lead_status : $lead_status , lead_close_date : $lead_date },
         success: function (data) {
             
