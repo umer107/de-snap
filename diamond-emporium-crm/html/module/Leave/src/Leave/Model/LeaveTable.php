@@ -2189,16 +2189,17 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
    {
                try{
 		$other_leadId = 90000;
+                $lead_status = 'Closed Lost';
                 $fullname = new \Zend\Db\Sql\Expression(
-                 'CONCAT(u.first_name, \' \', u.last_name)'
+                 'CONCAT(c.first_name, \' \', c.last_name)'
                 );    
                 $select = new \Zend\Db\Sql\Select(); 
-                $select->from(array('u' => 'de_userdetail')) ->columns(array( 'id','user_name' => $fullname , 'booking_date')); 
-                $select->where->notEqualTo('u.id', $other_leadId);
-                //$select->where->isNotNull('u.booking_date');    
+                $select->from(array('l' => 'de_leads')) ->columns(array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status', 'LeadBudget' => 'budget', 'LeadSpecialInstruction' => 'special_instructions'))
+                        ->join(array('c' => 'de_customers'), 'l.customer_id = c.id', array( 'Customer_id' => 'id','CustomerTitle' =>'title','CustomerGender' =>'gender' ,'CustomerFirst_name' =>'first_name', 'CustomerLast_name' => 'last_name' , 'CustomerEmail' => 'email' , 'CustomerMobile' => 'mobile','CustomerCountry_id' => 'country_id','CustomerState_id' => 'state_id','CustomerAddress' => 'address1','CustomerSource' =>  'source','CustomerContact_method' =>'contact_method' , 'LeadCustomerFullName' => $fullname), 'left');   
+                $select->where->notEqualTo('l.lead_id', $other_leadId);
+                $select->where->notEqualTo('l.lead_status', $lead_status);
+                $select->where->isNotNull('l.customer_id');    
                 $select->order("id desc");
-                //$filter_lead_Appointment1 = 0;
-                //$select->where(array('u.AppointmentType= ?' => $filter_lead_Appointment1 ));
                 $data = $this->executeQuery($select);      
                 $result = $data->toArray(); 
        
