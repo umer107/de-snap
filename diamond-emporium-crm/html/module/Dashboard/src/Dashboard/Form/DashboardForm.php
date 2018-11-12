@@ -57,7 +57,7 @@ class DashboardForm extends Form
         
         
         $special_instructions = new \Zend\Form\Element\Text('special_instructions');
-	$special_instructions->setAttributes(array('id' => 'last_name', 'autocomplete' => 'off' , 'type'  => 'text',  'placeholder' => 'Special instructions', 'type'  => 'text', 'class' => 'instructions color-red', 'maxlength' => 300));
+	$special_instructions->setAttributes(array('id' => 'specialinstructions', 'autocomplete' => 'off' , 'type'  => 'text',  'placeholder' => 'Special instructions', 'type'  => 'text', 'class' => 'instructions color-red', 'maxlength' => 300));
 	$this->add($special_instructions);
         
     
