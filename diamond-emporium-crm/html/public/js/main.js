@@ -8348,7 +8348,10 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
         });
     }
-    getSearchData()
+    setTimeout(function(){ 
+        getSearchData()
+    }, 2000);
+    
 
 
     $(document).on('click', function(event){
