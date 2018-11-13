@@ -3,7 +3,41 @@
 $(document).ready(function () {
 // Leads multi select calendar
 
+var pageNumber = getParameterByName("page");
 
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+if(pageNumber == 'RoomManager')
+  {
+    //$('.calendarLink').trigger('click')
+    suggestedDate();
+    $('nav.mainMenu li').removeClass('current');
+    $('.calendarLink').closest('li').addClass('current');
+    $('.dashboard-header, .leadsContainer, .leadDeailContainer, .newLead, .leavesContainer, .newLeaveContainer').addClass('hide');
+
+    var getHtml = $('.NewCalendarContainer').html();
+    var setHtml = "<div class='NewCalendarContainer full relative'>";
+    setHtml += getHtml;
+    setHtml += "</div>";
+    setHtml += "<div class='hide fixed addBookingPopup'></div>";
+    $('.calendarLoad').html(setHtml);
+    $('.calendarLoad .bookingHeading').addClass('hide');
+    $('.calendarLoad').removeClass('hide');
+    $('.all-rooms').trigger('click');
+  }
+var userisOnDashBoard = $('.contentArea').hasClass('hide');
+if(userisOnDashBoard && pageNumber != 'RoomManager')
+{
+  $('.mainMenu li').removeClass('current');
+  $('.dashboardLink').closest('li').addClass('current');
+}
 /*------------------------------------------------------------------*/
 /*---------------------Start Onload Function------------------------ */
 /*------------------------------------------------------------------*/
@@ -1069,7 +1103,13 @@ $(document).ready(function () {
     // Calendar Button
 
     $(document).on('click', '.mainMenu a.calendarLink', function () {
-
+        $('nav.mainMenu li').removeClass('current');
+        $(this).closest('li').addClass('current');
+        var userisOnDashBoard = $('.contentArea').hasClass('hide');
+        if(userisOnDashBoard)
+        {}
+        else
+        {window.location.href = '/dashboard?page=RoomManager';}
         $('.basicInfo').html(window.getBasicInfo);
         $('.additional-details').html(window.getAdditionalInfo);
         setTimeout(function(){ 
@@ -2290,7 +2330,7 @@ $('section.rightCol').on('scroll', function(event){
                   $('.additional-details .instructions').val(parsed[0].LeadSpecialInstructions);
                   $('.additional-details .ReferenceProduct').val(parsed[0].reference_product);
                   $('#budgetDropdown').closest('a.selected-text').attr('value',parsed[0].LeadBudget); 
-                  debugger
+                  
                   $('#referrenceDropdown').val(parsed[0].LeadReference);                 
                   $('.initialScreen').removeClass('hideshow'); 
                 }
@@ -2535,6 +2575,8 @@ setTimeout(function(){
 
     function validation()
     {
+        var ifemailPopulated = $("#email").attr('readonly');
+        var ifphonePopulated = $("#phonenumber").attr('readonly');
         $('.firstError').addClass('opacity0');
         var title = $('.dropdown.title a.selected-text').attr('value');
         var gender = $('.dropdown.Gender a.selected-text').attr('value');
@@ -2610,7 +2652,12 @@ setTimeout(function(){
         }
         else
           { 
-              if(isValidEmailAddress(getEmail))
+              
+              if(ifemailPopulated == 'readonly')
+              {
+                window.validState = true; 
+              }
+              else if(isValidEmailAddress(getEmail))
               { 
                 var getLeadId =  $('.thisLeadId').attr('leadid');
                 var popuplatedemail = $('#email').hasClass('popuplatedemail');
@@ -2660,8 +2707,11 @@ setTimeout(function(){
                 window.validState = false;
                 return false;
               }
-              
-              if(validatePhone(getPhone))
+              if(ifphonePopulated == 'readonly')
+              {
+                window.validState = true;
+              }
+              else if(validatePhone(getPhone))
               {
                 if($('#phonenumber').attr('passon') == 'true')
                 {
@@ -4844,8 +4894,9 @@ setTimeout(function(){
                 // Reset slider
                 $('.daysSlider div.roomsContainer').removeClass('scrolled');
                 // End Loading
-
-                endCalendarLoading();
+                
+                endCalendarLoading2();
+                //endCalendarLoading();
 
 
             }
@@ -5902,6 +5953,13 @@ function endCalendarLoading()
           $('.NewCalendarContainer').find('.loading').remove();
         }, 500);
     }
+  function endCalendarLoading2()
+  {
+      
+      setTimeout(function(){ 
+        $('.NewCalendarContainer').find('.loading').remove();
+      }, 1500);
+  }
     
 /*---------------------------------------------*/
 /*---------------------------------------------*/
@@ -7404,30 +7462,39 @@ $(document).on('click','.leadUserName', function (e) {
                html += "<p><label>Preferred method of contact:</label><label>" + parsed[0].LeadPreferredContact_method + " </label></p> ";
 
                html += "<p><label>Product:</label><label>" + parsed[0].product_title + " </label></p> ";
+
+               if(parsed[0].how_heard_title == null)
+                {parsed[0].how_heard_title =''}
+               html += "<p><label>How did they hear about us:</label><label>" + parsed[0].how_heard_title + " </label></p> ";
+
                if(parsed[0].LeadReferredCustomerName == null)
                 {parsed[0].LeadReferredCustomerName = ''}
                html += "<p><label>Referral by customer:</label><label>" + parsed[0].LeadReferredCustomerName + " </label></p> ";
 
-               if(parsed[0].how_heard_title == null)
-                {parsed[0].how_heard_title =''}
-               html += "<p><label>How did they hear about us?:</label><label>" + parsed[0].how_heard_title + " </label></p> ";
+               
 
-               html += "<p><label>Referral:</label><label>" + parsed[0].CustomerAddress + " </label></p> ";
+               //html += "<p><label>Referral:</label><label>" + parsed[0].CustomerAddress + " </label></p> ";
 
                if(parsed[0].LeadLookingFor == null)
                 {parsed[0].LeadLookingFor = ''}
                html += "<p><label>What they are looking for:</label><label>" + parsed[0].LeadLookingFor + " </label></p> ";
 
-               html += "<p><label>Special Instructions:</label><label>" + parsed[0].LeadSpecialInstructions + " </label></p> ";
+               
 
                if(parsed[0].LeadBudget == '0')
                {html += "<p><label>Budget:</label><label></label></p> ";}
                else
-               {html += "<p><label>Budget:</label><label>" + parsed[0].LeadBudget + " </label></p> ";}
+               {html += "<p><label>Budget:</label><label>" + parsed[0].LeadBudget + "</label></p> ";}
                
-               html += "<p><label>Assign To:</label><label></label></p> ";
+               html += "<p><label>Assign To:</label><label>" + parsed[0].LeadOwnerName + "</label></p> ";
+               
+               if(parsed[0].LeadReference == null)
+                {parsed[0].LeadReference =''}
+               html += "<p><label>Reference Product:</label><label>" + parsed[0].LeadReference + "</label></p> ";
 
-               html += "<p><label>Lead Status:</label><label>" + parsed[0].LeadStatus + " </label></p> ";
+               html += "<p><label>Special Instructions:</label><label>" + parsed[0].LeadSpecialInstructions + " </label></p> ";
+
+               html += "<p><label>Lead Status:</label><label>" + parsed[0].LeadStatus + "</label></p> ";
                
                 $('.leadDeailInnerContainer div').html(html);
                 $('.leadsContainer').addClass('hide');
@@ -7907,11 +7974,21 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
       $("#searchResults").html(' ');
       $('#customerId').attr('customerid','0');
+      $(lead.Customer.CustomerTitle == null)
+      {lead.Customer.CustomerTitle = 'Mr'}
       $('.dropdown.title .dropdownOptions li a[value="'+lead.Customer.CustomerTitle+'"]').trigger('click');              // title gender   
       $('.basicInfo .firstname').val(lead.Customer.CustomerFirst_name);                                                  // first name   
       $('.basicInfo .lastname').val(lead.Customer.CustomerLast_name);                                                    // last name
+      if(lead.Customer.CustomerMobile == null)
+      {lead.Customer.CustomerMobile = ''}
+      else
+      { $('.basicInfo .phonenumber').attr('readOnly', 'readOnly'); }
       $('.basicInfo .phonenumber').val(lead.Customer.CustomerMobile).attr('passon','true');                              // phone
-      $('#email').val(lead.Customer.CustomerEmail);                                                                      // email
+      $('#email').val(lead.Customer.CustomerEmail);
+      if(lead.Customer.CustomerEmail == null)
+      {lead.Customer.CustomerEmail = ''}
+      else
+      { $('#email').attr('readOnly', 'readOnly'); }                                                                      // email
       $('#email').addClass('popuplatedemail');
       $('#email').attr('leadId',lead.Lead.Lead_id);                                                                      // email
       $('.thisLeadId').attr('leadid',lead.Lead.Lead_id); 
@@ -8023,12 +8100,31 @@ function getBookingTime(getTime, bookingStart, Duation) {
        $("#customerId").attr('customerId',customer.Customer.Customer_id);
        
        $("#searchResults").html(' ');
+       $(customer.Customer.CustomerTitle == null)
+      {customer.Customer.CustomerTitle = 'Mr'}
       $('.dropdown.title .dropdownOptions li a[value="'+customer.Customer.CustomerTitle+'"]').trigger('click');               // title gender   
       $('.basicInfo .firstname').val(customer.Customer.CustomerFirst_name);                                                   // first name   
       $('.basicInfo .lastname').val(customer.Customer.CustomerLast_name);                                                     // last name
-      $('.basicInfo .phonenumber').val(customer.Customer.CustomerMobile);                                                     // phone
-      $('#email').val(customer.Customer.CustomerEmail);                                                                       // email
+      
+      if(customer.Customer.CustomerMobile == null)                                                                            // phone
+      {
+        customer.Customer.CustomerMobile ='';
+      }
+      else
+      {
+        $('.basicInfo .phonenumber').attr('readOnly', 'readOnly');
+        
+      }
+      $('.basicInfo .phonenumber').val(customer.Customer.CustomerMobile);                                                             
+
+      if(customer.Customer.CustomerEmail == null)                                                                             // email
+      { customer.Customer.CustomerEmail = ''; }
+      else
+      { $('#email').attr('readOnly', 'readOnly'); }
+                                                                                                                              
+      $('#email').val(customer.Customer.CustomerEmail);                                                                       
       $('#email').addClass('newcustomerLead'); 
+
       if(customer.Customer.CustomerAddress ==  null)
       {$('#fullAddress').val('');}
       else
@@ -8038,6 +8134,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
         setTimeout(function(){ 
           $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
           $('#countryName').attr('value','Australia'); 
+          $('.emailexists').addClass('green');
        }, 2000);
       }
       else
@@ -8045,7 +8142,9 @@ function getBookingTime(getTime, bookingStart, Duation) {
         setTimeout(function(){ 
           $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(customer.Customer.CustomerCountry_id);
           $('#countryName').attr('value',customer.Customer.CustomerCountry_id);
+          $('.emailexists').addClass('green');
         }, 2000);
+
       }                                                                                                                         // address
                                                      
       $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(customer.Customer.CustomerCountry_id);         // country
@@ -8067,6 +8166,8 @@ function getBookingTime(getTime, bookingStart, Duation) {
             $(this).prev('span').slideDown(150);
           }    
         });// End
+       $('#phonenumber').focusin();
+       $('#phonenumber').focusout();
     });// End
 
     /*=====================================*/
