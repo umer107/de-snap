@@ -7949,9 +7949,11 @@ function getBookingTime(getTime, bookingStart, Duation) {
                 }
                 // Check If Opprtunity Exists
                 if(parsed.Customer.OpportunityStatus == '1')
-                {
-                  var opportunityId = parsed.Customer.Opportunity.OpportunityId;
-                  window.location.href = '/opportunitydetails/'+opportunityId;
+                { 
+                  //var opportunityId = parsed.Customer.Opportunity.OpportunityId;
+                  //window.location.href = '/opportunitydetails/'+opportunityId;
+                  var opportunityId = parsed.Customer.Customer.Customer_id;
+                  window.location.href = '/customerdetails/'+opportunityId;
                 }
                 else if(parsed.Customer.LeadStatus == '1')
                 { popuLateLead(parsed.Customer) }
