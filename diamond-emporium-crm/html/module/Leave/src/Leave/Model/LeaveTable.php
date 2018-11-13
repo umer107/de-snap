@@ -451,7 +451,13 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                             //--------------------------------------------------------------------------------------------------//
                             
                             if(!empty($filter['lead_status'])) {
-                               $select->where(array('l.lead_status = ?' =>  $lead_status));
+                                
+                                if($lead_status == "Closed")
+                                {
+                                    $lead_status = "Closed Lost";
+                                }
+                                
+                                $select->where(array('l.lead_status = ?' =>  $lead_status));
                             }
                             if(!empty($filter['referral'])) {
                                //$select->where(array('l.referral = ?' =>  $referral));
