@@ -24,7 +24,8 @@ class LeadForm extends Form {
 			$objUsersTable = $objServiceManager->get('Customer\Model\UsersTable');
 			$objLeadsTable = $objServiceManager->get('Customer\Model\LeadsTable');
 			$objHowHeardTypesTable = $objServiceManager->get('Customer\Model\HowHeardTypesTable');
-				
+			$objCountryTable = $objServiceManager->get('Customer\Model\CountryTable');
+			
 			$this->setAttributes(array('name' => 'frm_lead', 'action' => '', 'method' => 'post'));
 			
 			$lead_id = new \Zend\Form\Element\Hidden('lead_id');
@@ -37,7 +38,7 @@ class LeadForm extends Form {
 			
 			$title = new \Zend\Form\Element\Select('title');
 			$title->setLabel('Title');
-			$title->setAttributes(array('id' => 'title', 'options' => array('' => 'Select', 'Mr' => 'Mr', 'Ms' => 'Ms', 'Mrs' => 'Mrs', 'Miss' => 'Miss'), 'class' => 'width60p dropdown'));
+			$title->setAttributes(array('id' => 'title', 'options' => array_merge(array('' => 'Select'), $config['titles']), 'class' => 'width60p dropdown'));
 			$this->add($title);
 			
 			$gender = new \Zend\Form\Element\Select('gender');
@@ -106,14 +107,14 @@ class LeadForm extends Form {
 			$referred_by_customer->setAttributes(array('id' => 'referred_by_customer'));
 			$this->add($referred_by_customer);
 
-			$postcode = new \Zend\Form\Element\Text('postcode');
-			$postcode->setLabel('Postcode');
-			$postcode->setAttributes(array('id' => 'postcode', 'class' => 'inputTxt width60p', 'maxlength' => 10));
-			$this->add($postcode);
-				
-			$state = new \Zend\Form\Element\Select('state');
+			$country = new \Zend\Form\Element\Select('country_id');
+			$country->setLabel('Country');
+			$country->setAttributes(array('id' => 'country_id', 'options' => $objCountryTable->fetchSelectOptions(), 'class' => 'dropdown width100p editViewField'));
+			$this->add($country);
+							
+			$state = new \Zend\Form\Element\Select('state_id');
 			$state->setLabel('State');
-			$state->setAttributes(array('id' => 'state', 'options' => $objStatesTable->fetchSelectOptions(), 'class' => 'width60p dropdown'));
+			$state->setAttributes(array('id' => 'state_id', 'options' => $objStatesTable->fetchSelectOptions(), 'class' => 'width60p dropdown'));
 			$this->add($state);
 						
 			$preferred_contact = new \Zend\Form\Element\Select('preferred_contact');

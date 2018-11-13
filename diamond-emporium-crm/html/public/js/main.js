@@ -3756,7 +3756,7 @@ setTimeout(function(){
             budget : $('#budgetDropdown').closest('a.selected-text').attr('value'),
             lead_source : $("#CommunicationMethod").text(),
             how_heard : $(".dropdown.referral").find('a.selected-text').attr('howheardid'),   
-            state : $(".dropdown.State").find('a.selected-text').attr('stateid'),
+            state_id : $(".dropdown.State").find('a.selected-text').attr('stateid'),
             lead_owner : $(".assignToDiv a.selected-text").attr("assigneid"),
             looking_for : $("#specify_requirements").val(),
             reference_product : $("#referrenceDropdown").val(),

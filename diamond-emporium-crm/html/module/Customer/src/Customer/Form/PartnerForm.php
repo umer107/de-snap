@@ -19,6 +19,7 @@ class PartnerForm extends Form {
 	private $objProfessionsTable;
 	private $objRingFingerTable;
 	private $objRingSizeTable;
+	private $objCountryTable;
 	
 	public function __construct($objServiceManager) {
 		try{
@@ -32,6 +33,7 @@ class PartnerForm extends Form {
 			$this->objProfessionsTable = $objServiceManager->get('Customer\Model\ProfessionsTable');
 			$this->objRingFingerTable = $objServiceManager->get('Customer\Model\RingFingerTable');
 			$this->objRingSizeTable = $objServiceManager->get('Customer\Model\RingSizeTable');
+			$this->objCountryTable = $objServiceManager->get('Customer\Model\CountryTable');
 			
 			$this->setAttributes(array('name' => 'frm_partner', 'action' => '', 'method' => 'post'));
 			
@@ -111,9 +113,9 @@ class PartnerForm extends Form {
 			$postcode->setAttributes(array('id' => 'partner_postcode', 'class' => 'inputTxt editViewField', 'maxlength' => 6, 'data-numeric' => 'yes'));
 			$this->add($postcode);
 			
-			$country = new \Zend\Form\Element\Text('country_id');
+			$country = new \Zend\Form\Element\Select('country_id');
 			$country->setLabel('Country');
-			$country->setAttributes(array('id' => 'partner_country_id', 'class' => 'inputTxt editViewField', 'value' => 'Australia', 'readonly' => 'readonly'));
+			$country->setAttributes(array('id' => 'partner_country_id', 'options' => $this->objCountryTable->fetchSelectOptions(), 'class' => 'dropdown width100p editViewField'));
 			$this->add($country);
 			
 			$facebook = new \Zend\Form\Element\Text('facebook');

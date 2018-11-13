@@ -109,6 +109,16 @@ class LeadsTable
 	public function saveLead($data)
 	{
      	try{
+            /*
+             * Explicitally null state if it's empty or not there.
+             * This is required because a zero submitted on the form doesn't arrive here as zero, it's missing!
+             */
+     	    foreach (array('state_id') as $key) {
+     	        if (!array_key_exists($key, $data) || empty($data[$key])) {
+     	            $data[$key] = new \Zend\Db\Sql\Expression('NULL');
+     	        }
+     	    }
+
 			$lead_id = (int) $data['lead_id'];
 			if (empty($lead_id)) {
 				$this->tableGateway->insert($data);
@@ -127,7 +137,8 @@ class LeadsTable
 			$select->from(array('l' => 'de_leads'))
 				   ->columns(array('*'))
 				   ->join(array('hh' => 'de_how_heard_lookup'), 'l.how_heard = hh.id', array('how_heard' => 'id', 'how_heard_title' => 'how_heard'), 'left')
-				   ->join(array('s' => 'de_states'), 'l.state = s.id', array('name'), 'left')
+				   ->join(array('s' => 'de_states'), 'l.state_id = s.id', array('state_name' => 'name'), 'left')
+				   ->join(array('co' => 'de_country'), 'l.country_id = co.id', array('country_name' => 'name'), 'left')
 				   ->join(array('p' => 'de_products'), 'l.product = p.id', array('product' => 'id', 'product_title' => 'title'), 'left')
 				   ->join(array('c' => 'de_customers'), 'l.referred_by_customer = c.id', array('customer_id' => 'id', 'cust_first_name' => 'first_name', 'cust_last_name' => 'last_name'), 'left')
 				   ->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('user_id', 'owner_first_name' => 'first_name', 'owner_last_name' => 'last_name'), 'left')

@@ -20,7 +20,6 @@ class CountryTable
 			$select->columns(array('id', 'name'));
 			$result = $this->tableGateway->selectWith($select)->toArray();
 			
-			$options = array(0 => 'Select');
 			foreach($result as $value){
 				$options[$value['id']] = $value['name'];
 			}

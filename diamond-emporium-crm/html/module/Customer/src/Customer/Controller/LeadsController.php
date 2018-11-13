@@ -199,7 +199,7 @@ class LeadsController extends AbstractActionController
 		}
     }
     
-        public function ajaxgetleadsAction(){
+    public function ajaxgetleadsAction(){
     	try{
 			// Write your code here
 			
@@ -311,7 +311,7 @@ class LeadsController extends AbstractActionController
 		}    	
     }
     
-        public function ajaxcustomerfromleadAction(){
+    public function ajaxcustomerfromleadAction(){
     	try {
     		$leadId = $this->getRequest()->getPost('lead_id');
 
@@ -323,12 +323,12 @@ class LeadsController extends AbstractActionController
 	    		
 	    		if (!is_array($customer) || !$customer['id']) {
 	    			/* Customer wasn't found - create it */
-	    			$cols = array('title', 'first_name', 'last_name', 'email', 'mobile', 'postcode');
+	    			$cols = array('title', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'postcode');
 	    			$to_save = array_intersect_key($lead, array_flip($cols));
 	    			/* TODO: state column name is different between lead & customer */
 	    			$to_save['state_id'] = $lead['state'];
-	    			/* TODO: Don't hardcode this */
-	    			$to_save['country_id'] = 'Australia';
+	    			/* TODO: customer country_id should be changed to an actual ID */
+	    			$to_save['country_id'] = $lead['country_name'];
 	    			
 	    			$to_save['created_date'] = date('Y-m-d H:i:s');
 	    			$sm = $this->getServiceLocator();
@@ -348,17 +348,19 @@ class LeadsController extends AbstractActionController
 	    }
     }
     
-        public function leaddetailsAction(){
+    public function leaddetailsAction(){
 	    try{	    	
-	    	$id = $this->params('id');
-			$leadsTable = $this->getServiceLocator()->get('Customer\Model\LeadsTable');
+	        $sm = $this->getServiceLocator();
+
+	        $id = $this->params('id');
+			$leadsTable = $sm->get('Customer\Model\LeadsTable');
 			$leadData = (array)$leadsTable->fetchLeadDetails($id);
 			$leadData['referred_by_name'] = $leadData['cust_first_name'] . ' ' . $leadData['cust_last_name'];
+			$CountryTable = $sm->get('Customer\Model\CountryTable');
 			
 			$leadForm = $this->getServiceLocator()->get('Customer\Form\LeadForm');
 			$leadForm->setData($leadData);
 			
-			$sm = $this->getServiceLocator();
 			$identity = $sm->get('AuthService')->getIdentity();
 			
 			$config = $this->getServiceLocator()->get('Config');
@@ -372,6 +374,7 @@ class LeadsController extends AbstractActionController
 			return array('form' => $leadForm, 'recordsPerPage' => $config['recordsPerPage'],
 						 'identity' => $identity, 'leadData' => $leadData,
 						 'usersList' => $usersList,
+			             'countryLookup' => $CountryTable->fetchSelectOptions(),
 						 'newCustomerForm' => $newCustomerForm, 'ownerOptions' => $ownerOptions);
 			
 	    }catch(Exception $e){
@@ -440,9 +443,21 @@ class LeadsController extends AbstractActionController
     		$sm = $this->getServiceLocator();
 
     		$form = $sm->get('Customer\Form\LeadForm');
-    		$customersTable = $sm->get('Customer\Model\CustomersTable');
-    		$customerData = $customersTable->fetchCustomerdetails($customerId);
-    		$form->setData($customerData);
+    		if ($customerId > 0) {
+        		$customersTable = $sm->get('Customer\Model\CustomersTable');
+        		$customerData = $customersTable->fetchCustomerdetails($customerId);
+        		
+        		/*
+        		 * Check to see if this customer (or their partner) have any 'Closed Won'
+        		 * opportunities.
+        		 */
+
+        		$opportunitiesTable = $sm->get('Opportunities\Model\OpportunitiesTable');
+        		if ($opportunitiesTable->anyWonOpportunitysForUser($customerId)) {
+        		    $customerData['how_heard'] = 5; /* Returning Customer */
+        		}
+        		$form->setData($customerData);
+    		}
 
     		$usersTable = $sm->get('Customer\Model\UsersTable');
     		$ownerOptions = $usersTable->fetchSelectOptions();
@@ -461,7 +476,7 @@ class LeadsController extends AbstractActionController
 	    }
     }
     
-        public function convertleadAction(){
+    public function convertleadAction(){
 		try{	    	
 	    	$request = $this->getRequest();
 	    	$customersTable = $this->getServiceLocator()->get('Customer\Model\CustomersTable');
@@ -694,7 +709,7 @@ class LeadsController extends AbstractActionController
                                 if(isset($data['lead_id']) && !empty($data['lead_id'])){
 					$data['updated_by'] = $identity['user_id'];
 					//$data['updated_date'] = date('Y-m-d H:i:s');
-                                          $data['updated_date'] = date('Y-m-d');
+                                        $data['updated_date'] = date('Y-m-d');
                                 }else{
                                         
 					$data['created_by'] = $identity['user_id'];

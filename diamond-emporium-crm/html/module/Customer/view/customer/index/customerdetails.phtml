@@ -207,7 +207,7 @@
                 <div class="formRow">
                   <label class="labelControll"><?php echo $this->form->get('country_id')->getLabel(); ?></label>
                   <div class="inputDiv"><?php echo $this->formElement($this->form->get('country_id')); ?>
-                    <p class="inputVal"><?php echo $this->customerData['country_id'] ?></p>
+                    <p class="inputVal"><?php echo $this->customerData['country_name'] ?></p>
                   </div>
                 </div>
               </div>
@@ -445,7 +445,7 @@
                 <div class="formRow">
                   <label class="labelControll"><?php echo $this->partnerForm->get('country_id')->getLabel(); ?></label>
                   <div class="inputDiv"><?php echo $this->formElement($this->partnerForm->get('country_id')); ?>
-                    <p class="inputVal" id="country_id_text"><?php echo $this->partnerData['country_id'] ?></p>
+                    <p class="inputVal" id="country_id_text"><?php echo $this->partnerData['country_name'] ?></p>
                   </div>
                 </div>
               </div>

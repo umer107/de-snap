@@ -3,8 +3,8 @@
     <div class="lightBoxTitle">Customer Lookup <a href="javascript:;" class="closePopup" title="Close">X</a></div>
     <div class="lightBoxContent fl width100p lookupPopup padB105">
       <div class="mainSearch">
-        <input name="lookupsrc" id="lookupsrc" type="text" class="searchInput" placeholder="Search..">
-        <input type="button" class="inputGo" value="Go!" onclick="customersLookup(<?php echo $this->recordsPerPage; ?>, '<?php echo $lookupCustomerId; ?>', '<?php echo $lookupCustomerName; ?>', $('#lookupsrc').val());" id="customerLookupSearch"><span id="searchResultsHintjqxCustomers" style="color:red;"></span>
+        <input name="cust_lookupsrc" id="cust_lookupsrc" type="text" class="searchInput" placeholder="Search..">
+        <input type="button" class="inputGo" value="Go!" onclick="customersLookup(<?php echo $this->recordsPerPage; ?>, '<?php echo $lookupCustomerId; ?>', '<?php echo $lookupCustomerName; ?>', $('#cust_lookupsrc').val());" id="customerLookupSearch"><span id="searchResultsHintjqxCustomers" style="color:red;"></span>
       </div>
 	  <?php if($newCustomerForm){ ?>
 	  <a class="popupLink lightBoxClick fr" data-popup="new_customer_form" href="javascript:;">New Customer</a>

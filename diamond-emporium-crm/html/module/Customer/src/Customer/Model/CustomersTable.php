@@ -169,6 +169,7 @@ class CustomersTable
 			$select->from(array('c' => 'de_customers'))
 				   ->columns(array('*', 'fullname' => $fullname))
 				   ->join(array('s' => 'de_states'), 'c.state_id = s.id', array('state_name' => 'name', 'state_code'), 'left')
+				   ->join(array('co' => 'de_country'), 'c.country_id = co.id', array('country_id' => 'id', 'country_name' => 'name', 'country_code'), 'left')
 				   ->join(array('p' => 'de_customers'), 'c.partner_id = p.id', array('partner_id' => 'id'), 'left')
 				   ->join(array('e' => 'de_ethnicity'), 'c.ethnicity = e.id', array('ethnicity_text' => 'ethnicity'), 'left')
 				   ->join(array('pr' => 'de_professions'), 'c.profession = pr.id', array('profession_text' => 'profession'), 'left')
@@ -463,7 +464,6 @@ class CustomersTable
 			//echo $select->getSqlString();exit;
 			$counter = $this->tableGateway->selectWith($select);
 			
-                        //$count = count($counter);
 			return count($counter);
 		}catch(\Exception $e){
 			\De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );

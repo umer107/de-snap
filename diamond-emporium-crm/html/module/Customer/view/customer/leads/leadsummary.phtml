@@ -215,19 +215,20 @@
 			  <div class="inputDiv displayHide"><?php echo $this->formElement($this->form->get('referred_by_name')); ?><a class="cmnBtn blueBtn lightBoxClick" href="javascript:;" data-popup="customerlookup" onclick="customersLookup(<?php echo $recordsPerPage; ?>, 'referred_by_customer', 'referred_by_name');">Lookup</a></div>
 			<p class="hiddenUnqValues" id="referred_by_name_lead"><?php echo $leadData['referred_by_name']; ?></p>
 			</div>
+              <div class="formRow">
+                <label class="labelControll"><?php echo $this->form->get('country_id')->getLabel(); ?><span class="asterisk">*</span></label>
+                <div class="inputDiv displayHide">
+					<?php echo $this->formElement($this->form->get('country_id')); ?>
+                </div>
+                <p class="hiddenUnqValues" id="country_lead"><?php echo $leadData['country_name']; ?>
+                </p>
+              </div>
 			<div class="formRow">
-			  <label class="labelControll"><?php echo $this->form->get('postcode')->getLabel(); ?></label>
+			  <label class="labelControll"><?php echo $this->form->get('state_id')->getLabel(); ?><span class="asterisk">*</span></label>
 			  <div class="inputDiv displayHide">
-				<?php echo $this->formElement($this->form->get('postcode')); ?>
+				<?php echo $this->formElement($this->form->get('state_id')); ?>
 			  </div>
-			  <p class="hiddenUnqValues" id="postcode_lead"><?php echo $leadData['postcode']; ?></p>
-			</div>
-			<div class="formRow">
-			  <label class="labelControll"><?php echo $this->form->get('state')->getLabel(); ?><span class="asterisk">*</span></label>
-			  <div class="inputDiv displayHide">
-				<?php echo $this->formElement($this->form->get('state')); ?>
-			  </div>
-			  <p class="hiddenUnqValues" id="state_lead"><?php echo $leadData['name']; ?></p>
+			  <p class="hiddenUnqValues" id="state_lead"><?php echo $leadData['state_name']; ?></p>
 			</div>
 			
 			

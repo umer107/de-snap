@@ -92,14 +92,14 @@
 				onclick="customersLookup(<?php echo $recordsPerPage; ?>, 'referred_by_customer', 'referred_by_name');">Lookup</a>
 		</div>
 	</div>
+    <div class="formRow">
+      <label class="labelControll"><?php echo $this->form->get('country_id')->getLabel(); ?><span class="asterisk">*</span></label>
+      <div class="inputDiv"><?php echo $this->formElement($this->form->get('country_id')); ?></div>
+    </div>
 	<div class="formRow">
-		<label class="labelControll"><?php echo $this->form->get('postcode')->getLabel(); ?></label>
-		<div class="inputDiv"><?php echo $this->formElement($this->form->get('postcode')); ?></div>
-	</div>
-	<div class="formRow">
-		<label class="labelControll"><?php echo $this->form->get('state')->getLabel(); ?><span
+		<label class="labelControll"><?php echo $this->form->get('state_id')->getLabel(); ?><span
 			class="asterisk">*</span></label>
-		<div class="inputDiv"><?php echo $this->formElement($this->form->get('state')); ?></div>
+		<div class="inputDiv"><?php echo $this->formElement($this->form->get('state_id')); ?></div>
 	</div>
 	<div class="formRow">
 		<label class="labelControll"><?php echo $this->form->get('lead_source')->getLabel(); ?><span

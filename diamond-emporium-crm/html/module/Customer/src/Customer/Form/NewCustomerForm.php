@@ -14,12 +14,14 @@ use Zend\Form\Form;
 class NewCustomerForm extends Form {
 	
 	private $objStatesTable;
+	private $objCountryTable;
 	
 	public function __construct($objServiceManager) {
 		try{
 			parent::__construct ( null );
 			
 			$this->objStatesTable = $objServiceManager->get('Customer\Model\StatesTable');
+			$this->objCountryTable = $objServiceManager->get('Customer\Model\CountryTable');
 			
 			$config = $objServiceManager->get('Config');
 			
@@ -74,9 +76,9 @@ class NewCustomerForm extends Form {
 			$postcode->setAttributes(array('id' => 'customer_postcode', 'class' => 'inputTxt', 'maxlength' => 6, 'data-numeric' => 'yes'));
 			$this->add($postcode);
 			
-			$country_id = new \Zend\Form\Element\Text('country_id');
+			$country_id = new \Zend\Form\Element\Select('country_id');
 			$country_id->setLabel('Country');
-			$country_id->setAttributes(array('id' => 'customer_country_id', 'class' => 'inputTxt', 'value' => 'Australia', 'readonly' => 'readonly'));
+			$country_id->setAttributes(array('id' => 'country_id', 'options' => $this->objCountryTable->fetchSelectOptions(), 'class' => 'dropdown width100p editViewField'));
 			$this->add($country_id);
 			
 			$state = new \Zend\Form\Element\Select('state_id');
