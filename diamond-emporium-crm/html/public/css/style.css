@@ -83,6 +83,7 @@ nav.mainMenu ul li.notMainLink a{border-bottom:none}
 nav.mainMenu ul li a > span{ background-color: #0e79bb;float: right; }
 nav.mainMenu ul li:hover,nav.mainMenu ul li.current{background-color:#1e2228; border-left:#1cb7f4 solid 5px;}
 nav.mainMenu ul li:hover a,nav.mainMenu ul li.current a{font-weight:bold; color:#fff}
+nav.mainMenu ul li.current a i{color: #1cb7f4}
 
 .contentArea{float:left; width:100%; padding:30px 30px 0; position:relative; background-color:#F6F6F6}
 .contentArea .cmnHeader{border-bottom:#e6e6e6 solid 1px; padding:10px 0; font-size:18px;font-weight:700}
