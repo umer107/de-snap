@@ -8109,8 +8109,12 @@ function getBookingTime(getTime, bookingStart, Duation) {
         {
           var bookingDate = filteredArray[i].create_date;                               // Booking Date
           var formattedDate = moment(bookingDate).add(0, 'M').format('DD.MM.YYYY');     // Formatted Date
-          var productName = filteredArray[i].product;                                   // Product Name
-          var productIconName = productIcons(productName);                              // Get Icon
+          var productName = filteredArray[i].product_title;
+          if(productName ==  null)
+          {productName = ''}                                                            // Product Name
+          var productIconName = productIcons(productName); 
+          if(productName == '')
+          {productIconName = productIconName + 'opacity0'}                                   // Get Icon
           var getFullObj = JSON.stringify(filteredArray[i]);
           var mobileNumber = '';
           if(filteredArray[i].mobile == null)
@@ -8123,7 +8127,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
               setHtml += "<h1 class='fs-15 lh-22'>"+filteredArray[i].name+"</h1>"; // Name
               setHtml += "<div>";
                 setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Created:</label><span>"+formattedDate+"</span></div>"; // Created
-                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Product:</label><span></span></div>"; // Product
+                setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Product:</label><span>"+productName+"</span></div>"; // Product
                 //setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Product:</label><span>"+filteredArray[i].product+"</span></div>"; // Product
                 setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Mobile:</label><span>"+filteredArray[i].mobile+"</span></div>"; // Mobile
                 setHtml += "<div class='half lh-16'><label class='d-i-b color-darkBlue'>Email:</label><span>"+filteredArray[i].email+"</span></div>"; // Email
@@ -8165,7 +8169,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
       }
       else if(productName == "Eternity Band")
       {
-        iconName = 'icon-bracelets';
+        iconName = 'icon-diamond';
       }
       else if(productName == "Loose Diamond")
       {
@@ -8177,7 +8181,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
       }
       else if(productName == "Pendant")
       {
-        iconName = 'icon-necklaces';
+        iconName = 'icon-pendant';
       }
       else if(productName == "Timepiece")
       {
@@ -8185,11 +8189,11 @@ function getBookingTime(getTime, bookingStart, Duation) {
       }
       else if(productName == "Custom Jewellery")
       {
-        iconName = 'icon-necklaces';
+        iconName = 'icon-diamond';
       }
       else if(productName == "Loose Gemstone")
       {
-        iconName = 'icon-necklaces';
+        iconName = 'icon-diamond';
       }
       else
       { iconName = 'icon-diamond' }
