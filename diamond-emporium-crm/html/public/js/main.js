@@ -4624,6 +4624,8 @@ setTimeout(function(){
                   $('.showMessage div').html(setMessage);
                   if(getArrayLength > 0)
                   {
+                    $('.dropdown.assignToDiv').find('a.selected-text').attr('value',"All");
+                    $('.dropdown.assignToDiv').find('a.selected-text span').html('*Assign to');
                     $('.showMessage').addClass('topShow');
                       setTimeout(function(){ 
                         $('.showMessage').removeClass('topShow');
