@@ -690,7 +690,7 @@ a.btn-cancelCloseLead { color: #5D5D5D; float: left; }
 .roomsContainer .labelContainer[roomnumber='2']{}
 .roomsContainer .labelContainer[roomnumber='3']{}
 .roomsContainer .labelContainer[roomnumber='4']{}
-.calendarLoad{ background: white; padding: 24px 25px 24px 60px;    width: 1662px; }
+.calendarLoad{ background: white; padding: 24px 25px 24px 42px;    width: 1662px; }
 .calendarLoad .addBookingLink{}
 /*.calendarLoad .cancelNewBooking,.calendarLoad .saveNewBooking {display: none;}*/
 .calendarLoad .cancelNewBooking{display: none;}
