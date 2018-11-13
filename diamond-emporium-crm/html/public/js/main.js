@@ -7972,10 +7972,14 @@ function getBookingTime(getTime, bookingStart, Duation) {
        }
        //budget
        $('.dropdown.budget .dropdownOptions li a[value="'+lead.Lead.LeadBudget+'"]').trigger('click');
+       if(lead.Lead.LeadReference == null)
+        {lead.Lead.LeadReference = ''}
+       $("#referrenceDropdown").val(lead.Lead.LeadReference);
        setTimeout(function(){ 
           $('.additional-details .dropdown.assignToDiv .dropdownOptions li a[id="'+lead.Lead.LeadOwnerId+'"]').click();
           $('.additional-details .dropdown.assignToDiv .dropdownOptions').hide();
           $('.additional-details .dropdown.assignToDiv .dropdownOptions .btn-skip2').click();
+          $('.dropdown.assignToDiv').prev('span').slideDown(150);
           $('.dropdownOptions').hide();
        }, 1000)
 
@@ -7984,6 +7988,14 @@ function getBookingTime(getTime, bookingStart, Duation) {
           if($(this).val().length > 0)
           {
             $(this).prev('span').slideDown(150);
+          }    
+        });// End
+
+       $('.additional-details input').each( function () {
+          if($(this).val().length > 0)
+          {
+            $(this).prev('span').slideDown(150);
+            $(this).prev('a').prev('span').slideDown(150);
           }    
         });// End
 
