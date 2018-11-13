@@ -452,8 +452,6 @@ class DashboardController extends AbstractActionController
             echo json_encode($leadsArr);
             exit;
             
-                    
-           
        }catch (Exception $e) {
             \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
         }

@@ -693,11 +693,13 @@ class LeadsController extends AbstractActionController
                                 
                                 if(isset($data['lead_id']) && !empty($data['lead_id'])){
 					$data['updated_by'] = $identity['user_id'];
-					$data['updated_date'] = date('Y-m-d H:i:s');
+					//$data['updated_date'] = date('Y-m-d H:i:s');
+                                          $data['updated_date'] = date('Y-m-d');
                                 }else{
                                         
 					$data['created_by'] = $identity['user_id'];
-					$data['created_date'] = date('Y-m-d H:i:s');	
+					//$data['created_date'] = date('Y-m-d H:i:s');	
+                                        $data['created_date'] = date('Y-m-d');	
 					$data['lead_status'] = 'Open';				
 				}       
                                 
