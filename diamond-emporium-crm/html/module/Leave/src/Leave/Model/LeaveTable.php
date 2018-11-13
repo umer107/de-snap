@@ -679,9 +679,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
            
            
            //Start Add Next in Line in ReturnResult
-           $array_merge_dashboard_nextInLine = array();   
-           $array_merge_dashboard_nextInLine = array_merge($groups1,$groupsNextInLine);
-           $array_merge_dashboard['NextInLineCalculate']['items'] = $array_merge_dashboard_nextInLine;
+           //$array_merge_dashboard_nextInLine = array();   
+           //$array_merge_dashboard_nextInLine = array_merge($groups1,$groupsNextInLine);
+           //$array_merge_dashboard['NextInLineCalculate']['items'] = $array_merge_dashboard_nextInLine;
            
            
            //End Add Next in Line in ReturnResult
@@ -892,8 +892,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $return_array = array();
                 foreach ($result as $key => $value)
                 {
-                    //&& $value['user_id'] == $customer_id
-                   if(!empty($value['id']) && $value['opportunity_status'] == 'Open')
+                    //
+                   if(!empty($value['id']) && $value['opportunity_status'] == 'Open'&& $value['user_id'] == $customer_id)
                    {
                        //Its an opportunity
                        $return_array['Customer']['OpportunityStatus'] = 1;
@@ -2270,9 +2270,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'budget'
            ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
-       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2295,9 +2295,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'budget'
            ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
-       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2320,9 +2320,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'budget'
            ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
-       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2345,9 +2345,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'budget'
            ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
-       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2370,9 +2370,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'budget'
            ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
-       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2395,9 +2395,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'budget'
            ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
-       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2420,9 +2420,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'budget'
            ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
-       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
@@ -2445,9 +2445,9 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
        $select_detail = new \Zend\Db\Sql\Select(); 
        $select_detail->from(array('l' => 'de_leads')) 
            ->columns(array( 
-              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'lead_budget'
+              'Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state','LeadSource' =>  'lead_source','user_id' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status'  ,'lead_assign_to' => 'lead_owner' , 'LeadBudget' => 'budget'
            ))->join(array('u' => 'de_users'), 'l.lead_owner = u.user_id', array('image' , 'user_name' => $fullname), 'left');
-       $select_detail->where(array('l.lead_budget = ?' =>  $budget));
+       $select_detail->where(array('l.budget = ?' =>  $budget));
        $data_detail = $this->executeQuery($select_detail);               
        $result_detail = $data_detail->toArray(); 
             
