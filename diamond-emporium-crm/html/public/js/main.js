@@ -1070,6 +1070,11 @@ $(document).ready(function () {
 
     $(document).on('click', '.mainMenu a.calendarLink', function () {
 
+        $('.basicInfo').html(window.getBasicInfo);
+        $('.additional-details').html(window.getAdditionalInfo);
+        setTimeout(function(){ 
+            $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
+         }, 3000);
         getCustomerByName();
         $('.dashboard-header, .leadsContainer, .leadDeailContainer, .newLead, .leavesContainer, .newLeaveContainer').addClass('hide');
 
@@ -2284,8 +2289,10 @@ $('section.rightCol').on('scroll', function(event){
                   $('.additional-details .requirements').val(parsed[0].LeadLookingFor);
                   $('.additional-details .instructions').val(parsed[0].LeadSpecialInstructions);
                   $('.additional-details .ReferenceProduct').val(parsed[0].reference_product);
-                  $('#budgetDropdown').closest('a.selected-text').attr('value',parsed[0].LeadBudget);                  
-                  $('.initialScreen').removeClass('hideshow');
+                  $('#budgetDropdown').closest('a.selected-text').attr('value',parsed[0].LeadBudget); 
+                  debugger
+                  $('#referrenceDropdown').val(parsed[0].LeadReference);                 
+                  $('.initialScreen').removeClass('hideshow'); 
                 }
             }); 
     }
@@ -3646,7 +3653,32 @@ setTimeout(function(){
 
     // Submit Form
 
-    function getValuesFromForm()
+    function getCustomerValues()
+    {
+        var preferredMethod = $('.dropdown.preferredMethod').find('.selected-text').attr('value');
+        var preferredMethodOther = $("#perferrefDropdownOther").val();
+        var preferredMethodVal = '';
+        if ( preferredMethod == "Other"){ preferredMethodVal = preferredMethodOther; }
+        else if(preferredMethod = 'All'){ preferredMethodVal = '' }
+        else { preferredMethodVal = preferredMethod; }
+
+        return {
+            id : 0,            
+            title : $('.title a.selected-text').attr('value'),
+            gender : $('.Gender a.selected-text').attr('value'),  
+            first_name : $("#first_name").val(),
+            last_name : $("#last_name").val(),
+            email : $("#email").val(),
+            mobile : $("#phonenumber").val(),
+            address1 : $("#fullAddress").val(),
+            state_id : $(".dropdown.State").find('a.selected-text').attr('stateid'),
+            country_id : $('#countryName').attr('value'),
+            source : $("#CommunicationMethod").text(),
+            contact_method : preferredMethodVal
+        };
+        
+    }
+    function getLeadValues()
     {
         var preferredMethod = $('.dropdown.preferredMethod').find('.selected-text').attr('value');
         var preferredMethodOther = $("#perferrefDropdownOther").val();
@@ -3683,9 +3715,8 @@ setTimeout(function(){
             special_instructions : $("#specialinstructions").val()
         };
 
-        
     }
-    function getValuesFromFormAppointment()
+    function getAppointmentValues()
     {
         var referralMethod = $("#referralDropdown").text();
         var referralMethodOther = $("#referralDropdownOther").val();
@@ -3740,31 +3771,7 @@ setTimeout(function(){
         
     }
 
-    function getCustomerValues()
-    {
-        var preferredMethod = $('.dropdown.preferredMethod').find('.selected-text').attr('value');
-        var preferredMethodOther = $("#perferrefDropdownOther").val();
-        var preferredMethodVal = '';
-        if ( preferredMethod == "Other"){ preferredMethodVal = preferredMethodOther; }
-        else if(preferredMethod = 'All'){ preferredMethodVal = '' }
-        else { preferredMethodVal = preferredMethod; }
 
-        return {
-            id : 0,            
-            title : $('.title a.selected-text').attr('value'),
-            gender : $('.Gender a.selected-text').attr('value'),  
-            first_name : $("#first_name").val(),
-            last_name : $("#last_name").val(),
-            email : $("#email").val(),
-            mobile : $("#phonenumber").val(),
-            address1 : $("#fullAddress").val(),
-            state_id : $(".dropdown.State").find('a.selected-text').attr('stateid'),
-            country_id : $('#countryName').attr('value'),
-            source : $("#CommunicationMethod").text(),
-            contact_method : preferredMethodVal
-        };
-        
-    }
 
   
     // Save New Booking
@@ -3840,9 +3847,9 @@ setTimeout(function(){
             return false;
           }
         }
-        var customerValues = getCustomerValues();
-        var dataLead = getValuesFromForm();
-        var dataAppointment = getValuesFromFormAppointment();
+        var dataCustomer = getCustomerValues();                   // Customer form values
+        var dataLead = getLeadValues();                           // Lead form values
+        var dataAppointment = getAppointmentValues();             // Appointment form values
         if(customerId != 0)
           { dataLead.customer_id = customerId }
         
@@ -3852,7 +3859,7 @@ setTimeout(function(){
             $.ajax({
                   type: "POST",
                   url: "/ajaxCreateCustomerDashboard",
-                  data: customerValues, 
+                  data: dataCustomer, 
                   success: function (data) { // return  customerID
                       var parsed = '';          
                       try{
@@ -3978,7 +3985,7 @@ setTimeout(function(){
                 $.ajax({
                       type: "POST",
                       url: "/ajaxCreateCustomerDashboard",
-                      data: customerValues, 
+                      data: dataCustomer, 
                       success: function (data) { // return  customerID
                           var parsed = '';          
                           try{
