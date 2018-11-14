@@ -34,13 +34,13 @@ $attrproduct = array(
 );
 //Select Referral
 $selectreferral = array(
-    array("Google","/images/ic-google.png"),
-    array("Word of mouth","/images/ic_wordMouth.png",),
-    array("Previous client","/images/ic_pClient.png",),
-    array("Walk In","/images/ic_walkIn.png",),
-    array("Facebook","/images/ic_facebook.png",),
-    array("Instagram","/images/ic_insta.png",),
-    array("Other","/images/ic_other.png")
+    array("Google","/images/ic-google.png","1"),
+    array("Word of mouth","/images/ic_wordMouth.png","2"),
+    array("Previous client","/images/ic_pClient.png","11"),
+    array("Walk In","/images/ic_walkIn.png","12"),
+    array("Facebook","/images/ic_facebook.png","3"),
+    array("Instagram","/images/ic_insta.png","8"),
+    array("Other","/images/ic_other.png","10")
  );
 // Assign To
 
@@ -395,7 +395,11 @@ echo '<div class="relative pull-left">';
             echo '<li>';
              // echo $this->formRow($title);
             echo    '<ul class="dropdownOptions bg-white absolute full-width" style="display:none;">';
-
+                        foreach($selectreferral as $referral){
+                            echo '<li>';
+                                echo "<a href='javascript:;' howheardid='$referral[2]' value='$referral[0]'><span class='ref-Img'><img class='pull-left' src=' $referral[1]'></span> $referral[0]</a>";                               
+                            echo '</li>';
+                        }
             echo    '</ul>';
 
             echo '</li>';
