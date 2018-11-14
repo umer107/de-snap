@@ -89,7 +89,7 @@ class DashboardController extends AbstractActionController
              
              if($request->isPost()){
                             
-		            $posts = $request->getPost()->toArray();
+		$posts = $request->getPost()->toArray();
                
                 $posts['lead_owner_name'] =  $lead_owner_name;
                 $posts['lead_owner'] = $lead_owner;
@@ -621,6 +621,25 @@ class DashboardController extends AbstractActionController
        
    }
    
+    //EmailExistOrNot
+    public function ajaxGetCustomerAgainstEmailAction()
+    {
+                  try{
+                      $sm = $this->getServiceLocator();
+		      $identity = $sm->get('AuthService')->getIdentity();
+                      $config = $this->getServiceLocator()->get('Config');
+                      $params = $this->getRequest()->getQuery()->toArray();
+                      $objUserTable = $sm->get('Leave\Model\LeaveTable');
+                      $leadsArr = $objUserTable->fetchUserEmailAgainstCustomer($params);
+                     
+                      echo json_encode($leadsArr);
+                      exit;
+      }
+      catch (Exception $e)
+      {
+          \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+      }
+    }
    
    
    public function addAction()

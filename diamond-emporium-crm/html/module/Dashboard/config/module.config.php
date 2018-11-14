@@ -318,6 +318,16 @@ return array(
                             ),
                         ),
                     ),
+               'ajaxGetCustomerAgainstEmail' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => 'ajaxGetCustomerAgainstEmail',
+                            'defaults' => array(
+                                'controller' => 'Dashboard\Controller\Dashboard',
+                                'action'     => 'ajaxGetCustomerAgainstEmail',
+                            ),
+                        ),
+                    ),
             
             
             
