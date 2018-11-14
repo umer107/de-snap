@@ -3709,12 +3709,17 @@ setTimeout(function(){
               var setMessage = getUser + ' is on leave in these days!';
             }
 
-            
-            $('.showMessage div').html(setMessage);
-            $('.showMessage').addClass('topShow');
-              setTimeout(function(){ 
-                $('.showMessage').removeClass('topShow');
-            }, 5000); 
+            //$('.showMessage').addClass('topShow');
+            //  setTimeout(function(){ 
+            //    $('.showMessage').removeClass('topShow');
+            //}, 5000); 
+
+            $('.dialogeBox.leaveCheck .boxmessage').html(setMessage);
+            $('.dialogeBox.leaveCheck').removeClass('hide');
+                setTimeout(function(){ 
+                  $('.dialogeBox.leaveCheck').addClass('hide');
+            }, 3000); 
+
             $('.btn-saveDetailsLeave').addClass('hide');
           }
           else
@@ -4688,15 +4693,15 @@ setTimeout(function(){
                     setDays = weeklyDatesArray[0] + ', ' + weeklyDatesArray[1] + ', ' + weeklyDatesArray[2] + ', ' + weeklyDatesArray[3] + ', ' + weeklyDatesArray[4] + ' & ' + weeklyDatesArray[5];
                   }
                   var setMessage = getAgent + ' is on leave on ' + setDays+'.';
-                  $('.showMessage div').html(setMessage);
+                  $('.dialogeBox.leaveCheck .boxmessage').html(setMessage);
                   if(getArrayLength > 0)
                   {
                     $('.dropdown.assignToDiv').find('a.selected-text').attr('value',"All");
                     $('.dropdown.assignToDiv').find('a.selected-text span').html('*Assign to');
-                    $('.showMessage').addClass('topShow');
+                    $('.dialogeBox.leaveCheck').removeClass('hide');
                       setTimeout(function(){ 
-                        $('.showMessage').removeClass('topShow');
-                    }, 5000); 
+                        $('.dialogeBox.leaveCheck').addClass('hide');
+                    }, 3000); 
                   }   
               }
             }); 
@@ -6450,7 +6455,7 @@ $(document).on('click', function(event){
     if (!container.is(event.target) &&            
         container.has(event.target).length === 0)
         {
-            return false
+            
         }
 });// End
 
