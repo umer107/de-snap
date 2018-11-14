@@ -8271,6 +8271,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
             $(this).prev('span').slideDown(150);
           }    
         });// End
+       $('#email').addClass('popuplatedemail');
        $('#phonenumber').focusin();
        $('#phonenumber').focusout();
     });// End
