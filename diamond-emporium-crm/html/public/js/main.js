@@ -8692,7 +8692,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
       $('.dialogeBox.creatingCustomer').addClass('hide');
       //$('.ShowPopup').removeClass('topShow');
       var customer = window.createNewCustomerFromEmail;
-      debugger
+
       $("#customerId").attr('customerId',customer.Customer_id);
 
       $("#searchResults").html(' ');
