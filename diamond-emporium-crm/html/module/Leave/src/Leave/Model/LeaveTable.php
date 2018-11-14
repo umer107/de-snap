@@ -2533,46 +2533,73 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                         ->join(array('s' => 'de_states'), 'c.state_id = s.id', array('CustomerStateName' => 'name','CustomerStateCode' =>'state_code'), 'left')   
                         ->join(array('l' => 'de_leads'), 'c.id = l.customer_id', array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state_id','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status', 'LeadBudget' => 'budget', 'LeadSpecialInstruction' => 'special_instructions'), 'left');   
                 $select->where(array('c.email = ?' => $filter['email']));  
-                $select->where->notEqualTo('l.lead_status', $lead_status_Open);
-                $select->where->notEqualTo('l.lead_status', $lead_status_Opportunity);
+                //$select->where->notEqualTo('l.lead_status', $lead_status_Open);
+                //$select->where->notEqualTo('l.lead_status', $lead_status_Opportunity);
                 //$select->where->isNotNull('l.customer_id');    
                 $select->order("c.id desc");
                 $data = $this->executeQuery($select);      
                 $result = $data->toArray(); 
-                
                 $counter = count($result);
-                
+                $return_array_leads = array();    
                 if($counter > 0)
                 {
-                        foreach($result as $item)
+                    foreach ($result as $item)
+                    {
+                        if($item['LeadStatus'] == 'Open' || $item['LeadStatus'] == 'To Opportunity')
                         {
-                                $return_array['IsCustomerData'] = 1;
-                                $return_array['Customer']['Customer_id']  = $item['Customer_id'];
-                                $return_array['Customer']['CustomerTitle']  = $item['CustomerTitle'];
-                                $return_array['Customer']['CustomerGender']  = $item['CustomerGender'];
-                                $return_array['Customer']['CustomerFirst_name']  = $item['CustomerFirst_name'];
-                                $return_array['Customer']['CustomerLast_name']  = $item['CustomerLast_name'];
-                                $return_array['Customer']['CustomerEmail']  = $item['CustomerEmail'];
-                                $return_array['Customer']['CustomerMobile']  = $item['CustomerMobile'];
-                                $return_array['Customer']['CustomerCountry_id']  = $item['CustomerCountry_id'];
-                                $return_array['Customer']['CustomerState_id']  = $item['CustomerState_id'];
-                                $return_array['Customer']['CustomerStateName']  = $item['CustomerStateName'];
-                                $return_array['Customer']['CustomerStateCode']  = $item['CustomerStateCode'];
-                                $return_array['Customer']['CustomerAddress']  = $item['CustomerAddress'];
-                                
-                                
-                                return $return_array;
-                    
+                            $return_array['IsCustomerData'] = 0;
+                             return $return_array;
                         }
+                        else
+                        {
+                                $return_array_leads['Customer']['Customer_id']  = $item['Customer_id'];
+                                $return_array_leads['Customer']['CustomerTitle']  = $item['CustomerTitle'];
+                                $return_array_leads['Customer']['CustomerGender']  = $item['CustomerGender'];
+                                $return_array_leads['Customer']['CustomerFirst_name']  = $item['CustomerFirst_name'];
+                                $return_array_leads['Customer']['CustomerLast_name']  = $item['CustomerLast_name'];
+                                $return_array_leads['Customer']['CustomerEmail']  = $item['CustomerEmail'];
+                                $return_array_leads['Customer']['CustomerMobile']  = $item['CustomerMobile'];
+                                $return_array_leads['Customer']['CustomerCountry_id']  = $item['CustomerCountry_id'];
+                                $return_array_leads['Customer']['CustomerState_id']  = $item['CustomerState_id'];
+                                $return_array_leads['Customer']['CustomerStateName']  = $item['CustomerStateName'];
+                                $return_array_leads['Customer']['CustomerStateCode']  = $item['CustomerStateCode'];
+                                $return_array_leads['Customer']['CustomerAddress']  = $item['CustomerAddress'];
+                              
+                        }
+                    }
                 }
                 else
                 {
-                    $return_array['IsCustomerData'] = 0;
-                    return $return_array;
+                     $return_array['IsCustomerData'] = 0;
+                     return $return_array;
                     
                 }
                 
-                
+                $return_array_leads_count = count($return_array_leads);
+                if($return_array_leads_count > 0)
+                {
+                    foreach ($return_array_leads as $item_result)
+                    {
+                        
+                        $return_array['IsCustomerData'] = 1;
+                        $return_array_leads['Customer']['Customer_id']  = $item_result['Customer_id'];
+                        $return_array['Customer']['Customer_id']  = $item_result['Customer_id'];
+                        $return_array['Customer']['CustomerTitle']  = $item_result['CustomerTitle'];
+                        $return_array['Customer']['CustomerGender']  = $item_result['CustomerGender'];
+                        $return_array['Customer']['CustomerFirst_name']  = $item_result['CustomerFirst_name'];
+                        $return_array['Customer']['CustomerLast_name']  = $item_result['CustomerLast_name'];
+                        $return_array['Customer']['CustomerEmail']  = $item_result['CustomerEmail'];
+                        $return_array['Customer']['CustomerMobile']  = $item_result['CustomerMobile'];
+                        $return_array['Customer']['CustomerCountry_id']  = $item_result['CustomerCountry_id'];
+                        $return_array['Customer']['CustomerState_id']  = $item_result['CustomerState_id'];
+                        $return_array['Customer']['CustomerStateName']  = $item_result['CustomerStateName'];
+                        $return_array['Customer']['CustomerStateCode']  = $item_result['CustomerStateCode'];
+                        $return_array['Customer']['CustomerAddress']  = $item_result['CustomerAddress'];
+                                return $return_array;
+                        
+                    }
+                    
+                }
 
        
                 return $result;
