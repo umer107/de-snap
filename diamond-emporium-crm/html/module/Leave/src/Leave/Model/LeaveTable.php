@@ -2497,7 +2497,29 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
            
         try
         {
-             
+                $return_array = array();    
+                //
+                $select_email = new \Zend\Db\Sql\Select(); 
+                $select_email->from(array('c' => 'de_customers')) ->columns(array('Customer_id' => 'id','CustomerTitle' =>'title','CustomerGender' =>'gender' ,'CustomerFirst_name' =>'first_name', 'CustomerLast_name' => 'last_name' , 'CustomerEmail' => 'email' , 'CustomerMobile' => 'mobile','CustomerCountry_id' => 'country_id','CustomerState_id' => 'state_id','CustomerAddress' => 'address1','CustomerSource' =>  'source','CustomerContact_method' =>'contact_method'));   
+                $select_email->where(array('c.email = ?' => $filter['email']));        
+                $select_email->order("c.id desc");
+                $data_email = $this->executeQuery($select_email);      
+                $result_email = $data_email->toArray(); 
+                $counter_email = count($result_email);
+                if($counter_email > 0)
+                {
+                    $return_array['IsEmailExists'] = 1;
+                }
+                else
+                {
+                     $return_array['IsEmailExists'] = 0;
+                    
+                }
+                //
+                
+                
+                    
+            
                 $lead_status_Opportunity = 'To Opportunity';
                 $lead_status_Open = 'Open';
                 
@@ -2510,7 +2532,7 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $select->from(array('c' => 'de_customers')) ->columns(array('Customer_id' => 'id','CustomerTitle' =>'title','CustomerGender' =>'gender' ,'CustomerFirst_name' =>'first_name', 'CustomerLast_name' => 'last_name' , 'CustomerEmail' => 'email' , 'CustomerMobile' => 'mobile','CustomerCountry_id' => 'country_id','CustomerState_id' => 'state_id','CustomerAddress' => 'address1','CustomerSource' =>  'source','CustomerContact_method' =>'contact_method' , 'LeadCustomerFullName' => $fullname))
                         ->join(array('s' => 'de_states'), 'c.state_id = s.id', array('CustomerStateName' => 'name','CustomerStateCode' =>'state_code'), 'left')   
                         ->join(array('l' => 'de_leads'), 'c.id = l.customer_id', array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state_id','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status', 'LeadBudget' => 'budget', 'LeadSpecialInstruction' => 'special_instructions'), 'left');   
-                $select->where(array('l.email = ?' => $filter['email']));  
+                $select->where(array('c.email = ?' => $filter['email']));  
                 $select->where->notEqualTo('l.lead_status', $lead_status_Open);
                 $select->where->notEqualTo('l.lead_status', $lead_status_Opportunity);
                 //$select->where->isNotNull('l.customer_id');    
@@ -2519,11 +2541,12 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 $result = $data->toArray(); 
                 
                 $counter = count($result);
-                $return_array = array();
+                
                 if($counter > 0)
                 {
                         foreach($result as $item)
                         {
+                                $return_array['IsCustomerData'] = 1;
                                 $return_array['Customer']['Customer_id']  = $item['Customer_id'];
                                 $return_array['Customer']['CustomerTitle']  = $item['CustomerTitle'];
                                 $return_array['Customer']['CustomerGender']  = $item['CustomerGender'];
@@ -2544,7 +2567,8 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
                 }
                 else
                 {
-                    return 0;
+                    $return_array['IsCustomerData'] = 0;
+                    return $return_array;
                     
                 }
                 
