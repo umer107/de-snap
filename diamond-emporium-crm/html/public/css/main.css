@@ -308,8 +308,8 @@ input[type=text]::-ms-clear, .ui-combobox input::-ms-clear {
 .availability{ z-index: 1;  top: 25px; right: 35px; }
 .availability img{ width: 14px; }
 .showLookups { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
-.LookupBG{ position: fixed; background: black; opacity: .5; left: 0; right: 0; width: 100%; height: 100%; z-index: 11; }
-.showLookupsInner {width: 640px; margin: 0 auto; background: white; position: relative; z-index: 12; margin-top: 20px }
+.LookupBG{ position: fixed; background: black; opacity: .5; left: 0; right: 0; width: 100%; height: 100%; z-index: 13; }
+.showLookupsInner {width: 640px; margin: 0 auto; background: white; position: relative; z-index: 14; margin-top: 20px }
 .customerHeading { background: #29629a; color: white; line-height: 32px; padding: 0 20px; position: relative; }
 .customerHeading span{ float: right; font-weight: bold; font-size: 15px; position: absolute; right: 10px; top: 8px; width: 16px; text-align: center; height: 16px; line-height: 12px; cursor: pointer; }
 .customerList { padding: 20px; line-height: 25px; position: relative; }
