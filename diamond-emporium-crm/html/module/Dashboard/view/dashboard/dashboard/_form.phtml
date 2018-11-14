@@ -15,18 +15,18 @@ $form->prepare();
 
 //Select Product
 $selectproduct = array(
-    array("Engagement Ring","ER"),
-    array("Wedding Band","WB"),
-    array("Eternity Band","EB"),
-    array("Loose Diamond","LD"),
-    array("Earrings","E"),
-    array("Dress Rings","DR"),
-    array("Pendant","P"),
-    array("Bracelet","B"),
-    array("Timepiece","T"),
-    array("Custom Jewellery","CW"),
-    array("Loose Gemstone","LG"),
-    array("Other","O")
+    array("Engagement Ring","ER","1"),
+    array("Wedding Band","WB","2"),
+    array("Eternity Band","EB","3"),
+    array("Loose Diamond","LD","4"),
+    array("Earrings","E","5"),
+    array("Dress Rings","DR","6"),
+    array("Pendant","P","7"),
+    array("Bracelet","B","8"),
+    array("Timepiece","T","9"),
+    array("Custom Jewellery","CW","10"),
+    array("Loose Gemstone","LG","11"),
+    array("Other","O","12")
  );
 $attrproduct = array(   
     'class' => 'dropdownOptions bg-white absolute full-width',
@@ -215,7 +215,7 @@ echo '<div class="relative pull-left gap-right pad-right">';
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
 
-    // States    
+    // States      
     
     echo '<div class="relative pull-left stateDiv">
         <span style="display: none" class="text-top">*State </span>
@@ -225,11 +225,19 @@ echo '<div class="relative pull-left gap-right pad-right">';
             </li>
             <li>
                 <ul class="dropdownOptions bg-white absolute full-width" style="display:none;">
+                        <li><a href="javascript:;" stateid="8" value="ACT">ACT</a></li>
+                        <li><a href="javascript:;" stateid="1" value="NSW">NSW</a></li>
+                        <li><a href="javascript:;" stateid="7" value="NT">NT</a></li>
+                        <li><a href="javascript:;" stateid="2" value="QLD">QLD</a></li>
+                        <li><a href="javascript:;" stateid="6" value="WA">WA</a></li>
+                        <li><a href="javascript:;" stateid="4" value="TAS">TAS</a></li>
+                        <li><a href="javascript:;" stateid="5" value="VIC">VIC</a></li>
+                        <li><a href="javascript:;" stateid="3" value="SA">SA</a></li>
                 </ul>
             </li>
         </ul>
         <label class="opacity0 error stateerror"> Please select State </label>
-    </div> <!-- State Div End -->';  
+    </div> <!-- State Div End -->';   
 
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
@@ -339,8 +347,7 @@ echo '</h2>';
 echo '<div class="full additionalDiv">';
 
 
-
-    // -----------------------------------------------------------------
+   // -----------------------------------------------------------------
     // -----------------------------------------------------------------
 
 // Product
@@ -357,7 +364,11 @@ echo '<div class="relative pull-left">';
              // echo $this->formRow($title);
             echo    '<ul class="dropdownOptions bg-white absolute full-width" style="display:none;">';
                         
-
+                        foreach($selectproduct as $product){ 
+                            echo '<li>';
+                                echo "<a href='javascript:;' productid='$product[2]' value='$product[0]' shortCode='$product[1]'> $product[0] </a>";
+                            echo '</li>';
+                        }
 
 
             echo    '</ul>';
