@@ -3996,7 +3996,7 @@ setTimeout(function(){
                       }                 
                       catch(e)                
                       { return false; }
-                      //$('.thisLeadId').attr('leadid', parsed);
+                      $('.thisLeadId').attr('leadid', parsed);
                       $('#email').removeClass('popuplatedemail');
                       $(".hideOnSavenBook").addClass('hide');
                       $(".calendarShowOnBook").removeClass('hide'); 
@@ -7001,7 +7001,7 @@ function loadLeads(){
                           {
 
                               // Setting Status
-                              var newArray = leads[j].items;
+                              //var newArray = leads[j].items;
                               if(leads[i].items[j].LeadStatus == "Closed Lost")
                               { status = 'bg-red1'; }
                               else if(leads[i].items[j].LeadStatus == "Deal closed")
