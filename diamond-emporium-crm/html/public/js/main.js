@@ -4285,7 +4285,7 @@ setTimeout(function(){
                    
     });
 
-    $(document).on('click','.calendarLoad #NewCalendar .roomBooking', function (e) {
+    $(document).on('click','.calendarLoad #NewCalendar .daysContent .roomBooking:not(.calendarLoad #NewCalendar .daysContent.pastdate .roomBooking)', function (e) {
       $('.addBookingPopup').html('');
       $('.addBookingPopup').addClass('hide');
       $('.roomBooking').removeClass('editable');
@@ -4315,8 +4315,6 @@ setTimeout(function(){
       $('#referrenceDropdown').val($('.roomBooking.editable').attr('referenceProduct'));
       $('.additional-details .dropdown.referral .dropdownOptions li a[value="'+window.howheard+'"]').click();
       $('#specialinstructions').val($('.roomBooking.editable').attr('instructions'));
-      
-
       
       e.preventDefault();
       return false;
@@ -8669,9 +8667,9 @@ function getBookingTime(getTime, bookingStart, Duation) {
         else if (isValidEmailAddress(getemail)) {
             $('#email').next('label').next('label').addClass('opacity0');
              $.ajax({
-              type: "POST",
-              url: "/ajaxcheckDuplicateEmail",
-              data: {checkfor: 'email' , value : getemail},
+              type: "GET",
+              url: "/dashboard/ajaxGetCustomerAgainstEmail",
+              data: {email : getemail},
               success: function (data) 
               {
                 //$('.showloading').show();
@@ -8805,7 +8803,11 @@ function getStates()  //  Get States
     });  
 }
 
+
+setTimeout(function(){ 
 getStates();
+    
+}, 1000);
 
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
