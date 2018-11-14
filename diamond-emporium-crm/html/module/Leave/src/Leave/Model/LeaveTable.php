@@ -2491,6 +2491,74 @@ function getDatesFromRange($first, $last, $step = '+1 day', $output_format = 'Y-
 
    }
 
+         //FetchUserEmail
+    public function fetchUserEmailAgainstCustomer($filter = null)
+       {
+           
+        try
+        {
+             
+                $lead_status_Opportunity = 'To Opportunity';
+                $lead_status_Open = 'Open';
+                
+                
+                $fullname = new \Zend\Db\Sql\Expression(
+                 'CONCAT(c.first_name, \' \', c.last_name)'
+                );  
+                
+                $select = new \Zend\Db\Sql\Select(); 
+                $select->from(array('c' => 'de_customers')) ->columns(array('Customer_id' => 'id','CustomerTitle' =>'title','CustomerGender' =>'gender' ,'CustomerFirst_name' =>'first_name', 'CustomerLast_name' => 'last_name' , 'CustomerEmail' => 'email' , 'CustomerMobile' => 'mobile','CustomerCountry_id' => 'country_id','CustomerState_id' => 'state_id','CustomerAddress' => 'address1','CustomerSource' =>  'source','CustomerContact_method' =>'contact_method' , 'LeadCustomerFullName' => $fullname))
+                        ->join(array('s' => 'de_states'), 'c.state_id = s.id', array('CustomerStateName' => 'name','CustomerStateCode' =>'state_code'), 'left')   
+                        ->join(array('l' => 'de_leads'), 'c.id = l.customer_id', array('Lead_id' => 'lead_id','LeadCustomerId' =>'customer_id','LeadTitle' =>'title','LeadGender' =>'gender' ,'LeadFirst_name' =>'first_name', 'LeadLast_name' => 'last_name' , 'LeadEmail' => 'email' , 'LeadMobile' => 'mobile','LeadState_id' => 'state_id','LeadSource' =>  'lead_source','LeadOwnerId' => 'lead_owner','LeadLookingFor' =>  'looking_for','LeadReference' => 'reference_product','LeadReferredbyCustomer' => 'referred_by_customer', 'LeadPreferredContact_method' => 'preferred_contact' ,'LeadStatus' => 'lead_status', 'LeadBudget' => 'budget', 'LeadSpecialInstruction' => 'special_instructions'), 'left');   
+                $select->where(array('l.email = ?' => $filter['email']));  
+                $select->where->notEqualTo('l.lead_status', $lead_status_Open);
+                $select->where->notEqualTo('l.lead_status', $lead_status_Opportunity);
+                //$select->where->isNotNull('l.customer_id');    
+                $select->order("c.id desc");
+                $data = $this->executeQuery($select);      
+                $result = $data->toArray(); 
+                
+                $counter = count($result);
+                $return_array = array();
+                if($counter > 0)
+                {
+                        foreach($result as $item)
+                        {
+                                $return_array['Customer']['Customer_id']  = $item['Customer_id'];
+                                $return_array['Customer']['CustomerTitle']  = $item['CustomerTitle'];
+                                $return_array['Customer']['CustomerGender']  = $item['CustomerGender'];
+                                $return_array['Customer']['CustomerFirst_name']  = $item['CustomerFirst_name'];
+                                $return_array['Customer']['CustomerLast_name']  = $item['CustomerLast_name'];
+                                $return_array['Customer']['CustomerEmail']  = $item['CustomerEmail'];
+                                $return_array['Customer']['CustomerMobile']  = $item['CustomerMobile'];
+                                $return_array['Customer']['CustomerCountry_id']  = $item['CustomerCountry_id'];
+                                $return_array['Customer']['CustomerState_id']  = $item['CustomerState_id'];
+                                $return_array['Customer']['CustomerStateName']  = $item['CustomerStateName'];
+                                $return_array['Customer']['CustomerStateCode']  = $item['CustomerStateCode'];
+                                $return_array['Customer']['CustomerAddress']  = $item['CustomerAddress'];
+                                
+                                
+                                return $return_array;
+                    
+                        }
+                }
+                else
+                {
+                    return 0;
+                    
+                }
+                
+                
+
+       
+                return $result;
+              
+        }catch(\Exception $e){
+         \De\Log::logApplicationInfo ( "Caught Exception: " . $e->getMessage () . ' -- File: ' . __FILE__ . ' Line: ' . __LINE__ );
+        }
+           
+       }                  
+                    
   //**********************Dashboard**********************************************************//
    
 
