@@ -4290,7 +4290,7 @@ setTimeout(function(){
       $('.addBookingPopup').addClass('hide');
       $('.roomBooking').removeClass('editable');
       $(this).addClass('editable');
-      $('.dialogeBox.editBooking').removeClass('hide');
+      $('.dialogeBox.editBookingAppointment').removeClass('hide');
       e.preventDefault();
       return false;   
     });
@@ -4298,7 +4298,7 @@ setTimeout(function(){
     $(document).on('click','.yesEditBooking', function (e) {
       $('.roomBooking').removeClass('hide');
       $('.roomBooking.editable').addClass('hide');
-      $('.dialogeBox.editBooking').addClass('hide');
+      $('.dialogeBox.editBookingAppointment').addClass('hide');
       $('.loadnewCalendarContent').addClass('editable');
       var getLeadId = $('.roomBooking.editable').attr('lead-id');
       $('.thisLeadId').attr('leadid',getLeadId);
@@ -4322,7 +4322,7 @@ setTimeout(function(){
 
     $(document).on('click','.NoEditBooking', function (e) {
       $('.roomBooking').removeClass('editable').removeClass('hide');
-      $('.dialogeBox.editBooking').addClass('hide');
+      $('.dialogeBox.editBookingAppointment').addClass('hide');
       $('.loadnewCalendarContent').removeClass('editable');
       $('.roomBooking.editable').attr('lead-id','');
       e.preventDefault();
@@ -6441,6 +6441,15 @@ $(document).on('click', function(event){
         container.has(event.target).length === 0)
         {
             $('.tooltipContainer').slideUp(50);
+        }
+});// End
+
+$(document).on('click', function(event){
+    var container = $(".dialoageOverlay");
+    if (!container.is(event.target) &&            
+        container.has(event.target).length === 0)
+        {
+            return false
         }
 });// End
 
