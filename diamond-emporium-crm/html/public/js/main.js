@@ -1600,7 +1600,7 @@ $(document).on('click','.borderBottom i.icon-downarrow, .customerName, .salesRep
 $(document).on('click','.addBookingLink', function (e) {
 
     window.userColor = '';
-
+    var editBooking = $('.loadnewCalendarContent').hasClass('editable');
     $('.rightCol').addClass('overflowHidden');
     var el = $(this);
     $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
@@ -1702,14 +1702,28 @@ $(document).on('click','.addBookingLink', function (e) {
                 setHtml += '<div class="newBookingDetail hide full">';   
                 // Time Date Room
                 setHtml += '<p class="half-pad-top half-pad-bottom hideOnCalenar"> <i class="icon-leave fs-12" style="color:'+window.userColor +'"></i> ' + setDate + getRoomNumber + '</p>';  
-                // Duration
+                // Duration 
                 setHtml += '<div class="half-pad-top half-pad-bottom borderBottom newBookingDuration hideOnCalenar"> <span class="subheading" value="90">Duration</span> 1.5 Hours</div>';  
                 // Customer Name Other
+
                 setHtml += '<div class="half-pad-top borderBottom hideOnCalenar customerNameOther half-gap-right hide"> <span class="subheading ">Name</span> <input type="text" placeholder="Name" class="customerName2 full half-gap-bottom half-gap-top fs-10 lh-14"/></div>';
                 // Customer Name
-                setHtml += '<div class="half-pad-top borderBottom hideOnCalenar customerNamedefault"> <span class="subheading hide">Name</span> <span class="customerName  display-block ellipsis" value="">Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>';
-                // Sales Rep
-                setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName display-block" value="">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
+                if(editBooking == true)
+                {
+                  // Customer Name
+                  setHtml += '<div class="half-pad-top borderBottom hideOnCalenar customerNamedefault"> <span class="subheading hide">Name</span> <span class="customerName  display-block ellipsis" value="'+window.customerName+'">'+window.customerName+'</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>'; 
+                  // Sales Rep
+                  setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName display-block" userid="'+window.ownerID+'" value="'+window.ownerName+'">'+window.ownerName+'</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';  
+                }
+                else
+                {
+                  // Customer Name
+                  setHtml += '<div class="half-pad-top borderBottom hideOnCalenar customerNamedefault"> <span class="subheading hide">Name</span> <span class="customerName  display-block ellipsis" value="">Name</span> <i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="customerRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="customerresult"></div></div></div>'; 
+                  // Sales Rep
+                  setHtml += '<div class="half-pad-top half-pad-bottom borderBottom hideOnCalenar"> <span class="subheading hide">Sales Rep</span><span class="salesRepName display-block" value="">Sales Rep</span><i class="icon-downarrow fs-12 pull-right d-i-b "></i><div id="salesRepSelect" class="hide newbookingdropdown"><input type="text" placeholder="Search" id="newbookingdropdown"/><div class="pickAgentresult hide"></div><div class="pickAgentresult2"></div></div></div>';
+                }
+                
+                
               }
               else // New Lead
               {
@@ -1759,7 +1773,7 @@ $(document).on('click','.addBookingLink', function (e) {
 // Save new Booking popup
 $(document).on('click','.savePopupBooking', function (e) {
     $('.rightCol').removeClass('overflowHidden');
-    $('.saveNewBookingForNewLead').removeClass('hide');
+    //$('.saveNewBookingForNewLead').removeClass('hide');
     $('.cancelNewBooking').removeClass('withoutSave');
     var el = $(this);
     if(window.other == true)
@@ -1935,6 +1949,17 @@ $(document).on('click','.savePopupBooking', function (e) {
     //$('.next-options').removeClass('hide');
     geDateValues(getSelectedDate);    
     //$('.NewCalendarContainer').addClass('hide');
+    $('.thisLabelClicked').closest('.NewCalendarContainer').find('.calendarHead .saveNewBooking').trigger('click');
+    if(window.AppointmentType == 1)
+    {
+
+      //$('.saveNewBooking').trigger('click'); 
+    }
+    else
+    {
+      //$('.saveNewBooking').trigger('click');
+    }
+    
     
 });
 
@@ -3981,6 +4006,7 @@ setTimeout(function(){
                     loadQuestionViewcalnder(getAssigneeId, getWeeklyDate);
                     $('.thisLeadId').attr('leadId','');
                     getSearchData()
+                    console.log('Appointment Saved');
                     return false;
                 }
               });
@@ -4259,8 +4285,50 @@ setTimeout(function(){
                    
     });
 
-    $(document).on('click','.calendarLoad .roomBooking', function (e) {
-                   
+    $(document).on('click','.calendarLoad #NewCalendar .roomBooking', function (e) {
+      $('.addBookingPopup').html('');
+      $('.addBookingPopup').addClass('hide');
+      $('.roomBooking').removeClass('editable');
+      $(this).addClass('editable');
+      $('.dialogeBox.editBooking').removeClass('hide');
+      e.preventDefault();
+      return false;   
+    });
+
+    $(document).on('click','.yesEditBooking', function (e) {
+      $('.roomBooking').removeClass('hide');
+      $('.roomBooking.editable').addClass('hide');
+      $('.dialogeBox.editBooking').addClass('hide');
+      $('.loadnewCalendarContent').addClass('editable');
+      var getLeadId = $('.roomBooking.editable').attr('lead-id');
+      $('.thisLeadId').attr('leadid',getLeadId);
+      window.editAppointmentId = $('.roomBooking.editable').attr('appointmentid');
+      $('#appointmentId').attr('appointmentid', window.editAppointmentId);
+      window.customerName = $('.roomBooking.editable p.headBar span.ellipsis').html();
+      window.ownerID = $('.roomBooking.editable').attr('ownerID'); 
+      window.ownerName = $('.roomBooking.editable').attr('ownername');
+      window.budget = $('.roomBooking.editable').attr('budget');
+      window.howheard = $('.roomBooking.editable').attr('refferal');
+      $('.additional-details .dropdown.budget .dropdownOptions li a[value="'+window.budget+'"]').click();
+      $('.requirements').val($('.roomBooking.editable').attr('requirements'));
+      $('#onlyReferral').val($('.roomBooking.editable').attr('onlyReferral'));
+      $('#referrenceDropdown').val($('.roomBooking.editable').attr('referenceProduct'));
+      $('.additional-details .dropdown.referral .dropdownOptions li a[value="'+window.howheard+'"]').click();
+      $('#specialinstructions').val($('.roomBooking.editable').attr('instructions'));
+      
+
+      
+      e.preventDefault();
+      return false;
+    });
+
+    $(document).on('click','.NoEditBooking', function (e) {
+      $('.roomBooking').removeClass('editable').removeClass('hide');
+      $('.dialogeBox.editBooking').addClass('hide');
+      $('.loadnewCalendarContent').removeClass('editable');
+      $('.roomBooking.editable').attr('lead-id','');
+      e.preventDefault();
+      return false;
     });
 
     
@@ -4861,7 +4929,7 @@ setTimeout(function(){
                                 {
                                   personBookingName = getAllRooms[i][key].fullName;
                                 }
-                                setThisHtml +='<div class="roomBooking '+roomNumber+'" lead-id="'+getAllRooms[i][key].id+'" topPosition="'+positionTop+'" style="height:' + height1 + '; top:'+ positionTop +'">';
+                                setThisHtml +='<div class="roomBooking '+roomNumber+'" instructions="'+getAllRooms[i][key].special_instructions+'"  refferal="'+getAllRooms[i][key].referral+'" onlyReferral="'+getAllRooms[i][key].only_referral+'" referenceProduct="'+getAllRooms[i][key].reference_product+'" requirements="'+getAllRooms[i][key].specify_requirements+'" budget="'+getAllRooms[i][key].budget+'" ownerID="'+getAllRooms[i][key].lead_owner+'" ownerName="'+getAllRooms[i][key].lead_owner_name+'" appointmentId="'+getAllRooms[i][key].appointment_id+'"  lead-id="'+getAllRooms[i][key].id+'" topPosition="'+positionTop+'" style="height:' + height1 + '; top:'+ positionTop +'">';
                                 setThisHtml +='<p class=" fs-11 headBar" '+setBackgroundColor+'><span class="ellipsis">' + personBookingName + '</span><span>'+getAllRooms[i][key].assignto_shortcode+'</span></p>';
                                 setThisHtml +='<div class="full align-left half-pad-left lh-16 fs-11 one-pad-top relative">';
                                   setThisHtml +='<p><i class="icon-diamond fs-11 " '+Color+'></i> <span class=" d-i-b half-pad-left">'+getAllRooms[i][key].product_shortcode+'</span></p>';
@@ -7961,7 +8029,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
                 {
                   $('.searchField').val(parsed.Customer.Customer.CustomerFirst_name + ' ' + parsed.Customer.Customer.CustomerLast_name )
                   $("#searchResults").html(' ');
-                  $('.dialogeBox').removeClass('hide');
+                  $('.dialogeBox.creatingCustomer').removeClass('hide');
                   window.createNewCustomer = parsed.Customer;
                 }
                 return false; 
@@ -8098,7 +8166,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
        $('.thisLeadId').attr('leadid','');
        $('.basicInfo').html(window.getBasicInfo);
        $('.additional-details').html(window.getAdditionalInfo);
-       $('.dialogeBox').addClass('hide');
+       $('.dialogeBox.creatingCustomer').addClass('hide');
        $('.ShowPopup').removeClass('topShow');
        var customer = window.createNewCustomer;
        $("#customerId").attr('customerId',customer.Customer.Customer_id);
@@ -8178,7 +8246,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
 
     // Cancel Create Customer popup
     $(document).on('click', '.NoCancelCustomer', function () {
-      $('.dialogeBox').addClass('hide');
+      $('.dialogeBox.creatingCustomer').addClass('hide');
       $('.searchField').val('');
     });// End
 
