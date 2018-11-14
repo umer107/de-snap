@@ -2558,7 +2558,7 @@ setTimeout(function(){
 
       if(checkIfFieldsHasSomeValue)
       {
-        $('.ShowPopup').addClass('topShow');
+        $('.dialogeBox.calcelLeadInfo').removeClass('hide');
       }
 
 
@@ -2570,7 +2570,7 @@ setTimeout(function(){
 
   //  Cancel Booking
   $(document).on('click', '.NoCancelBooking', function (){
-      $('.ShowPopup').removeClass('topShow');
+      $('.dialogeBox.calcelLeadInfo').addClass('hide');
   });// End
 
 /*--------------------------------------------------*/
@@ -2581,7 +2581,7 @@ setTimeout(function(){
   //  Cancel Booking
   $(document).on('click', '.yesCancelBooking', function (){
 
-     $('.ShowPopup').removeClass('topShow');
+     $('.dialogeBox.calcelLeadInfo').addClass('hide');
      $('.basicInfo').html(window.getBasicInfo);
      $('.additional-details').html(window.getAdditionalInfo);
      setTimeout(function(){ 
@@ -3907,7 +3907,7 @@ setTimeout(function(){
     /* ==================================================== */
 
     $(document).on('click','#submitbutton', function (e) {
-        $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
+        
         var checkBookingDate = $('#bookingDate').hasClass('nowCanSave');
         var inEditMode = $('.newLead').hasClass('inEditMode');
         var searchMade = $('#email').hasClass('popuplatedemail');
@@ -3922,6 +3922,7 @@ setTimeout(function(){
             return false;
           }
         }
+        $('#email').next().addClass('opacity0').next('.requiredError').addClass('opacity0');
         var dataCustomer = getCustomerValues();                   // Customer form values
         var dataLead = getLeadValues();                           // Lead form values
         var dataAppointment = getAppointmentValues();             // Appointment form values
@@ -4285,12 +4286,12 @@ setTimeout(function(){
                    
     });
 
-    $(document).on('click','.calendarLoad #NewCalendar .roomBooking', function (e) {
+    $(document).on('click','.calendarLoad #NewCalendar .daysContent .roomBooking:not(.calendarLoad #NewCalendar .daysContent.pastdate .roomBooking)', function (e) {
       $('.addBookingPopup').html('');
       $('.addBookingPopup').addClass('hide');
       $('.roomBooking').removeClass('editable');
       $(this).addClass('editable');
-      $('.dialogeBox.editBooking').removeClass('hide');
+      $('.dialogeBox.editBookingAppointment').removeClass('hide');
       e.preventDefault();
       return false;   
     });
@@ -4298,7 +4299,7 @@ setTimeout(function(){
     $(document).on('click','.yesEditBooking', function (e) {
       $('.roomBooking').removeClass('hide');
       $('.roomBooking.editable').addClass('hide');
-      $('.dialogeBox.editBooking').addClass('hide');
+      $('.dialogeBox.editBookingAppointment').addClass('hide');
       $('.loadnewCalendarContent').addClass('editable');
       var getLeadId = $('.roomBooking.editable').attr('lead-id');
       $('.thisLeadId').attr('leadid',getLeadId);
@@ -4316,15 +4317,13 @@ setTimeout(function(){
       $('.additional-details .dropdown.referral .dropdownOptions li a[value="'+window.howheard+'"]').click();
       $('#specialinstructions').val($('.roomBooking.editable').attr('instructions'));
       
-
-      
       e.preventDefault();
       return false;
     });
 
     $(document).on('click','.NoEditBooking', function (e) {
       $('.roomBooking').removeClass('editable').removeClass('hide');
-      $('.dialogeBox.editBooking').addClass('hide');
+      $('.dialogeBox.editBookingAppointment').addClass('hide');
       $('.loadnewCalendarContent').removeClass('editable');
       $('.roomBooking.editable').attr('lead-id','');
       e.preventDefault();
@@ -6446,6 +6445,15 @@ $(document).on('click', function(event){
         }
 });// End
 
+$(document).on('click', function(event){
+    var container = $(".dialoageOverlay");
+    if (!container.is(event.target) &&            
+        container.has(event.target).length === 0)
+        {
+            return false
+        }
+});// End
+
 /*---------------------------------------------*/
 /*---------------------------------------------*/
 /*---------------------------------------------*/
@@ -8167,7 +8175,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
        $('.basicInfo').html(window.getBasicInfo);
        $('.additional-details').html(window.getAdditionalInfo);
        $('.dialogeBox.creatingCustomer').addClass('hide');
-       $('.ShowPopup').removeClass('topShow');
+       //$('.ShowPopup').removeClass('topShow');
        var customer = window.createNewCustomer;
        $("#customerId").attr('customerId',customer.Customer.Customer_id);
        
@@ -8643,6 +8651,97 @@ function getBookingTime(getTime, bookingStart, Duation) {
   });// End
 
 
+    // Create Lead from Existing email
+    $(document).on('click', '.yesCreateEmailCustomer', function () {
+
+
+      $('.thisLeadId').attr('leadid','');
+      $('.basicInfo').html(window.getBasicInfo);
+      $('.additional-details').html(window.getAdditionalInfo);
+      $('.dialogeBox.creatingCustomer').addClass('hide');
+      //$('.ShowPopup').removeClass('topShow');
+      var customer = window.createNewCustomer;
+      $("#customerId").attr('customerId',customer.Customer.Customer_id);
+
+      $("#searchResults").html(' ');
+      $(customer.Customer.CustomerTitle == null)
+      {customer.Customer.CustomerTitle = 'Mr'}
+      $('.dropdown.title .dropdownOptions li a[value="'+customer.Customer.CustomerTitle+'"]').trigger('click');               // title gender   
+      $('.basicInfo .firstname').val(customer.Customer.CustomerFirst_name);                                                   // first name   
+      $('.basicInfo .lastname').val(customer.Customer.CustomerLast_name);                                                     // last name
+
+      if(customer.Customer.CustomerMobile == null)                                                                            // phone
+      {
+      customer.Customer.CustomerMobile ='';
+      }
+      else
+      {
+      $('.basicInfo .phonenumber').attr('readOnly', 'readOnly');
+
+      }
+      $('.basicInfo .phonenumber').val(customer.Customer.CustomerMobile);                                                             
+
+      if(customer.Customer.CustomerEmail == null)                                                                             // email
+      { customer.Customer.CustomerEmail = ''; }
+      else
+      { $('#email').attr('readOnly', 'readOnly'); }
+                                                                                                                            
+      $('#email').val(customer.Customer.CustomerEmail);                                                                       
+      $('#email').addClass('newcustomerLead'); 
+
+      if(customer.Customer.CustomerAddress ==  null)
+      {$('#fullAddress').val('');}
+      else
+      {$('#fullAddress').val(customer.Customer.CustomerAddress);} 
+      if(customer.Customer.CustomerCountry_id == null)                                                                        // country
+      {
+      setTimeout(function(){ 
+        $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
+        $('#countryName').attr('value','Australia'); 
+        $('.emailexists').addClass('green');
+      }, 2000);
+      }
+      else
+      {
+      setTimeout(function(){ 
+        $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(customer.Customer.CustomerCountry_id);
+        $('#countryName').attr('value',customer.Customer.CustomerCountry_id);
+        $('.emailexists').addClass('green');
+      }, 2000);
+
+      }                                                                                                                         // address
+                                                   
+      $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val(customer.Customer.CustomerCountry_id);         // country
+      $('.stateDiv .dropdown.State .dropdownOptions li a[stateid="'+customer.Customer.CustomerState_id+'"]').trigger('click');  // state
+      if(customer.Customer.CustomerCountry_id == 'Australia' ||  customer.Customer.CustomerCountry_id == null)                 // state
+      {
+      $('.stateDiv').removeClass('hide');
+      }
+      else
+      {
+      $('.stateDiv').addClass('hide');
+      }
+      $('.emailexists').addClass('opacity0').removeClass('green');
+      $('.redCross, .redGreen').addClass('hide');
+      $('.basicInfo .requiredError, .emailDiv .requiredError, .firstError, .emailexists, .emailDiv .error ').addClass('opacity0');
+      $('.formfields input').each( function () {
+        if($(this).val().length > 0)
+        {
+          $(this).prev('span').slideDown(150);
+        }    
+      });// End
+      $('#phonenumber').focusin();
+      $('#phonenumber').focusout();
+
+
+    });// End
+
+    // Cancel Create Lead from Existing email popup
+    $(document).on('click', '.NoCancelEmailCustomer', function () {
+        $('.dialogeBox.emailCheck').addClass('hide');
+    });// End
+
+
     
     function onFocusOuts() {
        $('#email').next().addClass('opacity0').next().next('.requiredError').addClass('opacity0');
@@ -8669,9 +8768,9 @@ function getBookingTime(getTime, bookingStart, Duation) {
         else if (isValidEmailAddress(getemail)) {
             $('#email').next('label').next('label').addClass('opacity0');
              $.ajax({
-              type: "POST",
-              url: "/ajaxcheckDuplicateEmail",
-              data: {checkfor: 'email' , value : getemail},
+              type: "GET",
+              url: "/dashboard/ajaxGetCustomerAgainstEmail",
+              data: {email : getemail},
               success: function (data) 
               {
                 //$('.showloading').show();
@@ -8691,14 +8790,20 @@ function getBookingTime(getTime, bookingStart, Duation) {
                     $('.emailexists').addClass('opacity0');
                     window.emailexists = false;
                 }
-                else if(parsed == 1)
+                else if(parsed.IsEmailExists == 1)
                 {
-                  
                   $('.topBar').trigger('click');
                   $('.redCross').removeClass('hide');
                   $('.redGreen').addClass('hide');
                   $('.emailexists').html('Email Already Exists!').removeClass('opacity0').removeClass('green');
                   $('.requiredError').addClass('opacity0');
+                  if(parsed.IsCustomerData ==  0)
+                  {
+                    $('.dialogeBox.emailCheck').removeClass('hide');
+                    var setHtml = 'This email address belongs to an existing customer ( Asad Nasir ). Would you like to create a new lead for this customer?';
+                    $('.dialogeBox.emailCheck .boxmessage').html(setHtml);
+                  }
+                  
                 }
                 else
                 {
@@ -8805,7 +8910,11 @@ function getStates()  //  Get States
     });  
 }
 
+
+setTimeout(function(){ 
 getStates();
+    
+}, 1000);
 
 /*------------------------------------------------------------------*/
 /*------------------------------------------------------------------*/
