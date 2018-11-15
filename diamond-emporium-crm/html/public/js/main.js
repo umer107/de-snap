@@ -1949,7 +1949,11 @@ $(document).on('click','.savePopupBooking', function (e) {
     //$('.next-options').removeClass('hide');
     geDateValues(getSelectedDate);    
     //$('.NewCalendarContainer').addClass('hide');
+    $('.loadnewCalendarContent').removeClass('editable');
     $('.thisLabelClicked').closest('.NewCalendarContainer').find('.calendarHead .saveNewBooking').trigger('click');
+    $('.thisLeadId').attr('leadid','');
+    $('#appointmentId').attr('appointmentid','0');
+    $('#customerId').attr('customerid','0');
     if(window.AppointmentType == 1)
     {
 
@@ -2002,13 +2006,13 @@ function bookingTimeDuration(getDuration, bookingTimeStart, StartingTimeOnly)
   function checkTimeAllowed(timeStart, getRoomNumber, el)
   {
     
-    var positionTop = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').attr('topPosition');
-    var positionTop2 = $('a.addBookingLink.thisClicked').closest('.daysContentSlider').next('.daysContentSlider').find('.labelContainer[roomnumber="'+ getRoomNumber +'"]').find('.roomBooking').attr('topPosition');
-    var getRoomsLength = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').length;
+    var positionTop = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking:not(.roomBooking.editable)').attr('topPosition');
+    var positionTop2 = $('a.addBookingLink.thisClicked').closest('.daysContentSlider').next('.daysContentSlider').find('.labelContainer[roomnumber="'+ getRoomNumber +'"]').find('.roomBooking:not(.roomBooking.editable)').attr('topPosition');
+    var getRoomsLength = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking:not(.roomBooking.editable)').length;
     if(getRoomsLength > 1)
     {
-      positionTopSub1 = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').next('.roomBooking').attr('topPosition');
-      positionTopSub2 = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').next('.roomBooking').next('.roomBooking').attr('topPosition');
+      positionTopSub1 = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').next('.roomBooking:not(.roomBooking.editable)').attr('topPosition');
+      positionTopSub2 = $('a.addBookingLink.thisClicked').closest('.labelContainer').find('.roomBooking').next('.roomBooking:not(.roomBooking.editable)').next('.roomBooking').attr('topPosition');
       
       // If popup starts at 15
       if(timeStart == '15')
@@ -4337,6 +4341,7 @@ setTimeout(function(){
     });
 
     $(document).on('click','.NoEditBooking', function (e) {
+      $('.loadnewCalendarContent').removeClass('editable');
       $('.roomBooking').removeClass('editable').removeClass('hide');
       $('.dialogeBox.editBookingAppointment').addClass('hide');
       $('.loadnewCalendarContent').removeClass('editable');
