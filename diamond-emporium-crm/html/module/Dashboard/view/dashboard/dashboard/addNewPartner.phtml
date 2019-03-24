@@ -1,0 +1,203 @@
+    <div class="dialoageOverlay"></div>
+    <div class="ContainerArea bg-white shadow7 radius-34"> 
+        <!-- Heading -->
+        <div class="full">
+           <h2 class="fs-24 color-green robotolight triple-pad-bottom double-gap-bottom align-center triple-gap-top half-pad-top"> Add New Partner </h2>
+        </div>
+
+        <!-- Form Fields -->
+
+        <div class="wd-920 clearfix margin-auto customerFields">
+
+            <!-- Fields Start here  -->
+
+            <!-- ==================================================== -->
+
+            <!-- Title Select -->
+
+            <div class="relative pull-left wd-282 gap-right-37">
+
+               <div class="relative pull-left">
+                    <span style="display: none" class="text-top">*Title</span>
+                    <ul class="dropdown bg-white d-i-b pull-left relative partnertitle">
+                         <li>
+                         <a href="javascript:;" class="selected-text d-b" value="All"><span id ="partnertitle" class="d-i-b">*Title</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>
+                         </li>
+                         <li>
+                             <ul class="dropdownOptions bg-white absolute full-width" style="display: none;">
+                                
+                                <li>
+                                    <a href="javascript:;" value="Unknown"> Unknown </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" value="Mr"> Mr </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" value="Ms"> Ms </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" value="Mrs"> Mrs </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" value="Miss"> Miss </a>
+                                </li>
+
+                             </ul>
+
+                         </li>
+                    </ul>
+                    <label class="opacity0 partnerError">Please Select Title</label>
+                </div>
+
+            </div>
+
+            <!-- ==================================================== -->
+
+            <!-- Gender Select -->
+
+            <div class="relative pull-left wd-282 gap-right-37">
+
+                <div class="relative pull-left">
+                    <span style="display: none" class="text-top">*Gender</span>
+                   <ul class="dropdown bg-white d-i-b pull-left relative partnerGender">
+                         <li>
+                         <a href="javascript:;" class="selected-text d-b" value="All"><span id="partnerGender" class="d-i-b">*Gender</span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>
+                         </li>
+                         <li>
+                             <ul class="dropdownOptions bg-white absolute full-width" style="display: none;">
+                                <li>
+                                    <a href="javascript:;" value="Male"> Male </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" value="Female"> Female </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" value="Other/Not Specified"> Other/Not Specified </a>
+                                </li>
+                            </ul>
+                         </li>
+                    </ul>
+                    <label class="opacity0 partnerError">Please Select Gender</label>
+                </div>
+
+            </div>
+
+            <!-- ==================================================== -->
+
+            <!-- Email Select -->
+            
+            <div class="relative pull-left wd-282">
+
+                <span style="display: none" class="text-top">*Email</span>
+                <input type="text" name="partneremail" id="partneremail" autocomplete="off" placeholder="*Email" class="" maxlength="40" value="" ">
+                <label class="opacity0 partnerError">Please Enter Email</label>
+
+            </div>
+
+            <!-- ==================================================== -->
+
+            <!-- First Name Select -->
+
+            <div class="relative pull-left wd-282 gap-right-37">
+                <span style="display: none">*First name</span>
+                <input type="text" name="partnerFirstName" id="partnerFirstName" autocomplete="off" placeholder="*First name" class="" maxlength="40" value="">
+                <label class="opacity0 partnerError">Please Enter First Name</label>
+            </div>
+
+            <!-- ==================================================== -->
+
+            <!-- Last Name Select -->
+
+            <div class="relative pull-left wd-282 gap-right-37">
+                <span style="display: none">*Last name</span>
+                <input type="text" name="partnerLastName" id="partnerLastName" autocomplete="off" placeholder="*Last name" class="" maxlength="40" value="">
+                <label class="opacity0 partnerError">Please Enter Last Name</label>
+            </div>
+
+            <!-- ==================================================== -->
+
+            <!-- Phone Number Select -->
+
+            <div class="relative pull-left wd-282">
+                <span style="display: none">*Phone number*</span>
+                <input type="text" name="partnerPhone" id="partnerPhone" autocomplete="off" placeholder="*Phone number" class="" maxlength="20" value="" onfocusout="onFocusOutspartnerPhone()">
+                <label class="opacity0 partnerError">Please Enter Phone Number</label>
+            </div>
+
+            <!-- ==================================================== -->
+
+            <!-- Same Address As Partner -->
+
+            <div class="relative full align-left double-pad-top triple-pad-bottom sameAddressAsCustomer">
+                <div class="checkboxContainer">
+                  <input type="checkbox" id="addressAsPartner">
+                  <label for="addressAsPartner" class="fs-14">Same address as partner</label>
+                </div>
+            </div>
+
+
+            <!-- ==================================================== -->
+
+            <!-- Country Select -->
+
+            <div class="relative pull-left wd-282 gap-right-37">
+                
+                <div id="customerCountryName" class="hide" value="Australia"></div>
+                <div class="relative pull-left partnerCountryDiv countryDiv">
+                    <span style="display: inline-block" class="text-top">*Country </span>
+                    <i class="icon-dropdown fs-7 pull-right d-i-b "></i>
+                    <div class="ui-widget">
+                        <select id="partnerCombobox">
+
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- ==================================================== -->
+
+            <!-- State Select -->
+
+            <div class="relative pull-left wd-282 gap-right-37 partnerStateDiv">
+                <span style="display: none" class="text-top">*State </span>
+                <ul class="dropdown bg-white d-i-b pull-left relative wd-280 partnerState">
+                    <li>
+                        <a href="javascript:;" class="selected-text d-b" value="All"><span id="partnerStateDropdown" class="d-i-b">*State </span><i class="icon-dropdown fs-7 pull-right d-i-b "></i></a>
+                    </li>
+                    <li>
+                        <ul class="dropdownOptions bg-white absolute full-width" style="display:none;">
+                            <li><a href="javascript:;" stateid="8" value="ACT">ACT</a></li>
+                            <li><a href="javascript:;" stateid="1" value="NSW">NSW</a></li>
+                            <li><a href="javascript:;" stateid="7" value="NT">NT</a></li>
+                            <li><a href="javascript:;" stateid="2" value="QLD">QLD</a></li>
+                            <li><a href="javascript:;" stateid="6" value="WA">WA</a></li>
+                            <li><a href="javascript:;" stateid="4" value="TAS">TAS</a></li>
+                            <li><a href="javascript:;" stateid="5" value="VIC">VIC</a></li>
+                            <li><a href="javascript:;" stateid="3" value="SA">SA</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <label class="opacity0 error partnerError partnerStateError"> Please select State </label>
+            </div>
+
+            <!-- ==================================================== -->
+
+            <!-- Full Address -->
+
+            <div class="relative pull-left wd-282">
+                <span style="display: none" class="text-top">Full Address</span>
+                <input maxlength="90" autocomplete="Off" type="text" id="partnerFullAddress" placeholder="Full Address (optional)" />
+            </div>
+
+            <!-- ==================================================== -->
+
+            <!-- Save Cancel Fields Fields -->
+
+            <div class="full align-center triple-pad-bottom double-pad-top">
+                <a href="javascript:;" class="wd-102 btn-green fs-14 button bg-white savePartner lh-34 align-center robotomedium thirtyfive-gapLeft">Save</a>
+                <a href="javascript:;" class="fs-14 cancelPartner bg-white robotomedium gap-right color-gray10 thirtyfive-gapLeft">Cancel</a>
+            </div>
+
+    </div>

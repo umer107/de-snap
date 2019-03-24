@@ -87,11 +87,11 @@ if(userisOnDashBoard && pageNumber != 'RoomManager')
 
                 }
                 //$('.countryList').html(setHtml);
-                $('#combobox').html(setHtml2);
+                $('#combobox, #partnerCombobox').html(setHtml2);
                 window.comboboxList = setHtml2;
                 
                 setTimeout(function(){ 
-                  $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input').val('Australia');
+                  $('.countryDiv .ui-state-default, .countryDiv .ui-autocomplete-input, .partnerCountryDiv .ui-state-default, .partnerCountryDiv .ui-autocomplete-input').val('Australia');
                   window.getBasicInfo = $('.basicInfo').html();
                  }, 3000);
 
@@ -870,7 +870,7 @@ if(userisOnDashBoard && pageNumber != 'RoomManager')
     });// End
 
     // Showing top headings
-    $(document).on('keyup', '.formfields input', function () {
+    $(document).on('keyup', '.formfields input, .customerFields input', function () {
       if($(this).val().length > 0)
       {
         $(this).prev('span').slideDown(150);
@@ -1569,7 +1569,9 @@ $(document).on('click','.daysSlider label.room2', function (e) {
 });
 
 /*====================================================*/
+
 // New Calendar Dates Scroll Filter
+
 $(document).on('click','.daysSlider label.room3', function (e) {
     $(this).closest('.roomsContainer').removeClass('scrolled');
     var getDay = $(this).closest('.daysCalendar').attr('titleDay');
@@ -1577,7 +1579,9 @@ $(document).on('click','.daysSlider label.room3', function (e) {
 });
 
 /*====================================================*/
+
 // New Calendar Dates Scroll Filter
+
 $(document).on('click','.borderBottom i.icon-downarrow, .customerName, .salesRepName', function (e) {
     $(".pickAgentresult").html(' ').addClass('hide');
     $(".pickAgentresult2").removeClass('hide');
@@ -1597,6 +1601,7 @@ $(document).on('click','.borderBottom i.icon-downarrow, .customerName, .salesRep
 /*====================================================*/
 
 // Add new Booking popup
+
 $(document).on('click','.addBookingLink', function (e) {
 
     window.userColor = '';
@@ -1770,7 +1775,9 @@ $(document).on('click','.addBookingLink', function (e) {
 
 
 /*====================================================*/
+
 // Save new Booking popup
+
 $(document).on('click','.savePopupBooking', function (e) {
     $('.rightCol').removeClass('overflowHidden');
     //$('.saveNewBookingForNewLead').removeClass('hide');
@@ -3149,6 +3156,54 @@ setTimeout(function(){
         }
 
 
+        if(el.closest('.dropdown').hasClass('partnertitle'))
+        {   
+          
+          if(getValue == "Mr")
+          {
+            $('.dropdown.partnerGender').find('a.selected-text').attr('value','Male');
+            $('.dropdown.partnerGender').find('span').html('Male');
+          }
+          
+          else if(getValue == "Unknown")
+          {
+            $('.dropdown.partnerGender').find('a.selected-text').attr('value','Other/Not Specified');
+            $('.dropdown.partnerGender').find('span').html('Other/Not Specified');
+          }
+          else
+          {
+            $('.dropdown.partnerGender').find('a.selected-text').attr('value','Female');
+            $('.dropdown.partnerGender').find('span').html('Female');
+          }
+          $('.dropdown.partnerGender').prev('.text-top').show();
+          $('.partnerGender').next('.partnerError').addClass('opacity0');
+            //return false; 
+        }
+
+        //If Gender
+        if(el.closest('.dropdown').hasClass('partnerGender'))
+        {   
+          
+          if(getValue == "Male")
+          {
+            $('.dropdown.partnertitle').find('a.selected-text').attr('value','Mr');
+            $('.dropdown.partnertitle').find('span').html('Mr');
+          }
+          
+          else if(getValue == "Other/Not Specified")
+          {
+            $('.dropdown.partnertitle').find('a.selected-text').attr('value','Unknown');
+            $('.dropdown.partnertitle').find('span').html('Unknown');
+          }
+          else
+          {
+            $('.dropdown.partnertitle').find('a.selected-text').attr('value','Mrs');
+            $('.dropdown.partnertitle').find('span').html('Mrs');
+          }
+          $('.dropdown.partnertitle').prev('.text-top').show();
+          $('.partnertitle').next('.partnerError').addClass('opacity0');
+            //return false; 
+        }
         // If Calendar
         if(el.closest('.dropdown').hasClass('calendar'))
         {   
@@ -5929,6 +5984,191 @@ return false;
 /*--------------------- --End Create New Lead --------------------- */
 /*------------------------------------------------------------------*/
 
+// Open Popup
+
+$(document).on('click','.addPartnerToLead', function (e) {
+      
+      $('.dialogeBox.addNewPartner').removeClass('hide');
+});
+
+// Save partner details
+
+$(document).on('click','.savePartner', function (e) {
+      partnerValidation();
+      if(window.partnervalidState == false)
+      {
+        return false;
+      }
+
+      var model = getValuesFromPartnerForm();
+
+      // $.ajax({
+
+      //  type: "POST",
+      //  url: "/dashboard/partner",
+      //  data: model,
+      //  success: function (data) {
+      //  }
+      // }); 
+
+
+      $('.dialogeBox.addNewPartner').addClass('hide');
+});
+
+// Cancel Partner
+
+$(document).on('click','.cancelPartner', function (e) {
+      
+      $('.dialogeBox.addNewPartner').addClass('hide');
+});
+
+// Same Address as Partner 
+
+$(document).on('change','#addressAsPartner', function (e) {
+      
+      var el = $(this);
+      var checked = el.is(':checked')
+      alert(checked);
+      if(checked)
+      {
+        var CountryName = $('.countryDiv .ui-combobox input.ui-autocomplete-input').val();
+        var stateName = $('#stateDropdown').html();
+        var addressName = $('#fullAddress').val();
+
+        $('.partnerCountryDiv .ui-combobox input.ui-autocomplete-input').val(CountryName);
+        $('.dropdown.partnerState a.selected-text').attr('value', stateName);
+        $('#partnerStateDropdown').html(stateName);
+        $('#partnerFullAddress').val(addressName);
+
+        $('.partnerStateError').addClass('opacity0'); 
+        
+
+      }
+});
+
+
+ $(document).on('keyup', '.customerFields input', function () {
+    var el = $(this);
+      if($(this).val().length > 0)
+      {
+        el.next('label').addClass('opacity0');
+      }    
+    });// End
+
+
+function getValuesFromPartnerForm()
+  {
+      return {
+
+          title : $('.dropdown.partnertitle a.selected-text').attr('value'),
+          gender : $('.dropdown.partnerGender a.selected-text').attr('value'),
+          getEmail : $('#partneremail').val(),
+          firstname : $('#partnerFirstName').val(),
+          lastname : $('#partnerLastName').val(),
+          getPhone : $('#partnerPhone').val(),
+          getCountry : $('#customerCountryName').attr('value'),
+          getState : $('#partnerStateDropdown').closest('a.selected-text').attr('value'),
+          getAddress : $('#partnerFullAddress').val()
+      };
+  }
+
+function partnerValidation()
+    {
+
+        var title = $('.dropdown.partnertitle a.selected-text').attr('value');
+        var gender = $('.dropdown.partnerGender a.selected-text').attr('value');
+        var getEmail = $('#partneremail').val();
+        var firstname = $('#partnerFirstName').val();
+        var lastname = $('#partnerLastName').val();
+        var getPhone = $('#partnerPhone').val();
+        var getCountry = $('#customerCountryName').attr('value');
+        var getState = $('#partnerStateDropdown').closest('a.selected-text').attr('value');
+        var getAddress = $('#partnerFullAddress').val();
+        
+        var checkCountry = true;
+        if(getCountry == 'Australia')
+        {
+            if(getState == 'All')
+            {
+              checkCountry = false
+            }
+            else
+            {
+              checkCountry = true
+            }
+        }
+        
+        if(title == 'All' || gender == 'All' || firstname == '' || lastname == '' || getPhone == '' || getEmail == '' || checkCountry == false)
+        {
+            // Title
+            if(title == 'All')
+            {$('.partnertitle').next('label.partnerError').removeClass('opacity0');}
+            else
+            {$('.partnertitle').next('label.partnerError').addClass('opacity0');}
+
+            // Gender
+
+            if(gender == 'All')
+            {$('.partnerGender').next('label.partnerError').removeClass('opacity0');}
+            else
+            {$('.partnerGender').next('label.partnerError').addClass('opacity0');}
+
+            // FirstName
+
+            if(firstname == '')
+            {$('#partnerFirstName').next('label.partnerError').removeClass('opacity0');}
+            else
+            {$('#partnerFirstName').next('label.partnerError').addClass('opacity0');}
+
+            // Last Name
+
+            if(lastname == '')
+            {$('#partnerLastName').next('label.partnerError').removeClass('opacity0');}
+            else
+            {$('#partnerLastName').next('label.partnerError').addClass('opacity0');}
+
+            // Phone
+
+            if(getPhone == '')
+            {$('#partnerPhone').next('label.partnerError').removeClass('opacity0');}
+            else
+            {$('#partnerPhone').next('label.partnerError').addClass('opacity0');}
+
+            // Email
+
+            if(getEmail == '')
+            { 
+              {$('#partneremail').next('label.partnerError').removeClass('opacity0');}
+            }
+            else if(!isValidEmailAddress(getEmail))
+            {
+              $('.emailexists').addClass('opacity0');
+              $('#email').next('label').next('label').removeClass('opacity0');
+            }
+
+            // Country State
+
+            if(checkCountry == false)
+            { 
+                $('.partnerStateError').removeClass('opacity0'); 
+            }
+            else
+            {$('.partnerStateError').addClass('opacity0'); }
+            
+            window.partnervalidState = false;
+            return false;
+        }
+        else
+        { 
+            window.partnervalidState = true;
+        }
+
+    }
+
+function onFocusOutspartnerPhone()
+{
+
+}
 
 /*------------------------------------------------------------------*/
 /*---------------------- Start Dashboard Code --------------------- */
@@ -7803,7 +8043,7 @@ function getBookingTime(getTime, bookingStart, Duation) {
                   setHtml2 += "<option value='"+countryName+"'>"+countryName+"</option>";
 
                 }
-                $('#combobox').html(setHtml2);
+                $('#combobox, #partnerCombobox').html(setHtml2);
                 $('.ui-autocomplete li:first-child a').trigger('click');
                 $('.ui-autocomplete li:first-child').trigger('click');
             }
@@ -7849,16 +8089,36 @@ function getBookingTime(getTime, bookingStart, Duation) {
                               self._trigger("selected", event, {
                                   item: ui.item.option
                               });
+                              
                               var getCountry = ui.item.label;
-                              $('#countryName').attr('value', getCountry);
-                              $('.stateerror').addClass('opacity0');
-                              if(getCountry == 'Australia')
-                              { $('.stateDiv').removeClass('hide'); }
+                              var isThisPartnerCountry = $(this).closest('.countryDiv').hasClass('partnerCountryDiv');
+                              if(isThisPartnerCountry)
+                              {
+
+                                  $('#customerCountryName').attr('value', getCountry);
+                                  $('.partnerStateError').addClass('opacity0');
+                                  if(getCountry == 'Australia')
+                                  { $('.partnerStateDiv').removeClass('hide'); }
+                                  else
+                                  { $('.partnerStateDiv').addClass('hide'); }
+
+                              }
                               else
-                              { $('.stateDiv').addClass('hide'); }
+                              {
+
+                                  $('#countryName').attr('value', getCountry);
+                                  $('.stateerror').addClass('opacity0');
+                                  if(getCountry == 'Australia')
+                                  { $('.stateDiv').removeClass('hide'); }
+                                  else
+                                  { $('.stateDiv').addClass('hide'); }  
+
+                              }
+                              
                               
                           },
                           change: function(event, ui) {
+                            debugger
                               if (!ui.item) {
                                   var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex($(this).val()) + "$", "i"),
                                       valid = false;
@@ -7917,12 +8177,12 @@ function getBookingTime(getTime, bookingStart, Duation) {
     }, 0);
 
     $(function() {
-        $("#combobox").combobox({
+        $("#combobox, #partnerCombobox").combobox({
            classes: {
               "ui-autocomplete": "your-custom-class",
           },
             selected: function(event, ui) {
-                $('#log').text('selected ' + $("#combobox").val());
+                $('#log').text('selected ' + $("#combobox, #partnerCombobox").val());
             }
         });
 
@@ -8518,49 +8778,49 @@ function getBookingTime(getTime, bookingStart, Duation) {
   pickUpAgents ();
 
 
-    $(document).on('keyup', '.addBookingPopup #customerRepSelect input', function () {
-      var getValue = $(this).val();
-      getValue = getValue.toLowerCase();
-      var getLength = getValue.length;
-      var arr = [];
-      var arr2 = [];
-      if(getLength > 0)
-      {
-        var parsed = window.list;
+  $(document).on('keyup', '.addBookingPopup #customerRepSelect input', function () {
+    var getValue = $(this).val();
+    getValue = getValue.toLowerCase();
+    var getLength = getValue.length;
+    var arr = [];
+    var arr2 = [];
+    if(getLength > 0)
+    {
+      var parsed = window.list;
 
-        for (var i = 0; i < parsed.length; i++) {
-            
-            var result = parsed[i].LeadCustomerFullName;
-            if(result != null)
-            {
-              var resultNew = result.toLowerCase();
-              var result2 = parsed[i].Lead_id;
-              if (resultNew.indexOf(getValue) > -1) {
-               arr.push(result);
-               arr2.push(result2);
-              }
-              else {}
+      for (var i = 0; i < parsed.length; i++) {
+          
+          var result = parsed[i].LeadCustomerFullName;
+          if(result != null)
+          {
+            var resultNew = result.toLowerCase();
+            var result2 = parsed[i].Lead_id;
+            if (resultNew.indexOf(getValue) > -1) {
+             arr.push(result);
+             arr2.push(result2);
             }
-            
+            else {}
           }
+          
+        }
+    }
+    var parsed2 = arr;
+    var parsed3 = arr2;
+    var setHtml = '';
+      for (var i = 0; i < parsed2.length; i++) {
+        setHtml += "<a class='full' leadId='"+ parsed3[i] +"'>"+ parsed2[i] +"</a>";
       }
-      var parsed2 = arr;
-      var parsed3 = arr2;
-      var setHtml = '';
-        for (var i = 0; i < parsed2.length; i++) {
-          setHtml += "<a class='full' leadId='"+ parsed3[i] +"'>"+ parsed2[i] +"</a>";
-        }
 
-        if(parsed2.length > 0)
-        {
-          $(".customerresult").html(setHtml);
-        }
-        else
-        {
-          $(".customerresult").html(' ');
-        }
-        
-    });// End
+      if(parsed2.length > 0)
+      {
+        $(".customerresult").html(setHtml);
+      }
+      else
+      {
+        $(".customerresult").html(' ');
+      }
+      
+  });// End
 
   $(document).on('keyup', '.addBookingPopup #salesRepSelect input', function () {
       var getValue = $(this).val();
@@ -9052,3 +9312,8 @@ setTimeout(function(){
     window.getAdditionalInfo = $('.additional-details').html();
     
 }, 4000);
+
+
+
+
+
