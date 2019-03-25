@@ -6046,6 +6046,7 @@ $(document).on('change','#addressAsPartner', function (e) {
       }
 });
 
+// Remove Error messages
 
  $(document).on('keyup', '.customerFields input', function () {
     var el = $(this);
@@ -6054,6 +6055,24 @@ $(document).on('change','#addressAsPartner', function (e) {
         el.next('label').addClass('opacity0');
       }    
     });// End
+
+// Remove Error messages
+
+
+$(function() {
+  var getTodayDate = moment(); //Get the current date
+  getTodayDate.format("YYYY-MM-DD"); 
+  $('input[name="birthday"]').daterangepicker({
+    singleDatePicker: true,
+    startDate: getTodayDate,
+    locale: { direction: 'bookingCalendar' }
+  }, function(start, end, label) 
+  {
+    //var years = moment().diff(start, 'years');
+    //alert("You are " + years + " years old!");
+  });
+});
+
 
 
 function getValuesFromPartnerForm()

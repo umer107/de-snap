@@ -904,16 +904,20 @@ div.headbar{background-color: #cfcfcf; }
 .dropdown.partnertitle .dropdownOptions, .dropdown.partnerGender .dropdownOptions{ width: 165px; }
 .customerFields label { position: absolute; width: 100%; font-size: 10px; color: red; left: 0; top: 34px; text-align: left; }
 .sameAddressAsCustomer label{ color: #5d5d5d; font-size: 14px; top: 0; }
-.calendarLoader{    width: 52px;
-    height: 30px;
-    border-radius: 15px;
-    background: #2c76ae;
-    color: white;
-    text-align: center;
-    padding-top: 1px;position: absolute;
-    right: 524px;
-    top: 25px;}
+.calendarLoader{ width: 52px; height: 30px; border-radius: 15px; background: #2c76ae; color: white; text-align: center; padding-top: 1px;position: absolute; right: 524px; top: 25px; }
 .calendarLoader i{}
+.toggleCalendar{ right: 524px; width: 53px; opacity: 0; cursor: pointer; height: 31px; top: 24px; }
+.bookingCalendar.daterangepicker .calendar-table th.prev{position: absolute; right: 61px; border: 1px solid #e2dede; height: 30px; width: 30px; min-width: 30px; min-height: 30px; line-height: 27px; }
+.bookingCalendar.daterangepicker .calendar-table th.next{position: absolute; right: 25px; border: 1px solid #e2dede; height: 30px; width: 30px; min-width: 30px; min-height: 30px; line-height: 27px; }
+.bookingCalendar.daterangepicker .drp-calendar.left{padding: 27px 20px; max-width: 367px; } 
+.bookingCalendar.daterangepicker .calendar-table .next span, .bookingCalendar.daterangepicker .calendar-table .prev span{ border: solid #778ca2; border-width: 0 1px 1px 0; }
+.bookingCalendar.daterangepicker th.month{ text-align: left;left: -27px;position: relative;font-size: 16px; }
+.bookingCalendar.daterangepicker .calendar-table th, .bookingCalendar.daterangepicker .calendar-table td{ min-width: 47px; width: 47px; }
+.bookingCalendar.daterangepicker .calendar-table td{ color: #252631;}
+.bookingCalendar.daterangepicker td.active, .bookingCalendar.daterangepicker td.active:hover{color: #fff;}
+.bookingCalendar.daterangepicker thead{}
+.bookingCalendar.daterangepicker thead tr:last-child th{    padding-top: 20px;}
+.bookingCalendar.daterangepicker .calendar-table table { height: 320px; }
 /* Checkbox Styling Start */
 
 .new { padding: 50px; }
