@@ -177,7 +177,7 @@ echo '<div class="relative pull-left gap-right pad-right">';
     // -----------------------------------------------------------------
 
     // Phone
-    echo '<div class="relative pull-left phonefield"><span style="display: none">*Phone number*</span>'.$this->formRow($form->get("phone_number")).'<label class="opacity0 firstError">Please enter a valid phone number</label><label class="opacity0 requiredError">Please enter phone number</label><label class="opacity0 phoneexists ">Phone number already exists</label></div>';
+    echo '<div class="relative pull-left phonefield"><span style="display: none">*Phone number</span>'.$this->formRow($form->get("phone_number")).'<label class="opacity0 firstError">Please enter a valid phone number</label><label class="opacity0 requiredError">Please enter phone number</label><label class="opacity0 phoneexists ">Phone number already exists</label></div>';
 
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
@@ -593,9 +593,14 @@ echo '</div>';
 
     echo '<div class="savenBookOptions full triple-pad-right">';
 
-        echo '<div class="pull-left">';
-            echo '<a href="javascript:;" class="wd-185 fs-14 button addPartnerToLead lh-34 align-center robotomedium button btn-green">Add Partner to Lead</a>';
-        echo '</div>';
+        echo '<div class="pull-left">
+                <a href="javascript:;" class="wd-185 fs-14 button addPartnerToLead lh-34 align-center robotomedium button btn-green">Add Partner to Lead</a>
+                <div class="pull-left showPartnerDetails hide">
+                    <h2 class="fs-24 color-green robotolight pull-left"> Partner Details </h2>
+                    <a href="javascript:;" class=" double-gap-left wd-185 fs-14 button showaddPartnerToLead lh-34 align-center robotomedium button color-gray11 ellipsis pad-left pad-right">Add Partner to Lead</a>
+                </div>
+                
+              </div>';
 
         echo '<div class="pull-right">';
 
@@ -612,7 +617,7 @@ echo '</div>';
 // .additional-details Div End
 // .calendar Show On Book Div End
 
-echo '<div class="calendarShowOnBook hide">'; // 
+echo '<div class="calendarShowOnBook">'; // 
 
     echo '<h2 class="fs-24 color-green robotolight  hide bookingHeading pull-left hide"> Room Manager </h2>';
 

@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 // Leads multi select calendar
-
+debugger
 var pageNumber = getParameterByName("page");
 
 function getParameterByName(name, url) {
@@ -17,6 +17,7 @@ function getParameterByName(name, url) {
 if(pageNumber == 'RoomManager')
   {
     //$('.calendarLink').trigger('click')
+    debugger
     suggestedDate();
     $('nav.mainMenu li').removeClass('current');
     $('.calendarLink').closest('li').addClass('current');
@@ -31,6 +32,11 @@ if(pageNumber == 'RoomManager')
     $('.calendarLoad .bookingHeading').addClass('hide');
     $('.calendarLoad').removeClass('hide');
     $('.all-rooms').trigger('click');
+    setTimeout(function(){ 
+      alert('working')
+      $('.calendarLoad input.newLeadCalendar').addClass('newLeadCalendarBooking').removeClass('newLeadCalendar');
+     }, 1000);
+    
   }
 var userisOnDashBoard = $('.contentArea').hasClass('hide');
 if(userisOnDashBoard && pageNumber != 'RoomManager')
@@ -1129,6 +1135,32 @@ if(userisOnDashBoard && pageNumber != 'RoomManager')
         $('.newLead').removeClass('inEditMode');
         suggestedDate();
         $('.all-rooms').trigger('click');
+        $('.calendarLoad input.newLeadCalendar').addClass('newLeadCalendarBooking').removeClass('newLeadCalendar');
+        
+        //Setting Calenndar popup for calendar ON Booking Page
+
+        var getTodayDate = moment(); //Get the current date
+        getTodayDate.format("YYYY-MM-DD"); 
+        $('.newLeadCalendarBooking').daterangepicker({
+          singleDatePicker: true,
+          startDate: getTodayDate,
+          locale: { 
+            direction: 'bookingCalendar',
+             format: 'YYYY-MM-DD'
+          }
+        }, function(start, end, label) 
+        {
+          setTimeout(function(){ 
+            var getThisDate = $('.toggleCalendar.newLeadCalendarBooking').val();
+            var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate', getThisDate);
+            loadWeeklyDates(getThisDate);
+            setTimeout(function(){ 
+              suggestedDate();
+            }, 100);
+          }, 300);
+          
+        });
+
 
     });// End
 
@@ -1559,6 +1591,36 @@ $(document).on('click','.arrowNext, .arrowPrev', function (e) {
   // Calling load calendar
   suggestedDate();
 });
+
+
+/* ----------------------------------------------------*/
+
+//Setting Calenndar popup for calendar ON New Lead Page
+
+$(function() {
+  var getTodayDate = moment(); //Get the current date
+  getTodayDate.format("YYYY-MM-DD"); 
+  $('input.newLeadCalendar').daterangepicker({
+    singleDatePicker: true,
+    startDate: getTodayDate,
+    locale: { 
+      direction: 'bookingCalendar',
+       format: 'YYYY-MM-DD'
+    }
+  }, function(start, end, label) 
+  {
+    setTimeout(function(){ 
+      var getThisDate = $('.toggleCalendar').val();
+      var getWeeklyDate = $('.calendarWeeklyDate').attr('startdate', getThisDate);
+      loadWeeklyDates(getThisDate);
+      setTimeout(function(){ 
+        suggestedDate();
+      }, 100);
+    }, 300);
+    
+  });
+});
+
 
 /*====================================================*/
 // New Calendar Dates Scroll Filter
@@ -2387,6 +2449,7 @@ $('section.rightCol').on('scroll', function(event){
   function loadWeeklyDates(date) { 
       
       // 25/06/2018 - 01/07/2018
+      
       var getStartDateDisplay = moment(date).weekday(0).format('DD/MM/YYYY');
       var getNextWeekStartDateDisplay = moment(date).weekday(7).format('DD/MM/YYYY');      
 
@@ -5984,12 +6047,20 @@ return false;
 /*--------------------- --End Create New Lead --------------------- */
 /*------------------------------------------------------------------*/
 
-// Open Popup
+// Open Partner Popup
 
 $(document).on('click','.addPartnerToLead', function (e) {
       
       $('.dialogeBox.addNewPartner').removeClass('hide');
 });
+
+$(document).on('click','.showaddPartnerToLead', function (e) {
+      
+      $('.dialogeBox.addNewPartner').removeClass('hide');
+});
+
+
+/* ----------------------------------------------------*/
 
 // Save partner details
 
@@ -6001,7 +6072,11 @@ $(document).on('click','.savePartner', function (e) {
       }
 
       var model = getValuesFromPartnerForm();
-
+      var setName = window.partnerFirstName + ' ' + window.partnerLastName;
+      $('.showaddPartnerToLead').html(setName);
+      $('.addPartnerToLead').addClass('hide');
+      $('.showPartnerDetails').removeClass('hide');
+      
       // $.ajax({
 
       //  type: "POST",
@@ -6015,12 +6090,16 @@ $(document).on('click','.savePartner', function (e) {
       $('.dialogeBox.addNewPartner').addClass('hide');
 });
 
+/* ----------------------------------------------------*/
+
 // Cancel Partner
 
 $(document).on('click','.cancelPartner', function (e) {
       
       $('.dialogeBox.addNewPartner').addClass('hide');
 });
+
+/* ----------------------------------------------------*/
 
 // Same Address as Partner 
 
@@ -6046,6 +6125,8 @@ $(document).on('change','#addressAsPartner', function (e) {
       }
 });
 
+/* ----------------------------------------------------*/
+
 // Remove Error messages
 
  $(document).on('keyup', '.customerFields input', function () {
@@ -6058,22 +6139,87 @@ $(document).on('change','#addressAsPartner', function (e) {
 
 // Remove Error messages
 
+/* ----------------------------------------------------*/
 
-$(function() {
-  var getTodayDate = moment(); //Get the current date
-  getTodayDate.format("YYYY-MM-DD"); 
-  $('input[name="birthday"]').daterangepicker({
-    singleDatePicker: true,
-    startDate: getTodayDate,
-    locale: { direction: 'bookingCalendar' }
-  }, function(start, end, label) 
-  {
-    //var years = moment().diff(start, 'years');
-    //alert("You are " + years + " years old!");
-  });
-});
+// Validating Partner firstName and Last Name
+
+$(document).on('keyup', '.customerFields input#partnerFirstName, .customerFields input#partnerLastName', function () {
+  
+  $(this).closest('.relative').find('.partnerError').addClass('opacity0');
+    var getName = $(this).val();
+    if ($.trim(getName).length == 0) {
+        $(this).next().next('label.partnerfirstError').addClass('opacity0');
+        $(this).removeClass('hasError');
+    }
+    else if (isValidNames(getName)) {
+        $(this).next().next('label.partnerfirstError').addClass('opacity0');
+        $(this).removeClass('hasError');
+        //validateBasicInfo();
+    }
+    else {
+        $(this).next().next('label.partnerfirstError').removeClass('opacity0');
+        $(this).addClass('hasError');
+    }
+});// End
+
+/* ----------------------------------------------------*/
 
 
+//Validating Phone Number For Partner
+
+$(document).on('keyup', '.customerFields input#partnerPhone', function () {
+     
+    var getphone = $(this).val();
+    var getphoneLength = $(this).val().length;
+    $(this).next('label').addClass('opacity0');
+    if(getphoneLength == 0)
+    {
+      $(this).next().next('label.partnerValidError').addClass('opacity0');
+      $(this).removeClass('hasError');
+    }
+    else if(!validatePhone(getphone)) { 
+        $(this).next().next('label.partnerValidError').removeClass('opacity0');
+        $(this).addClass('hasError');
+    }
+    else
+    {
+        $(this).next().next('label.partnerValidError').addClass('opacity0');
+        $(this).removeClass('hasError');
+    }
+
+});// End
+
+  
+/* ----------------------------------------------------*/
+
+// Validating Email For Partner
+
+$(document).on('keyup', '.customerFields input#partneremail', function () {
+    $(this).closest('.relative').find('.partnerError').addClass('opacity0');
+    
+    var getValue = $(this).val().length;
+    var getemail = $(this).val();
+    if ($.trim(getemail).length == 0) {
+        $(this).next('label').next('label.partnerRequiredError').addClass('opacity0');
+        $(this).removeClass('hasError');
+    }
+    else if (isValidEmailAddress(getemail)) {
+        $(this).next('label').next('label.partnerRequiredError').addClass('opacity0');
+        $(this).removeClass('hasError');
+        //validateBasicInfo();
+    }
+    else {
+        $(this).next('label').next('label.partnerRequiredError').removeClass('opacity0');
+        $(this).addClass('hasError');
+    }
+
+});// End
+
+
+
+/* ----------------------------------------------------*/
+
+// Getting Partner Values
 
 function getValuesFromPartnerForm()
   {
@@ -6091,9 +6237,15 @@ function getValuesFromPartnerForm()
       };
   }
 
+
+/* ----------------------------------------------------*/
+
+// Validation for partner
+
 function partnerValidation()
     {
 
+        debugger
         var title = $('.dropdown.partnertitle a.selected-text').attr('value');
         var gender = $('.dropdown.partnerGender a.selected-text').attr('value');
         var getEmail = $('#partneremail').val();
@@ -6104,6 +6256,21 @@ function partnerValidation()
         var getState = $('#partnerStateDropdown').closest('a.selected-text').attr('value');
         var getAddress = $('#partnerFullAddress').val();
         
+        var isNotFirstNameValid = $('#partnerFirstName').hasClass('hasError');
+        var isNotLastNameValid = $('#partnerLastName').hasClass('hasError');
+        var isNotPhoneValid = $('#partnerPhone').hasClass('hasError');
+        var isNotEmailValid = $('#partneremail').hasClass('hasError');
+
+        window.partnerFirstName = firstname;
+        window.partnerLastName = lastname;
+
+        if( isNotFirstNameValid == true || isNotLastNameValid == true  || isNotPhoneValid == true  || isNotEmailValid == true )
+        {
+
+          window.partnervalidState = false;
+          return false;
+        }
+
         var checkCountry = true;
         if(getCountry == 'Australia')
         {
@@ -6184,10 +6351,29 @@ function partnerValidation()
 
     }
 
+
+/* ----------------------------------------------------*/
+
 function onFocusOutspartnerPhone()
 {
 
 }
+
+
+
+
+/* ----------------------------------------------------*/
+/* ----------------------------------------------------*/
+/* ----------------------------------------------------*/
+
+
+
+
+/* ----------------------------------------------------*/
+/* ----------------------------------------------------*/
+/* ----------------------------------------------------*/
+
+
 
 /*------------------------------------------------------------------*/
 /*---------------------- Start Dashboard Code --------------------- */
